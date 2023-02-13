@@ -65,7 +65,7 @@ public class TestRunner
             divide_pnr.Execute();
 
         } catch (Exception e) {
-            System.out.println("SCENARIO 4 failed due to :" + e);
+            System.out.println("SCENARIO 4 failed due to. :" + e);
         }
 
     }
