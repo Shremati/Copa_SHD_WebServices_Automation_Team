@@ -1,0 +1,46 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-02-14T00:00:00" RPH="1" FlightNumber="362" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-02-15T00:00:00" RPH="2" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>PHILLIP</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:Remarks>
+                            <air1:Remark>FOR APPLY ITINERARY CHANGES TEST</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

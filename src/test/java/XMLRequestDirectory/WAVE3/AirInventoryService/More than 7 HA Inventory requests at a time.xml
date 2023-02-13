@@ -1,0 +1,78 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirInventory/" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirInventoryRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getAirInventory>
+            <air1:EDS_AirInventoryRQ Version="3.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM" AirportCode="CRC"/>
+                </air1:POS>
+                <air1:InventoryRequests>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>243</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="BOG"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>120</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="MEX"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>432</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="MIA"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>454</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="EZE"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>787</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="SJO"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>761</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="LIM"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>463</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="SDQ"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>701</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-01-21</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="GRU"/>
+                        <air1:OandDTimestamp>true</air1:OandDTimestamp>
+                    </air1:InventoryRequest>
+                </air1:InventoryRequests>
+            </air1:EDS_AirInventoryRQ>
+        </air:getAirInventory>
+    </soapenv:Body>
+</soapenv:Envelope>

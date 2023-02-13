@@ -1,0 +1,33 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/ModifyInventory/" xmlns:air1="http://www.eds.com/AirlineSOASchema/ModifyInventoryRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:modifyInventory>
+            <air1:HP_AirInventoryModifyRQ Version="4.0">
+                <air1:POS>
+                    <com:Source AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="CRC"/>
+                </air1:POS>
+                <air1:ModifyInventoryRequest>
+                    <air1:AuthorizationLevel>
+                        <air1:FlightNumber>302</air1:FlightNumber>
+                        <air1:DepartureDate>2023-01-24</air1:DepartureDate>
+                        <air1:BoardPoint LocationCode="PTY"/>
+                        <air1:CompartmentInfo>
+                            <air1:ResBookDesigCode>2</air1:ResBookDesigCode>
+                            <air1:AuthorizationLevelValue>46</air1:AuthorizationLevelValue>
+                        </air1:CompartmentInfo>
+                    </air1:AuthorizationLevel>
+                    <air1:MaxSeatsAllotted>
+                        <air1:FlightNumber>302</air1:FlightNumber>
+                        <air1:DepartureDate>2023-01-24</air1:DepartureDate>
+                        <air1:BoardPoint LocationCode="PTY"/>
+                        <air1:OffPoint LocationCode="LAX"/>
+                        <air1:CompartmentInfo>
+                            <air1:ResBookDesigCode>B</air1:ResBookDesigCode>
+                            <air1:MaximumSeat>12</air1:MaximumSeat>
+                        </air1:CompartmentInfo>
+                    </air1:MaxSeatsAllotted>
+                </air1:ModifyInventoryRequest>
+            </air1:HP_AirInventoryModifyRQ>
+        </air:modifyInventory>
+    </soapenv:Body>
+</soapenv:Envelope>

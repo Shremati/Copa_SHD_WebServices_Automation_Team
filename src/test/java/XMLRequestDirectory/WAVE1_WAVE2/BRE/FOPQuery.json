@@ -1,0 +1,16 @@
+{
+  "POS":
+  {
+    "Source":
+    {
+      "BookingChannel":
+      {
+        "Type":"PSSinternal"
+      },
+      "AirlineVendorID":"CM"
+    }
+  },
+  "EchoToken":"EchoToken",
+  "Target":"Test",
+  "Version":1
+}

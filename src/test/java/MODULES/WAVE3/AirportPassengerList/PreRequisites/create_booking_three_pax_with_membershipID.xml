@@ -1,0 +1,84 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2011-10-12T00:00:00" RPH="1" FlightNumber="245" ResBookDesigCode="K" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="MEX"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode NotValidBefore="2010-08-14" NotValidAfter="2012-08-16">X</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                </air1:Taxes>
+                                <air1:TotalFare Amount="149.60" CurrencyCode="USD"/>
+                                <air1:UnstructuredFareCalc>SALUDOS</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT" AccompaniedByInfant="true">
+                        <air1:PersonName>
+                            <com:GivenName>FRED</com:GivenName>
+                            <com:Surname>TRUMP</com:Surname>
+                        </air1:PersonName>
+                        <air1:Email>n.n@mydomain.com</air1:Email>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230416618"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler BirthDate="2008-01-01" PassengerTypeCode="INF">
+                        <air1:PersonName>
+                            <com:GivenName>BABY</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>MORGAN</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:SeatRequests>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1"/>
+                        </air1:SeatRequests>
+                        <air1:OtherServiceInformations>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="CM"/>
+                                <air1:Text>OSI ONE</air1:Text>
+                            </air1:OtherServiceInformation>
+                        </air1:OtherServiceInformations>
+                        <air1:Remarks>
+                            <air1:Remark>have a nice party</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ref="http://www.eds.com/AirlineSOASchema/Reference/" xmlns:eds="http://www.eds.com/AirlineSOASchema/EDS_ReferenceRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ref:getReference>
+            <eds:EDS_ReferenceRQ Version="4.000">
+                <eds:POS>
+                    <com:Source AirlineVendorID="ZA"/>
+                </eds:POS>
+                <eds:ReferenceRequest/>
+            </eds:EDS_ReferenceRQ>
+        </ref:getReference>
+    </soapenv:Body>
+</soapenv:Envelope>

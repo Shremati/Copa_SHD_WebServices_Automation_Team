@@ -1,0 +1,112 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-25T01:58:00" RPH="1" FlightNumber="149" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="MEX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-25T12:20:00" RPH="2" FlightNumber="476" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="DEN"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-28T22:05:00" RPH="3" FlightNumber="477" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="DEN"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-29T09:09:00" RPH="4" FlightNumber="120" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="MEX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode NotValidBefore="2023-01-25" NotValidAfter="2023-01-31">YAAAOY1F</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="1075.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="US" Amount="10.00"/>
+                                </air1:Taxes>
+                                <air1:TotalFare Amount="1085.00" CurrencyCode="USD"/>
+                                <air1:UnstructuredFareCalc>SALUDOS</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT" AccompaniedByInfant="true">
+                        <air1:PersonName>
+                            <com:GivenName>FRED</com:GivenName>
+                            <com:Surname>TRUMP</com:Surname>
+                        </air1:PersonName>
+                        <air1:Email>n.n@mydomain.com</air1:Email>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230416618"/>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="001" PhoneNumber="55503212"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler BirthDate="2023-01-01" PassengerTypeCode="INF">
+                        <air1:PersonName>
+                            <com:GivenName>TEST</com:GivenName>
+                            <com:Surname>ONE</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>TEST</com:GivenName>
+                            <com:Surname>TWO</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:SeatRequests>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="2"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="3"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="3"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="4"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="4"/>
+                        </air1:SeatRequests>
+                        <air1:OtherServiceInformations>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="CM"/>
+                                <air1:Text>OSI ONE</air1:Text>
+                            </air1:OtherServiceInformation>
+                        </air1:OtherServiceInformations>
+                        <air1:Remarks>
+                            <air1:Remark>have a nice party</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

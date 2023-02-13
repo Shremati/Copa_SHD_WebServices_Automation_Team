@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:modifyBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns4="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:OTA_AirBookRS TimeStamp="2023-02-13T12:31:29" Version="4.000">
+        <ns6:Errors>
+          <Error Type="13">Input Itinerary Is Out Of Sync With SHARES Itinerary</Error>
+        </ns6:Errors>
+      </ns6:OTA_AirBookRS>
+    </ns4:modifyBookingResponse>
+  </soap:Body>
+</soap:Envelope>
