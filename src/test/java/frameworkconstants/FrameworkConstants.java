@@ -46,7 +46,7 @@ public class FrameworkConstants
     public static String createbookingservice="/AirlineSOA/CreateBookingService/createBooking";
     public static String departurecontrolservice="/AirlineSOA/DepartureControlService/departureControl";
     public static String displaybookingservice="/AirlineSOA/DisplayBookingService/displayBooking";
-    public static String displayloyaltyaccountservice="/AirlineSOA/DisplayTicketService/displayTickets";
+    public static String displayloyaltyaccountservice="/AirlineSOA/DisplayLoyaltyAccountService/displayAccount";
     public static String encodedecodeservice="/AirlineSOA/EncodeDecodeService/encodeDecode";
     public static String modifybookingservice="/AirlineSOA/ModifyBookingService/modifyBooking";
     public static String modifyinventoryservice="/AirlineSOA/ModifyInventoryService/modifyInventory";
@@ -60,6 +60,7 @@ public class FrameworkConstants
     public static String timaticservice="/AirlineSOA/TimaticService/displayTimatic";
     public static String ticketing="/AirlineSOA/TicketingService/ticketing";
     public static String flifo="/AirlineSOA/FlifoService/getFlifo";
+    public static String passengerlistservice="/AirlineSOA/PassengerListService/passengerList";
 
 
     public static String getAdvancepassengerinfo() {
@@ -120,6 +121,14 @@ public class FrameworkConstants
 
     public static String getModifyticketingservice() {
         return modifyticketingservice;
+    }
+
+    public static String getPassengerlistservice() {
+        return passengerlistservice;
+    }
+
+    public static String Passengerlistservice() {
+        return passengerlistservice;
     }
 
     public static String getQueueservice() {
