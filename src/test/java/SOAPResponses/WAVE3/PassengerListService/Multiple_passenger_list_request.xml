@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns7:getPassengerListResponse xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns11="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns7="http://www.eds.com/AirlineSOASchema/PassengerList/" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns8:OTA_ResRetrieveRS TimeStamp="2023-02-14T12:40:58" Version="4.000">
+        <ns8:Errors>
+          <Error Type="3" ShortText="10058" Tag="AirReadRequest">Maximum number of items exceeded</Error>
+        </ns8:Errors>
+      </ns8:OTA_ResRetrieveRS>
+    </ns7:getPassengerListResponse>
+  </soap:Body>
+</soap:Envelope>
