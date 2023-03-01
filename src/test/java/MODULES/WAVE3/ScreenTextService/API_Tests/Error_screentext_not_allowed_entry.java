@@ -1,8 +1,7 @@
-package MODULES.WAVE3.PassengerListService.API_Tests;
+package MODULES.WAVE3.ScreenTextService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -19,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class display_passenger_list_All_option extends FrameworkConstants
+public class Error_screentext_not_allowed_entry extends FrameworkConstants
 {
     public static String SOAPRequest;
 
@@ -40,7 +39,7 @@ public class display_passenger_list_All_option extends FrameworkConstants
                 .header("Content-Type", "text/xml")
                 .body(SOAPRequest)
                 .when()
-                .post(getPassengerlistservice())
+                .post(getScreentextservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -48,7 +47,7 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Display the passenger list option.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ScreenTextService\\Error_screentext_not_allowed_entry.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -58,6 +57,7 @@ public class display_passenger_list_All_option extends FrameworkConstants
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
+
 
     }
 
@@ -69,16 +69,14 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("PassengerListService");
+        XSSFSheet sheet = wb.getSheet("ScreenTextService");
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"PassengerListService\\Display_passenger_list_All_option.xml";
+        filepath1=getRequestDirectory()+"ScreenTextService\\Error_screentext_not_allowed_entry.xml";
 
 
-        XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("scr1:ScreenEntry",InputRow.getCell(1).getStringCellValue(),filepath1,0);
 
         wb.close();
 

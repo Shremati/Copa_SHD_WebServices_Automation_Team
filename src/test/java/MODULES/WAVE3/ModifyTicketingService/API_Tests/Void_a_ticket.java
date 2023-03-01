@@ -1,8 +1,9 @@
-package MODULES.WAVE3.PassengerListService.API_Tests;
+package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
-import GENERICS.Utils;
+
 import GENERICS.XMLParser;
-import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
+import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
+import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -19,12 +20,21 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class display_passenger_list_All_option extends FrameworkConstants
+public class Void_a_ticket extends FrameworkConstants
 {
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
+
+        create_booking_void_a_ticket Prerequisite = new create_booking_void_a_ticket();
+        Prerequisite.run(); //excel gets updated
+
+        //        PreRequisite for Scenario ------> Issue Ticket
+
+        issue_ticket_void_a_ticket Prerequisite2 = new issue_ticket_void_a_ticket();
+        Prerequisite2.run(); //generates ticket number
 
 
         UpdatePayload();
@@ -40,7 +50,7 @@ public class display_passenger_list_All_option extends FrameworkConstants
                 .header("Content-Type", "text/xml")
                 .body(SOAPRequest)
                 .when()
-                .post(getPassengerlistservice())
+                .post(getModifyticketingservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -48,7 +58,7 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Display the passenger list option.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_a_ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -69,16 +79,15 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("PassengerListService");
+        XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"PassengerListService\\Display_passenger_list_All_option.xml";
+        filepath1=getRequestDirectory()+"ModifyTicketingService\\Void_a_ticket.xml";
 
+        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(12).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

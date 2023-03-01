@@ -61,6 +61,9 @@ public class FrameworkConstants
     public static String ticketing="/AirlineSOA/TicketingService/ticketing";
     public static String flifo="/AirlineSOA/FlifoService/getFlifo";
     public static String passengerlistservice="/AirlineSOA/PassengerListService/passengerList";
+    public static String flightdepartureinfoservice="/AirlineSOA/FlightDepartureInfoService/getFlightDepartureInfo";
+    public static String authorizationservice="/AirlineSOA/AuthorizationService/authorize";
+    public static String issueticketservice="AirlineSOA/TicketingService/ticketing";
 
 
     public static String getAdvancepassengerinfo() {
@@ -166,6 +169,20 @@ public class FrameworkConstants
     public static String getFlifo() {
         return flifo;
     }
+
+    public static String getFlightdepartureinfoservice() {
+        return flightdepartureinfoservice;
+    }
+
+    public static String getAuthorizationservice() {
+        return authorizationservice;
+    }
+
+    public static String getIssueticketservice() {
+        return issueticketservice;
+    }
+
+
 
 
 // ************************* FilePaths Wave1 and Wave2 ********************************

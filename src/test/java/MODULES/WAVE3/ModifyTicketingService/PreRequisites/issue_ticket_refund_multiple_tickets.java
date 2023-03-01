@@ -1,6 +1,5 @@
-package MODULES.WAVE3.ModifyBookingService.PreRequisites;
+package MODULES.WAVE3.ModifyTicketingService.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
@@ -18,7 +17,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_itinerary_changes extends FrameworkConstants
+public class issue_ticket_refund_multiple_tickets extends FrameworkConstants
 {
 
     public static String SOAPRequest;
@@ -39,7 +38,7 @@ public class create_booking_itinerary_changes extends FrameworkConstants
                 .header("Content-Type", "text/xml")
                 .body(SOAPRequest)
                 .when()
-                .post(getCreatebookingservice())
+                .post(getIssueticketservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -68,19 +67,15 @@ public class create_booking_itinerary_changes extends FrameworkConstants
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("ModifyBookingSer_CancelBooking");
+        XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
 
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyBookingService\\PreRequisites\\create_booking_itinerary_changes.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyTicketingService\\PreRequisites\\issue_ticket_void_a_ticket.xml";
 
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(6).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
@@ -94,18 +89,11 @@ public class create_booking_itinerary_changes extends FrameworkConstants
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("ModifyBookingSer_CancelBooking");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
+        XSSFRow InputRow=sheet.getRow(1);
 
 
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        InputRow.getCell(9).setCellValue(PNR);
-
-        InputRow.getCell(10).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","DepartureDateTime",getTemp_responsePath(),0));
-        InputRow.getCell(11).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
-        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0));
-        InputRow.getCell(13).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport","LocationCode",getTemp_responsePath(),0));
-        InputRow.getCell(14).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport","LocationCode",getTemp_responsePath(),0));
+        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

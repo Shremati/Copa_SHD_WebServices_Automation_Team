@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dep="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:dep1="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dep:requestControl>
+            <dep1:EDS_DepartureControlRQ Version="4.000">
+                <dep1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dep1:POS>
+                <dep1:MessageFunction Function="BlockSeat"/>
+                <dep1:FlightInfo>
+                    <dep1:FlightLegInfo DepartureDateTime="2023-02-23T00:00:00" FlightNumber="302">
+                        <com:DepartureAirport LocationCode="PTY"/>
+                        <air1:CompartmentInfo CompartmentCode="Y" SeatCount="3">
+                            <air1:SeatNumber>18D</air1:SeatNumber>
+                        </air1:CompartmentInfo>
+                    </dep1:FlightLegInfo>
+                </dep1:FlightInfo>
+            </dep1:EDS_DepartureControlRQ>
+        </dep:requestControl>
+    </soapenv:Body>
+</soapenv:Envelope>
