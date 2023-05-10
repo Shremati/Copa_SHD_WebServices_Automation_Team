@@ -158,4 +158,63 @@ public class XMLParser
 
     }
 
+    public static void updateValue(String Tag,String New_Value,String fpath) throws ParserConfigurationException, IOException, SAXException, TransformerException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
+
+        NodeList XMLTags =null;
+        XMLTags = document.getElementsByTagName(Tag);
+
+//        XMLTags.item(0).getAttributes().getNamedItem(Attribute).setNodeValue(New_Value);
+        XMLTags.item(0).setNodeValue(New_Value);
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transf = transformerFactory.newTransformer();
+
+        transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transf.setOutputProperty(OutputKeys.INDENT, "yes");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+
+        DOMSource source = new DOMSource(document);
+
+        File myFile = new File(".\\src\\test\\java\\GENERICS\\Temp_Request.xml");
+        StreamResult file = new StreamResult(myFile);
+        transf.transform(source, file);
+
+    }
+
+    public static void SetTagtext(String Tag,String New_Value,String fpath) throws ParserConfigurationException, IOException, SAXException, TransformerException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
+
+        NodeList XMLTags =null;
+        XMLTags = document.getElementsByTagName(Tag);
+        XMLTags.item(0).setTextContent(New_Value);
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transf = transformerFactory.newTransformer();
+
+        transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transf.setOutputProperty(OutputKeys.INDENT, "yes");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+
+        DOMSource source = new DOMSource(document);
+
+        File myFile = new File(".\\src\\test\\java\\GENERICS\\Temp_Request.xml");
+        StreamResult file = new StreamResult(myFile);
+        transf.transform(source, file);
+
+    }
+
+
+
+
 }

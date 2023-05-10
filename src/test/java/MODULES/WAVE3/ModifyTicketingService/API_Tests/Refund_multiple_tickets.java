@@ -2,10 +2,7 @@ package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_refund_multiple_tickets;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_refund_multiple_tickets;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ticket;
+import MODULES.WAVE3.ModifyTicketingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -37,6 +34,11 @@ public class Refund_multiple_tickets extends FrameworkConstants
 
         issue_ticket_refund_multiple_tickets Prerequisite2 = new issue_ticket_refund_multiple_tickets();
         Prerequisite2.run(); //generates ticket number
+
+        //        PreRequisite for Scenario
+
+        modify_ticket_refund_multiple_tickets Prerequisite3 = new modify_ticket_refund_multiple_tickets();
+        Prerequisite3.run();
 
 
         UpdatePayload();
@@ -87,8 +89,8 @@ public class Refund_multiple_tickets extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml";
 
-        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(12).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

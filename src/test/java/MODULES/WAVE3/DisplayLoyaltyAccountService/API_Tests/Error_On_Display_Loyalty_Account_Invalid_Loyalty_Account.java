@@ -67,7 +67,7 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayLoyaltyAccountService");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayLoyaltyAccountService\\ErrorOnDisplayLoyaltyAccountInvalidLoyaltyAccount.xml";

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -80,7 +81,7 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\create_booking_service_singlepax.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());

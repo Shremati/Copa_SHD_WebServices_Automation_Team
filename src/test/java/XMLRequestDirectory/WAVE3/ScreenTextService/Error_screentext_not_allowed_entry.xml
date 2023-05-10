@@ -1,13 +1,15 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/" xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-<soapenv:Header/>
-<soapenv:Body>
-<scr:sendEntry>
-    <scr1:OTA_ScreenTextRQ Version="4.000" MessageFunction="A">
-        <scr1:POS>
-            <com:Source AirlineVendorID="CM"/>
-        </scr1:POS>
-        <scr1:ScreenEntry>A LAXPTY</scr1:ScreenEntry>
-    </scr1:OTA_ScreenTextRQ>
-</scr:sendEntry>
-</soapenv:Body>
-        </soapenv:Envelope>
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/"
+                  xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ"
+                  xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <scr:sendEntry>
+            <scr1:OTA_ScreenTextRQ Version="4.000" MessageFunction="A">
+                <scr1:POS><com:Source AirlineVendorID="CM"/>
+                </scr1:POS><scr1:ScreenEntry>A LAXDEN</scr1:ScreenEntry>
+            </scr1:OTA_ScreenTextRQ>
+        </scr:sendEntry>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,7 +1,13 @@
-package MODULES.WAVE3.CreateBookingService.API_Tests;
+package MODULES.WAVE3.TicketControlService.API_Tests;
 
-import GENERICS.Utils;
+
 import GENERICS.XMLParser;
+import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_push_control_of_multiple_coupons_within_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_push_control_of_multiple_coupons_within_one_ticket;
+import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -14,16 +20,25 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import frameworkconstants.*;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_one_seg_telephone_ticketing extends FrameworkConstants
+public class Push_control_of_multiple_coupons_within_one_ticket extends FrameworkConstants
 {
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
+
+        create_booking_push_control_of_multiple_coupons_within_one_ticket Prerequisite = new create_booking_push_control_of_multiple_coupons_within_one_ticket();
+        Prerequisite.run(); //excel gets updated
+
+        //        PreRequisite for Scenario ------> Issue Ticket
+
+        issue_ticket_push_control_of_multiple_coupons_within_one_ticket Prerequisite2 = new issue_ticket_push_control_of_multiple_coupons_within_one_ticket();
+        Prerequisite2.run(); //generates ticket number
+
 
         UpdatePayload();
 
@@ -33,20 +48,21 @@ public class create_booking_one_seg_telephone_ticketing extends FrameworkConstan
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getCreatebookingservice())
+                .post(getTicketcontroloservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_one_seg_telephone_ticketing.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Push_control_of_multiple_coupons_within_one_ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -67,24 +83,21 @@ public class create_booking_one_seg_telephone_ticketing extends FrameworkConstan
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("TicketControlService");
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"CreateBookingService\\create_booking_one_seg_telephone_ticketing.xml";
+        filepath1=getRequestDirectory()+"TicketControlService\\Push_control_of_multiple_coupons_within_one_ticket.xml";
+
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
 
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:FlightSegment","NumberInParty",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidBefore",Utils.Date_YYYYMMdd(InputRow.getCell(25).getNumericCellValue()),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.Date_YYYYMMdd(InputRow.getCell(26).getNumericCellValue()),getTemp_requestPath());
 
         wb.close();
 
     }
+
+
+
+
 }

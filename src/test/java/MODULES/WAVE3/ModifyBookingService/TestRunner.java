@@ -25,23 +25,23 @@ public class TestRunner
 
     }
 
-//    @Description("Itinerary Changes")
-//    @Test
-//    public void Scenario2()
-//    {
-//
-//        try
-//        {
-//            Itinerary_changes.Execute();
-//
-//        }catch(Exception e)
-//        {
-//            System.out.println("SCENARIO 1 failed due to :"+e);
-//        }
-//
-//
-//
-//    }
+    @Description("Itinerary Changes")
+    @Test
+    public void Scenario2()
+    {
+
+        try
+        {
+            Itinerary_changes.Execute();
+
+        }catch(Exception e)
+        {
+            System.out.println("SCENARIO 1 failed due to :"+e);
+        }
+
+
+
+    }
 
     @Description("Other Changes")
     @Test
@@ -85,5 +85,3 @@ public class TestRunner
 
 
     }
-
-//properties file and hashmaps

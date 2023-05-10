@@ -76,7 +76,7 @@ public class issue_ticket_void_a_ticket extends FrameworkConstants
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyTicketingService\\PreRequisites\\issue_ticket_void_a_ticket.xml";
 
 
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(6).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
@@ -93,8 +93,8 @@ public class issue_ticket_void_a_ticket extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
         XSSFRow InputRow=sheet.getRow(1);
 
-
-        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
+        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
+        InputRow.getCell(16).setCellValue(TicketNumber);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

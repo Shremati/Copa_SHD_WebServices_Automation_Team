@@ -1,0 +1,30 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emd="http://www.hp.com/AirlineSOASchema/EMDAirlineSystemUpdate/" xmlns:emd1="http://www.iata.org/IATA/2007/00/EMD_AirlineSystemUpdateRQ" xmlns:com="http://www.iata.org/IATA/2007/00/CommonTypes">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <emd:systemUpdate>
+      <emd1:IATA_EMD_AirlineSystemUpdateRQ Version="4.000" TktDocQuantity="1">
+        <emd1:POS>
+          <com:Source AirlineVendorID="CM"/>
+        </emd1:POS>
+        <emd1:Passenger>
+          <emd1:Name>
+            <com:GivenName>JOHN</com:GivenName>
+            <com:Surname>HERRERA</com:Surname>
+          </emd1:Name>
+          <emd1:TicketDocument TicketDocumentNbr="2302180919744" Type="Ticket" InConnectionDocNbr="5364550022486">
+            <emd1:CouponInfo Number="4" AssociateInd="true" InConnectionNbr="1"/>
+          </emd1:TicketDocument>
+        </emd1:Passenger>
+        <emd1:Passenger>
+          <emd1:Name>
+            <com:GivenName>JOHN</com:GivenName>
+            <com:Surname>HERRERA</com:Surname>
+          </emd1:Name>
+          <emd1:TicketDocument TicketDocumentNbr="2302180919745" Type="Ticket" InConnectionDocNbr="5364550022486">
+            <emd1:CouponInfo Number="1" AssociateInd="true" InConnectionNbr="2"/>
+          </emd1:TicketDocument>
+        </emd1:Passenger>
+      </emd1:IATA_EMD_AirlineSystemUpdateRQ>
+    </emd:systemUpdate>
+  </soapenv:Body>
+</soapenv:Envelope>

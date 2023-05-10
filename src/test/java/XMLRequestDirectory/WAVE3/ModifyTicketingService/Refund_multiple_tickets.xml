@@ -1,27 +1,113 @@
-<soapenv:Envelope
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-        xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyTicketing/"
-        xmlns:tic="http://www.eds.com/AirlineSOASchema/TicketingModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes"
-        xmlns:air="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
     <soapenv:Header/>
     <soapenv:Body>
-        <mod:modifyTicket>
-            <tic:EDS_TicketingModifyRQ EchoToken="Test_01" TimeStamp="2023-01-20T06:44:07" Version="4.00">
-                <tic:POS>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ EchoToken="Test_01" TimeStamp="2013-11-23T06:44:07" Version="4.0">
+                <air:POS>
                     <com:Source AirlineVendorID="CM"/>
-                </tic:POS>
-                <tic:ModifyRequests>
-                    <tic:ModifyRequest>
-                        <tic:ModifyRefund ValidatingCarrierCode="CM">
-                            <air:TicketNumbers>
-                                <air:TicketNumber>2302180667770</air:TicketNumber>
-                            </air:TicketNumbers>
-                            <air:RecordLocator type="14" ID="A10KSK"/>
-                            <air:TicketType>Electronic</air:TicketType>
-                        </tic:ModifyRefund>
-                    </tic:ModifyRequest>
-                </tic:ModifyRequests>
-            </tic:EDS_TicketingModifyRQ>
-        </mod:modifyTicket>
+                </air:POS>
+                <air:AirBookModifyRQ ModificationType="1">
+                    <n4:Ticketing TicketType="eTicket" TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <air1:BookingReferenceID Type="14" ID="EWW36J"/>
+                </air:AirBookModifyRQ>
+                <!--Optional:-->
+                <air:AirReservation LastModified="2011-10-14T13:31:32Z" CreateDateTime="2011-10-14T13:31:00Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                    <n1:AirItinerary>
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2012-01-20T09:00:00" ArrivalDateTime="2012-01-20T12:13:00" RPH="1" FlightNumber="402" ResBookDesigCode="B" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="DEN"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2012-01-22T08:40:00" ArrivalDateTime="2012-01-22T10:05:00" RPH="2" FlightNumber="403" ResBookDesigCode="K" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sun">
+                                    <com:DepartureAirport LocationCode="DEN"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n1:PriceInfo>
+                        <n1:PTC_FareBreakdowns>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">ADT</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">ADT</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="1500.00" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="US" Amount="115.00"/>
+                                        <n1:Tax TaxCode="XF" Amount="10.00"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="1625" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC ADT1END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n1:PTC_FareBreakdown>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">ADT</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">ADT</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="1200.00" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="US" Amount="115.00"/>
+                                        <n1:Tax TaxCode="XF" Amount="20.00"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="1335" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC ADT2END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                            </n1:PTC_FareBreakdown>
+                        </n1:PTC_FareBreakdowns>
+                        <n1:PriceRequestInformation PricingSource="Private">
+                            <n1:NegotiatedFareCode>422105</n1:NegotiatedFareCode>
+                        </n1:PriceRequestInformation>
+                    </n1:PriceInfo>
+                    <n1:TravelerInfo>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>MARY</com:GivenName>
+                                <com:Surname>QUITECONTRARY</com:Surname>
+                            </n1:PersonName>
+                            <n1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212" LocationCode="WEB"/>
+                            <n1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1414" LocationCode="WEB"/>
+                            <n1:CustLoyalty ProgramID="CM" MembershipID="00112276905"/>
+                            <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n1:AirTraveler>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>WILLY</com:GivenName>
+                                <com:Surname>MAKEIT</com:Surname>
+                            </n1:PersonName>
+                            <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </n1:AirTraveler>
+                        <n1:SpecialReqDetails>
+                            <n1:SpecialServiceRequests>
+                                <n1:SpecialServiceRequest SSRCode="FQTV" Status="26">
+                                    <n1:Airline Code="CM"/>
+                                    <n1:Text>Z200112276905-QUITECONTRARY/MARY]01.01</n1:Text>
+                                </n1:SpecialServiceRequest>
+                            </n1:SpecialServiceRequests>
+                            <n1:Remarks>
+                                <n1:Remark>NICE FAMILY</n1:Remark>
+                            </n1:Remarks>
+                        </n1:SpecialReqDetails>
+                    </n1:TravelerInfo>
+                    <n1:Ticketing TicketingStatus="3">
+                        <n1:TicketAdvisory>FQR/CASH/21511727044/0001//.00</n1:TicketAdvisory>
+                    </n1:Ticketing>
+                    <n1:Ticketing TicketType="eTicket"/>
+                    <n1:BookingReferenceID Type="14" ID="EWW36J"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
     </soapenv:Body>
 </soapenv:Envelope>

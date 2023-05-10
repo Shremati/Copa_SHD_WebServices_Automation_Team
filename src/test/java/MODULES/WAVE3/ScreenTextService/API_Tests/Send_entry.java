@@ -20,17 +20,19 @@ import static io.restassured.RestAssured.given;
 
 public class Send_entry extends FrameworkConstants
 {
+
     public static String SOAPRequest;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
 
-//        UpdatePayload();
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
-        FileInputStream fileInputStream = new FileInputStream(getRequestDirectory()+"ScreenTextService\\Send_entry.xml");
+        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
@@ -58,7 +60,6 @@ public class Send_entry extends FrameworkConstants
         writer.write("");
         writer.flush();
 
-
     }
 
 
@@ -69,22 +70,17 @@ public class Send_entry extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("ModifyInventoryService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("ScreenTextService");
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"ScreenTextService\\Send_entry.xml";
 
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_ddMMYYYY(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:BoardPoint",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("scr1:ScreenEntry",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+
 
         wb.close();
 
     }
-
-
-
-
 }

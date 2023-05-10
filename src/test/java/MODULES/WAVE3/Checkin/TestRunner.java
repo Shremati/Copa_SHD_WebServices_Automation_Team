@@ -31,7 +31,7 @@ public class TestRunner
 
         try
         {
-
+            Error_Change_seatInvalid.Execute();
 
         }catch(Exception e)
         {
@@ -46,7 +46,7 @@ public class TestRunner
 
         try
         {
-
+            Hold_seat_from_similar_name_list.Execute();
 
         }catch(Exception e)
         {

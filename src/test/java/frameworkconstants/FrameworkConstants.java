@@ -63,7 +63,8 @@ public class FrameworkConstants
     public static String passengerlistservice="/AirlineSOA/PassengerListService/passengerList";
     public static String flightdepartureinfoservice="/AirlineSOA/FlightDepartureInfoService/getFlightDepartureInfo";
     public static String authorizationservice="/AirlineSOA/AuthorizationService/authorize";
-    public static String issueticketservice="AirlineSOA/TicketingService/ticketing";
+    public static String issueticketservice="/AirlineSOA/TicketingService/ticketing";
+    public static String emdairlinesystemupdateservice="/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
 
 
     public static String getAdvancepassengerinfo() {
@@ -142,6 +143,7 @@ public class FrameworkConstants
         return referenceservice;
     }
 
+
     public static String getScreentextservice() {
         return screentextservice;
     }
@@ -181,6 +183,12 @@ public class FrameworkConstants
     public static String getIssueticketservice() {
         return issueticketservice;
     }
+
+    public static String getEmdairlinesystemupdateservice() {
+        return emdairlinesystemupdateservice;
+    }
+
+
 
 
 

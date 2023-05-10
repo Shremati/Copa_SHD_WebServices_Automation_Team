@@ -1,0 +1,101 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-24T00:54:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-01-26T07:59:00" RPH="2" FlightNumber="360" ResBookDesigCode="K" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-24" NotValidAfter="2023-01-31">BAAAOY2F</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="2" NotValidBefore="2023-01-31" NotValidAfter="2023-02-04">KAAAOY2N</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="1575.00" CurrencyCode="USD" FromCurrency="USD" Rate="15.25"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="FZ" Amount="40.00"/>
+                                    <air1:Tax TaxCode="XT" Amount="84.15"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="3" UnitOfMeasure="PC"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="2"  UnitOfMeasureQuantity="1" UnitOfMeasure="PC"/>
+                                <air1:TourCode>IT6ZZ1TOURUSA</air1:TourCode>
+                                <air1:Remark>A FREEFLOW REMARK</air1:Remark>
+                                <air1:Remark>ANOTHER REMARK</air1:Remark>
+                                <air1:Remark>THE LAST REMARK FOR THIS FARE</air1:Remark>
+                                <air1:TPA_Extensions>
+                                    <air1:SalesLocation SalesIndicator="false" TicketingIndicator="false"/>
+                                </air1:TPA_Extensions>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:Endorsements>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                                <air1:Endorsement>ENDORSEMENT TWO</air1:Endorsement>
+                            </air1:Endorsements>
+                            <air1:FareInfo>
+                                <air1:FareInfo>
+                                    <air1:Date Date="2023-01-24" Type="LastTicketing"/>
+                                </air1:FareInfo>
+                            </air1:FareInfo>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>FOXX</com:GivenName>
+                            <com:Surname>MULDER</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-0010"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>DANA</com:GivenName>
+                            <com:Surname>SCULLY</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-0011"/>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:Remarks>
+                            <air1:Remark>Nice family</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Fulfillment>
+                    <air1:PaymentDetails>
+                        <air1:PaymentDetail Remark="FQ">
+                            <com:BankAcct BankAcctNumber="7811"/>
+                            <com:PaymentAmount ApprovalCode="A9876"/>
+                        </air1:PaymentDetail>
+                    </air1:PaymentDetails>
+                </air:Fulfillment>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

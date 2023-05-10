@@ -71,15 +71,15 @@
                     </air1:AirTraveler>
                     <air1:AirTraveler BirthDate="2023-01-01" PassengerTypeCode="INF">
                         <air1:PersonName>
-                            <com:GivenName>TEST</com:GivenName>
-                            <com:Surname>ONE</com:Surname>
+                            <com:GivenName>BABY</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>TEST</com:GivenName>
-                            <com:Surname>TWO</com:Surname>
+                            <com:GivenName>MORGAN</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
                         <air1:TravelerRefNumber RPH="3"/>
                     </air1:AirTraveler>

@@ -72,10 +72,10 @@ public class issue_ticket_refund_multiple_tickets extends FrameworkConstants
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyTicketingService\\PreRequisites\\issue_ticket_void_a_ticket.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyTicketingService\\PreRequisites\\issue_ticket_refund_multiple_tickets.xml";
 
 
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(6).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
@@ -90,10 +90,13 @@ public class issue_ticket_refund_multiple_tickets extends FrameworkConstants
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(2);
 
 
-        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
+        String TicketNumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),0);
+        InputRow.getCell(16).setCellValue(TicketNumber);
+        String TicketNumber2 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),1);
+        InputRow.getCell(17).setCellValue(TicketNumber2);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

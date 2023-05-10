@@ -5,7 +5,9 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ticket;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -45,9 +47,27 @@ public class Void_a_ticket extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+//        RequestSpecification requestSpecification =
+//                given().
+//                        baseUri(getBaseURL())
+//                        .header("Content-Type", "text/xml")
+//                        .filter(new AllureRestAssured())
+//                        .body(SOAPRequest);
+//
+//
+//        requestSpecification.
+//                when()
+//                .post(getModifyticketingservice())
+//                .then()
+//                .statusCode(200)
+//                .and()
+//                .log().all().extract().response();
+
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifyticketingservice())
@@ -55,7 +75,6 @@ public class Void_a_ticket extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_a_ticket.xml"));
@@ -85,8 +104,8 @@ public class Void_a_ticket extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"ModifyTicketingService\\Void_a_ticket.xml";
 
-        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(12).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();
