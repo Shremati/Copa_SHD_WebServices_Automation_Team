@@ -2,6 +2,7 @@ package MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -35,6 +36,7 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayloyaltyaccountservice())

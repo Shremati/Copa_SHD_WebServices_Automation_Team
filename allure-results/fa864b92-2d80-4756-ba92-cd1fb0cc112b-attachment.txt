@@ -1,0 +1,58 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:encodeDecodeResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/ConversionRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/EncodeDecode/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/ConversionRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_ConversionRS TimeStamp="2023-05-16T09:25:49" Version="4.000">
+        <ns4:Success/>
+        <ns4:Conversion ConversionRequest="PA">
+          <ns4:CountryConversion>
+            <ns4:CountryName>PANAMA</ns4:CountryName>
+          </ns4:CountryConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="PTY">
+          <ns4:CityAirportConversion LocationCode="PTY">
+            <CityName>PANAMA CITY</CityName>
+            <CountryName>PANAMA</CountryName>
+            <ns4:AirportName>TOCUMEN INTL</ns4:AirportName>
+          </ns4:CityAirportConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="BOSNIA">
+          <ns4:CountryConversion>
+            <ns4:CountryName>BOSNIA AND HERZEGOVINA</ns4:CountryName>
+          </ns4:CountryConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="United">
+          <ns4:AirlineConversion>
+            <ns4:CompanyName AirlineCodeNumber="016" CompanyShortName="UAL" Code="UA">UNITED AIRLINES INC</ns4:CompanyName>
+          </ns4:AirlineConversion>
+          <ns4:AirlineConversion>
+            <ns4:CompanyName AirlineCodeNumber="584" Code="4H">UNITED AIRWAYS BANGLADESH LTD</ns4:CompanyName>
+          </ns4:AirlineConversion>
+          <ns4:AirlineConversion>
+            <ns4:CompanyName AirlineCodeNumber="406" Code="5X">UNITED PARCEL SERVICE - UPS</ns4:CompanyName>
+          </ns4:AirlineConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="PA">
+          <ns4:CountryConversion>
+            <ns4:CountryName>PANAMA</ns4:CountryName>
+          </ns4:CountryConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="nyc">
+          <ns4:CityAirportConversion LocationCode="NYC">
+            <CityName>NEW YORK</CityName>
+            <StateProv>NY</StateProv>
+            <CountryName>UNITED STATES OF AMERICA</CountryName>
+            <ns4:AirportName>METROPOLITAN AREA</ns4:AirportName>
+          </ns4:CityAirportConversion>
+        </ns4:Conversion>
+        <ns4:Conversion ConversionRequest="nyc">
+          <ns4:CityAirportConversion LocationCode="NYC">
+            <CityName>NEW YORK</CityName>
+            <StateProv>NY</StateProv>
+            <CountryName>UNITED STATES OF AMERICA</CountryName>
+            <ns4:AirportName>METROPOLITAN AREA</ns4:AirportName>
+          </ns4:CityAirportConversion>
+        </ns4:Conversion>
+      </ns4:EDS_ConversionRS>
+    </ns3:encodeDecodeResponse>
+  </soap:Body>
+</soap:Envelope>

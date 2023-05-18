@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.DepartureControlService.PreRequisites.create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -45,6 +46,7 @@ public class test_assign_aircraft_with_generic_specific_seat_reaccommodation ext
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDeparturecontrolservice())

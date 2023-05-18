@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -46,6 +47,7 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getAdvancepassengerinfo())

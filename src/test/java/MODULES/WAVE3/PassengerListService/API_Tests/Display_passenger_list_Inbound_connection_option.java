@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import MODULES.WAVE3.PassengerListService.PreRequisites.create_booking_display_pass_inbound_connection;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -42,6 +43,7 @@ public class Display_passenger_list_Inbound_connection_option extends FrameworkC
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getPassengerlistservice())

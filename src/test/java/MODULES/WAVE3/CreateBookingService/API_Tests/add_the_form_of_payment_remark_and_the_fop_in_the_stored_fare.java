@@ -3,6 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,10 +37,12 @@ public class add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare exten
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()
+
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();

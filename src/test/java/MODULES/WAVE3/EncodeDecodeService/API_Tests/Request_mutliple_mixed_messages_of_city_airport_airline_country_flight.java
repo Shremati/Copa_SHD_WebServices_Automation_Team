@@ -2,6 +2,8 @@ package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.Allure;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,6 +38,7 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getEncodedecodeservice())
@@ -43,7 +46,6 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_mutliple_mixed_messages_of_city_airport_airline_country_flight.xml"));

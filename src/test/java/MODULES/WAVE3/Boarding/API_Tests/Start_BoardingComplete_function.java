@@ -2,6 +2,7 @@ package MODULES.WAVE3.Boarding.API_Tests;
 
 import GENERICS.XMLParser;
 import GENERICS.*;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -37,6 +38,7 @@ public class Start_BoardingComplete_function extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())

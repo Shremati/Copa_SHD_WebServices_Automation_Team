@@ -3,6 +3,7 @@ package MODULES.WAVE3.ModifyBookingService.API_Tests;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_reduce_pnr;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -42,6 +43,7 @@ public class reduce_pnr extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())

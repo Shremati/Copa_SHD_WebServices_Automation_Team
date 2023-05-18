@@ -2,11 +2,14 @@ package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.Allure;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -16,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.requestSpecification;
 
 public class Decode_airline_co extends FrameworkConstants
 {
@@ -33,9 +37,11 @@ public class Decode_airline_co extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getEncodedecodeservice())
@@ -58,6 +64,7 @@ public class Decode_airline_co extends FrameworkConstants
         writer.flush();
 
     }
+
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException

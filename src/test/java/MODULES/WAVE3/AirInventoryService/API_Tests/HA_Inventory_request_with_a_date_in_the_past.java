@@ -2,6 +2,7 @@ package MODULES.WAVE3.AirInventoryService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -37,6 +38,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
