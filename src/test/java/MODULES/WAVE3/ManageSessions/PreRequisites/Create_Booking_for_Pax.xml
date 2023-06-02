@@ -1,0 +1,75 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:addSessionPassengerData>
+            <air:OTA_AirBookModifyRQ Version="4.000" TransactionIdentifier="5846703CCMCMRPCT07BA46771D">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ>
+                    <air1:PriceInfo>
+                        <air1:PTC_FareBreakdowns>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode>ADT</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="1500.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="US" Amount="115.00"/>
+                                        <air1:Tax TaxCode="XF" Amount="10.00"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="1625.00" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>FARE CALC ADT1END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="1"/>
+                            </air1:PTC_FareBreakdown>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode>ADT</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="1200.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="US" Amount="115.00"/>
+                                        <air1:Tax TaxCode="XF" Amount="20.00"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="1335.00" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>FARE CALC ADT2END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="2"/>
+                            </air1:PTC_FareBreakdown>
+                        </air1:PTC_FareBreakdowns>
+                    </air1:PriceInfo>
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>Carlos</com:GivenName>
+                                <com:Surname>Ponse</com:Surname>
+                            </air1:PersonName>
+                            <air1:Telephone PhoneLocationType="B" AreaCityCode="555" PhoneNumber="555-1212"/>
+                            <air1:CustLoyalty ProgramID="CM" MembershipID="230021925"/>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>Willy</com:GivenName>
+                                <com:Surname>Makeit</com:Surname>
+                            </air1:PersonName>
+                            <air1:Telephone PhoneLocationType="B" AreaCityCode="555" PhoneNumber="555-1414"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <air1:Remarks>
+                                <air1:Remark>Nice family</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <air1:Ticketing TicketingStatus="3"/>
+                </air:AirBookModifyRQ>
+            </air:OTA_AirBookModifyRQ>
+        </cre:addSessionPassengerData>
+    </soapenv:Body>
+</soapenv:Envelope>

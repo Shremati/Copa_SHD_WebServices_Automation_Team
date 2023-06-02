@@ -65,6 +65,8 @@ public class FrameworkConstants
     public static String authorizationservice="/AirlineSOA/AuthorizationService/authorize";
     public static String issueticketservice="/AirlineSOA/TicketingService/ticketing";
     public static String emdairlinesystemupdateservice="/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
+    public static String managesessions="/AirlineSOA/ManageSessionService/manageSession";
+    public static String displayticketservices="/AirlineSOA/DisplayTicketService/displayTickets";
 
 
     public static String getAdvancepassengerinfo() {
@@ -232,6 +234,14 @@ public class FrameworkConstants
 
     public static String getResponseDirectory() {
         return responseDirectory;
+    }
+
+    public static String getManagesessions() {
+        return managesessions;
+    }
+
+    public static String getDisplayticketservices() {
+        return displayticketservices;
     }
 
 

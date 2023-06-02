@@ -1,7 +1,7 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <ns3:modifyInventoryResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirInventoryRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/ModifyInventory/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/ModifyInventoryRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns4:HP_AirInventoryRS TimeStamp="2023-02-09T11:56:13" Version="4.000">
+      <ns4:HP_AirInventoryRS TimeStamp="2023-06-01T06:43:37" Version="4.000">
         <ns4:Success/>
         <ns4:Warnings>
           <Warning Type="13" ShortText="10057" Tag="DepartureDate">No Departure Date</Warning>

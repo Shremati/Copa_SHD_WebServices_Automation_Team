@@ -1,0 +1,152 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifySessionBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000" TransactionStatusCode="Start">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="3">
+                    <!--MODIFY_NAME-->
+                    <!--Required data: The new name for the passenger.-->
+                    <!--NOTE: To modify the name of an INF or the adult with a lap baby
+                         we need to include both otherwise we will lose either the adult or the INF.-->
+                    <air1:TravelerInfo>
+                        <!--We can set the passenger type here as: ADT, CHD, INF-->
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <!--The new name-->
+                            <air1:PersonName>
+                                <com:GivenName>GIRLFRIEND</com:GivenName>
+                                <com:Surname>ZIDANE</com:Surname>
+                            </air1:PersonName>
+                            <!--The passenger to update his/her name.-->
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler BirthDate="2009-01-01" PassengerTypeCode="INF">
+                            <!--The new name-->
+                            <air1:PersonName>
+                                <com:GivenName>MINI</com:GivenName>
+                                <com:Surname>ZIDANE</com:Surname>
+                            </air1:PersonName>
+                            <!--The passenger to update his/her name.-->
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="CHD">
+                            <air1:PersonName>
+                                <com:GivenName>LISA</com:GivenName>
+                                <com:Surname>SIMPSON</com:Surname>
+                            </air1:PersonName>
+                            <!--For passenger type CHD the age is mandatory-->
+                            <air1:PassengerTypeQuantity Age="08"/>
+                            <!--The passenger to update his/her name.-->
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:AirTraveler>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="AIN5SJ"/>
+                </air:AirBookModifyRQ>
+                <air:AirReservation LastModified="2011-10-21T06:57:59Z" CreateDateTime="2011-10-21T06:57:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-02-22T12:28:00" ArrivalDateTime="2023-02-22T15:34:00" RPH="1" FlightNumber="485" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sat">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MIA"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PTC_FareBreakdowns>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-03-21" NotValidAfter="2023-05-23">X</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="13.60"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="149.60" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>SALUDOS END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n2:PTC_FareBreakdown>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-03-21" NotValidAfter="2023-05-23">X</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="13.60"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="149.60" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>SALUDOS END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="3" SurnameRefNumber="2"/>
+                            </n2:PTC_FareBreakdown>
+                        </n2:PTC_FareBreakdowns>
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>ZIDANE</com:GivenName>
+                                <com:Surname>ZINEDINE</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler BirthDate="2009-01-01" PassengerTypeCode="INF">
+                            <n3:PersonName>
+                                <com:GivenName>MINI</com:GivenName>
+                                <com:Surname>ZINEDINE</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="2" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>ALIZEE</com:GivenName>
+                                <com:Surname>HENRY</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="3" SurnameRefNumber="2"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:OtherServiceInformations>
+                                <n3:OtherServiceInformation>
+                                    <n3:Airline Code="YY"/>
+                                    <n3:Text>1INF 1ZINEDINE/MINI 01JAN09</n3:Text>
+                                </n3:OtherServiceInformation>
+                            </n3:OtherServiceInformations>
+                            <n3:Remarks>
+                                <n3:Remark>FOR MODIFY NAME TEST</n3:Remark>
+                            </n3:Remarks>
+                            <n3:SpecialRemarks>
+                                <n3:SpecialRemark RemarkType="9" RPH="1">
+                                    <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                                    <n3:Text>INFMINI/01JAN09</n3:Text>
+                                </n3:SpecialRemark>
+                            </n3:SpecialRemarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="AIN5SJ" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifySessionBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

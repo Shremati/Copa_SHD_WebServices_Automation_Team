@@ -1,0 +1,48 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <test name="Module 1 Tests">
+        <classes>
+            <class name="MODULES.WAVE3.AdvancePassengerInfo.TestRunner"/>
+            <class name="MODULES.WAVE3.AirInventoryService.TestRunner"/>
+            <class name="MODULES.WAVE3.AirportPassengerList.TestRunner"/>
+            <class name="MODULES.WAVE3.Availability.TestRunner"/>
+            <class name="MODULES.WAVE3.Checkin.TestRunner"/>
+            <class name="MODULES.WAVE3.CreateBookingService.TestRunner"/>
+            <class name="MODULES.WAVE3.DepartureControlService.TestRunner"/>
+            <class name="MODULES.WAVE3.DisplayBookingService.TestRunner"/>
+<!--            <class name="MODULES.WAVE3.DisplayTicketService.TestRunner"/>-->
+            <class name="MODULES.WAVE3.FlifoService.TestRunner"/>
+            <class name="MODULES.WAVE3.ManageSessions.TestRunner"/>
+            <class name="MODULES.WAVE3.ModifyBookingService.TestRunner"/>
+            <class name="MODULES.WAVE3.ModifyInventoryService.TestRunner"/>
+            <class name="MODULES.WAVE3.QueueService.TestRunner"/>
+            <class name="MODULES.WAVE3.ScreenTextService.TestRunner"/>
+            <class name="MODULES.WAVE3.SeatMapService.TestRunner"/>
+            <class name="MODULES.WAVE3.AirScheduleService.TestRunner"/>
+            <class name="MODULES.WAVE3.TicketingService.TestRunner"/>
+            <class name="MODULES.WAVE3.FlightDepartureInfoService.TestRunner"/>
+            <class name="MODULES.WAVE3.AuthorizationService.TestRunner"/>
+            <class name="MODULES.WAVE3.EMDAirlineSystemUpdate.TestRunner"/>
+            <class name="MODULES.WAVE3.EncodeDecodeService.TestRunner"/>
+            <class name="MODULES.WAVE3.ModifyTicketingService.TestRunner"/>
+            <class name="MODULES.WAVE3.TicketControlService.TestRunner"/>
+            <class name="MODULES.WAVE3.DisplayLoyaltyAccountService.TestRunner"/>
+            <class name="MODULES.WAVE3.ReferenceService.TestRunner"/>
+            <class name="MODULES.WAVE3.TimaticService.TestRunner"/>
+            <class name="MODULES.WAVE3.PassengerListService.TestRunner"/>
+
+<!--            <class name="MODULES.WAVE3.CreateBooking41Service.TestRunner"/>-->
+<!--            <class name="MODULES.WAVE3.DisplayBooking41Service.TestRunner"/>-->
+<!--            <class name="MODULES.WAVE3.DisplayTicket41Service.TestRunner"/>-->
+<!--            <class name="MODULES.WAVE3.ModifyBooking41Service.TestRunner"/>-->
+
+        </classes>
+    </test>
+<!--    <test name="Module 2 Tests">-->
+<!--        <classes>-->
+<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbound_connection_option"/>-->
+<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request"/>-->
+<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_option"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>

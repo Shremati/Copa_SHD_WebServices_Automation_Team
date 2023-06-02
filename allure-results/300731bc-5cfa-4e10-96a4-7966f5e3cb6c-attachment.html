@@ -1,0 +1,103 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns7:getFlightDepartureInfoResponse xmlns:ns19=&quot;http://www.eds.com/AirlineSOASchema/AirportListRS&quot; xmlns:ns18=&quot;http://www.eds.com/AirlineSOASchema/AirCommonTypes&quot; xmlns:ns17=&quot;http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes&quot; xmlns:ns16=&quot;http://www.opentravel.org/OTA/2003/05/PkgCommonTypes&quot; xmlns:ns15=&quot;http://www.opentravel.org/OTA/2003/05/HotelPreferences&quot; xmlns:ns14=&quot;http://www.opentravel.org/OTA/2003/05/AirPreferences&quot; xmlns:ns13=&quot;http://www.opentravel.org/OTA/2003/05/CommonPrefs&quot; xmlns:ns12=&quot;http://www.opentravel.org/OTA/2003/05/Profile&quot; xmlns:ns11=&quot;http://www.opentravel.org/OTA/2003/05/HotelReservation&quot; xmlns:ns10=&quot;http://www.opentravel.org/OTA/2003/05/HotelCommonTypes&quot; xmlns:ns9=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns8=&quot;http://www.eds.com/AirlineSOASchema/FlightDepartureInfoRS&quot; xmlns:ns7=&quot;www.eds.com/AirlineSOASchema/FlightDepartureInfo/&quot; xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/RailCommonTypes&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes&quot; xmlns:ns4=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns8:EDS_FlightDepartureInfoRS TimeStamp=&quot;2023-05-18T15:14:09&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns8:Success/&gt;
+        &lt;ns8:FlightDetails&gt;
+          &lt;ns8:FlightSegmentDetails Status=&quot;NotOpen&quot; FlightNumber=&quot;391&quot; DepartureDateTime=&quot;2023-05-19T00:00:00&quot; RPH=&quot;1&quot;&gt;
+            &lt;DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+            &lt;ArrivalAirport LocationCode=&quot;SJO&quot;/&gt;
+            &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+            &lt;ns8:WeightDefinitions&gt;
+              &lt;ns8:BaggageWeightDefinition BaggageWeightDefinitionType=&quot;Checked&quot; ActualBaggageWeight=&quot;true&quot; WeightPerBag=&quot;false&quot; WeightPerPerson=&quot;false&quot; BagWeightIncluded=&quot;true&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Adult&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;81.6&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Child&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;36.3&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Infant&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+            &lt;/ns8:WeightDefinitions&gt;
+            &lt;ns8:PassengerInfo&gt;
+              &lt;ns8:PassengerWeight PassengerWeightsType=&quot;Adult&quot; PassengerWeightBoardType=&quot;Total&quot; ActualWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Child&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+            &lt;/ns8:PassengerInfo&gt;
+            &lt;ns8:BaggageInfo&gt;
+              &lt;ns8:BaggageCount BagCountType=&quot;Checked&quot; BagCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+            &lt;/ns8:BaggageInfo&gt;
+            &lt;ns8:MarketingCabinCounts CabinClass=&quot;C&quot;&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0A&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0B&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0C&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0D&quot; BayPassengerCount=&quot;0&quot;/&gt;
+            &lt;/ns8:MarketingCabinCounts&gt;
+            &lt;ns8:MarketingCabinCounts CabinClass=&quot;Y&quot;&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0A&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0B&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0C&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0D&quot; BayPassengerCount=&quot;0&quot;/&gt;
+            &lt;/ns8:MarketingCabinCounts&gt;
+            &lt;ns8:Comment&gt;CFG:BOEING 737-800 NEW NUMBERS&lt;/ns8:Comment&gt;
+          &lt;/ns8:FlightSegmentDetails&gt;
+          &lt;ns8:FlightSegmentDetails Status=&quot;NotOpen&quot; FlightNumber=&quot;391&quot; DepartureDateTime=&quot;2023-05-19T00:00:00&quot; RPH=&quot;2&quot;&gt;
+            &lt;DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+            &lt;ArrivalAirport LocationCode=&quot;GUA&quot;/&gt;
+            &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+            &lt;ns8:WeightDefinitions&gt;
+              &lt;ns8:BaggageWeightDefinition BaggageWeightDefinitionType=&quot;Checked&quot; ActualBaggageWeight=&quot;true&quot; WeightPerBag=&quot;false&quot; WeightPerPerson=&quot;false&quot; BagWeightIncluded=&quot;true&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Adult&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;81.6&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Child&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;36.3&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerWeightDefinition PassengerWeightDefinitionType=&quot;Infant&quot; ActualPassengerWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+            &lt;/ns8:WeightDefinitions&gt;
+            &lt;ns8:PassengerInfo&gt;
+              &lt;ns8:PassengerWeight PassengerWeightsType=&quot;Adult&quot; PassengerWeightBoardType=&quot;Total&quot; ActualWeight=&quot;false&quot; UnitOfMeasureQuantity=&quot;0&quot; UnitOfMeasureCode=&quot;16&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Child&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengerCount PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+            &lt;/ns8:PassengerInfo&gt;
+            &lt;ns8:BaggageInfo&gt;
+              &lt;ns8:BaggageCount BagCountType=&quot;Checked&quot; BagCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+            &lt;/ns8:BaggageInfo&gt;
+            &lt;ns8:MarketingCabinCounts CabinClass=&quot;C&quot;&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0A&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0B&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0C&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0D&quot; BayPassengerCount=&quot;0&quot;/&gt;
+            &lt;/ns8:MarketingCabinCounts&gt;
+            &lt;ns8:MarketingCabinCounts CabinClass=&quot;Y&quot;&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Adult&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:PassengersInCabin AvailableToDisembark=&quot;0&quot; PassengerType=&quot;Infant&quot; PassengerCountBoardType=&quot;Total&quot; UnitOfMeasureQuantity=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0A&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0B&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0C&quot; BayPassengerCount=&quot;0&quot;/&gt;
+              &lt;ns8:BaySplit BayName=&quot;0D&quot; BayPassengerCount=&quot;0&quot;/&gt;
+            &lt;/ns8:MarketingCabinCounts&gt;
+            &lt;ns8:Comment&gt;CFG:BOEING 737-800 NEW NUMBERS&lt;/ns8:Comment&gt;
+          &lt;/ns8:FlightSegmentDetails&gt;
+        &lt;/ns8:FlightDetails&gt;
+      &lt;/ns8:EDS_FlightDepartureInfoRS&gt;
+    &lt;/ns7:getFlightDepartureInfoResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Server: Apache-Coyote/1.1</div>
+        <div>Content-Length: 7005</div>
+        <div>Date: Thu, 18 May 2023 15:14:09 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+
