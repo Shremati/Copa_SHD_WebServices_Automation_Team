@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:syn="www.eds.com/AirlineSOASchema/SynchronizeTicket/" xmlns:tic="http://www.eds.com/AirlineSOASchema/TicketSynchronizeRQ" xmlns:com="http://www.iata.org/IATA/2007/00/CommonTypes" xmlns:et="http://www.iata.org/IATA/2007/00/ET_CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <syn:synchronizeTicket>
+            <tic:EDS_TicketSynchronizeRQ Version="4.000">
+                <tic:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </tic:POS>
+                <tic:BookingTicketingRefID Type="0" ID="A1UBOE"/>
+                <tic:Passenger>
+                    <tic:TicketAdjustInfo>
+                        <tic:SoldAirlineInfo RPH="2"/>
+                    </tic:TicketAdjustInfo>
+                </tic:Passenger>
+            </tic:EDS_TicketSynchronizeRQ>
+        </syn:synchronizeTicket>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -4,34 +4,19 @@ public class FrameworkConstants
 {
 
     public static String BaseURL="http://shdsitm.airservices.svcs.entsvcs.net:18119";
-    public static String BaseURLBre="http://sit-bre-ws-lbi.dxccopaair.svcs.entsvcs.com:8581";
+//    public static String BaseURLBre="http://sit-bre-ws-lbi.dxccopaair.svcs.entsvcs.com:8581";
 
     public static String getBaseURL() {
         return BaseURL;
     }
 
-    public static String getBaseURLBre() {
-        return BaseURLBre;
-    }
+//    public static String getBaseURLBre() {
+//        return BaseURLBre;
+//    }
 
 
     //    ***************************** POST REQUESTS WAVE1 AND WAVE2 ***********************************
 
-    public static String maximumBaggage="/bre-rest-1.0.1-SNAPSHOT/webapi/valuelookup?carrierCode=CM&type=maximumBaggage";
-    public static String channelLookup="/bre-rest-1.0.1-SNAPSHOT/webapi/valuelookup?carrierCode=CM&type=ChannelLookup&channel=ATO";
-    public static String fOPQuery="/bre-rest-1.0.1-SNAPSHOT/webapi/fop/query";
-
-    public static String getMaximumBaggage() {
-        return maximumBaggage;
-    }
-
-    public static String getChannelLookup() {
-        return channelLookup;
-    }
-
-    public static String getfOPQuery() {
-        return fOPQuery;
-    }
 
 
     //    ***************************** POST REQUESTS ***********************************
@@ -67,6 +52,7 @@ public class FrameworkConstants
     public static String emdairlinesystemupdateservice="/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
     public static String managesessions="/AirlineSOA/ManageSessionService/manageSession";
     public static String displayticketservices="/AirlineSOA/DisplayTicketService/displayTickets";
+    public static String issueticket="/AirlineSOA/TicketingService/ticketing";
 
 
     public static String getAdvancepassengerinfo() {
@@ -190,23 +176,35 @@ public class FrameworkConstants
         return emdairlinesystemupdateservice;
     }
 
+    public static String getDisplayticketservices() {
+        return displayticketservices;
+    }
+
+    public static String getIssueticket() {
+        return issueticket;
+    }
+
+    public static String getManagesessions() {
+        return managesessions;
+    }
+
 
 
 
 
 
 // ************************* FilePaths Wave1 and Wave2 ********************************
-    public static String requestDirectoryWave1_2=".\\src\\test\\java\\XMLRequestDirectory\\WAVE1_WAVE2\\";
-    public static String responseDirectoryWave1_2=".\\src\\test\\java\\SOAPResponses\\WAVE1_WAVE2\\";
-
-
-    public static String getRequestDirectoryWave1_2() {
-        return requestDirectoryWave1_2;
-    }
-
-    public static String responseDirectoryWave1_2() {
-        return responseDirectoryWave1_2;
-    }
+//    public static String requestDirectoryWave1_2=".\\src\\test\\java\\XMLRequestDirectory\\WAVE1_WAVE2\\";
+//    public static String responseDirectoryWave1_2=".\\src\\test\\java\\SOAPResponses\\WAVE1_WAVE2\\";
+//
+//
+//    public static String getRequestDirectoryWave1_2() {
+//        return requestDirectoryWave1_2;
+//    }
+//
+//    public static String responseDirectoryWave1_2() {
+//        return responseDirectoryWave1_2;
+//    }
 
 // ************************* FilePaths Wave3 ********************************
 
@@ -236,13 +234,8 @@ public class FrameworkConstants
         return responseDirectory;
     }
 
-    public static String getManagesessions() {
-        return managesessions;
-    }
 
-    public static String getDisplayticketservices() {
-        return displayticketservices;
-    }
+
 
 
 }

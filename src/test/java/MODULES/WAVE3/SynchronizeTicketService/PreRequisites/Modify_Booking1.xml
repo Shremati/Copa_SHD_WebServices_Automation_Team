@@ -1,0 +1,130 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        7     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="3">
+                    <!--MODIFY_NAME-->
+                    <!--Required data: The new name for the passenger.-->
+                    <!--NOTE: To modify the name of an INF or the adult with a lap baby
+                         we need to include both otherwise we will lose either the adult or the INF.-->
+                    <air1:TravelerInfo>
+                        <!--We can set the passenger type here as: ADT, CHD, INF-->
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <!--The new name-->
+                            <air1:PersonName>
+                                <com:GivenName>FOX</com:GivenName>
+                                <com:Surname>MULDER</com:Surname>
+                            </air1:PersonName>
+                            <!--The passenger to update his/her name.-->
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="A1UBOE"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-01-23T17:00:54Z" CreateDateTime="2023-01-23T16:59:00Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                    <n1:AirItinerary>
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-21T11:50:00" ArrivalDateTime="2023-01-21T16:09:00" RPH="1" FlightNumber="472" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-22T00:54:00" ArrivalDateTime="2023-01-22T10:23:00" RPH="2" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n1:PriceInfo>
+                        <n1:PTC_FareBreakdowns>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">XY</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">YZ</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="159.60" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="AY" Amount="5.60"/>
+                                        <n1:Tax TaxCode="XA" Amount="3.83"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="177.30" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC LINE END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n1:PTC_FareBreakdown>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">XY</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">YZ</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="159.60" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="AY" Amount="5.60"/>
+                                        <n1:Tax TaxCode="XA" Amount="3.83"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="177.30" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC LINE END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                            </n1:PTC_FareBreakdown>
+                        </n1:PTC_FareBreakdowns>
+                        <n1:PriceRequestInformation PricingSource="Private">
+                            <n1:NegotiatedFareCode>422105</n1:NegotiatedFareCode>
+                        </n1:PriceRequestInformation>
+                    </n1:PriceInfo>
+                    <n1:TravelerInfo>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>FOXX</com:GivenName>
+                                <com:Surname>MULDER</com:Surname>
+                            </n1:PersonName>
+                            <n1:Telephone PhoneUseType="4" AreaCityCode="001" PhoneNumber="8787676564" Remark="MULDER PHONE" LocationCode="WEB"/>
+                            <n1:Telephone PhoneUseType="4" AreaCityCode="001" PhoneNumber="8787676564" Remark="SCULLY PHONE" LocationCode="WEB"/>
+                            <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n1:AirTraveler>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>DANA</com:GivenName>
+                                <com:Surname>SCULLY</com:Surname>
+                            </n1:PersonName>
+                            <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </n1:AirTraveler>
+                        <n1:SpecialReqDetails>
+                            <n1:Remarks>
+                                <n1:Remark>FOR TESTING ETICKET ADJUST NAME</n1:Remark>
+                            </n1:Remarks>
+                        </n1:SpecialReqDetails>
+                    </n1:TravelerInfo>
+                    <n1:Ticketing TicketingStatus="3">
+                        <n1:TicketAdvisory>FQR/CASH/21806645585/0001//169.03</n1:TicketAdvisory>
+                    </n1:Ticketing>
+                    <n1:Ticketing TicketType="eTicket"/>
+                    <n1:BookingReferenceID Type="14" ID="A1UBOE"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>
