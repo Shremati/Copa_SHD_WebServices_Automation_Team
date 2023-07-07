@@ -38,11 +38,4 @@
 
         </classes>
     </test>
-<!--    <test name="Module 2 Tests">-->
-<!--        <classes>-->
-<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbound_connection_option"/>-->
-<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request"/>-->
-<!--            <class name="MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_option"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>
