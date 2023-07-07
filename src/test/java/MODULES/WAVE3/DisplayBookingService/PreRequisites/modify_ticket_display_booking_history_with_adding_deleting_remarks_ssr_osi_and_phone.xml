@@ -1,0 +1,228 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        7     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="5">
+                    <!--OTHER-->
+                    <!--Information needed:
+                          Action                   Data
+                          applyItineraryChanges    AirItinerary    [OriginDestinationOptions]
+                          modifyTravelerInfo       TravelerInfo    [SpecialReqDetails, Telephone]
+                          modifyPricing            PriceInfo       [PTC_FareBreakdowns]-->
+                    <!--Modify Traveler Information: OSI, SSR, Seats, Remarks, Phones. Add and Delete operations are supported.-->
+                    <air1:TravelerInfo>
+                        <!--Phone contacts-->
+                        <!--PhoneUseType     SHARES Type
+                                   0                N
+                                   2                A
+                                   3                B
+                                   4                H-->
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " Operation="Delete" LocationCode="LON"/>
+                            <air1:Telephone PhoneUseType="4" AreaCityCode="444" PhoneNumber="123-5678" Operation="Add" LocationCode="LAX"/>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <!--Seats-->
+                            <!--Seat preferences:
+                                  CODE_SMOKING_WINDOW     = "25"
+                                  CODE_SMOKING_AISLE      = "23"
+                                  CODE_SMOKING_BULKHEAD   = "28"
+                                  CODE_SMOKING_ANY        = "29"
+                                  CODE_NON_SMOKE_ANY      = "19"
+                                  CODE_NON_SMOKE_BULKHEAD = "18"
+                                  CODE_NON_SMOKE_AISLE    = "13"
+                                  CODE_NON_SMOKE_WINDOW   = "15"
+
+                                  If the flight belongs to HA then it will be assigned by ASA.
+                                     To cancel an ASA seat provide the Status as a CANCEL request. XX, 1
+
+                                  If the flight belongs to OA then it will be added as SSR.
+                                     To delete a OA seat just provide a status code different of NN,11-->
+                            <air1:SeatRequests>
+                                <air1:SeatRequest SeatPreference="19F" TravelerRefNumberRPHList="2" FlightRefNumberRPHList="1"/>
+                                <air1:SeatRequest SeatNumber="20F" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                            </air1:SeatRequests>
+                            <!--to delete a SSR just provide a status code different of NN,11-->
+                            <air1:SpecialServiceRequests>
+                                <air1:SpecialServiceRequest SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>wheel chair for pax one</air1:Text>
+                                </air1:SpecialServiceRequest>
+                                <air1:SpecialServiceRequest SSRCode="PETC" ServiceQuantity="1" Status="1" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>LHRJFK0045K06NOV-1MARSH/STAN.GATO</air1:Text>
+                                </air1:SpecialServiceRequest>
+                                <air1:SpecialServiceRequest SSRCode="PETC" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>PERRO</air1:Text>
+                                </air1:SpecialServiceRequest>
+                            </air1:SpecialServiceRequests>
+                            <!--Add/Delete OSI-->
+                            <air1:OtherServiceInformations>
+                                <air1:OtherServiceInformation Operation="Add">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>pruebas de creacion de otros servicios</air1:Text>
+                                </air1:OtherServiceInformation>
+                                <air1:OtherServiceInformation Operation="Delete">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>OTRO SERVICIO</air1:Text>
+                                </air1:OtherServiceInformation>
+                                <air1:OtherServiceInformation Operation="Delete">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>INFORMACION DE OTROS SERVICIOS</air1:Text>
+                                </air1:OtherServiceInformation>
+                            </air1:OtherServiceInformations>
+                            <!--Remarks-->
+                            <air1:Remarks>
+                                <air1:Remark Operation="Delete">REMARK ONE</air1:Remark>
+                                <air1:Remark Operation="Delete">REMARK TWO</air1:Remark>
+                                <air1:Remark Operation="Delete">REMARK THREE</air1:Remark>
+                                <air1:Remark Operation="Add">OTRO REMARK</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="AKDDSX"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-02-16T11:07:00Z" CreateDateTime="2023-02-16T11:07:00Z">
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment ResBookDesigCode="Y" NumberInParty="3" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu" FlightNumber="334" DepartureDateTime="2023-02-20T09:56:00" ArrivalDateTime="2023-02-20T13:00:00" RPH="1">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MIA"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <air1:PriceInfo>
+                        <air1:PTC_FareBreakdowns>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-02-20" NotValidAfter="2023-02-20">Y</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="AG" Amount="12.00"/>
+                                        <air1:Tax TaxCode="CD" Amount="8.50"/>
+                                        <air1:Tax TaxCode="XT" Amount="15.00"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="145.50" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>SALUDOS END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </air1:PTC_FareBreakdown>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-02-20" NotValidAfter="2023-02-20">Y</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="AG" Amount="12.00"/>
+                                        <air1:Tax TaxCode="CD" Amount="8.50"/>
+                                        <air1:Tax TaxCode="XT" Amount="15.00"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="145.50" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>SALUDOS END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                            </air1:PTC_FareBreakdown>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-02-20" NotValidAfter="2023-02-20">Y</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="AG" Amount="12.00"/>
+                                        <air1:Tax TaxCode="CD" Amount="8.50"/>
+                                        <air1:Tax TaxCode="XT" Amount="15.00"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="145.50" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>SALUDOS END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="3" SurnameRefNumber="3"/>
+                            </air1:PTC_FareBreakdown>
+                        </air1:PTC_FareBreakdowns>
+                        <air1:PriceRequestInformation PricingSource="Private">
+                            <air1:NegotiatedFareCode>932045</air1:NegotiatedFareCode>
+                        </air1:PriceRequestInformation>
+                    </air1:PriceInfo>
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>ERIC</com:GivenName>
+                                <com:Surname>CARTMAN</com:Surname>
+                            </air1:PersonName>
+                            <air1:Telephone LocationCode="LON" PhoneUseType="0" AreaCityCode="000" PhoneNumber=" "/>
+                            <air1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>KYLE</com:GivenName>
+                                <com:Surname>BROFLOVSKY</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>STAN</com:GivenName>
+                                <com:Surname>MARSH</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="3" SurnameRefNumber="3"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <air1:SpecialServiceRequests>
+                                <air1:SpecialServiceRequest TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1" SSRCode="PETC" ServiceQuantity="1" Status="11">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>LHRJFK0045K06NOV-1MARSH/STAN.GATO</air1:Text>
+                                </air1:SpecialServiceRequest>
+                            </air1:SpecialServiceRequests>
+                            <air1:OtherServiceInformations>
+                                <air1:OtherServiceInformation>
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>INFORMACION DE OTROS SERVICIOS</air1:Text>
+                                </air1:OtherServiceInformation>
+                                <air1:OtherServiceInformation>
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>OTRO SERVICIO</air1:Text>
+                                </air1:OtherServiceInformation>
+                            </air1:OtherServiceInformations>
+                            <air1:Remarks>
+                                <air1:Remark>SOUTH PARK</air1:Remark>
+                                <air1:Remark>REMARK ONE</air1:Remark>
+                                <air1:Remark>REMARK TWO</air1:Remark>
+                                <air1:Remark>REMARK THREE</air1:Remark>
+                                <air1:Remark>FOR MODIFY TRAVELER INFO TEST</air1:Remark>
+                                <air1:Remark>05 REMARKS ADDED BY LHR SU X1 26SEP 0137Z D12B05</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <air1:Ticketing TicketingStatus="3"/>
+                    <air1:BookingReferenceID Type="14" ID="AKDDSX"/>
+                    <air1:BookingReferenceID Type="0" ID_Context="IATA" ID="91112221"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

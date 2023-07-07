@@ -1,9 +1,9 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <ns4:modifyBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns4="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns6:OTA_AirBookRS TimeStamp="2023-02-13T12:31:01" Version="4.000">
+      <ns6:OTA_AirBookRS TimeStamp="2023-03-02T07:44:20" Version="4.000">
         <ns6:Success/>
-        <ns6:AirReservation CreateDateTime="2023-02-13T12:30:00Z" LastModified="2023-02-13T00:31:01Z">
+        <ns6:AirReservation CreateDateTime="2023-03-02T07:44:00Z" LastModified="2023-03-02T07:44:20Z">
           <ns3:PriceInfo>
             <ns3:PriceRequestInformation PricingSource="Private">
               <ns3:NegotiatedFareCode>230011</ns3:NegotiatedFareCode>
@@ -21,12 +21,12 @@
             <ns3:SpecialReqDetails>
               <ns3:Remarks>
                 <ns3:Remark>FOR CANCEL BOOKING TEST</ns3:Remark>
-                <ns3:Remark>01 REMARKS ADDED BY PTY SU RO 13FEB 1230Z D13502</ns3:Remark>
+                <ns3:Remark>01 REMARKS ADDED BY PTY SU RO 02MAR 0744Z D13502</ns3:Remark>
               </ns3:Remarks>
             </ns3:SpecialReqDetails>
           </ns3:TravelerInfo>
           <ns3:Ticketing TicketingStatus="3"/>
-          <ns3:BookingReferenceID Type="14" ID="AJAKYW"/>
+          <ns3:BookingReferenceID Type="14" ID="AUO45P"/>
         </ns6:AirReservation>
       </ns6:OTA_AirBookRS>
     </ns4:modifyBookingResponse>

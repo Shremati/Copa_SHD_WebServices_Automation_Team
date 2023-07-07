@@ -1,0 +1,74 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2011-10-04T00:00:00" RPH="1" FlightNumber="472" ResBookDesigCode="Y" NumberInParty="3" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="3"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>X</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="1279.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="PA" Amount="89.50"/>
+                                </air1:Taxes>
+                                <air1:TotalFare Amount="1460.20" CurrencyCode="USD"/>
+                                <air1:UnstructuredFareCalc>SOME DETAILS</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>JOHNNY</com:GivenName>
+                            <com:Surname>WALKER</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>DON</com:GivenName>
+                            <com:Surname>JULIO</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>WILLIAN</com:GivenName>
+                            <com:Surname>LAWSONS</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:SeatRequests>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="2" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1"/>
+                        </air1:SeatRequests>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

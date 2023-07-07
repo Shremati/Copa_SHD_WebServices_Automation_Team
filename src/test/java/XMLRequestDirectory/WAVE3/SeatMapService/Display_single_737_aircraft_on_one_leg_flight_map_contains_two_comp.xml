@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:seat="http://www.eds.com/AirlineSOASchema/SeatMap/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirSeatMapRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <seat:retrieveFlightSeatMap>
+            <air:OTA_AirSeatMapRQ Version="3.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:SeatMapRequests>
+                    <air:SeatMapRequest>
+                        <air:FlightSegmentInfo DepartureDateTime="2023-01-21T00:54:00" FlightNumber="303">
+                            <com:DepartureAirport LocationCode="LAX"/>
+                            <com:ArrivalAirport LocationCode="PTY"/>
+                            <air1:MarketingAirline Code="CM"/>
+                        </air:FlightSegmentInfo>
+                    </air:SeatMapRequest>
+                </air:SeatMapRequests>
+            </air:OTA_AirSeatMapRQ>
+        </seat:retrieveFlightSeatMap>
+    </soapenv:Body>
+</soapenv:Envelope>

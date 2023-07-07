@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dep="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:dep1="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dep:requestControl>
+            <dep1:EDS_DepartureControlRQ Version="4.000">
+                <dep1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dep1:POS>
+                <dep1:MessageFunction Function="SeatReac_Specific"/>
+                <dep1:FlightInfo>
+                    <dep1:FlightLegInfo DepartureDateTime="2023-02-16T09:14:00" FlightNumber="120">
+                        <com:DepartureAirport LocationCode="PTY"/>
+                        <com:Equipment AirEquipType="1857"/>
+                    </dep1:FlightLegInfo>
+                </dep1:FlightInfo>
+            </dep1:EDS_DepartureControlRQ>
+        </dep:requestControl>
+    </soapenv:Body>
+</soapenv:Envelope>

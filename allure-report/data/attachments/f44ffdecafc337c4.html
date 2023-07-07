@@ -1,0 +1,65 @@
+<div>POST to http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/DisplayBookingService/displayBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:dis=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:read=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:veh=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;dis:displayBookingByOptions&gt;
+      &lt;read:OTA_ReadRQ Version=&quot;4.0&quot;&gt;
+        &lt;read:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/read:POS&gt;
+        &lt;read:ReadRequests&gt;
+          &lt;read:AirReadRequest&gt;
+            &lt;read:FlightNumber&gt;413&lt;/read:FlightNumber&gt;
+            &lt;read:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+            &lt;read:DepartureDate&gt;2023-04-06&lt;/read:DepartureDate&gt;
+            &lt;read:Name&gt;
+              &lt;com:GivenName&gt;JOHN&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;SMITH&lt;/com:Surname&gt;
+            &lt;/read:Name&gt;
+          &lt;/read:AirReadRequest&gt;
+        &lt;/read:ReadRequests&gt;
+      &lt;/read:OTA_ReadRQ&gt;
+    &lt;/dis:displayBookingByOptions&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/DisplayBookingService/displayBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:dis=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:read=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:veh=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;dis:displayBookingByOptions&gt;
+      &lt;read:OTA_ReadRQ Version=&quot;4.0&quot;&gt;
+        &lt;read:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/read:POS&gt;
+        &lt;read:ReadRequests&gt;
+          &lt;read:AirReadRequest&gt;
+            &lt;read:FlightNumber&gt;413&lt;/read:FlightNumber&gt;
+            &lt;read:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+            &lt;read:DepartureDate&gt;2023-04-06&lt;/read:DepartureDate&gt;
+            &lt;read:Name&gt;
+              &lt;com:GivenName&gt;JOHN&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;SMITH&lt;/com:Surname&gt;
+            &lt;/read:Name&gt;
+          &lt;/read:AirReadRequest&gt;
+        &lt;/read:ReadRequests&gt;
+      &lt;/read:OTA_ReadRQ&gt;
+    &lt;/dis:displayBookingByOptions&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

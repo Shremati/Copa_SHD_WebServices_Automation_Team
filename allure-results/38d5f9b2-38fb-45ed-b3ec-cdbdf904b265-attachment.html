@@ -1,0 +1,53 @@
+<div>POST to http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/AuthorizationService/authorize</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:aut=&quot;http://www.eds.com/AirlineSOASchema/Authorization/&quot; xmlns:aut1=&quot;http://www.opentravel.org/OTA/2003/05/AuthorizationRQ&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;aut:authorize&gt;
+      &lt;aut1:OTA_AuthorizationRQ Version=&quot;4.0&quot;&gt;
+        &lt;aut1:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/aut1:POS&gt;
+        &lt;aut1:AuthorizationDetail&gt;
+          &lt;air:CreditCardAuthorization Amount=&quot;50&quot; CurrencyCode=&quot;USD&quot;&gt;
+            &lt;air:CreditCard CardCode=&quot;VI&quot; CardNumber=&quot;4005554444444403&quot; ExpireDate=&quot;0225&quot;/&gt;
+          &lt;/air:CreditCardAuthorization&gt;
+        &lt;/aut1:AuthorizationDetail&gt;
+      &lt;/aut1:OTA_AuthorizationRQ&gt;
+    &lt;/aut:authorize&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/AuthorizationService/authorize&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:aut=&quot;http://www.eds.com/AirlineSOASchema/Authorization/&quot; xmlns:aut1=&quot;http://www.opentravel.org/OTA/2003/05/AuthorizationRQ&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;aut:authorize&gt;
+      &lt;aut1:OTA_AuthorizationRQ Version=&quot;4.0&quot;&gt;
+        &lt;aut1:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/aut1:POS&gt;
+        &lt;aut1:AuthorizationDetail&gt;
+          &lt;air:CreditCardAuthorization Amount=&quot;50&quot; CurrencyCode=&quot;USD&quot;&gt;
+            &lt;air:CreditCard CardCode=&quot;VI&quot; CardNumber=&quot;4005554444444403&quot; ExpireDate=&quot;0225&quot;/&gt;
+          &lt;/air:CreditCardAuthorization&gt;
+        &lt;/aut1:AuthorizationDetail&gt;
+      &lt;/aut1:OTA_AuthorizationRQ&gt;
+    &lt;/aut:authorize&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

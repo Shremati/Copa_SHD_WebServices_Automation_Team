@@ -1,0 +1,101 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ EchoToken="Test_12" TimeStamp="2023-02-09T06:44:07" Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ ModificationType="5">
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-02-24T07:00:00.000-05:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="1" Status="1">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-02-28T00:00:00" RPH="1" FlightNumber="362" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PTC_FareBreakdowns>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode>Y</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="153.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="13.60"/>
+                                    </n2:Taxes>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n2:PTC_FareBreakdown>
+                        </n2:PTC_FareBreakdowns>
+                    </n2:PriceInfo>
+                    <air1:BookingReferenceID Type="14" ID="AHWEEE"/>
+                </air:AirBookModifyRQ>
+                <!--Optional:-->
+                <air:AirReservation LastModified="2023-02-09T00:47:37Z" CreateDateTime="2023-02-09T12:47:00Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                    <n1:AirItinerary>
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-02-24T22:41:00" ArrivalDateTime="2023-02-24T08:11:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Tue">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n1:PriceInfo>
+                        <n1:PTC_FareBreakdowns>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-02-08" NotValidAfter="2023-02-28">Y</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="AG" Amount="13.60"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="149.60" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC LINE END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n1:PTC_FareBreakdown>
+                        </n1:PTC_FareBreakdowns>
+                        <n1:PriceRequestInformation PricingSource="Private">
+                            <n1:NegotiatedFareCode>422105</n1:NegotiatedFareCode>
+                        </n1:PriceRequestInformation>
+                    </n1:PriceInfo>
+                    <n1:TravelerInfo>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>JAMES</com:GivenName>
+                                <com:Surname>WILL</com:Surname>
+                            </n1:PersonName>
+                            <n1:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n1:AirTraveler>
+                    </n1:TravelerInfo>
+                    <n1:Ticketing TicketingStatus="3">
+                        <n1:TicketAdvisory>FQR/4005554444444403/21511726042/0001//149.60</n1:TicketAdvisory>
+                    </n1:Ticketing>
+                    <n1:Ticketing TicketType="eTicket"/>
+                    <n1:BookingReferenceID Type="14" ID="AHWEEE"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

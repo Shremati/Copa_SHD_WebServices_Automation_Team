@@ -1,0 +1,167 @@
+<div>POST to http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/CreateBookingService/createBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2023-06-08T12:12:00&quot; FlightNumber=&quot;334&quot; NumberInParty=&quot;3&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;MIA&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;3&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode&gt;X&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;1279.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;89.50&quot; TaxCode=&quot;PA&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:TotalFare Amount=&quot;1460.20&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:UnstructuredFareCalc&gt;SOME DETAILS&lt;/air1:UnstructuredFareCalc&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;3&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;JOHNNY&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;WALKER&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;DON&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;JULIO&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;WILLIAN&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;LAWSONS&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;3&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:SeatRequests&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;1&quot;/&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;2&quot;/&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;3&quot;/&gt;
+            &lt;/air1:SeatRequests&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/CreateBookingService/createBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2023-06-08T12:12:00&quot; FlightNumber=&quot;334&quot; NumberInParty=&quot;3&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;MIA&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;3&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode&gt;X&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;1279.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;89.50&quot; TaxCode=&quot;PA&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:TotalFare Amount=&quot;1460.20&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:UnstructuredFareCalc&gt;SOME DETAILS&lt;/air1:UnstructuredFareCalc&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;3&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;JOHNNY&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;WALKER&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;DON&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;JULIO&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;WILLIAN&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;LAWSONS&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;3&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:SeatRequests&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;1&quot;/&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;2&quot;/&gt;
+              &lt;air1:SeatRequest FlightRefNumberRPHList=&quot;1&quot; SeatPreference=&quot;15&quot; TravelerRefNumberRPHList=&quot;3&quot;/&gt;
+            &lt;/air1:SeatRequests&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

@@ -2,6 +2,8 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -14,13 +16,11 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import frameworkconstants.*;
 
 import static io.restassured.RestAssured.given;
 
 public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConstants
 {
-
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -37,6 +37,7 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -69,40 +70,38 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
-        String filepath1;
+        String filepath1,filepath2;
         filepath1=getRequestDirectory()+"CreateBookingService\\create_booking_four_seg_2_pax_one_remark_asa.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
-        int a=7,b=8,c=9,d=10;
-        for(int i=1;i<3;i++)
-        {
-            XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(a).getNumericCellValue()),getTemp_requestPath(),i);
-            XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(b).getStringCellValue(),getTemp_requestPath(),i);
-            XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(c).getStringCellValue(),getTemp_requestPath(),i);
-            XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(d).getStringCellValue(),getTemp_requestPath(),i);
-            a+=6;b+=6;c+=6;d+=6;
-        }
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        int e=5,f=6;
-        for(int i=0;i<3;i++)
-        {
-            XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(e).getStringCellValue(),getTemp_requestPath(),i);
-            XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(f).getStringCellValue(),getTemp_requestPath(),i);
-            e+=6;f+=6;
-        }
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(9).getNumericCellValue()),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
 
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidBefore",Utils.Date_YYYYMMdd(InputRow.getCell(25).getNumericCellValue()),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.Date_YYYYMMdd(InputRow.getCell(26).getNumericCellValue()),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FlightSegment","NumberInParty",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(13).getNumericCellValue()),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),3);
+
+        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode","NotValidBefore", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode","NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(13).getNumericCellValue()),getTemp_requestPath(),0);
+
 
         wb.close();
 
     }
+
 }

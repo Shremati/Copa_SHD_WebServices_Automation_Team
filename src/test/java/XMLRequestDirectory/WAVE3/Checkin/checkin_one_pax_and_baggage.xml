@@ -8,15 +8,15 @@
                 </air:POS>
                 <air:MessageFunction Function="CheckIn"/>
                 <air:FlightInfo RPH="1">
-                    <com1:CarrierInfo Code="CM" FlightNumber="550"/>
-                    <com1:DepartureInformation DateOfDeparture="2011-10-13T00:00:00" LocationCode="LAX"/>
+                    <com1:CarrierInfo Code="CM" FlightNumber="360"/>
+                    <com1:DepartureInformation DateOfDeparture="2023-02-21T07:55:00" LocationCode="PTY"/>
                 </air:FlightInfo>
                 <air:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1">
                     <com1:PassengerName>
                         <com:GivenName>TEST</com:GivenName>
                         <com:Surname>ONE</com:Surname>
                     </com1:PassengerName>
-                    <com1:PassengerType Gender="Male"/>
+                    <com1:PassengerType Gender="F"/>
                 </air:PassengerInfo>
                 <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
                     <com1:SeatBoardingInfo SeatNumber="12C"/>

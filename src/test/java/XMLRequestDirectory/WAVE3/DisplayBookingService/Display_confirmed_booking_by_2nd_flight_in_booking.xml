@@ -1,0 +1,24 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dis="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:read="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:veh="http://www.opentravel.org/OTA/2003/05/VehRetResRQ">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <dis:displayBookingByName>
+      <read:OTA_ReadRQ Version="4.0">
+        <read:POS>
+          <com:Source AirlineVendorID="CM"/>
+        </read:POS>
+        <read:ReadRequests>
+          <read:AirReadRequest>
+            <read:Airline Code="CM"/>
+            <read:FlightNumber>173</read:FlightNumber>
+            <read:DepartureAirport LocationCode="MIA"/>
+            <read:DepartureDate>2023-01-30</read:DepartureDate>
+            <read:Name>
+              <com:GivenName>JOHN</com:GivenName>
+              <com:Surname>JACKMAN</com:Surname>
+            </read:Name>
+          </read:AirReadRequest>
+        </read:ReadRequests>
+      </read:OTA_ReadRQ>
+    </dis:displayBookingByName>
+  </soapenv:Body>
+</soapenv:Envelope>

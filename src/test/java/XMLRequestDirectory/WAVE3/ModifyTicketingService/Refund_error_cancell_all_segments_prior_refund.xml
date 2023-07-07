@@ -1,0 +1,27 @@
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyTicketing/"
+        xmlns:tic="http://www.eds.com/AirlineSOASchema/TicketingModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes"
+        xmlns:air="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <mod:modifyTicket>
+      <tic:EDS_TicketingModifyRQ EchoToken="Test_01" TimeStamp="2023-01-20T06:44:07" Version="4.00">
+        <tic:POS>
+          <com:Source AirlineVendorID="CM"/>
+        </tic:POS>
+        <tic:ModifyRequests>
+          <tic:ModifyRequest>
+            <tic:ModifyRefund ValidatingCarrierCode="CM">
+              <air:TicketNumbers>
+                <air:TicketNumber>2302180667770</air:TicketNumber>
+              </air:TicketNumbers>
+              <air:RecordLocator type="14" ID="A10KSK"/>
+              <air:TicketType>Electronic</air:TicketType>
+            </tic:ModifyRefund>
+          </tic:ModifyRequest>
+        </tic:ModifyRequests>
+      </tic:EDS_TicketingModifyRQ>
+    </mod:modifyTicket>
+  </soapenv:Body>
+</soapenv:Envelope>

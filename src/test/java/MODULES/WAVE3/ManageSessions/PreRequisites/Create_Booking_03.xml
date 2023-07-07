@@ -1,0 +1,32 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:addSessionSegments>
+            <air:OTA_AirBookModifyRQ Version="4.000" TransactionIdentifier="5846703CCMCMRPCT07BA46771D">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ>
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2022-02-20T00:00:00" RPH="1" FlightNumber="226" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MIA"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2022-02-22T00:00:00" RPH="2" FlightNumber="173" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                    <com:DepartureAirport LocationCode="MIA"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                </air:AirBookModifyRQ>
+            </air:OTA_AirBookModifyRQ>
+        </cre:addSessionSegments>
+    </soapenv:Body>
+</soapenv:Envelope>

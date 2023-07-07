@@ -1,0 +1,146 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        7     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="5">
+                    <!--OTHER-->
+                    <!--Information needed:
+                          Action                   Data
+                          applyItineraryChanges    AirItinerary    [OriginDestinationOptions]
+                          modifyTravelerInfo       TravelerInfo    [SpecialReqDetails, Telephone]
+                          modifyPricing            PriceInfo       [PTC_FareBreakdowns]-->
+                    <!--AirItinerary for cancel, modify or insert segments-->
+                    <!--Use one OriginDestinationOption for each itinerary to cancel/modify/insert.-->
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <!--To cancel a segment use this status:
+                                    1, XX    CANCEL
+                                  We need to provide RPH too, the other data is ignored but the schema requires it.-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2009-11-10T09:20:00" RPH="2" FlightNumber="194" ResBookDesigCode="Y" NumberInParty="2" Status="1">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MEX"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <!--To add new segmens to the reservation use the status:
+                                    11, NN   NEED
+                                  and all required data.-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2009-11-11T00:00:00" RPH="2" FlightNumber="194" ResBookDesigCode="L" NumberInParty="2" Status="11">
+                                    <com:DepartureAirport LocationCode="MEX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="FEGZJB"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2011-10-24T18:12:17Z" CreateDateTime="2011-10-24T18:07:00Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                    <n1:AirItinerary>
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2011-11-11T06:40:00" ArrivalDateTime="2011-11-11T09:50:00" RPH="1" FlightNumber="100" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MEX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2011-11-11T09:20:00" ArrivalDateTime="2011-11-11T11:55:00" RPH="2" FlightNumber="550" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="MEX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n1:PriceInfo>
+                        <n1:PTC_FareBreakdowns>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">XY</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">YZ</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="159.60" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="IV" Amount="7.20"/>
+                                        <n1:Tax TaxCode="VA" Amount="10.50"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="177.30" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC LINE END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                            </n1:PTC_FareBreakdown>
+                            <n1:PTC_FareBreakdown>
+                                <n1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n1:FareBasisCodes>
+                                    <n1:FareBasisCode FlightSegmentRPH="1">XY</n1:FareBasisCode>
+                                    <n1:FareBasisCode FlightSegmentRPH="2">YZ</n1:FareBasisCode>
+                                </n1:FareBasisCodes>
+                                <n1:PassengerFare>
+                                    <n1:BaseFare Amount="159.60" CurrencyCode="USD"/>
+                                    <n1:Taxes>
+                                        <n1:Tax TaxCode="IV" Amount="7.20"/>
+                                        <n1:Tax TaxCode="VA" Amount="10.50"/>
+                                    </n1:Taxes>
+                                    <n1:TotalFare Amount="177.30" CurrencyCode="USD"/>
+                                    <n1:UnstructuredFareCalc>FARE CALC LINE END</n1:UnstructuredFareCalc>
+                                </n1:PassengerFare>
+                                <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                            </n1:PTC_FareBreakdown>
+                        </n1:PTC_FareBreakdowns>
+                        <n1:PriceRequestInformation PricingSource="Private">
+                            <n1:NegotiatedFareCode>422105</n1:NegotiatedFareCode>
+                        </n1:PriceRequestInformation>
+                    </n1:PriceInfo>
+                    <n1:TravelerInfo>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>JAMES</com:GivenName>
+                                <com:Surname>MCCLOUD</com:Surname>
+                            </n1:PersonName>
+                            <n1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-3010" Remark="A REMARK" LocationCode="WEB"/>
+                            <n1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-3011" Remark="ANOTHER REMARK" LocationCode="WEB"/>
+                            <n1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n1:AirTraveler>
+                        <n1:AirTraveler PassengerTypeCode="ADT">
+                            <n1:PersonName>
+                                <com:GivenName>FOX</com:GivenName>
+                                <com:Surname>MCCLOUD</com:Surname>
+                            </n1:PersonName>
+                            <n1:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </n1:AirTraveler>
+                        <n1:SpecialReqDetails>
+                            <n1:Remarks>
+                                <n1:Remark>FOR TESTING ETICKET ADJUST ITINERARY</n1:Remark>
+                            </n1:Remarks>
+                        </n1:SpecialReqDetails>
+                    </n1:TravelerInfo>
+                    <n1:Ticketing TicketingStatus="3">
+                        <n1:TicketAdvisory>FQR/CASH/21511728470/0001//177.30</n1:TicketAdvisory>
+                    </n1:Ticketing>
+                    <n1:Ticketing TicketType="eTicket"/>
+                    <n1:BookingReferenceID Type="14" ID="FEGZJB"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

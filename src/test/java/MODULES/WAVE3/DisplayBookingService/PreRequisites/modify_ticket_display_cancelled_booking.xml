@@ -1,0 +1,83 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <!--CANCEL_BOOKING-->
+                <!--Required data: the recloc as value in BookingReferenceID.ID-->
+                <air:AirBookModifyRQ ModificationType="1">
+                    <air1:BookingReferenceID Type="14" ID="AIONZD"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-02-10T13:16:51Z" CreateDateTime="2023-02-10T13:16:00Z">
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu" FlightNumber="226" DepartureDateTime="2023-02-20T07:48:00" ArrivalDateTime="2023-02-20T10:57:00" RPH="1">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MIA"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <air1:PriceInfo>
+                        <air1:PTC_FareBreakdowns>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode FlightSegmentRPH="1">X</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="114.60" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <air1:Tax TaxCode="AG" Amount="12.50"/>
+                                        <air1:Tax TaxCode="AT" Amount="7.30"/>
+                                    </air1:Taxes>
+                                    <air1:TotalFare Amount="134.40" CurrencyCode="USD"/>
+                                    <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                                    <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="1" UnitOfMeasure="PC"/>
+                                </air1:PassengerFare>
+                                <air1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                                <air1:Endorsements>
+                                    <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                                </air1:Endorsements>
+                            </air1:PTC_FareBreakdown>
+                        </air1:PTC_FareBreakdowns>
+                        <air1:PriceRequestInformation PricingSource="Private">
+                            <air1:NegotiatedFareCode>422105</air1:NegotiatedFareCode>
+                        </air1:PriceRequestInformation>
+                    </air1:PriceInfo>
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>JOHN</com:GivenName>
+                                <com:Surname>WILSON</com:Surname>
+                            </air1:PersonName>
+                            <air1:Telephone LocationCode="WEB" PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1414" Remark="PHONE REMARK"/>
+                            <air1:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <air1:Remarks>
+                                <air1:Remark>FOR CANCELLED BOOKING TESTING</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <air1:Ticketing TicketingStatus="3"/>
+                    <air1:BookingReferenceID Type="14" ID="AIONZD"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

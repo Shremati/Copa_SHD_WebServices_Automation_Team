@@ -1,0 +1,37 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:addSessionPassengerData>
+            <air:OTA_AirBookModifyRQ Version="4.000" TransactionIdentifier="CC08DAE4CMCMRPCT08C263CC3B">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ>
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="GRP">
+                            <air1:PersonName>
+                                <com:Surname>MYGROUP</com:Surname>
+                            </air1:PersonName>
+                            <air1:PassengerTypeQuantity Quantity="10"/>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>JOHN</com:GivenName>
+                                <com:Surname>DOE</com:Surname>
+                            </air1:PersonName>
+                            <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <air1:Remarks>
+                                <air1:Remark>CREATING GROUP BY STATEFUL BOOKING</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <air1:Ticketing TicketTimeLimit="2023-02-12T00:00:00"/>
+                </air:AirBookModifyRQ>
+            </air:OTA_AirBookModifyRQ>
+        </cre:addSessionPassengerData>
+    </soapenv:Body>
+</soapenv:Envelope>

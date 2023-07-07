@@ -4,34 +4,19 @@ public class FrameworkConstants
 {
 
     public static String BaseURL="http://shdsitm.airservices.svcs.entsvcs.net:18119";
-    public static String BaseURLBre="http://sit-bre-ws-lbi.dxccopaair.svcs.entsvcs.com:8581";
+//    public static String BaseURLBre="http://sit-bre-ws-lbi.dxccopaair.svcs.entsvcs.com:8581";
 
     public static String getBaseURL() {
         return BaseURL;
     }
 
-    public static String getBaseURLBre() {
-        return BaseURLBre;
-    }
+//    public static String getBaseURLBre() {
+//        return BaseURLBre;
+//    }
 
 
     //    ***************************** POST REQUESTS WAVE1 AND WAVE2 ***********************************
 
-    public static String maximumBaggage="/bre-rest-1.0.1-SNAPSHOT/webapi/valuelookup?carrierCode=CM&type=maximumBaggage";
-    public static String channelLookup="/bre-rest-1.0.1-SNAPSHOT/webapi/valuelookup?carrierCode=CM&type=ChannelLookup&channel=ATO";
-    public static String fOPQuery="/bre-rest-1.0.1-SNAPSHOT/webapi/fop/query";
-
-    public static String getMaximumBaggage() {
-        return maximumBaggage;
-    }
-
-    public static String getChannelLookup() {
-        return channelLookup;
-    }
-
-    public static String getfOPQuery() {
-        return fOPQuery;
-    }
 
 
     //    ***************************** POST REQUESTS ***********************************
@@ -46,7 +31,7 @@ public class FrameworkConstants
     public static String createbookingservice="/AirlineSOA/CreateBookingService/createBooking";
     public static String departurecontrolservice="/AirlineSOA/DepartureControlService/departureControl";
     public static String displaybookingservice="/AirlineSOA/DisplayBookingService/displayBooking";
-    public static String displayloyaltyaccountservice="/AirlineSOA/DisplayTicketService/displayTickets";
+    public static String displayloyaltyaccountservice="/AirlineSOA/DisplayLoyaltyAccountService/displayAccount";
     public static String encodedecodeservice="/AirlineSOA/EncodeDecodeService/encodeDecode";
     public static String modifybookingservice="/AirlineSOA/ModifyBookingService/modifyBooking";
     public static String modifyinventoryservice="/AirlineSOA/ModifyInventoryService/modifyInventory";
@@ -60,6 +45,14 @@ public class FrameworkConstants
     public static String timaticservice="/AirlineSOA/TimaticService/displayTimatic";
     public static String ticketing="/AirlineSOA/TicketingService/ticketing";
     public static String flifo="/AirlineSOA/FlifoService/getFlifo";
+    public static String passengerlistservice="/AirlineSOA/PassengerListService/passengerList";
+    public static String flightdepartureinfoservice="/AirlineSOA/FlightDepartureInfoService/getFlightDepartureInfo";
+    public static String authorizationservice="/AirlineSOA/AuthorizationService/authorize";
+    public static String issueticketservice="/AirlineSOA/TicketingService/ticketing";
+    public static String emdairlinesystemupdateservice="/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
+    public static String managesessions="/AirlineSOA/ManageSessionService/manageSession";
+    public static String displayticketservices="/AirlineSOA/DisplayTicketService/displayTickets";
+    public static String issueticket="/AirlineSOA/TicketingService/ticketing";
 
 
     public static String getAdvancepassengerinfo() {
@@ -122,6 +115,14 @@ public class FrameworkConstants
         return modifyticketingservice;
     }
 
+    public static String getPassengerlistservice() {
+        return passengerlistservice;
+    }
+
+    public static String Passengerlistservice() {
+        return passengerlistservice;
+    }
+
     public static String getQueueservice() {
         return queueservice;
     }
@@ -129,6 +130,7 @@ public class FrameworkConstants
     public static String getReferenceservice() {
         return referenceservice;
     }
+
 
     public static String getScreentextservice() {
         return screentextservice;
@@ -158,19 +160,51 @@ public class FrameworkConstants
         return flifo;
     }
 
+    public static String getFlightdepartureinfoservice() {
+        return flightdepartureinfoservice;
+    }
+
+    public static String getAuthorizationservice() {
+        return authorizationservice;
+    }
+
+    public static String getIssueticketservice() {
+        return issueticketservice;
+    }
+
+    public static String getEmdairlinesystemupdateservice() {
+        return emdairlinesystemupdateservice;
+    }
+
+    public static String getDisplayticketservices() {
+        return displayticketservices;
+    }
+
+    public static String getIssueticket() {
+        return issueticket;
+    }
+
+    public static String getManagesessions() {
+        return managesessions;
+    }
+
+
+
+
+
 
 // ************************* FilePaths Wave1 and Wave2 ********************************
-    public static String requestDirectoryWave1_2=".\\src\\test\\java\\XMLRequestDirectory\\WAVE1_WAVE2\\";
-    public static String responseDirectoryWave1_2=".\\src\\test\\java\\SOAPResponses\\WAVE1_WAVE2\\";
-
-
-    public static String getRequestDirectoryWave1_2() {
-        return requestDirectoryWave1_2;
-    }
-
-    public static String responseDirectoryWave1_2() {
-        return responseDirectoryWave1_2;
-    }
+//    public static String requestDirectoryWave1_2=".\\src\\test\\java\\XMLRequestDirectory\\WAVE1_WAVE2\\";
+//    public static String responseDirectoryWave1_2=".\\src\\test\\java\\SOAPResponses\\WAVE1_WAVE2\\";
+//
+//
+//    public static String getRequestDirectoryWave1_2() {
+//        return requestDirectoryWave1_2;
+//    }
+//
+//    public static String responseDirectoryWave1_2() {
+//        return responseDirectoryWave1_2;
+//    }
 
 // ************************* FilePaths Wave3 ********************************
 
@@ -199,6 +233,9 @@ public class FrameworkConstants
     public static String getResponseDirectory() {
         return responseDirectory;
     }
+
+
+
 
 
 }

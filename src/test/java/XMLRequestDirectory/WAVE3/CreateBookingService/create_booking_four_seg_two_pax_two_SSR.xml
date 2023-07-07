@@ -9,28 +9,28 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-20T00:52:00" RPH="1" FlightNumber="303" ResBookDesigCode="B" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-02-20T00:52:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="LAX"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-20T11:56:00" RPH="2" FlightNumber="415" ResBookDesigCode="B" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-02-20T11:56:00" RPH="2" FlightNumber="415" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-28T05:03:00" RPH="3" FlightNumber="877" ResBookDesigCode="B" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-02-28T05:03:00" RPH="3" FlightNumber="877" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="BOG"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-28T07:55:00" RPH="4" FlightNumber="360" ResBookDesigCode="B" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-02-28T07:55:00" RPH="4" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="LAX"/>
                                 <air1:MarketingAirline Code="CM"/>
@@ -70,15 +70,15 @@
                     </air1:AirTraveler>
                     <air1:AirTraveler BirthDate="2022-01-01" PassengerTypeCode="INF">
                         <air1:PersonName>
-                            <com:GivenName>TEST</com:GivenName>
-                            <com:Surname>ONE</com:Surname>
+                            <com:GivenName>BABY</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>TEST</com:GivenName>
-                            <com:Surname>TWO</com:Surname>
+                            <com:GivenName>MORGAN</com:GivenName>
+                            <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
                         <air1:TravelerRefNumber RPH="3"/>
                     </air1:AirTraveler>

@@ -1,0 +1,33 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:tic1="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/CommonTypes">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <tic:issueTicket>
+      <tic1:EDS_TicketingRQ EchoToken="Test_1" TimeStamp="2023-02-09T06:44:07" Version="4.000">
+        <tic1:POS>
+          <com:Source AirlineVendorID="CM"/>
+        </tic1:POS>
+        <tic1:TicketingRequest>
+          <tic1:FormOfPayment>
+            <tic1:CreditCard AccountNumber="4005554444444403" ExpirationDate="2025-02" ApprovalCode="A1234" Issuer="VI"/>
+          </tic1:FormOfPayment>
+          <tic1:TicketType>Electronic</tic1:TicketType>
+          <tic1:ExchangeInfo ExchangeDocumentType="ETicket" ExchangeDocumentNumber="23021809171056" OriginalBaseFare="136.00" OriginalFormOfPaymentType="Charge">
+            <tic1:AddCollectOrRefundAmt>17.00</tic1:AddCollectOrRefundAmt>
+            <tic1:OldFormOfPayment>
+              <tic1:CreditCard Issuer="VI"/>
+            </tic1:OldFormOfPayment>
+            <tic1:ExchangeType>
+              <tic1:AddCollect/>
+            </tic1:ExchangeType>
+            <tic1:OriginalTaxInfo>
+              <tic1:Amount>13.60</tic1:Amount>
+              <tic1:TaxCode>AG</tic1:TaxCode>
+            </tic1:OriginalTaxInfo>
+          </tic1:ExchangeInfo>
+        </tic1:TicketingRequest>
+        <tic1:TicketingAction>Reissue</tic1:TicketingAction>
+        <tic1:RecordLocator>AHWEEE</tic1:RecordLocator>
+      </tic1:EDS_TicketingRQ>
+    </tic:issueTicket>
+  </soapenv:Body>
+</soapenv:Envelope>

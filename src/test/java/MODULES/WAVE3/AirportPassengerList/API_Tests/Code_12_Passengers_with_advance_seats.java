@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Issue_ticket;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -43,6 +44,7 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
