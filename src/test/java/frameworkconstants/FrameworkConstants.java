@@ -4,20 +4,11 @@ public class FrameworkConstants
 {
 
     public static String BaseURL="http://shdsitm.airservices.svcs.entsvcs.net:18119";
-//    public static String BaseURLBre="http://sit-bre-ws-lbi.dxccopaair.svcs.entsvcs.com:8581";
+
 
     public static String getBaseURL() {
         return BaseURL;
     }
-
-//    public static String getBaseURLBre() {
-//        return BaseURLBre;
-//    }
-
-
-    //    ***************************** POST REQUESTS WAVE1 AND WAVE2 ***********************************
-
-
 
     //    ***************************** POST REQUESTS ***********************************
 
@@ -188,24 +179,6 @@ public class FrameworkConstants
         return managesessions;
     }
 
-
-
-
-
-
-// ************************* FilePaths Wave1 and Wave2 ********************************
-//    public static String requestDirectoryWave1_2=".\\src\\test\\java\\XMLRequestDirectory\\WAVE1_WAVE2\\";
-//    public static String responseDirectoryWave1_2=".\\src\\test\\java\\SOAPResponses\\WAVE1_WAVE2\\";
-//
-//
-//    public static String getRequestDirectoryWave1_2() {
-//        return requestDirectoryWave1_2;
-//    }
-//
-//    public static String responseDirectoryWave1_2() {
-//        return responseDirectoryWave1_2;
-//    }
-
 // ************************* FilePaths Wave3 ********************************
 
     public static String Temp_requestPath=".\\src\\test\\java\\GENERICS\\Temp_Request.xml";
@@ -233,9 +206,5 @@ public class FrameworkConstants
     public static String getResponseDirectory() {
         return responseDirectory;
     }
-
-
-
-
 
 }

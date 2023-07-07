@@ -10,7 +10,7 @@
             <class name="MODULES.WAVE3.CreateBookingService.CreateBookingService"/>
             <class name="MODULES.WAVE3.DepartureControlService.DepartureControlService"/>
             <class name="MODULES.WAVE3.DisplayBookingService.DisplayBookingService"/>
-<!--            <class name="MODULES.WAVE3.DisplayTicketService.DisplayTicketService"/>-->
+            <class name="MODULES.WAVE3.DisplayTicketService.DisplayTicketService"/>
             <class name="MODULES.WAVE3.FlifoService.FlifoService"/>
             <class name="MODULES.WAVE3.ManageSessions.ManageSessions"/>
             <class name="MODULES.WAVE3.ModifyBookingService.ModifyBookingService"/>

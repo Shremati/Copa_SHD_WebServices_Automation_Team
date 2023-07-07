@@ -1,0 +1,67 @@
+<div>POST to http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/ModifyInventoryService/modifyInventory</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.eds.com/AirlineSOASchema/ModifyInventory/&quot; xmlns:air1=&quot;http://www.eds.com/AirlineSOASchema/ModifyInventoryRQ&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;air:modifyInventory&gt;
+      &lt;air1:HP_AirInventoryModifyRQ Version=&quot;4.0&quot;&gt;
+        &lt;air1:POS&gt;
+          &lt;com:Source AgentDutyCode=&quot;SU&quot; AirlineVendorID=&quot;CM&quot; AirportCode=&quot;CRC&quot;/&gt;
+        &lt;/air1:POS&gt;
+        &lt;air1:ModifyInventoryRequest&gt;
+          &lt;air1:MaxSeatsAllotted&gt;
+            &lt;air1:FlightNumber&gt;302&lt;/air1:FlightNumber&gt;
+            &lt;air1:DepartureDate&gt;08-07-2023&lt;/air1:DepartureDate&gt;
+            &lt;air1:BoardPoint LocationCode=&quot;PTY&quot;&gt;PTY&lt;/air1:BoardPoint&gt;
+            &lt;air1:OffPoint LocationCode=&quot;LAX&quot;&gt;LAX&lt;/air1:OffPoint&gt;
+            &lt;air1:CompartmentInfo&gt;
+              &lt;air1:ResBookDesigCode&gt;B&lt;/air1:ResBookDesigCode&gt;
+              &lt;air1:MaximumSeat&gt;71&lt;/air1:MaximumSeat&gt;
+            &lt;/air1:CompartmentInfo&gt;
+          &lt;/air1:MaxSeatsAllotted&gt;
+        &lt;/air1:ModifyInventoryRequest&gt;
+      &lt;/air1:HP_AirInventoryModifyRQ&gt;
+    &lt;/air:modifyInventory&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://shdsitm.airservices.svcs.entsvcs.net:18119/AirlineSOA/ModifyInventoryService/modifyInventory&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.eds.com/AirlineSOASchema/ModifyInventory/&quot; xmlns:air1=&quot;http://www.eds.com/AirlineSOASchema/ModifyInventoryRQ&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;air:modifyInventory&gt;
+      &lt;air1:HP_AirInventoryModifyRQ Version=&quot;4.0&quot;&gt;
+        &lt;air1:POS&gt;
+          &lt;com:Source AgentDutyCode=&quot;SU&quot; AirlineVendorID=&quot;CM&quot; AirportCode=&quot;CRC&quot;/&gt;
+        &lt;/air1:POS&gt;
+        &lt;air1:ModifyInventoryRequest&gt;
+          &lt;air1:MaxSeatsAllotted&gt;
+            &lt;air1:FlightNumber&gt;302&lt;/air1:FlightNumber&gt;
+            &lt;air1:DepartureDate&gt;08-07-2023&lt;/air1:DepartureDate&gt;
+            &lt;air1:BoardPoint LocationCode=&quot;PTY&quot;&gt;PTY&lt;/air1:BoardPoint&gt;
+            &lt;air1:OffPoint LocationCode=&quot;LAX&quot;&gt;LAX&lt;/air1:OffPoint&gt;
+            &lt;air1:CompartmentInfo&gt;
+              &lt;air1:ResBookDesigCode&gt;B&lt;/air1:ResBookDesigCode&gt;
+              &lt;air1:MaximumSeat&gt;71&lt;/air1:MaximumSeat&gt;
+            &lt;/air1:CompartmentInfo&gt;
+          &lt;/air1:MaxSeatsAllotted&gt;
+        &lt;/air1:ModifyInventoryRequest&gt;
+      &lt;/air1:HP_AirInventoryModifyRQ&gt;
+    &lt;/air:modifyInventory&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

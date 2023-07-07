@@ -1,7 +1,7 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <ns5:requestControlResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.eds.com/AirlineSOASchema/DepartureControlRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns6:EDS_DepartureControlRS TimeStamp="2023-06-07T10:34:40" Version="4.000">
+    <ns5:requestControlResponse xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns6="http://www.eds.com/AirlineSOASchema/DepartureControlRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:EDS_DepartureControlRS TimeStamp="2023-07-07T08:14:21" Version="4.000">
         <ns6:Errors>
           <Error Type="12" ShortText="10080" Tag="FlightLegInfo" RecordID="1">Unable to define/clear seat as inoperative</Error>
         </ns6:Errors>
