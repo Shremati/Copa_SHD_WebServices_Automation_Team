@@ -24,7 +24,7 @@ public class DataClean
 
         for(int i=1;i<=1;i++)
         {
-            File fileReports = new File(".\\src\\test\\java\\SOAPResponses\\WAVE3\\AirScheduleService");
+            File fileReports = new File(".\\src\\test\\java\\SOAPResponses\\WAVE3\\AirInventoryService");
             String[] myReports;
             if (fileReports.isDirectory()) {
                 myReports = fileReports.list();
@@ -90,6 +90,19 @@ public class DataClean
         for(int i=1;i<=1;i++)
         {
             File fileReports = new File(".\\src\\test\\java\\SOAPResponses\\WAVE3\\CreateBookingService");
+            String[] myReports;
+            if (fileReports.isDirectory()) {
+                myReports = fileReports.list();
+                for (int j = 0; j < myReports.length; j++) {
+                    File myFile = new File(fileReports, myReports[j]);
+                    myFile.delete();
+                }
+            }
+        }
+
+        for(int i=1;i<=1;i++)
+        {
+            File fileReports = new File(".\\src\\test\\java\\SOAPResponses\\WAVE3\\DepartureControlService");
             String[] myReports;
             if (fileReports.isDirectory()) {
                 myReports = fileReports.list();
