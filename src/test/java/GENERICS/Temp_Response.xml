@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:createBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirBookRS TimeStamp="2023-07-14T06:31:47" Version="4.000">
+        <ns5:Errors>
+          <Error Type="12" ShortText="10030" Tag="OriginDestinationOptions" RecordID="1">Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE</Error>
+        </ns5:Errors>
+      </ns5:OTA_AirBookRS>
+    </ns4:createBookingResponse>
+  </soap:Body>
+</soap:Envelope>
