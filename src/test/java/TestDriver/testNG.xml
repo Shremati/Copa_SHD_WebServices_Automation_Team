@@ -31,7 +31,7 @@
             <class name="MODULES.WAVE3.TimaticService.TimaticService"/>
             <class name="MODULES.WAVE3.PassengerListService.PassengerListService"/>
 
-<!--            <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/>-->
+<!--            <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/> test-->
 <!--            <class name="MODULES.WAVE3.DisplayBooking41Service.DisplayBooking41Service"/>-->
 <!--            <class name="MODULES.WAVE3.DisplayTicket41Service.TestRunner"/>-->
 <!--            <class name="MODULES.WAVE3.ModifyBooking41Service.TestRunner"/>-->
