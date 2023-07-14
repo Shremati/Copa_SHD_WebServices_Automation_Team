@@ -114,7 +114,7 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <!-- Implement to run it form the command line... -->
 
     </dependencies>
 
