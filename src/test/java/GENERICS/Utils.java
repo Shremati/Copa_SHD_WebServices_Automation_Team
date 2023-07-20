@@ -1,5 +1,8 @@
 package GENERICS;
 
+import org.testng.Assert;
+
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,4 +53,47 @@ public class Utils
         return dateformat.format(date);
     }
 
+    //Create the folders + Sub-folder
+    public static void createFolders(String folderPath)
+    {
+        File folder = new File(folderPath);
+
+        // Create the folders
+        if (folder.mkdirs()) {
+            System.out.println("Folder created successfully.");
+        } else {
+            System.out.println("Failed to create the folder.");
+        }
+    }
+
+    // Delete the folder along with the contents
+    public static void deleteFolder(File folder) {
+        if (folder.exists()) {
+            File[] files = folder.listFiles();
+
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        // Recursively delete subdirectories
+                        deleteFolder(file);
+                    } else {
+                        // Delete files within the folder
+                        file.delete();
+                    }
+                }
+            }
+
+            // Delete the empty folder
+            folder.delete();
+
+            System.out.println("Folder deleted successfully.");
+        } else {
+            System.out.println("Folder does not exist.");
+        }
+    }
+
+    public static void failTest(Exception e)
+    {
+        Assert.fail("Test Failed --- " + e.getMessage());
+    }
 }

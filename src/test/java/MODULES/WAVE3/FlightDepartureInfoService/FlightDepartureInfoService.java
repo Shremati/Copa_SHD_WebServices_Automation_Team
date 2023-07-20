@@ -6,7 +6,15 @@ import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Request_has_an_invalid
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class FlightDepartureInfoService {
+
+    FlightDepartureInfoService() {
+        createFolders(getResponseDirectory() + "FlightDepartureInfoService");
+    }
 
     @Description("Flight has two legs and NotOpen status")
     @Test
@@ -16,6 +24,7 @@ public class FlightDepartureInfoService {
             Flight_has_two_legs_and_notopen_status.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -28,6 +37,7 @@ public class FlightDepartureInfoService {
             Flight_has_one_leg_and_open_status.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
@@ -40,10 +50,8 @@ public class FlightDepartureInfoService {
             Request_has_an_invalid_flight_number.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
-
-
-
 }

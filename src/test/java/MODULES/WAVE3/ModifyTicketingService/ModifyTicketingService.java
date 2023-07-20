@@ -7,41 +7,40 @@ import MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_o
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class ModifyTicketingService
-{
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+public class ModifyTicketingService {
+    ModifyTicketingService() {
+        createFolders(getResponseDirectory() + "ModifyTicketingService");
+    }
 
     @Description("Void a Ticket")
     @Test
-    public void Scenario1()
-    {
+    public void Scenario1() {
 
-        try
-        {
+        try {
             Void_a_ticket.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
     }
 
     @Description("Multiple passenger list request")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Refund_multiple_tickets.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 2 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 2 failed due to :" + e);
         }
-
-
-
     }
 
     @Description("Print an Eticket")
@@ -52,6 +51,7 @@ public class ModifyTicketingService
             Print_an_eticket.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
 
@@ -65,6 +65,7 @@ public class ModifyTicketingService
             Refund_error_cancell_all_segments_prior_refund.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
 
@@ -78,6 +79,7 @@ public class ModifyTicketingService
             Void_error_no_valid_coupons_to_void_ticket_already_voided.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
 

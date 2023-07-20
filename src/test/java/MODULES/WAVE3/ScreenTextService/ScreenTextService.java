@@ -6,7 +6,15 @@ import MODULES.WAVE3.ScreenTextService.API_Tests.Send_entry;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class ScreenTextService {
+
+    ScreenTextService() {
+        createFolders(getResponseDirectory() + "ScreenTextService");
+    }
 
     @Description("Send entry")
     @Test
@@ -16,6 +24,7 @@ public class ScreenTextService {
             Send_entry.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -28,9 +37,8 @@ public class ScreenTextService {
             Error_screentext_not_allowed_entry.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
-
-
 }

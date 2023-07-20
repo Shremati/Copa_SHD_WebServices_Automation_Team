@@ -6,43 +6,40 @@ import MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_o
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class PassengerListService
-{
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+public class PassengerListService {
+
+    PassengerListService() {
+        createFolders(getResponseDirectory() + "PassengerListService");
+    }
 
     @Description("Display the passenger list All option")
     @Test
-    public void Scenario1()
-    {
+    public void Scenario1() {
 
-        try
-        {
+        try {
             display_passenger_list_All_option.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
-
-
-
     }
 
     @Description("Multiple passenger list request")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Multiple_passenger_list_request.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 2 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 2 failed due to :" + e);
         }
-
-
-
     }
 
     @Description("Display the passenger list Inbound connection option")
@@ -53,9 +50,9 @@ public class PassengerListService
             Display_passenger_list_Inbound_connection_option.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
 
     }
-
-    }
+}
