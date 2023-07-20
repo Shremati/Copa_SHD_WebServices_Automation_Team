@@ -8,7 +8,16 @@ import MODULES.WAVE3.TicketControlService.API_Tests.Push_control_of_multiple_cou
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class TicketControlService {
+
+    TicketControlService()
+    {
+        createFolders(getResponseDirectory()+"TicketControlService");
+    }
 
     @Description("Get control of one coupon of one ticket")
     @Test
@@ -18,6 +27,7 @@ public class TicketControlService {
             Get_control_of_one_coupon_of_one_ticket.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -30,6 +40,7 @@ public class TicketControlService {
             Push_control_of_multiple_coupons_within_one_ticket.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }

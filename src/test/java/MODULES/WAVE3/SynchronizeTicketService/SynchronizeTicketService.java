@@ -6,53 +6,54 @@ import MODULES.WAVE3.SynchronizeTicketService.API_Tests.Adjust_Name;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class SynchronizeTicketService
-{
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+public class SynchronizeTicketService {
+    SynchronizeTicketService() {
+        createFolders(getResponseDirectory() + "SynchronizeTicketService");
+    }
 
     @Description("Adjust_Flight_No")
     @Test
-    public void Scenario1()
-    {
+    public void Scenario1() {
 
-        try
-        {
+        try {
             Adjust_Flight_No.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
 
-
     }
+
     @Description("Adjust_Name")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Adjust_Name.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 2 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 2 failed due to :" + e);
         }
 
     }
+
     @Description("Adjust_Class")
     @Test
-    public void Scenario3()
-    {
+    public void Scenario3() {
 
-        try
-        {
+        try {
             Adjust_Class.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 3 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
 

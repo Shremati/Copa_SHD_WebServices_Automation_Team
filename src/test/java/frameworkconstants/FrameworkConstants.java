@@ -1,9 +1,8 @@
 package frameworkconstants;
 
-public class FrameworkConstants
-{
+public class FrameworkConstants {
 
-    public static String BaseURL="http://shdsitm.airservices.svcs.entsvcs.net:18119";
+    public static String BaseURL = "http://shdsitm.airservices.svcs.entsvcs.net:18119";
 
 
     public static String getBaseURL() {
@@ -12,38 +11,38 @@ public class FrameworkConstants
 
     //    ***************************** POST REQUESTS ***********************************
 
-    public static String advancepassengerinfo="/AirlineSOA/AdvancePassengerInfoService/API";
-    public static String airportpassengerlist="/AirlineSOA/AirportPassengerListService/passengerList";
-    public static String airscheduleservice="/AirlineSOA/AirScheduleService/getScheduleDisplay";
-    public static String airinventoryservice="/AirlineSOA/AirInventoryService/getAirInventory";
-    public static String availability="/AirlineSOA/AvailabilityService/getAvailability";
-    public static String boarding="/AirlineSOA/BoardingService/boarding";
-    public static String checkin="/AirlineSOA/CheckInService/checkIn";
-    public static String createbookingservice="/AirlineSOA/CreateBookingService/createBooking";
-    public static String departurecontrolservice="/AirlineSOA/DepartureControlService/departureControl";
-    public static String displaybookingservice="/AirlineSOA/DisplayBookingService/displayBooking";
-    public static String displayloyaltyaccountservice="/AirlineSOA/DisplayLoyaltyAccountService/displayAccount";
-    public static String encodedecodeservice="/AirlineSOA/EncodeDecodeService/encodeDecode";
-    public static String modifybookingservice="/AirlineSOA/ModifyBookingService/modifyBooking";
-    public static String modifyinventoryservice="/AirlineSOA/ModifyInventoryService/modifyInventory";
-    public static String modifyticketingservice="/AirlineSOA/ModifyTicketingService/modifyTicket";
-    public static String queueservice="/AirlineSOA/QueueService/queue";
-    public static String referenceservice="/AirlineSOA/ReferenceService/getReference";
-    public static String screentextservice="/AirlineSOA/ScreenTextService/screenText";
-    public static String seatmapservice="/AirlineSOA/SeatMapService/retrieveFlightSeatMap";
-    public static String synchronizeticketservice="/AirlineSOA/SynchronizeTicketService/synchronizeTicket";
-    public static String ticketcontroloservice="/AirlineSOA/TicketControlService/requestControl";
-    public static String timaticservice="/AirlineSOA/TimaticService/displayTimatic";
-    public static String ticketing="/AirlineSOA/TicketingService/ticketing";
-    public static String flifo="/AirlineSOA/FlifoService/getFlifo";
-    public static String passengerlistservice="/AirlineSOA/PassengerListService/passengerList";
-    public static String flightdepartureinfoservice="/AirlineSOA/FlightDepartureInfoService/getFlightDepartureInfo";
-    public static String authorizationservice="/AirlineSOA/AuthorizationService/authorize";
-    public static String issueticketservice="/AirlineSOA/TicketingService/ticketing";
-    public static String emdairlinesystemupdateservice="/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
-    public static String managesessions="/AirlineSOA/ManageSessionService/manageSession";
-    public static String displayticketservices="/AirlineSOA/DisplayTicketService/displayTickets";
-    public static String issueticket="/AirlineSOA/TicketingService/ticketing";
+    public static String advancepassengerinfo = "/AirlineSOA/AdvancePassengerInfoService/API";
+    public static String airportpassengerlist = "/AirlineSOA/AirportPassengerListService/passengerList";
+    public static String airscheduleservice = "/AirlineSOA/AirScheduleService/getScheduleDisplay";
+    public static String airinventoryservice = "/AirlineSOA/AirInventoryService/getAirInventory";
+    public static String availability = "/AirlineSOA/AvailabilityService/getAvailability";
+    public static String boarding = "/AirlineSOA/BoardingService/boarding";
+    public static String checkin = "/AirlineSOA/CheckInService/checkIn";
+    public static String createbookingservice = "/AirlineSOA/CreateBookingService/createBooking";
+    public static String departurecontrolservice = "/AirlineSOA/DepartureControlService/departureControl";
+    public static String displaybookingservice = "/AirlineSOA/DisplayBookingService/displayBooking";
+    public static String displayloyaltyaccountservice = "/AirlineSOA/DisplayLoyaltyAccountService/displayAccount";
+    public static String encodedecodeservice = "/AirlineSOA/EncodeDecodeService/encodeDecode";
+    public static String modifybookingservice = "/AirlineSOA/ModifyBookingService/modifyBooking";
+    public static String modifyinventoryservice = "/AirlineSOA/ModifyInventoryService/modifyInventory";
+    public static String modifyticketingservice = "/AirlineSOA/ModifyTicketingService/modifyTicket";
+    public static String queueservice = "/AirlineSOA/QueueService/queue";
+    public static String referenceservice = "/AirlineSOA/ReferenceService/getReference";
+    public static String screentextservice = "/AirlineSOA/ScreenTextService/screenText";
+    public static String seatmapservice = "/AirlineSOA/SeatMapService/retrieveFlightSeatMap";
+    public static String synchronizeticketservice = "/AirlineSOA/SynchronizeTicketService/synchronizeTicket";
+    public static String ticketcontroloservice = "/AirlineSOA/TicketControlService/requestControl";
+    public static String timaticservice = "/AirlineSOA/TimaticService/displayTimatic";
+    public static String ticketing = "/AirlineSOA/TicketingService/ticketing";
+    public static String flifo = "/AirlineSOA/FlifoService/getFlifo";
+    public static String passengerlistservice = "/AirlineSOA/PassengerListService/passengerList";
+    public static String flightdepartureinfoservice = "/AirlineSOA/FlightDepartureInfoService/getFlightDepartureInfo";
+    public static String authorizationservice = "/AirlineSOA/AuthorizationService/authorize";
+    public static String issueticketservice = "/AirlineSOA/TicketingService/ticketing";
+    public static String emdairlinesystemupdateservice = "/AirlineSOA/EMDAirlineSystemUpdateService/systemUpdate";
+    public static String managesessions = "/AirlineSOA/ManageSessionService/manageSession";
+    public static String displayticketservices = "/AirlineSOA/DisplayTicketService/displayTickets";
+    public static String issueticket = "/AirlineSOA/TicketingService/ticketing";
 
 
     public static String getAdvancepassengerinfo() {
@@ -181,11 +180,14 @@ public class FrameworkConstants
 
 // ************************* FilePaths Wave3 ********************************
 
-    public static String Temp_requestPath=".\\src\\test\\java\\GENERICS\\Temp_Request.xml";
-    public static String Temp_responsePath=".\\src\\test\\java\\GENERICS\\Temp_Response.xml";
-    public static String requestDirectory=".\\src\\test\\java\\XMLRequestDirectory\\WAVE3\\";
-    public static String responseDirectory=".\\src\\test\\java\\SOAPResponses\\WAVE3\\";
-    public static String TestData=".\\src\\test\\java\\TestData\\Scenario_TestData.xlsx";
+    public static String Temp_requestPath = ".\\src\\test\\java\\GENERICS\\Temp_Request.xml";
+    public static String Temp_responsePath = ".\\src\\test\\java\\GENERICS\\Temp_Response.xml";
+    public static String requestDirectory = ".\\src\\test\\java\\XMLRequestDirectory\\WAVE3\\";
+    public static String responseDirectory = ".\\src\\test\\java\\SOAPResponses\\WAVE3\\";
+    public static String TestData = ".\\src\\test\\java\\TestData\\Scenario_TestData.xlsx";
+    public static String AllureResults = ".\\allure-results";
+    public static String AllureReports = ".\\allure-report";
+    public static String target = ".\\target";
 
     public static String getTestData() {
         return TestData;
@@ -205,6 +207,18 @@ public class FrameworkConstants
 
     public static String getResponseDirectory() {
         return responseDirectory;
+    }
+
+    public static String getAllureReports() {
+        return AllureReports;
+    }
+
+    public static String getAllureResults() {
+        return AllureResults;
+    }
+
+    public static String getTarget() {
+        return target;
     }
 
 }

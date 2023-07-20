@@ -4,43 +4,39 @@ import MODULES.WAVE3.ModifyBookingService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class ModifyBookingService
-{
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+public class ModifyBookingService {
+    ModifyBookingService() {
+        createFolders(getResponseDirectory() + "ModifyBookingService");
+    }
 
     @Description("Cancel Booking")
     @Test
-    public void Scenario1()
-    {
+    public void Scenario1() {
 
-        try
-        {
+        try {
             cancel_booking.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
-
-
-
     }
 
     @Description("Itinerary Changes")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Itinerary_changes.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
-
-
-
     }
 
     @Description("Other Changes")
@@ -51,9 +47,9 @@ public class ModifyBookingService
             other_changes.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
-
     }
 
 
@@ -65,6 +61,7 @@ public class ModifyBookingService
             divide_pnr.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 4 failed due to. :" + e);
         }
 
@@ -78,10 +75,9 @@ public class ModifyBookingService
             reduce_pnr.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
     }
-
-
-    }
+}

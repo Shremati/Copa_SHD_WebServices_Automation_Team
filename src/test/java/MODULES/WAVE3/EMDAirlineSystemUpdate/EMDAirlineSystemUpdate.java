@@ -8,7 +8,15 @@ import MODULES.WAVE3.TicketControlService.API_Tests.Get_control_of_one_coupon_of
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class EMDAirlineSystemUpdate {
+
+    EMDAirlineSystemUpdate() {
+        createFolders(getResponseDirectory() + "EMDAirlineSystemUpdate");
+    }
 
     @Description("Association: EMD coupon 1 with ETKT coupon 1 (POS info)")
     @Test
@@ -18,6 +26,7 @@ public class EMDAirlineSystemUpdate {
             Association_emd_coupon_1_with_etkt_coupon1_pos_info.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -30,6 +39,7 @@ public class EMDAirlineSystemUpdate {
             Association_multiple_coupons_for_primary_and_conjunctive_etkt.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
@@ -42,9 +52,8 @@ public class EMDAirlineSystemUpdate {
             Disassociation_emd_coupon_1_with_etkt_coupon_1.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
-
-
 }

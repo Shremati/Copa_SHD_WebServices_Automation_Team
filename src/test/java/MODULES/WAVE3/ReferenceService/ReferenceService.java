@@ -5,35 +5,39 @@ import MODULES.WAVE3.ReferenceService.API_Tests.Display_Page_Data;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class ReferenceService {
+
+    ReferenceService() {
+        createFolders(getResponseDirectory() + "ReferenceService");
+    }
+
     @Description("Display Category list")
     @Test
-    public void Scenario1()
-    {
-
-        try
-        {
+    public void Scenario1() {
+        try {
             Display_Category_List.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
     }
+
     @Description("Display Category list")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Display_Page_Data.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
-
     }
 }

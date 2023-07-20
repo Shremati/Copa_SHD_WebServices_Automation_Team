@@ -7,51 +7,54 @@ import MODULES.WAVE3.QueueService.API_Tests.Display_queue_booking_all_items_full
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class ManageSessions {
+
+    ManageSessions() {
+        createFolders(getResponseDirectory() + "ManageSessions");
+    }
+
     @Description("Modify_name")
     @Test
-    public void Scenario1()
-    {
+    public void Scenario1() {
 
-        try
-        {
+        try {
             Modify_name.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
     }
 
     @Description("Modify_name")
     @Test
-    public void Scenario2()
-    {
+    public void Scenario2() {
 
-        try
-        {
+        try {
             Create_a_booking_for_a_group.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
 
     }
+
     @Description("Create Booking 2 Segments")
     @Test
-    public void Scenario3()
-    {
+    public void Scenario3() {
 
-        try
-        {
+        try {
             Create_a_booking_for_two_segments.Execute();
 
-        }catch(Exception e)
-        {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 1 failed due to :" + e);
         }
-
     }
 }

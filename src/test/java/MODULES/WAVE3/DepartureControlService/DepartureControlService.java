@@ -4,7 +4,16 @@ import MODULES.WAVE3.DepartureControlService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class DepartureControlService {
+
+    DepartureControlService()
+    {
+        createFolders(getResponseDirectory()+"DepartureControlService");
+    }
 
     @Description("Assign aircraft")
     @Test
@@ -14,6 +23,7 @@ public class DepartureControlService {
             assign_aircraft.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -26,6 +36,7 @@ public class DepartureControlService {
             assign_aircraft_with_generic_specific_seat_reaccommodation.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
@@ -39,6 +50,7 @@ public class DepartureControlService {
             start_checkin.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
@@ -51,6 +63,7 @@ public class DepartureControlService {
             block_more_than_one_seat.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 4 failed due to :" + e);
         }
     }
@@ -63,6 +76,7 @@ public class DepartureControlService {
             error_on_block_seat_invalid_seat_number.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 5 failed due to :" + e);
         }
     }
@@ -75,6 +89,7 @@ public class DepartureControlService {
             unblock_more_than_one_seat.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 6 failed due to :" + e);
         }
     }
@@ -87,6 +102,7 @@ public class DepartureControlService {
             define_inoperative_seat.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 7 failed due to :" + e);
         }
     }
@@ -99,6 +115,7 @@ public class DepartureControlService {
             define_inoperative_seat.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 8 failed due to :" + e);
         }
     }
@@ -111,6 +128,7 @@ public class DepartureControlService {
             cancel_misconnect.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 9 failed due to :" + e);
         }
     }
@@ -123,6 +141,7 @@ public class DepartureControlService {
             reinstate_connecting_passengers.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 10 failed due to :" + e);
         }
     }
@@ -135,57 +154,60 @@ public class DepartureControlService {
             restrict_checkin.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 11 failed due to :" + e);
         }
     }
 
     @Description("Display board point messages")
     @Test
-    public void Scenario13() {
+    public void Scenario12() {
 
         try {
             display_board_point_messages.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 13 failed due to :" + e);
         }
     }
 
     @Description("Add/Update/Delete board point messages")
     @Test
-    public void Scenario14() {
+    public void Scenario13() {
 
         try {
             add_Update_Delete_board_point_messages.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 14 failed due to :" + e);
         }
     }
 
     @Description("Restrict boarding")
     @Test
-    public void Scenario15() {
+    public void Scenario14() {
 
         try {
             restrict_boarding.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 15 failed due to :" + e);
         }
     }
 
     @Description("Remove boarding restriction")
     @Test
-    public void Scenario16() {
+    public void Scenario15() {
 
         try {
             remove_boarding_restriction.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 16 failed due to :" + e);
         }
     }
-
-
 }

@@ -3,11 +3,18 @@ package MODULES.WAVE3.AirScheduleService;
 import MODULES.WAVE3.AirScheduleService.API_Tests.One_request;
 import MODULES.WAVE3.AirScheduleService.API_Tests.One_request_with_vendor_preferences;
 import MODULES.WAVE3.AirScheduleService.API_Tests.Request_with_departure_time_that_will_return_date_change_flights;
-import MODULES.WAVE3.AuthorizationService.API_Tests.Approval_for_visa_credit_card;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class AirScheduleService {
+
+    AirScheduleService() {
+        createFolders(getResponseDirectory() + "AirScheduleService");
+    }
 
     @Description("One request with vendor preferences")
     @Test
@@ -17,6 +24,7 @@ public class AirScheduleService {
             One_request_with_vendor_preferences.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -29,6 +37,7 @@ public class AirScheduleService {
             One_request.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
@@ -41,9 +50,8 @@ public class AirScheduleService {
             Request_with_departure_time_that_will_return_date_change_flights.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
-
-
 }

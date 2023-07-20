@@ -4,7 +4,15 @@ import MODULES.WAVE3.EncodeDecodeService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class EncodeDecodeService {
+
+    EncodeDecodeService() {
+        createFolders(getResponseDirectory() + "EncodeDecodeService");
+    }
 
     @Description("Decode city code LAX")
     @Test
@@ -14,6 +22,7 @@ public class EncodeDecodeService {
             Decode_city_code_lax.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 1 failed due to :" + e);
         }
     }
@@ -26,6 +35,7 @@ public class EncodeDecodeService {
             Decode_airline_co.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
         }
     }
@@ -38,6 +48,7 @@ public class EncodeDecodeService {
             Encode_airline_united.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
@@ -50,6 +61,7 @@ public class EncodeDecodeService {
             Request_mutliple_mixed_messages_of_city_airport_airline_country_flight.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 4 failed due to :" + e);
         }
     }
@@ -62,8 +74,8 @@ public class EncodeDecodeService {
             Decode_citycode_lax_specifying_agent_sine_airport_code_sign_in.Execute();
 
         } catch (Exception e) {
+            failTest(e);
             System.out.println("SCENARIO 5 failed due to :" + e);
         }
     }
-
 }
