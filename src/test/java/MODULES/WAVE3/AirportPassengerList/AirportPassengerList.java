@@ -1,8 +1,6 @@
 package MODULES.WAVE3.AirportPassengerList;
 
-import MODULES.WAVE3.AirportPassengerList.API_Tests.Code_12_Passengers_with_advance_seats;
-import MODULES.WAVE3.AirportPassengerList.API_Tests.Code_2_eticketed_passengers;
-import MODULES.WAVE3.AirportPassengerList.API_Tests.Code_5_Interline_eticket_passengers;
+import MODULES.WAVE3.AirportPassengerList.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -56,6 +54,7 @@ public class AirportPassengerList {
     @Test
     public void Scenario4() {
         try {
+           Code_25_Pax_with_held_seats.Execute();
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 4 failed due to :" + e);
@@ -66,7 +65,7 @@ public class AirportPassengerList {
     @Test
     public void Scenario5() {
         try {
-
+            Code_0_All_passengers_Response_Data_paxname.Execute();
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 5 failed due to :" + e);
@@ -78,10 +77,23 @@ public class AirportPassengerList {
     public void Scenario6() {
 
         try {
-
+         Code_0_All_passengers_Response_Data_paxservice_info.Execute();
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 6 failed due to :" + e);
         }
     }
+
+    @Description("Custom  list: Code 42  - Specific SSR")
+    @Test
+    public void Scenario7() {
+
+        try {
+            Code_42_specific_SSR.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 7 failed due to :" + e);
+        }
+    }
+
 }

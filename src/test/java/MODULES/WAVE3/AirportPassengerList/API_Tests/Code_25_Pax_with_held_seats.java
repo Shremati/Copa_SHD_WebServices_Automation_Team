@@ -17,9 +17,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
-
-
-public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConstants
+public class Code_25_Pax_with_held_seats extends FrameworkConstants
 {
     public static String SOAPRequest;
 
@@ -49,7 +47,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_0_All_passengers_Response_Data_paxname.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_25_Pax_with_held_seats.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -74,7 +72,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
         XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AirportPassengerList\\Code_0_All_passengers_Response_Data_paxname.xml";
+        filepath1=getRequestDirectory()+"AirportPassengerList\\Code_25_Pax_with_held_seats.xml";
 
 
 
