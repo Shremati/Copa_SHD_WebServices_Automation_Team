@@ -50,11 +50,5 @@ public class RESTWrapper {
 
     }
 
-    public static void main(String[] args) {
-
-
-
-
-    }
 
 }
