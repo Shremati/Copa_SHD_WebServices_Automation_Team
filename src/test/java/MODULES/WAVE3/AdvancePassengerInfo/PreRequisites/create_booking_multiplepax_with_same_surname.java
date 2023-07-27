@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
+import GENERICS.RESTWrapper;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.restassured.response.Response;
@@ -45,16 +46,11 @@ public class create_booking_multiplepax_with_same_surname extends FrameworkConst
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
-                .when()
-                .post(getCreatebookingservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
+        Map<String,String> headerInfo = new HashMap<>();
+        headerInfo.put("Content-Type","text/xml");
+
+        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),headerInfo,SOAPRequest);
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
+import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -14,6 +15,8 @@ import javax.xml.transform.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
@@ -29,8 +32,8 @@ public class Single_Pax extends FrameworkConstants
 
 //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-        Prerequisite.run(); //excel gets updated
+       create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
+       Prerequisite.run(); //excel gets updated
 
 
        UpdatePayload();
@@ -41,18 +44,11 @@ public class Single_Pax extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
 
+        Map<String,String> headerInfo = new HashMap<>();
+        headerInfo.put("Content-Type","text/xml");
+
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),headerInfo,SOAPRequest);
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));

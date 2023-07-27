@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
+import GENERICS.RESTWrapper;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.restassured.response.Response;
@@ -14,6 +15,8 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -35,16 +38,11 @@ public class create_booking_service_singlepax extends FrameworkConstants
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
-                .when()
-                .post(getCreatebookingservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
+        Map<String,String> headerInfo = new HashMap<>();
+        headerInfo.put("Content-Type","text/xml");
+
+        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),headerInfo,SOAPRequest);
+
 
 
 
