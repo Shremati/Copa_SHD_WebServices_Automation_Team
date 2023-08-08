@@ -40,14 +40,14 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT" AccompaniedByInfant="true">
                         <air1:PersonName>
-                            <com:GivenName>FRED</com:GivenName>
-                            <com:Surname>TRUMP</com:Surname>
+                            <com:GivenName>Sandra</com:GivenName>
+                            <com:Surname>Silver</com:Surname>
                         </air1:PersonName>
                         <air1:Email>n.n@mydomain.com</air1:Email>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230416618"/>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230436782"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
-                    <air1:AirTraveler BirthDate="2008-01-01" PassengerTypeCode="INF">
+                    <air1:AirTraveler BirthDate="2023-07-01" PassengerTypeCode="INF">
                         <air1:PersonName>
                             <com:GivenName>BABY</com:GivenName>
                             <com:Surname>MORRIS</com:Surname>
