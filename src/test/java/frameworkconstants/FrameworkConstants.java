@@ -3,7 +3,7 @@ package frameworkconstants;
 public class FrameworkConstants {
 
     public static String BaseURL = "http://shdsitm.airservices.svcs.entsvcs.net:18119";
-
+//     public static String BaseURL = "http://10.166.18.7:8089";
 
     public static String getBaseURL() {
         return BaseURL;
@@ -121,7 +121,6 @@ public class FrameworkConstants {
         return referenceservice;
     }
 
-
     public static String getScreentextservice() {
         return screentextservice;
     }
@@ -177,6 +176,8 @@ public class FrameworkConstants {
     public static String getManagesessions() {
         return managesessions;
     }
+
+
 
 // ************************* FilePaths Wave3 ********************************
 
