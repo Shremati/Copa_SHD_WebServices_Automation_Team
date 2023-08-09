@@ -49,7 +49,7 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\More_than_7_HA_Inventory_requests_at_a_time.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirInventoryService\\More_than_7_HA_Inventory_requests_at_a_time.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -70,11 +70,11 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("AirScheduleService");
+        XSSFSheet sheet = wb.getSheet("AirInventoryService");
         XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AirScheduleService\\More than 7 HA Inventory requests at a time.xml";
+        filepath1=getRequestDirectory()+"AirInventoryService\\More than 7 HA Inventory requests at a time.xml";
 
 
 
