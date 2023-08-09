@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:que="http://www.eds.com/AirlineSOASchema/Queue/" xmlns:que1="http://www.eds.com/AirlineSOASchema/QueueRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <que:queuePassengerList>
+            <que1:EDS_QueueRQ Version="4.000">
+                <que1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </que1:POS>
+                <que1:QueueInfo PseudoCityCode="LAX" QueueNumber="80" ListType="">
+                    <que1:FlightInfo DepartureDateTime="2023-02-13T00:00:00" FlightNumber="362">
+                        <com:DepartureAirport LocationCode="LAX"/>
+                    </que1:FlightInfo>
+                </que1:QueueInfo>
+            </que1:EDS_QueueRQ>
+        </que:queuePassengerList>
+    </soapenv:Body>
+</soapenv:Envelope>

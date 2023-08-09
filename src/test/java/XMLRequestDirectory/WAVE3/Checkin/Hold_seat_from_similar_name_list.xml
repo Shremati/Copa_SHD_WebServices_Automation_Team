@@ -1,0 +1,28 @@
+<soapenv:Envelope xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <chec:checkIn>
+            <air:EDS_AirCheckInRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:MessageFunction Function="HoldSeat"/>
+                <air:FlightInfo RPH="1">
+                    <com1:CarrierInfo FlightNumber="360" Code="CM"/>
+                    <com1:DepartureInformation LocationCode="PTY" DateOfDeparture="2023-03-11T07:52:00"/>
+                </air:FlightInfo>
+                <air:PassengerInfo RPH="1" SurnameRefNumber="1" GivenNameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>JOHN</com:GivenName>
+                        <com:Surname>DOE</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="M"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
+                    <com1:SeatBoardingInfo SeatCharacteristics="3 49"/>
+                </air:PassengerFlightInfo>
+                <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="0"/>
+            </air:EDS_AirCheckInRQ>
+        </chec:checkIn>
+    </soapenv:Body>
+</soapenv:Envelope>

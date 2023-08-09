@@ -1,11 +1,6 @@
 package MODULES.WAVE3.DisplayTicketService;
 
-import MODULES.WAVE3.DisplayTicketService.API_Tests.Multiple_Tickets;
-import MODULES.WAVE3.DisplayTicketService.API_Tests.Retrieve_E_Ticket_History_information_for_a_given_PNR;
-import MODULES.WAVE3.DisplayTicketService.API_Tests.Search_for_a_PNR_with_no_ETKT;
-import MODULES.WAVE3.DisplayTicketService.API_Tests.Search_for_a_non_existent_PNR;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.TimaticService.API_Tests.Request_Visa_Info_one_destination_transit_visited_point;
+import MODULES.WAVE3.DisplayTicketService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -80,7 +75,7 @@ public class DisplayTicketService {
     public void Scenario5() {
 
         try {
-            Multiple_Tickets.Execute();
+            Bulk_Ticket.Execute();
 
         } catch (Exception e) {
             failTest(e);

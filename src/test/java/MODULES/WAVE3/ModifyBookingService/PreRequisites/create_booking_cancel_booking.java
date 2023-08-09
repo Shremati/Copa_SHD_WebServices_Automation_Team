@@ -37,7 +37,7 @@ public class create_booking_cancel_booking extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
+                .body(SOAPRequest).log().all()
                 .when()
                 .post(getCreatebookingservice())
                 .then()

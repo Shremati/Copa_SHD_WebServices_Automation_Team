@@ -46,7 +46,7 @@ public class Single_surname_multiple_names extends FrameworkConstants
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
-                .when()
+                .when().log().all()
                 .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)

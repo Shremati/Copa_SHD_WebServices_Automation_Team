@@ -2,17 +2,16 @@
     <soapenv:Header/>
     <soapenv:Body>
         <air:getPassengerList>
-            <air1:EDS_AirportListRQ EchoToken="Test_46" Version="4.0">
+            <air1:EDS_AirportListRQ EchoToken="Test_18" Version="4.0" >
                 <air1:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </air1:POS>
                 <air1:ListRequest>
-                    <air1:ListFunction ListType="0"/>
-                    <air1:ResponseData Type="6"/>
-                    <air1:FlightInfo DepartureDateTime="2023-01-24T18:47:00" FlightNumber="302">
-                        <com:DepartureAirport LocationCode="PTY"/>
-                        <com:ArrivalAirport/>
-                        <air2:MarketingAirline Code="CM"/>
+                    <air1:ListFunction ListType="25"/>
+                    <air1:FlightInfo DepartureDateTime="2023-01-25T11:50:00" RPH="1" FlightNumber="472">
+                        <com:DepartureAirport LocationCode="PTY" />
+                        <com:ArrivalAirport />
+                        <air2:MarketingAirline Code="CM" />
                     </air1:FlightInfo>
                 </air1:ListRequest>
             </air1:EDS_AirportListRQ>

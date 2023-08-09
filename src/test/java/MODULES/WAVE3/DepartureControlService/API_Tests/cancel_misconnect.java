@@ -38,7 +38,7 @@ public class cancel_misconnect extends FrameworkConstants
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .body(SOAPRequest).log().all()
                 .when()
                 .post(getDeparturecontrolservice())
                 .then()

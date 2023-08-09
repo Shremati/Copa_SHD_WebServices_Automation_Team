@@ -18,20 +18,20 @@ import frameworkconstants.*;
 
 import static io.restassured.RestAssured.given;
 
-public class Request_Visa_Info_one_destination_transit_visited_point extends FrameworkConstants{
+public class Visa_singlepoint_gov_request extends FrameworkConstants{
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
 
-        UpdatePayload();
+    //    UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
-        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+        FileInputStream fileInputStream = new FileInputStream(getRequestDirectory()+"TimaticService\\Visa_singlepoint_gov_request.xml");
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
-        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+//      SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -47,7 +47,7 @@ public class Request_Visa_Info_one_destination_transit_visited_point extends Fra
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Request_Visa_Info_one_destination_transit_visited_point.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Visa_singlepoint_gov_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -72,9 +72,9 @@ public class Request_Visa_Info_one_destination_transit_visited_point extends Fra
         XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TimaticService\\Request_Visa_Info_one_destination_transit_visited_point.xml";
+        filepath1=getRequestDirectory()+"TimaticService\\Visa_singlepoint_gov_request.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+//        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
 //        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
 //        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
