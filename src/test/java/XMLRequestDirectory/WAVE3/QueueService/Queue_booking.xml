@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:que="http://www.eds.com/AirlineSOASchema/Queue/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <que:queueBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ>
+                    <air1:Queues>
+                        <air1:Queue PseudoCityCode="LAX" QueueNumber="70"/>
+                    </air1:Queues>
+                    <air1:BookingReferenceID Type="14" ID="A0LDUV"/>
+                </air:AirBookModifyRQ>
+            </air:OTA_AirBookModifyRQ>
+        </que:queueBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

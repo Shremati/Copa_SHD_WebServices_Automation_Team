@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dis="http://www.eds.com/AirlineSOASchema/DisplayTicket/" xmlns:dis1="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dis:displayTicketsByRecordLocator>
+            <EDS_DisplayTicketRQ Version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ">
+                <POS>
+                    <Source ISOCountry="IN" ISOCurrency="" AgentDutyCode="GS" AirlineVendorID="CM" TerminalID="123456" DataIndicator="AIS" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+                        <RequestorID Type="6" ID_Context="IATA" ID="99999999"/>
+                    </Source>
+                </POS>
+                <RecordLocator>BPSYSJ</RecordLocator>
+            </EDS_DisplayTicketRQ>
+        </dis:displayTicketsByRecordLocator>
+    </soapenv:Body>
+</soapenv:Envelope>

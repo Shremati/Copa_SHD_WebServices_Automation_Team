@@ -97,27 +97,27 @@ public class Itinerary_changes extends FrameworkConstants
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(21).getStringCellValue(),getTemp_requestPath(),2);
 //        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ArrivalDateTime",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(22).getStringCellValue(),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(23).getStringCellValue(),getTemp_requestPath(),2);
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(25).getStringCellValue(),getTemp_requestPath(),3);
 //        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ArrivalDateTime",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(26).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath(),3);
 
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),4);
 
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),5);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),5);
 

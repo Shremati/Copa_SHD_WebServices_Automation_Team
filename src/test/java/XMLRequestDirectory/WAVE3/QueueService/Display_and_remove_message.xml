@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:que="http://www.eds.com/AirlineSOASchema/Queue/" xmlns:read="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:veh="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:veh1="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <que:displaySupervisorMessage>
+            <read:OTA_ReadRQ Version="4.000">
+                <read:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </read:POS>
+                <read:ReadRequests>
+                    <read:AirReadRequest>
+                        <read:QueueInfo>
+                            <read:Queue PseudoCityCode="DEN"/>
+                        </read:QueueInfo>
+                    </read:AirReadRequest>
+                </read:ReadRequests>
+            </read:OTA_ReadRQ>
+        </que:displaySupervisorMessage>
+    </soapenv:Body>
+</soapenv:Envelope>

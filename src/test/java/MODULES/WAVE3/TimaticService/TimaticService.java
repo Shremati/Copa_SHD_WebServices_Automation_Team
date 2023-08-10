@@ -19,7 +19,7 @@ public class TimaticService {
     public void Scenario1() {
 
         try {
-            Request_Visa_Info_one_destination_transit_visited_point.Execute();
+            Visa_singlepoint_gov_request.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -90,7 +90,6 @@ public class TimaticService {
 
         try {
             Visa_DEorTR_missing_request.Execute();
-
 
         } catch (Exception e) {
             failTest(e);

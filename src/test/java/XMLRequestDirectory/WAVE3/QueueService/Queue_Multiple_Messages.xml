@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:que="http://www.eds.com/AirlineSOASchema/Queue/" xmlns:que1="http://www.eds.com/AirlineSOASchema/QueueRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <que:queueMessage>
+            <que1:EDS_QueueRQ Version="4.000">
+                <que1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </que1:POS>
+                <que1:QueueInfo>
+                    <que1:MessageInfo>ANOTHER MESSAGE TO SEND TO QUEUE</que1:MessageInfo>
+                    <que1:MessageInfo>A SECOND LINE IN THE MESSAGE</que1:MessageInfo>
+                </que1:QueueInfo>
+                <que1:QueueInfo QueueType="Supervisor">
+                    <que1:MessageInfo>ANOTHER MESSAGE TO SEND TO SUPERVISOR QUEUE</que1:MessageInfo>
+                </que1:QueueInfo>
+            </que1:EDS_QueueRQ>
+        </que:queueMessage>
+    </soapenv:Body>
+</soapenv:Envelope>

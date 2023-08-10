@@ -1,7 +1,6 @@
 package MODULES.WAVE3.QueueService;
 
 import MODULES.WAVE3.QueueService.API_Tests.*;
-import MODULES.WAVE3.TimaticService.API_Tests.Request_Visa_Info_one_destination_transit_visited_point;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
