@@ -1,0 +1,85 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--
+                      Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY
+                -->
+                <air:AirBookModifyRQ ModificationType="8">
+                    <!-- REDUCE_PARTY -->
+                    <!-- Required data: the names to remove from the reservation in TravelerInfo -->
+                    <!-- Indicate the passenger from the lowest to highest RPH -->
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="INS" BirthDate="2022-09-01">
+                            <air1:PersonName>
+                                <com:GivenName>LUIGI</com:GivenName>
+                                <com:Surname>SMITH</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                    </air1:TravelerInfo>
+                    <!-- the booking to modify -->
+                    <air1:BookingReferenceID Type="14" ID="A4LEV2"/>
+                </air:AirBookModifyRQ>
+                <!-- we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync -->
+                <air:AirReservation LastModified="2023-01-24T15:07:56Z" CreateDateTime="2010-08-20T15:07:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-25T07:59:00" ArrivalDateTime="2023-01-25T12:24:00" RPH="1" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Mon">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>230011</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>MARIO</com:GivenName>
+                                <com:Surname>SMITH</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1414" LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler BirthDate="2022-09-01" PassengerTypeCode="INS">
+                            <n3:PersonName>
+                                <com:GivenName>LUIGI</com:GivenName>
+                                <com:Surname>SMITH</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                            <n3:Comment>INS/01SEP2022</n3:Comment>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:OtherServiceInformations>
+                                <n3:OtherServiceInformation>
+                                    <n3:Airline Code="YY"/>
+                                    <n3:Text>1INS 1SMITH/LUIGI OCCUPYING SEAT 01SEP2022</n3:Text>
+                                </n3:OtherServiceInformation>
+                            </n3:OtherServiceInformations>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="A4LEV2" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

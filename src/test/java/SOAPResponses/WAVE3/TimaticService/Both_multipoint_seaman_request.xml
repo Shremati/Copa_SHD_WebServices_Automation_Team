@@ -1,0 +1,184 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:displayTimaticResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/EDS_TimaticRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:EDS_TimaticRS TimeStamp="2023-08-10T07:59:59" Version="4.000">
+        <ns5:Success/>
+        <ns5:TimaticResponse DisplayDate="2023-08-10T08:00:00">
+          <ns5:VisaHealthInformation>
+            <ns5:DocHolderNationality>
+              <ns3:Country Code="FR">FRANCE</ns3:Country>
+            </ns5:DocHolderNationality>
+            <ns5:CountryOfResidence>
+              <ns3:Country Code="US">USA</ns3:Country>
+            </ns5:CountryOfResidence>
+            <ns5:EmbarkationLocation>
+              <ns3:Country Code="US">USA</ns3:Country>
+            </ns5:EmbarkationLocation>
+            <ns5:DestinationLocation PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="BG">BULGARIA</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY ISSUED TO NATIONALS OF FRANCE MUST BE VALID FOR THE PERIOD OF INTENDED STAY.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY ISSUED TO RESIDENTS OF BULGARIA MUST BE VALID ON ARRIVAL.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT EXEMPTIONS">
+                <Paragraph Name="1">
+                  <Text>PASSENGERS WITH A SEAMAN BOOK.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="VISA">
+                <Paragraph Name="1">
+                  <Text>FOR MERCHANT SEAMEN ARRIVING BY AIR, A PRIOR TELEX INFORMATION MUST BE SENT TO THE STATION MANAGER OF THE TRANSPORTING AIRLINE.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>WARNING: MERCHANT SEAMEN MUST TRAVEL ON DUTY AND HAVE A LETTER OF EMPLOYMENT OR A LETTER OF GUARANTEE ISSUED BY THE SHIPPING COMPANY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="HEALTH"/>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="PT">PORTUGAL</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY MUST BE VALID FOR A MINIMUM OF 3 MONTHS BEYOND THE PERIOD OF INTENDED STAY.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>NATIONALS OF FRANCE ARE ALLOWED TO ENTER WITH AN EXPIRED PASSPORT. THE PASSPORT IS ACCEPTED WHEN EXPIRED FOR A MAXIMUM OF 5 YEARS.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="VISA">
+                <Paragraph Name="1">
+                  <Text>WARNING: MERCHANT SEAMEN MUST TRAVEL ON DUTY AND HAVE A LETTER OF EMPLOYMENT OR A LETTER OF GUARANTEE ISSUED BY THE SHIPPING COMPANY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="WARNING">
+                <Paragraph Name="1">
+                  <Text>VISITORS NOT HOLDING RETURN/ONWARD TICKETS COULD BE REFUSED ENTRY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="HEALTH"/>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation VisaRequired="true" PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="BE">BELGIUM</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY ISSUED TO NATIONALS OF FRANCE MUST BE VALID ON ARRIVAL.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT EXEMPTIONS">
+                <Paragraph Name="1">
+                  <Text>PASSENGERS WITH A SEAMAN BOOK ISSUED BY AND ISSUED TO NATIONALS OF FRANCE, TRAVELING ON DUTY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="VISA">
+                <Paragraph Name="1">
+                  <Text>VISA REQUIRED, EXCEPT FOR VISA IS NOT REQUIRED ONLY IF THE NATIONALITY OF MERCHANT SEAMEN IS MENTIONED UNDER VISA EXEMPTIONS APPLICABLE TO NORMAL PASSPORT HOLDERS. MERCHANT SEAMEN MUST BE ARRIVING TO BELGIUM IN ORDER TO BOARD A SHIP, WHICH MUST BE LOCATED IN A BELGIAN HARBOR; OR PROCEED TO AN AIRPORT IN THE SCHENGEN AREA  T*RGL/SCHN FOR RETURN, AFTER BEING DISCHARGED FROM A SHIP.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>WARNING: MERCHANT SEAMEN MUST TRAVEL ON DUTY AND HAVE A LETTER OF EMPLOYMENT OR A LETTER OF GUARANTEE ISSUED BY THE SHIPPING COMPANY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="WARNING">
+                <Paragraph Name="1">
+                  <Text>TRAVEL DOCUMENTS WITH MANUALLY EXTENDED VALIDITY ARE NOT ACCEPTED.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="HEALTH"/>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="BF">BURKINA FASO</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY MUST BE VALID FOR THE PERIOD OF INTENDED STAY.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>BURKINA FASO HAS NO SEA HARBOR. THEREFORE MERCHANT SEAMEN CANNOT BE TRAVELING ON DUTY TO BURKINA FASO.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="HEALTH"/>
+              <ns5:DestinationCountryInformation SubTitle="EXEMPT FROM YELLOW FEVER VACCINATION">
+                <Paragraph Name="1">
+                  <Text>CHILDREN UNDER 9 MONTHS OF AGE.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="RECOMMENDED">
+                <Paragraph Name="1">
+                  <Text>VACCINATION AGAINST YELLOW FEVER FOR ALL PASSENGERS.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>MALARIA PROPHYLAXIS: MALARIA RISK, MAINLY DUE TO P. FALCIPARUM, EXISTS THROUGHOUT THE YEAR IN THE WHOLE COUNTRY. RECOMMENDED PREVENTION: C.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation PassportType="NORMAL">
+              <ns3:Country Code="OM">OMAN</ns3:Country>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation PassportType="NORMAL">
+              <ns3:Country Code="RO">ROMANIA</ns3:Country>
+            </ns5:DestinationLocation>
+            <ns5:DestinationLocation PassportType="NORMAL">
+              <ns3:Country Code="BJ">BENIN</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="EXEMPT FROM YELLOW FEVER VACCINATION">
+                <Paragraph Name="1">
+                  <Text>CHILDREN YOUNGER THAN 1 YEAR.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>PASSENGERS TRANSITING BENIN IF NOT LEAVING THE TRANSIT AREA.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+            </ns5:DestinationLocation>
+            <ns5:TransitLocation PassportType="SEAMAN">
+              <ns3:Country Code="OM">OMAN</ns3:Country>
+              <ns5:TransitCountryInformation SubTitle="TWOV (TRANSIT WITHOUT VISA)">
+                <Paragraph Name="1">
+                  <Text> VISA REQUIRED, EXCEPT FOR PASSENGERS WITH A CONFIRMED ONWARD TICKET FOR A FLIGHT TO A THIRD COUNTRY WITHIN 24 HOURS. THE CONNECTING FLIGHT MUST BE BOOKED ON THE SAME TICKET. THEY MUST STAY IN THE INTERNATIONAL TRANSIT AREA OF THE AIRPORT AND HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="ADDITIONAL INFORMATION">
+                <Paragraph Name="1">
+                  <Text>PASSENGERS IN TRANSIT WITH A PRE-ARRANGED STOPOVER PAID BY CARRIER (STPC) AND A PASSPORT VALID FOR A MINIMUM OF 3 MONTHS ARE PERMITTED TO LEAVE THE AIRPORT.</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="HEALTH"/>
+            </ns5:TransitLocation>
+            <ns5:TransitLocation PassportType="SEAMAN">
+              <ns3:Country Code="RO">ROMANIA</ns3:Country>
+              <ns5:TransitCountryInformation SubTitle="HEALTH"/>
+            </ns5:TransitLocation>
+            <ns5:TransitLocation PassportType="SEAMAN">
+              <ns3:Country Code="BJ">BENIN</ns3:Country>
+              <ns5:TransitCountryInformation SubTitle="TWOV (TRANSIT WITHOUT VISA)">
+                <Paragraph Name="1">
+                  <Text> VISA REQUIRED, EXCEPT FOR PASSENGERS WITH A CONFIRMED ONWARD TICKET FOR A FLIGHT TO A THIRD COUNTRY WITHIN 24 HOURS. THEY MUST STAY IN THE INTERNATIONAL TRANSIT AREA OF THE AIRPORT AND HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="HEALTH"/>
+            </ns5:TransitLocation>
+            <ns5:VisitedLocation>
+              <ns3:Country Code="SM">SAN MARINO</ns3:Country>
+            </ns5:VisitedLocation>
+            <ns5:VisitedLocation>
+              <ns3:Country Code="FR">FRANCE</ns3:Country>
+            </ns5:VisitedLocation>
+            <ns5:VisitedLocation>
+              <ns3:Country Code="DK">DENMARK</ns3:Country>
+            </ns5:VisitedLocation>
+            <ns5:VisitedLocation>
+              <ns3:Country Code="DE">GERMANY</ns3:Country>
+            </ns5:VisitedLocation>
+          </ns5:VisaHealthInformation>
+        </ns5:TimaticResponse>
+        <ns5:Comment>ALSO CHECK DESTINATION INFORMATION BELOW</ns5:Comment>
+        <ns5:Comment/>
+        <ns5:Comment>SIMPLIFY YOUR REQUEST USE TIFA, TIFV AND TIFH</ns5:Comment>
+        <ns5:Comment>FULL TEXT AVAILABLE USE TIDFT</ns5:Comment>
+        <ns5:Comment>CHECK  T*NEWS - CHECK LATEST NEWS AND UPDATES ON TRAVEL</ns5:Comment>
+        <ns5:Comment>INFORMATION</ns5:Comment>
+        <ns5:Comment/>
+      </ns5:EDS_TimaticRS>
+    </ns4:displayTimaticResponse>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,1876 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns7:getPassengerListResponse xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns11="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns7="http://www.eds.com/AirlineSOASchema/PassengerList/" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns8:OTA_ResRetrieveRS EchoToken="TestCase01" TimeStamp="2023-08-10T08:00:03" Version="4.000">
+        <ns8:Success/>
+        <ns8:ReservationsList>
+          <ns8:AirReservation BookingReferenceID="AQAXNJ" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JUCEL</GivenName>
+              <Surname>ACORSI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWSN1V" SupplierBookingInfoList="2 4 5 7">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>AGUILARBRION</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANEYVQ" SupplierBookingInfoList="2 4 5 7">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>AGUILARBRION</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A11I0X" SupplierBookingInfoList="2 4 5 7">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALARCONFLORE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWQ1JB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALBIZURESBAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWQ1JB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALBIZURESBAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ALBXVD" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALONZOMERIDA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AX0HTJ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>LIS</GivenName>
+              <Surname>ALVARADO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AX1P0V" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALVARADOORTI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXRZ1Y" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALVARADOORTI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AATURR" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ALVARADOQUIR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="APV2KX" SupplierBookingInfoList="2 4 7">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ALBE</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="APV2KX" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CLAU</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="APV2KX" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DIEG</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="APV2KX" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JOSU</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="APV2KX" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARI</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AHICTG" SupplierBookingInfoList="2 4 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>PEDR</GivenName>
+              <Surname>ALVAREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWSN1V" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ANDARAUSAGUI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANEYVQ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ANDARAUSAGUI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AEDIJB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DIANNEV</GivenName>
+              <Surname>ARCE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ABNJMN" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>D</GivenName>
+              <Surname>ARCEVARGAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AEDIJB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>D</GivenName>
+              <Surname>ARCEVARGAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BSL4XT" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ARRIVILLAGAM</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ASDKNZ" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>BALSELLSPERD</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ASDKNZ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>BALSELLSVIEC</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXCY4I" SupplierBookingInfoList="2 4 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>BARAHONALOND</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQ5M51" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>BIASSINISEVE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQ5M51" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>BIASSINISEVE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ABNE</GivenName>
+              <Surname>BOLANOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ABNE</GivenName>
+              <Surname>BOLANOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXBJSG" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>FERN</GivenName>
+              <Surname>BOLANOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BFDFXG" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>LEONARD</GivenName>
+              <Surname>BOZA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANSWLV" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>A</GivenName>
+              <Surname>BRATHWIATE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BCKAQD" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>CABALLEROSBE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXHHVA" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SANTI</GivenName>
+              <Surname>CAMANO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ATD0PV" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ME</GivenName>
+              <Surname>CAMILLATO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BDN2AR" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ME</GivenName>
+              <Surname>CAMILLATO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AZVEGS" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>CARVAJALJARA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A23IOU" SupplierBookingInfoList="2 4 5 7">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JOS</GivenName>
+              <Surname>CASTILLO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BSSNSH" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>CASTILLOHERN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BSSNSH" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>CASTILLOSOLA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AA35WB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName/>
+              <Surname>CHARPENTIER</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ATX0BH" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>FE</GivenName>
+              <Surname>CHAVARRIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWAE5F" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>RUTHA</GivenName>
+              <Surname>CORADO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BNZ3KL" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARI</GivenName>
+              <Surname>CUELLAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AYWHCY" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SANDRAF</GivenName>
+              <Surname>DALE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AU0NUP" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>LAI</GivenName>
+              <Surname>DUNWORTH</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BDO2JV" SupplierBookingInfoList="2 4 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>YEFE</GivenName>
+              <Surname>DURANGO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AYDTOF" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>O</GivenName>
+              <Surname>DURONRIVAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWSN1V" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>FARINASANDAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANEYVQ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>FARINASANDAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AZVT33" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>FITOMARTINEZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AIO2K3" SupplierBookingInfoList="2 3 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JAME</GivenName>
+              <Surname>FLEMING</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A5ZXCN" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>GALDAMEZCRUZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BRVHNW" SupplierBookingInfoList="2 4">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CELES</GivenName>
+              <Surname>GARCIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AIM1L0" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JOSER</GivenName>
+              <Surname>GARCIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AIM1L0" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JOSER</GivenName>
+              <Surname>GARCIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AUZ1P0" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MYT</GivenName>
+              <Surname>GENDREAU</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BMBW5X" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>GOMEZQUESADA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AU0NUP" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JAZO</GivenName>
+              <Surname>GONALEZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANHON5" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>GONZALESRODR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AMM0SL" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>GONZALEZVASQ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BCKAQD" SupplierBookingInfoList="4 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>GRUPOPUJ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BMZ5NQ" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SALVADO</GivenName>
+              <Surname>GUAY</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AHCLPB" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SALVADO</GivenName>
+              <Surname>GUAY</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A2VP22" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SALVADO</GivenName>
+              <Surname>GUAY</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQPXZH" SupplierBookingInfoList="2 4 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>VAN</GivenName>
+              <Surname>GUERRERO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AEWSSG" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MEHME</GivenName>
+              <Surname>GURBUZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BPC1II" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>HERRERAQUIRO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BTPSHV" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CARLOSS</GivenName>
+              <Surname>HOSS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AEXGSJ" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CARLOSS</GivenName>
+              <Surname>HOSS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BTPSHV" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CARLOSS</GivenName>
+              <Surname>HOSS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BTPSHV" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CARLOSS</GivenName>
+              <Surname>HOSS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AQUX0S" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ANAMR</GivenName>
+              <Surname>IBARRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AIO2K3" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JENNIFERM</GivenName>
+              <Surname>LE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AX0HTJ">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ALEYDI</GivenName>
+              <Surname>LOPEZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ARYCN4" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>LOPEZMARTINE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AX1P0V" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>LOPEZRAMIREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXRZ1Y" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>LOPEZRAMIREZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AFA555" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>LOPEZRODRIGU</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BGC5D4" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>R</GivenName>
+              <Surname>LUISARTURO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANQNNA" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARIA</GivenName>
+              <Surname>MACARI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AGZ4UG" SupplierBookingInfoList="2 4 5 7 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>PRAS</GivenName>
+              <Surname>MAHESHI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AGZ4UG" SupplierBookingInfoList="2 4 5 7 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>PRAS</GivenName>
+              <Surname>MAHESHI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A3ZK2T" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JU</GivenName>
+              <Surname>MALDONADO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A3CCS4" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MALDONADOBET</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A3J4AK" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MALDONADOBET</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BKVCDN" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MALDONADOCHA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AVIOU1" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MALDONADOCHA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BAVUGM" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>TANROOP</GivenName>
+              <Surname>MANN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BARQPI" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>TANROOP</GivenName>
+              <Surname>MANN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AGR1WL" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>GAE</GivenName>
+              <Surname>MARAUCCI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BALTQ1" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName/>
+              <Surname>MARINZAMORA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AQUX0S" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>BR</GivenName>
+              <Surname>MARROQUIN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJQ5MH" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>GA</GivenName>
+              <Surname>MARROQUIN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJQ5MH" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>HE</GivenName>
+              <Surname>MARROQUIN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AQUX0S" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>RO</GivenName>
+              <Surname>MARROQUIN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AQUX0S" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MARROQUINSAB</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXBJSG" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>THATIAN</GivenName>
+              <Surname>MATA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AX3OJO" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName/>
+              <Surname>MAYENCARIAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AXUUZV" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName/>
+              <Surname>MAYENCARIAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AMTBAQ" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>NATALI</GivenName>
+              <Surname>MEJIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BLYVZU" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>NATALI</GivenName>
+              <Surname>MEJIA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ALBXVD" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName/>
+              <Surname>MEJIAMONROY</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AILUR3" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARK</GivenName>
+              <Surname>MELAMED</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AILUR3" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARK</GivenName>
+              <Surname>MELAMED</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A15LIK" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MENENDEZBARR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A4RZ0A" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>OFEKM</GivenName>
+              <Surname>MISHAL</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A5ZXCN" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MONZONFRANCO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A5ZXCN" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>MONZONGALDAM</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BB22BN" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARI</GivenName>
+              <Surname>MORALES</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BS1CUG" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MEL</GivenName>
+              <Surname>MULBAYER</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DEEPIN</GivenName>
+              <Surname>NAGRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DEEPIN</GivenName>
+              <Surname>NAGRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DEEPIN</GivenName>
+              <Surname>NAGRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AZWGB2" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>NAVARROMONCA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWAE5F" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ORELLANAARCH</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BO3JSU" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARYN</GivenName>
+              <Surname>PALOMO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AHBXKZ" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MAR</GivenName>
+              <Surname>PANIAGUA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BKKRZN" SupplierBookingInfoList="2 4 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>PATZANARMIRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ABBMC0" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CA</GivenName>
+              <Surname>PEREZPAIZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ACTYTK" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>PIETRINIZAPA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQYLRU" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>PINSKERANTIL</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AYQEWC" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>TROYA</GivenName>
+              <Surname>POWERS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AFIA0Z" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ERICK</GivenName>
+              <Surname>QUIROZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BLYVZU" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>LEIDYJ</GivenName>
+              <Surname>RAMOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AMTBAQ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>LEIDYM</GivenName>
+              <Surname>RAMOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWQ1JB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RECINOSALBIZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWQ1JB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RECINOSALBIZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWQ1JB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RECINOSVALDE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>J</GivenName>
+              <Surname>RECOPALCHI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>J</GivenName>
+              <Surname>RECOPALCHI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BKL1EB" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARIA</GivenName>
+              <Surname>ROBLES</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AVCCSR" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>MARIA</GivenName>
+              <Surname>ROBLES</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AUZOIQ" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>ROBLESSIERRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AROZ0R" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RODRIGUEZCIF</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWL3P4" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RODRIGUEZCIF</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ANHON5" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>RODRIGUEZGOM</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AVDQCW" SupplierBookingInfoList="8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ALEX</GivenName>
+              <Surname>ROIVAS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AZTMJO" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JO</GivenName>
+              <Surname>ROJASMEZA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ATBH32" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>DI</GivenName>
+              <SurnamePrefix>P03B09</SurnamePrefix>
+              <Surname>ROMERO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ATBH32" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>HA</GivenName>
+              <SurnamePrefix>P04B28</SurnamePrefix>
+              <Surname>ROMERO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BBZFQT" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>NOEL</GivenName>
+              <Surname>RUILOBA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AQUX0S" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>SABINOCALTRA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AGZ4UG" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ATUL</GivenName>
+              <Surname>SADRANI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AGZ4UG" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ATUL</GivenName>
+              <Surname>SADRANI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BG2SRI" SupplierBookingInfoList="5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>GURJOT</GivenName>
+              <Surname>SINGH</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BG2SRI" SupplierBookingInfoList="5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>GURJOT</GivenName>
+              <Surname>SINGH</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQA1RI" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ANDRESS</GivenName>
+              <Surname>SOTO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BQA1RI" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>ANDRESS</GivenName>
+              <Surname>SOTO</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BJCF0W" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>RAY</GivenName>
+              <Surname>STEINMAN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AZIVK5" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>CEL</GivenName>
+              <Surname>STEMMLER</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BOP0RL" SupplierBookingInfoList="2 4 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>SUCHITELEMUS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>OSC</GivenName>
+              <Surname>TARACENA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>OSC</GivenName>
+              <Surname>TARACENA</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SHAMIR</GivenName>
+              <Surname>TOBAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AAFLJB" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>SHAMIR</GivenName>
+              <Surname>TOBAR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>HARJOT</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>HARJOT</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AJTW1X">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>HARJOT</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ACRDI2" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JAGDEEP</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ACRDI2" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JAGDEEP</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ACRDI2" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>JAGDEEP</GivenName>
+              <Surname>TOOR</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AWB52B" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>BERNA</GivenName>
+              <Surname>TREJOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AHBXKZ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>UGALDERESENT</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="A5FR0M" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>VALDEZMARTIN</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ABLHMF" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>M</GivenName>
+              <Surname>VALLERAMOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ASDKNZ" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>VIECILIMATTI</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BTGI4G" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>G</GivenName>
+              <Surname>VILLALOBOS</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ABM5RH" SupplierBookingInfoList="2 5 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>VINTIMILLAAC</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="ABHNQD" SupplierBookingInfoList="2 5 6 8">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>VINTIMILLAAC</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AUKD5N" SupplierBookingInfoList="2 5">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>GABRI</GivenName>
+              <Surname>VIQUEZ</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AILUR3" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>FRAN</GivenName>
+              <Surname>WHEELER</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="AILUR3" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="SJO"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <GivenName>FRAN</GivenName>
+              <Surname>WHEELER</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+          <ns8:AirReservation BookingReferenceID="BSL4XT" SupplierBookingInfoList="2">
+            <ns8:FlightSegment FlightNumber="0392" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns8:FlightSegment>
+            <ns8:TravelerName>
+              <Surname>WONGHERNANDE</Surname>
+            </ns8:TravelerName>
+          </ns8:AirReservation>
+        </ns8:ReservationsList>
+      </ns8:OTA_ResRetrieveRS>
+    </ns7:getPassengerListResponse>
+  </soap:Body>
+</soap:Envelope>

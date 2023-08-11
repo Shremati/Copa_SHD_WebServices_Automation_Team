@@ -1,0 +1,85 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns7:getFlightDepartureInfoResponse xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns12="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns11="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns8="http://www.eds.com/AirlineSOASchema/FlightDepartureInfoRS" xmlns:ns7="www.eds.com/AirlineSOASchema/FlightDepartureInfo/" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns8:EDS_FlightDepartureInfoRS TimeStamp="2023-08-10T07:58:17" Version="4.000">
+        <ns8:Success/>
+        <ns8:FlightDetails>
+          <ns8:FlightSegmentDetails Status="Open" FlightNumber="391" DepartureDateTime="2023-08-10T00:00:00" RPH="1">
+            <DepartureAirport LocationCode="PTY"/>
+            <ArrivalAirport LocationCode="SJO"/>
+            <ns3:MarketingAirline Code="CM"/>
+            <ns8:WeightDefinitions>
+              <ns8:BaggageWeightDefinition BaggageWeightDefinitionType="Checked" ActualBaggageWeight="true" WeightPerBag="false" WeightPerPerson="false" BagWeightIncluded="true" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Adult" ActualPassengerWeight="false" UnitOfMeasureQuantity="81.6" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Child" ActualPassengerWeight="false" UnitOfMeasureQuantity="36.3" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Infant" ActualPassengerWeight="false" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+            </ns8:WeightDefinitions>
+            <ns8:PassengerInfo>
+              <ns8:PassengerWeight PassengerWeightsType="Adult" PassengerWeightBoardType="Total" ActualWeight="false" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+              <ns8:PassengerCount PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengerCount PassengerType="Child" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengerCount PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+            </ns8:PassengerInfo>
+            <ns8:BaggageInfo>
+              <ns8:BaggageCount BagCountType="Checked" BagCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+            </ns8:BaggageInfo>
+            <ns8:MarketingCabinCounts CabinClass="C">
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:BaySplit BayName="0A" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0B" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0C" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0D" BayPassengerCount="0"/>
+            </ns8:MarketingCabinCounts>
+            <ns8:MarketingCabinCounts CabinClass="Y">
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:BaySplit BayName="0A" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0B" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0C" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0D" BayPassengerCount="0"/>
+            </ns8:MarketingCabinCounts>
+            <ns8:Comment>CFG:737-800 NON PREMIUM 166 SEATS</ns8:Comment>
+          </ns8:FlightSegmentDetails>
+          <ns8:FlightSegmentDetails Status="Open" FlightNumber="391" DepartureDateTime="2023-08-10T00:00:00" RPH="2">
+            <DepartureAirport LocationCode="PTY"/>
+            <ArrivalAirport LocationCode="GUA"/>
+            <ns3:MarketingAirline Code="CM"/>
+            <ns8:WeightDefinitions>
+              <ns8:BaggageWeightDefinition BaggageWeightDefinitionType="Checked" ActualBaggageWeight="true" WeightPerBag="false" WeightPerPerson="false" BagWeightIncluded="true" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Adult" ActualPassengerWeight="false" UnitOfMeasureQuantity="81.6" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Child" ActualPassengerWeight="false" UnitOfMeasureQuantity="36.3" UnitOfMeasureCode="16"/>
+              <ns8:PassengerWeightDefinition PassengerWeightDefinitionType="Infant" ActualPassengerWeight="false" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+            </ns8:WeightDefinitions>
+            <ns8:PassengerInfo>
+              <ns8:PassengerWeight PassengerWeightsType="Adult" PassengerWeightBoardType="Total" ActualWeight="false" UnitOfMeasureQuantity="0" UnitOfMeasureCode="16"/>
+              <ns8:PassengerCount PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengerCount PassengerType="Child" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengerCount PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+            </ns8:PassengerInfo>
+            <ns8:BaggageInfo>
+              <ns8:BaggageCount BagCountType="Checked" BagCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+            </ns8:BaggageInfo>
+            <ns8:MarketingCabinCounts CabinClass="C">
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:BaySplit BayName="0A" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0B" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0C" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0D" BayPassengerCount="0"/>
+            </ns8:MarketingCabinCounts>
+            <ns8:MarketingCabinCounts CabinClass="Y">
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Adult" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:PassengersInCabin AvailableToDisembark="0" PassengerType="Infant" PassengerCountBoardType="Total" UnitOfMeasureQuantity="0"/>
+              <ns8:BaySplit BayName="0A" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0B" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0C" BayPassengerCount="0"/>
+              <ns8:BaySplit BayName="0D" BayPassengerCount="0"/>
+            </ns8:MarketingCabinCounts>
+            <ns8:Comment>CFG:737-800 NON PREMIUM 166 SEATS</ns8:Comment>
+          </ns8:FlightSegmentDetails>
+        </ns8:FlightDetails>
+      </ns8:EDS_FlightDepartureInfoRS>
+    </ns7:getFlightDepartureInfoResponse>
+  </soap:Body>
+</soap:Envelope>

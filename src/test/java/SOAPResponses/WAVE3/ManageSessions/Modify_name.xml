@@ -1,0 +1,74 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:modifySessionBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns4="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:OTA_AirBookRS TimeStamp="2023-08-11T11:59:46" Version="4.000">
+        <ns6:Success/>
+        <ns6:AirReservation CreateDateTime="2023-08-11T11:59:00Z" LastModified="2023-08-11T11:59:46Z">
+          <ns3:AirItinerary>
+            <ns3:OriginDestinationOptions>
+              <ns3:OriginDestinationOption>
+                <ns3:FlightSegment ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Tue" FlightNumber="441" DepartureDateTime="2023-08-15T18:34:00" ArrivalDateTime="2023-08-15T22:42:00" RPH="1">
+                  <DepartureAirport LocationCode="PTY"/>
+                  <ArrivalAirport LocationCode="MIA"/>
+                  <ns3:MarketingAirline Code="CM"/>
+                </ns3:FlightSegment>
+              </ns3:OriginDestinationOption>
+            </ns3:OriginDestinationOptions>
+          </ns3:AirItinerary>
+          <ns3:PriceInfo>
+            <ns3:PriceRequestInformation PricingSource="Private">
+              <ns3:NegotiatedFareCode>230011</ns3:NegotiatedFareCode>
+            </ns3:PriceRequestInformation>
+          </ns3:PriceInfo>
+          <ns3:TravelerInfo>
+            <ns3:AirTraveler PassengerTypeCode="ADT">
+              <ns3:PersonName>
+                <GivenName>ALIZEE</GivenName>
+                <Surname>HENRY</Surname>
+              </ns3:PersonName>
+              <ns3:Telephone LocationCode="PTY" PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
+              <ns3:Telephone LocationCode="PTY" PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
+              <ns3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+            </ns3:AirTraveler>
+            <ns3:AirTraveler PassengerTypeCode="ADT">
+              <ns3:PersonName>
+                <GivenName>ZIDANE</GivenName>
+                <Surname>ZINEDINE</Surname>
+              </ns3:PersonName>
+              <ns3:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+              <ns3:Comment>INFMINI/01JAN09</ns3:Comment>
+            </ns3:AirTraveler>
+            <ns3:AirTraveler BirthDate="2009-01-01" PassengerTypeCode="INF">
+              <ns3:PersonName>
+                <GivenName>MINI</GivenName>
+                <Surname>ZINEDINE</Surname>
+              </ns3:PersonName>
+              <ns3:TravelerRefNumber RPH="3" SurnameRefNumber="2"/>
+              <ns3:Comment>INFMINI/01JAN09</ns3:Comment>
+            </ns3:AirTraveler>
+            <ns3:SpecialReqDetails>
+              <ns3:SpecialServiceRequests>
+                <ns3:SpecialServiceRequest TravelerRefNumberRPHList="2" FlightRefNumberRPHList="1" SSRCode="INFT" ServiceQuantity="1" Status="11">
+                  <ns3:Airline Code="CM"/>
+                  <ns3:Text>PTYMIA0441Y15AUG-1ZINEDINE/ZIDANE.ZINEDINE/MINI.01JAN09</ns3:Text>
+                </ns3:SpecialServiceRequest>
+              </ns3:SpecialServiceRequests>
+              <ns3:OtherServiceInformations>
+                <ns3:OtherServiceInformation>
+                  <ns3:Airline Code="YY"/>
+                  <ns3:Text>1INF 1ZINEDINE/MINI 01JAN09</ns3:Text>
+                </ns3:OtherServiceInformation>
+              </ns3:OtherServiceInformations>
+              <ns3:Remarks>
+                <ns3:Remark>FOR MODIFY NAME TEST</ns3:Remark>
+                <ns3:Remark>01 REMARKS ADDED BY PTY SU RO 11AUG 1159Z D13401</ns3:Remark>
+              </ns3:Remarks>
+            </ns3:SpecialReqDetails>
+          </ns3:TravelerInfo>
+          <ns3:Ticketing TicketingStatus="3"/>
+          <ns3:BookingReferenceID Type="14" ID="AVWLFR"/>
+        </ns6:AirReservation>
+      </ns6:OTA_AirBookRS>
+    </ns4:modifySessionBookingResponse>
+  </soap:Body>
+</soap:Envelope>

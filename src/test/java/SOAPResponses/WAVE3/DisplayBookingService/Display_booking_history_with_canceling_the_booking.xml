@@ -1,0 +1,38 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayBookingHistoryResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns11:EDS_AirBookHistoryRS TimeStamp="2023-08-10T11:02:47" Version="4.000">
+        <ns11:Success/>
+        <ns11:BookingHistorys>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T11:02:00" AgentSine="RO" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="PTY" TerminalID="D13701"/>
+          </ns11:BookingHistory>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T11:02:00" AgentSine="RO" AgentDutyCode="SU" AirportCode="PTY" TerminalID="D13701">
+              <ns2:RequestorID Type="6" ID="AIRSOA CM"/>
+              <ns11:AirBookHistory/>
+            </ns11:HistoryCredit>
+          </ns11:BookingHistory>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T11:02:00" AgentSine="RO" AgentDutyCode="SU" AirportCode="PTY" TerminalID="D13401">
+              <ns2:RequestorID Type="6" ID="AIRSOA CM"/>
+              <ns11:AirBookHistory>
+                <ns11:AirHistoryItinerary Operation="Cancel" ResBookDesigCode="Y" NumberInParty="1" Status="26" DepartureDay="Fri" FlightNumber="389" DepartureDateTime="2023-08-11T07:22:00" ArrivalDateTime="2023-08-11T10:54:00">
+                  <ns2:DepartureAirport LocationCode="GUA"/>
+                  <ns2:ArrivalAirport LocationCode="PTY"/>
+                  <ns4:MarketingAirline Code="CM"/>
+                </ns11:AirHistoryItinerary>
+                <ns11:AirHistoryItinerary Operation="Cancel" ResBookDesigCode="Y" NumberInParty="1" Status="26" DepartureDay="Sun" FlightNumber="380" DepartureDateTime="2023-08-13T08:06:00" ArrivalDateTime="2023-08-13T09:32:00">
+                  <ns2:DepartureAirport LocationCode="PTY"/>
+                  <ns2:ArrivalAirport LocationCode="GUA"/>
+                  <ns4:MarketingAirline Code="CM"/>
+                </ns11:AirHistoryItinerary>
+                <ns11:PriceHistoryInfo Operation="Cancel" QuoteTime="2023-08-10T11:02:00Z"/>
+              </ns11:AirBookHistory>
+            </ns11:HistoryCredit>
+          </ns11:BookingHistory>
+        </ns11:BookingHistorys>
+      </ns11:EDS_AirBookHistoryRS>
+    </ns8:displayBookingHistoryResponse>
+  </soap:Body>
+</soap:Envelope>

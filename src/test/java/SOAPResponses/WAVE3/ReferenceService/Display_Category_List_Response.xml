@@ -1,0 +1,34 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:getReferenceResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/ScreenTextRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Reference/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_ReferenceRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:OTA_ScreenTextRS TimeStamp="2023-08-10T07:59:25" Version="4.000">
+        <ns4:Success/>
+        <ns4:TextScreens>
+          <ns4:TextScreen>
+            <ns4:TextData>CM CATEGORY LIST    </ns4:TextData>
+            <ns4:TextData>1 A01 POLITICAS ATO/SAB</ns4:TextData>
+            <ns4:TextData>2 A02 COPAAIR.COM</ns4:TextData>
+            <ns4:TextData>3 A03 EQUIPAJE</ns4:TextData>
+            <ns4:TextData>4 A04 CONNECTMILES</ns4:TextData>
+            <ns4:TextData>5 A06 RESERVA/BOLETERIA</ns4:TextData>
+            <ns4:TextData>6 A07 SEGURIDAD</ns4:TextData>
+            <ns4:TextData>7 A08 SERVICIO ESPECIALES      8 ETK- E-TICKET</ns4:TextData>
+            <ns4:TextData>8 ETK E-TICKET</ns4:TextData>
+            <ns4:TextData>9 A41 SISTEMA ADMIN</ns4:TextData>
+            <ns4:TextData>10 A42 SISTEMA CHECK IN</ns4:TextData>
+            <ns4:TextData>11 A43 SISTEMA RESERVAS        12 NRE- CODIGOS NR Y DESC</ns4:TextData>
+            <ns4:TextData>12 NRE CODIGOS NR Y DESC</ns4:TextData>
+            <ns4:TextData>13 CON CONVENTION/CHARTER      14 CRC- CURRENT REVENUE CON</ns4:TextData>
+            <ns4:TextData>14 CRC CURRENT REVENUE CON</ns4:TextData>
+            <ns4:TextData>15 NWP NEWSWORTHY PASSENGE     16 EMR- EMERGENCY RESPONSE</ns4:TextData>
+            <ns4:TextData>16 EMR EMERGENCY RESPONSE</ns4:TextData>
+            <ns4:TextData>17 IND INDICE GG               18 LEA- LEALTAD</ns4:TextData>
+            <ns4:TextData>18 LEA LEALTAD</ns4:TextData>
+            <ns4:TextData>19 STR STAR ALLIANCE           20 DIR-DIRECTORIO CM</ns4:TextData>
+            <ns4:TextData>20 DIR DIRECTORIO CM</ns4:TextData>
+          </ns4:TextScreen>
+        </ns4:TextScreens>
+      </ns4:OTA_ScreenTextRS>
+    </ns3:getReferenceResponse>
+  </soap:Body>
+</soap:Envelope>

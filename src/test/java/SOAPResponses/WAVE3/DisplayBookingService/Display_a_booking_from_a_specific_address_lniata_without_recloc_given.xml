@@ -1,0 +1,74 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayBookingResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns9:OTA_AirBookRS TimeStamp="2023-08-10T08:22:09" Version="4.000">
+        <ns9:Success/>
+        <ns9:AirReservation CreateDateTime="2023-08-09T13:15:00Z" LastModified="2023-08-09T14:09:01Z">
+          <ns4:AirItinerary>
+            <ns4:OriginDestinationOptions>
+              <ns4:OriginDestinationOption>
+                <ns4:FlightSegment ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sun" FlightNumber="120" DepartureDateTime="2023-08-13T09:11:00" ArrivalDateTime="2023-08-13T12:01:00" RPH="1">
+                  <ns2:DepartureAirport LocationCode="PTY"/>
+                  <ns2:ArrivalAirport LocationCode="MEX"/>
+                  <ns4:MarketingAirline Code="CM"/>
+                </ns4:FlightSegment>
+              </ns4:OriginDestinationOption>
+            </ns4:OriginDestinationOptions>
+          </ns4:AirItinerary>
+          <ns4:PriceInfo>
+            <ns4:PriceRequestInformation PricingSource="Private">
+              <ns4:NegotiatedFareCode>230855</ns4:NegotiatedFareCode>
+            </ns4:PriceRequestInformation>
+          </ns4:PriceInfo>
+          <ns4:TravelerInfo>
+            <ns4:AirTraveler PassengerTypeCode="ADT">
+              <ns4:PersonName>
+                <ns2:GivenName>JOHN</ns2:GivenName>
+                <ns2:Surname>TESTING</ns2:Surname>
+              </ns4:PersonName>
+              <ns4:Telephone LocationCode="PTY" PhoneUseType="4" AreaCityCode="789" PhoneNumber="7897897899" Remark="US-001"/>
+              <ns4:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+            </ns4:AirTraveler>
+            <ns4:SpecialReqDetails>
+              <ns4:SpecialServiceRequests>
+                <ns4:SpecialServiceRequest SSRCode="DOCS" Status="26">
+                  <ns4:Airline Code="CM"/>
+                  <ns4:Text>////US/02FEB90/M//TESTING/JOHN-1TESTING/JOH</ns4:Text>
+                </ns4:SpecialServiceRequest>
+                <ns4:SpecialServiceRequest SSRCode="CTCE" ServiceQuantity="1" Status="26">
+                  <ns4:Airline Code="CM"/>
+                  <ns4:Text>.TEST//TEST.COM/TESTING/JOHN-1TESTING/JOHN</ns4:Text>
+                </ns4:SpecialServiceRequest>
+                <ns4:SpecialServiceRequest TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1" SSRCode="TKNE" ServiceQuantity="1" Status="26">
+                  <ns4:Airline Code="CM"/>
+                  <ns4:Text>PTYMEX0120Y13AUG-1TESTING/JOHN.23021827734124C1</ns4:Text>
+                </ns4:SpecialServiceRequest>
+                <ns4:SpecialServiceRequest TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1" SSRCode="TKNZ" ServiceQuantity="1" Status="26">
+                  <ns4:Airline Code="CM"/>
+                  <ns4:Text>PTYMEX0120Y13AUG-1TESTING/JOHN.23021827734124C1</ns4:Text>
+                </ns4:SpecialServiceRequest>
+              </ns4:SpecialServiceRequests>
+              <ns4:OtherServiceInformations>
+                <ns4:OtherServiceInformation>
+                  <ns4:Airline Code="CM"/>
+                  <ns4:Text>TEST@TEST.COM</ns4:Text>
+                </ns4:OtherServiceInformation>
+              </ns4:OtherServiceInformations>
+              <ns4:Remarks>
+                <ns4:Remark>EML*TEST@TEST.COM</ns4:Remark>
+                <ns4:Remark>01 REMARKS ADDED BY PTY SU DO 09AUG 1315Z D13602</ns4:Remark>
+                <ns4:Remark>AUOGCM:18543881518-1</ns4:Remark>
+                <ns4:Remark>01 REMARKS ADDED BY PTY SU RO 09AUG 1408Z D13502</ns4:Remark>
+              </ns4:Remarks>
+            </ns4:SpecialReqDetails>
+          </ns4:TravelerInfo>
+          <ns4:Ticketing TicketingStatus="3">
+            <ns4:TicketAdvisory>FQR/XXXXXXXXXXXX1111/21827734124/0001//.00</ns4:TicketAdvisory>
+          </ns4:Ticketing>
+          <ns4:Ticketing TicketType="eTicket"/>
+          <ns4:BookingReferenceID Type="14" ID="AUOGCM"/>
+        </ns9:AirReservation>
+      </ns9:OTA_AirBookRS>
+    </ns8:displayBookingResponse>
+  </soap:Body>
+</soap:Envelope>

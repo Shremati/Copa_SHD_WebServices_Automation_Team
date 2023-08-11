@@ -39,7 +39,7 @@ public class create_booking_three_pax_with_membershipID extends FrameworkConstan
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
+                .body(SOAPRequest).log().body()
                 .when()
                 .post(getCreatebookingservice())
                 .then()

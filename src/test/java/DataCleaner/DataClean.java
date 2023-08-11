@@ -19,3 +19,5 @@ public class DataClean
     }
 
 }
+
+// create a new class for Employee

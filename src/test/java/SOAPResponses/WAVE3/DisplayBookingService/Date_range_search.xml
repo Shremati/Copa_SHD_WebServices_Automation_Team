@@ -1,0 +1,55 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayBookingByOptionsResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns12:OTA_ResRetrieveRS TimeStamp="2023-08-10T08:21:38" Version="4.000">
+        <ns12:Success/>
+        <ns12:ReservationsList>
+          <ns12:AirReservation BookingReferenceID="AU0CWV">
+            <ns12:FlightSegment FlightNumber="416" DepartureDateTime="2023-08-10T00:00:00" RPH="1">
+              <ns2:DepartureAirport LocationCode="BOG"/>
+              <ns2:ArrivalAirport LocationCode="PTY"/>
+              <ns4:MarketingAirline Code="CM"/>
+            </ns12:FlightSegment>
+            <ns12:TravelerName>
+              <ns2:GivenName>JANCTS</ns2:GivenName>
+              <ns2:Surname>SMITH</ns2:Surname>
+            </ns12:TravelerName>
+          </ns12:AirReservation>
+          <ns12:AirReservation BookingReferenceID="AU0CWV">
+            <ns12:FlightSegment FlightNumber="243" DepartureDateTime="2023-08-11T00:00:00" RPH="2">
+              <ns2:DepartureAirport LocationCode="PTY"/>
+              <ns2:ArrivalAirport LocationCode="BOG"/>
+              <ns4:MarketingAirline Code="CM"/>
+            </ns12:FlightSegment>
+            <ns12:TravelerName>
+              <ns2:GivenName>JANCTS</ns2:GivenName>
+              <ns2:Surname>SMITH</ns2:Surname>
+            </ns12:TravelerName>
+          </ns12:AirReservation>
+          <ns12:AirReservation BookingReferenceID="AU0CWV">
+            <ns12:FlightSegment FlightNumber="416" DepartureDateTime="2023-08-10T00:00:00" RPH="3">
+              <ns2:DepartureAirport LocationCode="BOG"/>
+              <ns2:ArrivalAirport LocationCode="PTY"/>
+              <ns4:MarketingAirline Code="CM"/>
+            </ns12:FlightSegment>
+            <ns12:TravelerName>
+              <ns2:GivenName>JANVNF</ns2:GivenName>
+              <ns2:Surname>SMITH</ns2:Surname>
+            </ns12:TravelerName>
+          </ns12:AirReservation>
+          <ns12:AirReservation BookingReferenceID="AU0CWV">
+            <ns12:FlightSegment FlightNumber="243" DepartureDateTime="2023-08-11T00:00:00" RPH="4">
+              <ns2:DepartureAirport LocationCode="PTY"/>
+              <ns2:ArrivalAirport LocationCode="BOG"/>
+              <ns4:MarketingAirline Code="CM"/>
+            </ns12:FlightSegment>
+            <ns12:TravelerName>
+              <ns2:GivenName>JANVNF</ns2:GivenName>
+              <ns2:Surname>SMITH</ns2:Surname>
+            </ns12:TravelerName>
+          </ns12:AirReservation>
+        </ns12:ReservationsList>
+      </ns12:OTA_ResRetrieveRS>
+    </ns8:displayBookingByOptionsResponse>
+  </soap:Body>
+</soap:Envelope>

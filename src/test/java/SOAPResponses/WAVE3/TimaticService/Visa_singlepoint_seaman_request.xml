@@ -1,0 +1,147 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:displayTimaticResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/EDS_TimaticRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:EDS_TimaticRS TimeStamp="2023-08-10T07:59:48" Version="4.000">
+        <ns5:Success/>
+        <ns5:TimaticResponse DisplayDate="2023-08-10T07:59:00">
+          <ns5:VisaHealthInformation>
+            <ns5:DocHolderNationality>
+              <ns3:Country Code="FR">FRANCE</ns3:Country>
+            </ns5:DocHolderNationality>
+            <ns5:CountryOfResidence>
+              <ns3:Country Code="US">USA</ns3:Country>
+            </ns5:CountryOfResidence>
+            <ns5:DestinationLocation PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="GB">UNITED KINGDOM</ns3:Country>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY MUST BE VALID FOR THE PERIOD OF INTENDED STAY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="PASSPORT EXEMPTIONS">
+                <Paragraph Name="1">
+                  <Text>PASSENGERS WITH A SEAMAN BOOK ISSUED BY ALGERIA, ANGOLA, ANTIGUA AND BARBUDA, AZERBAIJAN, BARBADOS, BELARUS, BELIZE, BRAZIL, BULGARIA, CAMEROON, CANADA, CUBA, CZECHIA, DENMARK, DJIBOUTI, DOMINICA, ESTONIA, FIJI, FINLAND, FRANCE, GHANA, GREECE, GRENADA, GUATEMALA, GUINEA-BISSAU, GUYANA, HONDURAS, ICELAND, INDIA, IRAN, IRAQ, IRELAND (REP.), ITALY, KYRGYZSTAN, LATVIA, LIBERIA, LITHUANIA, LUXEMBOURG, MALTA, MAURITIUS, MEXICO, MOLDOVA (REP.), MOROCCO, NORWAY, PANAMA, POLAND, PORTUGAL, ROMANIA, RUSSIAN FED., SEYCHELLES, SLOVENIA, SOLOMON ISL., SPAIN, SRI LANKA, ST. LUCIA, ST. VINCENT AND THE GRENADINES, SWEDEN, TAJIKISTAN, TANZANIA, TUNISIA, TURKIYE, UKRAINE, UNITED KINGDOM OR URUGUAY. THE SEAMAN BOOK MUST CONTAIN:</Text>
+                </Paragraph>
+                <Paragraph Name="1" ParagraphNumber="1">
+                  <Text>THE NAME AND TITLE OF THE ISSUING AUTHORITY, AND</Text>
+                </Paragraph>
+                <Paragraph Name="1" ParagraphNumber="2">
+                  <Text>THE DATE AND PLACE OF ISSUE, AND</Text>
+                </Paragraph>
+                <Paragraph Name="1" ParagraphNumber="3">
+                  <Text>A STATEMENT THAT THE DOCUMENT IS ISSUED FOR THE PURPOSE OF THE RELEVANT CONVENTION.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="VISA">
+                <Paragraph Name="1">
+                  <Text>WARNING: MERCHANT SEAMEN MUST TRAVEL ON DUTY AND HAVE A LETTER OF EMPLOYMENT OR A LETTER OF GUARANTEE ISSUED BY THE SHIPPING COMPANY.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+              <ns5:DestinationCountryInformation SubTitle="ADDITIONAL INFORMATION">
+                <Paragraph Name="1">
+                  <Text>FLIGHTS BETWEEN THE UNITED KINGDOM AND THE CHANNEL ISLANDS, IRELAND (REP.) AND ISLE OF MAN ARE TREATED AS DOMESTIC FLIGHTS, THEREFORE ARE NOT SUBJECT TO UK IMMIGRATION CONTROL.</Text>
+                </Paragraph>
+              </ns5:DestinationCountryInformation>
+            </ns5:DestinationLocation>
+            <ns5:TransitLocation VisaRequired="true" PassportRequired="true" PassportType="SEAMAN">
+              <ns3:Country Code="CN">PEOPLE'S REP. CHINA</ns3:Country>
+              <ns5:TransitCountryInformation SubTitle="PASSPORT">
+                <Paragraph Name="1">
+                  <Text>WHEN IN TRANSIT, PASSPORTS AND OTHER DOCUMENTS ACCEPTED FOR ENTRY MUST BE VALID FOR A MINIMUM OF 3 MONTHS FROM THE ARRIVAL DATE.</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="TWOV (TRANSIT WITHOUT VISA)">
+                <Paragraph Name="1">
+                  <Text> VISA REQUIRED, EXCEPT FOR PASSENGERS WITH A CONFIRMED ONWARD TICKET FOR A FLIGHT TO A THIRD COUNTRY WITHIN 24 HOURS. THEY MUST STAY IN THE INTERNATIONAL TRANSIT AREA OF THE AIRPORT AND HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+                <Paragraph Name="1" ParagraphNumber="1">
+                  <Text>THIS TWOV FACILITY DOES NOT APPLY AT FUZHOU (FOC), HUANGSHAN (TXN), MUDANJIANG (MDG), SHENZHEN (SZX), URUMQI (URC) AND YANJI (YNJ).</Text>
+                </Paragraph>
+                <Paragraph Name="1" ParagraphNumber="2">
+                  <Text>THIS TWOV FACILITY DOES NOT APPLY WHEN PASSENGERS ARRIVE ON A DIRECT FLIGHT FROM USA, GUAM OR NORTHERN MARIANA ISL. AND DEPART ON A DIRECT FLIGHT TO USA, GUAM OR NORTHERN MARIANA ISL. (JFK - PVG - GUM).</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="VISA">
+                <Paragraph Name="1">
+                  <Text>VISA REQUIRED, EXCEPT FOR NATIONALS OF FRANCE WITH A CONFIRMED ONWARD AIR, CRUISE OR TRAIN TICKET TO A THIRD COUNTRY WITHIN 144 HOURS, STARTING FROM 00:01 ON THE DAY FOLLOWING THE DAY OF ENTRY. THEY MUST:</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>ARRIVE AT AND DEPART FROM ONE OF THE FOLLOWING LOCATIONS: HANGZHOU (HGH), NANJING (NKG), NINGBO (NGB), SHANGHAI: HONGQIAO (SHA) AND PUDONG (PVG), SHANGHAI PORT INTERNATIONAL CRUISE TERMINAL, SHANGHAI WUSONGKOU (BAOSHAN) INTERNATIONAL CRUISE TERMINAL OR SHANGHAI RAILWAY STATION; AND</Text>
+                </Paragraph>
+                <Paragraph Name="3">
+                  <Text>HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+                <Paragraph Name="3" ParagraphNumber="1">
+                  <Text>THIS TWOV FACILITY DOES NOT APPLY WHEN PASSENGERS ARRIVE ON A DIRECT FLIGHT FROM USA, GUAM OR NORTHERN MARIANA ISL. AND DEPART ON A DIRECT FLIGHT TO USA, GUAM OR NORTHERN MARIANA ISL. (JFK - PVG - GUM). VISA REQUIRED, EXCEPT FOR NATIONALS OF FRANCE WITH A CONFIRMED ONWARD AIR, CRUISE OR TRAIN TICKET TO A THIRD COUNTRY WITHIN 144 HOURS, STARTING FROM 00:01 ON THE DAY FOLLOWING THE DAY OF ENTRY. THEY MUST:</Text>
+                </Paragraph>
+                <Paragraph Name="4">
+                  <Text>ARRIVE AT AND DEPART FROM ONE OF THE FOLLOWING LOCATIONS: BEIJING (PEK), DAXING (PKX), TIANJIN (TSN), SHIJIAZHUANG (SJW), BEIJING WEST RAILWAY STATION, TIANJIN INTERNATIONAL CRUISE HOME PORT OR QINHUANGDAO SEA PORT; AND</Text>
+                </Paragraph>
+                <Paragraph Name="5">
+                  <Text>HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+                <Paragraph Name="5" ParagraphNumber="1">
+                  <Text>THIS TWOV FACILITY DOES NOT APPLY WHEN PASSENGERS ARRIVE ON A DIRECT FLIGHT FROM USA, GUAM OR NORTHERN MARIANA ISL. AND DEPART ON A DIRECT FLIGHT TO USA, GUAM OR NORTHERN MARIANA ISL. (JFK - PVG - GUM). VISA REQUIRED, EXCEPT FOR NATIONALS OF FRANCE WITH A CONFIRMED ONWARD TICKET FOR A FLIGHT TO A THIRD COUNTRY WITHIN 144 HOURS, STARTING FROM 00:01 ON THE DAY FOLLOWING THE DAY OF ENTRY. THEY MUST:</Text>
+                </Paragraph>
+                <Paragraph Name="6">
+                  <Text>ARRIVE AT AND DEPART FROM ONE OF THE FOLLOWING TWO AIRPORTS: DALIAN (DLC) OR SHENYANG (SHE); AND</Text>
+                </Paragraph>
+                <Paragraph Name="7">
+                  <Text>HAVE DOCUMENTS REQUIRED FOR THE NEXT DESTINATION.</Text>
+                </Paragraph>
+                <Paragraph Name="7" ParagraphNumber="1">
+                  <Text>THIS TWOV FACILITY DOES NOT APPLY WHEN PASSENGERS ARRIVE ON A DIRECT FLIGHT FROM USA, GUAM OR NORTHERN MARIANA ISL. AND DEPART ON A DIRECT FLIGHT TO USA, GUAM OR NORTHERN MARIANA ISL. (JFK - PVG - GUM).</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+              <ns5:TransitCountryInformation SubTitle="WARNING">
+                <Paragraph Name="1">
+                  <Text>PASSENGERS MUST COMPLETE AN "EXIT/ENTRY HEALTH DECLARATION FORM" AND PRESENT A QR CODE BEFORE DEPARTURE. THE FORM CAN BE OBTAINED AT HTTPS://HTDECL.CHINAPORT.GOV.CN/HTDECLWEB/HOME/PAGES/INDEX/I NDEX.HTML OR FROM THE WECHAT APP 'CUSTOMS PASSENGER FINGERTIP SERVICE'.</Text>
+                </Paragraph>
+                <Paragraph Name="2">
+                  <Text>PASSENGERS ENTERING OR TRANSITING THROUGH CHINA (PEOPLE'S REP.) MUST HAVE A NEGATIVE COVID-19 RAPID ANTIGEN TEST (INCLUDING HOME TESTING KIT) TAKEN AT MOST 48 HOURS BEFORE DEPARTURE FROM THE FIRST EMBARKATION POINT. AIRLINES ARE NOT REQUIRED TO CHECK THE TEST RESULT.</Text>
+                </Paragraph>
+                <Paragraph Name="2" ParagraphNumber="1">
+                  <Text>THIS DOES NOT APPLY TO PASSENGERS YOUNGER THAN 3 YEARS.</Text>
+                </Paragraph>
+                <Paragraph Name="2" ParagraphNumber="2">
+                  <Text>THIS DOES NOT APPLY TO PASSENGERS ARRIVING ON A DIRECT FLIGHT FROM MACAO (SAR CHINA).</Text>
+                </Paragraph>
+                <Paragraph Name="2" ParagraphNumber="3">
+                  <Text>THIS DOES NOT APPLY TO PASSENGERS YOUNGER THAN 4 YEARS ARRIVING ON A DIRECT FLIGHT FROM HONG KONG (SAR CHINA).</Text>
+                </Paragraph>
+                <Paragraph Name="2" ParagraphNumber="4">
+                  <Text>THIS DOES NOT APPLY TO PASSENGERS ARRIVING FROM HONG KONG (SAR CHINA) WHO IN THE PAST 7 DAYS HAVE ONLY BEEN IN CHINA (PEOPLE'S REP.), HONG KONG (SAR CHINA) AND MACAO (SAR CHINA).</Text>
+                </Paragraph>
+                <Paragraph Name="3">
+                  <Text>ALL TRANSITING PASSENGERS ARE SUBJECT TO A CHECK BY IMMIGRATION. PASSENGERS IN TRANSIT MUST HOLD PASSPORTS OR OTHER DOCUMENTS ACCEPTED TO ENTER CHINA (PEOPLE'S REP.).</Text>
+                </Paragraph>
+                <Paragraph Name="4">
+                  <Text>FOR TWOV THROUGH CHENGDU (CTU): BEFORE DEPARTURE, A NOTIFICATION MUST BE SENT BY THE CARRIER TO IMMIGRATION AT SCBFGJ@SINA.CN .</Text>
+                </Paragraph>
+                <Paragraph Name="5">
+                  <Text>FOR TWOV THROUGH CHONGQING (CKG), NINGBO (NGB) OR XIAMEN (XMN) FOR A MAXIMUM STAY OF 144 HOURS: BEFORE DEPARTURE, A NOTIFICATION MUST BE SENT BY THE CARRIER TO IMMIGRATION.</Text>
+                </Paragraph>
+                <Paragraph Name="6">
+                  <Text>FOR TWOV THROUGH CHANGSHA (CSX) OR GUILIN (KWL) FOR A MAXIMUM STAY OF 72 HOURS: BEFORE DEPARTURE, A NOTIFICATION MUST BE SENT BY THE CARRIER TO IMMIGRATION.</Text>
+                </Paragraph>
+                <Paragraph Name="7">
+                  <Text>FOR TWOV THROUGH DALIAN (DLC) OR SHENZHEN (SZX): BEFORE DEPARTURE, A NOTIFICATION MUST BE SENT BY THE CARRIER TO IMMIGRATION.</Text>
+                </Paragraph>
+              </ns5:TransitCountryInformation>
+            </ns5:TransitLocation>
+            <ns5:VisitedLocation>
+              <ns3:Country Code="CA">CANADA</ns3:Country>
+            </ns5:VisitedLocation>
+          </ns5:VisaHealthInformation>
+        </ns5:TimaticResponse>
+        <ns5:Comment>ALSO CHECK DESTINATION INFORMATION BELOW</ns5:Comment>
+        <ns5:Comment/>
+        <ns5:Comment>SIMPLIFY YOUR REQUEST USE TIFA, TIFV AND TIFH</ns5:Comment>
+        <ns5:Comment>FULL TEXT AVAILABLE USE TIDFT</ns5:Comment>
+        <ns5:Comment>CHECK  T*NEWS - CHECK LATEST NEWS AND UPDATES ON TRAVEL</ns5:Comment>
+        <ns5:Comment>INFORMATION</ns5:Comment>
+        <ns5:Comment/>
+      </ns5:EDS_TimaticRS>
+    </ns4:displayTimaticResponse>
+  </soap:Body>
+</soap:Envelope>

@@ -90,9 +90,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Create_Booking_for_Group.xml";
 
-//        XMLParser.updateAttributeValue("air1:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1);
-
+        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),filepath1);
 
         wb.close();
 
@@ -112,13 +110,9 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
 
 
 
-        String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
-        System.out.print(PNR);
-        InputRow.getCell(3).setCellValue(PNR);
-        System.out.print(InputRow);
-
-
+        InputRow.getCell(11).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

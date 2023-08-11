@@ -81,24 +81,11 @@ public class Create_Booking_for_Group extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Create_Booking_for_Group.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),filepath1);
 
-
-
-
-
-
-
-
-        //        XMLParser.updateAttributeValueatIndex("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath(), 0);
-
-        //        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
@@ -116,22 +103,9 @@ public class Create_Booking_for_Group extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(2);
 
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
-
-//        InputRow.getCell(9).setCellValue(230 + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
-        String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
-
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-        System.out.print(PNR);
-        InputRow.getCell(3).setCellValue(PNR);
-        System.out.print(InputRow);
-//        System.out.println(Inpu);
-
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
-
+        InputRow.getCell(11).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

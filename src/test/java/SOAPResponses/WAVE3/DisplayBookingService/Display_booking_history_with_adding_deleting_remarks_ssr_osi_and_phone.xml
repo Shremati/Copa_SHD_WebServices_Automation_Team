@@ -1,0 +1,76 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayBookingHistoryResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns11:EDS_AirBookHistoryRS TimeStamp="2023-08-10T08:21:58" Version="4.000">
+        <ns11:Success/>
+        <ns11:BookingHistorys>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T08:21:00" AgentSine="RO" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="PTY" TerminalID="D13502"/>
+          </ns11:BookingHistory>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T08:21:00" AgentSine="RO" AgentDutyCode="SU" AirportCode="PTY" TerminalID="D13502">
+              <ns2:RequestorID Type="6" ID="AIRSOA CM"/>
+              <ns11:AirBookHistory/>
+            </ns11:HistoryCredit>
+          </ns11:BookingHistory>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T08:21:00" AgentSine="RO" AgentDutyCode="SU" AirportCode="PTY" TerminalID="D13701">
+              <ns2:RequestorID Type="6" ID="AIRSOA CM"/>
+              <ns11:AirBookHistory>
+                <ns11:SpecialReqDetails>
+                  <ns11:SpecialServiceRequests>
+                    <ns11:SpecialServiceRequest Operation="Add" SSRCode="WCHR" Status="11">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text>GUAPTY0389Y10AUG-1CARTMAN/ERIC.WHEEL CHAIR FOR PAX O</ns4:Text>
+                    </ns11:SpecialServiceRequest>
+                    <ns11:SpecialServiceRequest Operation="Add" SSRCode="WCHR" Status="99">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text>NE</ns4:Text>
+                    </ns11:SpecialServiceRequest>
+                    <ns11:SpecialServiceRequest Operation="Add" SSRCode="PETC" Status="11">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text>GUAPTY0389Y10AUG-1MARSH/STAN.PERRO</ns4:Text>
+                    </ns11:SpecialServiceRequest>
+                  </ns11:SpecialServiceRequests>
+                  <ns11:OtherServiceInformations>
+                    <ns11:OtherServiceInformation Operation="Cancel">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text> OTRO SERVICIO</ns4:Text>
+                    </ns11:OtherServiceInformation>
+                    <ns11:OtherServiceInformation Operation="Cancel">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text> INFORMACION DE OTROS SERVICIOS</ns4:Text>
+                    </ns11:OtherServiceInformation>
+                    <ns11:OtherServiceInformation Operation="Add">
+                      <ns4:Airline Code="CM"/>
+                      <ns4:Text> PRUEBAS DE CREACION DE OTROS SERVICIOS</ns4:Text>
+                    </ns11:OtherServiceInformation>
+                  </ns11:OtherServiceInformations>
+                  <ns11:Remarks>
+                    <ns11:Remark Operation="Add">OTRO REMARK</ns11:Remark>
+                    <ns11:Remark Operation="Delete">REMARK ONE</ns11:Remark>
+                    <ns11:Remark Operation="Delete">REMARK TWO</ns11:Remark>
+                    <ns11:Remark Operation="Delete">REMARK THREE</ns11:Remark>
+                    <ns11:Remark Operation="Delete">ORIGINALLY ADDED BY PTY SU RO 10AUG 0821Z D13502</ns11:Remark>
+                  </ns11:Remarks>
+                </ns11:SpecialReqDetails>
+              </ns11:AirBookHistory>
+            </ns11:HistoryCredit>
+          </ns11:BookingHistory>
+          <ns11:BookingHistory>
+            <ns11:HistoryCredit DateTimeModified="2023-08-10T08:21:00" AgentSine="RO" AgentDutyCode="SU" AirportCode="PTY" TerminalID="D13701">
+              <ns2:RequestorID Type="6" ID="AIRSOA CM"/>
+              <ns11:AirBookHistory>
+                <ns11:SpecialReqDetails>
+                  <ns11:SeatRequests>
+                    <ns11:SeatRequest Operation="Add" FlightNumber="389" SeatNumber="20F"/>
+                  </ns11:SeatRequests>
+                </ns11:SpecialReqDetails>
+              </ns11:AirBookHistory>
+            </ns11:HistoryCredit>
+          </ns11:BookingHistory>
+        </ns11:BookingHistorys>
+      </ns11:EDS_AirBookHistoryRS>
+    </ns8:displayBookingHistoryResponse>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:finalizeSessionBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000" TransactionIdentifier="CC08DAE4CMCMRPCT08C263CC3B">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirBookModifyRQ/>
+            </air:OTA_AirBookModifyRQ>
+        </cre:finalizeSessionBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

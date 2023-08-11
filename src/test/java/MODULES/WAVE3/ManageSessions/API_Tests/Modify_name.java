@@ -81,11 +81,7 @@ public class Modify_name extends FrameworkConstants {
 
         filepath1=getRequestDirectory()+"ManageSessions\\Modify_name.xml";
 
-        XMLParser.updateAttributeValueatIndex("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1,0);
-
-
-//        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-
+        XMLParser.updateAttributeValueatIndex("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),filepath1,0);
 
         wb.close();
 

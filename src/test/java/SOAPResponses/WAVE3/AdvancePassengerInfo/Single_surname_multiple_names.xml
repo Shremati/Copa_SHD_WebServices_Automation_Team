@@ -1,0 +1,19 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns5:displayAPIResponse xmlns:ns9="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirAPIDisplayRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/API/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirAPIReadRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:EDS_AirAPIDisplayRS TimeStamp="2023-08-11T13:31:59" Version="4.000" SequenceNmbr="1">
+        <ns6:Success/>
+        <ns6:Warnings>
+          <Warning Type="14" ShortText="RESPONSEFLTLVL:BGUEYH">1:PNR NOT FOUND</Warning>
+        </ns6:Warnings>
+        <ns6:PassengerInfo RPH="1">
+          <ns3:PassengerName>
+            <GivenName>JOHN/YOKO/JULIAN</GivenName>
+            <Surname>LENNON</Surname>
+          </ns3:PassengerName>
+          <ns3:BookingReferenceID Type="14" ID="BGUEYH"/>
+        </ns6:PassengerInfo>
+      </ns6:EDS_AirAPIDisplayRS>
+    </ns5:displayAPIResponse>
+  </soap:Body>
+</soap:Envelope>

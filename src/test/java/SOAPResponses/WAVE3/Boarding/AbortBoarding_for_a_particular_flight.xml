@@ -1,0 +1,16 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns5:boardingResponse xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirBoardingRS" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/Boarding/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirBoardingRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns7:EDS_AirBoardingRS TimeStamp="2023-08-10T07:53:24" Version="4.000">
+        <ns7:Success/>
+        <ns7:BoardingInformation>
+          <ns7:MessageFunction Function="AbortBoarding"/>
+          <ns7:FlightInfo BoardingOption="Seat">
+            <ns3:CarrierInfo FlightNumber="407" Code="cm"/>
+            <ns3:DepartureInformation DateOfDeparture="2023-08-10" LocationCode="GUA"/>
+          </ns7:FlightInfo>
+        </ns7:BoardingInformation>
+      </ns7:EDS_AirBoardingRS>
+    </ns5:boardingResponse>
+  </soap:Body>
+</soap:Envelope>

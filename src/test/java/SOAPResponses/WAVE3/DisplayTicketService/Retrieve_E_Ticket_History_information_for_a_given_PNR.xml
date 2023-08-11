@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:displayTicketHistoryResponse xmlns:ns14="http://schemas.eds.com/transportation/message/fares/price/common" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns12="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns10="http://www.iata.org/IATA/2007/00/ET_CommonTypes" xmlns:ns9="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRQ" xmlns:ns8="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns6="http://www.eds.com/AirlineSOASchema/DisplayTicketRS" xmlns:ns5="http://www.iata.org/IATA/2007/00/CommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/TicketHistoryRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/DisplayTicket/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_TicketHistoryRS TimeStamp="2023-08-10T07:54:53" Version="4.000">
+        <ns4:Errors>
+          <ns5:Error Type="12" ShortText="System Processing Error">:Dislay Ticket Error: (1) NO MATCH FOUND</ns5:Error>
+        </ns4:Errors>
+      </ns4:EDS_TicketHistoryRS>
+    </ns3:displayTicketHistoryResponse>
+  </soap:Body>
+</soap:Envelope>

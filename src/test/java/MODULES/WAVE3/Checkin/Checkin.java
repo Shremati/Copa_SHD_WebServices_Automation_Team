@@ -68,7 +68,7 @@ public class Checkin
 
         try
         {
-
+            throw new Exception("Not developed yet");
         }catch(Exception e)
         {
             failTest(e);

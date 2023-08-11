@@ -1,0 +1,215 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:getPassengerListResponse xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirportPassengerList/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirportListRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:EDS_AirportListRS EchoToken="Test_06" TimeStamp="2023-08-10T07:53:00" Version="4.000">
+        <ns5:Success/>
+        <ns5:AirportList>
+          <ns5:FlightInfo LandingCancelTerminationInd="false" LandingCanceInboundInd="false" LandingCancelOutboundInd="false" OpenSeatingModeInd="false" ManualSeatingModeInd="false" OpenForCheckInInd="true" CheckInRestrictedToThisDeptInd="false" RestrictedToBoardAgentInd="false" StandbyClearanceInd="false" ReadyForCloseInd="false" ClosedForDepartureInd="false" PostDepartureCompleteInd="false" APISFlightInd="false" RPH="1">
+            <ns6:CarrierInfo FlightNumber="389" Code="CM"/>
+            <ns6:DepartureInformation DateOfDeparture="2023-08-10" ScheduledDepartureTime="2023-08-10T07:22:00" EstimatedDepartureDateTime="2023-08-10T07:22:00" BoardingDateTime="2023-08-10T06:22:00" LocationCode="GUA" Gate="****"/>
+            <ns6:ArrivalInformation LocationCode="PTY"/>
+            <ns5:PassengerInfo RPH="1" InfantIndicator="false" APISCompletedIndicator="false">
+              <ns6:PassengerName>
+                <GivenName>ALEJANDRAMARIA</GivenName>
+                <Surname>FUENTES</Surname>
+              </ns6:PassengerName>
+              <ns5:PassengerFlightInfo DCS_PassengerRefNumber="136">
+                <ns6:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="false" ApisBypassedInd="true" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="false" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="false" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="true" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="true" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" BoardingInd="false" RequiredSeat="true"/>
+                <ns6:BookingInfo ResBookDesigCode="G">
+                  <ns6:BookingReferenceID Type="14" ID="AQZAD3"/>
+                  <ns6:FinalDestination LocationCode="PTY"/>
+                </ns6:BookingInfo>
+                <ns6:PassengerServiceInfo>
+                  <ns6:SpecialServiceRequest SSRCode="FQTR" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="UA"/>
+                    <ns3:Text>UARH999569-FUENTES/ALEJANDRAMARIA|01.01</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="DOCS" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/////17AUG97/F//FUENTES/ALEJANDRA/MARIA</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="CTCE" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="YY"/>
+                    <ns3:Text>/AMFT97//HOTMAIL.COM-1FUENTES/ALEJANDRAMARIA</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>ATO-CTO-RES OK TO MODIFY IF TKTED SEE GG ONE HELP</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>USING ONEPASS REWARD S125H</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="YY"/>
+                    <ns3:Text>E225H DEBITED/0160999673710/ALEJANDRAMARIA/1STOP</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                </ns6:PassengerServiceInfo>
+                <ns6:FrequentTravelerInfo ProgramID="UA" MembershipID="RH999569"/>
+                <ns6:ConnectingFlightInfo>
+                  <ns6:OutboundConnectingFlight FlightNumber="131" DateOfDeparture="2023-08-10T00:00:00">
+                    <ns6:CarrierCode Code="CM"/>
+                    <ns6:ArrivalAirport LocationCode="LIM"/>
+                  </ns6:OutboundConnectingFlight>
+                </ns6:ConnectingFlightInfo>
+              </ns5:PassengerFlightInfo>
+              <ns5:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+            </ns5:PassengerInfo>
+            <ns5:PassengerInfo RPH="2" InfantIndicator="false" APISCompletedIndicator="false">
+              <ns6:PassengerName>
+                <GivenName>MANANA</GivenName>
+                <Surname>GOGOLADZE</Surname>
+              </ns6:PassengerName>
+              <ns5:PassengerFlightInfo DCS_PassengerRefNumber="139">
+                <ns6:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="false" ApisBypassedInd="false" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="false" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="false" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="false" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="true" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" BoardingInd="false" RequiredSeat="true"/>
+                <ns6:BookingInfo ResBookDesigCode="A">
+                  <ns6:BookingReferenceID Type="14" ID="AX3GMK"/>
+                  <ns6:FinalDestination LocationCode="PTY"/>
+                </ns6:BookingInfo>
+                <ns6:PassengerServiceInfo>
+                  <ns6:SpecialServiceRequest SSRCode="CTCE" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/GOGIBEDASHVILILASHA//GMAIL.COM/EN</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                </ns6:PassengerServiceInfo>
+                <ns6:ConnectingFlightInfo>
+                  <ns6:InboundConnectingFlight FlightNumber="361">
+                    <ns6:CarrierCode Code="CM"/>
+                    <ns6:DepartureAirport LocationCode="MGA"/>
+                  </ns6:InboundConnectingFlight>
+                  <ns6:OutboundConnectingFlight FlightNumber="816" DateOfDeparture="2023-08-10T00:00:00">
+                    <ns6:CarrierCode Code="CM"/>
+                    <ns6:ArrivalAirport LocationCode="SAL"/>
+                  </ns6:OutboundConnectingFlight>
+                </ns6:ConnectingFlightInfo>
+              </ns5:PassengerFlightInfo>
+              <ns5:BaggageInfo PassengerRPH="2" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+            </ns5:PassengerInfo>
+            <ns5:PassengerInfo RPH="3" InfantIndicator="false" APISCompletedIndicator="false">
+              <ns6:PassengerName>
+                <GivenName>CINTHYAMMS</GivenName>
+                <Surname>SAAVEDRATELLEZ</Surname>
+              </ns6:PassengerName>
+              <ns5:PassengerFlightInfo DCS_PassengerRefNumber="117">
+                <ns6:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="false" ApisBypassedInd="true" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="true" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="false" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="false" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="true" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" BoardingInd="false" RequiredSeat="true"/>
+                <ns6:BookingInfo ResBookDesigCode="L">
+                  <ns6:BookingReferenceID Type="14" ID="ANT0T3"/>
+                  <ns6:FinalDestination LocationCode="PTY"/>
+                </ns6:BookingInfo>
+                <ns6:PassengerServiceInfo>
+                  <ns6:SpecialServiceRequest SSRCode="DOCS" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/////28SEP78/F//SAAVEDRA TELLEZ/CINTHYA/MADELINE</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="CTCE" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/MAIL//AREIN.DK</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="CTCM" Status="99">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>HK1 /4520302037</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                </ns6:PassengerServiceInfo>
+                <ns6:ConnectingFlightInfo>
+                  <ns6:OutboundConnectingFlight FlightNumber="6346" DateOfDeparture="2023-08-10T00:00:00">
+                    <ns6:CarrierCode Code="IB"/>
+                    <ns6:ArrivalAirport LocationCode="MAD"/>
+                  </ns6:OutboundConnectingFlight>
+                </ns6:ConnectingFlightInfo>
+              </ns5:PassengerFlightInfo>
+              <ns5:BaggageInfo PassengerRPH="3" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+            </ns5:PassengerInfo>
+            <ns5:PassengerInfo RPH="4" InfantIndicator="false" APISCompletedIndicator="false">
+              <ns6:PassengerName>
+                <GivenName>JUANPABLO</GivenName>
+                <Surname>SAFIEECHEVERRIA</Surname>
+              </ns6:PassengerName>
+              <ns5:PassengerFlightInfo DCS_PassengerRefNumber="118">
+                <ns6:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="false" ApisBypassedInd="true" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="false" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="false" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="true" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="true" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" BoardingInd="false" RequiredSeat="true"/>
+                <ns6:BookingInfo ResBookDesigCode="G">
+                  <ns6:BookingReferenceID Type="14" ID="AQZACJ"/>
+                  <ns6:FinalDestination LocationCode="PTY"/>
+                </ns6:BookingInfo>
+                <ns6:PassengerServiceInfo>
+                  <ns6:SpecialServiceRequest SSRCode="FQTR" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="UA"/>
+                    <ns3:Text>UASVS18843-SAFIEECHEVERRIA/JUANPABLO|01.01</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="DOCS" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/////04SEP97/M//SAFIEECHEVERRIA/JUAN/PABLO</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>ATO-CTO-RES OK TO MODIFY IF TKTED SEE GG ONE HELP</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>USING ONEPASS REWARD S125H</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="YY"/>
+                    <ns3:Text>E225H DEBITED/0160999673536/JUANPABLO/1STOP</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                </ns6:PassengerServiceInfo>
+                <ns6:FrequentTravelerInfo ProgramID="UA" MembershipID="SVS18843"/>
+                <ns6:ConnectingFlightInfo>
+                  <ns6:OutboundConnectingFlight FlightNumber="131" DateOfDeparture="2023-08-10T00:00:00">
+                    <ns6:CarrierCode Code="CM"/>
+                    <ns6:ArrivalAirport LocationCode="LIM"/>
+                  </ns6:OutboundConnectingFlight>
+                </ns6:ConnectingFlightInfo>
+              </ns5:PassengerFlightInfo>
+              <ns5:BaggageInfo PassengerRPH="4" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+            </ns5:PassengerInfo>
+            <ns5:PassengerInfo RPH="5" InfantIndicator="false" APISCompletedIndicator="false">
+              <ns6:PassengerName>
+                <GivenName>LILIANODETHMRS</GivenName>
+                <Surname>SALGUEROTOBAR</Surname>
+              </ns6:PassengerName>
+              <ns5:PassengerFlightInfo DCS_PassengerRefNumber="106">
+                <ns6:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="true" ApisBypassedInd="false" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="false" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="true" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="false" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="true" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" BoardingInd="false" RequiredSeat="false"/>
+                <ns6:BookingInfo ResBookDesigCode="I">
+                  <ns6:BookingReferenceID Type="14" ID="BBLWVX"/>
+                  <ns6:FinalDestination LocationCode="PTY"/>
+                </ns6:BookingInfo>
+                <ns6:SeatBoardingInfo SeatNumber="01A" Cabin="C" SeatStatus="1" NeedThruSeatInd="false">
+                  <ns6:DepartureAirport LocationCode="GUA"/>
+                  <ns6:ArrivalAirport LocationCode="PTY"/>
+                </ns6:SeatBoardingInfo>
+                <ns6:PassengerServiceInfo>
+                  <ns6:SpecialServiceRequest SSRCode="CTCE" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/PAOLO..BRAZZELLI//HOTMAIL.COM</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="CTCM" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>/393472205083</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="FQTR" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="LH"/>
+                    <ns3:Text>LH992002324136254-SALGUEROTOBAR/LILIANODETHMRS|01.01</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:SpecialServiceRequest SSRCode="ESST" ServiceQuantity="1" Status="26">
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>GUAPTY0389I10AUG-1SALGUEROTOBAR/LILIANODETHMRS.SEAT/1AC</ns3:Text>
+                  </ns6:SpecialServiceRequest>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="YY"/>
+                    <ns3:Text>YES PERSONAL DATA FOR EMAIL</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                  <ns6:OtherServiceInfo>
+                    <ns3:Airline Code="CM"/>
+                    <ns3:Text>AUTH/0B5/XXXXXX///USD0//V</ns3:Text>
+                  </ns6:OtherServiceInfo>
+                </ns6:PassengerServiceInfo>
+                <ns6:FrequentTravelerInfo ProgramID="LH" MembershipID="992002324136254"/>
+              </ns5:PassengerFlightInfo>
+              <ns5:BaggageInfo PassengerRPH="5" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+            </ns5:PassengerInfo>
+          </ns5:FlightInfo>
+        </ns5:AirportList>
+      </ns5:EDS_AirportListRS>
+    </ns4:getPassengerListResponse>
+  </soap:Body>
+</soap:Envelope>

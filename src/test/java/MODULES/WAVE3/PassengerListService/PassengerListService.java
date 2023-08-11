@@ -2,6 +2,7 @@ package MODULES.WAVE3.PassengerListService;
 
 import MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbound_connection_option;
 import MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request;
+import MODULES.WAVE3.PassengerListService.API_Tests.Pax_List_Request_Positive_Non_Revenue;
 import MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_option;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
@@ -52,6 +53,19 @@ public class PassengerListService {
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
+        }
+
+    }
+    @Description("Pax List Request Positive Non Revenue")
+    @Test
+    public void Scenario4() {
+
+        try {
+            Pax_List_Request_Positive_Non_Revenue.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 4 failed due to :" + e);
         }
 
     }

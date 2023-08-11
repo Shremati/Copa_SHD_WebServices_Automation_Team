@@ -1,0 +1,90 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.1">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <!--CANCEL_BOOKING-->
+                <!--Required data: the recloc as value in BookingReferenceID.ID-->
+                <air:AirBookModifyRQ ModificationType="1">
+                    <air1:BookingReferenceID Type="14" ID="E9LYXY"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-10-10T13:16:51Z" CreateDateTime="2023-10-10T13:16:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2012-02-23T06:40:00" ArrivalDateTime="2012-02-23T09:50:00" RPH="1" FlightNumber="100" ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="DEN"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2012-02-25T07:00:00" ArrivalDateTime="2012-02-25T08:20:00" RPH="2" FlightNumber="400" ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sat">
+                                    <com:DepartureAirport LocationCode="DEN"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PTC_FareBreakdowns>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2012-02-22" NotValidAfter="2012-02-24">XY</n2:FareBasisCode>
+                                    <n2:FareBasisCode FlightSegmentRPH="2" NotValidBefore="2012-02-24" NotValidAfter="2012-02-26">YZ</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="12.00"/>
+                                        <n2:Tax TaxCode="CD" Amount="8.50"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="130.50" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>FARE CALC ADT1END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                                <n2:Endorsements>
+                                    <n2:Endorsement>ENDOSO UNO</n2:Endorsement>
+                                </n2:Endorsements>
+                            </n2:PTC_FareBreakdown>
+                        </n2:PTC_FareBreakdowns>
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>BOOKING</com:GivenName>
+                                <com:Surname>CANCEL</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212" LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:Remarks>
+                                <n3:Remark>FOR CANCEL BOOKING TEST</n3:Remark>
+                            </n3:Remarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="E9LYXY" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

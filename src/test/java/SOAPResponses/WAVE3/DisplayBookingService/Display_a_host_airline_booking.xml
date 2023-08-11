@@ -1,0 +1,64 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayBookingResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns9:OTA_AirBookRS TimeStamp="2023-08-10T10:55:48" Version="4.000">
+        <ns9:Success/>
+        <ns9:AirReservation CreateDateTime="2023-08-10T10:55:00Z" LastModified="2023-08-10T10:55:46Z">
+          <ns4:AirItinerary>
+            <ns4:OriginDestinationOptions>
+              <ns4:OriginDestinationOption>
+                <ns4:FlightSegment ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri" FlightNumber="389" DepartureDateTime="2023-08-11T07:22:00" ArrivalDateTime="2023-08-11T10:54:00" RPH="1">
+                  <ns2:DepartureAirport LocationCode="GUA"/>
+                  <ns2:ArrivalAirport LocationCode="PTY"/>
+                  <ns4:MarketingAirline Code="CM"/>
+                </ns4:FlightSegment>
+              </ns4:OriginDestinationOption>
+              <ns4:OriginDestinationOption>
+                <ns4:FlightSegment ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sun" FlightNumber="380" DepartureDateTime="2023-08-13T08:06:00" ArrivalDateTime="2023-08-13T09:32:00" RPH="2">
+                  <ns2:DepartureAirport LocationCode="PTY"/>
+                  <ns2:ArrivalAirport LocationCode="GUA"/>
+                  <ns4:MarketingAirline Code="CM"/>
+                </ns4:FlightSegment>
+              </ns4:OriginDestinationOption>
+            </ns4:OriginDestinationOptions>
+          </ns4:AirItinerary>
+          <ns4:PriceInfo>
+            <ns4:PTC_FareBreakdowns>
+              <ns4:PTC_FareBreakdown FareQuoteRefNumber="1">
+                <ns4:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                <ns4:FareBasisCodes>
+                  <ns4:FareBasisCode FlightSegmentRPH="1">YAAAOZ1F</ns4:FareBasisCode>
+                  <ns4:FareBasisCode FlightSegmentRPH="2">YAAAOZ1F</ns4:FareBasisCode>
+                </ns4:FareBasisCodes>
+                <ns4:PassengerFare>
+                  <ns4:BaseFare Amount="1770.00" CurrencyCode="USD"/>
+                  <ns4:Taxes>
+                    <ns4:Tax TaxCode="AH" Amount="1.25"/>
+                  </ns4:Taxes>
+                  <ns4:TotalFare Amount="1771.25" CurrencyCode="USD"/>
+                  <ns4:UnstructuredFareCalc>SALUDOS</ns4:UnstructuredFareCalc>
+                </ns4:PassengerFare>
+                <ns4:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+              </ns4:PTC_FareBreakdown>
+            </ns4:PTC_FareBreakdowns>
+            <ns4:PriceRequestInformation PricingSource="Private" SaleCountry="PTY" QuotedDateTime="2023-08-10T10:55:00">
+              <ns4:NegotiatedFareCode>230011</ns4:NegotiatedFareCode>
+            </ns4:PriceRequestInformation>
+          </ns4:PriceInfo>
+          <ns4:TravelerInfo>
+            <ns4:AirTraveler PassengerTypeCode="ADT">
+              <ns4:PersonName>
+                <ns2:GivenName>PAX</ns2:GivenName>
+                <ns2:Surname>LOUIS</ns2:Surname>
+              </ns4:PersonName>
+              <ns4:Telephone LocationCode="BOG" PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1414"/>
+              <ns4:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+            </ns4:AirTraveler>
+          </ns4:TravelerInfo>
+          <ns4:Ticketing TicketingStatus="3"/>
+          <ns4:BookingReferenceID Type="14" ID="AVFCCW"/>
+        </ns9:AirReservation>
+      </ns9:OTA_AirBookRS>
+    </ns8:displayBookingResponse>
+  </soap:Body>
+</soap:Envelope>

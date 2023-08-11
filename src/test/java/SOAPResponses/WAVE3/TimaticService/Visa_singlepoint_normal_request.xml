@@ -1,0 +1,12 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:displayTimaticResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/EDS_TimaticRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:EDS_TimaticRS TimeStamp="2023-08-10T07:59:47" Version="4.000">
+        <ns5:Errors>
+          <Error Type="12" ShortText="10027">System Processing Error:Invalid Airline Vendor ID</Error>
+          <Error Type="10" ShortText="10056">Invalid request format.</Error>
+        </ns5:Errors>
+      </ns5:EDS_TimaticRS>
+    </ns4:displayTimaticResponse>
+  </soap:Body>
+</soap:Envelope>

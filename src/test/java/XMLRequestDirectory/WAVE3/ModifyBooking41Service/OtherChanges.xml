@@ -1,0 +1,220 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="5">
+                    <!--OTHER-->
+                    <!--Information needed:
+                          Action                   Data
+                          applyItineraryChanges    AirItinerary    [OriginDestinationOptions]
+                          modifyTravelerInfo       TravelerInfo    [SpecialReqDetails, Telephone]
+                          modifyPricing            PriceInfo       [PTC_FareBreakdowns]-->
+                    <!--AirItinerary for cancel, modify or insert segments-->
+                    <!--Use an OriginDestinationOption for each itinerary to cancel/modify/insert.-->
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <!--To add new segmens to the reservation use the status:
+                                    11, NN   NEED
+                                  and all required data.-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-01-23T10:23:00" RPH="2" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="3" Status="11">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <!--modify/add a fare quote-->
+                    <air1:PriceInfo>
+                        <air1:PTC_FareBreakdowns>
+                            <air1:PTC_FareBreakdown>
+                                <air1:PassengerTypeQuantity Code="ADT" Quantity="3"/>
+                                <air1:FareBasisCodes>
+                                    <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-20" NotValidAfter="2023-01-20">ONE</air1:FareBasisCode>
+                                    <air1:FareBasisCode FlightSegmentRPH="2" NotValidBefore="2023-01-20" NotValidAfter="2023-01-20">TWO</air1:FareBasisCode>
+                                </air1:FareBasisCodes>
+                                <air1:PassengerFare>
+                                    <air1:BaseFare Amount="125.00" CurrencyCode="USD"/>
+                                    <air1:Taxes>
+                                        <!--due SHARES accept up to 3 taxes the tax 3 and 4 will convert to XT tax-->
+                                        <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                        <air1:Tax TaxCode="CD" Amount="11.40"/>
+                                        <air1:Tax TaxCode="MX" Amount="10.00"/>
+                                        <air1:Tax TaxCode="FX" Amount="15.00"/>
+                                    </air1:Taxes>
+                                    <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                                </air1:PassengerFare>
+                                <!--this fare quote applies for passenger 1, 2 and 3-->
+                                <air1:TravelerRefNumber RPH="1"/>
+                                <air1:TravelerRefNumber RPH="2"/>
+                                <air1:TravelerRefNumber RPH="3"/>
+                                <air1:Endorsements>
+                                    <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                                </air1:Endorsements>
+                            </air1:PTC_FareBreakdown>
+                        </air1:PTC_FareBreakdowns>
+                    </air1:PriceInfo>
+                    <!--Modify Traveler Information: OSI, SSR, Seats, Remarks, Phones. Add and Delete operations are supported.-->
+                    <air1:TravelerInfo>
+                        <!--Phone contacts-->
+                        <!--PhoneUseType     SHARES Type
+                                   0                N
+                                   2                A
+                                   3                B
+                                   4                H-->
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <!--delete the default contact phone and add a new one-->
+                            <air1:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " Operation="Delete" LocationCode="WEB"/>
+                            <air1:Telephone PhoneUseType="4" AreaCityCode="222" PhoneNumber="765-4321" Operation="Add" LocationCode="LAX"/>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:SpecialReqDetails>
+                            <!--Seats-->
+                            <!--Seat preferences:
+                                  CODE_SMOKING_WINDOW     = "25"
+                                  CODE_SMOKING_AISLE      = "23"
+                                  CODE_SMOKING_BULKHEAD   = "28"
+                                  CODE_SMOKING_ANY        = "29"
+                                  CODE_NON_SMOKE_ANY      = "19"
+                                  CODE_NON_SMOKE_BULKHEAD = "18"
+                                  CODE_NON_SMOKE_AISLE    = "13"
+                                  CODE_NON_SMOKE_WINDOW   = "15"
+
+                                  If the flight belongs to HA then it will be assigned by ASA.
+                                     To cancel an ASA seat provide the Status as a CANCEL request. XX, 1
+
+                                  If the flight belongs to OA then it will be added as SSR.
+                                     To delete a OA seat just provide a status code different of NN,11-->
+                            <air1:SeatRequests>
+                                <!--Assign seat to passengers for first segment-->
+                                <air1:SeatRequest SeatPreference="1" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                                <air1:SeatRequest SeatNumber="20A" TravelerRefNumberRPHList="2" FlightRefNumberRPHList="1"/>
+                            </air1:SeatRequests>
+                            <!--to delete a SSR just provide a status code different of NN,11-->
+                            <air1:SpecialServiceRequests>
+                                <air1:SpecialServiceRequest SSRCode="WCHR" ServiceQuantity="1" Status="1" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>PTYLAX0302Y20JAN-1BIANCHI/ROBERTO.SILLA</air1:Text>
+                                </air1:SpecialServiceRequest>
+                                <air1:SpecialServiceRequest SSRCode="PETC" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>PET FOR PAX ONE</air1:Text>
+                                </air1:SpecialServiceRequest>
+                            </air1:SpecialServiceRequests>
+                            <!--Add/Delete OSIs-->
+                            <air1:OtherServiceInformations>
+                                <air1:OtherServiceInformation Operation="Delete">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>DELETE THIS ITEM</air1:Text>
+                                </air1:OtherServiceInformation>
+                                <air1:OtherServiceInformation Operation="Delete">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>WE GONNA DELETE THIS ITEM TOO</air1:Text>
+                                </air1:OtherServiceInformation>
+                                <air1:OtherServiceInformation Operation="Add">
+                                    <air1:Airline Code="CM"/>
+                                    <air1:Text>THIS IS A NEW ITEM</air1:Text>
+                                </air1:OtherServiceInformation>
+                            </air1:OtherServiceInformations>
+                            <!--Remarks-->
+                            <air1:Remarks>
+                                <air1:Remark Operation="Delete">REMARK ONE</air1:Remark>
+                                <air1:Remark Operation="Add">A NEW REMARK</air1:Remark>
+                                <air1:Remark Operation="Add">ANOTHER REMARK</air1:Remark>
+                            </air1:Remarks>
+                        </air1:SpecialReqDetails>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="A1UTIT"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2011-10-10T14:12:34Z" CreateDateTime="2011-10-10T14:12:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-20T18:47:00" ArrivalDateTime="2023-01-20T23:22:00" RPH="1" FlightNumber="302" ResBookDesigCode="Y" NumberInParty="3" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>ALEX</com:GivenName>
+                                <com:Surname>ROIVAS</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>PIOUS</com:GivenName>
+                                <com:Surname>AUGUSTUS</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>ROBERTO</com:GivenName>
+                                <com:Surname>BIANCHI</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="3" SurnameRefNumber="3"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:SpecialServiceRequests>
+                                <n3:SpecialServiceRequest SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1">
+                                    <n3:Airline Code="CM"/>
+                                    <n3:Text>PTYLAX0302Y20JAN-1BIANCHI/ROBERTO.SILLA</n3:Text>
+                                </n3:SpecialServiceRequest>
+                            </n3:SpecialServiceRequests>
+                            <n3:OtherServiceInformations>
+                                <n3:OtherServiceInformation>
+                                    <n3:Airline Code="CM"/>
+                                    <n3:Text>DELETE THIS ITEM</n3:Text>
+                                </n3:OtherServiceInformation>
+                                <n3:OtherServiceInformation>
+                                    <n3:Airline Code="CM"/>
+                                    <n3:Text>OTHER SERVICE INFORMATION</n3:Text>
+                                </n3:OtherServiceInformation>
+                                <n3:OtherServiceInformation>
+                                    <n3:Airline Code="CM"/>
+                                    <n3:Text>WE GONNA DELETE THIS ITEM TOO</n3:Text>
+                                </n3:OtherServiceInformation>
+                            </n3:OtherServiceInformations>
+                            <n3:Remarks>
+                                <n3:Remark>REMARK ONE</n3:Remark>
+                                <n3:Remark>REMARK TWO</n3:Remark>
+                                <n3:Remark>FOR OTHER CHANGES TEST</n3:Remark>
+                            </n3:Remarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="A1UTIT" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

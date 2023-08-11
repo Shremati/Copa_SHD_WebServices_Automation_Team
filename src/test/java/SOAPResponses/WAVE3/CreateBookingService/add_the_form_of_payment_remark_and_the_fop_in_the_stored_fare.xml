@@ -1,0 +1,66 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:createBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirBookRS TimeStamp="2023-08-10T10:02:54" Version="4.000">
+        <ns5:Success/>
+        <ns5:Warnings>
+          <Warning Type="13" Tag="PaymentDetail" RecordID="1">Error Response to Add Form Of Payment Transaction -  (1) INVALID CREDIT CARD NUMBER</Warning>
+        </ns5:Warnings>
+        <ns5:AirReservation CreateDateTime="2023-08-10T10:02:00Z" LastModified="2023-08-10T10:02:54Z">
+          <ns3:AirItinerary>
+            <ns3:OriginDestinationOptions>
+              <ns3:OriginDestinationOption>
+                <ns3:FlightSegment ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri" FlightNumber="415" DepartureDateTime="2023-08-11T12:02:00" ArrivalDateTime="2023-08-11T13:43:00" RPH="1">
+                  <DepartureAirport LocationCode="PTY"/>
+                  <ArrivalAirport LocationCode="BOG"/>
+                  <ns3:MarketingAirline Code="CM"/>
+                  <ns3:Comment>ETKT ELIGIBLE</ns3:Comment>
+                  <ns3:Comment>ADV PAX FLT ARRIVES TERMINAL-1</ns3:Comment>
+                  <ns3:Comment>/PASSENGER CHECK IN /CM TERMINAL 2</ns3:Comment>
+                </ns3:FlightSegment>
+              </ns3:OriginDestinationOption>
+            </ns3:OriginDestinationOptions>
+          </ns3:AirItinerary>
+          <ns3:PriceInfo>
+            <ns3:PriceRequestInformation PricingSource="Private">
+              <ns3:NegotiatedFareCode>230011</ns3:NegotiatedFareCode>
+            </ns3:PriceRequestInformation>
+          </ns3:PriceInfo>
+          <ns3:TravelerInfo>
+            <ns3:AirTraveler PassengerTypeCode="ADT">
+              <ns3:PersonName>
+                <GivenName>MANU</GivenName>
+                <Surname>ANU</Surname>
+              </ns3:PersonName>
+              <ns3:Telephone LocationCode="PTY" PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
+              <ns3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+            </ns3:AirTraveler>
+            <ns3:AirTraveler PassengerTypeCode="ADT">
+              <ns3:PersonName>
+                <GivenName>BANU</GivenName>
+                <Surname>SONU</Surname>
+              </ns3:PersonName>
+              <ns3:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+            </ns3:AirTraveler>
+            <ns3:SpecialReqDetails>
+              <ns3:Remarks>
+                <ns3:Remark>ADDING FOP RMK AND FOP TO THE STORED FARE</ns3:Remark>
+                <ns3:Remark>02 REMARKS ADDED BY PTY SU RO 10AUG 1002Z D13503</ns3:Remark>
+              </ns3:Remarks>
+            </ns3:SpecialReqDetails>
+          </ns3:TravelerInfo>
+          <ns3:Fulfillment>
+            <ns3:PaymentDetails>
+              <ns3:PaymentDetail Remark="RMK">
+                <PaymentCard CardCode="VI" MaskedCardNumber="XXXXXXXXXXXX1111" ExtendPaymentIndicator="true" ExpireDate="1212"/>
+                <PaymentAmount ApprovalCode="12345"/>
+              </ns3:PaymentDetail>
+            </ns3:PaymentDetails>
+          </ns3:Fulfillment>
+          <ns3:Ticketing TicketingStatus="3"/>
+          <ns3:BookingReferenceID Type="14" ID="AVE1YG"/>
+        </ns5:AirReservation>
+      </ns5:OTA_AirBookRS>
+    </ns4:createBookingResponse>
+  </soap:Body>
+</soap:Envelope>

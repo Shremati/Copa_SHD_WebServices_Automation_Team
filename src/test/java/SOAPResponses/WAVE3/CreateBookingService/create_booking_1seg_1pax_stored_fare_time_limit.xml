@@ -1,0 +1,71 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:createBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirBookRS TimeStamp="2023-08-10T11:07:33" Version="4.000">
+        <ns5:Success/>
+        <ns5:AirReservation CreateDateTime="2023-08-10T11:07:00Z" LastModified="2023-08-10T11:07:33Z">
+          <ns3:AirItinerary>
+            <ns3:OriginDestinationOptions>
+              <ns3:OriginDestinationOption>
+                <ns3:FlightSegment ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri" FlightNumber="433" DepartureDateTime="2023-08-11T08:52:00" ArrivalDateTime="2023-08-11T10:56:00" RPH="1">
+                  <DepartureAirport LocationCode="MIA"/>
+                  <ArrivalAirport LocationCode="PTY"/>
+                  <ns3:MarketingAirline Code="CM"/>
+                  <ns3:Comment>ETKT ELIGIBLE</ns3:Comment>
+                  <ns3:Comment>SECURE FLIGHT</ns3:Comment>
+                  <ns3:Comment>ADV PAX FLT DEPARTS TERMINAL-J</ns3:Comment>
+                </ns3:FlightSegment>
+              </ns3:OriginDestinationOption>
+            </ns3:OriginDestinationOptions>
+          </ns3:AirItinerary>
+          <ns3:PriceInfo>
+            <ns3:PTC_FareBreakdowns>
+              <ns3:PTC_FareBreakdown FareQuoteRefNumber="1">
+                <ns3:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                <ns3:FareBasisCodes>
+                  <ns3:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2024-01-24" NotValidAfter="2024-01-31">YAAAOY1F</ns3:FareBasisCode>
+                </ns3:FareBasisCodes>
+                <ns3:PassengerFare>
+                  <ns3:BaseFare Amount="1279.00" CurrencyCode="USD"/>
+                  <ns3:Taxes>
+                    <ns3:Tax TaxCode="AH" Amount="1.25"/>
+                  </ns3:Taxes>
+                  <ns3:TotalFare Amount="1280.25" CurrencyCode="USD"/>
+                  <ns3:UnstructuredFareCalc>MY FARE CALC LINE END</ns3:UnstructuredFareCalc>
+                  <ns3:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="2" UnitOfMeasure="PC"/>
+                  <ns3:TourCode>IT6ZZ1TOURUSA</ns3:TourCode>
+                  <ns3:TPA_Extensions>
+                    <ns3:SalesLocation SalesIndicator="true" TicketingIndicator="true"/>
+                  </ns3:TPA_Extensions>
+                </ns3:PassengerFare>
+                <ns3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+              </ns3:PTC_FareBreakdown>
+            </ns3:PTC_FareBreakdowns>
+            <ns3:PriceRequestInformation PricingSource="Private" SaleCountry="PTY" QuotedDateTime="2023-08-10T11:07:00">
+              <ns3:NegotiatedFareCode>230011</ns3:NegotiatedFareCode>
+            </ns3:PriceRequestInformation>
+          </ns3:PriceInfo>
+          <ns3:TravelerInfo>
+            <ns3:AirTraveler PassengerTypeCode="ADT">
+              <ns3:PersonName>
+                <GivenName>PHILLIP</GivenName>
+                <Surname>MORRIS</Surname>
+              </ns3:PersonName>
+              <ns3:Telephone LocationCode="PTY" PhoneUseType="4" AreaCityCode="555" PhoneNumber="123456789"/>
+              <ns3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+            </ns3:AirTraveler>
+          </ns3:TravelerInfo>
+          <ns3:Fulfillment>
+            <ns3:PaymentDetails>
+              <ns3:PaymentDetail Remark="FQ">
+                <Cash CashIndicator="true"/>
+              </ns3:PaymentDetail>
+            </ns3:PaymentDetails>
+          </ns3:Fulfillment>
+          <ns3:Ticketing TicketTimeLimit="2023-08-10T04:37:00" TicketingStatus="1"/>
+          <ns3:BookingReferenceID Type="14" ID="AVFCVY"/>
+        </ns5:AirReservation>
+      </ns5:OTA_AirBookRS>
+    </ns4:createBookingResponse>
+  </soap:Body>
+</soap:Envelope>

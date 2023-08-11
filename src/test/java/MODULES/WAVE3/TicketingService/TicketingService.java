@@ -43,6 +43,18 @@ public class TicketingService {
 
 
     }
+    @Description("Print an Eticket")
+    @Test
+    public void Scenario3() {
+
+        try {
+            Print_an_eticket.Execute();
+
+        } catch (Exception e) {
+            System.out.println("SCENARIO 3 failed due to :" + e);
+        }
+
+    }
 
 
     @Description("Reissue - add collect with credit card")
@@ -60,19 +72,8 @@ public class TicketingService {
 
     }
 
-    //    @Description("Print an Eticket")
-//    @Test
-//    public void Scenario3() {
-//
-//        try {
-//            Print_an_eticket.Execute();
-//
-//        } catch (Exception e) {
-//            System.out.println("SCENARIO 3 failed due to :" + e);
-//        }
-//
-//    }
-//
+
+
     @Description("Issue bulk ticket for a PNR with two pax")
     @Test
     public void Scenario5() {
@@ -104,14 +105,14 @@ public class TicketingService {
 
     @Description("Void Error - no valid coupons to void (ticket already voided)")
     @Test
-    public void Scenario8() {
+    public void Scenario7() {
 
         try {
             Issue_ticket_for_a_booking_with_an_infant.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 8 failed due to :" + e);
+            System.out.println("SCENARIO 7 failed due to :" + e);
         }
 
     }

@@ -1,0 +1,134 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="5">
+                    <!--OTHER-->
+                    <!--Information needed:
+                          Action                   Data
+                          applyItineraryChanges    AirItinerary    [OriginDestinationOptions]
+                          modifyTravelerInfo       TravelerInfo    [SpecialReqDetails, Telephone]
+                          modifyPricing            PriceInfo       [PTC_FareBreakdowns]-->
+                    <!--AirItinerary for cancel, modify or insert segments-->
+                    <!--Use one OriginDestinationOption for each itinerary to cancel/modify/insert.-->
+                    <air1:AirItinerary>
+                        <air1:OriginDestinationOptions>
+                            <!--To modify segments we need only the RPH and the new status.-->
+                            <!--Some action codes:
+                                 2, XL   CANCELED_WL
+                                 8, IS   NOT_HELD_SELL
+                                 9, LL   LIST
+                                 13, SS   SOLD
+                                 14, FS   FREESALE
+                                 15, PN   PENDING
+                                 16, XK   CANCELED
+                                 17, KK   CONFIRMING
+                                 18, KL   CONFIRMED_LIST
+                                 19, NO   NO_ACTION
+                                 20, UU   UNABLE_LIST
+                                 22, US   UNBL_SELL_LIST
+                                 23, UC   UNABLE_CLOSED
+                                 24, HL   HAVE_LISTED
+                                 26, HK   CONFIRMED
+                                 27, RR   RECONFIRMED
+                                 34, MM   STAFF_REQUEST
+                                 36, SC   SCHEDULE_CHG
+                                 37, WK   SCHEDULE_WK-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-01-20T22:41:00" ArrivalDateTime="2023-01-20T08:11:00" RPH="2" FlightNumber="473" ResBookDesigCode="Y" NumberInParty="1" Status="27" E_TicketEligibility="Eligible" DepartureDay="Sun">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <!--To cancel a segment use this status:
+                                    1, XX    CANCEL
+                                  We need to provide RPH too, the other data is ignored but the schema requires it.-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-01-21T11:50:00" ArrivalDateTime="2023-01-21T16:19:00" RPH="1" FlightNumber="472" ResBookDesigCode="Y" NumberInParty="1" Status="1" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <!--To add new segmens to the reservation use the status:
+                                    11, NN   NEED
+                                  and all required data.-->
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-02-02T00:52:00" RPH="2" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                            <air1:OriginDestinationOption>
+                                <air1:FlightSegment DepartureDateTime="2023-02-04T07:41:00" RPH="3" FlightNumber="809" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="JFK"/>
+                                    <air1:MarketingAirline Code="CM"/>
+                                </air1:FlightSegment>
+                            </air1:OriginDestinationOption>
+                        </air1:OriginDestinationOptions>
+                    </air1:AirItinerary>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="A1V5RX"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-10-10T13:35:48Z" CreateDateTime="2023-10-10T13:35:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-20T22:41:00" ArrivalDateTime="2023-01-20T08:11:00" RPH="1" FlightNumber="473" ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-21T11:50:00" ArrivalDateTime="2023-01-21T16:19:00" RPH="2" FlightNumber="472" ResBookDesigCode="Y" NumberInParty="1" Status="26" E_TicketEligibility="Eligible" DepartureDay="Sat">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>PHILLIP</com:GivenName>
+                                <com:Surname>MORRIS</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:Remarks>
+                                <n3:Remark>FOR APPLY ITINERARY CHANGES TEST</n3:Remark>
+                            </n3:Remarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="A1V5RX" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

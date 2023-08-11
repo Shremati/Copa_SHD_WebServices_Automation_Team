@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:issueTicketResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/TicketingRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_TicketingRS EchoToken="Test_1" TimeStamp="2023-08-10T09:52:01" Version="4.000">
+        <ns4:Errors>
+          <Error Type="10" ShortText="10056" Tag="RecordLocator">Required data missing: Record Locator</Error>
+        </ns4:Errors>
+      </ns4:EDS_TicketingRS>
+    </ns3:issueTicketResponse>
+  </soap:Body>
+</soap:Envelope>

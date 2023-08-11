@@ -1,0 +1,33 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:getAirInventoryResponse xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirInventoryRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirInventory/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirInventoryRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_AirInventoryRS TimeStamp="2023-08-10T07:52:43" Version="4.000">
+        <ns4:Success/>
+        <ns4:InventoryFlights>
+          <ns4:InventoryFlight>
+            <ns4:ErrorFlightInd>true</ns4:ErrorFlightInd>
+            <ns4:FlightNumber>0407</ns4:FlightNumber>
+            <ns4:AirlineCode Code="CM"/>
+            <ns4:FlightDate>2023-08-10</ns4:FlightDate>
+            <ns4:FlightErrorText>INVLD CTY/AIRPORT CODE</ns4:FlightErrorText>
+            <ns4:OriginLocation/>
+            <ns4:DestinationLocation/>
+            <ns4:FactExists>false</ns4:FactExists>
+            <ns4:FlifoExists>false</ns4:FlifoExists>
+            <ns4:HardBlockType/>
+            <ns4:InventoryRemark/>
+            <ns4:InventoryLeg>
+              <ns5:LegNumber>0</ns5:LegNumber>
+              <ns5:OriginLocation/>
+              <ns5:DestinationLocation/>
+              <ns5:DepartureTime>07:52:43</ns5:DepartureTime>
+              <ns5:ArrivalTime>07:52:43</ns5:ArrivalTime>
+              <ns5:InventoryEquipment>N/A</ns5:InventoryEquipment>
+            </ns4:InventoryLeg>
+            <ns4:InventorySegment/>
+          </ns4:InventoryFlight>
+        </ns4:InventoryFlights>
+      </ns4:EDS_AirInventoryRS>
+    </ns3:getAirInventoryResponse>
+  </soap:Body>
+</soap:Envelope>

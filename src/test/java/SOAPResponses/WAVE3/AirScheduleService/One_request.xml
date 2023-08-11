@@ -1,0 +1,51 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:getScheduleDisplayResponse xmlns:ns11="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirDetailsRS" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirDetailsRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirScheduleRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/AirSchedule/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirScheduleRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirScheduleRS EchoToken="Test_2" TimeStamp="2023-08-10T07:57:58" Version="4.000">
+        <ns5:Success/>
+        <ns5:OriginDestinationOptions>
+          <ns5:OriginDestinationOption>
+            <ns5:FlightSegment JourneyDuration="PT3H52M" FlightNumber="407" DepartureDateTime="2023-08-12T04:51:00" ArrivalDateTime="2023-08-12T08:23:00" StopQuantity="0" RPH="1">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <Equipment AirEquipType="738"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns5:FlightSegment>
+          </ns5:OriginDestinationOption>
+          <ns5:OriginDestinationOption>
+            <ns5:FlightSegment JourneyDuration="PT3H52M" FlightNumber="389" DepartureDateTime="2023-08-12T07:22:00" ArrivalDateTime="2023-08-12T10:54:00" StopQuantity="0" RPH="2">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <Equipment AirEquipType="738"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns5:FlightSegment>
+          </ns5:OriginDestinationOption>
+          <ns5:OriginDestinationOption>
+            <ns5:FlightSegment JourneyDuration="PT3H51M" FlightNumber="384" DepartureDateTime="2023-08-12T13:18:00" ArrivalDateTime="2023-08-12T16:49:00" StopQuantity="0" RPH="3">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <Equipment AirEquipType="73G"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns5:FlightSegment>
+          </ns5:OriginDestinationOption>
+          <ns5:OriginDestinationOption>
+            <ns5:FlightSegment JourneyDuration="PT3H49M" FlightNumber="361" DepartureDateTime="2023-08-12T16:54:00" ArrivalDateTime="2023-08-12T20:23:00" StopQuantity="0" RPH="4">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <Equipment AirEquipType="739"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns5:FlightSegment>
+          </ns5:OriginDestinationOption>
+          <ns5:OriginDestinationOption>
+            <ns5:FlightSegment JourneyDuration="PT6H44M" FlightNumber="392" DepartureDateTime="2023-08-12T09:18:00" ArrivalDateTime="2023-08-12T14:22:00" StopQuantity="1" RPH="5">
+              <DepartureAirport LocationCode="GUA"/>
+              <ArrivalAirport LocationCode="PTY"/>
+              <Equipment AirEquipType="738"/>
+              <ns3:MarketingAirline Code="CM"/>
+            </ns5:FlightSegment>
+          </ns5:OriginDestinationOption>
+        </ns5:OriginDestinationOptions>
+      </ns5:OTA_AirScheduleRS>
+    </ns4:getScheduleDisplayResponse>
+  </soap:Body>
+</soap:Envelope>

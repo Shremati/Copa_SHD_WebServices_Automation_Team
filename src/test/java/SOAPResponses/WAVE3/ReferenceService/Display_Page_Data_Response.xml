@@ -1,0 +1,54 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:getReferenceResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/ScreenTextRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Reference/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_ReferenceRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:OTA_ScreenTextRS TimeStamp="2023-08-10T07:59:26" Version="4.000">
+        <ns4:Success/>
+        <ns4:TextScreens>
+          <ns4:TextScreen>
+            <ns4:TextData>CM DATA PAGE      ASIS A BORDO          CAT:A08 SUB:B01 PGE:C01</ns4:TextData>
+            <ns4:TextData/>
+            <ns4:TextData>1</ns4:TextData>
+            <ns4:TextData>2</ns4:TextData>
+            <ns4:TextData>3                               UPDATED:10AUG17 -GP-</ns4:TextData>
+            <ns4:TextData>4                               REFERENCE:CP-SV002</ns4:TextData>
+            <ns4:TextData>5</ns4:TextData>
+            <ns4:TextData>6                   *ASISTENCIA A BORDO*</ns4:TextData>
+            <ns4:TextData>7</ns4:TextData>
+            <ns4:TextData>8 COPA AIRLINES OFRECE ASISTENCIA ABORDO A NUESTROS CLIENTES</ns4:TextData>
+            <ns4:TextData>9 DISCAPACITADOS  SEMI AMBULATORIO).</ns4:TextData>
+            <ns4:TextData>10 NUESTROS CLIENTES PUEDEN SOLICITAR INSTRUCCIONES DE</ns4:TextData>
+            <ns4:TextData>11 SEGURIDAD INDIVIDUALES PARA GARANTIZAR QUE ESTEN</ns4:TextData>
+            <ns4:TextData>12 CORRECTAMENTE INFORMADO SOBRE INSTRUCCIONES DE SEGURIDAD.</ns4:TextData>
+            <ns4:TextData>13 ESTAS INSTRUCCIONES INDIVIDUALES PUEDEN INCLUIR UNA</ns4:TextData>
+            <ns4:TextData>14 EXPLICACION DE DONDE Y CUANDO SALIR  EN CASO DE ABORDAJE..</ns4:TextData>
+            <ns4:TextData>15 EMERGICA..ETC.) Y UN CUESTIONARIO PARA QUE SEA COMPLETADO</ns4:TextData>
+            <ns4:TextData>16 POR EL CLIENTE ACERCA DE LA MANERA MAS ADECUADA DE</ns4:TextData>
+            <ns4:TextData>17 AYUDARLO/LA.</ns4:TextData>
+            <ns4:TextData>18</ns4:TextData>
+            <ns4:TextData>19                     -CONDICIONES-</ns4:TextData>
+            <ns4:TextData>20</ns4:TextData>
+            <ns4:TextData>21 NUESTRO PERSONAL A BORDO OFRECERA ASISTENCIA A LOS CLIENTES</ns4:TextData>
+            <ns4:TextData>22 SEMI AMBULATORIO EN LAS SIGUIENTES OCASIONES:</ns4:TextData>
+            <ns4:TextData>23 - PARA MOVERSE HACIA Y DESDE SU ASIENTO DURANTE EL</ns4:TextData>
+            <ns4:TextData>24   ABORDAJE Y EL DESEMBARQUE.</ns4:TextData>
+            <ns4:TextData>25 - DESDE Y HACIA EL BANO A BORDO.</ns4:TextData>
+            <ns4:TextData>26 - PARA CARGAR Y DESCARGAR EQUIPAJE DE MANO Y OTROS APARATOS</ns4:TextData>
+            <ns4:TextData>27   ORTOPEDICOS GUARDADOS A BORDO DEL AVION.</ns4:TextData>
+            <ns4:TextData>28 - CON LOS PREPARATIVOS DE LAS COMIDAS..ABRIENDO PAQUETES</ns4:TextData>
+            <ns4:TextData>29   E IDENTIFICANDO LOS ARTICULOS.</ns4:TextData>
+            <ns4:TextData>30</ns4:TextData>
+            <ns4:TextData>31       ********************************************</ns4:TextData>
+            <ns4:TextData>32</ns4:TextData>
+            <ns4:TextData>33  NUESTRO PERSONAL A BORDO NO PUEDE AYUDAR CON:</ns4:TextData>
+            <ns4:TextData>34  -NINGUN SERVICIO MEDICO</ns4:TextData>
+            <ns4:TextData>35  -DENTRO DEL BANO</ns4:TextData>
+            <ns4:TextData>36  -CON LA ALIMENTACION EN SI</ns4:TextData>
+            <ns4:TextData>37</ns4:TextData>
+            <ns4:TextData>38</ns4:TextData>
+            <ns4:TextData>END OF DATA PAGE</ns4:TextData>
+          </ns4:TextScreen>
+        </ns4:TextScreens>
+      </ns4:OTA_ScreenTextRS>
+    </ns3:getReferenceResponse>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:displaySupervisorMessageResponse xmlns:ns21="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns20="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns11="http://www.eds.com/AirlineSOASchema/QueueRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirDisplayQueueRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/Queue/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/QueueRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns11:EDS_QueueRS TimeStamp="2023-08-10T07:57:49" Version="4.000">
+        <ns11:Success/>
+        <ns11:MessageInfo>Q TRANSFER COMPLETE FOR 30JUN</ns11:MessageInfo>
+        <ns11:MessageInfo>1 TRANSFERED/     78 RETURNED</ns11:MessageInfo>
+      </ns11:EDS_QueueRS>
+    </ns4:displaySupervisorMessageResponse>
+  </soap:Body>
+</soap:Envelope>

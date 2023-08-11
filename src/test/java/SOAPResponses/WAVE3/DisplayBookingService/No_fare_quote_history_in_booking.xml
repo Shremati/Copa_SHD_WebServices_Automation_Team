@@ -1,0 +1,17 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns8:displayFareQuoteHistoryResponse xmlns:ns22="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns21="http://www.opentravel.org/OTA/2003/05/PkgCommonTypes" xmlns:ns20="http://www.eds.com/AirlineSOASchema/HistoryRS" xmlns:ns19="http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes" xmlns:ns18="http://www.opentravel.org/OTA/2003/05/HotelPreferences" xmlns:ns17="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ns16="http://www.opentravel.org/OTA/2003/05/CommonPrefs" xmlns:ns15="http://www.opentravel.org/OTA/2003/05/Profile" xmlns:ns14="http://www.opentravel.org/OTA/2003/05/HotelCommonTypes" xmlns:ns13="http://www.opentravel.org/OTA/2003/05/HotelReservation" xmlns:ns12="http://www.opentravel.org/OTA/2003/05/ResRetrieveRS" xmlns:ns11="http://www.eds.com/AirlineSOASchema/AirBookHistoryRS" xmlns:ns10="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns9="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns8="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/RailCommonTypes" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/VehRetResRQ" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns20:EDS_HistoryRS TimeStamp="2023-08-10T08:21:51" Version="4.000">
+        <Success/>
+        <HistoryItems>
+          <HistoryItem TimeModified="2023-08-10T08:21:00Z" ActiveFareInd="true" AgentSine="RO" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="PTY" TerminalID="D13401">
+            <HistoryLine>MANUALPRICE- N1.1</HistoryLine>
+          </HistoryItem>
+          <HistoryItem TimeModified="2023-08-10T08:21:00Z" ActiveFareInd="true" AgentSine="RO" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="PTY" TerminalID="D13401">
+            <HistoryLine>MANUALPRICE- N2.1</HistoryLine>
+          </HistoryItem>
+        </HistoryItems>
+      </ns20:EDS_HistoryRS>
+    </ns8:displayFareQuoteHistoryResponse>
+  </soap:Body>
+</soap:Envelope>

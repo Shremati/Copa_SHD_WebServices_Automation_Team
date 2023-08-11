@@ -1,0 +1,46 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:modifyAPI>
+            <air:EDS_AirAPIModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:PassengerInfo RPH="1" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>ONE</com:GivenName>
+                        <com:Surname>PAX</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="AJAFYH"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" SurnameBookedNumber="2">
+                    <air1:PassengerName>
+                        <com:GivenName>TWO</com:GivenName>
+                        <com:Surname>PAX</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="AJAFYH"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                    <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        <air1:API_Info DocHolderNationality="US" Operation="Delete"/>
+                        <air1:API_Info DocType="2" DocIssueCountry="GB"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                        <air1:API_Info DocHolderNationality="US" Operation="Delete"/>
+                        <air1:API_Info DocType="2" DocIssueCountry="GB"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+                    <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        <air1:API_Info DocHolderNationality="US" Operation="Delete"/>
+                        <air1:API_Info DocType="2" DocIssueCountry="GB"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                        <air1:API_Info DocHolderNationality="US" Operation="Delete"/>
+                        <air1:API_Info DocType="2" DocIssueCountry="GB"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+            </air:EDS_AirAPIModifyRQ>
+        </api:modifyAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

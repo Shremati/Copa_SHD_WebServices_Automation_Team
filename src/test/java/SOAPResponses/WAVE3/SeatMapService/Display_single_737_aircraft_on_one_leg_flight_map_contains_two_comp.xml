@@ -1,0 +1,12 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:retrieveFlightSeatMapResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirSeatMapRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/SeatMap/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirSeatMapRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirSeatMapRS TimeStamp="2023-08-10T07:57:57" Version="4.000">
+        <ns5:Success/>
+        <ns5:Warnings>
+          <Warning Type="13" ShortText="10043" RecordID="1">INVLD FLT NUMBER/DATE  361 11AUG PTY&gt;</Warning>
+        </ns5:Warnings>
+      </ns5:OTA_AirSeatMapRS>
+    </ns4:retrieveFlightSeatMapResponse>
+  </soap:Body>
+</soap:Envelope>

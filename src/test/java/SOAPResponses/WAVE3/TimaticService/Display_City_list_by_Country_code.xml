@@ -1,0 +1,152 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:displayTimaticResponse xmlns:ns8="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns7="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns5="http://www.eds.com/AirlineSOASchema/EDS_TimaticRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:EDS_TimaticRS TimeStamp="2023-08-10T07:59:34" Version="4.000">
+        <ns5:Success/>
+        <ns5:TimaticResponse>
+          <ns5:CityCountryListDisplay>
+            <ns5:CountryItem CountryCode="FR" CountryName="FRANCE">
+              <ns5:CityCode LocationCode="AGF"/>
+              <ns5:CityCode LocationCode="AHZ"/>
+              <ns5:CityCode LocationCode="AJA"/>
+              <ns5:CityCode LocationCode="ANE"/>
+              <ns5:CityCode LocationCode="ANG"/>
+              <ns5:CityCode LocationCode="AUR"/>
+              <ns5:CityCode LocationCode="AVN"/>
+              <ns5:CityCode LocationCode="BES"/>
+              <ns5:CityCode LocationCode="BIA"/>
+              <ns5:CityCode LocationCode="BIQ"/>
+              <ns5:CityCode LocationCode="BOD"/>
+              <ns5:CityCode LocationCode="BOR"/>
+              <ns5:CityCode LocationCode="BOU"/>
+              <ns5:CityCode LocationCode="BVA"/>
+              <ns5:CityCode LocationCode="BVE"/>
+              <ns5:CityCode LocationCode="BYF"/>
+              <ns5:CityCode LocationCode="BZR"/>
+              <ns5:CityCode LocationCode="CCF"/>
+              <ns5:CityCode LocationCode="CDG"/>
+              <ns5:CityCode LocationCode="CEQ"/>
+              <ns5:CityCode LocationCode="CER"/>
+              <ns5:CityCode LocationCode="CFE"/>
+              <ns5:CityCode LocationCode="CFR"/>
+              <ns5:CityCode LocationCode="CHR"/>
+              <ns5:CityCode LocationCode="CLY"/>
+              <ns5:CityCode LocationCode="CMF"/>
+              <ns5:CityCode LocationCode="CMR"/>
+              <ns5:CityCode LocationCode="CQF"/>
+              <ns5:CityCode LocationCode="CVF"/>
+              <ns5:CityCode LocationCode="DCM"/>
+              <ns5:CityCode LocationCode="DIJ"/>
+              <ns5:CityCode LocationCode="DLE"/>
+              <ns5:CityCode LocationCode="DNR"/>
+              <ns5:CityCode LocationCode="DOL"/>
+              <ns5:CityCode LocationCode="EBU"/>
+              <ns5:CityCode LocationCode="EDM"/>
+              <ns5:CityCode LocationCode="EGC"/>
+              <ns5:CityCode LocationCode="ENC"/>
+              <ns5:CityCode LocationCode="EPL"/>
+              <ns5:CityCode LocationCode="ETZ"/>
+              <ns5:CityCode LocationCode="EVX"/>
+              <ns5:CityCode LocationCode="FNI"/>
+              <ns5:CityCode LocationCode="FRJ"/>
+              <ns5:CityCode LocationCode="FSC"/>
+              <ns5:CityCode LocationCode="GNB"/>
+              <ns5:CityCode LocationCode="IDY"/>
+              <ns5:CityCode LocationCode="JAH"/>
+              <ns5:CityCode LocationCode="JLP"/>
+              <ns5:CityCode LocationCode="LAI"/>
+              <ns5:CityCode LocationCode="LBG"/>
+              <ns5:CityCode LocationCode="LBI"/>
+              <ns5:CityCode LocationCode="LBY"/>
+              <ns5:CityCode LocationCode="LDE"/>
+              <ns5:CityCode LocationCode="LEH"/>
+              <ns5:CityCode LocationCode="LIG"/>
+              <ns5:CityCode LocationCode="LIL"/>
+              <ns5:CityCode LocationCode="LME"/>
+              <ns5:CityCode LocationCode="LPY"/>
+              <ns5:CityCode LocationCode="LRH"/>
+              <ns5:CityCode LocationCode="LRT"/>
+              <ns5:CityCode LocationCode="LTQ"/>
+              <ns5:CityCode LocationCode="LTT"/>
+              <ns5:CityCode LocationCode="LYN"/>
+              <ns5:CityCode LocationCode="LYS"/>
+              <ns5:CityCode LocationCode="MCU"/>
+              <ns5:CityCode LocationCode="MLH"/>
+              <ns5:CityCode LocationCode="MPL"/>
+              <ns5:CityCode LocationCode="MRS"/>
+              <ns5:CityCode LocationCode="MVV"/>
+              <ns5:CityCode LocationCode="MXN"/>
+              <ns5:CityCode LocationCode="NCE"/>
+              <ns5:CityCode LocationCode="NCY"/>
+              <ns5:CityCode LocationCode="NTE"/>
+              <ns5:CityCode LocationCode="OBS"/>
+              <ns5:CityCode LocationCode="ORE"/>
+              <ns5:CityCode LocationCode="ORY"/>
+              <ns5:CityCode LocationCode="PAR"/>
+              <ns5:CityCode LocationCode="PGF"/>
+              <ns5:CityCode LocationCode="PGX"/>
+              <ns5:CityCode LocationCode="PIS"/>
+              <ns5:CityCode LocationCode="PLY"/>
+              <ns5:CityCode LocationCode="POX"/>
+              <ns5:CityCode LocationCode="PRP"/>
+              <ns5:CityCode LocationCode="PUF"/>
+              <ns5:CityCode LocationCode="QJZ"/>
+              <ns5:CityCode LocationCode="QNL"/>
+              <ns5:CityCode LocationCode="QVI"/>
+              <ns5:CityCode LocationCode="QXB"/>
+              <ns5:CityCode LocationCode="QXG"/>
+              <ns5:CityCode LocationCode="RCO"/>
+              <ns5:CityCode LocationCode="RDZ"/>
+              <ns5:CityCode LocationCode="RHE"/>
+              <ns5:CityCode LocationCode="RNE"/>
+              <ns5:CityCode LocationCode="RNS"/>
+              <ns5:CityCode LocationCode="RYN"/>
+              <ns5:CityCode LocationCode="SBK"/>
+              <ns5:CityCode LocationCode="SNR"/>
+              <ns5:CityCode LocationCode="SXB"/>
+              <ns5:CityCode LocationCode="SXD"/>
+              <ns5:CityCode LocationCode="TGF"/>
+              <ns5:CityCode LocationCode="TLN"/>
+              <ns5:CityCode LocationCode="TLS"/>
+              <ns5:CityCode LocationCode="TNF"/>
+              <ns5:CityCode LocationCode="TUF"/>
+              <ns5:CityCode LocationCode="UIP"/>
+              <ns5:CityCode LocationCode="URO"/>
+              <ns5:CityCode LocationCode="VAF"/>
+              <ns5:CityCode LocationCode="VAZ"/>
+              <ns5:CityCode LocationCode="VHY"/>
+              <ns5:CityCode LocationCode="VNE"/>
+              <ns5:CityCode LocationCode="VYN"/>
+              <ns5:CityCode LocationCode="XCR"/>
+              <ns5:CityCode LocationCode="XDB"/>
+              <ns5:CityCode LocationCode="XDT"/>
+              <ns5:CityCode LocationCode="XER"/>
+              <ns5:CityCode LocationCode="XGB"/>
+              <ns5:CityCode LocationCode="XHK"/>
+              <ns5:CityCode LocationCode="XIZ"/>
+              <ns5:CityCode LocationCode="XOP"/>
+              <ns5:CityCode LocationCode="XPG"/>
+              <ns5:CityCode LocationCode="XPJ"/>
+              <ns5:CityCode LocationCode="XRF"/>
+              <ns5:CityCode LocationCode="XSH"/>
+              <ns5:CityCode LocationCode="XVS"/>
+              <ns5:CityCode LocationCode="XWG"/>
+              <ns5:CityCode LocationCode="XYD"/>
+              <ns5:CityCode LocationCode="XYL"/>
+              <ns5:CityCode LocationCode="XZI"/>
+              <ns5:CityCode LocationCode="XZN"/>
+              <ns5:CityCode LocationCode="XZV"/>
+              <ns5:CityCode LocationCode="ZFJ"/>
+              <ns5:CityCode LocationCode="ZFQ"/>
+              <ns5:CityCode LocationCode="ZLN"/>
+              <ns5:CityCode LocationCode="ZYN"/>
+            </ns5:CountryItem>
+          </ns5:CityCountryListDisplay>
+        </ns5:TimaticResponse>
+        <ns5:Comment>CHECK  T*NEWS - CHECK LATEST NEWS AND UPDATES ON TRAVEL</ns5:Comment>
+        <ns5:Comment>INFORMATION</ns5:Comment>
+        <ns5:Comment/>
+      </ns5:EDS_TimaticRS>
+    </ns4:displayTimaticResponse>
+  </soap:Body>
+</soap:Envelope>
