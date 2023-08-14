@@ -72,7 +72,7 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
 
         String filepath1;

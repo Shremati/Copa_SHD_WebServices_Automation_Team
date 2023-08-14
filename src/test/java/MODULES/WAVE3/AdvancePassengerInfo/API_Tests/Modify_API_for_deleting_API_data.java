@@ -75,7 +75,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
 
         String filepath1;
