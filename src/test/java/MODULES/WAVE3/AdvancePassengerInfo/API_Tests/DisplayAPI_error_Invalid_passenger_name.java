@@ -74,7 +74,7 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
 
         XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
 

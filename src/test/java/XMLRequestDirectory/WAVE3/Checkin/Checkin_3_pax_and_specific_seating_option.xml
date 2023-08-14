@@ -1,0 +1,65 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <chec:checkIn>
+            <air:EDS_AirCheckInRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:MessageFunction Function="CheckIn"/>
+                <air:FlightInfo RPH="1">
+                    <com1:CarrierInfo Code="CM" FlightNumber="243"/>
+                    <com1:DepartureInformation DateOfDeparture="2023-03-13T07:51:00" LocationCode="PTY"/>
+                </air:FlightInfo>
+                <air:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>HELLO</com:GivenName>
+                        <com:Surname>JOKER</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="F"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" GivenNameRefNumber="2" SurnameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>MISTER</com:GivenName>
+                        <com:Surname>JOKER</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="M"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="3" GivenNameRefNumber="3" SurnameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>BEEM</com:GivenName>
+                        <com:Surname>JOKER</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="M"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                    <com1:SeatBoardingInfo SeatNumber="29A"/>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+                    <com1:SeatBoardingInfo SeatNumber="29B"/>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo PassengerRPH="3" FlightRPH="1">
+                    <com1:SeatBoardingInfo SeatNumber="29C"/>
+                </air:PassengerFlightInfo>
+                <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="1">
+                    <com1:CheckedBaggageDetails>
+                        <com1:BagTagDetails SerialNumber="002314" BagTagCount="1" CarrierCode="CM"/>
+                    </com1:CheckedBaggageDetails>
+                    <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="10"/>
+                </air:BaggageInfo>
+                <air:BaggageInfo PassengerRPH="2" CheckedBagCountTotal="1">
+                    <com1:CheckedBaggageDetails>
+                        <com1:BagTagDetails SerialNumber="002315" BagTagCount="1" CarrierCode="CM"/>
+                    </com1:CheckedBaggageDetails>
+                    <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="20"/>
+                </air:BaggageInfo>
+                <air:BaggageInfo PassengerRPH="3" CheckedBagCountTotal="1">
+                    <com1:CheckedBaggageDetails>
+                        <com1:BagTagDetails SerialNumber="002316" BagTagCount="1" CarrierCode="CM"/>
+                    </com1:CheckedBaggageDetails>
+                    <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="14"/>
+                </air:BaggageInfo>
+            </air:EDS_AirCheckInRQ>
+        </chec:checkIn>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,12 +1,15 @@
-package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
+package MODULES.WAVE3.Checkin.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,16 +20,18 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class issue_ticket_adjust_flight_number_and_flight_date extends FrameworkConstants
-{
+public class Display_APIS_Thru_pax extends FrameworkConstants {
+
 
     public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+
         UpdatePayload();
 
-//                       ********** Reading the xml request file **********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
@@ -36,13 +41,15 @@ public class issue_ticket_adjust_flight_number_and_flight_date extends Framework
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getIssueticketservice())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -54,12 +61,9 @@ public class issue_ticket_adjust_flight_number_and_flight_date extends Framework
         writer.write("");
         writer.close();
 
-
         excelwriter();
 
     }
-
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -67,18 +71,23 @@ public class issue_ticket_adjust_flight_number_and_flight_date extends Framework
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
+        XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\issue_ticket_adjust_flight_number_and_flight_date.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Display_APIS_Thru_pax.xml";
 
-
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(20).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(9).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValue("air:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:OperatingAirline","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:PassengerInfo","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
+
     }
 
 
@@ -90,12 +99,17 @@ public class issue_ticket_adjust_flight_number_and_flight_date extends Framework
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFSheet sheet = wb.getSheet("CheckIn");
+        XSSFRow InputRow=sheet.getRow(11);
 
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(21).setCellValue(TicketNumber);
 
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
+        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+        String AgencyName2 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),2);
+
+        InputRow.getCell(18).setCellValue(AgencyName);
+        InputRow.getCell(19).setCellValue(AgencyName1);
+        InputRow.getCell(21).setCellValue(AgencyName2);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -110,4 +124,5 @@ public class issue_ticket_adjust_flight_number_and_flight_date extends Framework
         writer.close();
 
     }
+
 }

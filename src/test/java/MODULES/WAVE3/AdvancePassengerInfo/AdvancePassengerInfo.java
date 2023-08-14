@@ -1,9 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo;
 
-import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.DisplayAPI_error_Invalid_passenger_name;
-import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.Passengers_in_different_booking_in_single_request;
-import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.Single_Pax;
-import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.Single_surname_multiple_names;
+import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -63,6 +60,32 @@ public class AdvancePassengerInfo {
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 4 failed due to :" + e);
+        }
+    }
+
+    @Description("Collect_API_for_a_Single_passenger")
+    @Test
+    public void Scenario5() {
+        try {
+
+            Collect_API_for_a_Single_passenger.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 5 failed due to :" + e);
+        }
+    }
+
+    @Description("Collect_API_for_a_Single_passenger")
+    @Test
+    public void Scenario6() {
+        try {
+
+            Modify_API_for_deleting_API_data.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 6 failed due to :" + e);
         }
     }
 }

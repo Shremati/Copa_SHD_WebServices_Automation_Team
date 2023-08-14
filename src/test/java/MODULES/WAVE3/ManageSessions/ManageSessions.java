@@ -31,7 +31,7 @@ public class ManageSessions {
 
     }
 
-    @Description("Modify_name")
+    @Description("Create a booking for a group")
     @Test
     public void Scenario2() {
 

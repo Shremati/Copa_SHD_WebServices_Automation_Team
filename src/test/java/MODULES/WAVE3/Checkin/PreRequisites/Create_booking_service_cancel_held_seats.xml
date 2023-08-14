@@ -9,16 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-01-22T00:00:00" RPH="1" FlightNumber="194" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-03-09T00:00:00" RPH="1" FlightNumber="226" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="MEX"/>
-                                <air1:MarketingAirline Code="CM"/>
-                            </air1:FlightSegment>
-                        </air1:OriginDestinationOption>
-                        <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-01-26T00:00:00" RPH="2" FlightNumber="149" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="MEX"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="MIA"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -27,48 +20,41 @@
                 <air:PriceInfo>
                     <air1:PTC_FareBreakdowns>
                         <air1:PTC_FareBreakdown>
-                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode FlightSegmentRPH="1">YAAAOY1F</air1:FareBasisCode>
-                                <air1:FareBasisCode FlightSegmentRPH="2">YAAAOY1F</air1:FareBasisCode>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
-                                <air1:BaseFare Amount="4534.52" CurrencyCode="USD"/>
+                                <air1:BaseFare Amount="126.90" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="FZ" Amount="40.00"/>
-                                    <air1:Tax TaxCode="AH" Amount="2.50"/>
+                                    <air1:Tax TaxCode="AT" Amount="12.20"/>
+                                    <air1:Tax TaxCode="VT" Amount="7.60"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
-                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:Endorsements>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                            </air1:Endorsements>
                         </air1:PTC_FareBreakdown>
                     </air1:PTC_FareBreakdowns>
                 </air:PriceInfo>
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>FOXX</com:GivenName>
-                            <com:Surname>MULDER</com:Surname>
+                            <com:GivenName>Marino</com:GivenName>
+                            <com:Surname>Mikkel</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="4" AreaCityCode="001" PhoneNumber="123456789" Remark="MULDER PHONE"/>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="REMARK ONE"/>
                         <air1:TravelerRefNumber RPH="1"/>
-                    </air1:AirTraveler>
-                    <air1:AirTraveler PassengerTypeCode="ADT">
-                        <air1:PersonName>
-                            <com:GivenName>DANA</com:GivenName>
-                            <com:Surname>SCULLY</com:Surname>
-                        </air1:PersonName>
-                        <air1:Telephone PhoneUseType="4" AreaCityCode="001" PhoneNumber="123456789" Remark="SCULLY PHONE"/>
-                        <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>
-                            <air1:Remark>FOR TESTING ETICKET ADJUST NAME</air1:Remark>
+                            <air1:Remark>MY REMARK</air1:Remark>
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-01-22T00:00:00"/>
+                <air:Ticketing TicketingStatus="3"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

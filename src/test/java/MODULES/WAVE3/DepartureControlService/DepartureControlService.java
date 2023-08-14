@@ -210,4 +210,16 @@ public class DepartureControlService {
             System.out.println("SCENARIO 16 failed due to :" + e);
         }
     }
+    @Description("clear_inoperative_seat")
+    @Test
+    public void Scenario16() {
+
+        try {
+            clear_inoperative_seat.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 16 failed due to :" + e);
+        }
+    }
 }

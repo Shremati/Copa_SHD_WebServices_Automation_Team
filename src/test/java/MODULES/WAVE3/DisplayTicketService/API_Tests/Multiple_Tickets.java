@@ -87,17 +87,6 @@ public class Multiple_Tickets extends FrameworkConstants
 
         XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument", InputRow.getCell(12).getStringCellValue(),filepath1,0);
-//
-//
-//        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
-//
-//        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
-
 
         wb.close();
 

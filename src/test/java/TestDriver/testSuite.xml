@@ -6,6 +6,7 @@
             <class name="MODULES.WAVE3.AirInventoryService.AirInventoryService"/>
             <class name="MODULES.WAVE3.AirportPassengerList.AirportPassengerList"/>
             <class name="MODULES.WAVE3.Availability.Availability"/>
+            <class name="MODULES.WAVE3.Boarding.Boarding"/>
             <class name="MODULES.WAVE3.Checkin.Checkin"/>
             <class name="MODULES.WAVE3.CreateBookingService.CreateBookingService"/>
             <class name="MODULES.WAVE3.DepartureControlService.DepartureControlService"/>
@@ -30,11 +31,12 @@
             <class name="MODULES.WAVE3.ReferenceService.ReferenceService"/>
             <class name="MODULES.WAVE3.TimaticService.TimaticService"/>
             <class name="MODULES.WAVE3.PassengerListService.PassengerListService"/>
+            <class name="MODULES.WAVE3.SynchronizeTicketService.SynchronizeTicketService"/>
 
 <!--            <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/>-->
 <!--            <class name="MODULES.WAVE3.DisplayBooking41Service.DisplayBooking41Service"/>-->
-<!--            <class name="MODULES.WAVE3.DisplayTicket41Service.TestRunner"/>-->
-<!--            <class name="MODULES.WAVE3.ModifyBooking41Service.TestRunner"/>-->
+<!--            <class name="MODULES.WAVE3.DisplayTicket41Service.DisplayTicket41Service"/>-->
+<!--            <class name="MODULES.WAVE3.ModifyBooking41Service.ModifyBooking41Service"/>-->
 
         </classes>
     </test>

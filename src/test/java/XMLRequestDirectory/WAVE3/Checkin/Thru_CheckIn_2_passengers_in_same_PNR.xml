@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header />
+    <soapenv:Body>
+        <chec:checkIn>
+            <air:EDS_AirCheckInRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM" />
+                </air:POS>
+                <air:MessageFunction Function="CheckIn" />
+                <air:FlightInfo RPH="1">
+                    <com1:CarrierInfo FlightNumber="446" Code="CM" />
+                    <com1:DepartureInformation LocationCode="PTY" DateOfDeparture="2023-03-09T07:43:00" />
+                </air:FlightInfo>
+                <air:PassengerInfo RPH="1" SurnameRefNumber="1" GivenNameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>ABCDEFGH</com:GivenName>
+                        <com:Surname>IJKLMN</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="F" />
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" SurnameRefNumber="2" GivenNameRefNumber="1">
+                    <com1:PassengerName>
+                        <com:GivenName>XYZLMNOP</com:GivenName>
+                        <com:Surname>IJKLMN</com:Surname>
+                    </com1:PassengerName>
+                    <com1:PassengerType Gender="F" />
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo DCS_PassengerRefNumber="11" FlightRPH="1" PassengerRPH="1">
+                    <com1:SeatBoardingInfo SeatCharacteristics="3 49" />
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo DCS_PassengerRefNumber="12" FlightRPH="1" PassengerRPH="2">
+                    <com1:SeatBoardingInfo SeatCharacteristics="3 49" />
+                </air:PassengerFlightInfo>
+                <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="0" />
+                <air:BaggageInfo PassengerRPH="2" CheckedBagCountTotal="0" />
+            </air:EDS_AirCheckInRQ>
+        </chec:checkIn>
+    </soapenv:Body>
+</soapenv:Envelope>

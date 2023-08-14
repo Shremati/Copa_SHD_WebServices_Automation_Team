@@ -1,13 +1,15 @@
-package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
+package MODULES.WAVE3.Checkin.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,25 +20,28 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_adjust_flight_number_and_flight_date extends FrameworkConstants
-{
+public class Create_bokking_thru_checkin extends FrameworkConstants {
+
 
     public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
         UpdatePayload();
 
-//                       ********** Reading the xml request file **********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -44,6 +49,8 @@ public class create_booking_adjust_flight_number_and_flight_date extends Framewo
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -58,6 +65,7 @@ public class create_booking_adjust_flight_number_and_flight_date extends Framewo
 
         excelwriter();
 
+
     }
 
 
@@ -68,27 +76,29 @@ public class create_booking_adjust_flight_number_and_flight_date extends Framewo
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
+        XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFRow InputRow=sheet.getRow(11);
+        XSSFRow InputRow2=sheet.getRow(12);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\create_booking_adjust_flight_number_and_flight_date.xml";
-
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Create_bokking_thru_checkin.xml";
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(14).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),1);
-
-        XMLParser.updateAttributeValue("air:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
+        //Segment 2
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow2.getCell(1).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow2.getCell(2).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow2.getCell(5).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow2.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow2.getCell(4).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
+
     }
 
 
@@ -100,24 +110,20 @@ public class create_booking_adjust_flight_number_and_flight_date extends Framewo
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFSheet sheet = wb.getSheet("CheckIn");
+        XSSFRow InputRow=sheet.getRow(11);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        InputRow.getCell(20).setCellValue(PNR);
+        String Givenname = XMLParser.GetTagTextatIndex("GivenName",getTemp_responsePath(),0);
+        String Surname = XMLParser.GetTagTextatIndex("Surname",getTemp_responsePath(),0);
 
-//        InputRow.getCell(10).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","DepartureDateTime",getTemp_responsePath(),0));
-//        InputRow.getCell(11).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
-//        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0));
-//        InputRow.getCell(13).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport","LocationCode",getTemp_responsePath(),0));
-//        InputRow.getCell(14).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport","LocationCode",getTemp_responsePath(),0));
-//
-//        InputRow.getCell(15).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","DepartureDateTime",getTemp_responsePath(),1));
-//        InputRow.getCell(16).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),1));
-//        InputRow.getCell(17).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),1));
-//        InputRow.getCell(18).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport","LocationCode",getTemp_responsePath(),1));
-//        InputRow.getCell(19).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport","LocationCode",getTemp_responsePath(),1));
+
+        InputRow.getCell(7).setCellValue(PNR);
+        InputRow.getCell(8).setCellValue(Givenname);
+        InputRow.getCell(9).setCellValue(Surname);
+
+
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -132,6 +138,5 @@ public class create_booking_adjust_flight_number_and_flight_date extends Framewo
         writer.close();
 
     }
-
 
 }
