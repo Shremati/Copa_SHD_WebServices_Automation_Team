@@ -6,6 +6,7 @@ import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_service_cancel_held_se
 import MODULES.WAVE3.Checkin.PreRequisites.Hold_seat;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_3pax;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -52,6 +53,7 @@ public class Cancel_held_seat extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())

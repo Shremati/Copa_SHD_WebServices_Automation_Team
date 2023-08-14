@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -40,6 +41,7 @@ public class Checkin_1pax_assigning_seat extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())
@@ -73,7 +75,7 @@ public class Checkin_1pax_assigning_seat extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
         XSSFRow InputRow=sheet.getRow(10);
-        //XSSFRow InputRowPNR=sheet.getRow(1);
+
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Checkin_1pax_assigning_seat.xml";

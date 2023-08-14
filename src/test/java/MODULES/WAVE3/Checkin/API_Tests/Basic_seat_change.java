@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -53,6 +54,7 @@ public class Basic_seat_change extends FrameworkConstants {
                 .basePath(getCheckin())
                 .header("Content-Type", "text/xml")
                 .log().body()
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post()

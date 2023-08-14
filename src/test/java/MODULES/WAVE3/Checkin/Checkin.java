@@ -30,7 +30,7 @@ public class Checkin
         }
     }
 
-    @Description("Display API requirements for the passengers as single surname-multiple names in booking")
+    @Description("Error Change seat - Invalid seat (Negative Scenario)")
     @Test
     public void Scenario2()
     {
@@ -44,7 +44,7 @@ public class Checkin
             System.out.println("SCENARIO 2 failed due to :"+e);
         }
     }
-    @Description("DisplayAPI error - Invalid passenger name")
+    @Description("Hold seat from similar name list")
 
     @Test
     public void Scenario3()
@@ -201,4 +201,3 @@ public class Checkin
 
 }
 
-//properties file and hashmaps

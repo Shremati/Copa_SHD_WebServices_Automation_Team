@@ -7,6 +7,7 @@ import MODULES.WAVE3.Checkin.PreRequisites.Create_bokking_thru_checkin;
 import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_Thru_pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_thru_checkin;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -58,6 +59,7 @@ public class Thru_CheckIn_2_passengers_in_same_PNR extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())

@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_3pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_service_3pax;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -50,6 +51,7 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             Response response = given()
                     .baseUri(getBaseURL())
                     .header("Content-Type", "text/xml")
+                    .filter(new AllureRestAssured())
                     .body(SOAPRequest)
                     .when()
                     .post(getCheckin())

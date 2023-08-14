@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_Booking_Non_Revenue_Pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_non_revenue_pax;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -43,6 +44,7 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())

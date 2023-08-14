@@ -1,9 +1,0 @@
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body>
-    <ns3:systemUpdateResponse xmlns:ns8="http://schemas.eds.com/transportation/message/fares/price/common" xmlns:ns7="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRQ" xmlns:ns6="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRS" xmlns:ns5="http://www.iata.org/IATA/2007/00/ET_CommonTypes" xmlns:ns4="http://www.iata.org/IATA/2007/00/EMD_AirlineSystemUpdateRS" xmlns:ns3="http://www.hp.com/AirlineSOASchema/EMDAirlineSystemUpdate/" xmlns:ns2="http://www.iata.org/IATA/2007/00/EMD_AirlineSystemUpdateRQ" xmlns="http://www.iata.org/IATA/2007/00/CommonTypes">
-      <ns4:IATA_EMD_AirlineSystemUpdateRS TimeStamp="2023-08-10T13:30:29" Version="4.000">
-        <ns4:Success/>
-      </ns4:IATA_EMD_AirlineSystemUpdateRS>
-    </ns3:systemUpdateResponse>
-  </soap:Body>
-</soap:Envelope>

@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -41,6 +42,7 @@ public class Issue_ticket_for_basic_seat_change extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getTicketing())
@@ -74,7 +76,7 @@ public class Issue_ticket_for_basic_seat_change extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
         XSSFRow InputRow=sheet.getRow(4);
-        XSSFRow InputRowPNR=sheet.getRow(1);
+        XSSFRow InputRowPNR=sheet.getRow(10);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\IssueTicket.xml";
