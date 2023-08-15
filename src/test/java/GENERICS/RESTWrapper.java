@@ -29,12 +29,12 @@ public class RESTWrapper {
 
   }
 
-    public static Response postResponse(String baseURI, String basePath, Map<String,String> headerInfo,String requestBody)
+    public static Response postResponse(String baseURI, String basePath,String requestBody)
     {
         return  given()
                 .baseUri(baseURI)
                 .basePath(basePath)
-                .headers(headerInfo)
+                .headers("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(requestBody)
                 .log()

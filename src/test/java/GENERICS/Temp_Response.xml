@@ -1,0 +1,98 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns5:modifyAPIResponse xmlns:ns9="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirAPIDisplayRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/API/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirAPIReadRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:EDS_AirAPIDisplayRS TimeStamp="2023-08-15T17:11:19" Version="4.000" SequenceNmbr="1">
+        <ns6:Success/>
+        <ns6:Warnings>
+          <Warning Type="14" ShortText="RESPONSEFLTLVL">1:PNR NOT FOUND</Warning>
+        </ns6:Warnings>
+        <ns6:PassengerInfo SurnameBookedNumber="1" RPH="1">
+          <ns3:PassengerName>
+            <GivenName>ONE</GivenName>
+            <SurnamePrefix>1</SurnamePrefix>
+            <Surname>PAX</Surname>
+          </ns3:PassengerName>
+          <ns3:BookingReferenceID Type="14" ID="AJAFYH"/>
+        </ns6:PassengerInfo>
+        <ns6:PassengerInfo SurnameBookedNumber="2" RPH="2">
+          <ns3:PassengerName>
+            <GivenName>TWO</GivenName>
+            <SurnamePrefix>1</SurnamePrefix>
+            <Surname>PAX</Surname>
+          </ns3:PassengerName>
+          <ns3:BookingReferenceID Type="14" ID="AX0K45"/>
+        </ns6:PassengerInfo>
+        <ns6:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+          <ns3:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList=""/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="US" ICAODocHolderNationality="US" DocHolderNationality="US" Gender="Male" BirthDate="1960-01-02">
+              <DocHolderFormattedName>
+                <GivenName>ONE</GivenName>
+                <Surname>PAX</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="US" DocID="111222333" DocType="2" DocIssueCountry="US" ExpireDate="2032-12-01"/>
+          </ns3:AgencyRequirements>
+          <ns3:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList=""/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="US" ICAODocHolderNationality="US" DocHolderNationality="US" Gender="Male" BirthDate="1960-01-02">
+              <DocHolderFormattedName>
+                <GivenName>ONE</GivenName>
+                <Surname>PAX</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info>
+              <ns3:Address Type="4">
+                <AddressLine>LYLAT STREET</AddressLine>
+                <CityName>CORNERIA</CityName>
+                <PostalCode>12345</PostalCode>
+                <CountryName Code="US">US</CountryName>
+                <ns3:ICAOCountryName Code="US">USA</ns3:ICAOCountryName>
+              </ns3:Address>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="US" DocID="111222333" DocType="2" DocIssueCountry="US" ExpireDate="2032-12-01"/>
+          </ns3:AgencyRequirements>
+        </ns6:PassengerFlightInfo>
+        <ns6:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+          <ns3:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList=""/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="US" ICAODocHolderNationality="US" DocHolderNationality="US" Gender="Male" BirthDate="1982-01-02">
+              <DocHolderFormattedName>
+                <GivenName>TWO</GivenName>
+                <Surname>PAX</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="US" DocID="333222111" DocType="2" DocIssueCountry="US" ExpireDate="2032-12-02"/>
+          </ns3:AgencyRequirements>
+          <ns3:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList=""/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="US" ICAODocHolderNationality="US" DocHolderNationality="US" Gender="Male" BirthDate="1982-01-02">
+              <DocHolderFormattedName>
+                <GivenName>TWO</GivenName>
+                <Surname>PAX</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info>
+              <ns3:Address Type="4">
+                <AddressLine>LYLAT STREET</AddressLine>
+                <CityName>CORNERIA</CityName>
+                <PostalCode>12345</PostalCode>
+                <CountryName Code="US">US</CountryName>
+                <ns3:ICAOCountryName Code="US">USA</ns3:ICAOCountryName>
+              </ns3:Address>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="US" DocID="333222111" DocType="2" DocIssueCountry="US" ExpireDate="2032-12-02"/>
+          </ns3:AgencyRequirements>
+        </ns6:PassengerFlightInfo>
+      </ns6:EDS_AirAPIDisplayRS>
+    </ns5:modifyAPIResponse>
+  </soap:Body>
+</soap:Envelope>

@@ -47,12 +47,7 @@ public class create_booking_service_onepax extends FrameworkConstants
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Map<String,String> headerInfo = new HashMap<>();
-        headerInfo.put("Content-Type","text/xml");
-
-        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),headerInfo,SOAPRequest);
-
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),SOAPRequest);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

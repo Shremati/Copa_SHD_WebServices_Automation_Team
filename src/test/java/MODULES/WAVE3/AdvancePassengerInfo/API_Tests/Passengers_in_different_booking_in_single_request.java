@@ -47,12 +47,7 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Map<String,String> headerInfo = new HashMap<>();
-        headerInfo.put("Content-Type","text/xml");
-
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),headerInfo,SOAPRequest);
-
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Passengers_in_different_booking_in_single_request.xml"));

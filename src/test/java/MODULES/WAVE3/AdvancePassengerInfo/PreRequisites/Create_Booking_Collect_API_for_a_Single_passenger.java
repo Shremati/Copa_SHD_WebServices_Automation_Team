@@ -45,17 +45,8 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
-                .when()
-                .post(getCreatebookingservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
 
+        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),SOAPRequest);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

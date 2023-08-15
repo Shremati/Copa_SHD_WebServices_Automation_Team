@@ -45,12 +45,7 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Map<String,String> headerInfo = new HashMap<>();
-        headerInfo.put("Content-Type","text/xml");
-
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),headerInfo,SOAPRequest);
-
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));

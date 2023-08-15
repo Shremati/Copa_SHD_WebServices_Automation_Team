@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Update_and_Delete_API_data;
@@ -40,17 +41,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
 
 

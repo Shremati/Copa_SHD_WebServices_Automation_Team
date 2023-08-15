@@ -38,11 +38,7 @@ public class create_booking_service_singlepax extends FrameworkConstants
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Map<String,String> headerInfo = new HashMap<>();
-        headerInfo.put("Content-Type","text/xml");
-
-        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),headerInfo,SOAPRequest);
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),SOAPRequest);
 
 
 

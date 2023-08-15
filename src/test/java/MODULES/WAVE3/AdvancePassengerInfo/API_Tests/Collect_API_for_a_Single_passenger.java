@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
@@ -37,19 +38,10 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
 
 
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
+        
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_Single_passenger.xml"));
         writer.write(response.asPrettyString());

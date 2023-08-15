@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
+import GENERICS.RESTWrapper;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -33,17 +34,7 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -55,8 +46,6 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
-//        excelwriter();
 
 
     }
@@ -88,40 +77,5 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
 
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(4);
-
-
-
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
-        InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Givenname);
-        InputRow.getCell(9).setCellValue(Surname);
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 }

@@ -45,11 +45,7 @@ public class Single_Pax extends FrameworkConstants
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Map<String,String> headerInfo = new HashMap<>();
-        headerInfo.put("Content-Type","text/xml");
-
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),headerInfo,SOAPRequest);
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));
         writer.write(response.asPrettyString());
