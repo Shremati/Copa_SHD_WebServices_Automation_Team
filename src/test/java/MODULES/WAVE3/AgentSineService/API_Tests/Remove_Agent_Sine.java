@@ -1,8 +1,6 @@
-package MODULES.WAVE3.Checkin.API_Tests;
+package MODULES.WAVE3.AgentSineService.API_Tests;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Checkin.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -21,29 +19,16 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class check_in_non_revenue_pax extends FrameworkConstants {
+public class Remove_Agent_Sine extends FrameworkConstants {
 
     public static String SOAPRequest;
-@Test
+
+    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
 
-        Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
-        Prerequisite1.run();
-        // PreRequisite for Scenario ------>Issue Ticket
-
-        Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();
-        Prerequisite2.run();
-
-        Display_Non_Revenue_pax Prerequisite3 = new Display_Non_Revenue_pax();
-        Prerequisite3.run();
-
-        Modify_APIS_Non_Revenue_pax Prerequisite4 = new Modify_APIS_Non_Revenue_pax();
-        Prerequisite4.run();
-
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -51,21 +36,21 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getCheckin())
+                .post(getAgentsine())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Check_in_non_revenue_pax.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AgentSineService\\Remove_Agent_Sine.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -86,19 +71,19 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("AgentSine");
+        XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Checkin\\Check_in_non_revenue_pax.xml";
+        filepath1=getRequestDirectory()+"AgentSineService\\Remove_Agent_Sine.xml";
 
 
-
-        XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:AgentInfo", "CityCode", InputRow.getCell(4).getStringCellValue(), filepath1);
+        XMLParser.updateAttributeValue("air:AgentDetails", "AgentNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath());
+        //XMLParser.updateAttributeValue("air:AgentDetails", "AgentInitials", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtext("air:AgentDutyCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
         wb.close();
-
     }
+
 }

@@ -43,7 +43,14 @@ public class FrameworkConstants {
     public static String managesessions = "/AirlineSOA/ManageSessionService/manageSession";
     public static String displayticketservices = "/AirlineSOA/DisplayTicketService/displayTickets";
     public static String issueticket = "/AirlineSOA/TicketingService/ticketing";
-
+    public static String connectionFlightInfo = "/AirlineSOA/ConnectionFlightInfoService/connectionFlightInfo";
+    public static String departureControlDisplay = "/AirlineSOA/DepartureControlDisplayService/departureControlDisplay";
+    public static String modifySeatMap ="/AirlineSOA/ModifySeatMapService/modifySeatMap";
+    public static String standby = "/AirlineSOA/StandbyService/standby";
+    public static String agentsine ="/AirlineSOA/AgentSineService/agentSine";
+    public static String bagtags = "/AirlineSOA/BagTagDisplayService/bagTagDisplay";
+    public static String processmealreport = "/AirlineSOA/MealReportService/processMealReport";
+    public static String crewreportservice="/AirlineSOA/CrewReportService/processCrewReport";
 
     public static String getAdvancepassengerinfo() {
         return advancepassengerinfo;
@@ -220,5 +227,21 @@ public class FrameworkConstants {
     public static String getTarget() {
         return target;
     }
+
+    public static String getAgentsine() { return agentsine; }
+
+    public static String getCrewreportservice() { return crewreportservice; }
+
+    public static String getProcessmealreport() { return processmealreport; }
+
+    public static String getBagtags() { return bagtags; }
+
+    public static String getConnectionFlightInfo(){ return connectionFlightInfo;}
+
+    public static String getDepartureControlDisplay(){ return departureControlDisplay; }
+
+    public static String getModifySeatMap(){return modifySeatMap;}
+
+    public static String getStandby(){ return standby;}
 
 }

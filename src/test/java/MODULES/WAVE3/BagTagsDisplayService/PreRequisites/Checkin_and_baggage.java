@@ -1,8 +1,8 @@
-package MODULES.WAVE3.Checkin.API_Tests;
+package MODULES.WAVE3.BagTagDisplayService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Checkin.PreRequisites.*;
+import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -21,29 +21,33 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class check_in_non_revenue_pax extends FrameworkConstants {
+public class Checkin_and_baggage extends FrameworkConstants {
 
     public static String SOAPRequest;
-@Test
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+
+    @Test
+    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
 
 //        PreRequisite for Scenario ------> Create Booking
 
-        Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
-        Prerequisite1.run();
-        // PreRequisite for Scenario ------>Issue Ticket
+//        Create_booking_service Prerequisite = new Create_booking_service();
+//        Prerequisite.run(); //excel gets updated
+//
+//        Issue_ticket Prerequisite1 = new Issue_ticket();
+//        Prerequisite1.run();
 
-        Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();
-        Prerequisite2.run();
+//        Display_APIS Prerequisite2 = new Display_APIS();
+//        Prerequisite2.run();
+//
+//        Add_APIS Prerequisite3 = new Add_APIS();
+//        Prerequisite3.run();
 
-        Display_Non_Revenue_pax Prerequisite3 = new Display_Non_Revenue_pax();
-        Prerequisite3.run();
 
-        Modify_APIS_Non_Revenue_pax Prerequisite4 = new Modify_APIS_Non_Revenue_pax();
-        Prerequisite4.run();
 
-        UpdatePayload();//excel gets updated
+
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -65,7 +69,8 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Check_in_non_revenue_pax.xml"));
+        //BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Bag\\Checkin_and_baggage.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -86,11 +91,11 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("BagTags");
+        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Checkin\\Check_in_non_revenue_pax.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Checkin_and_baggage.xml";
 
 
 
@@ -101,4 +106,5 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
         wb.close();
 
     }
+
 }
