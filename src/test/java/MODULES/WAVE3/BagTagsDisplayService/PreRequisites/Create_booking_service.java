@@ -1,4 +1,4 @@
-package MODULES.WAVE3.BagTagDisplayService.PreRequisites;
+package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;

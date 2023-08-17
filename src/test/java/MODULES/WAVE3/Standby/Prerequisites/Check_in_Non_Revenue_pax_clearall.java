@@ -71,7 +71,7 @@ public class Check_in_Non_Revenue_pax_clearall extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Check_in_Non_Revenue_pax_clearall.xml";

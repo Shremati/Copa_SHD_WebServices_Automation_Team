@@ -1,4 +1,4 @@
-package MODULES.WAVE3.ProcessMealReport.API_Tests;
+package MODULES.WAVE3.ProcessMealReportService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;

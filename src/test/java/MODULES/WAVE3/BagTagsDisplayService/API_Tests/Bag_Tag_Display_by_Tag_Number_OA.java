@@ -1,8 +1,8 @@
-package MODULES.WAVE3.BagTagDisplayService.API_Tests;
+package MODULES.WAVE3.BagTagsDisplayService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.BagTagDisplayService.PreRequisites.*;
+import MODULES.WAVE3.BagTagsDisplayService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -97,7 +97,6 @@ public class Bag_Tag_Display_by_Tag_Number_OA extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(13).getNumericCellValue()),filepath1);
-        //XMLParser.updateAttributeValue("bag1:FlightLegInfo", "ArrivalDateTime", InputRow.getCell(13).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "RPH", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());

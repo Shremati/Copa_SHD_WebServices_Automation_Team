@@ -1,10 +1,5 @@
-package MODULES.WAVE3.BagTagDisplayService;
-
-import MODULES.WAVE3.BagTagDisplayService.API_Tests.Bag_Tag_Display_All;
-import MODULES.WAVE3.BagTagDisplayService.API_Tests.Bag_Tag_Display_OA;
-import MODULES.WAVE3.BagTagDisplayService.API_Tests.Bag_Tag_Display_by_Tag_Number_OA;
-import MODULES.WAVE3.BagTagDisplayService.API_Tests.Display_Bag_Tag_By_Tag_Number;
-import MODULES.WAVE3.Checkin.API_Tests.*;
+package MODULES.WAVE3.BagTagsDisplayService;
+import MODULES.WAVE3.BagTagsDisplayService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
