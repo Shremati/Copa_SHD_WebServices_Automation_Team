@@ -1,11 +1,0 @@
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body>
-    <ns5:checkInResponse xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirCheckInRS" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns7:EDS_AirCheckInRS TimeStamp="2023-08-10T07:53:34" Version="4.000">
-        <ns7:Errors>
-          <Error Type="13"> (1) FLT NOT OPEN PTY&gt;</Error>
-        </ns7:Errors>
-      </ns7:EDS_AirCheckInRS>
-    </ns5:checkInResponse>
-  </soap:Body>
-</soap:Envelope>

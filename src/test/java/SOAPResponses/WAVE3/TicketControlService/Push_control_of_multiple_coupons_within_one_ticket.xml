@@ -1,9 +1,0 @@
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body>
-    <ns3:requestControlResponse xmlns:ns10="http://schemas.eds.com/transportation/message/fares/price/common" xmlns:ns9="http://www.iata.org/IATA/2007/00/TicketAirlineRedirectControlRS" xmlns:ns8="http://www.iata.org/IATA/2007/00/TicketAirlineRedirectControlRQ" xmlns:ns7="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRQ" xmlns:ns6="http://www.iata.org/IATA/2007/00/TicketNeutralExchangeReissueRS" xmlns:ns5="http://www.iata.org/IATA/2007/00/TicketAirlineRequestControlRS" xmlns:ns4="http://www.iata.org/IATA/2007/00/ET_CommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/TicketControl/" xmlns:ns2="http://www.iata.org/IATA/2007/00/TicketAirlineRequestControlRQ" xmlns="http://www.iata.org/IATA/2007/00/CommonTypes">
-      <ns5:IATA_TicketAirlineRequestAirportControlRS TicketDocQuantity="1" TimeStamp="2023-08-10T07:59:17" Version="4.000">
-        <ns5:Success/>
-      </ns5:IATA_TicketAirlineRequestAirportControlRS>
-    </ns3:requestControlResponse>
-  </soap:Body>
-</soap:Envelope>
