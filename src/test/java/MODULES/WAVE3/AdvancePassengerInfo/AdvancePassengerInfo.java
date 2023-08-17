@@ -39,11 +39,11 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("DisplayAPI error - Invalid passenger name")
+    @Description("DisplayAPI error - Invalid passenger name (Negative Scenario)")
     @Test
     public void Scenario3() {
         try {
-            DisplayAPI_error_Invalid_passenger_name.Execute();  //Negative Scenario
+            DisplayAPI_error_Invalid_passenger_name.Execute();
 
         } catch (Exception e) {
             failTest(e);
