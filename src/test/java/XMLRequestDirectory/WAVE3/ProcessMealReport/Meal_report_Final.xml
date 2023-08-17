@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:meal="http://www.eds.com/AirlineSOASchema/MealReport/" xmlns:meal1="http://www.eds.com/AirlineSOASchema/MealReportRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <meal:processMealReport>
+            <meal1:HP_MealReportRQ>
+                <meal1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </meal1:POS>
+                <meal1:MessageFunction Function="FinalMealOrdering"/>
+                <meal1:ReportInfo>
+                    <meal1:FlightLegInfo DepartureDateTime="2023-08-02" RPH="1" FlightNumber="360">
+                        <com:DepartureAirport LocationCode="PTY"/>
+                    </meal1:FlightLegInfo>
+                </meal1:ReportInfo>
+            </meal1:HP_MealReportRQ>
+        </meal:processMealReport>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dep="http://www.eds.com/AirlineSOASchema/DepartureControlDisplay/"   xmlns:dep1="http://www.eds.com/AirlineSOASchema/DepartureControlDisplayRQ"   xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes"   xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"   xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header />
+    <soapenv:Body>
+        <dep:getSeatedPassengerCount>
+            <dep1:HP_DepartureControlDisplayRQ EchoToken="1">
+                <dep1:POS>
+                    <com:Source AirlineVendorID="CM">
+                    </com:Source>
+                </dep1:POS>
+                <dep1:FlightInfo>
+                    <dep1:FlightLegInfo DepartureDateTime="2023-08-17T00:00:00" FlightNumber="314">
+                        <com:DepartureAirport LocationCode="PTY" />
+                    </dep1:FlightLegInfo>
+                </dep1:FlightInfo>
+            </dep1:HP_DepartureControlDisplayRQ>
+        </dep:getSeatedPassengerCount>
+    </soapenv:Body>
+</soapenv:Envelope>

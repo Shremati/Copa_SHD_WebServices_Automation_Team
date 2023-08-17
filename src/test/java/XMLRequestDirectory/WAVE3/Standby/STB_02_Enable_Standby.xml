@@ -1,0 +1,24 @@
+<soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:stan="http://www.hp.com/AirlineSOASchema/Standby/" xmlns:air="http://www.hp.com/AirlineSOASchema/AirStandbyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes"
+        xmlns:air1="http://www.hp.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header />
+    <soapenv:Body>
+        <stan:processStandby>
+            <HP_AirStandbyRQ Version="4.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xmlns="http://www.hp.com/AirlineSOASchema/AirStandbyRQ">
+                <POS>
+                    <Source ISOCountry="PA" ISOCurrency="USD" AgentDutyCode="SU" AirlineVendorID="CM" TerminalID="123456" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+                        <RequestorID Type="6" ID_Context="IATA" />
+                    </Source>
+                </POS>
+                <MessageFunction Function="EnableStandby" />
+                <FlightInfo>
+                    <CarrierInfo FlightNumber="334" ResBookDesigCode="Y" xmlns="http://www.hp.com/AirlineSOASchema/AirCommonTypes" />
+                    <DepartureInformation DateOfDeparture="2023-08-03" LocationCode="PTY" xmlns="http://www.hp.com/AirlineSOASchema/AirCommonTypes" />
+                </FlightInfo>
+                <PassengerInfo>
+                    <PassengerName xmlns="http://www.hp.com/AirlineSOASchema/AirCommonTypes" />
+                </PassengerInfo>
+            </HP_AirStandbyRQ>
+        </stan:processStandby>
+    </soapenv:Body>
+    </soapenv:Envelope >
