@@ -1,0 +1,131 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        7     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="5">
+                    <!--OTHER-->
+                    <!--Information needed:
+                          Action                   Data
+                          applyItineraryChanges    AirItinerary    [OriginDestinationOptions]
+                          modifyTravelerInfo       TravelerInfo    [SpecialReqDetails, Telephone]
+                          modifyPricing            PriceInfo       [PTC_FareBreakdowns]-->
+                    <air1:TravelerInfo>
+                        <air1:AirTraveler PassengerTypeCode="GRP">
+                            <air1:PersonName>
+                                <com:Surname>MYBIGFAMILY</com:Surname>
+                            </air1:PersonName>
+                            <air1:PassengerTypeQuantity Quantity="8"/>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>CHRISTIAN</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>SUSY</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>SEBASTIAN</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="4"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>MEMO</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="5"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>CUAUHTEMOC</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="6"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>PACO</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="7"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>AMERICA</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="8"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>LINDA</com:GivenName>
+                                <com:Surname>OCHOA</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="BPILWV"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-03-15T11:12:24Z" CreateDateTime="2023-03-15T11:12:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-03-15T15:32:00" ArrivalDateTime="2023-03-16T12:08:00" RPH="1" FlightNumber="111" ResBookDesigCode="Y" NumberInParty="8" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="SCL"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="GRP">
+                            <n3:PersonName>
+                                <com:Surname>MYBIGFAMILY</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-2000" Remark="MY RMK" LocationCode="WEB"/>
+                            <n3:PassengerTypeQuantity Quantity="8"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:Remarks>
+                                <n3:Remark>CHECKIN GROUP</n3:Remark>
+                            </n3:Remarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="BPILWV" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

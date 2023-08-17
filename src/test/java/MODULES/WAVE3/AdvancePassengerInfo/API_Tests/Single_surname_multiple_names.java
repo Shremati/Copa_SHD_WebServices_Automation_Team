@@ -76,7 +76,7 @@ public class Single_surname_multiple_names extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(2);//Taking scenario create booking for multiple pax with same surname
 
         String filepath1;

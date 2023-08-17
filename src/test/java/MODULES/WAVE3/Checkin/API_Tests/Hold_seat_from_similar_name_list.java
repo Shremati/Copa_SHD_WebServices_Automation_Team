@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.create_booking_for_two_pax;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -45,6 +46,7 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())

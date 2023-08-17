@@ -52,6 +52,7 @@ public class create_booking_service_onepax extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -88,12 +89,12 @@ public class create_booking_service_onepax extends FrameworkConstants
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\create_booking_service_onepax.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
@@ -115,7 +116,7 @@ public class create_booking_service_onepax extends FrameworkConstants
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(10);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());

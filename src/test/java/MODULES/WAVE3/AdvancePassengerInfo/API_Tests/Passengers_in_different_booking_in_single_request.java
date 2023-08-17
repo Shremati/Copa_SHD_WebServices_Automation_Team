@@ -78,7 +78,7 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1 ,filepath2;
