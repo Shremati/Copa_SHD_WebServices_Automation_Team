@@ -1,7 +1,7 @@
-package MODULES.WAVE3.CrewReportService;
+package MODULES.WAVE3.CabinCrewReportService;
 
-import MODULES.WAVE3.CrewReportService.API_Tests.Crew_report_service_FR;
-import MODULES.WAVE3.CrewReportService.API_Tests.Crew_report_service_PR;
+import MODULES.WAVE3.CabinCrewReportService.API_Tests.Crew_report_service_FR;
+import MODULES.WAVE3.CabinCrewReportService.API_Tests.Crew_report_service_PR;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 

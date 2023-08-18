@@ -128,8 +128,6 @@ public class Checkin
 
     }
 
-
-
     @Description("Checkin_Frequent Flyer")
     @Test
     public void Scenario8()

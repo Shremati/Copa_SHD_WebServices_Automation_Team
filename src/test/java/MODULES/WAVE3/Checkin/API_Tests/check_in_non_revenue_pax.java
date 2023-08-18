@@ -24,7 +24,7 @@ import static io.restassured.RestAssured.given;
 public class check_in_non_revenue_pax extends FrameworkConstants {
 
     public static String SOAPRequest;
-@Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

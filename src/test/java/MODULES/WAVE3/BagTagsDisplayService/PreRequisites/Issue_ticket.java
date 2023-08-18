@@ -1,4 +1,4 @@
-package MODULES.WAVE3.BagTagDisplayService.PreRequisites;
+package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -24,7 +24,6 @@ public class Issue_ticket extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -80,7 +79,7 @@ public class Issue_ticket extends FrameworkConstants {
         // XSSFRow InputRowPNR=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Issue_ticket.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Issue_ticket.xml";
 
 
         XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(10).getNumericCellValue()),filepath1);

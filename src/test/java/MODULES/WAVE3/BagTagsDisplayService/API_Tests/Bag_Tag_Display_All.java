@@ -1,9 +1,9 @@
-package MODULES.WAVE3.BagTagDisplayService.API_Tests;
+package MODULES.WAVE3.BagTagsDisplayService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 
-import MODULES.WAVE3.BagTagDisplayService.PreRequisites.*;
+import MODULES.WAVE3.BagTagsDisplayService.PreRequisites.*;
 import MODULES.WAVE3.Checkin.PreRequisites.Add_APIS_FF_pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_FF_pax;
 import frameworkconstants.FrameworkConstants;
@@ -28,7 +28,6 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

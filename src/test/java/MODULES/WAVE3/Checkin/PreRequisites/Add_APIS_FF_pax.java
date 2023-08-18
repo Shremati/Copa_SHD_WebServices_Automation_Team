@@ -75,7 +75,7 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
+  //      XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 

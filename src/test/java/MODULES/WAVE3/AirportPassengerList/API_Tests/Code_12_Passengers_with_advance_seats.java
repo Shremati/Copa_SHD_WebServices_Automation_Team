@@ -82,8 +82,6 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Code_12_Passengers_with_advance_seats.xml";
 
-
-
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());

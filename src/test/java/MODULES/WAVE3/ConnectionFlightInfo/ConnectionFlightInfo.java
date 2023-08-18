@@ -15,7 +15,7 @@ public class ConnectionFlightInfo {
 
     ConnectionFlightInfo()
     {
-        createFolders(getResponseDirectory()+"Checkin");
+        createFolders(getResponseDirectory()+"ConnectionFlightInfo");
     }
 
     @Description("Get Inbound Flight Info")

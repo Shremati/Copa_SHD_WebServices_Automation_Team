@@ -1,9 +1,8 @@
-package MODULES.WAVE3.ProcessMealReport;
+package MODULES.WAVE3.ProcessMealReportService;
 
-import MODULES.WAVE3.CrewReportService.API_Tests.Crew_report_service_FR;
-import MODULES.WAVE3.ProcessMealReport.API_Tests.Meal_Report_Final;
-import MODULES.WAVE3.ProcessMealReport.API_Tests.Meal_Report_Invalid_Flight_Number;
-import MODULES.WAVE3.ProcessMealReport.API_Tests.Meal_Report_Preliminary;
+import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Final;
+import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Invalid_Flight_Number;
+import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Preliminary;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 

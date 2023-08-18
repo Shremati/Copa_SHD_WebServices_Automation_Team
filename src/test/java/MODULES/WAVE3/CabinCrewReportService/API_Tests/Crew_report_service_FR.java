@@ -1,4 +1,4 @@
-package MODULES.WAVE3.CrewReportService.API_Tests;
+package MODULES.WAVE3.CabinCrewReportService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;

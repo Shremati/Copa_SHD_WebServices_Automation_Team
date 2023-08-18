@@ -1,4 +1,4 @@
-package MODULES.WAVE3.BagTagDisplayService.PreRequisites;
+package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -25,7 +25,6 @@ public class Checkin_and_baggage extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -95,7 +94,7 @@ public class Checkin_and_baggage extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Checkin_and_baggage.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Checkin_and_baggage.xml";
 
 
 

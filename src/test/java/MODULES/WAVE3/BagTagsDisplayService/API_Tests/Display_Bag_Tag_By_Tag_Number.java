@@ -1,8 +1,8 @@
-package MODULES.WAVE3.BagTagDisplayService.API_Tests;
+package MODULES.WAVE3.BagTagsDisplayService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.BagTagDisplayService.PreRequisites.*;
+import MODULES.WAVE3.BagTagsDisplayService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -25,7 +25,6 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
