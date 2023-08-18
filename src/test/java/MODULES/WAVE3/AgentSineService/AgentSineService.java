@@ -3,7 +3,6 @@ package MODULES.WAVE3.AgentSineService;
 import MODULES.WAVE3.AgentSineService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;

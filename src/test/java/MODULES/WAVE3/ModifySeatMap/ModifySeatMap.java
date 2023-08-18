@@ -1,6 +1,5 @@
 package MODULES.WAVE3.ModifySeatMap;
 
-import MODULES.WAVE3.DepartureControlDisplay.API_Tests.Get_flight_history_info;
 import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_01_Block_Seat;
 import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_02_Add_Seat;
 import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_03_Delete_Error;

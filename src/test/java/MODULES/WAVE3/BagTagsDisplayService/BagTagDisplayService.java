@@ -4,10 +4,8 @@ import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_All;
 import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_OA;
 import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_by_Tag_Number_OA;
 import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Display_Bag_Tag_By_Tag_Number;
-import MODULES.WAVE3.Checkin.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;

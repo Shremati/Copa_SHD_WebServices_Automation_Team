@@ -4,10 +4,7 @@ import MODULES.WAVE3.CabinCrewReportService.API_Tests.Crew_report_service_FR;
 import MODULES.WAVE3.CabinCrewReportService.API_Tests.Crew_report_service_PR;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-
 import static GENERICS.Utils.failTest;
-import org.testng.annotations.Test;
-
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;

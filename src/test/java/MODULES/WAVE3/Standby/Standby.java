@@ -1,10 +1,9 @@
 package MODULES.WAVE3.Standby;
 
-import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_01_Block_Seat;
+
 import MODULES.WAVE3.Standby.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
