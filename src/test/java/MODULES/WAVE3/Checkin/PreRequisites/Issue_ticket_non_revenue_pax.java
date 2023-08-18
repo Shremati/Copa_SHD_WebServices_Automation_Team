@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-@Test
 public class Issue_ticket_non_revenue_pax extends FrameworkConstants
 {
 

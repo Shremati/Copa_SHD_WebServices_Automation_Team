@@ -23,7 +23,6 @@ public class Display_APIS extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -75,7 +74,7 @@ public class Display_APIS extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Display_APIS.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),filepath1);
 

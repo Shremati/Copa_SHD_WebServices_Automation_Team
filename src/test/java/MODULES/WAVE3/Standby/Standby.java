@@ -13,7 +13,7 @@ public class Standby {
 
     Standby()
     {
-        createFolders(getResponseDirectory()+"ModifySeatMap");
+        createFolders(getResponseDirectory()+"Standby");
     }
 
     @Description("Start Standby")

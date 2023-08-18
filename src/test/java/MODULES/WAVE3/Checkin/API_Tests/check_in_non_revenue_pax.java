@@ -2,9 +2,7 @@ package MODULES.WAVE3.Checkin.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Checkin.PreRequisites.Create_Booking_Non_Revenue_Pax;
-import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_non_revenue_pax;
-import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
+import MODULES.WAVE3.Checkin.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,6 +36,12 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
         Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();
         Prerequisite2.run();
+
+        Display_Non_Revenue_pax Prerequisite3 = new Display_Non_Revenue_pax();
+        Prerequisite3.run();
+
+        Modify_APIS_Non_Revenue_pax Prerequisite4 = new Modify_APIS_Non_Revenue_pax();
+        Prerequisite4.run();
 
         UpdatePayload();//excel gets updated
 

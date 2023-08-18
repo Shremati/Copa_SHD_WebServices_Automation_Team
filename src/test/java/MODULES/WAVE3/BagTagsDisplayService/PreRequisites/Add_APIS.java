@@ -23,7 +23,6 @@ public class Add_APIS extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -72,7 +71,7 @@ public class Add_APIS extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Add_APIS.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Add_APIS.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(9).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);

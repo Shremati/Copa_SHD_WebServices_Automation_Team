@@ -19,10 +19,9 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Add_APIS_FF_pax extends FrameworkConstants {
+public class Display_Non_Revenue_pax extends FrameworkConstants {
 
     public static String SOAPRequest;
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -33,6 +32,7 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
 
         Response response = given()
@@ -48,17 +48,19 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
                 .log().all().extract().response();
 
 
-
-//                     ********* Clearing Temp_Request.xml *********
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+//                ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 
+        excelwriter();
 
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -68,17 +70,47 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(13);
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Add_APIS_FF_pax.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Display_Non_Revenue_pax.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
-  //      XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
 
         wb.close();
 
     }
 
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("CheckIn");
+        XSSFRow InputRow=sheet.getRow(5);
+
+
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
+     //   String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+
+        InputRow.getCell(18).setCellValue(AgencyName);
+    //    InputRow.getCell(19).setCellValue(AgencyName1);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
+    }
 }

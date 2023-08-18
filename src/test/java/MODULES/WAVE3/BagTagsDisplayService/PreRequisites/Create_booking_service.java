@@ -24,7 +24,6 @@ public class Create_booking_service extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -82,7 +81,7 @@ public class Create_booking_service extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagDisplayService\\PreRequisites\\Create_booking_service.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Create_booking_service.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());

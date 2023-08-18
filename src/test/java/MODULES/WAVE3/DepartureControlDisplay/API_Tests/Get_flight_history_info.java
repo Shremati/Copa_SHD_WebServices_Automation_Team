@@ -27,7 +27,7 @@ public class Get_flight_history_info extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        UpdatePayload();//excel gets updated
 
 //    ******** Read the updated request and send it to fetch the response *********
 

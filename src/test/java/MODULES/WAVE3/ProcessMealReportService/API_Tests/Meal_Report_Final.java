@@ -27,6 +27,11 @@ public class Meal_Report_Final extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
+
+//        create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs Prerequisite = new create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs();
+//        Prerequisite.run(); //excel gets updated
+
 
         UpdatePayload();
 
