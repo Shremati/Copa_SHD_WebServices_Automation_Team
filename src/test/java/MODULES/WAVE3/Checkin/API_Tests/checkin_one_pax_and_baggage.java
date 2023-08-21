@@ -27,11 +27,8 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-
         create_booking_service_singlepax Prerequisite = new create_booking_service_singlepax();
         Prerequisite.run(); //excel gets updated
-
 
         UpdatePayload();
 

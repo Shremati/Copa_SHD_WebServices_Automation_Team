@@ -28,7 +28,6 @@ public class Checkin_FF_Pax extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         Create_Booking_FF_pax Prerequisite1 = new Create_Booking_FF_pax();
         Prerequisite1.run();
 

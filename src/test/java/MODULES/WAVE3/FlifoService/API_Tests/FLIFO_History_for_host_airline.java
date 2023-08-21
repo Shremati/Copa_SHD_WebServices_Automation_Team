@@ -75,7 +75,7 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
         filepath1=getRequestDirectory()+"FlifoService\\FLIFO_History_for_hosts_airline.xml";
 
         XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air:DepartureDate",Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
+
 
 
         wb.close();

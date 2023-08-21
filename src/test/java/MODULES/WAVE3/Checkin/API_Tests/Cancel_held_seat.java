@@ -28,7 +28,7 @@ public class Cancel_held_seat extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
