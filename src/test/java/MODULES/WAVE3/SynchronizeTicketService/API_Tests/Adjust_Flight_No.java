@@ -31,7 +31,7 @@ import static io.restassured.RestAssured.given;
 
             Create_Booking Prerequisite1 = new Create_Booking();
             Prerequisite1.run();
-//        System.out.println(PNR);
+
 
             Issue_Booking Prerequisite2 = new Issue_Booking();
             Prerequisite2.run();
@@ -74,8 +74,6 @@ import static io.restassured.RestAssured.given;
             writer.close();
 
 
-//            excelwriter();
-
 
         }
 
@@ -93,11 +91,10 @@ import static io.restassured.RestAssured.given;
             String filepath1;
             filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Flight_No.xml";
 
-//        XMLParser.updateAttributeValue("air1:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
+
             XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
             XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime",InputRow.getCell(1).getNumericCellValue(),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
 
 
 
