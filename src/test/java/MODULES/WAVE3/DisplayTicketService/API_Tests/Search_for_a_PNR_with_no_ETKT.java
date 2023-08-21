@@ -74,9 +74,7 @@ public class Search_for_a_PNR_with_no_ETKT extends FrameworkConstants {
         filepath1=getRequestDirectory()+"DisplayTicketService\\Search_for_a_PNR_with_no_ETKT.xml";
 
         XMLParser.updateAttributeValue("Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-
+        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
         wb.close();
 
     }

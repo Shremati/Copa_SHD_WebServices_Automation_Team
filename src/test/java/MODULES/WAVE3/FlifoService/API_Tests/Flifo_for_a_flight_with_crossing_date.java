@@ -21,7 +21,7 @@ import static io.restassured.RestAssured.given;
 
 public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
     public static String SOAPRequest;
-    @Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

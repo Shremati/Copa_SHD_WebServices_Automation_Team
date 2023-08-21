@@ -26,23 +26,23 @@ public class Check_in_specific_pax_in_group extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Create_booking_specific_pax_in_group Prerequsite1 = new Create_booking_specific_pax_in_group();
-        Prerequsite1.run();
+        Create_booking_specific_pax_in_group Prerequisite1 = new Create_booking_specific_pax_in_group();
+        Prerequisite1.run();
 
-        Display_booking_specific_pax_in_group Prerequsite2 = new Display_booking_specific_pax_in_group();
-        Prerequsite2.run();
+        Display_booking_specific_pax_in_group Prerequisite2 = new Display_booking_specific_pax_in_group();
+        Prerequisite2.run();
 
-        Modify_booking_specific_pax_in_group Prerequsite3 = new Modify_booking_specific_pax_in_group();
-        Prerequsite3.run();
+        Modify_booking_specific_pax_in_group Prerequisite3 = new Modify_booking_specific_pax_in_group();
+        Prerequisite3.run();
 
-        Issue_booking_specific_pax_in_group Prerequsite4 = new Issue_booking_specific_pax_in_group();
-        Prerequsite4.run();
+        Issue_booking_specific_pax_in_group Prerequisite4 = new Issue_booking_specific_pax_in_group();
+        Prerequisite4.run();
 
-        Display_APIS_details_specific_pax_in_group Prerequsite5 = new Display_APIS_details_specific_pax_in_group();
-        Prerequsite5.run();
+        Display_APIS_details_specific_pax_in_group Prerequisite5 = new Display_APIS_details_specific_pax_in_group();
+        Prerequisite5.run();
 
-        Add_APIS_details_specific_pax_in_group Prerequsite6 = new Add_APIS_details_specific_pax_in_group();
-        Prerequsite6.run();
+        Add_APIS_details_specific_pax_in_group Prerequisite6 = new Add_APIS_details_specific_pax_in_group();
+        Prerequisite6.run();
 
 
         UpdatePayload();

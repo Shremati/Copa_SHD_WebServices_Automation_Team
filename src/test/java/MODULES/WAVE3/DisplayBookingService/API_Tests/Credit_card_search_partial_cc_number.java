@@ -32,10 +32,10 @@ public class Credit_card_search_partial_cc_number extends FrameworkConstants
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_credit_card_search_partial_cc_number Prerequisite = new create_booking_credit_card_search_partial_cc_number();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_credit_card_search_partial_cc_number Prerequisite2 = new issue_ticket_credit_card_search_partial_cc_number();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 

@@ -73,7 +73,7 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(1);
 
-        String filepath1 ,filepath2;
+        String filepath1;
 
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Passengers_in_different_booking_in_single_request.xml";
 

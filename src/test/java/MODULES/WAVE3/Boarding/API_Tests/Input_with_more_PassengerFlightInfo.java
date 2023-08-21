@@ -74,7 +74,7 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("Boarding");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String filepath1,filepath2;
+        String filepath1;
         filepath1=getRequestDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml";
 
 
@@ -82,7 +82,6 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-
 
 
         wb.close();

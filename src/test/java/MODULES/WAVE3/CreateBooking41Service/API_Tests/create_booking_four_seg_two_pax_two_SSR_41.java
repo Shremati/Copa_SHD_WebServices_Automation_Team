@@ -72,7 +72,7 @@ public class create_booking_four_seg_two_pax_two_SSR_41 extends FrameworkConstan
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String filepath1,filepath2;
+        String filepath1;
         filepath1=getRequestDirectory()+"CreateBookingService\\create_booking_four_seg_two_pax_two_SSR.xml";
 
 

@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException

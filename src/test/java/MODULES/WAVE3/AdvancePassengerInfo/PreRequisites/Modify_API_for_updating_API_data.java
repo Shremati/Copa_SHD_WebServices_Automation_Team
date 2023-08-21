@@ -70,8 +70,6 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,1);
 
 
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
-
         wb.close();
 
     }

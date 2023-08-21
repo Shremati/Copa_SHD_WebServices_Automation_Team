@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"    xmlns:mod="http://www.hp.com/AirlineSOASchema/ModifySeatMap/"    xmlns:air="http://www.hp.com/AirlineSOASchema/AirModifySeatMapRQ"    xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes"    xmlns:air1="http://www.hp.com/AirlineSOASchema/AirCommonTypes"    xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header />
+    <soapenv:Body>
+        <mod:processModifySeatMap>
+            <air:HP_AirModifySeatMapRQ EchoToken="1" Version="4.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM" />
+                </air:POS>
+                <air:FlightInfo>
+                    <air1:CarrierInfo FlightNumber="472" ResBookDesigCode="C" />
+                    <air1:DepartureInformation
+                            DateOfDeparture="2023-08-16" LocationCode="PTY" />
+                    <air1:ArrivalInformation LocationCode="LAX" />
+                </air:FlightInfo>
+                <air:PassengerFlightInfo>
+                    <air1:SeatBoardingInfo AddSeatNumber="04F" />
+                </air:PassengerFlightInfo>
+            </air:HP_AirModifySeatMapRQ>
+        </mod:processModifySeatMap>
+    </soapenv:Body>
+</soapenv:Envelope>

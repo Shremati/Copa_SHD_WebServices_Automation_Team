@@ -46,7 +46,7 @@ public class Thru_CheckIn_2_passengers_in_same_PNR extends FrameworkConstants {
         Add_APIS_Thru_pax Prerequisite4 = new Add_APIS_Thru_pax();
         Prerequisite4.run();
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 

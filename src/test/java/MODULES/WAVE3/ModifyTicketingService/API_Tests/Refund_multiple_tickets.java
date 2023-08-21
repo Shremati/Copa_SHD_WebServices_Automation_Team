@@ -36,7 +36,6 @@ public class Refund_multiple_tickets extends FrameworkConstants
         issue_ticket_refund_multiple_tickets Prerequisite2 = new issue_ticket_refund_multiple_tickets();
         Prerequisite2.run(); //generates ticket number
 
-        //        PreRequisite for Scenario
 
         modify_ticket_refund_multiple_tickets Prerequisite3 = new modify_ticket_refund_multiple_tickets();
         Prerequisite3.run();

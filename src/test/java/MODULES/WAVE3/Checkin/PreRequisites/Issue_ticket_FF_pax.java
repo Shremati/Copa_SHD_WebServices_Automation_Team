@@ -49,9 +49,7 @@ public class Issue_ticket_FF_pax extends FrameworkConstants {
                 .log().all().extract().response();
 
 //                     ********* Clearing Temp_Request.xml *********
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 

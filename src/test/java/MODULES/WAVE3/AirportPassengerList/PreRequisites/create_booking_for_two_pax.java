@@ -108,15 +108,10 @@ public class create_booking_for_two_pax extends FrameworkConstants
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         String Timestamp = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TimeStamp",getTemp_responsePath());
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
 
         InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(8).setCellValue(Timestamp);
-
-//        InputRow.getCell(10).setCellValue(Givenname);
-//        InputRow.getCell(11).setCellValue(Surname);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

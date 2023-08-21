@@ -26,19 +26,14 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
 
         public static String SOAPRequest;
 
-    @Test
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
 
-
-//        PreRequisite for Scenario ------> Create Booking
-
             Create_booking_service_3pax Prerequisite = new Create_booking_service_3pax();
-            Prerequisite.run(); //excel gets updated
+            Prerequisite.run();
+
             Issue_ticket_3pax Prerequisite1 = new Issue_ticket_3pax();
             Prerequisite1.run();
-
-
 
             UpdatePayload();
 

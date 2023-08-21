@@ -28,7 +28,6 @@ public class Adjust_Class extends FrameworkConstants {
 
        Create_Booking2 Prerequisite1 = new Create_Booking2();
        Prerequisite1.run();
-//        System.out.println(PNR);
 
        Issue_Booking2 Prerequisite2 = new Issue_Booking2();
        Prerequisite2.run();
@@ -71,7 +70,6 @@ public class Adjust_Class extends FrameworkConstants {
        writer.close();
 
 
-//            excelwriter();
 
 
    }
@@ -90,11 +88,7 @@ public class Adjust_Class extends FrameworkConstants {
        String filepath1;
        filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Class.xml";
 
-//        XMLParser.updateAttributeValue("air1:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
        XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
-//       XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime",InputRow.getCell(1).getNumericCellValue(),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
 
 
 
@@ -102,41 +96,6 @@ public class Adjust_Class extends FrameworkConstants {
 
    }
 
-
-   public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-   {
-
-       //        ********** Writing TestData into Excel ************
-
-       File xlsxFile = new File(getTestData());
-       FileInputStream inputStream = new FileInputStream(xlsxFile);
-       XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-       XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-       XSSFRow InputRow=sheet.getRow(3);
-
-
-
-       String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
-
-       System.out.print(PNR);
-       InputRow.getCell(5).setCellValue(PNR);
-       System.out.print(InputRow);
-
-
-
-       FileOutputStream out = new FileOutputStream(new File(getTestData()));
-       wb.write(out);
-       out.close();
-
-       wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-       BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-       writer.write("");
-       writer.close();
-
-   }
 
 }
 

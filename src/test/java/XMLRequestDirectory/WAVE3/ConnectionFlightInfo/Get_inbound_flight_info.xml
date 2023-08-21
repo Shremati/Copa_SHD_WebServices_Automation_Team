@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:con="http://www.eds.com/AirlineSOASchema/ConnectionFlightInfo/" xmlns:con1="http://www.eds.com/AirlineSOASchema/ConnectionFlightInfoRQ">
+    <soapenv:Header />
+    <soapenv:Body>
+        <con:getInboundFlightInfo>
+            <con1:HP_ConnectionFlightInfoRQ Version="4.0">
+                <con1:POS>
+                    <com:Source AirlineVendorID="CM" />
+                </con1:POS>
+                <con1:FlightInfo>
+                    <con1:FlightLegInfo DepartureDateTime="2023-08-16T00:00:00" FlightNumber="192">
+                        <com:DepartureAirport LocationCode="PTY" />
+                    </con1:FlightLegInfo>
+                </con1:FlightInfo>
+            </con1:HP_ConnectionFlightInfoRQ>
+        </con:getInboundFlightInfo>
+    </soapenv:Body>
+</soapenv:Envelope>

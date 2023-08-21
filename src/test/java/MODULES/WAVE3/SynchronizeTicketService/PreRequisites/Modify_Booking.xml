@@ -35,7 +35,7 @@
                                     <air1:MarketingAirline Code="CM"/>
                                 </air1:FlightSegment>
                             </air1:OriginDestinationOption>
-                            <!--To add new segmens to the reservation use the status:
+                            <!--To add new segments to the reservation use the status:
                                     11, NN   NEED
                                   and all required data.-->
                             <air1:OriginDestinationOption>

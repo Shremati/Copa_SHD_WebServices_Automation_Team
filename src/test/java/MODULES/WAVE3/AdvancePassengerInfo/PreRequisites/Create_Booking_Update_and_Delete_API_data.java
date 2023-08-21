@@ -76,8 +76,6 @@ public class Create_Booking_Update_and_Delete_API_data extends FrameworkConstant
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
-
         wb.close();
 
     }
@@ -97,14 +95,8 @@ public class Create_Booking_Update_and_Delete_API_data extends FrameworkConstant
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
 
         InputRow.getCell(7).setCellValue(PNR);
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
