@@ -79,8 +79,6 @@ public class Add_Agent_Duty_Code extends FrameworkConstants {
 
 
         XMLParser.updateAttributeValue("air:AgentDetails", "AgentNumber", InputRow.getCell(1).getStringCellValue(), filepath1);
-        //XMLParser.updateAttributeValue("air:AgentInfo", "CityCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
-        //XMLParser.updateAttributeValue("air:AgentDetails", "AgentInitials", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.SetTagtext("air:AgentDutyCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
         wb.close();

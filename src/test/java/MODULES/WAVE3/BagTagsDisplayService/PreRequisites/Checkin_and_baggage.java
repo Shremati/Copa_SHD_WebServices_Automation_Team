@@ -25,25 +25,8 @@ public class Checkin_and_baggage extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
-//        PreRequisite for Scenario ------> Create Booking
-
-//        Create_booking_service Prerequisite = new Create_booking_service();
-//        Prerequisite.run(); //excel gets updated
-//
-//        Issue_ticket Prerequisite1 = new Issue_ticket();
-//        Prerequisite1.run();
-
-//        Display_APIS Prerequisite2 = new Display_APIS();
-//        Prerequisite2.run();
-//
-//        Add_APIS Prerequisite3 = new Add_APIS();
-//        Prerequisite3.run();
-
-
 
 
         UpdatePayload();
@@ -68,15 +51,8 @@ public class Checkin_and_baggage extends FrameworkConstants {
 
 
 
-        //BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Bag\\Checkin_and_baggage.xml"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
-
 //                ********* Clearing Temp_Request.xml *********
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
 

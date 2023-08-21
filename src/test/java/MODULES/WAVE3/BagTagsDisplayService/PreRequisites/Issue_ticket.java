@@ -27,10 +27,6 @@ public class Issue_ticket extends FrameworkConstants {
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        Create_booking_service Prerequisite = new Create_booking_service();
-//        Prerequisite.run();
-
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -56,8 +52,7 @@ public class Issue_ticket extends FrameworkConstants {
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 
@@ -76,7 +71,7 @@ public class Issue_ticket extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
         XSSFRow InputRow=sheet.getRow(1);
-        // XSSFRow InputRowPNR=sheet.getRow(1);
+
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Issue_ticket.xml";

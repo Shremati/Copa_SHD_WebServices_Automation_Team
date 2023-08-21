@@ -79,10 +79,6 @@ public class One_request_with_vendor_preferences extends FrameworkConstants
         filepath1=getRequestDirectory()+"AirScheduleService\\One_request_with_vendor_preferences.xml";
 
 
-//        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("com:OriginLocation","LocationCode",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("com:DestinationLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),filepath1,0);
-
         XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1,0);
         XMLParser.updateAttributeValueatIndex("com:OriginLocation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DestinationLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);

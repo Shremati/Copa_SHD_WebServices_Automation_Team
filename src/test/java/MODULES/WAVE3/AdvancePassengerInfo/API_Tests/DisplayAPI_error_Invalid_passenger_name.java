@@ -85,12 +85,7 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml";
 
 
-
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
-
-
-//        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 
