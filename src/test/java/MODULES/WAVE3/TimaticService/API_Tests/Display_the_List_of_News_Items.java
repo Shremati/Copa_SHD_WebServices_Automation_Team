@@ -75,8 +75,6 @@ public class Display_the_List_of_News_Items extends FrameworkConstants {
         filepath1=getRequestDirectory()+"TimaticService\\Display_the_List_of_News_Items.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

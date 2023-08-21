@@ -2,7 +2,7 @@ package MODULES.WAVE3.CreateBooking41Service.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket_41;
+import MODULES.WAVE3.CreateBooking41Service.PostCheck.passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket_41;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;

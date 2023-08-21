@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Display_City_list_by_country_starting_letter extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -75,8 +76,6 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
         filepath1=getRequestDirectory()+"TimaticService\\Display_City_list_by_country_starting_letter.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 
