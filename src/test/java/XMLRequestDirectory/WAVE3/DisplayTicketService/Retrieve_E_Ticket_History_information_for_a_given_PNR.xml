@@ -8,7 +8,7 @@
                         <RequestorID Type="6" ID_Context="IATA" ID="99999999"/>
                     </Source>
                 </POS>
-                <RecordLocator>ALSZP1</RecordLocator>
+                <RecordLocator>AQT2ZF</RecordLocator>
             </EDS_DisplayTicketRQ>
         </dis:displayTicketHistory>
     </soapenv:Body>
