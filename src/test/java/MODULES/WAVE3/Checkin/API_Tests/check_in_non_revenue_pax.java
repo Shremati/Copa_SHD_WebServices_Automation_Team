@@ -28,11 +28,9 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
 
         Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
         Prerequisite1.run();
-        // PreRequisite for Scenario ------>Issue Ticket
 
         Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();
         Prerequisite2.run();
@@ -43,7 +41,7 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
         Modify_APIS_Non_Revenue_pax Prerequisite4 = new Modify_APIS_Non_Revenue_pax();
         Prerequisite4.run();
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -91,7 +89,6 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Check_in_non_revenue_pax.xml";
-
 
 
         XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);

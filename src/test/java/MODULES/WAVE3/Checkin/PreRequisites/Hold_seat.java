@@ -64,9 +64,6 @@ public class Hold_seat extends FrameworkConstants {
         writer.close();
 
 
-        //   excelwriter();
-
-
     }
 
 
@@ -86,49 +83,12 @@ public class Hold_seat extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        // XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        //XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(14);
-
-
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
-        InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(16).setCellValue(Givenname);
-        InputRow.getCell(17).setCellValue(Surname);
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 
 
 }

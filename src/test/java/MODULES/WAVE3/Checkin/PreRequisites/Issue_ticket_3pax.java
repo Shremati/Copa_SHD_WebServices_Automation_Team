@@ -55,8 +55,7 @@ public class Issue_ticket_3pax extends FrameworkConstants {
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 

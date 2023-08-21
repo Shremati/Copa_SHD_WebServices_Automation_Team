@@ -36,7 +36,8 @@ public class Cancel_held_seat extends FrameworkConstants {
 //        PreRequisite for Scenario ------> Create Booking
 
         Create_booking_service_cancel_held_seats Prerequisite = new Create_booking_service_cancel_held_seats();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
+
         Hold_seat Prerequisite1 = new Hold_seat();
         Prerequisite1.run();
 
@@ -90,7 +91,6 @@ public class Cancel_held_seat extends FrameworkConstants {
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Cancel_held_seat.xml";
-
 
 
         updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);

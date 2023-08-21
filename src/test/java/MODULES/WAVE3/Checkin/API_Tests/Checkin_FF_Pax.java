@@ -28,7 +28,6 @@ public class Checkin_FF_Pax extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-      //  PreRequisite for Scenario ------> Create Booking
 
         Create_Booking_FF_pax Prerequisite1 = new Create_Booking_FF_pax();
         Prerequisite1.run();
@@ -42,7 +41,7 @@ public class Checkin_FF_Pax extends FrameworkConstants {
         Add_APIS_FF_pax Prerequisite4 = new Add_APIS_FF_pax();
         Prerequisite4.run();
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 

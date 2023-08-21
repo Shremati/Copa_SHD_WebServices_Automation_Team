@@ -28,7 +28,6 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
     {
 
 
-//        PreRequisite for Scenario ------> Create Booking
 
         create_booking_service_singlepax Prerequisite = new create_booking_service_singlepax();
         Prerequisite.run(); //excel gets updated
