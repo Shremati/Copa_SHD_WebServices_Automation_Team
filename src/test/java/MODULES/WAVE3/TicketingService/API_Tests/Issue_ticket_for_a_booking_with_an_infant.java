@@ -35,9 +35,6 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
 
         //        PreRequisite for Scenario ------> Issue Ticket
 
-//        issue_ticket_void_a_ticket Prerequisite2 = new issue_ticket_void_a_ticket();
-//        Prerequisite2.run(); //generates ticket number
-
 
         UpdatePayload();
 
@@ -89,7 +86,6 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
         filepath1=getRequestDirectory()+"TicketingService\\Issue_ticket_for_a_booking_with_an_infant.xml";
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

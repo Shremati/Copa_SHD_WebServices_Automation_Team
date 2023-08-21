@@ -83,7 +83,6 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
         filepath1=getRequestDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml";
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

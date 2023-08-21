@@ -88,11 +88,7 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_active_fare_quote_and_fare_quote_history.xml";
 
-//        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(2).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(3).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

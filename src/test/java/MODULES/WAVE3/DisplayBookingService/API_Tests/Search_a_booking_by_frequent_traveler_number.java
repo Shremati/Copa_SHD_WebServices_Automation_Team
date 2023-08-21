@@ -27,22 +27,18 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking1_search_a_booking_by_frequent_traveler_number Prerequisite = new create_booking1_search_a_booking_by_frequent_traveler_number();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket1_search_a_booking_by_frequent_traveler_number Prerequisite2 = new issue_ticket1_search_a_booking_by_frequent_traveler_number();
-        Prerequisite2.run(); //excel gets updated
-
-
-//        PreRequisite for Scenario ------> Create Booking
+        Prerequisite2.run();
 
         create_booking2_search_a_booking_by_frequent_traveler_number Prerequisite3 = new create_booking2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite3.run(); //excel gets updated
+        Prerequisite3.run();
 
         issue_ticket2_search_a_booking_by_frequent_traveler_number Prerequisite4 = new issue_ticket2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite4.run(); //excel gets updated
+        Prerequisite4.run();
 
         UpdatePayload();
 
