@@ -22,7 +22,7 @@ import static io.restassured.RestAssured.given;
 public class Create_Booking_Update_and_Delete_API_data extends FrameworkConstants {
     public static String SOAPRequest;
 
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
 
 

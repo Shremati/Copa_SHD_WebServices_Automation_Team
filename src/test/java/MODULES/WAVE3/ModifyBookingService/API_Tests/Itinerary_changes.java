@@ -26,9 +26,6 @@ public class Itinerary_changes extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        //        PreRequisite for Scenario ------> Create Booking
-
-
         create_booking_itinerary_changes Prerequisite = new create_booking_itinerary_changes();
         Prerequisite.run(); //excel gets updated
 

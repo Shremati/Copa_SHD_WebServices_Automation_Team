@@ -21,7 +21,7 @@ import static io.restassured.RestAssured.given;
 
 public class Modify_API_for_updating_API_data extends FrameworkConstants {
     public static String SOAPRequest;
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
 
 

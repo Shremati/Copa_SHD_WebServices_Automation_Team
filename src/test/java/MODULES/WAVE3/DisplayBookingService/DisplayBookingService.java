@@ -43,8 +43,7 @@ public class DisplayBookingService {
         }
     }
 
-    //
-    @Description("Display a booking from a specific address (LNIATA) without recloc given")
+    @Description("Display a booking from a specific address (LNIATA) without reloc given")
     @Test
     public void Scenario3() {
 

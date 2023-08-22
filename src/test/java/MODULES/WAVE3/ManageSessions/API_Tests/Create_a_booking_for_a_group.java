@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
@@ -21,6 +22,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Create_a_booking_for_a_group extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -28,7 +30,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
 
         Get_Token Prerequisite1 = new Get_Token();
         Prerequisite1.run();
-//        System.out.println(PNR);
+
 
         Create_Booking_for_Group Prerequisite2 = new Create_Booking_for_Group();
         Prerequisite2.run();
@@ -50,6 +52,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())

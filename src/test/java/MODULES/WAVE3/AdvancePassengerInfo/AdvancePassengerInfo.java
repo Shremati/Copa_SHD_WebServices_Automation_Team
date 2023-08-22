@@ -63,7 +63,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Collect_API_for_a_Single_passenger")
+    @Description("ModifyAPI_Collect_API_for_a_Single_passenger")
     @Test
     public void Scenario5() {
         try {
@@ -76,7 +76,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Collect_API_for_a_Single_passenger")
+    @Description("ModifyAPI_Update and Delete API data")
     @Test
     public void Scenario6() {
         try {

@@ -32,7 +32,7 @@ import static io.restassured.RestAssured.given;
 public class Create_Booking_Collect_API_for_a_Single_passenger extends FrameworkConstants {
     public static String SOAPRequest;
 
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
 
 
 

@@ -29,7 +29,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("One request")
+    @Description("Get Schedule Display - One request")
     @Test
     public void Scenario2() {
 

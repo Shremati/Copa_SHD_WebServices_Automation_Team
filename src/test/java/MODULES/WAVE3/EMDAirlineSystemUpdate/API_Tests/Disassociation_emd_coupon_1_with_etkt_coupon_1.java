@@ -34,12 +34,12 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
         //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite2 = new issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
         //        PreRequisite for Scenario ------> Create Booking
 
         associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite3 = new associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite3.run(); //excel gets updated
+        Prerequisite3.run();
 
 
         UpdatePayload();

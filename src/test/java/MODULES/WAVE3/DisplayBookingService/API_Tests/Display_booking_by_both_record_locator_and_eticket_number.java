@@ -29,13 +29,11 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+
 
         create_booking_display_booking_by_both_record_locator_and_eticket_number Prerequisite = new create_booking_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite.run(); //excel gets updated
 
-
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_display_booking_by_both_record_locator_and_eticket_number Prerequisite2 = new issue_ticket_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite2.run(); //generates ticket number

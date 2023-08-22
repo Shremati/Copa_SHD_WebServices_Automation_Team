@@ -3,6 +3,7 @@ package MODULES.WAVE3.ManageSessions.API_Tests;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -50,6 +51,7 @@ public class Create_a_booking_for_two_segments extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getManagesessions())

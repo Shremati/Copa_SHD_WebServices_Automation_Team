@@ -32,20 +32,20 @@
             <class name="MODULES.WAVE3.TimaticService.TimaticService"/>
             <class name="MODULES.WAVE3.PassengerListService.PassengerListService"/>
             <class name="MODULES.WAVE3.SynchronizeTicketService.SynchronizeTicketService"/>
-            <class name="MODULES.WAVE3.Standby.Standby"></class>
-            <class name="MODULES.WAVE3.CabinCrewReportService.CrewReportService"></class>
-            <class name="MODULES.WAVE3.ConnectionFlightInfo.ConnectionFlightInfo"></class>
-            <class name="MODULES.WAVE3.DepartureControlDisplay.DepartureControlDisplay"></class>
-            <class name="MODULES.WAVE3.ModifySeatMap.ModifySeatMap"></class>
-            <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport"></class>
-            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService"></class>
-            <!--            <class name="MODULES.WAVE3.AgentSineService.AgentSineService"></class>-->
+            <class name="MODULES.WAVE3.Standby.Standby"/>
+            <class name="MODULES.WAVE3.CabinCrewReportService.CrewReportService"/>
+            <class name="MODULES.WAVE3.ConnectionFlightInfo.ConnectionFlightInfo"/>
+            <class name="MODULES.WAVE3.DepartureControlDisplay.DepartureControlDisplay"/>
+            <class name="MODULES.WAVE3.ModifySeatMap.ModifySeatMap"/>
+            <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport"/>
+            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService"/>
+<!--        <class name="MODULES.WAVE3.AgentSineService.AgentSineService"/>-->
 
 
-<!--            <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/>-->
-<!--            <class name="MODULES.WAVE3.DisplayBooking41Service.DisplayBooking41Service"/>-->
-<!--            <class name="MODULES.WAVE3.DisplayTicket41Service.DisplayTicket41Service"/>-->
-<!--            <class name="MODULES.WAVE3.ModifyBooking41Service.ModifyBooking41Service"/>-->
+<!--        <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/>-->
+<!--        <class name="MODULES.WAVE3.DisplayBooking41Service.DisplayBooking41Service"/>-->
+<!--        <class name="MODULES.WAVE3.DisplayTicket41Service.DisplayTicket41Service"/>-->
+<!--        <class name="MODULES.WAVE3.ModifyBooking41Service.ModifyBooking41Service"/>-->
 
 
         </classes>
