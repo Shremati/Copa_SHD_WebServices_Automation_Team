@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,13 +28,16 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
 {
     public static String SOAPRequest;
 
+    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_booking_by_both_record_locator_and_eticket_number Prerequisite = new create_booking_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite.run(); //excel gets updated
 
+
+        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_display_booking_by_both_record_locator_and_eticket_number Prerequisite2 = new issue_ticket_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite2.run(); //generates ticket number

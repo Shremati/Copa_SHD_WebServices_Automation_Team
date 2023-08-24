@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,12 +26,13 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
 {
     public static String SOAPRequest;
 
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_active_fare_quote_and_fare_quote_history Prerequisite = new create_booking_display_active_fare_quote_and_fare_quote_history();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         display_booking_display_active_fare_quote_and_fare_quote_history Prerequisite2 = new display_booking_display_active_fare_quote_and_fare_quote_history();
         Prerequisite2.run();
@@ -88,8 +90,8 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_active_fare_quote_and_fare_quote_history.xml";
 
-        XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
+       XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
         wb.close();
 

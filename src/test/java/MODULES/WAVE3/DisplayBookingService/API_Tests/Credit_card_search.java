@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,15 +29,16 @@ public class Credit_card_search extends FrameworkConstants
 {
     public static String SOAPRequest;
 
+    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_credit_card_search Prerequisite = new create_booking_credit_card_search();
-        Prerequisite.run();
-
-        issue_ticket_credit_card_search Prerequisite2 = new issue_ticket_credit_card_search();
-        Prerequisite2.run();
+//        create_booking_credit_card_search Prerequisite = new create_booking_credit_card_search();
+//        Prerequisite.run(); //excel gets updated
+//
+//        issue_ticket_credit_card_search Prerequisite2 = new issue_ticket_credit_card_search();
+//        Prerequisite2.run(); //excel gets updated
 
         UpdatePayload();
 

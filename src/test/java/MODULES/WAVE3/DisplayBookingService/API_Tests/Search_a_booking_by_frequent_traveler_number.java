@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,18 +28,13 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking1_search_a_booking_by_frequent_traveler_number Prerequisite = new create_booking1_search_a_booking_by_frequent_traveler_number();
         Prerequisite.run();
 
         issue_ticket1_search_a_booking_by_frequent_traveler_number Prerequisite2 = new issue_ticket1_search_a_booking_by_frequent_traveler_number();
         Prerequisite2.run();
-
-        create_booking2_search_a_booking_by_frequent_traveler_number Prerequisite3 = new create_booking2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite3.run();
-
-        issue_ticket2_search_a_booking_by_frequent_traveler_number Prerequisite4 = new issue_ticket2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite4.run();
 
         UpdatePayload();
 

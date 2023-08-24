@@ -54,9 +54,6 @@ public class display_booking_display_active_fare_quote_and_fare_quote_history ex
         writer.write("");
         writer.close();
 
-
-//        excelwriter();
-
     }
 
 

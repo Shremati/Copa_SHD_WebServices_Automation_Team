@@ -43,7 +43,8 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Display a booking from a specific address (LNIATA) without reloc given")
+    //
+    @Description("Display a booking from a specific address (LNIATA) without recloc given")
     @Test
     public void Scenario3() {
 
@@ -100,7 +101,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Display confirmed booking by 2nd flight in booking")
+    @Description("TC13 - Display confirmed booking by 2nd flight in booking")
     @Test
     public void Scenario7() {
 
@@ -213,7 +214,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Display active fare quote and fare quote history")
+    @Description("TC01 - Display active fare quote and fare quote history")
     @Test
     public void Scenario15() {
 
@@ -227,7 +228,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("No fare quote history in booking")
+    @Description("TC04 - No fare quote history in booking")
     @Test
     public void Scenario16() {
 

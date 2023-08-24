@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,7 +31,8 @@ public class Advance_seat_assignment_on_a_flight_with_multiple_legs extends Fram
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs Prerequisite = new create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs();
-        Prerequisite.run(); 
+        Prerequisite.run(); //excel gets updated
+
 
         UpdatePayload();
 

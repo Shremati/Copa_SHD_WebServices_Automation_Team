@@ -32,10 +32,10 @@ public class Display_confirmed_booking_by_2nd_flight_in_booking extends Framewor
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_confirmed_booking_by_2nd_flight_in_booking Prerequisite = new create_booking_display_confirmed_booking_by_2nd_flight_in_booking();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking Prerequisite2 = new issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
 
         UpdatePayload();

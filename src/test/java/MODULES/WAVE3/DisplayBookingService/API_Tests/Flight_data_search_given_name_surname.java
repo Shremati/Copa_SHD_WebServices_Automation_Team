@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,15 +29,17 @@ public class Flight_data_search_given_name_surname extends FrameworkConstants
 {
     public static String SOAPRequest;
 
+
+    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_flight_data_search_given_name_surname Prerequisite = new create_booking_flight_data_search_given_name_surname();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_flight_data_search_given_name_surname Prerequisite2 = new issue_ticket_flight_data_search_given_name_surname();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 

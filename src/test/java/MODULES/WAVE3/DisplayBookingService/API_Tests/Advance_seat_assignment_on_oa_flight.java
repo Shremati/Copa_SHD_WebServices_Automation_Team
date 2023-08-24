@@ -32,7 +32,7 @@ public class Advance_seat_assignment_on_oa_flight extends FrameworkConstants
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_advance_seat_assignment_on_oa_flight Prerequisite = new create_booking_advance_seat_assignment_on_oa_flight();
-        Prerequisite.run();
+        Prerequisite.run(); //excel gets updated
 
 
         UpdatePayload();
