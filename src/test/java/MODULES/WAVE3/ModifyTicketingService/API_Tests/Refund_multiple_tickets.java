@@ -26,16 +26,13 @@ public class Refund_multiple_tickets extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+
 
         create_booking_refund_multiple_tickets Prerequisite = new create_booking_refund_multiple_tickets();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
         issue_ticket_refund_multiple_tickets Prerequisite2 = new issue_ticket_refund_multiple_tickets();
-        Prerequisite2.run(); //generates ticket number
-
+        Prerequisite2.run();
 
         modify_ticket_refund_multiple_tickets Prerequisite3 = new modify_ticket_refund_multiple_tickets();
         Prerequisite3.run();
@@ -92,7 +89,6 @@ public class Refund_multiple_tickets extends FrameworkConstants
 
         XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-
 
         wb.close();
 

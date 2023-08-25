@@ -1,7 +1,6 @@
 package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_print_an_eticket;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
@@ -30,16 +29,13 @@ public class Print_an_eticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_print_an_eticket Prerequisite = new create_booking_print_an_eticket();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_print_an_eticket Prerequisite2 = new issue_ticket_print_an_eticket();
-        Prerequisite2.run(); //generates ticket number
-
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -92,7 +88,6 @@ public class Print_an_eticket extends FrameworkConstants
 
         XMLParser.SetTagtextatIndex("tic:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("tic:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValue("tic:EDS_TicketingModifyRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
 
         wb.close();
 

@@ -4,6 +4,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Create_Booking;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Modify_Booking;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -44,6 +45,7 @@ public class Modify_name extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())
@@ -81,7 +83,7 @@ public class Modify_name extends FrameworkConstants {
 
         filepath1=getRequestDirectory()+"ManageSessions\\Modify_name.xml";
 
-        XMLParser.updateAttributeValueatIndex("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         wb.close();
 

@@ -3,6 +3,7 @@ package MODULES.WAVE3.ManageSessions.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,8 +20,8 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Get_Token extends FrameworkConstants {
-    public static String SOAPRequest;
 
+    public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -39,6 +40,7 @@ public class Get_Token extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getManagesessions())
@@ -79,7 +81,7 @@ public class Get_Token extends FrameworkConstants {
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Get_Token.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(13).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(5).getStringCellValue(),filepath1);
 
         wb.close();
 
@@ -97,10 +99,11 @@ public class Get_Token extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String TransactionIdentifier = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
 
-        InputRow.getCell(11).setCellValue(TransactionIdentifier);
 
+        String PNR = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
+
+        InputRow.getCell(3).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

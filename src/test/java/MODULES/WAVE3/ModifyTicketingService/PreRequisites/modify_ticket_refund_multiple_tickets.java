@@ -3,6 +3,7 @@ package MODULES.WAVE3.ModifyTicketingService.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -37,9 +38,10 @@ public class modify_ticket_refund_multiple_tickets extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getModifyticketingservice())
+                .post(getModifybookingservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -56,7 +58,6 @@ public class modify_ticket_refund_multiple_tickets extends FrameworkConstants
         writer.close();
 
 
-//        excelwriter();
 
     }
 
@@ -77,12 +78,11 @@ public class modify_ticket_refund_multiple_tickets extends FrameworkConstants
 
 
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("n1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("n1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
@@ -101,9 +101,6 @@ public class modify_ticket_refund_multiple_tickets extends FrameworkConstants
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
         InputRow.getCell(16).setCellValue(TicketNumber);
-
-//        InputRow.getCell(16).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
-//        InputRow.getCell(16).setCellValue(XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),0));
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

@@ -31,7 +31,7 @@ public class ManageSessions {
 
     }
 
-    @Description("Create a booking for a group")
+    @Description("Create_a_booking_for_a_group_FinalizeSession")
     @Test
     public void Scenario2() {
 
@@ -40,12 +40,12 @@ public class ManageSessions {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("SCENARIO 2 failed due to :" + e);
         }
 
     }
 
-    @Description("Create Booking 2 Segments")
+    @Description("Create Booking 2 Segments - releaseToken")
     @Test
     public void Scenario3() {
 
@@ -54,7 +54,7 @@ public class ManageSessions {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
 }

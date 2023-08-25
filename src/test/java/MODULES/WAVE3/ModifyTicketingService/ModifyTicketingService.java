@@ -57,7 +57,7 @@ public class ModifyTicketingService {
 
     }
 
-    @Description("Refund Error - cancell all segments prior refund")
+    @Description("Refund Error - cancel all segments prior refund")
     @Test
     public void Scenario4() {
 

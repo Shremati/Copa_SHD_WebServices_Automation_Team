@@ -47,22 +47,6 @@ public class Void_a_ticket extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-//        RequestSpecification requestSpecification =
-//                given().
-//                        baseUri(getBaseURL())
-//                        .header("Content-Type", "text/xml")
-//                        .filter(new AllureRestAssured())
-//                        .body(SOAPRequest);
-//
-//
-//        requestSpecification.
-//                when()
-//                .post(getModifyticketingservice())
-//                .then()
-//                .statusCode(200)
-//                .and()
-//                .log().all().extract().response();
-
 
         Response response = given()
                 .baseUri(getBaseURL())
