@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns4:finalizeSessionBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns4="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns5:OTA_AirBookRS TimeStamp="2023-08-25T16:10:15" Version="4.000" TransactionIdentifier="5846703CCMCMRPCT07BA46771D">
+        <ns5:Errors>
+          <Error Type="12" ShortText="10054"> (1) Error on physical connection: ONC/RPC call timed out</Error>
+        </ns5:Errors>
+      </ns5:OTA_AirBookRS>
+    </ns4:finalizeSessionBookingResponse>
+  </soap:Body>
+</soap:Envelope>

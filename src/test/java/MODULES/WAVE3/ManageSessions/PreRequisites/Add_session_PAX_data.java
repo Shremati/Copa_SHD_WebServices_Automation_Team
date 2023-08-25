@@ -1,7 +1,9 @@
 package MODULES.WAVE3.ManageSessions.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -17,7 +19,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Create_Booking_Finalize extends FrameworkConstants {
+public class Add_session_PAX_data extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -39,6 +41,7 @@ public class Create_Booking_Finalize extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -60,8 +63,6 @@ public class Create_Booking_Finalize extends FrameworkConstants {
         writer.close();
 
 
-//        excelwriter();
-
 
     }
 
@@ -74,54 +75,17 @@ public class Create_Booking_Finalize extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ManageSessions");
 
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Create_Booking_Finalize.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Add_session_PAX_data.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(13).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath());
-
-
+        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(12).getNumericCellValue()),getTemp_requestPath());
         wb.close();
 
     }
 
-
-//    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-//    {
-//
-//        //        ********** Writing TestData into Excel ************
-//
-//        File xlsxFile = new File(getTestData());
-//        FileInputStream inputStream = new FileInputStream(xlsxFile);
-//        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-//        XSSFSheet sheet = wb.getSheet("ManageSessions");
-//        XSSFRow InputRow=sheet.getRow(2);
-//
-//
-//
-//        String PNR = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
-//
-//        System.out.print(PNR);
-//        InputRow.getCell(3).setCellValue(PNR);
-//        System.out.print(InputRow);
-//
-//
-//
-//        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-//        wb.write(out);
-//        out.close();
-//
-//        wb.close();
-//
-////          ********* Clearing Temp_Response.xml *********
-//
-//        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-//        writer.write("");
-//        writer.close();
-//
-//    }
 
 
 }

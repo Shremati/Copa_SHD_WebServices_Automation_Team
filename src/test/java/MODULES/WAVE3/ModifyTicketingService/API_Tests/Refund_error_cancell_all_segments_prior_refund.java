@@ -92,7 +92,6 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
         XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
-
         wb.close();
 
     }

@@ -1,13 +1,11 @@
 package MODULES.WAVE3.ManageSessions.API_Tests;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -31,11 +29,10 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         Get_Token Prerequisite1 = new Get_Token();
         Prerequisite1.run();
 
-
-        Create_Booking_for_Group Prerequisite2 = new Create_Booking_for_Group();
+        Add_session Prerequisite2 = new Add_session();
         Prerequisite2.run();
 
-        Create_Booking_for_Group_PAX Prerequisite3 = new Create_Booking_for_Group_PAX();
+        Add_session_PAX_data Prerequisite3 = new Add_session_PAX_data();
         Prerequisite3.run();
 
 
@@ -63,7 +60,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ManageSessions\\Create_a_booking_for_a_group_FinalizeSession.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -72,9 +69,6 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
-
-
-        excelwriter();
 
 
     }
@@ -91,43 +85,12 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Create_Booking_for_Group.xml";
+        filepath1=getRequestDirectory()+"ManageSessions\\Create_a_booking_for_a_group_FinalizeSession.xml";;
 
-        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(11).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1);
+
 
         wb.close();
-
-    }
-
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("ManageSessions");
-        XSSFRow InputRow=sheet.getRow(2);
-
-
-
-        String TransactionIdentifier = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
-
-        InputRow.getCell(11).setCellValue(TransactionIdentifier);
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
 
     }
 

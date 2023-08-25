@@ -10,7 +10,7 @@
                     <air1:AirItinerary>
                         <air1:OriginDestinationOptions>
                             <air1:OriginDestinationOption>
-                                <air1:FlightSegment DepartureDateTime="2023-02-12T00:00:00" RPH="1" FlightNumber="485" ResBookDesigCode="Y" NumberInParty="11" Status="11">
+                                <air1:FlightSegment DepartureDateTime="2023-08-25T00:00:00" RPH="1" FlightNumber="485" ResBookDesigCode="Y" NumberInParty="11" Status="11">
                                     <com:DepartureAirport LocationCode="PTY"/>
                                     <com:ArrivalAirport LocationCode="MIA"/>
                                     <air1:MarketingAirline Code="CM"/>

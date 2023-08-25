@@ -3,6 +3,7 @@ package MODULES.WAVE3.ManageSessions.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -41,6 +42,7 @@ public class Modify_Booking extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())
@@ -82,9 +84,10 @@ public class Modify_Booking extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Modify_Booking.xml";
 
         XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n5:BookingReferenceID","ID", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("n5:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
 
@@ -102,9 +105,11 @@ public class Modify_Booking extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(1);
 
-        String TransactionIdentifie = XMLParser.GetAttributeValue("ns6:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
-        InputRow.getCell(11).setCellValue(TransactionIdentifie);
+
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns6:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
+
+        InputRow.getCell(3).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
