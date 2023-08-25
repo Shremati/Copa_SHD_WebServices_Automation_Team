@@ -1,22 +1,22 @@
-//package MODULES.WAVE3.DisplayBookingService.PreRequisites;
-//
-//import GENERICS.Utils;
-//import GENERICS.XMLParser;
-//import frameworkconstants.FrameworkConstants;
-//import io.restassured.response.Response;
-//import org.apache.commons.io.IOUtils;
-//import org.apache.poi.xssf.usermodel.XSSFRow;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//import org.xml.sax.SAXException;
-//
-//import javax.xml.parsers.ParserConfigurationException;
-//import javax.xml.transform.TransformerException;
-//import java.io.*;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
-//
-//import static io.restassured.RestAssured.given;
+package MODULES.WAVE3.DisplayBookingService.PreRequisites;
+
+import GENERICS.Utils;
+import GENERICS.XMLParser;
+import frameworkconstants.FrameworkConstants;
+import io.restassured.response.Response;
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static io.restassured.RestAssured.given;
 //
 //public class Create_booking_2segments_1pax extends FrameworkConstants {
 //
