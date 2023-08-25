@@ -1,8 +1,8 @@
 package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_display_confirmed_booking_by_2nd_flight_in_booking extends FrameworkConstants
+public class issue_ticket_for_one_pax_without_fqtv extends FrameworkConstants
 {
 
     public static String SOAPRequest;
@@ -37,9 +37,10 @@ public class create_booking_display_confirmed_booking_by_2nd_flight_in_booking e
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getCreatebookingservice())
+                .post(getIssueticketservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -70,23 +71,13 @@ public class create_booking_display_confirmed_booking_by_2nd_flight_in_booking e
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
 
-        XSSFRow InputRow=sheet.getRow(7);
+        XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_display_confirmed_booking_by_2nd_flight_in_booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\issue_ticket_for_one_pax_without_fqtv.xml";
 
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
-
-
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(15).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
@@ -101,14 +92,10 @@ public class create_booking_display_confirmed_booking_by_2nd_flight_in_booking e
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
-        XSSFRow InputRow=sheet.getRow(7);
+        XSSFRow InputRow=sheet.getRow(6);
 
-
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        InputRow.getCell(10).setCellValue(PNR);
-
-        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
-        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
+        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
+        InputRow.getCell(17).setCellValue(TicketNumber);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

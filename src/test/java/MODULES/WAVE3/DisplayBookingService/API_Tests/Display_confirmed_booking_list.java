@@ -28,16 +28,15 @@ public class Display_confirmed_booking_list extends FrameworkConstants
 {
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_confirmed_booking_list Prerequisite = new create_booking_display_confirmed_booking_list();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_display_confirmed_booking_list Prerequisite2 = new issue_ticket_display_confirmed_booking_list();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 

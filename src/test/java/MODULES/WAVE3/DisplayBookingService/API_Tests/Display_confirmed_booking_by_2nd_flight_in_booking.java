@@ -3,8 +3,7 @@ package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_confirmed_booking_by_2nd_flight_in_booking;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_round_trip_booking_for_one_pax;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -29,9 +28,9 @@ public class Display_confirmed_booking_by_2nd_flight_in_booking extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+        //        Need to create a round trip booking for single passenger
 
-        create_booking_display_confirmed_booking_by_2nd_flight_in_booking Prerequisite = new create_booking_display_confirmed_booking_by_2nd_flight_in_booking();
+        create_round_trip_booking_for_one_pax Prerequisite = new create_round_trip_booking_for_one_pax();
         Prerequisite.run();
 
         issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking Prerequisite2 = new issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking();

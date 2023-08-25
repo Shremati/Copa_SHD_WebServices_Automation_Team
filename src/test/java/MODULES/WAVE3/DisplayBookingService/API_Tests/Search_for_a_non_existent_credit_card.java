@@ -22,7 +22,6 @@ public class Search_for_a_non_existent_credit_card extends FrameworkConstants
 {
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

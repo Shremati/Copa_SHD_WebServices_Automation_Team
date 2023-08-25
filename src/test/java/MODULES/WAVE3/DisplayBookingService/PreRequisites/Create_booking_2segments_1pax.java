@@ -72,7 +72,7 @@
 //        XSSFRow InputRow=sheet.getRow(7);
 //
 //        String filepath1;
-//        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_display_confirmed_booking_by_2nd_flight_in_booking.xml";
+//        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_round_trip_booking_for_one_pax.xml";
 //
 //
 //        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);

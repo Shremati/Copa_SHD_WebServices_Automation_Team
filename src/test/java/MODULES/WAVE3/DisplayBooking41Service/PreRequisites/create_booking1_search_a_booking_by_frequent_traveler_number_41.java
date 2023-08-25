@@ -73,7 +73,7 @@ public class create_booking1_search_a_booking_by_frequent_traveler_number_41 ext
         XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking1_search_a_booking_by_frequent_traveler_number.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_for_one_pax_with_fqtv.xml";
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);

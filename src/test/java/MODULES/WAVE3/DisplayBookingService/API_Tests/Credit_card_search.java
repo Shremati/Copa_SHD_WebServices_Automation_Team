@@ -29,16 +29,16 @@ public class Credit_card_search extends FrameworkConstants
 {
     public static String SOAPRequest;
 
-    @Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
-//        create_booking_credit_card_search Prerequisite = new create_booking_credit_card_search();
-//        Prerequisite.run(); //excel gets updated
-//
-//        issue_ticket_credit_card_search Prerequisite2 = new issue_ticket_credit_card_search();
-//        Prerequisite2.run(); //excel gets updated
+        create_booking_credit_card_search Prerequisite = new create_booking_credit_card_search();
+        Prerequisite.run();
+
+        issue_ticket_credit_card_search Prerequisite2 = new issue_ticket_credit_card_search();
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -90,7 +90,6 @@ public class Credit_card_search extends FrameworkConstants
         filepath1=getRequestDirectory()+"DisplayBookingService\\Credit_card_search.xml";
 
         XMLParser.updateAttributeValueatIndex("read:CreditCardInfo", "CardNumber", InputRow.getCell(18).getStringCellValue(),filepath1,0);
-
 
         wb.close();
 

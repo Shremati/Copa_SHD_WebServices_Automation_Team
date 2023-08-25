@@ -11,7 +11,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,13 +27,19 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+        //        We need to create 2 bookings , 1 with FQTV and 1 without FQTV
 
-        create_booking1_search_a_booking_by_frequent_traveler_number Prerequisite = new create_booking1_search_a_booking_by_frequent_traveler_number();
-        Prerequisite.run();
+        create_booking_for_one_pax_with_fqtv Prerequisite1 = new create_booking_for_one_pax_with_fqtv();
+        Prerequisite1.run();
 
-        issue_ticket1_search_a_booking_by_frequent_traveler_number Prerequisite2 = new issue_ticket1_search_a_booking_by_frequent_traveler_number();
+        issue_ticket_for_one_pax_with_fqtv Prerequisite2 = new issue_ticket_for_one_pax_with_fqtv();
         Prerequisite2.run();
+
+        create_booking_for_one_pax_without_fqtv Prerequisite3 = new create_booking_for_one_pax_without_fqtv();
+        Prerequisite3.run();
+
+        issue_ticket_for_one_pax_without_fqtv Prerequisite4 = new issue_ticket_for_one_pax_without_fqtv();
+        Prerequisite4.run();
 
         UpdatePayload();
 
@@ -88,7 +93,7 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
         XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(2).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("read:CustLoyalty","MembershipID", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),0);
 
 

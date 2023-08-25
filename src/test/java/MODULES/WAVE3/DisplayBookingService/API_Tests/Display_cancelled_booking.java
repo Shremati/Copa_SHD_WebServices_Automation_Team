@@ -30,7 +30,7 @@ public class Display_cancelled_booking extends FrameworkConstants
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_cancelled_booking Prerequisite = new create_booking_display_cancelled_booking();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         display_booking_display_cancelled_booking Prerequisite2 = new display_booking_display_cancelled_booking();
         Prerequisite2.run();

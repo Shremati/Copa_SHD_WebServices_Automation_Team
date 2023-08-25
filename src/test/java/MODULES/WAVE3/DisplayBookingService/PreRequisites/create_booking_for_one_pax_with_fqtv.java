@@ -1,7 +1,9 @@
 package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -17,7 +19,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class issue_ticket2_search_a_booking_by_frequent_traveler_number extends FrameworkConstants
+public class create_booking_for_one_pax_with_fqtv extends FrameworkConstants
 {
 
     public static String SOAPRequest;
@@ -36,9 +38,10 @@ public class issue_ticket2_search_a_booking_by_frequent_traveler_number extends 
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getIssueticketservice())
+                .post(getCreatebookingservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -72,10 +75,15 @@ public class issue_ticket2_search_a_booking_by_frequent_traveler_number extends 
         XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\issue_ticket2_search_a_booking_by_frequent_traveler_number.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_for_one_pax_with_fqtv.xml";
 
 
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(15).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:CustLoyalty","MembershipID",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),0);
+
 
         wb.close();
     }
@@ -92,8 +100,12 @@ public class issue_ticket2_search_a_booking_by_frequent_traveler_number extends 
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
         XSSFRow InputRow=sheet.getRow(6);
 
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(17).setCellValue(TicketNumber);
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+        InputRow.getCell(10).setCellValue(PNR);
+
+        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
+        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

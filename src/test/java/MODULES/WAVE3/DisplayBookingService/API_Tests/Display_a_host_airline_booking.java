@@ -27,14 +27,12 @@ public class Display_a_host_airline_booking extends FrameworkConstants
 {
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_a_host_airline_booking Prerequisite = new create_booking_display_a_host_airline_booking();
-        Prerequisite.run(); //excel gets updated
-
+        Prerequisite.run();
 
         UpdatePayload();
 

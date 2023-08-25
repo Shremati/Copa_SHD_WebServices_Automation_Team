@@ -43,8 +43,7 @@ public class DisplayBookingService {
         }
     }
 
-    //
-    @Description("Display a booking from a specific address (LNIATA) without recloc given")
+    @Description("Display a booking from a specific address (LNIATA) without reloc given")
     @Test
     public void Scenario3() {
 
@@ -63,7 +62,7 @@ public class DisplayBookingService {
     public void Scenario4() {
 
         try {
-            Display_confirmed_booking_list.Execute();
+            Display_confirmed_booking_list.Execute(); //It will show all the  confirmed PNRs created for the same location and date and for same flight
 
         } catch (Exception e) {
             failTest(e);
@@ -78,7 +77,7 @@ public class DisplayBookingService {
 
         try {
 
-            Display_confirmed_and_waitlist_booking_list.Execute();
+            Display_confirmed_and_waitlist_booking_list.Execute(); //It will show all the  confirmed and waitlisted PNRs created for the same location and date and for same flight
 
         } catch (Exception e) {
             failTest(e);
@@ -93,7 +92,7 @@ public class DisplayBookingService {
 
         try {
 
-            Search_a_booking_by_frequent_traveler_number.Execute();
+            Search_a_booking_by_frequent_traveler_number.Execute(); //It will fail because pnr with fqtv cant be created due to a defect
 
         } catch (Exception e) {
             failTest(e);
@@ -143,7 +142,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Credit Card search (multiple results)")
+    @Description("Credit Card search(partial CC number) (Negative scenario))")
     @Test
     public void Scenario10() {
 
@@ -158,13 +157,13 @@ public class DisplayBookingService {
     }
 
 
-    @Description("FQTV search (multiple results)")
+    @Description("FQTV search")
     @Test
     public void Scenario11() {
 
         try {
 
-            Fqtv_search.Execute();
+            Fqtv_search.Execute(); //It will give all the PNRs related to that FQTV
 
         } catch (Exception e) {
             failTest(e);
@@ -186,7 +185,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Search for a non-existent credit card")
+    @Description("Search for a non-existent credit card(Negative Scenario)")
     @Test
     public void Scenario13() {
 
