@@ -32,7 +32,7 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_refund_error_cancell_all_segments_prior_refund Prerequisite = new create_booking_refund_error_cancell_all_segments_prior_refund();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         //        PreRequisite for Scenario ------> Issue Ticket
 

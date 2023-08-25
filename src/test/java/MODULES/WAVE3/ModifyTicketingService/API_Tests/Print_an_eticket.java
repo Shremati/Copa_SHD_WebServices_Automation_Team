@@ -29,16 +29,13 @@ public class Print_an_eticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_print_an_eticket Prerequisite = new create_booking_print_an_eticket();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_print_an_eticket Prerequisite2 = new issue_ticket_print_an_eticket();
-        Prerequisite2.run(); //generates ticket number
-
+        Prerequisite2.run();
 
         UpdatePayload();
 
