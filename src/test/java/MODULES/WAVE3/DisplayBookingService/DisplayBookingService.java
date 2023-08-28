@@ -128,7 +128,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Credit Card search (multiple results)")
+    @Description("Credit Card search (multiple results)")  //negative scenario
     @Test
     public void Scenario9() {
 
