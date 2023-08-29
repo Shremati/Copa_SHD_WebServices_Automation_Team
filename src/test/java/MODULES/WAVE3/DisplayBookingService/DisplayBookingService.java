@@ -285,7 +285,7 @@ public class DisplayBookingService {
 
     @Description("Advance Seat Assignment on OA flight")
     @Test
-    public void Scenario20() {
+    public void Scenario20() {  //Use Other Airline flights and markets in Data sheet
 
         try {
 

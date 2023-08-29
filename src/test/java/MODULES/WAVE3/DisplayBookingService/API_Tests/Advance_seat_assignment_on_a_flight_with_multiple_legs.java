@@ -3,7 +3,7 @@ package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_booking_history_for_cm_flight;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_on_OA_flights_for_2_segments;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -11,7 +11,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -31,7 +30,7 @@ public class Advance_seat_assignment_on_a_flight_with_multiple_legs extends Fram
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs Prerequisite = new create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();

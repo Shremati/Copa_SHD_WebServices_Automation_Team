@@ -1,7 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -10,7 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;

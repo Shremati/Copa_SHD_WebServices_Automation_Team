@@ -100,9 +100,8 @@ public class create_booking_display_booking_history_with_adding_deleting_remarks
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
-
-        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
-        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
+        String ArrivalDate1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0);
+        InputRow.getCell(21).setCellValue(ArrivalDate1);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
