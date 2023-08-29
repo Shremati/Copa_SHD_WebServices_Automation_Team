@@ -27,14 +27,12 @@ public class Display_booking_history_with_canceling_the_booking extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_booking_history_with_canceling_the_booking Prerequisite = new create_booking_display_booking_history_with_canceling_the_booking();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         modify_ticket_display_booking_history_with_canceling_the_booking Prerequisite3 = new modify_ticket_display_booking_history_with_canceling_the_booking();
-        Prerequisite3.run();
-
+        Prerequisite3.run();  //ModificationType = "1" so we are cancelling the booking done in previous step
 
         UpdatePayload();
 
@@ -86,12 +84,6 @@ public class Display_booking_history_with_canceling_the_booking extends Framewor
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_booking_history_with_canceling_the_booking.xml";
 
         XMLParser.updateAttributeValueatIndex("read:UniqueID","ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
-
-
         wb.close();
 
     }

@@ -28,10 +28,10 @@ public class Display_cancelled_booking extends FrameworkConstants
 //    There are 8 possible things you can modify in a ticket
 //     <!--Possible values for ModificationType:
 //    Value   Action
-//                    1     CANCEL_BOOKING     //here you dont modify anything , the current scenario is example
+//                    1     CANCEL_BOOKING     //here you dont modify anything ,we simply cancel the booking, the current scenario is example
 //                    3     MODIFY_NAME        //you need to modify the name
 //                    4     REPLACE_NAME       //you need to replace the name
-//                    5     OTHER              //other modifications include changing markets or flight number
+//                    5     OTHER              //other modifications include changing markets or flight number, or we can keep the itenary same
 //                    6     DIVIDE_PNR
 //                    8     REDUCE_PARTY-->
 

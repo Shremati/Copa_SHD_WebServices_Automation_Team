@@ -72,7 +72,7 @@ public class display_booking_display_active_fare_quote_and_fare_quote_history_41
         XSSFRow InputRow=sheet.getRow(15);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\display_booking_display_active_fare_quote_and_fare_quote_history.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\display_fare_quote.xml";
 
         XMLParser.updateAttributeValueatIndex("read:UniqueID","ID",InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
