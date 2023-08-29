@@ -80,9 +80,7 @@ public class Issue_Booking extends FrameworkConstants {
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking.xml";
 
-
-//        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(5).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
 
         wb.close();

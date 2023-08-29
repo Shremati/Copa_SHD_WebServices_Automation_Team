@@ -21,12 +21,13 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class STB_01_Start_Standby extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -65,7 +66,7 @@ public class STB_01_Start_Standby extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(1); //The given seat should be availble
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Standby\\STB_01_Start_Standby.xml";

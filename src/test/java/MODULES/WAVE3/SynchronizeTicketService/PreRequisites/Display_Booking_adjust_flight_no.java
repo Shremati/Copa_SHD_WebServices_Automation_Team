@@ -1,6 +1,5 @@
-package MODULES.WAVE3.Standby.API_Tests;
+package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -9,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,11 +18,11 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class STB_02_Enable_Standby extends FrameworkConstants {
+public class Display_Booking_adjust_flight_no extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         UpdatePayload();
@@ -35,19 +33,20 @@ public class STB_02_Enable_Standby extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getStandby())
+                .post(getDisplaybookingservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_02_Enable_Standby.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -65,16 +64,13 @@ public class STB_02_Enable_Standby extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Standby\\STB_02_Enable_Standby.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Display_Booking.xml";
 
-        XMLParser.updateAttributeValue("DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("CarrierInfo","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
         wb.close();
 
