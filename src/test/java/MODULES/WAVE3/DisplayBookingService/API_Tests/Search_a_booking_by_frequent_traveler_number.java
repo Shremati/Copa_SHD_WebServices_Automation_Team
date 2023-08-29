@@ -27,7 +27,7 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        We need to create 2 bookings , 1 with FQTV and 1 without FQTV
+        //        We need to create and issue 2 bookings , 1 with FQTV and 1 without FQTV
 
         create_booking_for_one_pax_with_fqtv Prerequisite1 = new create_booking_for_one_pax_with_fqtv();
         Prerequisite1.run();
