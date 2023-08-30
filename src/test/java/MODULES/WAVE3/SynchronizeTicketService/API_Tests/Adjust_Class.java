@@ -35,6 +35,8 @@ public class Adjust_Class extends FrameworkConstants {
        Modify_Booking2 Prerequisite3 = new Modify_Booking2();
        Prerequisite3.run();
 
+       Display_Booking_adjust_class Prerequisite4 = new Display_Booking_adjust_class();
+       Prerequisite4.run();
 
        UpdatePayload();
 
@@ -59,7 +61,7 @@ public class Adjust_Class extends FrameworkConstants {
 
 
 
-       BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+       BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Class.xml"));
        writer.write(response.asPrettyString());
        writer.close();
 
@@ -88,8 +90,8 @@ public class Adjust_Class extends FrameworkConstants {
        String filepath1;
        filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Class.xml";
 
-       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
 
+       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(12).getStringCellValue(),filepath1);
 
 
        wb.close();

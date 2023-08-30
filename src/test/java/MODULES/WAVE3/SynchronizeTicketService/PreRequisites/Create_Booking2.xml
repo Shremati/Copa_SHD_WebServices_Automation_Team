@@ -64,7 +64,7 @@
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>
-                            <air1:Remark>FOR TESTING ETICKET ADJUST NAME</air1:Remark>
+                            <air1:Remark>FOR TESTING ETICKET ADJUST CLASS</air1:Remark>
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>

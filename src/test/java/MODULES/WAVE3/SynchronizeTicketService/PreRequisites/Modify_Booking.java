@@ -96,7 +96,7 @@ public class Modify_Booking extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
 
-
+// <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
 //        2nd part of request i.e. <air:AirReservation> will contain the original booking itenary data
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(7).getNumericCellValue()),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
@@ -138,8 +138,6 @@ public class Modify_Booking extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-
-
         InputRow.getCell(12).setCellValue(PNR); //New PNR getting generated and overwriting the older PNR
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

@@ -34,7 +34,6 @@ import static io.restassured.RestAssured.given;
             Create_Booking Prerequisite1 = new Create_Booking();
             Prerequisite1.run();  //flight needs to contain 2 seats as 2 pax are used
 
-
             Issue_Booking Prerequisite2 = new Issue_Booking();
             Prerequisite2.run();
 

@@ -9,7 +9,7 @@
                 <tic:BookingTicketingRefID Type="0" ID="A1UBOE"/>
                 <tic:Passenger>
                     <tic:TicketAdjustInfo>
-                        <tic:SoldAirlineInfo RPH="2"/>
+                        <tic:SoldAirlineInfo RPH="1"/>
                     </tic:TicketAdjustInfo>
                 </tic:Passenger>
             </tic:EDS_TicketSynchronizeRQ>
