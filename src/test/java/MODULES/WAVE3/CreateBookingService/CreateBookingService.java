@@ -241,5 +241,316 @@ public class CreateBookingService {
             System.out.println("SCENARIO 16 failed due to :" + e);
         }
     }
+
+    @Description("CreateBooking with 2 segments , 2pax (1 FF), stored fare, 2 phones, 1 remark and ticketing")
+    @Test
+    public void Scenario17() {
+
+        try {
+
+            CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 17 failed due to :" + e);
+        }
+    }
+
+    @Description("CreateBooking with 4seg, 2pax, stored fare, 2phones,1remark, 2OSIs, 2SSRs and ticketing")
+    @Test
+    public void Scenario18() {
+
+        try {
+
+            CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 18 failed due to :" + e);
+        }
+    }
+    @Description("CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
+    @Test
+    public void Scenario19() {
+
+        try {
+
+            CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OSI_1remark_SeatAssignment_and_ticketing.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 19 failed due to :" + e);
+        }
+    }
+
+    @Description("CreateBooking with 3 seg(1ARNK),2pax(1FF),stored fare,2phones,1OSI,3remarks,SeatAssignment and ticketing")
+    @Test
+    public void Scenario20() {
+
+        try {
+
+            CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3remarks_SeatAssignment_and_ticketing.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 20 failed due to :" + e);
+        }
+    }
+
+    @Description("Check_for_invalid_AirItinerary_in_request")
+    @Test
+    public void Scenario21() {
+
+        try {
+
+            Check_for_invalid_AirItinerary_in_request.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 21 failed due to :" + e);
+        }
+    }
+    @Description("Check for invalid AirTraveler in request")
+    @Test
+    public void Scenario22() {
+
+        try {
+
+            Check_for_invalid_AirTraveler_in_request.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 22 failed due to :" + e);
+        }
+    }
+
+    @Description("CreateBooking Failure in one of the components of the system (SDS unavailable or SHARES unreachable)")
+    @Test
+    public void Scenario23() {
+
+        try {
+
+            CreateBooking_Failure_in_one_of_the_components_of_the_system_SDS_unavailable_or_SHARES_unreachable.Execute();
+            //Should get null response if shares down.
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 23 failed due to :" + e);
+        }
+    }
+
+
+    @Description("Invalid information specified in AirItinerary")
+    @Test
+    public void Scenario24() {
+
+        try {
+
+            Invalid_information_specified_in_AirItinerary.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 24 failed due to :" + e);
+        }
+    }
+
+    @Description("Invalid information specified in AirTraveler")
+    @Test
+    public void Scenario25() {
+
+        try {
+
+            Invalid_information_specified_in_AirTraveler.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 25 failed due to :" + e);
+        }
+    }
+
+    @Description("Invalid information specified in PriceInfo")
+    @Test
+    public void Scenario26() {
+
+        try {
+
+            Invalid_information_specified_in_PriceInfo.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 26 failed due to :" + e);
+        }
+    }
+
+    @Description("CreateBooking with 1 seg, 1 pax, stored fare (base fare, NVA date, fare calculation line, BA and tour code) and TL")
+    @Test
+    public void Scenario27() {
+
+        try {
+
+            CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_calculation_line_BA_and_tour_code_and_TL.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 27 failed due to :" + e);
+        }
+    }
+
+    @Description("Bundled segment - Invalid information in one segment")
+    @Test
+    public void Scenario28() {
+
+        try {
+
+            Bundled_segment_Invalid_information_in_one_segment.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 28 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item  Invalid tour code")
+    @Test
+    public void Scenario29() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_tour_code.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 29 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item Invalid original issued info")
+    @Test
+    public void Scenario30() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_original_issued_info.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 30 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item Invalid bankers rate info")
+    @Test
+    public void Scenario31() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_bankers_rate_info.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 31 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item Invalid remark")
+    @Test
+    public void Scenario32() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_remark.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 32 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item Invalid original origin destination city")
+    @Test
+    public void Scenario33() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_original_origin_destination_city.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 33 failed due to :" + e);
+        }
+    }
+
+//Stored fare - Ticketing item Invalid form of payment
+
+    @Description("Stored fare - Ticketing item Invalid form of payment")
+    @Test
+    public void Scenario34() {
+
+        try {
+
+            Stored_fare_Ticketing_item_Invalid_form_of_payment.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 34 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item No form of payment")
+    @Test
+    public void Scenario35() {
+
+        try {
+
+            Stored_fare_Ticketing_item_No_form_of_payment.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 35 failed due to :" + e);
+        }
+    }
+
+    @Description("Stored fare - Ticketing item too long remark")
+    @Test
+    public void Scenario36() {
+
+        try {
+
+            Stored_fare_Ticketing_item_too_long_remark.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 36 failed due to :" + e);
+        }
+    }
+
+    @Description("Create a booking with 1 segment, 1 passenger, stored fare, ticketing and place it on queue")
+    @Test
+    public void Scenario37() {
+
+        try {
+
+            Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and_place_it_on_queue.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 37 failed due to :" + e);
+        }
+    }
+
+    @Description("CreateBooking with 1seg,1pax,stored fare(FBC, base fare, fare calculation line and issue in exchange without coupons) and TL")
+    @Test
+    public void Scenario38() {
+
+        try {
+
+            CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 38 failed due to :" + e);
+        }
+    }
+
 }
 
