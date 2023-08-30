@@ -1,0 +1,33 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirSchedule/" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirDetailsRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getFlightSchedule>
+            <air1:OTA_AirDetailsRQ EchoToken="Test_04" Version="4.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air1:POS>
+                <air1:AirDetail>
+                    <air1:Airline Code="CM"/>
+                    <air1:FlightNumber>192</air1:FlightNumber>
+                    <air1:DepartureAirport LocationCode="PTY"/>
+                    <air1:ArrivalAirport LocationCode="SJO"/>
+                    <air1:DepartureDate>2023-08-31</air1:DepartureDate>
+                </air1:AirDetail>
+                <air1:AirDetail>
+                    <air1:Airline Code="CM"/>
+                    <air1:FlightNumber>391</air1:FlightNumber>
+                    <air1:DepartureAirport LocationCode="PTY"/>
+                    <air1:ArrivalAirport LocationCode="GUA"/>
+                    <air1:DepartureDate>2023-08-31</air1:DepartureDate>
+                </air1:AirDetail>
+                <air1:AirDetail>
+                    <air1:Airline Code="UA"/>
+                    <air1:FlightNumber>1031</air1:FlightNumber>
+                    <air1:DepartureAirport LocationCode="PTY"/>
+                    <air1:ArrivalAirport LocationCode="IAH"/>
+                    <air1:DepartureDate>2023-08-31</air1:DepartureDate>
+                </air1:AirDetail>
+            </air1:OTA_AirDetailsRQ>
+        </air:getFlightSchedule>
+    </soapenv:Body>
+</soapenv:Envelope>

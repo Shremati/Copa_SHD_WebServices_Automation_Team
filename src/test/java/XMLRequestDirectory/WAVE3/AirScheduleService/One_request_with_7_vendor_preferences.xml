@@ -1,0 +1,24 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirSchedule/" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirScheduleRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getScheduleDisplay>
+            <air1:OTA_AirScheduleRQ EchoToken="Test_3" Version="4.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air1:POS>
+                <air1:OriginDestinationInformation>
+                    <com:DepartureDateTime>2023-08-31T00:00:00</com:DepartureDateTime>
+                    <com:OriginLocation LocationCode="LAX"/>
+                    <com:DestinationLocation LocationCode="LAS"/>
+                </air1:OriginDestinationInformation>
+                <air1:VendorPref Code="UA"/>
+                <air1:VendorPref Code="QF"/>
+                <air1:VendorPref Code="UA"/>
+                <air1:VendorPref Code="QF"/>
+                <air1:VendorPref Code="DL"/>
+                <air1:VendorPref Code="AA"/>
+                <air1:VendorPref Code="AS"/>
+            </air1:OTA_AirScheduleRQ>
+        </air:getScheduleDisplay>
+    </soapenv:Body>
+</soapenv:Envelope>
