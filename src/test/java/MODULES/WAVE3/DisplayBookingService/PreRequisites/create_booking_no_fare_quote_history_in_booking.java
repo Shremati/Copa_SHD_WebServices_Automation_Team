@@ -73,7 +73,7 @@ public class create_booking_no_fare_quote_history_in_booking extends FrameworkCo
         XSSFRow InputRow=sheet.getRow(16);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_display_active_fare_quote_and_fare_quote_history.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_no_fare_quote_history_in_booking.xml";
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);

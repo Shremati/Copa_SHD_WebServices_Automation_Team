@@ -303,7 +303,7 @@ public class DisplayBookingService {
 
         try {
 
-            Advance_seat_assignment_on_a_flight_with_multiple_legs.Execute();
+            Advance_seat_assignment_on_a_flight_with_multiple_legs.Execute();//Seat for multiple legs is not working, so we have taken only 1 leg and assigned seat.
 
         } catch (Exception e) {
             failTest(e);
