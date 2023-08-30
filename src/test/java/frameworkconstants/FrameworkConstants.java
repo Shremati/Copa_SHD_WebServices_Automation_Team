@@ -3,7 +3,7 @@ package frameworkconstants;
 public class FrameworkConstants {
 
     public static String BaseURL = "http://shdsitm.airservices.svcs.entsvcs.net:18119";
-
+//    public static String BaseURL = "http://10.166.6.175:8080";
 
     public static String getBaseURL() {
         return BaseURL;
