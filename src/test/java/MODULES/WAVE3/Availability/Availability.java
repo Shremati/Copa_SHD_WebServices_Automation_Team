@@ -169,7 +169,7 @@ public class Availability {
         }
     }
 
-    @Description("Max requests exceeded")
+    @Description("Max requests exceed (Negative Scenario)")
     @Test
     public void Scenario14() {
         try {
@@ -229,7 +229,7 @@ public class Availability {
         }
     }
 
-    @Description("Missing destination location")
+    @Description("Missing destination location (Negative Scenario)")
     @Test
     public void Scenario19() {
         try {
@@ -253,7 +253,7 @@ public class Availability {
         }
     }
 
-    @Description("Missing origin location")
+    @Description("Missing origin location (Negative Scenario)")
     @Test
     public void Scenario21() {
         try {
