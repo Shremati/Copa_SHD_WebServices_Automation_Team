@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Adjust_Name extends FrameworkConstants {
+
    public static String SOAPRequest;
 
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -33,10 +34,12 @@ public class Adjust_Name extends FrameworkConstants {
        Prerequisite2.run();
 
        Modify_Booking1 Prerequisite3 = new Modify_Booking1();
-       Prerequisite3.run();
+       Prerequisite3.run();//Here ModificationType="3" , so we will need to modify only the pax name
 
+       Display_Booking_adjust_flight_no Prerequisite4 = new Display_Booking_adjust_flight_no();
+       Prerequisite4.run();
 
-       UpdatePayload();
+       UpdatePayload(); //synchronize will reissue the out of sync ticket with the new name
 
 //               ********** Reading the xml request file **********
 
@@ -59,7 +62,7 @@ public class Adjust_Name extends FrameworkConstants {
 
 
 
-       BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+       BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Name.xml"));
        writer.write(response.asPrettyString());
        writer.close();
 
@@ -87,8 +90,8 @@ public class Adjust_Name extends FrameworkConstants {
        String filepath1;
        filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Name.xml";
 
-       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
-
+       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(12).getStringCellValue(),filepath1);
+       XMLParser.updateAttributeValue("tic:TicketDocument","TicketDocumentNbr",InputRow.getCell(22).getStringCellValue(),getTemp_requestPath());
 
 
        wb.close();

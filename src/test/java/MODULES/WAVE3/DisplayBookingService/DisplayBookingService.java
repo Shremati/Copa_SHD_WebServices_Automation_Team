@@ -128,7 +128,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Credit Card search (multiple results)")
+    @Description("Credit Card search (Negative scenario)")  //negative scenario
     @Test
     public void Scenario9() {
 
@@ -241,7 +241,7 @@ public class DisplayBookingService {
         }
     }
 
-    @Description("Display booking history with canceling the booking")
+    @Description("TC01-Display booking history with canceling the booking")
     @Test
     public void Scenario17() {
 
@@ -285,7 +285,7 @@ public class DisplayBookingService {
 
     @Description("Advance Seat Assignment on OA flight")
     @Test
-    public void Scenario20() {
+    public void Scenario20() {  //Use Other Airline flights and markets in Data sheet
 
         try {
 

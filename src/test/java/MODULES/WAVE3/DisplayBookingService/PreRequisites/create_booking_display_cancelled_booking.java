@@ -103,9 +103,8 @@ public class create_booking_display_cancelled_booking extends FrameworkConstants
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
 
-        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
-        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
-
+        String ArrivalDate = XMLParser.GetAttributeValue("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath());
+        InputRow.getCell(21).setCellValue(ArrivalDate);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

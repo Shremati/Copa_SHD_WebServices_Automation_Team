@@ -37,7 +37,7 @@ public class XMLParser
 
         transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transf.setOutputProperty(OutputKeys.INDENT, "yes");
-        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
 
 
         DOMSource source = new DOMSource(document);
@@ -64,7 +64,7 @@ public class XMLParser
 
         transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transf.setOutputProperty(OutputKeys.INDENT, "yes");
-        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
 
 
         DOMSource source = new DOMSource(document);
@@ -91,7 +91,7 @@ public class XMLParser
 
         transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transf.setOutputProperty(OutputKeys.INDENT, "yes");
-        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
 
 
         DOMSource source = new DOMSource(document);

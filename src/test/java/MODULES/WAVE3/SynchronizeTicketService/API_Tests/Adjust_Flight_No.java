@@ -4,6 +4,7 @@ package MODULES.WAVE3.SynchronizeTicketService.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Create_Booking;
+import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Display_Booking_adjust_flight_no;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Issue_Booking;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Modify_Booking;
 import frameworkconstants.FrameworkConstants;
@@ -24,20 +25,24 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
      public class Adjust_Flight_No  extends FrameworkConstants {
+
         public static String SOAPRequest;
 
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
 
             Create_Booking Prerequisite1 = new Create_Booking();
-            Prerequisite1.run();
+            Prerequisite1.run();  //flight needs to contain 2 seats as 2 pax are used
 
 
             Issue_Booking Prerequisite2 = new Issue_Booking();
             Prerequisite2.run();
 
             Modify_Booking Prerequisite3 = new Modify_Booking();
-            Prerequisite3.run();
+            Prerequisite3.run();// We are modifying the 1st segment, to be specific , we are cancelling 1st segment using status as 1 and instead of that we are using a new segment keeping market same and modifying flight no and date
+
+            Display_Booking_adjust_flight_no Prerequisite4 = new Display_Booking_adjust_flight_no();
+            Prerequisite4.run();
 
 
             UpdatePayload();
@@ -63,7 +68,7 @@ import static io.restassured.RestAssured.given;
 
 
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Flight_No.xml"));
             writer.write(response.asPrettyString());
             writer.close();
 
@@ -92,49 +97,11 @@ import static io.restassured.RestAssured.given;
             filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Flight_No.xml";
 
 
-            XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
-            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
-
-
+            XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(12).getStringCellValue(),filepath1);
+            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(7).getNumericCellValue()),getTemp_requestPath());
+            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
             wb.close();
-
-        }
-
-
-        public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-        {
-
-            //        ********** Writing TestData into Excel ************
-
-            File xlsxFile = new File(getTestData());
-            FileInputStream inputStream = new FileInputStream(xlsxFile);
-            XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-            XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-            XSSFRow InputRow=sheet.getRow(1);
-
-
-
-            String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
-
-            System.out.print(PNR);
-            InputRow.getCell(5).setCellValue(PNR);
-            System.out.print(InputRow);
-
-
-
-            FileOutputStream out = new FileOutputStream(new File(getTestData()));
-            wb.write(out);
-            out.close();
-
-            wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-            writer.write("");
-            writer.close();
 
         }
 

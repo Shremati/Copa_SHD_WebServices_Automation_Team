@@ -29,10 +29,9 @@ public class Display_booking_history_for_cm_flight extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_booking_history_for_cm_flight Prerequisite = new create_booking_display_booking_history_for_cm_flight();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();

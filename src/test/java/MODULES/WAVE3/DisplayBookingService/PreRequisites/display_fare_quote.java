@@ -1,6 +1,5 @@
 package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
@@ -18,7 +17,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_advance_seat_assignment_on_oa_flight extends FrameworkConstants
+public class display_fare_quote extends FrameworkConstants
 {
 
     public static String SOAPRequest;
@@ -39,7 +38,7 @@ public class create_booking_advance_seat_assignment_on_oa_flight extends Framewo
                 .header("Content-Type", "text/xml")
                 .body(SOAPRequest)
                 .when()
-                .post(getCreatebookingservice())
+                .post(getDisplaybookingservice())
                 .then()
                 .statusCode(200)
                 .and()
@@ -55,9 +54,6 @@ public class create_booking_advance_seat_assignment_on_oa_flight extends Framewo
         writer.write("");
         writer.close();
 
-
-        excelwriter();
-
     }
 
 
@@ -70,51 +66,16 @@ public class create_booking_advance_seat_assignment_on_oa_flight extends Framewo
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
 
-        XSSFRow InputRow=sheet.getRow(20);
+        XSSFRow InputRow=sheet.getRow(15);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_advance_seat_assignment_on_oa_flight.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\display_fare_quote.xml";
 
+        XMLParser.updateAttributeValueatIndex("read:UniqueID","ID",InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("DisplayBookingService");
-        XSSFRow InputRow=sheet.getRow(20);
-
-
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        InputRow.getCell(10).setCellValue(PNR);
-
-        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
-        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 }

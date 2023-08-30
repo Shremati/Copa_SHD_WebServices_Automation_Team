@@ -1,87 +1,44 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tim="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:eds="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
-
     <soapenv:Header/>
-
     <soapenv:Body>
-
         <tim:displayTimatic>
-
             <eds:EDS_TimaticRQ Version="4.0">
-
                 <eds:POS>
-
                     <com:Source AirlineVendorID="VS"/>
-
                 </eds:POS>
-
                 <eds:VisaHealthInformation PassportType="SEAMAN" DisplayType="Both">
-
                     <eds:DocHolderNationality>
-
                         <air:Country Code="FR"/>
-
                     </eds:DocHolderNationality>
-
                     <eds:CountryOfResidence LocationCode="NYC"/>
-
                     <eds:EmbarkationLocation>
-
                         <air:Country Code="US"/>
-
                     </eds:EmbarkationLocation>
-
                     <eds:DestinationLocation LocationCode="PDV"/>
-
                     <eds:DestinationLocation>
-
                         <air:Country Code="PT"/>
-
                     </eds:DestinationLocation>
-
                     <eds:DestinationLocation LocationCode="GNE"/>
-
                     <eds:DestinationLocation LocationCode="DIP"/>
-
                     <eds:TransitLocation>
-
                         <air:Country Code="OM"/>
-
                     </eds:TransitLocation>
-
                     <eds:TransitLocation>
-
                         <air:Country Code="RO"/>
-
                     </eds:TransitLocation>
-
                     <eds:TransitLocation LocationCode="DJA"/>
-
                     <eds:VisitedLocation>
-
                         <air:Country Code="SM"/>
-
                     </eds:VisitedLocation>
-
                     <eds:VisitedLocation LocationCode="LDE"/>
-
                     <eds:VisitedLocation>
-
                         <air:Country Code="DK"/>
-
                     </eds:VisitedLocation>
-
                     <eds:VisitedLocation>
-
                         <air:Country Code="DE"/>
-
                     </eds:VisitedLocation>
-
                 </eds:VisaHealthInformation>
-
             </eds:EDS_TimaticRQ>
-
         </tim:displayTimatic>
-
     </soapenv:Body>
-
 </soapenv:Envelope>

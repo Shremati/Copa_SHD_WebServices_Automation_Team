@@ -27,10 +27,9 @@ public class No_fare_quote_history_in_booking extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_no_fare_quote_history_in_booking Prerequisite = new create_booking_no_fare_quote_history_in_booking();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();

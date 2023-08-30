@@ -1,7 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
@@ -11,7 +10,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,16 +27,15 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_active_fare_quote_and_fare_quote_history Prerequisite = new create_booking_display_active_fare_quote_and_fare_quote_history();
         Prerequisite.run();
 
-        display_booking_display_active_fare_quote_and_fare_quote_history Prerequisite2 = new display_booking_display_active_fare_quote_and_fare_quote_history();
+        display_fare_quote Prerequisite2 = new display_fare_quote();
         Prerequisite2.run();
 
         modify_ticket_display_active_fare_quote_and_fare_quote_history Prerequisite3 = new modify_ticket_display_active_fare_quote_and_fare_quote_history();
-        Prerequisite3.run();
+        Prerequisite3.run(); // even though modificationtype=5 ,we are not changing/modifying any value
 
 
         UpdatePayload();

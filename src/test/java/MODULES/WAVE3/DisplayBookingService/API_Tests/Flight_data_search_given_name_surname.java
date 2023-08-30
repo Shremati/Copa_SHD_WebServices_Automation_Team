@@ -29,11 +29,8 @@ public class Flight_data_search_given_name_surname extends FrameworkConstants
 {
     public static String SOAPRequest;
 
-
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_flight_data_search_given_name_surname Prerequisite = new create_booking_flight_data_search_given_name_surname();
         Prerequisite.run();

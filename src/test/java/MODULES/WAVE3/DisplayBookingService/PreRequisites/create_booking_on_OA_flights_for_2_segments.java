@@ -1,4 +1,4 @@
-package MODULES.WAVE3.DisplayBooking41Service.PreRequisites;
+package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_advance_seat_assignment_on_oa_flight_41 extends FrameworkConstants
+public class create_booking_on_OA_flights_for_2_segments extends FrameworkConstants
 {
 
     public static String SOAPRequest;

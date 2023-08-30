@@ -24,14 +24,13 @@ public class Visa_singlepoint_gov_request extends FrameworkConstants{
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getRequestDirectory()+"TimaticService\\Visa_singlepoint_gov_request.xml");
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
-//      SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+//        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -69,7 +68,7 @@ public class Visa_singlepoint_gov_request extends FrameworkConstants{
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TimaticService\\Visa_singlepoint_gov_request.xml";

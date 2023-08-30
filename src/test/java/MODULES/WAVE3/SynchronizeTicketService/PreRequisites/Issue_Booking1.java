@@ -60,7 +60,7 @@ public class Issue_Booking1 extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
+       excelwriter();
 
     }
 
@@ -76,14 +76,43 @@ public class Issue_Booking1 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking1.xml";
 
-
-//        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(5).getStringCellValue(),filepath1,0);
-
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
         wb.close();
+
+    }
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
+        XSSFRow InputRow=sheet.getRow(2);
+
+
+
+        String ticketdocumentnumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),0);
+        InputRow.getCell(22).setCellValue(ticketdocumentnumber);
+
+
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
 
     }
 

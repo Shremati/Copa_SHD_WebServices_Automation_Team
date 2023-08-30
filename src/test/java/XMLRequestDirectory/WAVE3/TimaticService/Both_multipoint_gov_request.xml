@@ -1,71 +1,36 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tim="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:eds="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
-
     <soapenv:Header/>
-
     <soapenv:Body>
-
         <tim:displayTimatic>
-
             <eds:EDS_TimaticRQ Version="4.0">
-
                 <eds:POS>
-
                     <com:Source AirlineVendorID="VS"/>
-
                 </eds:POS>
-
-                <eds:VisaHealthInformation PassportType="GOVERNMENT" DisplayType="Both">
-
+                <eds:VisaHealthInformation PassportType="GOV" DisplayType="Both">
                     <eds:DocHolderNationality>
-
                         <air:Country Code="BA"/>
-
                     </eds:DocHolderNationality>
-
                     <eds:CountryOfResidence LocationCode="NYC"/>
-
                     <eds:EmbarkationLocation>
-
                         <air:Country Code="US"/>
-
                     </eds:EmbarkationLocation>
-
                     <eds:DestinationLocation LocationCode="BLB"/>
-
                     <eds:DestinationLocation LocationCode="CIX"/>
-
                     <eds:TransitLocation>
-
                         <air:Country Code="RK"/>
-
                     </eds:TransitLocation>
-
                     <eds:TransitLocation>
-
                         <air:Country Code="TT"/>
-
                     </eds:TransitLocation>
-
                     <eds:TransitLocation LocationCode="AKG"/>
-
                     <eds:VisitedLocation>
-
                         <air:Country Code="DK"/>
-
                     </eds:VisitedLocation>
-
                     <eds:VisitedLocation>
-
                         <air:Country Code="DE"/>
-
                     </eds:VisitedLocation>
-
                 </eds:VisaHealthInformation>
-
             </eds:EDS_TimaticRQ>
-
         </tim:displayTimatic>
-
     </soapenv:Body>
-
 </soapenv:Envelope>

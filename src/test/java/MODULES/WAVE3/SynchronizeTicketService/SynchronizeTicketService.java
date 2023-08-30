@@ -6,8 +6,14 @@ import MODULES.WAVE3.SynchronizeTicketService.API_Tests.Adjust_Name;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
+import static GENERICS.Utils.createFolders;
+import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
 public class SynchronizeTicketService
 {
+    SynchronizeTicketService() {
+        createFolders(getResponseDirectory() + "SynchronizeTicketService");
+    }
 
     @Description("Adjust_Flight_No")
     @Test

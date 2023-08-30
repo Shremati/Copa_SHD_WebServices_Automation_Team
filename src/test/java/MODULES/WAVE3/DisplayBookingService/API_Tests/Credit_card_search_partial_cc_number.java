@@ -29,7 +29,7 @@ public class Credit_card_search_partial_cc_number extends FrameworkConstants
     public static String SOAPRequest;
 
 
-    @Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking

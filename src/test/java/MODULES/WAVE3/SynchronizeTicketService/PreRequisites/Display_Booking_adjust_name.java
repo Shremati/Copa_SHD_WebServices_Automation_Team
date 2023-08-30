@@ -1,6 +1,5 @@
-package MODULES.WAVE3.SeatMapService.API_Tests;
+package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -19,13 +18,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp extends FrameworkConstants
-{
+public class Display_Booking_adjust_name extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -35,34 +33,29 @@ public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getSeatmapservice())
+                .post(getDisplaybookingservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
-
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
 
-
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -71,24 +64,15 @@ public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("SeatMapService");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"SeatMapService\\Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Display_Booking.xml";
 
-
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-
+        XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
         wb.close();
 
     }
-
-
-
-
 }
