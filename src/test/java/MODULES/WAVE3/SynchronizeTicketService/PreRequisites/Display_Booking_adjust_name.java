@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_Booking_adjust_flight_no extends FrameworkConstants {
+public class Display_Booking_adjust_name extends FrameworkConstants {
 
     public static String SOAPRequest;
 

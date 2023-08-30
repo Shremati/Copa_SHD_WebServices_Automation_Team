@@ -46,7 +46,7 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
         Enable_Standby_clearall Pre6 = new Enable_Standby_clearall();
         Pre6.run();
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 

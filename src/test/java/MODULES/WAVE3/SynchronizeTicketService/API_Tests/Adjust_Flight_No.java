@@ -38,9 +38,8 @@ import static io.restassured.RestAssured.given;
             Issue_Booking Prerequisite2 = new Issue_Booking();
             Prerequisite2.run();
 
-
             Modify_Booking Prerequisite3 = new Modify_Booking();
-            Prerequisite3.run();// We are modifying the 1st segment, to be specific , we are cancelling 1st segment using status as 1 and instead of that we are using a new segment keeping market same
+            Prerequisite3.run();// We are modifying the 1st segment, to be specific , we are cancelling 1st segment using status as 1 and instead of that we are using a new segment keeping market same and modifying flight no and date
 
             Display_Booking_adjust_flight_no Prerequisite4 = new Display_Booking_adjust_flight_no();
             Prerequisite4.run();
@@ -69,7 +68,7 @@ import static io.restassured.RestAssured.given;
 
 
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Flight_No.xml"));
             writer.write(response.asPrettyString());
             writer.close();
 
