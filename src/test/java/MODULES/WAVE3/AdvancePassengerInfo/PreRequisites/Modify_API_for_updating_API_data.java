@@ -1,6 +1,5 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
-import GENERICS.RESTWrapper;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -21,7 +20,7 @@ import static io.restassured.RestAssured.given;
 
 public class Modify_API_for_updating_API_data extends FrameworkConstants {
     public static String SOAPRequest;
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
 
 
@@ -34,7 +33,17 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
+        Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getAdvancepassengerinfo())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -46,6 +55,8 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         writer.write("");
         writer.close();
 
+
+        excelwriter();
 
 
     }
@@ -70,10 +81,53 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,1);
 
 
+//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
+
         wb.close();
 
     }
 
 
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
 
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFRow InputRow=sheet.getRow(4);
+
+
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
+        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+
+
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 0);
+        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 1);
+
+
+        InputRow.getCell(7).setCellValue(PNR);
+        InputRow.getCell(8).setCellValue(Givenname);
+        InputRow.getCell(9).setCellValue(Surname);
+        InputRow.getCell(15).setCellValue(AgencyName);
+        InputRow.getCell(16).setCellValue(AgencyName1);
+
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
+    }
 }

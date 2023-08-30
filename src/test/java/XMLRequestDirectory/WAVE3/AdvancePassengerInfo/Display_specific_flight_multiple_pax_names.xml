@@ -1,0 +1,38 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIReadRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:displayAPI>
+            <air:EDS_AirAPIReadRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment DepartureDateTime="2023-08-18T00:00:00" RPH="1">
+                    <com:DepartureAirport LocationCode="PTY"/>
+                    <com:ArrivalAirport LocationCode="SCL"/>
+                    <com:OperatingAirline Code="CM" FlightNumber="171"/>
+                </air:FlightSegment>
+                <air:PassengerInfo RPH="1" ResBookDesigCode="Y">
+                    <air1:PassengerName>
+                        <com:GivenName>BARRY</com:GivenName>
+                        <com:Surname>BONDS</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0KPUP"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" ResBookDesigCode="Y">
+                    <air1:PassengerName>
+                        <com:GivenName>STEVE</com:GivenName>
+                        <com:Surname>YOUNG</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0KPUP"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="3" ResBookDesigCode="Y">
+                    <air1:PassengerName>
+                        <com:GivenName>MIKE</com:GivenName>
+                        <com:Surname>JOHNSON</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0KPUP"/>
+                </air:PassengerInfo>
+            </air:EDS_AirAPIReadRQ>
+        </api:displayAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

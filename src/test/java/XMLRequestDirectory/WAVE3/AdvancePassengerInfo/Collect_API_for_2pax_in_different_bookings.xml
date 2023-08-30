@@ -1,0 +1,80 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:modifyAPI>
+            <air:EDS_AirAPIModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:PassengerInfo RPH="1" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>JIM</com:GivenName>
+                        <com:Surname>HALPER</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0LVL5"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>PAM</com:GivenName>
+                        <com:Surname>BEASLEY</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0LVRE"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="MXOU" DocLevelInd="1">
+                        <air1:API_Info Gender="Male" BirthDate="1975-10-12" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>JIM</com:GivenName>
+                                <com:Surname>HALPER</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123459876" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAIN" DocLevelInd="1">
+                        <air1:API_Info Gender="Male" BirthDate="1975-10-12" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>JIM</com:GivenName>
+                                <com:Surname>HALPER</com:Surname>
+                            </com:DocHolderFormattedName>
+                            <air1:Address Type="4">
+                                <com:AddressLine>STANFORD STREET</com:AddressLine>
+                                <com:CityName>STANFORD</com:CityName>
+                                <com:PostalCode>654123</com:PostalCode>
+                                <com:CountryName Code="US">USA</com:CountryName>
+                            </air1:Address>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123459876" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="MXOU" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="1977-05-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>PAM</com:GivenName>
+                                <com:Surname>BEASLEY</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="333222111" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAIN" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="1977-05-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>PAM</com:GivenName>
+                                <com:Surname>BEASLEY</com:Surname>
+                            </com:DocHolderFormattedName>
+                            <air1:Address Type="4">
+                                <com:AddressLine>SCRANTON STREET</com:AddressLine>
+                                <com:CityName>SCRANTON</com:CityName>
+                                <com:PostalCode>346545</com:PostalCode>
+                                <com:CountryName Code="US">USA</com:CountryName>
+                            </air1:Address>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="333222111" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+            </air:EDS_AirAPIModifyRQ>
+        </api:modifyAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

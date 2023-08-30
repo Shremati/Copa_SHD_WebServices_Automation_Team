@@ -1,0 +1,40 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:modifyAPI>
+            <air:EDS_AirAPIModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:PassengerInfo RPH="1" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>ALEX</com:GivenName>
+                        <com:Surname>ROIVAS</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A23DOT"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        <air1:API_Info DocType="2" DocID="001111982"/>
+                        <air1:API_Info DocType="2" DocIssueCountry="US"/>
+                        <air1:API_Info DocType="2" ExpireDate="2025-11-20"/>
+                        <air1:API_Info>
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>ALEX</com:GivenName>
+                                <com:Surname>ROIVAS</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info BirthDate="1985-05-12"/>
+                        <air1:API_Info Gender="Male"/>
+                        <air1:API_Info DocHolderNationality="US"/>
+                        <air1:API_Info CountryOfResidence="US"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="MXIN" DocLevelInd="1">
+                        <air1:API_Info DocID="001111982" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+            </air:EDS_AirAPIModifyRQ>
+        </api:modifyAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,84 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:modifyAPI>
+            <air:EDS_AirAPIModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:PassengerInfo RPH="1" InfantIndicator="true" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>DANA</com:GivenName>
+                        <com:Surname>SCULLY</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0LWQW"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" PassengerRPH="1" SurnameRefNumber="1" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>WILLIAM</com:GivenName>
+                        <com:Surname>SCULLY</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0LWQW"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="MXOU" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="1972-10-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>DANA</com:GivenName>
+                                <com:Surname>SCULLY</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAIN" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="1972-10-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>DANA</com:GivenName>
+                                <com:Surname>SCULLY</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info>
+                            <air1:Address Type="4">
+                                <com:AddressLine>FBI STREET</com:AddressLine>
+                                <com:CityName>WASHINGTON</com:CityName>
+                                <com:PostalCode>112233</com:PostalCode>
+                                <com:CountryName Code="US">USA</com:CountryName>
+                            </air1:Address>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="MXOU" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="2007-10-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>WILLIAM</com:GivenName>
+                                <com:Surname>SCULLY</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="111222333" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAIN" DocLevelInd="1">
+                        <air1:API_Info Gender="Female" BirthDate="2007-10-10" DocHolderNationality="US" CountryOfResidence="US">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>WILLIAM</com:GivenName>
+                                <com:Surname>SCULLY</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info>
+                            <air1:Address Type="4">
+                                <com:AddressLine>FBI STREET</com:AddressLine>
+                                <com:CityName>WASHINGTON</com:CityName>
+                                <com:PostalCode>112233</com:PostalCode>
+                                <com:CountryName Code="US">USA</com:CountryName>
+                            </air1:Address>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="111222333" DocType="2" ExpireDate="2026-12-12" DocIssueCountry="US"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+            </air:EDS_AirAPIModifyRQ>
+        </api:modifyAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

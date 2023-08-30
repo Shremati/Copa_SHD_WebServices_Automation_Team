@@ -1,0 +1,24 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIReadRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:displayAPI>
+            <air:EDS_AirAPIReadRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment DepartureDateTime="2023-08-18T00:00:00" RPH="1">
+                    <com:DepartureAirport LocationCode="PTY"/>
+                    <com:ArrivalAirport LocationCode="SJO"/>
+                    <com:OperatingAirline Code="CM" FlightNumber="391"/>
+                </air:FlightSegment>
+                <air:PassengerInfo RPH="1" ResBookDesigCode="Y">
+                    <air1:PassengerName>
+                        <com:GivenName>JACK</com:GivenName>
+                        <com:Surname>BAUER</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID Type="14" ID="A0KKBH"/>
+                </air:PassengerInfo>
+            </air:EDS_AirAPIReadRQ>
+        </api:displayAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

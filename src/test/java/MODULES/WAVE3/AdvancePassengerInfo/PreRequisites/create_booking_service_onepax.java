@@ -47,7 +47,19 @@ public class create_booking_service_onepax extends FrameworkConstants
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-        Response response = RESTWrapper.postResponse(getBaseURL(),getCreatebookingservice(),SOAPRequest);
+
+        Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getCreatebookingservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -84,6 +96,8 @@ public class create_booking_service_onepax extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
+//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
 
         wb.close();
 
