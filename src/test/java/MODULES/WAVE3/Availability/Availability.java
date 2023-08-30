@@ -73,7 +73,6 @@ public class Availability {
         }
     }
 
-
     @Description("Direct and Nonstop Flights is false, applied to all requests")
     @Test
     public void Scenario6() {
@@ -122,7 +121,7 @@ public class Availability {
         }
     }
 
-    @Description("Filter by equipment type, all requests")
+    @Description("First available flight search find flights with 2 seats in Q class")
     @Test
     public void Scenario10() {
         try {
@@ -170,7 +169,7 @@ public class Availability {
         }
     }
 
-    @Description("Manually constructured connections")
+    @Description("Max requests exceeded")
     @Test
     public void Scenario14() {
         try {
@@ -182,7 +181,7 @@ public class Availability {
         }
     }
 
-    @Description("Manually constructed connections")
+    @Description("Maximum connections of 1 on all requests")
     @Test
     public void Scenario15() {
         try {
@@ -242,7 +241,7 @@ public class Availability {
         }
     }
 
-    @Description("Missing destination location")
+    @Description("Untruncated availability")
     @Test
     public void Scenario20() {
         try {
@@ -338,7 +337,6 @@ public class Availability {
         }
     }
 
-
     @Description("Traffic restriction in availability")
     @Test
     public void Scenario28() {
@@ -350,4 +348,5 @@ public class Availability {
             System.out.println("SCENARIO 28 failed due to :" + e);
         }
     }
+
 }
