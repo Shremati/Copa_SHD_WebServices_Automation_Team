@@ -1,8 +1,8 @@
-package MODULES.WAVE3.CreateBooking41Service.API_Tests;
+package MODULES.WAVE3.CreateBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBooking41Service.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41;
+import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,8 +19,8 @@ import java.io.*;
 
 import static io.restassured.RestAssured.given;
 
-public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing_41 extends FrameworkConstants
-{
+public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing extends FrameworkConstants {
+
 
     public static String SOAPRequest;
 
@@ -47,15 +48,12 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing_41 extend
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
 
         excelwriter();
-
-        create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41 postCheck = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41();
-        postCheck.run();
 
 
     }
@@ -70,17 +68,21 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing_41 extend
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(17);
 
 
         String filepath1;
-        filepath1 = getRequestDirectory() + "CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
+        filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
-
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()), getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(),1);
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
 
         wb.close();
 
@@ -96,14 +98,14 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing_41 extend
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow = sheet.getRow(1);
+        XSSFRow InputRow = sheet.getRow(17);
 
         String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
+        filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
-        InputRow.getCell(17).setCellValue(PNR);
 
+        InputRow.getCell(17).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -112,4 +114,5 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing_41 extend
         wb.close();
 
     }
+
 }
