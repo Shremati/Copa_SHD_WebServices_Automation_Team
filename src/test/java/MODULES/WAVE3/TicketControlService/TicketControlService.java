@@ -25,6 +25,7 @@ public class TicketControlService {
 
         try {
             Get_control_of_one_coupon_of_one_ticket.Execute();
+//           2nd Segment needs to be UA(United Airlines Segment) , So provide the markets accordingly for 2nd segment
 
         } catch (Exception e) {
             failTest(e);
@@ -38,6 +39,7 @@ public class TicketControlService {
 
         try {
             Push_control_of_multiple_coupons_within_one_ticket.Execute();
+//            2nd Segment needs to be UA(United Airlines Segment) , So provide the markets accordingly for 2nd segment
 
         } catch (Exception e) {
             failTest(e);

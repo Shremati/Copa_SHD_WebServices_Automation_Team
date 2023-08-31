@@ -70,10 +70,7 @@ public class TicketingService {
             System.out.println("SCENARIO 4 failed due to :" + e);
         }
 
-
     }
-
-
 
     @Description("Issue bulk ticket for a PNR with two pax")
     @Test
