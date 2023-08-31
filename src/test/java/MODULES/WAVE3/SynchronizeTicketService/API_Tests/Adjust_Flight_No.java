@@ -8,6 +8,7 @@ import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Display_Booking_adju
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Issue_Booking;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Modify_Booking;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
@@ -57,6 +58,7 @@ import static io.restassured.RestAssured.given;
             Response response = given()
                     .baseUri(getBaseURL())
                     .header("Content-Type", "text/xml")
+                    .filter(new AllureRestAssured())
                     .body(SOAPRequest)
                     .when()
                     .post(getSynchronizeticketservice())
