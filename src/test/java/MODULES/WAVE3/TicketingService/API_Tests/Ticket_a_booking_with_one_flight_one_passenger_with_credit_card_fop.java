@@ -27,11 +27,9 @@ public class Ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop Prerequisite = new create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop();
-        Prerequisite.run(); //excel gets updated
-
+        Prerequisite.run();
 
         UpdatePayload();
 

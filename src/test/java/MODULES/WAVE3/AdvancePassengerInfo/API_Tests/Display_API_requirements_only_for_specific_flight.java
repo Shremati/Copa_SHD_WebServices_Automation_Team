@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_display_API_specific_flight;
 import frameworkconstants.FrameworkConstants;
@@ -55,7 +56,7 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_requirements_only_for_specific_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -83,6 +84,11 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Display_API_requirements_only_for_specific_flight.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID", "ID", InputRow.getCell(7).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:OperatingAirline", "FlightNumber", InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
 
