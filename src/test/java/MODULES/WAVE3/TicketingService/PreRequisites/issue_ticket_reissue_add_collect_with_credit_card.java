@@ -93,7 +93,12 @@ public class issue_ticket_reissue_add_collect_with_credit_card extends Framework
         XSSFRow InputRow=sheet.getRow(4);
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(16).setCellValue(TicketNumber);
+        String AudCouponCheckDigit="";
+        if(XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath())!=null)
+        {
+            AudCouponCheckDigit = XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath());
+        }
+        InputRow.getCell(16).setCellValue(TicketNumber+AudCouponCheckDigit);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

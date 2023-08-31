@@ -31,20 +31,17 @@ public class Reissue_add_collect_with_credit_card extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_reissue_add_collect_with_credit_card Prerequisite = new create_booking_reissue_add_collect_with_credit_card();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_reissue_add_collect_with_credit_card Prerequisite2 = new issue_ticket_reissue_add_collect_with_credit_card();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
-        //        PreRequisite for Scenario ------> Modify Booking
 
         modify_ticket_reissue_add_collect_with_credit_card Prerequisite3 = new modify_ticket_reissue_add_collect_with_credit_card();
-        Prerequisite3.run();
+        Prerequisite3.run(); // modificationtype=5 , flight itenary is getting changed
 
 
         UpdatePayload();
@@ -96,14 +93,14 @@ public class Reissue_add_collect_with_credit_card extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"TicketingService\\Reissue_add_collect_with_credit_card.xml";
 
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(28).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValue("tic1:ExchangeInfo","ExchangeDocumentNumber",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath());
+
 
 
         wb.close();
 
     }
-
-
 
 
 }

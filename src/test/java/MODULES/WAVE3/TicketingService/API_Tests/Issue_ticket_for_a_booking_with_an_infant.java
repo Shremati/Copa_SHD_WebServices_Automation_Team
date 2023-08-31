@@ -28,12 +28,9 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_issue_ticket_for_a_booking_with_an_infant Prerequisite = new create_booking_issue_ticket_for_a_booking_with_an_infant();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
 
         UpdatePayload();

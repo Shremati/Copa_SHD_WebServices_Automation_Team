@@ -36,6 +36,7 @@ public class TicketingService {
         try {
             Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.Execute();
 
+            //Last Segment PTY-LAX doesn't always work fine, so PTY-SFO is taken. Give proper flights/markets for all segments which have seats
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 2 failed due to :" + e);
@@ -88,7 +89,7 @@ public class TicketingService {
 
     }
 
-    @Description("Issue bulk ticket for a PNR with two pax")
+    @Description("Issue inclusive tour ticket for a pnr with two pax")
     @Test
     public void Scenario6() {
 
@@ -103,7 +104,7 @@ public class TicketingService {
     }
 
 
-    @Description("Void Error - no valid coupons to void (ticket already voided)")
+    @Description("Issue ticket for a booking with an infant")
     @Test
     public void Scenario7() {
 
