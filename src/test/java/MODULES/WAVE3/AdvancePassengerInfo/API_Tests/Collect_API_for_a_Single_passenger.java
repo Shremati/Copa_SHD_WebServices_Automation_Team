@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Collect_API_for_a_single_pax;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -30,6 +31,9 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
     {
         Create_Booking_Collect_API_for_a_Single_passenger Prerequisite1 = new Create_Booking_Collect_API_for_a_Single_passenger();
         Prerequisite1.run();
+
+        Display_API_Collect_API_for_a_single_pax Prerequisite2 = new Display_API_Collect_API_for_a_single_pax();
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -72,8 +76,16 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_Single_passenger.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
+
         XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),1);
+
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(), 1);
+
 
         wb.close();
 

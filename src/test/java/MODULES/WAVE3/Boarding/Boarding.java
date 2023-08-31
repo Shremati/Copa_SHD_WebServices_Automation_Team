@@ -78,4 +78,43 @@ public class Boarding {
             System.out.println("SCENARIO 5 failed due to :" + e);
         }
     }
+    @Description("Start_Boarding_function_using_Boarding_option_as_Seat")
+    @Test
+    public void Scenario6() {
+
+        try {
+            Start_Boarding_function_using_Boarding_option_as_Seat.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 6 failed due to :" + e);
+        }
+    }
+
+    @Description("Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number")
+    @Test
+    public void Scenario7() {
+
+        try {
+            Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 7 failed due to :" + e);
+        }
+    }
+
+    @Description("Start_BoardPassenger_function_using_BoardingOption_as_Sequence")
+    @Test
+      //Check for data with manual team before executing the Test Case
+      public void Scenario8() {
+
+        try {
+            Start_BoardPassenger_function_using_BoardingOption_as_Sequence.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 8 failed due to :" + e);
+        }
+    }
 }

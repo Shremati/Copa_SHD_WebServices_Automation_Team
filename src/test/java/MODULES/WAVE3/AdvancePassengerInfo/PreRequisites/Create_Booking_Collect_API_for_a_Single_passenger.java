@@ -33,7 +33,7 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
 
     public static String SOAPRequest;
 
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
 
         UpdatePayload();
 
@@ -91,7 +91,6 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
 
         wb.close();
 

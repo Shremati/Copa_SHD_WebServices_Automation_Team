@@ -37,8 +37,6 @@ public class RESTWrapper {
                 .headers("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(requestBody)
-                .log()
-                .body()
                 .when()
                 .post()
                 .then()

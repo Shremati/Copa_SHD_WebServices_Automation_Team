@@ -33,7 +33,7 @@ public class Single_Pax extends FrameworkConstants
 //        PreRequisite for Scenario ------> Create Booking
 
        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-       Prerequisite.run(); //excel gets updated
+       Prerequisite.run();
 
 
        UpdatePayload();
