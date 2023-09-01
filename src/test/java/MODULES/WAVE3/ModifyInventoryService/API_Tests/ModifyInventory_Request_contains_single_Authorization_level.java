@@ -71,15 +71,18 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ModifyInventoryService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Modifyinventoryservice\\ModifyInventory_Request_contains_single_Authorization_level.xml";
 
 
         XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_ddMMYYYY(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:BoardPoint",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("air1:BoardPoint","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+
+        XMLParser.SetTagtextatIndex("air1:ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:AuthorizationLevelValue",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 
