@@ -1,16 +1,17 @@
 package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
-
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
@@ -18,9 +19,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
-import frameworkconstants.*;
 
-public class Code_42_specific_SSR extends FrameworkConstants
+@Test
+public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers extends FrameworkConstants
 {
     public static String SOAPRequest;
 
@@ -50,7 +51,7 @@ public class Code_42_specific_SSR extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -72,21 +73,20 @@ public class Code_42_specific_SSR extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml";
+        filepath1=getRequestDirectory()+"AirportPassengerList\\Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.xml";
 
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
 
         wb.close();
 
     }
-
-
 }

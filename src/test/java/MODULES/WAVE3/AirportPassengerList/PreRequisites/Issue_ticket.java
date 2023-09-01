@@ -2,6 +2,7 @@ package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -20,13 +21,11 @@ import static io.restassured.RestAssured.given;
 public class Issue_ticket extends FrameworkConstants
 {
 
-
     public static String SOAPRequest;
 
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -40,6 +39,7 @@ public class Issue_ticket extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getTicketing())
@@ -58,10 +58,7 @@ public class Issue_ticket extends FrameworkConstants
         writer.close();
 
 
-
-
     }
-
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException

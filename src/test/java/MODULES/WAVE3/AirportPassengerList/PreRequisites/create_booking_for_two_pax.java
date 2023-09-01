@@ -2,6 +2,7 @@ package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -22,10 +23,8 @@ public class create_booking_for_two_pax extends FrameworkConstants
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -39,6 +38,7 @@ public class create_booking_for_two_pax extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -87,7 +87,7 @@ public class create_booking_for_two_pax extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidBefore",InputRow.getCell(4).getStringCellValue(),filepath);
+
 
         wb.close();
 

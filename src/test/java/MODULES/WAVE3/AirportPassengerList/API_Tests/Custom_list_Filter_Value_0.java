@@ -1,8 +1,8 @@
 package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
-
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
@@ -18,9 +18,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
-import frameworkconstants.*;
 
-public class Code_42_specific_SSR extends FrameworkConstants
+
+public class Custom_list_Filter_Value_0 extends FrameworkConstants
 {
     public static String SOAPRequest;
 
@@ -50,7 +50,7 @@ public class Code_42_specific_SSR extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Custom_list_Filter_Value_0.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -72,10 +72,10 @@ public class Code_42_specific_SSR extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml";
+        filepath1=getRequestDirectory()+"AirportPassengerList\\Custom_list_Filter_Value_0.xml";
 
 
 
@@ -87,6 +87,4 @@ public class Code_42_specific_SSR extends FrameworkConstants
         wb.close();
 
     }
-
-
 }

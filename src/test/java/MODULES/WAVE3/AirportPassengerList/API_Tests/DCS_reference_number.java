@@ -1,8 +1,10 @@
 package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
-
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_with_NRSA;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Custom_list_Filter_Value_5_Booking;
+import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -10,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
@@ -18,15 +20,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
-import frameworkconstants.*;
 
-public class Code_42_specific_SSR extends FrameworkConstants
+
+public class DCS_reference_number extends FrameworkConstants
 {
     public static String SOAPRequest;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        Custom_list_Filter_Value_5_Booking Prerequisite =new Custom_list_Filter_Value_5_Booking();
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -50,7 +55,7 @@ public class Code_42_specific_SSR extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\DCS_reference_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -72,14 +77,14 @@ public class Code_42_specific_SSR extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(10); //Taking flight data from code 2 eticketed pax because similar requirements
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml";
-
+        filepath1=getRequestDirectory()+"AirportPassengerList\\DCS_reference_number.xml";
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
+        XMLParser.SetTagtextatIndex("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
@@ -87,6 +92,4 @@ public class Code_42_specific_SSR extends FrameworkConstants
         wb.close();
 
     }
-
-
 }

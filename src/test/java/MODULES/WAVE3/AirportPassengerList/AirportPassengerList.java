@@ -96,4 +96,175 @@ public class AirportPassengerList {
         }
     }
 
+    @Description("Standard_list_Code_0_All_Passengers")
+    @Test
+    public void Scenario8() {
+
+        try {
+            Standard_list_Code_0_All_Passengers.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 8 failed due to :" + e);
+        }
+    }
+
+    @Description("Standard_list_Code_30_passengers_with_no_meals")
+    @Test
+//Check for data with manual team before executing the Test Case
+    public void Scenario9() {
+
+        try {
+            Standard_list_Code_30_passengers_with_no_meals.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 9 failed due to :" + e);
+        }
+    }
+
+    @Description("Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers")
+    @Test
+    public void Scenario10() {
+
+        try {
+            Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 10 failed due to :" + e);
+        }
+    }
+
+    @Description("Custom_list_Filter_Value_0")
+    @Test
+    public void Scenario11() {
+
+        try {
+            Custom_list_Filter_Value_0.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 11 failed due to :" + e);
+        }
+    }
+
+    @Description("Standard_list_Code_6_Out_of_sync_electronic_tickets")
+    @Test
+    public void Scenario12() {
+
+        try {
+            Standard_list_Code_6_Out_of_synch_electronic_tickets.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 12 failed due to :" + e);
+        }
+    }
+
+    @Description("Custom_list_Filter_Value_1_Surname")
+    @Test
+//Check for data with manual team before executing the Test Case
+    public void Scenario13() {
+
+        try {
+            Custom_list_Filter_Value_1_Surname.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 13 failed due to :" + e);
+        }
+    }
+
+    @Description("Find_passengers_with_passcode_SA3R09")
+    @Test
+    public void Scenario14() {
+
+        try {
+            Find_passengers_with_passcode_SA3R09.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 14 failed due to :" + e);
+        }
+    }
+
+    @Description("DCS_reference_number")
+    @Test
+    public void Scenario15() {
+
+        try {
+            DCS_reference_number.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 15 failed due to :" + e);
+        }
+    }
+
+    @Description("Standard_list_Code_26_passengers_with_inbound_connections")
+    @Test
+    public void Scenario16() {
+
+        try {
+            Standard_list_Code_26_passengers_with_inbound_connections.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 16 failed due to :" + e);
+        }
+    }
+
+    @Description("Large_parties")
+    @Test
+    public void Scenario17() {
+
+        try {
+            Large_parties.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 17 failed due to :" + e);
+        }
+    }
+
+    @Description("Passengers_with_outbound_connections")
+    @Test
+    public void Scenario18() {
+
+        try {
+            Passengers_with_outbound_connections.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 18 failed due to :" + e);
+        }
+    }
+
+    @Description("Code_33_Specific_passengers")
+    @Test
+    public void Scenario19() {
+
+        try {
+            Code_33_Specific_passengers.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 19 failed due to :" + e);
+        }
+    }
+
+    @Description("Code_34_specific_party")
+    @Test
+    public void Scenario20() {
+
+        try {
+            Code_34_specific_party.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 20 failed due to :" + e);
+        }
+    }
+
+    @Description("Code_36_requiring_seats")
+    @Test
+    public void Scenario21() {
+
+        try {
+            Code_36_requiring_seats.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SCENARIO 21 failed due to :" + e);
+        }
+    }
+
+
 }

@@ -32,7 +32,6 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
 
         Prerequisite.run();
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
