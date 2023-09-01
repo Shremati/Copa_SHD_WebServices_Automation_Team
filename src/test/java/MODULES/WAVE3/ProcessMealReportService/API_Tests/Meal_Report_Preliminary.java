@@ -80,7 +80,6 @@ public class Meal_Report_Preliminary extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("meal1:FlightLegInfo", "DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("meal1:FlightLegInfo", "FlightNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath());
-        XMLParser.updateAttributeValue("meal1:FlightLegInfo", "RPH", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         wb.close();
     }

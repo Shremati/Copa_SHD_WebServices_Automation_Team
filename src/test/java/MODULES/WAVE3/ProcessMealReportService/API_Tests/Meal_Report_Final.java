@@ -27,11 +27,6 @@ public class Meal_Report_Final extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
-
-//        create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs Prerequisite = new create_booking_advance_seat_assignment_on_a_flight_with_multiple_legs();
-//        Prerequisite.run(); //excel gets updated
-
 
         UpdatePayload();
 
@@ -82,9 +77,8 @@ public class Meal_Report_Final extends FrameworkConstants {
         String filepath1;
         filepath1=getRequestDirectory()+"ProcessMealReport\\Meal_Report_Final.xml";
 
-        XMLParser.updateAttributeValue("meal1:FlightLegInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("meal1:FlightLegInfo", "DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("meal1:FlightLegInfo", "FlightNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath());
-        XMLParser.updateAttributeValue("meal1:FlightLegInfo", "RPH", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         wb.close();
     }
