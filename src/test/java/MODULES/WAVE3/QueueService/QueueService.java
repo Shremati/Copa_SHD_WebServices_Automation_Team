@@ -10,12 +10,13 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 public class QueueService {
 
+
     QueueService() {
         createFolders(getResponseDirectory() + "QueueService");
     }
 
-    //    Display_queue_booking_all_items_full_data_format_not_remove_from_queue
-    @Description("Display_queue_booking_all_items_full_data_format_not_remove_from_queue")
+
+    @Description("Display queue booking all items full data format not remove from queue")
     @Test
     public void Scenario1() {
 
@@ -29,7 +30,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_queue_booking_from_empty_queue")
+    @Description("Display queue booking from empty queue (Negative Scenario)")
     @Test
     public void Scenario2() {
 
@@ -44,7 +45,7 @@ public class QueueService {
     }
 
 
-    @Description("Queue_booking")
+    @Description("Queue booking")
     @Test
     public void Scenario3() {
 
@@ -58,7 +59,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_message")
+    @Description("Display message")
     @Test
     public void Scenario4() {
 
@@ -72,7 +73,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_And_Remove_Message_Default_City")
+    @Description("Display And Remove Message Default City")
     @Test
     public void Scenario5() {
 
@@ -86,7 +87,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_and_remove_message")
+    @Description("Display and remove message")
     @Test
     public void Scenario6() {
 
@@ -100,7 +101,7 @@ public class QueueService {
 
     }
 
-    @Description("Queue_Multiple_Messages")
+    @Description("Queue Multiple Messages")
     @Test
     public void Scenario7() {
 
@@ -114,7 +115,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_All_Queue_Cities")
+    @Description("Display All Queue Cities")
     @Test
     public void Scenario8() {
 
@@ -128,7 +129,7 @@ public class QueueService {
 
     }
 
-    @Description("Transfer_Queue_Today_to_End_Date")
+    @Description("Transfer Queue Today to End Date")
     @Test
     public void Scenario9() {
 
@@ -142,7 +143,7 @@ public class QueueService {
 
     }
 
-    @Description("Transfer_Queue_Today_to_End_Date")
+    @Description("Abort schedule change queue transfer")
     @Test
     public void Scenario10() {
 
@@ -170,7 +171,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_Booking_queue_count_for_a_given_city")
+    @Description("Display Booking queue count for a given city")
     @Test
     public void Scenario12() {
 
@@ -184,7 +185,7 @@ public class QueueService {
 
     }
 
-    @Description("Display_queue_count_for_Booking_Message_Queues")
+    @Description("Display queue count for Booking Message Queues")
     @Test
     public void Scenario13() {
 
@@ -198,7 +199,7 @@ public class QueueService {
 
     }
 
-    @Description("Queue_Passenger_List")
+    @Description("Queue Passenger List")
     @Test
     public void Scenario14() {
 
@@ -212,7 +213,7 @@ public class QueueService {
 
     }
 
-    @Description("Queue_a_specific_passenger_list")
+    @Description("Queue a specific passenger list")
     @Test
     public void Scenario15() {
 

@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/"
-                  xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ"
-                  xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/" xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
     <soapenv:Header/>
     <soapenv:Body>
         <scr:sendEntry>

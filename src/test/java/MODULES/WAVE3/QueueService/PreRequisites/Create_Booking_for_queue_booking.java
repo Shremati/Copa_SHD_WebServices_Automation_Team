@@ -1,35 +1,25 @@
-package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
+package MODULES.WAVE3.QueueService.PreRequisites;
 
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import GENERICS.*;
 import frameworkconstants.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 import java.io.FileInputStream;
 
 import static io.restassured.RestAssured.given;
 
-public class Create_Booking_Collect_API_for_a_Single_passenger extends FrameworkConstants {
+public class Create_Booking_for_queue_booking extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -78,18 +68,17 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFSheet sheet = wb.getSheet("QueueService");
 
         XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Create_Booking_for_queue_booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\QueueService\\PreRequisites\\Create_Booking_for_queue_booking.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
 
 
         wb.close();
@@ -105,20 +94,13 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFSheet sheet = wb.getSheet("QueueService");
         XSSFRow InputRow=sheet.getRow(3);
 
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
-        InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Givenname);
-        InputRow.getCell(9).setCellValue(Surname);
-
+        InputRow.getCell(9).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

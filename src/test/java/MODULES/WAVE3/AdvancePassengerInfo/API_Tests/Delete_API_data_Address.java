@@ -1,7 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_delete_API_data_Address;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_delete_API_address;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_delete_API_data_Address;
@@ -12,7 +11,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;

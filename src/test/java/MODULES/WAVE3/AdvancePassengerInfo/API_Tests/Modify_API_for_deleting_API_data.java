@@ -2,17 +2,14 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Update_and_Delete_API_data;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_for_updating_API_data;
 import frameworkconstants.FrameworkConstants;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;

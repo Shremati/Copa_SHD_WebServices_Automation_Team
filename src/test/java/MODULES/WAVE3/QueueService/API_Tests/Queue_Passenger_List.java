@@ -21,11 +21,11 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Queue_Passenger_List extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -71,14 +71,20 @@ public class Queue_Passenger_List extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(13); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(13);
 
         String filepath1;
         filepath1=getRequestDirectory()+"QueueService\\Queue_Passenger_List.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
 
+        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 0);
+
+        XMLParser.updateAttributeValue("que1:QueueInfo","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("que1:QueueInfo","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
         wb.close();
 
     }

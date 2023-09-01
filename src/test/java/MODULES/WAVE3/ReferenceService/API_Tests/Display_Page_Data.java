@@ -20,6 +20,7 @@ import frameworkconstants.*;
 import static io.restassured.RestAssured.given;
 
 public class Display_Page_Data extends FrameworkConstants{
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -70,16 +71,16 @@ public class Display_Page_Data extends FrameworkConstants{
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ReferenceService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"ReferenceService\\Display_Page_Data.xml";
 
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),filepath1);
-//        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue()),getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValue("eds:ReferenceRequest","Page",InputRow.getCell(4).getStringCellValue(),0);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Page",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","IndexedPage",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

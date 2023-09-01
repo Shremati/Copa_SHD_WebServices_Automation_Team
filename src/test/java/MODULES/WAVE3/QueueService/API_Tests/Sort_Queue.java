@@ -20,11 +20,11 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Sort_Queue extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -70,7 +70,7 @@ public class Sort_Queue extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(10); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
         filepath1=getRequestDirectory()+"QueueService\\Sort_Queue.xml";

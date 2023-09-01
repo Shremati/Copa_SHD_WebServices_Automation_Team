@@ -20,11 +20,11 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Display_Booking_queue_count_for_a_given_city extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -70,13 +70,13 @@ public class Display_Booking_queue_count_for_a_given_city extends FrameworkConst
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(11); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
         filepath1=getRequestDirectory()+"QueueService\\Display_Booking_queue_count_for_a_given_city.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-
+        XMLParser.updateAttributeValue("que1:QueueInfo","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
