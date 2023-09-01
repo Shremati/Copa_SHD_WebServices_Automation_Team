@@ -29,9 +29,9 @@
                                     1, XX    CANCEL
                                   We need to provide RPH too, the other data is ignored but the schema requires it.-->
                             <air1:OriginDestinationOption>
-                                <air1:FlightSegment DepartureDateTime="2009-11-10T09:20:00" RPH="2" FlightNumber="194" ResBookDesigCode="Y" NumberInParty="2" Status="1">
-                                    <com:DepartureAirport LocationCode="PTY"/>
-                                    <com:ArrivalAirport LocationCode="MEX"/>
+                                <air1:FlightSegment DepartureDateTime="2023-09-01T09:20:00" RPH="2" FlightNumber="362" ResBookDesigCode="Y" NumberInParty="2" Status="1">
+                                    <com:DepartureAirport LocationCode="LAX"/>
+                                    <com:ArrivalAirport LocationCode="PTY"/>
                                     <air1:MarketingAirline Code="CM"/>
                                 </air1:FlightSegment>
                             </air1:OriginDestinationOption>
@@ -39,8 +39,8 @@
                                     11, NN   NEED
                                   and all required data.-->
                             <air1:OriginDestinationOption>
-                                <air1:FlightSegment DepartureDateTime="2009-11-11T00:00:00" RPH="2" FlightNumber="194" ResBookDesigCode="L" NumberInParty="2" Status="11">
-                                    <com:DepartureAirport LocationCode="MEX"/>
+                                <air1:FlightSegment DepartureDateTime="2023-09-01T00:00:00" RPH="2" FlightNumber="362" ResBookDesigCode="M" NumberInParty="2" Status="11">
+                                    <com:DepartureAirport LocationCode="LAX"/>
                                     <com:ArrivalAirport LocationCode="PTY"/>
                                     <air1:MarketingAirline Code="CM"/>
                                 </air1:FlightSegment>
@@ -48,22 +48,22 @@
                         </air1:OriginDestinationOptions>
                     </air1:AirItinerary>
                     <!--the booking to modify-->
-                    <air1:BookingReferenceID Type="14" ID="FEGZJB"/>
+                    <air1:BookingReferenceID Type="14" ID="BBNICX"/>
                 </air:AirBookModifyRQ>
                 <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
-                <air:AirReservation LastModified="2011-10-24T18:12:17Z" CreateDateTime="2011-10-24T18:07:00Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                <air:AirReservation CreateDateTime="2023-08-31T05:56:00Z" LastModified="2023-08-31T05:56:41Z" xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
                     <n1:AirItinerary>
                         <n1:OriginDestinationOptions>
                             <n1:OriginDestinationOption>
-                                <n1:FlightSegment DepartureDateTime="2011-11-11T06:40:00" ArrivalDateTime="2011-11-11T09:50:00" RPH="1" FlightNumber="100" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                <n1:FlightSegment DepartureDateTime="2023-08-31T07:54:00" ArrivalDateTime="2023-08-31T12:57:00" RPH="1" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
                                     <com:DepartureAirport LocationCode="PTY"/>
-                                    <com:ArrivalAirport LocationCode="MEX"/>
+                                    <com:ArrivalAirport LocationCode="LAX"/>
                                     <n1:MarketingAirline Code="CM"/>
                                 </n1:FlightSegment>
                             </n1:OriginDestinationOption>
                             <n1:OriginDestinationOption>
-                                <n1:FlightSegment DepartureDateTime="2011-11-11T09:20:00" ArrivalDateTime="2011-11-11T11:55:00" RPH="2" FlightNumber="550" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
-                                    <com:DepartureAirport LocationCode="MEX"/>
+                                <n1:FlightSegment DepartureDateTime="2023-09-01T22:14:00" ArrivalDateTime="2023-09-01T06:42:00" RPH="2" FlightNumber="362" ResBookDesigCode="Y" NumberInParty="2" Status="26" E_TicketEligibility="Eligible" DepartureDay="Fri">
+                                    <com:DepartureAirport LocationCode="LAX"/>
                                     <com:ArrivalAirport LocationCode="PTY"/>
                                     <n1:MarketingAirline Code="CM"/>
                                 </n1:FlightSegment>
@@ -138,7 +138,7 @@
                         <n1:TicketAdvisory>FQR/CASH/21511728470/0001//177.30</n1:TicketAdvisory>
                     </n1:Ticketing>
                     <n1:Ticketing TicketType="eTicket"/>
-                    <n1:BookingReferenceID Type="14" ID="FEGZJB"/>
+                    <n1:BookingReferenceID Type="14" ID="BBNICX"/>
                 </air:AirReservation>
             </air:OTA_AirBookModifyRQ>
         </mod:modifyBooking>

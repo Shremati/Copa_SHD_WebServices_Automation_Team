@@ -6,10 +6,10 @@
                 <tic:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </tic:POS>
-                <tic:BookingTicketingRefID Type="0" ID="A1UBOE"/>
+                <tic:BookingTicketingRefID Type="0" ID="BBNICX"/>
                 <tic:Passenger>
                     <tic:TicketAdjustInfo>
-                        <tic:SoldAirlineInfo RPH="1"/>
+                        <tic:SoldAirlineInfo RPH="2"/>
                     </tic:TicketAdjustInfo>
                 </tic:Passenger>
             </tic:EDS_TicketSynchronizeRQ>

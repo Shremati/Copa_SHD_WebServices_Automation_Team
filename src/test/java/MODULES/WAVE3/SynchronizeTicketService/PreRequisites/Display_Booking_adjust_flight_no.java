@@ -55,6 +55,10 @@ public class Display_Booking_adjust_flight_no extends FrameworkConstants {
         writer.write("");
         writer.flush();
 
+        writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
     }
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException

@@ -5,6 +5,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -21,6 +22,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Adjust_Class extends FrameworkConstants {
+
    public static String SOAPRequest;
 
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -33,7 +35,7 @@ public class Adjust_Class extends FrameworkConstants {
        Prerequisite2.run();
 
        Modify_Booking2 Prerequisite3 = new Modify_Booking2();
-       Prerequisite3.run();
+       Prerequisite3.run(); //ModificationType="5" ,so we are modifying other itenary details, to be specific , class is modified and RPH=2 is fixed
 
        Display_Booking_adjust_class Prerequisite4 = new Display_Booking_adjust_class();
        Prerequisite4.run();
@@ -51,6 +53,7 @@ public class Adjust_Class extends FrameworkConstants {
        Response response = given()
                .baseUri(getBaseURL())
                .header("Content-Type", "text/xml")
+               .filter(new AllureRestAssured())
                .body(SOAPRequest)
                .when()
                .post(getSynchronizeticketservice())
