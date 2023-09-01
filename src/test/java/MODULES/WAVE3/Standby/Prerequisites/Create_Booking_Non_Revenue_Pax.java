@@ -28,7 +28,6 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********

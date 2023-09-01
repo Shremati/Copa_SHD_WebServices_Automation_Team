@@ -26,7 +26,7 @@ public class Enable_Standby_clearall extends FrameworkConstants {
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -63,7 +63,7 @@ public class Enable_Standby_clearall extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(4); //The given seat should be availble
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Enable_Standby_clearall.xml";

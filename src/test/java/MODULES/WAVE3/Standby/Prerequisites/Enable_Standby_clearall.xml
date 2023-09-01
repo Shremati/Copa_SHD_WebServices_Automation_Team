@@ -1,6 +1,4 @@
-<soapenv:Envelope
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:stan="http://www.hp.com/AirlineSOASchema/Standby/"
->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:stan="http://www.hp.com/AirlineSOASchema/Standby/">
     <soapenv:Header />
     <soapenv:Body>
         <stan:processStandby>
@@ -21,4 +19,4 @@
             </HP_AirStandbyRQ>
         </stan:processStandby>
     </soapenv:Body>
-    </soapenv:Envelope >
+    </soapenv:Envelope>
