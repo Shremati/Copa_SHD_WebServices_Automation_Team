@@ -26,7 +26,6 @@ public class Display_booking_API_delete_API_data_Document_info extends Framework
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********

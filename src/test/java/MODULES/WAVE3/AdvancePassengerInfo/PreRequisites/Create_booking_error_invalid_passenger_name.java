@@ -28,7 +28,6 @@ public class Create_booking_error_invalid_passenger_name extends FrameworkConsta
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -108,14 +107,8 @@ public class Create_booking_error_invalid_passenger_name extends FrameworkConsta
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
 
         InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Givenname);
-        InputRow.getCell(9).setCellValue(Surname);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

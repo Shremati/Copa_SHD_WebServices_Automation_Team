@@ -60,7 +60,6 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
         writer.write("");
         writer.close();
 
-        excelwriter();
 
     }
 
@@ -83,37 +82,5 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
 
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(7);
-
-
-        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
-        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
-
-        InputRow.getCell(15).setCellValue(AgencyName);
-        InputRow.getCell(16).setCellValue(AgencyName1);
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 
 }

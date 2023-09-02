@@ -28,8 +28,6 @@ public class Display_API_pax_types_adt_infant_with_seat_infant_without_seat exte
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
-
         Create_booking_pax_types_adt_infant_with_seat_infant_without_seat Prerequisite = new Create_booking_pax_types_adt_infant_with_seat_infant_without_seat();
         Prerequisite.run();
 
@@ -55,7 +53,7 @@ public class Display_API_pax_types_adt_infant_with_seat_infant_without_seat exte
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_pax_types_adt_infant_with_seat_infant_without_seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

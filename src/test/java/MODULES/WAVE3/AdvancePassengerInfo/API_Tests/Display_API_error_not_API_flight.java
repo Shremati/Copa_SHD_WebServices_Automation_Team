@@ -28,7 +28,6 @@ public class Display_API_error_not_API_flight extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
 
         Create_booking_error_not_API_flight Prerequisite = new Create_booking_error_not_API_flight();
         Prerequisite.run();
@@ -55,7 +54,7 @@ public class Display_API_error_not_API_flight extends FrameworkConstants {
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_error_not_API_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

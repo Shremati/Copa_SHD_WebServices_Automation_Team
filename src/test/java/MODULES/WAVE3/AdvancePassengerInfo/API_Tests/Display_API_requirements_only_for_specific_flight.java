@@ -29,8 +29,6 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
-
         Create_booking_display_API_specific_flight Prerequisite = new Create_booking_display_API_specific_flight();
         Prerequisite.run();
 
@@ -84,6 +82,7 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Display_API_requirements_only_for_specific_flight.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID", "ID", InputRow.getCell(7).getStringCellValue(),filepath1);
+
         XMLParser.updateAttributeValue("air:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());

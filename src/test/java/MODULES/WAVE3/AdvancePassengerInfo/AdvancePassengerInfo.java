@@ -16,6 +16,7 @@ public class AdvancePassengerInfo {
 
 //    Choose and APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight
 //    Government Agencies - For markets such as LAX , we take USIN, For markets such as MEX , we take MXIN , otherwise it give :INVALID GOVERNMENT AGENCY" error
+//    If you change markets to PTY-LAX or PTY-MEX, please make the above changes in datasheet
 
     @Description("Display API requirements for a single passenger in booking.")
     @Test
@@ -71,6 +72,7 @@ public class AdvancePassengerInfo {
         try {
 
             Collect_API_for_a_Single_passenger.Execute();
+//AgencyNames given manually in datasheet
 
         } catch (Exception e) {
             failTest(e);
@@ -84,6 +86,7 @@ public class AdvancePassengerInfo {
         try {
 
             Modify_API_for_deleting_API_data.Execute();
+//AgencyNames given manually in datasheet
 
         } catch (Exception e) {
             failTest(e);
@@ -110,6 +113,7 @@ public class AdvancePassengerInfo {
         try {
 
             Collect_API_for_a_single_pax_alt.Execute();
+//AgencyNames given manually in datasheet
 
         } catch (Exception e) {
             failTest(e);
@@ -123,7 +127,7 @@ public class AdvancePassengerInfo {
         try {
 
             Collect_API_1adult_and_1infant_without_seats.Execute();
-
+//AgencyNames taken from DisplayAPIS response
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 9 failed due to :" + e);
@@ -143,12 +147,13 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Delete_API_data_Address")
+    @Description("Delete API data Address")
     @Test
     public void Scenario11() {
         try {
 
             Delete_API_data_Address.Execute();
+//AgencyNames taken from DisplayAPIS response
 
         } catch (Exception e) {
             failTest(e);
@@ -162,6 +167,7 @@ public class AdvancePassengerInfo {
         try {
 
             Delete_API_data_Document_info.Execute();
+//AgencyNames taken from DisplayAPIS response
 
         } catch (Exception e) {
             failTest(e);
@@ -170,12 +176,12 @@ public class AdvancePassengerInfo {
     }
 
     @Description("Display_API_error_invalid_booking")
-    //We are entering a random PNR in the Excel sheet, manually
     @Test
     public void Scenario13() {
         try {
 
             Display_API_error_invalid_booking.Execute();
+//We are entering a random PNR in the Excel sheet, manually
 
         } catch (Exception e) {
             failTest(e);

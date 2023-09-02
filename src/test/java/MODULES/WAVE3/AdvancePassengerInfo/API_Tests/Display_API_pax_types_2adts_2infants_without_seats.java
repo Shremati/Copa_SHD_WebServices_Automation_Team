@@ -27,8 +27,6 @@ public class Display_API_pax_types_2adts_2infants_without_seats extends Framewor
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
-
         Create_booking_pax_types_2adts_2infants_without_seats Prerequisite = new Create_booking_pax_types_2adts_2infants_without_seats();
         Prerequisite.run();
 
@@ -54,7 +52,7 @@ public class Display_API_pax_types_2adts_2infants_without_seats extends Framewor
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_pax_types_2adts_2infants_without_seats.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

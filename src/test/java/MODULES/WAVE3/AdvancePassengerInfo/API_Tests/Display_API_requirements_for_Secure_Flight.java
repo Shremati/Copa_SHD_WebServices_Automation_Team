@@ -28,8 +28,6 @@ public class Display_API_requirements_for_Secure_Flight extends FrameworkConstan
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
-
         Create_booking_Display_API_requirements_for_Secure_Flight Prerequisite = new Create_booking_Display_API_requirements_for_Secure_Flight();
         Prerequisite.run();
 
@@ -55,7 +53,7 @@ public class Display_API_requirements_for_Secure_Flight extends FrameworkConstan
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_requirements_for_Secure_Flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

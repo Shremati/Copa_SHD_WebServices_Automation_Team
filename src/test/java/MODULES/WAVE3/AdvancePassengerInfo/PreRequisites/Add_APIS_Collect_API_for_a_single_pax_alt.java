@@ -23,7 +23,6 @@ public class Add_APIS_Collect_API_for_a_single_pax_alt extends FrameworkConstant
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -48,11 +47,13 @@ public class Add_APIS_Collect_API_for_a_single_pax_alt extends FrameworkConstant
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();

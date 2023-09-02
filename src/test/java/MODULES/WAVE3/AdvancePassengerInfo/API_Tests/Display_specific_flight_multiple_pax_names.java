@@ -29,8 +29,6 @@ public class Display_specific_flight_multiple_pax_names extends FrameworkConstan
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
-
         Create_booking_Specific_flight_multiple_pax_names Prerequisite = new Create_booking_Specific_flight_multiple_pax_names();
         Prerequisite.run();
 
@@ -56,7 +54,7 @@ public class Display_specific_flight_multiple_pax_names extends FrameworkConstan
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_specific_flight_multiple_pax_names.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

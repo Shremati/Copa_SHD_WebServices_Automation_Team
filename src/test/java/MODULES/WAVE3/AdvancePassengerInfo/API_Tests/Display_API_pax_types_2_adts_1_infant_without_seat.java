@@ -54,7 +54,7 @@ public class Display_API_pax_types_2_adts_1_infant_without_seat extends Framewor
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_pax_types_2_adts_1_infant_without_seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 

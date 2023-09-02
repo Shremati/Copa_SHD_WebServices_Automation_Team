@@ -27,7 +27,6 @@ public class Display_API_error_invalid_passenger_name extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
 
         Create_booking_error_invalid_passenger_name Prerequisite = new Create_booking_error_invalid_passenger_name();
         Prerequisite.run();

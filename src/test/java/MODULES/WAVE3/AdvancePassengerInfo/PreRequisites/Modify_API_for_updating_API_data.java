@@ -83,6 +83,10 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
 
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),3);
 
         wb.close();
 
@@ -103,14 +107,7 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 0);
-        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 1);
-
-
         InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(15).setCellValue(AgencyName);
-        InputRow.getCell(16).setCellValue(AgencyName1);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

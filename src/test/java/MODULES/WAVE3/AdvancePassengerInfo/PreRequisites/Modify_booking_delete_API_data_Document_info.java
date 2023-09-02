@@ -58,8 +58,6 @@ public class Modify_booking_delete_API_data_Document_info extends FrameworkConst
         writer.close();
 
 
-        excelwriter();
-
     }
 
 
@@ -87,48 +85,5 @@ public class Modify_booking_delete_API_data_Document_info extends FrameworkConst
 
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(10);
-
-
-
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
-        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 0);
-        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 1);
-
-
-        InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Givenname);
-        InputRow.getCell(9).setCellValue(Surname);
-        InputRow.getCell(15).setCellValue(AgencyName);
-        InputRow.getCell(16).setCellValue(AgencyName1);
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 
 }

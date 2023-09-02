@@ -32,7 +32,7 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
         Prerequisite1.run();
 
         Display_APIS_Collect_API_1adult_and_1infant_without_seats Prerequisite2 = new Display_APIS_Collect_API_1adult_and_1infant_without_seats();
-        Prerequisite2.run();
+        Prerequisite2.run(); //Here AgencyNames are taken from DisplayAPIS response
 
         Add_APIS_Collect_API_1adult_and_1infant_without_seats Prerequisite3 = new Add_APIS_Collect_API_1adult_and_1infant_without_seats();
         Prerequisite3.run();
@@ -94,6 +94,8 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
 
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),3);
 
         wb.close();
 
