@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,9 +20,10 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Modify_API_for_updating_API_data extends FrameworkConstants {
-    public static String SOAPRequest;
-    public static void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
+    public static String SOAPRequest;
+
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
 
         UpdatePayload();
@@ -36,6 +38,7 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getAdvancepassengerinfo())
@@ -78,10 +81,8 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Modify_API_for_updating_API_data.xml";
 
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,1);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
 
-
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
 
         wb.close();
 
@@ -102,17 +103,11 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 0);
         String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 1);
 
 
         InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Givenname);
-        InputRow.getCell(9).setCellValue(Surname);
         InputRow.getCell(15).setCellValue(AgencyName);
         InputRow.getCell(16).setCellValue(AgencyName1);
 

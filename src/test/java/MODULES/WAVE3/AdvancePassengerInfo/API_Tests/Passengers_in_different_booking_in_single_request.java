@@ -32,10 +32,10 @@ public class Passengers_in_different_booking_in_single_request extends Framework
     {
 
         create_booking_service_onepax Prerequisite1 = new create_booking_service_onepax();
-        Prerequisite1.run();
+        Prerequisite1.run(); //1st PNR generated in column 7
 
         create_booking_service_singlepax Prerequisite2 = new create_booking_service_singlepax();
-        Prerequisite2.run();
+        Prerequisite2.run(); //2nd PNR generated in column 14
 
 
         UpdatePayload();

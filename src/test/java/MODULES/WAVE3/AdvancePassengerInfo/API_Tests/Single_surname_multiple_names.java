@@ -2,7 +2,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_multiplepax_with_same_surname;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -17,10 +17,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-
-import static io.restassured.RestAssured.given;import frameworkconstants.*;
+import frameworkconstants.*;
 
 public class Single_surname_multiple_names extends FrameworkConstants
 {
@@ -30,11 +27,8 @@ public class Single_surname_multiple_names extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-//        PreRequisite for Scenario ------> Create Booking
-
-        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
-        Prerequisite.run(); //excel gets updated
+        create_booking_multiplepax_with_same_surname Prerequisite = new create_booking_multiplepax_with_same_surname();
+        Prerequisite.run();  //Booking with 3 pax with same surname
 
 
         UpdatePayload();
@@ -70,7 +64,7 @@ public class Single_surname_multiple_names extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(2);//Taking scenario create booking for multiple pax with same surname
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Single_surname_multiple_names.xml";

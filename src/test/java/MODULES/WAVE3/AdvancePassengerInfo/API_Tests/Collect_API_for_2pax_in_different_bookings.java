@@ -28,12 +28,11 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
     {
 
         Create_booking_for_2pax_in_different_bookings_1 Prerequisite1 = new Create_booking_for_2pax_in_different_bookings_1();
-        Prerequisite1.run();
+        Prerequisite1.run(); //1st PNR getting stored in column 7
 
 
         Create_booking_for_2pax_in_different_bookings_2 Prerequisite2 = new Create_booking_for_2pax_in_different_bookings_2();
-        Prerequisite2.run();
-
+        Prerequisite2.run(); //2nd PNR getting stored in column 14
 
 
         UpdatePayload();
@@ -87,6 +86,7 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
 
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1, 0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(), 1);
+
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
 

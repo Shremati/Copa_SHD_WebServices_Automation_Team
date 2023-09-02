@@ -28,7 +28,6 @@ public class Display_API_pax_types_2_adts_1_infant_without_seat extends Framewor
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        PreRequisite for Scenario ------> Create Booking
 
         Create_booking_pax_types_2_adts_1_infant_without_seat Prerequisite = new Create_booking_pax_types_2_adts_1_infant_without_seat();
         Prerequisite.run();
@@ -85,6 +84,8 @@ public class Display_API_pax_types_2_adts_1_infant_without_seat extends Framewor
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(7).getStringCellValue(),filepath1, 0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(), 2);
+
+         //Names in request should be same as the names in create booking
 
         wb.close();
 

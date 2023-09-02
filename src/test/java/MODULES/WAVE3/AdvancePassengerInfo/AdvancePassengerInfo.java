@@ -14,6 +14,8 @@ public class AdvancePassengerInfo {
         createFolders(getResponseDirectory() + "AdvancePassengerInfo");
     }
 
+//    Choose and APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight
+//    Government Agencies - For markets such as LAX , we take USIN, For markets such as MEX , we take MXIN , otherwise it give :INVALID GOVERNMENT AGENCY" error
 
     @Description("Display API requirements for a single passenger in booking.")
     @Test
@@ -89,7 +91,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Display_API_pax_types_2_adts_1_infant_without_seat")
+    @Description("Display API pax types 2 adults 1 infant without seat")
     @Test
     public void Scenario7() {
         try {
@@ -102,7 +104,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Collect_API_for_a_single_pax_alt")
+    @Description("Collect API for a single pax alt")
     @Test
     public void Scenario8() {
         try {
@@ -115,7 +117,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Collect_API_1adult_and_1infant_without_seats")
+    @Description("Collect API 1adult and 1infant without seats")
     @Test
     public void Scenario9() {
         try {

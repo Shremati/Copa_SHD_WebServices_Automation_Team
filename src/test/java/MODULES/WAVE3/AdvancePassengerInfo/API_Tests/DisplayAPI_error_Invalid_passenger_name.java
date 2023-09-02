@@ -31,10 +31,8 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
     {
 
 
-//        PreRequisite for Scenario ------> Create Booking
-
         create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -71,7 +69,7 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
 
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1); //Taking PNR from scenario create booking for 1 pax
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml";

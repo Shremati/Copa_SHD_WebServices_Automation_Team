@@ -21,8 +21,8 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Modify_API_for_deleting_API_data extends FrameworkConstants {
-    public static String SOAPRequest;
 
+    public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -66,7 +66,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Modify_API_for_deleting_API_data.xml";
@@ -74,13 +74,8 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
 
-        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
-
-          XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(16).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(16).getStringCellValue(), getTemp_requestPath(),3);
