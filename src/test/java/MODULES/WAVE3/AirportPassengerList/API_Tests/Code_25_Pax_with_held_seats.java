@@ -25,6 +25,14 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+        create_booking_for_one_pax_code_25 Prerequisite1 =new create_booking_for_one_pax_code_25();
+        Issue_Ticket_code_25 Prerequisite2 = new Issue_Ticket_code_25();
+        Hold_Seats_code_25 Prerequisite3 = new Hold_Seats_code_25();
+
+        Prerequisite1.run();
+        Prerequisite2.run();
+        Prerequisite3.run();
+
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -69,11 +77,10 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(18);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Code_25_Pax_with_held_seats.xml";
-
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);

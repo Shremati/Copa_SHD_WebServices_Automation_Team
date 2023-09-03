@@ -19,15 +19,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
-{
+public class create_booking_for_two_pax_code_5 extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -65,6 +62,8 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
 
         excelwriter();
 
+
+
     }
 
 
@@ -77,17 +76,19 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
 
-        XSSFRow InputRow=sheet.getRow(10);
+        XSSFRow InputRow=sheet.getRow(17);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Custom_list_Filter_Value_5_Booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\create_booking_for_two_pax.xml";
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
 
@@ -103,7 +104,7 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(10);
+        XSSFRow InputRow=sheet.getRow(17);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
@@ -112,7 +113,6 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
 
         InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(8).setCellValue(Timestamp);
-
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
@@ -128,6 +128,7 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
         writer.close();
 
     }
+
 
 
 

@@ -96,7 +96,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard_list_Code_0_All_Passengers")
+    @Description("Standard list Code 0 All Passengers")
     @Test
     public void Scenario8() {
 
@@ -108,9 +108,9 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard_list_Code_30_passengers_with_no_meals")
+    @Description("Standard list Code 30 passengers with no meals")
     @Test
-//Check for data with manual team before executing the Test Case
+//Give a flight which contain bookings having no meal. Taking input from same row as scenario
     public void Scenario9() {
 
         try {
@@ -121,7 +121,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers")
+    @Description("Standard list Code 44 passengers with elite frequent traveler numbers")
     @Test
     public void Scenario10() {
 
@@ -133,7 +133,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Custom_list_Filter_Value_0")
+    @Description("Custom list Filter Value 0")
     @Test
     public void Scenario11() {
 
@@ -145,7 +145,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard_list_Code_6_Out_of_sync_electronic_tickets")
+    @Description("Standard list Code 6 Out of sync electronic tickets")
     @Test
     public void Scenario12() {
 
@@ -157,9 +157,10 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Custom_list_Filter_Value_1_Surname")
+    @Description("Custom list Filter Value 1 Surname")
     @Test
-//Check for data with manual team before executing the Test Case
+
+//    Filter based on NAME
     public void Scenario13() {
 
         try {
@@ -170,10 +171,11 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Find_passengers_with_passcode_SA3R09")
+    @Description("Find passengers with passcode SA3R09")
     @Test
     public void Scenario14() {
 
+        //    Filter based on com:SurnamePrefix
         try {
             Find_passengers_with_passcode_SA3R09.Execute();
         } catch (Exception e) {
@@ -182,7 +184,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("DCS_reference_number")
+    @Description("DCS reference number")
     @Test
     public void Scenario15() {
 
@@ -194,7 +196,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard_list_Code_26_passengers_with_inbound_connections")
+    @Description("Standard list Code 26 passengers with inbound connections")
     @Test
     public void Scenario16() {
 
@@ -206,19 +208,19 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Large_parties")
+    @Description("Large parties")
     @Test
     public void Scenario17() {
 
         try {
-            Large_parties.Execute();
+            Large_parties.Execute();  //5 passengers PNR
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 17 failed due to :" + e);
         }
     }
 
-    @Description("Passengers_with_outbound_connections")
+    @Description("Passengers with outbound connections")
     @Test
     public void Scenario18() {
 
@@ -254,7 +256,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Code_36_requiring_seats")
+    @Description("Code 36 requiring seats")
     @Test
     public void Scenario21() {
 

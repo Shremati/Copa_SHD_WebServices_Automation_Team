@@ -82,7 +82,7 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
         XSSFRow InputRow=sheet.getRow(9);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\BookingRequest.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Create_Booking_with_NRSA.xml";
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);

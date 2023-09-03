@@ -2,8 +2,8 @@ package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.Issue_ticket;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.create_booking_for_two_pax;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -29,8 +29,8 @@ public class Code_5_Interline_eticket_passengers extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        create_booking_for_two_pax Prerequisite1 =new create_booking_for_two_pax();
-        Issue_ticket Prerequisite2 = new Issue_ticket();
+        create_booking_for_two_pax_code_5 Prerequisite1 = new create_booking_for_two_pax_code_5();
+        Issue_Ticket_code_5 Prerequisite2 = new Issue_Ticket_code_5();
 
         Prerequisite1.run();
         Prerequisite2.run();
@@ -79,7 +79,7 @@ public class Code_5_Interline_eticket_passengers extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(17);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Code_5_Interline_eticket_passengers.xml";

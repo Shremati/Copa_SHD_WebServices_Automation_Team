@@ -23,7 +23,6 @@ public class Agent_Sine_Display_CST extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

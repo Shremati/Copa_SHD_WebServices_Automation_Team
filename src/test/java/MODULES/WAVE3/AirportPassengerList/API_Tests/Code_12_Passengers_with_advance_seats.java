@@ -28,8 +28,7 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        create_booking_three_pax_with_membershipID Prerequisite =new create_booking_three_pax_with_membershipID();
-
+        create_booking_one_pax_with_advance_seat_assignment Prerequisite =new create_booking_one_pax_with_advance_seat_assignment();
         Prerequisite.run();
 
         UpdatePayload();

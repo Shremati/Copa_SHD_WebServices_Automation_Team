@@ -23,7 +23,6 @@ public class Agent_Sine_DisplayCST_Increased_Security_Users extends FrameworkCon
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

@@ -1,4 +1,4 @@
-package MODULES.WAVE3.AgentSineService.API_Tests;
+package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -8,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,15 +18,16 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Remove_Agent_Duty_Code extends FrameworkConstants {
+public class Issue_Ticket_code_5 extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
@@ -40,23 +40,21 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getAgentsine())
+                .post(getTicketing())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AgentSineService\\Remove_Agent_Duty_Code.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
 
+//                     ********* Clearing Temp_Request.xml *********
 
-
-//                ********* Clearing Temp_Request.xml *********
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
+
 
     }
 
@@ -64,24 +62,21 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("AgentSine");
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFSheet sheet = wb.getSheet("AirportPassengerList");
+
+        XSSFRow InputRow=sheet.getRow(17);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AgentSineService\\Remove_Agent_Duty_Code.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Issue_ticket.xml";
 
 
-        XMLParser.updateAttributeValue("air:AgentDetails", "AgentNumber", InputRow.getCell(1).getStringCellValue(), filepath1);
-        XMLParser.SetTagtext("air:AgentDutyCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
-
+        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", InputRow.getCell(8).getStringCellValue(),filepath1);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
+
     }
-
-
-
 
 }

@@ -23,7 +23,6 @@ public class Add_Agent_Duty_Code extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

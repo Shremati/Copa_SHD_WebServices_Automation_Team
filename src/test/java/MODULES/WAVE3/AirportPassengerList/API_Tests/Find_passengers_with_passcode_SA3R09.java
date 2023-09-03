@@ -87,6 +87,8 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+//Filter value-->SurnamePrefix
+        XMLParser.SetTagtext("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
 
 
         wb.close();

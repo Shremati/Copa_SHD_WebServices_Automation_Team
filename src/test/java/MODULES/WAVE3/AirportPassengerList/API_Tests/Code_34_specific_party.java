@@ -88,7 +88,7 @@ public class Code_34_specific_party extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
-
+        XMLParser.SetTagtext("com:Surname",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

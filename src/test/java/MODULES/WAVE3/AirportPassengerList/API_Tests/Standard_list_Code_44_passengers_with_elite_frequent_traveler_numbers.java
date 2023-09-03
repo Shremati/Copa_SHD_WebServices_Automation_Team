@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-@Test
 public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers extends FrameworkConstants
 {
     public static String SOAPRequest;

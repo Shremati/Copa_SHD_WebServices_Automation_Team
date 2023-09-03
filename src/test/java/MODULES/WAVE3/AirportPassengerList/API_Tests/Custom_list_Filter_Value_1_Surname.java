@@ -3,7 +3,6 @@ package MODULES.WAVE3.AirportPassengerList.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.BookingRequest;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.create_booking_three_pax_with_membershipID;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -11,7 +10,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,7 +24,6 @@ import static io.restassured.RestAssured.given;
 public class Custom_list_Filter_Value_1_Surname extends FrameworkConstants
 {
     public static String SOAPRequest;
-
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -83,12 +80,11 @@ public class Custom_list_Filter_Value_1_Surname extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Custom_list_Filter_Value_1_Surname.xml";
 
-
-
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-
+        //Filter value-->name
+        XMLParser.SetTagtext("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

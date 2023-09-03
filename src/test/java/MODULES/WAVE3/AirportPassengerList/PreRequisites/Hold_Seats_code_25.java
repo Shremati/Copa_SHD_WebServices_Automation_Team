@@ -1,9 +1,7 @@
-package MODULES.WAVE3.AirportPassengerList.API_Tests;
+package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_26;
-import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_31;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -21,24 +19,21 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
+public class Hold_Seats_code_25 extends FrameworkConstants {
 
-public class Passengers_with_outbound_connections extends FrameworkConstants
-{
     public static String SOAPRequest;
 
-
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Create_Booking_31 Prerequisite =new Create_Booking_31();
-        Prerequisite.run();
 
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -46,7 +41,7 @@ public class Passengers_with_outbound_connections extends FrameworkConstants
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getAirportpassengerlist())
+                .post(getCheckin())
                 .then()
                 .statusCode(200)
                 .and()
@@ -54,41 +49,43 @@ public class Passengers_with_outbound_connections extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Passengers_with_outbound_connections.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-
-
 //                ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
 
     }
+
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(13);
+
+        XSSFRow InputRow=sheet.getRow(18);
+
         String filepath1;
-        filepath1=getRequestDirectory()+"AirportPassengerList\\Passengers_with_outbound_connections.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Hold_Seats_code_25.xml";
 
 
+        XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue() ,filepath1);
+        XMLParser.updateAttributeValue("com1:DepartureInformation","DateOfDeparture",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
-        XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
 
         wb.close();
 
     }
+
+
 }

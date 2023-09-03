@@ -77,17 +77,16 @@ public class DCS_reference_number extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(10); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\DCS_reference_number.xml";
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-
+        XMLParser.SetTagtextatIndex("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

@@ -44,7 +44,7 @@ public class AgentSineService {
         }
     }
 
-     @Description("Add Sine Display CST")
+    @Description("Add Sine Display CST")
     @Test
     public void Scenario3()
     {

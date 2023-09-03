@@ -23,10 +23,8 @@ public class Remove_Agent_Sine extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 

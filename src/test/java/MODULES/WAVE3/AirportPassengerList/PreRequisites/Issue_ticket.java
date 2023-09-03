@@ -23,7 +23,6 @@ public class Issue_ticket extends FrameworkConstants
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -80,10 +79,6 @@ public class Issue_ticket extends FrameworkConstants
         wb.close();
 
     }
-
-
-
-
 
 
 }
