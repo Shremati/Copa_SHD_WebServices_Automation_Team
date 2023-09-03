@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:con="http://www.eds.com/AirlineSOASchema/ConnectionFlightInfo/" xmlns:con1="http://www.eds.com/AirlineSOASchema/ConnectionFlightInfoRQ">
     <soapenv:Header />
     <soapenv:Body>

@@ -27,7 +27,7 @@ public class MSM_02_Add_Seat extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();//excel gets updated
+        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -66,7 +66,7 @@ public class MSM_02_Add_Seat extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ModifySeatMap");
-        XSSFRow InputRow=sheet.getRow(2); //The given seat should be availble
+        XSSFRow InputRow=sheet.getRow(2); //The given seat should be available
 
         String filepath1;
         filepath1=getRequestDirectory()+"ModifySeatMap\\MSM_02_Add_Seat.xml";

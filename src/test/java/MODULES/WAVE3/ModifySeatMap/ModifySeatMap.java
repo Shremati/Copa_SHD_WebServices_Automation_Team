@@ -24,7 +24,7 @@ public class ModifySeatMap extends FrameworkConstants {
     {
         try
         {
-            MSM_01_Block_Seat.Execute(); //The given seat should be available
+            MSM_01_Block_Seat.Execute(); //The given seat should be available and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {
@@ -39,7 +39,7 @@ public class ModifySeatMap extends FrameworkConstants {
     {
         try
         {
-            MSM_02_Add_Seat.Execute(); //The given seat should be available
+            MSM_02_Add_Seat.Execute(); //The given seat should be available and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {
@@ -54,7 +54,7 @@ public class ModifySeatMap extends FrameworkConstants {
     {
         try
         {
-            MSM_03_Delete_Error.Execute(); //The given seat should be available
+            MSM_03_Delete_Error.Execute(); //The given seat should be available and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {
@@ -69,7 +69,7 @@ public class ModifySeatMap extends FrameworkConstants {
     {
         try
         {
-            MSM_04_Add_Error.Execute(); //The given seat should be available
+            MSM_04_Add_Error.Execute(); //The given seat should be available and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {
