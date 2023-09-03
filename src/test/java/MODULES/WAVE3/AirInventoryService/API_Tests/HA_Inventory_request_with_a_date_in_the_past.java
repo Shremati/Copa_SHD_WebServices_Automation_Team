@@ -71,7 +71,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA Inventory request with a date in the past.xml";
@@ -79,7 +79,8 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
 
         XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-
+        XMLParser.updateAttributeValue("air1:OriginLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:DestinationLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         wb.close();
 
     }

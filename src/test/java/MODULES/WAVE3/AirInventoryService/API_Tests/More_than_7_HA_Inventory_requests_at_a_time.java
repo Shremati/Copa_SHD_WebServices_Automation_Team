@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.XML;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +26,6 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -71,25 +71,30 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\More than 7 HA Inventory requests at a time.xml";
 
 
+        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
-        int j=5,k=6;
+        int dindex=5,findex=6,oindex=7,deindex=8;
         for(int i=1;i<=7;i++)
         {
+            XMLParser.SetTagtextatIndex("air1:Date",Utils.getDate_YYYYMMdd(InputRow.getCell(dindex).getNumericCellValue()),getTemp_requestPath(),i);
+            XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(findex).getStringCellValue(),getTemp_requestPath(),i);
+            XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(oindex).getStringCellValue(),getTemp_requestPath(),i);
+            XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(deindex).getStringCellValue(),getTemp_requestPath(),i);
 
-            XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(k).getStringCellValue(),getTemp_requestPath(),i);
-            XMLParser.SetTagtextatIndex("air1:Date",Utils.getDate_YYYYMMdd(InputRow.getCell(j).getNumericCellValue()),getTemp_requestPath(),i);
-            j=j+4;
-            k=k+4;
-
+            dindex=dindex+4;
+            findex=findex+4;
+            oindex=oindex+4;
+            deindex=deindex+4;
         }
 
         wb.close();

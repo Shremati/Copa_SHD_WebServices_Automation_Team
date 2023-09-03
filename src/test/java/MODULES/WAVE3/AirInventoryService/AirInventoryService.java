@@ -30,7 +30,7 @@ public class AirInventoryService {
     @Test
     public void Scenario2() {
         try {
-            HA_Inventory_request_with_a_date_in_the_past.Execute();  //Negative Scenario
+            HA_Inventory_request_with_a_date_in_the_past.Execute();
 
         } catch (Exception e) {
             failTest(e);
