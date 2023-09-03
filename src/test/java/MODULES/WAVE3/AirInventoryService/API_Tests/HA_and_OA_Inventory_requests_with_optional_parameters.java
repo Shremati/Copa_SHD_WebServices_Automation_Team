@@ -26,7 +26,6 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -71,7 +70,7 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(12); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(12);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_and_OA_Inventory_requests_with_optional_parameters.xml";
@@ -82,7 +81,7 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
         XMLParser.SetTagtextatIndex("air1:OriginLocation",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("air1:DestinationLocation",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);

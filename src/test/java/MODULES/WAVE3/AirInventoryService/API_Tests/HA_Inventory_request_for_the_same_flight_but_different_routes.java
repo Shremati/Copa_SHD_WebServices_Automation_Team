@@ -26,7 +26,6 @@ public class HA_Inventory_request_for_the_same_flight_but_different_routes exten
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -71,7 +70,7 @@ public class HA_Inventory_request_for_the_same_flight_but_different_routes exten
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(13); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(13);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_request_for_the_same_flight_but_different_routes.xml";
@@ -82,15 +81,15 @@ public class HA_Inventory_request_for_the_same_flight_but_different_routes exten
         XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),filepath1,1);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(10).getStringCellValue(),filepath1,1);
-        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(9).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(9).getNumericCellValue()),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
 
 
         wb.close();

@@ -51,7 +51,7 @@ public class Standby {
     {
         try
         {
-            STB_03_Clear_Standby.Execute(); //Standby Should not be initiated for the given flight. So choose appropriate flight
+            STB_03_Clear_Standby.Execute();//Standby in Gate Should not be initiated for the flight given in the request. So choose appropriate flight in data sheet
 
         }catch(Exception e)
         {
@@ -66,7 +66,7 @@ public class Standby {
     {
         try
         {
-            STB_04_ClearAll_Standby.Execute();  //Standby Should not be initiated for the given flight. So choose appropriate flight
+            STB_04_ClearAll_Standby.Execute(); //Standby in Gate Should not be initiated for the flight given in the request. So choose appropriate flight in data sheet
 
         }catch(Exception e)
         {

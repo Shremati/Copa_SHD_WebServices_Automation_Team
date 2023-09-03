@@ -71,7 +71,7 @@ public class HA_Inventory_Request_with_optional_Origin_Destination_parameters ex
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(11); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_Request_with_optional_Origin_Destination_parameters.xml";

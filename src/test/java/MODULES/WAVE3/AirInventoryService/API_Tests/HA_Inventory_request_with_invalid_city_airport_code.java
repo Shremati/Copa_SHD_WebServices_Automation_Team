@@ -71,7 +71,7 @@ public class HA_Inventory_request_with_invalid_city_airport_code extends Framewo
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(8); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_request_with_invalid_city_airport_code.xml";

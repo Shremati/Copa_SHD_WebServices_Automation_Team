@@ -30,7 +30,7 @@ public class AirInventoryService {
     @Test
     public void Scenario2() {
         try {
-            HA_Inventory_request_with_a_date_in_the_past.Execute();
+            HA_Inventory_request_with_a_date_in_the_past.Execute();  //older date has been given
 
         } catch (Exception e) {
             failTest(e);
@@ -48,7 +48,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_with_invalid_AgentSine")
+    @Description("HA Inventory request with invalid AgentSine")
     @Test
     public void Scenario4() {
         try {
@@ -59,7 +59,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 4 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_with_invalid_flight_number")
+    @Description("HA Inventory request with invalid flight number")
     @Test
     public void Scenario5() {
         try {
@@ -69,7 +69,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 5 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_without_specifying_a_Date")
+    @Description("HA Inventory request without specifying a Date")
     @Test
     public void Scenario6() {
         try {
@@ -79,7 +79,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 6 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_with_invalid_carrier_code")
+    @Description("HA Inventory request with invalid carrier code")
     @Test
     public void Scenario7() {
         try {
@@ -89,7 +89,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 7 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_with_invalid_city_airport_code")
+    @Description("HA Inventory request with invalid city airport code")
     @Test
     public void Scenario8() {
         try {
@@ -99,7 +99,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 8 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_with_O_D_parameter")
+    @Description("HA Inventory request with O&D parameter")
     @Test
     public void Scenario9() {
         try {
@@ -109,7 +109,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 9 failed due to :" + e);
         }
     }
-    @Description("Other_Airline_Inventory_request")
+    @Description("Other Airline Inventory request")
     @Test
     public void Scenario10() {
         try {
@@ -119,7 +119,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 10 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_Request_with_optional_Origin_Destination_parameters")
+    @Description("HA Inventory Request with optional Origin Destination parameters")
     @Test
     public void Scenario11() {
         try {
@@ -129,7 +129,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 11 failed due to :" + e);
         }
     }
-    @Description("HA_and_OA_Inventory_requests_with_optional_parameters")
+    @Description("HA and OA Inventory requests with optional parameters")
     @Test
     //Check for data with manual team before executing the Test Case
     public void Scenario12() {
@@ -140,7 +140,7 @@ public class AirInventoryService {
             System.out.println("SCENARIO 12 failed due to :" + e);
         }
     }
-    @Description("HA_Inventory_request_for_the_same_flight_but_different_routes")
+    @Description("HA Inventory request for the same flight but different routes")
     @Test
     public void Scenario13() {
         try {

@@ -71,7 +71,7 @@ public class HA_Inventory_request_with_invalid_carrier_code extends FrameworkCon
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(7); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(7);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_request_with_invalid_carrier_code.xml";

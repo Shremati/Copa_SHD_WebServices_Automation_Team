@@ -71,7 +71,7 @@ public class HA_Inventory_request_without_specifying_a_Date extends FrameworkCon
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(6); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_request_without_specifying_a_Date.xml";

@@ -26,7 +26,6 @@ public class HA_Inventory_request_with_invalid_AgentSine extends FrameworkConsta
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -71,7 +70,7 @@ public class HA_Inventory_request_with_invalid_AgentSine extends FrameworkConsta
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_Inventory_request_with_invalid_AgentSine.xml";
