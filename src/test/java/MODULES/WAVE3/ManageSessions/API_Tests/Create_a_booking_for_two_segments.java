@@ -36,7 +36,7 @@ public class Create_a_booking_for_two_segments extends FrameworkConstants {
         Prerequisite3.run();
 
         Finalise_booking Prerequisite4 = new Finalise_booking();
-        Prerequisite4.run(); //failing
+        Prerequisite4.run();
 
 
         UpdatePayload();

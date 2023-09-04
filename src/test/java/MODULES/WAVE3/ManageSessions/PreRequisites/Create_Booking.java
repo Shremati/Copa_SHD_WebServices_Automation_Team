@@ -109,8 +109,10 @@ public class Create_Booking extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-
         InputRow.getCell(4).setCellValue(PNR);
+
+        String ArrivalDate = XMLParser.GetAttributeValue("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath());
+        InputRow.getCell(2).setCellValue(ArrivalDate);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

@@ -84,7 +84,8 @@ public class Modify_Booking extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Modify_Booking.xml";
 
         XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("n5:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 

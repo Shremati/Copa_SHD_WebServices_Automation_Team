@@ -27,9 +27,9 @@ public class Modify_name extends FrameworkConstants {
     {
 
         Create_Booking Prerequisite1 = new Create_Booking();
-        Prerequisite1.run();
+        Prerequisite1.run();//Creating 3 pax RPH=1,2,3
 
-        Modify_Booking Prerequisite2 = new Modify_Booking();
+        Modify_Booking Prerequisite2 = new Modify_Booking(); //We are changing/modifying the names of above 3 pax
         Prerequisite2.run();
 
 
