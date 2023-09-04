@@ -28,12 +28,10 @@ public class Void_a_ticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_void_a_ticket Prerequisite = new create_booking_void_a_ticket();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_void_a_ticket Prerequisite2 = new issue_ticket_void_a_ticket();
         Prerequisite2.run(); //generates ticket number

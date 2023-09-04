@@ -29,12 +29,11 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+
 
         create_booking_refund_error_cancell_all_segments_prior_refund Prerequisite = new create_booking_refund_error_cancell_all_segments_prior_refund();
         Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_refund_error_cancell_all_segments_prior_refund Prerequisite2 = new issue_ticket_refund_error_cancell_all_segments_prior_refund();
         Prerequisite2.run(); //generates ticket number

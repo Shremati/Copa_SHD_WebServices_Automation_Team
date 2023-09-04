@@ -60,7 +60,7 @@ public class Refund_multiple_tickets extends FrameworkConstants
 
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_a_ticket.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -87,8 +87,13 @@ public class Refund_multiple_tickets extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml";
 
+//        Updating Ticket Numbers
         XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
+
+//        Updating PNR
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+
 
         wb.close();
 

@@ -76,44 +76,16 @@ public class modify_ticket_refund_multiple_tickets extends FrameworkConstants
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ModifyTicketingService\\PreRequisites\\modify_ticket_refund_multiple_tickets.xml";
 
-
+//      Original Segment details is provided
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("n1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
+
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:BookingReferenceID", "ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
-        XSSFRow InputRow=sheet.getRow(2);
-
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(16).setCellValue(TicketNumber);
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 }
