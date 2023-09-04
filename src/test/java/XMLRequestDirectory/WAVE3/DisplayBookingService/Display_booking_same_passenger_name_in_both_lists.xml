@@ -13,7 +13,8 @@
                         <read:DepartureAirport LocationCode="PTY"/>
                         <read:DepartureDate>2023-08-20</read:DepartureDate>
                         <read:Name>
-                            <com:Surname>THOMPSON</com:Surname>
+                            <com:GivenName>MICHAEL</com:GivenName>
+                            <com:Surname>BURNS</com:Surname>
                         </read:Name>
                     </read:AirReadRequest>
                 </read:ReadRequests>

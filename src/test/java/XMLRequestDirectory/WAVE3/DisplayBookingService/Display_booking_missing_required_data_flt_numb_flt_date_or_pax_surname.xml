@@ -9,12 +9,13 @@
                 <read:ReadRequests>
                     <read:AirReadRequest>
                         <read:Airline Code="CM"/>
-                        <read:FlightNumber>138</read:FlightNumber>
                         <read:DepartureAirport LocationCode="PTY"/>
                         <read:DepartureDate>2023-08-20</read:DepartureDate>
                         <read:Name>
-                            <com:Surname>THOMPSON</com:Surname>
+                            <com:Surname>PONSE</com:Surname>
                         </read:Name>
+                        <read:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1414"/>
+                        <read:CustLoyalty ProgramID="CM" MembershipID="230021925"/>
                     </read:AirReadRequest>
                 </read:ReadRequests>
             </read:OTA_ReadRQ>

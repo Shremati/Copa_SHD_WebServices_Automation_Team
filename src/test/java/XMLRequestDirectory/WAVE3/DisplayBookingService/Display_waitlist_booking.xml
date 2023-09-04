@@ -1,3 +1,4 @@
+
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dis="http://www.eds.com/AirlineSOASchema/DisplayBooking/" xmlns:read="http://www.opentravel.org/OTA/2003/05/ReadRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:veh="http://www.opentravel.org/OTA/2003/05/VehRetResRQ">
     <soapenv:Header/>
     <soapenv:Body>
@@ -9,11 +10,12 @@
                 <read:ReadRequests>
                     <read:AirReadRequest>
                         <read:Airline Code="CM"/>
-                        <read:FlightNumber>138</read:FlightNumber>
+                        <read:FlightNumber>120</read:FlightNumber>
                         <read:DepartureAirport LocationCode="PTY"/>
-                        <read:DepartureDate>2023-08-20</read:DepartureDate>
+                        <read:DepartureDate>2023-08-16</read:DepartureDate>
                         <read:Name>
-                            <com:Surname>THOMPSON</com:Surname>
+                            <com:GivenName>EMILY</com:GivenName>
+                            <com:Surname>WATSON</com:Surname>
                         </read:Name>
                     </read:AirReadRequest>
                 </read:ReadRequests>
