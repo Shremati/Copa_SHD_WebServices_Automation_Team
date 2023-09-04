@@ -3,6 +3,7 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -24,7 +25,6 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -36,6 +36,7 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())
@@ -68,13 +69,12 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayTicketService\\Retrieve_E_Ticket_History_information_for_a_given_PNR.xml";
 
-        XMLParser.updateAttributeValue("Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(8).getStringCellValue(),filepath1);
         wb.close();
 
     }

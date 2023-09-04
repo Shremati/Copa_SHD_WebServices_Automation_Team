@@ -3,6 +3,7 @@ package MODULES.WAVE3.DisplayTicketService.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -27,7 +28,6 @@ public class Issue_multiple_tickets extends FrameworkConstants
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -41,6 +41,7 @@ public class Issue_multiple_tickets extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticket())
@@ -82,7 +83,6 @@ public class Issue_multiple_tickets extends FrameworkConstants
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayTicketService\\PreRequisites\\Issue_multiple_tickets.xml";
 
 
-        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(8).getStringCellValue(),filepath1,0);
 
 
@@ -105,13 +105,6 @@ public class Issue_multiple_tickets extends FrameworkConstants
 
         InputRow.getCell(9).setCellValue(230 +  XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
         InputRow.getCell(10).setCellValue(230 + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),1));
-//        String  Ticket_One = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-//        String  Ticket_Two = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-
-
-
-//        InputRow.getCell(7).setCellValue(Ticket_One);
-//        InputRow.getCell(8).setCellValue(Ticket_Two);
 
 
 

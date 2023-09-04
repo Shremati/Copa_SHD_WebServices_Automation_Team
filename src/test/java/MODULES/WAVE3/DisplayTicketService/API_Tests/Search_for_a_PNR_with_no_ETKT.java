@@ -3,6 +3,7 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,6 +20,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Search_for_a_PNR_with_no_ETKT extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -36,6 +38,7 @@ public class Search_for_a_PNR_with_no_ETKT extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())
@@ -68,13 +71,12 @@ public class Search_for_a_PNR_with_no_ETKT extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayTicketService\\Search_for_a_PNR_with_no_ETKT.xml";
 
-        XMLParser.updateAttributeValue("Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(8).getStringCellValue(),filepath1);
         wb.close();
 
     }
