@@ -198,7 +198,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("Special passenger type - Jumpseat")
+    @Description("Special passenger type - Jump seat")
     @Test
     public void Scenario14() {
 

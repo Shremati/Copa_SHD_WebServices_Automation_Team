@@ -28,7 +28,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Assign aircraft with generic and specific seat reaccommodation")
+    @Description("Assign aircraft with generic and specific seat re accommodation")
     @Test
     public void Scenario2() {
 
@@ -60,7 +60,7 @@ public class DepartureControlService {
     public void Scenario4() {
 
         try {
-            block_more_than_one_seat.Execute();
+            block_more_than_one_seat.Execute(); //Give proper seat details in data sheet
 
         } catch (Exception e) {
             failTest(e);
@@ -86,7 +86,7 @@ public class DepartureControlService {
     public void Scenario6() {
 
         try {
-            unblock_more_than_one_seat.Execute();
+            unblock_more_than_one_seat.Execute(); //Give proper seat details in data sheet
 
         } catch (Exception e) {
             failTest(e);
@@ -99,7 +99,7 @@ public class DepartureControlService {
     public void Scenario7() {
 
         try {
-            define_inoperative_seat.Execute();
+            define_inoperative_seat.Execute(); //Give proper seat details in data sheet
 
         } catch (Exception e) {
             failTest(e);
@@ -112,7 +112,7 @@ public class DepartureControlService {
     public void Scenario8() {
 
         try {
-            define_inoperative_seat.Execute();
+            clear_inoperative_seat.Execute();//Give proper seat details in data sheet
 
         } catch (Exception e) {
             failTest(e);
@@ -125,7 +125,7 @@ public class DepartureControlService {
     public void Scenario9() {
 
         try {
-            cancel_misconnect.Execute();
+            cancel_misconnect.Execute();  //Give proper flight details in data sheet
 
         } catch (Exception e) {
             failTest(e);
@@ -177,7 +177,7 @@ public class DepartureControlService {
     public void Scenario13() {
 
         try {
-            add_Update_Delete_board_point_messages.Execute();
+            add_Update_Delete_board_point_messages.Execute(); //Before running test case , open the request in XML request directory and change the REMARKS which you want to add/delete
 
         } catch (Exception e) {
             failTest(e);
@@ -204,18 +204,6 @@ public class DepartureControlService {
 
         try {
             remove_boarding_restriction.Execute();
-
-        } catch (Exception e) {
-            failTest(e);
-            System.out.println("SCENARIO 16 failed due to :" + e);
-        }
-    }
-    @Description("clear_inoperative_seat")
-    @Test
-    public void Scenario16() {
-
-        try {
-            clear_inoperative_seat.Execute();
 
         } catch (Exception e) {
             failTest(e);

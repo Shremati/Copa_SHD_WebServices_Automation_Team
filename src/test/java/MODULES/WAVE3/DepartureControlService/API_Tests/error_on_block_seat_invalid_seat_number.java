@@ -70,7 +70,7 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DepartureControlService");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DepartureControlService\\error_on_block_seat_invalid_seat_number.xml";
