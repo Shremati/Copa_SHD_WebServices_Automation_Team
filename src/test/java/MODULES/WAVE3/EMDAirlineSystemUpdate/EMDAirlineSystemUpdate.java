@@ -31,7 +31,7 @@ public class EMDAirlineSystemUpdate {
         }
     }
 
-    @Description("Error ScreenText - Not allowed entry")
+    @Description("Association multiple coupons for primary and conjunctive etkt")
     @Test
     public void Scenario2() {
 
@@ -44,7 +44,7 @@ public class EMDAirlineSystemUpdate {
         }
     }
 
-    @Description("Error ScreenText - Not allowed entry")
+    @Description("Disassociation emd coupon 1 with etkt coupon")
     @Test
     public void Scenario3() {
 

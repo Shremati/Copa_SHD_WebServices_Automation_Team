@@ -76,7 +76,7 @@ public class Encode_airline_united extends FrameworkConstants
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Encode_airline_united.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),filepath1,0);
 
         wb.close();
 

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
     <soapenv:Header/>
     <soapenv:Body>
         <cre:createBooking>
@@ -10,34 +9,40 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-10T00:00:00" RPH="1" FlightNumber="333" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="MIA"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
-                                <air1:MarketingAirline Code="CM"/>
-                            </air1:FlightSegment>
-                        </air1:OriginDestinationOption>
-                        <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-11T00:00:00" RPH="2" FlightNumber="243" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-03-01T00:00:00" RPH="1" FlightNumber="243" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-12T00:00:00" RPH="3" FlightNumber="877" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-03-02T00:00:00" RPH="2" FlightNumber="877" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="BOG"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-13T00:00:00" RPH="4" FlightNumber="419" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-03-02T00:00:00" RPH="3" FlightNumber="419" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="MIA"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
-                        >
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-03-03T00:00:00" RPH="4" FlightNumber="173" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="MIA"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-03-03T00:00:00" RPH="5" FlightNumber="302" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
                         <!--<air1:OriginDestinationOption>
                            <air1:FlightSegment DepartureDateTime="2013-05-09T00:00:00" RPH="6" FlightNumber="413" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                               <com:DepartureAirport LocationCode="DEN"/>
@@ -52,12 +57,12 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode NotValidAfter="2023-03-03" NotValidBefore="2023-02-10">Y</air1:FareBasisCode>
+                                <air1:FareBasisCode NotValidBefore="2023-02-10" NotValidAfter="2023-03-03">Y</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax Amount="13.60" TaxCode="AG"/>
+                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>SALUDOS END</air1:UnstructuredFareCalc>
                             </air1:PassengerFare>
@@ -71,16 +76,16 @@
                             <com:GivenName>JOHN</com:GivenName>
                             <com:Surname>HERRERA</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-1212" PhoneUseType="3"/>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:SpecialServiceRequests>
-                            <air1:SpecialServiceRequest FlightRefNumberRPHList="4" SSRCode="ASVC" ServiceQuantity="1" Status="26" TravelerRefNumberRPHList="1">
+                            <air1:SpecialServiceRequest SSRCode="ASVC" ServiceQuantity="1" Status="26" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="4">
                                 <air1:Airline Code="CM"/>
                                 <air1:Text>53645500224861C1SEAT</air1:Text>
                             </air1:SpecialServiceRequest>
-                            <air1:SpecialServiceRequest FlightRefNumberRPHList="5" SSRCode="ASVC" ServiceQuantity="1" Status="26" TravelerRefNumberRPHList="1">
+                            <air1:SpecialServiceRequest SSRCode="ASVC" ServiceQuantity="1" Status="26" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="5">
                                 <air1:Airline Code="CM"/>
                                 <air1:Text>53645500224861C2SEAT</air1:Text>
                             </air1:SpecialServiceRequest>
@@ -90,7 +95,7 @@
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-03-08T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2023-02-28T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

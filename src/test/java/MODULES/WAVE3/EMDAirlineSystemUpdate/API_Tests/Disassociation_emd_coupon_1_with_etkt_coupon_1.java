@@ -26,17 +26,13 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite = new create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite2 = new issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1();
         Prerequisite2.run();
-
-        //        PreRequisite for Scenario ------> Create Booking
 
         associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite3 = new associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1();
         Prerequisite3.run();

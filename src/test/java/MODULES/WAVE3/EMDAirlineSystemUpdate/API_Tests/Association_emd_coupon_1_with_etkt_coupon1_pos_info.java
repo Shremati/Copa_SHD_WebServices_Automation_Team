@@ -32,12 +32,12 @@ public class Association_emd_coupon_1_with_etkt_coupon1_pos_info extends Framewo
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite = new create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite2 = new issue_ticket_association_emd_coupon_1_with_etkt_coupon1_pos_info();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
 
         UpdatePayload();

@@ -48,7 +48,7 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_mutliple_mixed_messages_of_city_airport_airline_country_flight.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_multiple_mixed_messages_of_city_airport_airline_country_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -77,12 +77,15 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
 
 
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+
+        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+
 
         wb.close();
 

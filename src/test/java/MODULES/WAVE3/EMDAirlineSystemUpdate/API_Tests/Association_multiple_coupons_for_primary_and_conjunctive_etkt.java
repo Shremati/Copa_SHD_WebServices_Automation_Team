@@ -29,15 +29,13 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite = new create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
-
-        issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite2 = new issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt();
-        Prerequisite2.run(); //generates ticket number
+//        create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite = new create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt();
+//        Prerequisite.run();
+//
+//
+//        issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite2 = new issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt();
+//        Prerequisite2.run();
 
 
         UpdatePayload();

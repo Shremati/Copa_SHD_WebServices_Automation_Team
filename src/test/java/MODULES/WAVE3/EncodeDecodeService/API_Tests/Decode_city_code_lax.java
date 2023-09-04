@@ -27,7 +27,6 @@ public class Decode_city_code_lax extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -78,7 +77,7 @@ public class Decode_city_code_lax extends FrameworkConstants
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Decode_city_code_lax.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         wb.close();
 

@@ -26,7 +26,6 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -78,9 +77,9 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
 
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("read:DepartureAirport","CodeContext",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

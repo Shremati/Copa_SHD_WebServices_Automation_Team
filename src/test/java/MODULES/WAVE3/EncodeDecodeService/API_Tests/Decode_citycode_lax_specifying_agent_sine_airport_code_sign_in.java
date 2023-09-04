@@ -76,7 +76,7 @@ public class Decode_citycode_lax_specifying_agent_sine_airport_code_sign_in exte
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Decode_citycode_lax_specifying_agent_sine_airport_code_sign_in.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         wb.close();
 

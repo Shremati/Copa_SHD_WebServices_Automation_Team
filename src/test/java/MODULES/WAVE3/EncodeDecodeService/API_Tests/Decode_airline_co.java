@@ -81,7 +81,7 @@ public class Decode_airline_co extends FrameworkConstants
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Decode_airline_co.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),filepath1,0);
 
         wb.close();
 
