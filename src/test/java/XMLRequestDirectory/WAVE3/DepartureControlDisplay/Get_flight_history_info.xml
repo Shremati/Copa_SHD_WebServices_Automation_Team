@@ -4,14 +4,10 @@
         <dep:getFlightHistoryInfo>
             <dep1:HP_DepartureControlDisplayRQ EchoToken="1">
                 <dep1:POS>
-                    <!--1 to 10 repetitions:-->
-                    <com:Source AirlineVendorID="CM">
-                    </com:Source>
+                    <com:Source AirlineVendorID="CM"></com:Source>
                 </dep1:POS>
                 <dep1:FlightInfo>
-                    <!--0 to 10 repetitions:-->
                     <dep1:FlightLegInfo DepartureDateTime="2023-08-16T00:00:00" FlightNumber="314">
-                        <!--Optional:-->
                         <com:DepartureAirport LocationCode="PTY"/>
                     </dep1:FlightLegInfo>
                 </dep1:FlightInfo>
