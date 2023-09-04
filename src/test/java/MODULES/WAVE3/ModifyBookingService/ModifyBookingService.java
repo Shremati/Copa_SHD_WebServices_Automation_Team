@@ -18,7 +18,7 @@ public class ModifyBookingService {
     public void Scenario1() {
 
         try {
-            cancel_booking.Execute();
+            cancel_booking.Execute(); //ModificationType="1"  --> Cancel Booking
 
         } catch (Exception e) {
             failTest(e);
@@ -31,7 +31,7 @@ public class ModifyBookingService {
     public void Scenario2() {
 
         try {
-            Itinerary_changes.Execute();
+            Itinerary_changes.Execute(); //ModificationType="5" --> Itenary Changes
 
         } catch (Exception e) {
             failTest(e);
@@ -44,7 +44,7 @@ public class ModifyBookingService {
     public void Scenario3() {
 
         try {
-            other_changes.Execute();
+            other_changes.Execute(); //ModificationType="5" -->Other Changes
 
         } catch (Exception e) {
             failTest(e);
@@ -58,7 +58,7 @@ public class ModifyBookingService {
     public void Scenario4() {
 
         try {
-            divide_pnr.Execute();
+            divide_pnr.Execute(); //ModificationType="6" --> Divide PNR ( RPH=2 and RPH=4 , i.e. 2 pax getting divided)
 
         } catch (Exception e) {
             failTest(e);
@@ -67,12 +67,12 @@ public class ModifyBookingService {
 
     }
 
-    @Description("Divide PNR")
+    @Description("Reduce PNR")
     @Test
     public void Scenario5() {
 
         try {
-            reduce_pnr.Execute();
+            reduce_pnr.Execute(); //ModificationType="8" -->Reduce PNR
 
         } catch (Exception e) {
             failTest(e);

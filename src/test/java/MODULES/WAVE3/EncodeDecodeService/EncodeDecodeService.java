@@ -53,7 +53,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("Request mutliple mixed messages of city, airport, airline, country and flight")
+    @Description("Request multiple mixed messages of city, airport, airline, country and flight")
     @Test
     public void Scenario4() {
 
