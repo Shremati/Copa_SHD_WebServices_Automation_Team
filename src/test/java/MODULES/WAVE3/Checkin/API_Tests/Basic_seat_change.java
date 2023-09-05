@@ -37,9 +37,15 @@ public class Basic_seat_change extends FrameworkConstants {
 
         Issue_ticket_for_basic_seat_change Prerequisite1 = new Issue_ticket_for_basic_seat_change();
         Prerequisite1.run();
-        
-        Checkin_1pax_assigning_seat Prerequisite2 = new Checkin_1pax_assigning_seat();
+
+        Display_APIS_Basic_seat_change Prerequisite2 = new Display_APIS_Basic_seat_change();
         Prerequisite2.run();
+
+        Modify_APIS_Basic_seat_change Prerequisite3 = new Modify_APIS_Basic_seat_change();
+        Prerequisite3.run();
+
+        Checkin_1pax_assigning_seat Prerequisite4 = new Checkin_1pax_assigning_seat();
+        Prerequisite4.run();
 
 
         UpdatePayload();
@@ -98,8 +104,6 @@ public class Basic_seat_change extends FrameworkConstants {
         updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.SetTagtext("com:GivenName", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
-        XMLParser.SetTagtext("com:Surname", InputRow.getCell(9).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com1:SeatBoardingInfo", "SeatNumber", InputRow.getCell(20).getStringCellValue(),getTemp_requestPath());
         wb.close();
 

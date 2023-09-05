@@ -79,11 +79,10 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             FileInputStream fis=new FileInputStream(new File(getTestData()));
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheet("CheckIn");
-            XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+            XSSFRow InputRow=sheet.getRow(1);
 
             String filepath1;
             filepath1=getRequestDirectory()+"Checkin\\Checkin_3_pax_and_specific_seating_option.xml";
-
 
 
             updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);

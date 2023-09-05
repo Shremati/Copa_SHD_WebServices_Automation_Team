@@ -85,7 +85,7 @@ public class Check_in_specific_pax_in_group extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(9); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(9);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Check_in_specific_pax_in_group.xml";

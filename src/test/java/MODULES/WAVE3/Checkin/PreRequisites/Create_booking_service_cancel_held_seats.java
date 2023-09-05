@@ -24,7 +24,7 @@ public class Create_booking_service_cancel_held_seats extends FrameworkConstants
 
     public static String SOAPRequest;
 
-    @Test
+
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 

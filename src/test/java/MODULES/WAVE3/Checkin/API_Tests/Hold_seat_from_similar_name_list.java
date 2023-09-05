@@ -75,7 +75,7 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Hold_seat_from_similar_name_list.xml";

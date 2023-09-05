@@ -49,10 +49,13 @@ public class Add_APIS_details_specific_pax_in_group extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 

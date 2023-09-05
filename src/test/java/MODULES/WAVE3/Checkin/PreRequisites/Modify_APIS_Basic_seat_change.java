@@ -1,6 +1,5 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -20,14 +19,13 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Modify_booking_specific_pax_in_group extends FrameworkConstants {
+public class Modify_APIS_Basic_seat_change extends FrameworkConstants {
 
 
     public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -36,13 +34,14 @@ public class Modify_booking_specific_pax_in_group extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getModifybookingservice())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
@@ -52,13 +51,16 @@ public class Modify_booking_specific_pax_in_group extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+
 //                     ********* Clearing Temp_Request.xml *********
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 
+
     }
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -68,21 +70,16 @@ public class Modify_booking_specific_pax_in_group extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Modify_booking_specific_pax_in_group.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CheckIn\\PreRequisites\\Modify_APIS_Basic_seat_change.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValue("n5:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
+    //    XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 
     }
-
 }

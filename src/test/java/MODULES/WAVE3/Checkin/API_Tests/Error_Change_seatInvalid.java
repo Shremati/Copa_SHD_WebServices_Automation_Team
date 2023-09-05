@@ -66,7 +66,7 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Error_Change_seatInvalid.xml";

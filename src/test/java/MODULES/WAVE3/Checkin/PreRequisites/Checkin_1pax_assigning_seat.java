@@ -24,7 +24,6 @@ public class Checkin_1pax_assigning_seat extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -51,14 +50,15 @@ public class Checkin_1pax_assigning_seat extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
-
-
 
 
     }

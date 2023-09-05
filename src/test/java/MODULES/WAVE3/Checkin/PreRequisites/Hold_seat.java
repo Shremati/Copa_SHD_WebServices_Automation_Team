@@ -24,7 +24,7 @@ public class Hold_seat extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    @Test
+
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -88,7 +88,5 @@ public class Hold_seat extends FrameworkConstants {
 
         wb.close();
     }
-
-
 
 }

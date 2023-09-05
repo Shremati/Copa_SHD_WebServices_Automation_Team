@@ -52,14 +52,15 @@ public class Issue_ticket_3pax extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
-
-
 
 
     }
@@ -75,7 +76,6 @@ public class Issue_ticket_3pax extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
         XSSFRow InputRow=sheet.getRow(6);
-       // XSSFRow InputRowPNR=sheet.getRow(1);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Issue_Ticket_3pax.xml";
@@ -86,7 +86,5 @@ public class Issue_ticket_3pax extends FrameworkConstants {
         wb.close();
 
     }
-
-
 
 }

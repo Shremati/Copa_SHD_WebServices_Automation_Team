@@ -85,7 +85,7 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Check_in_non_revenue_pax.xml";

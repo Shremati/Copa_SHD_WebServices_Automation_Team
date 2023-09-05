@@ -51,10 +51,12 @@ public class Add_APIS_Thru_pax extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();

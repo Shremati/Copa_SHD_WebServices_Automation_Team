@@ -10,6 +10,11 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 public class Checkin
 {
+    //Note: If we execute a particular scenario multiple times,
+    // multiple PNRs will be created with the same name, and the below warning is shown
+    // <Warning Type="12" Tag="" RecordID="1">Multiple similar names match your request.</Warning>
+   //If we want to execute multiple times, same scenario, then, either we can change pax name, or flt details
+
     Checkin()
     {
         createFolders(getResponseDirectory()+"Checkin");
@@ -44,6 +49,8 @@ public class Checkin
             System.out.println("SCENARIO 2 failed due to :"+e);
         }
     }
+
+
     @Description("Hold seat from similar name list")
 
     @Test

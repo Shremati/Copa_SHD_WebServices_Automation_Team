@@ -65,7 +65,6 @@ public class create_booking_service_singlepax extends  FrameworkConstants
 
         excelwriter();
 
-
     }
 
 
@@ -128,7 +127,5 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         writer.close();
 
     }
-
-
 
 }
