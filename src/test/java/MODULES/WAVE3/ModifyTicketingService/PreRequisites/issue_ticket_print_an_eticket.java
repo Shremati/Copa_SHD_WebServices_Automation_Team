@@ -97,13 +97,11 @@ public class issue_ticket_print_an_eticket extends FrameworkConstants
         String AudCouponCheckDigit ="";
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
 
-//        if(XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath())!=null) {
-//            AudCouponCheckDigit = XMLParser.GetTagText("ns4:AudCouponCheckDigit", getTemp_responsePath());
-//        }
-
+        if(XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath())!=null) {
+            AudCouponCheckDigit = XMLParser.GetTagText("ns4:AudCouponCheckDigit", getTemp_responsePath());
+        }
 
         InputRow.getCell(16).setCellValue(TicketNumber+AudCouponCheckDigit);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
