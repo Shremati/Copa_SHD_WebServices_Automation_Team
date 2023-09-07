@@ -16,8 +16,7 @@ import java.io.*;
 
 import static io.restassured.RestAssured.given;
 
-public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket extends FrameworkConstants
-{
+public class IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -44,7 +43,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .and()
                 .log().all().extract().response();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -52,8 +51,6 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         excelwriter();
 
     }
-
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -63,10 +60,10 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(15);
+        XSSFRow InputRow=sheet.getRow(18);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PostCheck\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PostCheck\\IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml";
 
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(17).getStringCellValue(),filepath1,0);
@@ -84,10 +81,10 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(15);
+        XSSFRow InputRow=sheet.getRow(18);
 
         String filepath;
-        filepath = getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml";
+        filepath = getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing_issue_ticket.xml";
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",filepath);
         InputRow.getCell(18).setCellValue(TicketNumber);
@@ -100,4 +97,5 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         wb.close();
 
     }
+
 }

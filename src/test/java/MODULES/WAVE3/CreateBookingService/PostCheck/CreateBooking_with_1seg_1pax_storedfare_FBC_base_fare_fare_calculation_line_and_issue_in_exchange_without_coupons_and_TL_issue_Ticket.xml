@@ -1,0 +1,20 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:tic1="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <tic:issueTicket>
+            <tic1:EDS_TicketingRQ Version="4.000">
+                <tic1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </tic1:POS>
+                <tic1:TicketingRequest>
+                    <tic1:FormOfPayment>
+                        <tic1:Cash>CASH</tic1:Cash>
+                    </tic1:FormOfPayment>
+                    <tic1:TicketType>Electronic</tic1:TicketType>
+                </tic1:TicketingRequest>
+                <tic1:TicketingAction>Issue</tic1:TicketingAction>
+                <tic1:RecordLocator>A4KPTN</tic1:RecordLocator>
+            </tic1:EDS_TicketingRQ>
+        </tic:issueTicket>
+    </soapenv:Body>
+</soapenv:Envelope>

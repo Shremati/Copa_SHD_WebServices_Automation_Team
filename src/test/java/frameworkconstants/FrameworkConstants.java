@@ -7,7 +7,7 @@ public class FrameworkConstants {
 
 
     public static String getBaseURL() {
-        return BaseURL_Azure;
+        return BaseURL_Tulsa;
     }
 
 

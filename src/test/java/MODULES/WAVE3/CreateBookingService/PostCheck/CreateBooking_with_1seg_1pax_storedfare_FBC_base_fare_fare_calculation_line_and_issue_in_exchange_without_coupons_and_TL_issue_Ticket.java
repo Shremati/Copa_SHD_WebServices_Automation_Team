@@ -16,8 +16,8 @@ import java.io.*;
 
 import static io.restassured.RestAssured.given;
 
-public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket extends FrameworkConstants
-{
+public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket extends FrameworkConstants {
+
 
     public static String SOAPRequest;
 
@@ -44,7 +44,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .and()
                 .log().all().extract().response();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -63,10 +63,10 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(15);
+        XSSFRow InputRow=sheet.getRow(28);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PostCheck\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PostCheck\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket.xml";
 
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(17).getStringCellValue(),filepath1,0);
@@ -84,14 +84,13 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(15);
+        XSSFRow InputRow=sheet.getRow(38);
 
         String filepath;
-        filepath = getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml";
+        filepath = getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket.xml";
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",filepath);
         InputRow.getCell(18).setCellValue(TicketNumber);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -100,4 +99,5 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         wb.close();
 
     }
+
 }

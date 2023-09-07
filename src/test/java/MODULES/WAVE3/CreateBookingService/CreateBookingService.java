@@ -160,6 +160,7 @@ public class CreateBookingService {
         try {
 
             waitlist_booking_action_code_LL.Execute();
+            // need to select the flight which not having seats
 
         } catch (Exception e) {
             failTest(e);

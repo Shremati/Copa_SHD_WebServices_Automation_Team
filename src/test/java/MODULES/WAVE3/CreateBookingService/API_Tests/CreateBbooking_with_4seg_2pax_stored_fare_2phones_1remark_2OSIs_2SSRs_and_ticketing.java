@@ -2,6 +2,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -54,6 +55,8 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
 
         excelwriter();
 
+        IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing PostRequest = new IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing();
+        PostRequest.run();
 
     }
 

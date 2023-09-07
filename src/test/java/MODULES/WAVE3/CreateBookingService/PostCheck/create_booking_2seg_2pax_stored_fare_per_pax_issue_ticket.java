@@ -2,6 +2,7 @@ package MODULES.WAVE3.CreateBookingService.PostCheck;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -34,6 +35,7 @@ public class create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket extends F
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())
