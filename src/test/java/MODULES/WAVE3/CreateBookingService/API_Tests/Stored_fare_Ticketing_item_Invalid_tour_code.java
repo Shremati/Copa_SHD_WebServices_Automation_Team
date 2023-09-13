@@ -90,7 +90,7 @@ public class Stored_fare_Ticketing_item_Invalid_tour_code extends FrameworkConst
         XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.getDate_YYYYMMdd(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:Date","Date",Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
 
-        // adding valid ticket number which from prerequisite
+        // adding valid ticket number from prerequisite
 
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","DateOfIssue",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","TicketDocumentNbr",InputRow1.getCell(18).getStringCellValue(),getTemp_requestPath());

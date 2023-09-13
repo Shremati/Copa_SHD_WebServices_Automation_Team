@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -55,6 +56,7 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -90,7 +92,7 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
         XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.getDate_YYYYMMdd(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:Date","Date",Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
 
-        // adding valid ticket number which from prerequisite
+        // adding valid ticket number from prerequisite
 
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","DateOfIssue",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","TicketDocumentNbr",InputRow1.getCell(18).getStringCellValue(),getTemp_requestPath());
@@ -125,6 +127,19 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
         out.close();
 
         wb.close();
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_No_form_of_payment.xml";
+
+        String Expected = XMLParser.GetTagText("Warning",filepath);
+        String Actual = "Error Response to Add Form Of Payment Transaction -  (1) NEED CC/CK NBR IN FOP (2) /FLWG DATA NOT ENTERED/PROCESSED:";
+        Assert.assertTrue(Expected.contains(Actual));
 
     }
 }

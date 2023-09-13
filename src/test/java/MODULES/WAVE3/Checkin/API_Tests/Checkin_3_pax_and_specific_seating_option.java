@@ -2,8 +2,10 @@ package MODULES.WAVE3.Checkin.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_Checkin_3_Pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_3pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_service_3pax;
+import MODULES.WAVE3.Checkin.PreRequisites.Modify_APIS_Checkin_3_Pax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -34,6 +36,12 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
 
             Issue_ticket_3pax Prerequisite1 = new Issue_ticket_3pax();
             Prerequisite1.run();
+
+            Display_APIS_Checkin_3_Pax Prerequisite2 = new Display_APIS_Checkin_3_Pax();
+            Prerequisite2.run();
+
+            Modify_APIS_Checkin_3_Pax Prerequisite3 = new Modify_APIS_Checkin_3_Pax();
+            Prerequisite3.run();
 
             UpdatePayload();
 
@@ -79,7 +87,7 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             FileInputStream fis=new FileInputStream(new File(getTestData()));
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheet("CheckIn");
-            XSSFRow InputRow=sheet.getRow(1);
+            XSSFRow InputRow=sheet.getRow(6);
 
             String filepath1;
             filepath1=getRequestDirectory()+"Checkin\\Checkin_3_pax_and_specific_seating_option.xml";

@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -55,6 +56,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -125,6 +127,19 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
         out.close();
 
         wb.close();
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_too_long_remark.xml";
+
+        String Expected = XMLParser.GetTagText("Warning",filepath);
+        String Actual = "Error Response to Add Free-Flow Remark Transaction -  (1) REMARKS FIELD TOO LONG (2) /FLWG DATA NOT ENTERED/PROCESSED:";
+        Assert.assertTrue(Expected.contains(Actual));
 
     }
 

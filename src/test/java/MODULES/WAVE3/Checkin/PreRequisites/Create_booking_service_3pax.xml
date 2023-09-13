@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-08-11T07:51:00" RPH="1" FlightNumber="787" ResBookDesigCode="Y" NumberInParty="3" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-09-13T07:51:00" RPH="1" FlightNumber="485" ResBookDesigCode="Y" NumberInParty="3" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="SJO"/>
+                                <com:ArrivalAirport LocationCode="MIA"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -45,7 +45,7 @@
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
                             <com:GivenName>HELLO/MISTER/BEEM</com:GivenName>
-                            <com:Surname>3JOKER</com:Surname>
+                            <com:Surname>3ABCD</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1014"/>
                         <air1:TravelerRefNumber RPH="1"/>

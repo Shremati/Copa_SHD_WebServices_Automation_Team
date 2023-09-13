@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,7 +27,6 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -49,12 +49,11 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .log().all().extract().response();
 
 
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -87,4 +86,19 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         wb.close();
 
     }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Input_with_more_PassengerFlightInfo.xml";
+
+        String Expected = XMLParser.GetTagText("Error",filepath);
+        String Actual = "Error: TravelerInfomation array exceeds the maximum passengers allowed per boarding. OTA object: TravelerInfomation.";
+
+        Assert.assertEquals(Actual,Expected);
+
+    }
+
 }

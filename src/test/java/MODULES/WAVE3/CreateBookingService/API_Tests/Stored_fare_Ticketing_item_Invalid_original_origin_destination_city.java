@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -56,6 +57,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -92,7 +94,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
         XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.getDate_YYYYMMdd(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:Date","Date",Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
 
-        // adding valid ticket number which from prerequisite
+        // adding valid ticket number from prerequisite
 
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","DateOfIssue",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:OriginalIssueInfo","TicketDocumentNbr",InputRow1.getCell(18).getStringCellValue(),getTemp_requestPath());
@@ -124,6 +126,19 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
         out.close();
 
         wb.close();
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_origin_destination_city.xml";
+
+        String Expected = XMLParser.GetTagText("Warning",filepath);
+        String Actual = "Error Response to Add original origin/destination city Transaction -  (1) INVALID CITY CODE S) (2) /FLWG DATA NOT ENTERED/PROCESSED:";
+        Assert.assertTrue(Expected.contains(Actual));
 
     }
 

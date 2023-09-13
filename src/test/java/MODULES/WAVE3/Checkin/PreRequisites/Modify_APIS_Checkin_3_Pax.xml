@@ -1,0 +1,157 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <api:modifyAPI>
+         <air:EDS_AirAPIModifyRQ Version="4.000">
+            <air:POS>
+               <com:Source AirlineVendorID="CM"/>
+            </air:POS>
+            <air:FlightSegment DepartureDateTime="2023-09-13T00:00:00" RPH="1">
+               <com:DepartureAirport LocationCode="PTY"/>
+               <com:ArrivalAirport LocationCode="MIA"/>
+               <com:OperatingAirline Code="CM" FlightNumber="485"/>
+            </air:FlightSegment>
+            <air:PassengerInfo RPH="1" SurnameRefNumber="1" SurnameBookedNumber="1">
+               <air1:PassengerName>
+                  <com:GivenName>HELLO</com:GivenName>
+                  <com:Surname>ABCD</com:Surname>
+               </air1:PassengerName>
+               <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
+            </air:PassengerInfo>
+            <air:PassengerInfo RPH="2" SurnameRefNumber="1" SurnameBookedNumber="2">
+               <air1:PassengerName>
+                  <com:GivenName>MISTER</com:GivenName>
+                  <com:Surname>ABCD</com:Surname>
+               </air1:PassengerName>
+               <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
+            </air:PassengerInfo>
+            <air:PassengerInfo RPH="3" SurnameRefNumber="1" SurnameBookedNumber="2">
+               <air1:PassengerName>
+                  <com:GivenName>BEEM</com:GivenName>
+                  <com:Surname>ABCD</com:Surname>
+               </air1:PassengerName>
+               <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
+            </air:PassengerInfo>
+
+            <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+               <air1:BookingInfo ResBookDesigCode="Y"/>
+               <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>HELLO</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>HELLO</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>HELLO</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>HELLO</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+            </air:PassengerFlightInfo>
+            <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
+               <air1:BookingInfo ResBookDesigCode="Y"/>
+               <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>MISTER</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-13" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>MISTER</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="987654321" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-13" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>MISTER</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="987654321" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>MISTER</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+            </air:PassengerFlightInfo>
+            <air:PassengerFlightInfo PassengerRPH="3" FlightRPH="1">
+               <air1:BookingInfo ResBookDesigCode="Y"/>
+               <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>BEEM</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>BEEM</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+               <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>BEEM</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+
+               <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                  <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
+                     <com:DocHolderFormattedName>
+                        <com:GivenName>BEEM</com:GivenName>
+                        <com:Surname>ABCD</com:Surname>
+                     </com:DocHolderFormattedName>
+                  </air1:API_Info>
+                  <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+               </air1:AgencyRequirements>
+            </air:PassengerFlightInfo>
+         </air:EDS_AirAPIModifyRQ>
+      </api:modifyAPI>
+   </soapenv:Body>
+</soapenv:Envelope>

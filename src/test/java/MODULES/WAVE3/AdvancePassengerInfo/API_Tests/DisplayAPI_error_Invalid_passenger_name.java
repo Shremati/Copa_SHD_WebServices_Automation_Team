@@ -51,7 +51,6 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         writer.close();
 
 
-
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");

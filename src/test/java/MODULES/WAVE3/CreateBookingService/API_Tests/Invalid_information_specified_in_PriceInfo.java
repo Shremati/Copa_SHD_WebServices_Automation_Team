@@ -9,12 +9,15 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -50,6 +53,13 @@ public class Invalid_information_specified_in_PriceInfo extends FrameworkConstan
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
+
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
+
+
 
     }
 
@@ -79,6 +89,20 @@ public class Invalid_information_specified_in_PriceInfo extends FrameworkConstan
 
         wb.close();
 
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_PriceInfo.xml";
+
+        String Expected = XMLParser.GetTagText("Error",filepath);
+        String Actual = "Error Response to Create Stored Fare Transaction -  (1) TOO MANY PASSENGERS IN TYPE (2) /FLWG DATA NOT ENTERED/PROCESSED:";
+
+        Assert.assertTrue(Expected.contains(Actual));
 
     }
 
