@@ -9,12 +9,15 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -50,6 +53,12 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
+
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
+
 
     }
 
@@ -76,6 +85,20 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
 
         wb.close();
 
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Check_for_invalid_AirTraveler_in_request.xml";
+
+        String Expected = XMLParser.GetTagText("Error",filepath);
+        String Actual = "Message Contains No TravelerInfo";
+
+        Assert.assertEquals(Actual,Expected);
 
     }
 

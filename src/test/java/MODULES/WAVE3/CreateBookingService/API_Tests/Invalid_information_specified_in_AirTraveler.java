@@ -9,12 +9,15 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -50,6 +53,11 @@ public class Invalid_information_specified_in_AirTraveler extends FrameworkConst
         writer.write(response.asPrettyString());
         writer.close();
 
+        Validationcheck();
+
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
 
     }
 
@@ -79,6 +87,20 @@ public class Invalid_information_specified_in_AirTraveler extends FrameworkConst
 
         wb.close();
 
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_AirTraveler.xml";
+
+        String Expected = XMLParser.GetTagText("Error",filepath);
+        String Actual = "The First Traveler Cannot Be an Infant Type";
+
+        Assert.assertEquals(Actual,Expected);
 
     }
 

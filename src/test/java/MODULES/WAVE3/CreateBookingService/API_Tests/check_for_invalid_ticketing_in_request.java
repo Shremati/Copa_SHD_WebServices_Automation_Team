@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,12 +48,11 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants
                 .log().all().extract().response();
 
 
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\check_for_invalid_ticketing_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -85,4 +85,19 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants
         wb.close();
 
     }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\check_for_invalid_ticketing_in_request.xml";
+
+        String Expected = XMLParser.GetTagText("Error",filepath);
+        String Actual = "Message Contains No Ticketing/TicketTimeLimit.";
+
+        Assert.assertEquals(Actual,Expected);
+
+    }
+
 }
