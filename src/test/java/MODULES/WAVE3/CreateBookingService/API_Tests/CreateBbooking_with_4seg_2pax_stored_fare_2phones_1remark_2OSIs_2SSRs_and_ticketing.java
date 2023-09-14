@@ -48,7 +48,7 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -119,7 +119,7 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
         XSSFRow InputRow = sheet.getRow(18);
 
         String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml";
+        filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
 

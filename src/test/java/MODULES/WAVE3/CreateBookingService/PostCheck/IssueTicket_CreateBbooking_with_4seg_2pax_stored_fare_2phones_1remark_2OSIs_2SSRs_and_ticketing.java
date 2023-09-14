@@ -84,7 +84,7 @@ public class IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1rema
         XSSFRow InputRow=sheet.getRow(18);
 
         String filepath;
-        filepath = getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing_issue_ticket.xml";
+        filepath = getResponseDirectory()+"CreateBookingService\\IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml";
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",filepath);
         InputRow.getCell(18).setCellValue(TicketNumber);

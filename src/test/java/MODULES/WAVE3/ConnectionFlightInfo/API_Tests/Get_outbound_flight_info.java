@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -81,6 +82,20 @@ public class Get_outbound_flight_info extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
+
+    }
+
+    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Validate message in response ************
+
+        String filepath;
+        filepath = getResponseDirectory() + "ConnectionFlightInfo\\Get_outbound_flight_info.xml";
+
+        String Expected = XMLParser.GetTagText("ns6:Remarks",filepath);
+        String Actual = "CM OUTBOUND CONNECTIONS FROM";
+
+        Assert.assertTrue(Expected.contains(Actual));
 
     }
 
