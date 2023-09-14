@@ -18,7 +18,7 @@ public class ConnectionFlightInfo {
         createFolders(getResponseDirectory()+"ConnectionFlightInfo");
     }
 
-    @Description("Get Inbound Flight Info")
+    @Description("CFI_01 - Get Inbound Flight Info")
     @Test
     public void Scenario1()
     {
@@ -33,7 +33,7 @@ public class ConnectionFlightInfo {
         }
     }
 
-    @Description("Get Outbound Flight Info")
+    @Description("CFI_02 - Get Outbound Flight Info")
     @Test
     public void Scenario2()
     {

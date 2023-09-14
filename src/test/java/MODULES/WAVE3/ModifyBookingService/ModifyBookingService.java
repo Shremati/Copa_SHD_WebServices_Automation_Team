@@ -9,11 +9,12 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 public class ModifyBookingService {
+
     ModifyBookingService() {
         createFolders(getResponseDirectory() + "ModifyBookingService");
     }
 
-    @Description("Cancel Booking")
+    @Description("MBS_01 - Cancel Booking")
     @Test
     public void Scenario1() {
 
@@ -26,7 +27,7 @@ public class ModifyBookingService {
         }
     }
 
-    @Description("Itinerary Changes")
+    @Description("MBS_04 - Itinerary Changes")
     @Test
     public void Scenario2() {
 
@@ -39,7 +40,7 @@ public class ModifyBookingService {
         }
     }
 
-    @Description("Other Changes")
+    @Description("MBS_07 - Other Changes")
     @Test
     public void Scenario3() {
 
@@ -53,7 +54,7 @@ public class ModifyBookingService {
     }
 
 
-    @Description("Divide PNR")
+    @Description("MBS_08 - Divide PNR")
     @Test
     public void Scenario4() {
 
@@ -67,7 +68,7 @@ public class ModifyBookingService {
 
     }
 
-    @Description("Reduce PNR")
+    @Description("MBS_10 - Reduce PNR")
     @Test
     public void Scenario5() {
 

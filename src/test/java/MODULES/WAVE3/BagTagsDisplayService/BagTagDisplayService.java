@@ -16,7 +16,7 @@ public class BagTagDisplayService {
         createFolders(getResponseDirectory() + "BagTagDisplayService");
     }
 
-    @Description("Bag Tag Display All")
+    @Description("BTD_01 - Bag Tag Display All")
     @Test
     public void Scenario1() {
         try {
@@ -30,7 +30,7 @@ public class BagTagDisplayService {
 
 
     //Expected response: "No bagtags found"
-    @Description("Bag Tag Display OA")
+    @Description("BTD_02 - Bag Tag Display OA")
     @Test
     public void Scenario2() {
         try {
@@ -42,7 +42,7 @@ public class BagTagDisplayService {
         }
     }
 
-    @Description("Display Bag Tag By Tag Number")
+    @Description("BTD_03 - Display Bag Tag By Tag Number")
 
     @Test
     public void Scenario3() {
@@ -55,7 +55,7 @@ public class BagTagDisplayService {
     }
 
     //Need to update
-    @Description("Bag Tag Display by Tag Number OA")
+    @Description("BTD_04 - Bag Tag Display by Tag Number OA")
     @Test
     public void Scenario4() {
         try {

@@ -17,7 +17,7 @@ public class ManageSessions {
         createFolders(getResponseDirectory() + "ManageSessions");
     }
 
-    @Description("Modify_name")
+    @Description("MS_24 - Modify_name")
     @Test
     public void Scenario1() {
 
@@ -31,7 +31,7 @@ public class ManageSessions {
 
     }
 
-    @Description("Create_a_booking_for_a_group_FinalizeSession")
+    @Description("MS_31 - Create_a_booking_for_a_group_FinalizeSession")
     @Test
     public void Scenario2() {
 
@@ -45,7 +45,7 @@ public class ManageSessions {
 
     }
 
-    @Description("Create Booking 2 Segments - releaseToken")
+    @Description("MS_03 - Create Booking 2 Segments - releaseToken")
     @Test
     public void Scenario3() {
 

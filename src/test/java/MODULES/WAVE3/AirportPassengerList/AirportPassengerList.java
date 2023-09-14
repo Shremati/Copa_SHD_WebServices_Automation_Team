@@ -14,7 +14,7 @@ public class AirportPassengerList {
         createFolders(getResponseDirectory() + "AirportPassengerList");
     }
 
-    @Description("Standard list: Code 2 - Eticketed passengers")
+    @Description("APL_03 - Standard list: Code 2 - Eticketed passengers")
     @Test
     public void Scenario1() {
         try {
@@ -26,7 +26,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list: Code 5 - Interline eticket passengers")
+    @Description("APL_06 - Standard list: Code 5 - Interline eticket passengers")
     @Test
     public void Scenario2() {
         try {
@@ -38,7 +38,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list: Code 12 - Passengers with advance seats")
+    @Description("APL_11 - Standard list: Code 12 - Passengers with advance seats")
     @Test
     public void Scenario3() {
         try {
@@ -50,18 +50,18 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list: Code 25 - passengers with held seats")
+    @Description("APL_18 - Standard list: Code 25 - passengers with held seats")
     @Test
     public void Scenario4() {
         try {
-           Code_25_Pax_with_held_seats.Execute();
+            Code_25_Pax_with_held_seats.Execute();
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 4 failed due to :" + e);
         }
     }
 
-    @Description("Custom  list: Code 0  - All passengers,  Response Data = Code 1, passenger name")
+    @Description("APL_41 - Custom  list: Code 0  - All passengers,  Response Data = Code 1, passenger name")
     @Test
     public void Scenario5() {
         try {
@@ -72,19 +72,19 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Custom  list: Code 0  - All passengers,  Response Data = Code 5, passenger service info")
+    @Description("APL_45 - Custom  list: Code 0  - All passengers,  Response Data = Code 5, passenger service info")
     @Test
     public void Scenario6() {
 
         try {
-         Code_0_All_passengers_Response_Data_paxservice_info.Execute();
+            Code_0_All_passengers_Response_Data_paxservice_info.Execute();
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 6 failed due to :" + e);
         }
     }
 
-    @Description("Custom  list: Code 42  - Specific SSR")
+    @Description("APL_34 - Custom  list: Code 42  - Specific SSR")
     @Test
     public void Scenario7() {
 
@@ -96,7 +96,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list Code 0 All Passengers")
+    @Description("APL_01 - Standard list Code 0 All Passengers")
     @Test
     public void Scenario8() {
 
@@ -108,7 +108,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list Code 30 passengers with no meals")
+    @Description("APL_23 - Standard list Code 30 passengers with no meals")
     @Test
 //Give a flight which contain bookings having no meal. Taking input from same row as scenario
     public void Scenario9() {
@@ -121,7 +121,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list Code 44 passengers with elite frequent traveler numbers")
+    @Description("APL_36 - Standard list Code 44 passengers with elite frequent traveler numbers")
     @Test
     public void Scenario10() {
 
@@ -133,7 +133,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Custom list Filter Value 0")
+    @Description("APL_52 - Custom list Filter Value 0")
     @Test
     public void Scenario11() {
 
@@ -145,7 +145,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list Code 6 Out of sync electronic tickets")
+    @Description("APL_07 - Standard list Code 6 Out of sync electronic tickets")
     @Test
     public void Scenario12() {
 
@@ -157,7 +157,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Custom list Filter Value 1 Surname")
+    @Description("APL_53 - Custom list Filter Value 1 Surname")
     @Test
 
 //    Filter based on NAME
@@ -171,7 +171,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Find passengers with passcode SA3R09")
+    @Description("APL_54 - Find passengers with passcode SA3R09")
     @Test
     public void Scenario14() {
 
@@ -184,7 +184,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("DCS reference number")
+    @Description("APL_57 - DCS reference number")
     @Test
     public void Scenario15() {
 
@@ -196,7 +196,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Standard list Code 26 passengers with inbound connections")
+    @Description("APL_19 - Standard list Code 26 passengers with inbound connections")
     @Test
     public void Scenario16() {
 
@@ -208,7 +208,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Large parties")
+    @Description("APL_21 - Large parties")
     @Test
     public void Scenario17() {
 
@@ -220,7 +220,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Passengers with outbound connections")
+    @Description("APL_24 - Passengers with outbound connections")
     @Test
     public void Scenario18() {
 
@@ -232,7 +232,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Code_33_Specific_passengers")
+    @Description("APL_26 - Code_33_Specific_passengers")
     @Test
     public void Scenario19() {
 
@@ -244,7 +244,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Code_34_specific_party")
+    @Description("APL_27 - Code_34_specific_party")
     @Test
     public void Scenario20() {
 
@@ -256,7 +256,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("Code 36 requiring seats")
+    @Description("APL_29 - Code 36 requiring seats")
     @Test
     public void Scenario21() {
 
@@ -268,5 +268,5 @@ public class AirportPassengerList {
         }
     }
 
-
+//APL_05 -	Code 4 - Eticketed passengers, not checked in (Not Automated)
 }

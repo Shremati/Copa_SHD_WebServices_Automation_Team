@@ -16,7 +16,7 @@ public class FlightDepartureInfoService {
         createFolders(getResponseDirectory() + "FlightDepartureInfoService");
     }
 
-    @Description("Flight has two legs and NotOpen status")
+    @Description("FDIS_03 - Flight has two legs and NotOpen status")
     @Test
     public void Scenario1() {
 
@@ -29,7 +29,7 @@ public class FlightDepartureInfoService {
         }
     }
 
-    @Description("Flight has one leg and OPEN status")
+    @Description("FDIS_04 - Flight has one leg and OPEN status")
     @Test
     public void Scenario2() {
 
@@ -42,7 +42,7 @@ public class FlightDepartureInfoService {
         }
     }
 
-    @Description("The request has an invalid flight number")
+    @Description("FDIS_09 - The request has an invalid flight number")
     @Test
     public void Scenario3() {
 

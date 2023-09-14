@@ -16,7 +16,7 @@ public class DisplayLoyaltyAccountService {
         createFolders(getResponseDirectory() + "DisplayLoyaltyAccountService");
     }
 
-    @Description("Display loyalty account")
+    @Description("DLAS_01 - Display loyalty account")
     @Test
     public void Scenario1() {
 
@@ -29,7 +29,7 @@ public class DisplayLoyaltyAccountService {
         }
     }
 
-    @Description("Display Partner Airline Elite member loyalty account")
+    @Description("DLAS_04 - Display Partner Airline Elite member loyalty account")
     @Test
     public void Scenario2() {
 
@@ -42,7 +42,7 @@ public class DisplayLoyaltyAccountService {
         }
     }
 
-    @Description("Error On Display Loyalty Account Invalid Loyalty Account")
+    @Description("DLAS_02 - Error On Display Loyalty Account Invalid Loyalty Account")
     @Test
     public void Scenario3() {
 
