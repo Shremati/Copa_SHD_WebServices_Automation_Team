@@ -15,7 +15,7 @@ public class DepartureControlService {
         createFolders(getResponseDirectory()+"DepartureControlService");
     }
 
-    @Description("Assign aircraft")
+    @Description("DPS_01 - Assign aircraft")
     @Test
     public void Scenario1() {
 
@@ -28,7 +28,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Assign aircraft with generic and specific seat re accommodation")
+    @Description("DPS_07 - Assign aircraft with generic and specific seat re accommodation")
     @Test
     public void Scenario2() {
 
@@ -42,7 +42,7 @@ public class DepartureControlService {
     }
 
 
-    @Description("Assign aircraft")
+    @Description("DPS_10 - Start Checkin")
     @Test
     public void Scenario3() {
 
@@ -55,7 +55,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Block more than one seat")
+    @Description("DPS_13 - Block more than one seat")
     @Test
     public void Scenario4() {
 
@@ -68,7 +68,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Error on block seat - Invalid seat number")
+    @Description("DPS_14 - Error on block seat - Invalid seat number")
     @Test
     public void Scenario5() {
 
@@ -81,7 +81,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Unblock more than one seat")
+    @Description("DPS_16 - Unblock more than one seat")
     @Test
     public void Scenario6() {
 
@@ -94,7 +94,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Define inoperative seat")
+    @Description("DPS_18 - Define inoperative seat")
     @Test
     public void Scenario7() {
 
@@ -107,7 +107,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Clear inoperative seat")
+    @Description("DPS_20 - Clear inoperative seat")
     @Test
     public void Scenario8() {
 
@@ -120,7 +120,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Cancel Misconnect")
+    @Description("DPS_22 - Cancel Misconnect")
     @Test
     public void Scenario9() {
 
@@ -133,7 +133,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Reinstate connecting passengers")
+    @Description("DPS_25 - Reinstate connecting passengers")
     @Test
     public void Scenario10() {
 
@@ -146,7 +146,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Restrict checkin")
+    @Description("DPS_28 - Restrict checkin")
     @Test
     public void Scenario11() {
 
@@ -159,7 +159,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Display board point messages")
+    @Description("DPS_32 - Display board point messages")
     @Test
     public void Scenario12() {
 
@@ -172,7 +172,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Add/Update/Delete board point messages")
+    @Description("DPS_36 - Add/Update/Delete board point messages")
     @Test
     public void Scenario13() {
 
@@ -185,7 +185,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Restrict boarding")
+    @Description("DPS_38 - Restrict boarding")
     @Test
     public void Scenario14() {
 
@@ -198,7 +198,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("Remove boarding restriction")
+    @Description("DPS_39 - Remove boarding restriction")
     @Test
     public void Scenario15() {
 
@@ -211,3 +211,6 @@ public class DepartureControlService {
         }
     }
 }
+
+//DPS_30	Close flight(Not Automated)
+//DPS_02	Assign aircraft to downline station
