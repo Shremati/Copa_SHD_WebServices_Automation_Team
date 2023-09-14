@@ -15,7 +15,7 @@ public class SynchronizeTicketService
         createFolders(getResponseDirectory() + "SynchronizeTicketService");
     }
 
-    @Description("Adjust Flight No and Date")
+    @Description("STS_07 - Adjust Flight No and Date")
     @Test
     public void Scenario1()
     {
@@ -32,7 +32,7 @@ public class SynchronizeTicketService
 
 
     }
-    @Description("Adjust Name")
+    @Description("STS_01 - Adjust Name")
     @Test
     public void Scenario2()
     {
@@ -47,7 +47,7 @@ public class SynchronizeTicketService
         }
 
     }
-    @Description("Adjust Class")
+    @Description("STS_03 - Adjust Class")
     @Test
     public void Scenario3()
     {

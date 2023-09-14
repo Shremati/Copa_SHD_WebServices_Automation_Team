@@ -17,7 +17,7 @@ public class ProcessMealReport {
         createFolders(getResponseDirectory()+"ProcessMealReport");
     }
 
-    @Description("Meal Report Preliminary")
+    @Description("PMR_01 - Meal Report Preliminary")
     @Test
     public void Scenario1()
     {
@@ -32,7 +32,7 @@ public class ProcessMealReport {
         }
     }
 
-    @Description("Meal Report Invalid Flight Number")
+    @Description("PMR_03 - Meal Report Invalid Flight Number")
     @Test
     public void Scenario2()
     {
@@ -47,7 +47,7 @@ public class ProcessMealReport {
         }
     }
 
-    @Description("Meal Report Final")
+    @Description("PMR_02 - Meal Report Final")
     @Test
     public void Scenario3()
     {
@@ -61,7 +61,4 @@ public class ProcessMealReport {
             System.out.println("SCENARIO 3 failed due to :"+e);
         }
     }
-
-
-
 }

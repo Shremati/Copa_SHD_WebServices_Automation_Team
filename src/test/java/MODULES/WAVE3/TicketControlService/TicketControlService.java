@@ -19,7 +19,7 @@ public class TicketControlService {
         createFolders(getResponseDirectory()+"TicketControlService");
     }
 
-    @Description("Get control of one coupon of one ticket")
+    @Description("TCS_01 - Get control of one coupon of one ticket")
     @Test
     public void Scenario1() {
 
@@ -33,7 +33,7 @@ public class TicketControlService {
         }
     }
 
-    @Description("Push control of multiple coupons within one ticket")
+    @Description("TCS_07 - Push control of multiple coupons within one ticket")
     @Test
     public void Scenario2() {
 

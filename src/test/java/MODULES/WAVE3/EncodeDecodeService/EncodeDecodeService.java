@@ -14,7 +14,7 @@ public class EncodeDecodeService {
         createFolders(getResponseDirectory() + "EncodeDecodeService");
     }
 
-    @Description("Decode city code LAX")
+    @Description("EDS_01 - Decode city code LAX")
     @Test
     public void Scenario1() {
 
@@ -27,7 +27,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("Decode airline CO")
+    @Description("EDS_03 - Decode airline CO")
     @Test
     public void Scenario2() {
 
@@ -40,7 +40,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("Encode airline United")
+    @Description("EDS_04 - Encode airline United")
     @Test
     public void Scenario3() {
 
@@ -53,7 +53,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("Request multiple mixed messages of city, airport, airline, country and flight")
+    @Description("EDS_07 - Request multiple mixed messages of city, airport, airline, country and flight")
     @Test
     public void Scenario4() {
 
@@ -66,7 +66,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("Decode city code LAX specifying an agent sine and airport code for sign in")
+    @Description("EDS_15 - Decode city code LAX specifying an agent sine and airport code for sign in")
     @Test
     public void Scenario5() {
 

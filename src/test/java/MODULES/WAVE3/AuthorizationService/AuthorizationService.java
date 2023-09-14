@@ -16,7 +16,7 @@ public class AuthorizationService {
         createFolders(getResponseDirectory() + "AuthorizationService");
     }
 
-    @Description("Approval for Visa credit card")
+    @Description("AuthS_01 - Approval for Visa credit card")
     @Test
     public void Scenario1() {
 
@@ -29,7 +29,7 @@ public class AuthorizationService {
         }
     }
 
-    @Description("Error_text_for_Visa_credit_card")
+    @Description("AuthS_03 - Error_text_for_Visa_credit_card")
     @Test
     public void Scenario2() {
 
@@ -42,7 +42,7 @@ public class AuthorizationService {
         }
     }
 
-    @Description("Invalid_Request")
+    @Description("AuthS_12 - Invalid_Request")
     @Test
     public void Scenario3() {
 
@@ -53,9 +53,9 @@ public class AuthorizationService {
             failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
+
     }
-
-
+}
 
 //    ******** Out of Scope *********
 
@@ -83,4 +83,4 @@ public class AuthorizationService {
 //        }
 //    }
 
-}
+

@@ -18,7 +18,7 @@ public class EMDAirlineSystemUpdate {
         createFolders(getResponseDirectory() + "EMDAirlineSystemUpdate");
     }
 
-    @Description("Association: EMD coupon 1 with ETKT coupon 1 (POS info)")
+    @Description("ASU_02 - Association: EMD coupon 1 with ETKT coupon 1 (POS info)")
     @Test
     public void Scenario1() {
 
@@ -31,7 +31,7 @@ public class EMDAirlineSystemUpdate {
         }
     }
 
-    @Description("Association multiple coupons for primary and conjunctive etkt")
+    @Description("ASU_06 - Association multiple coupons for primary and conjunctive etkt")
     @Test
     public void Scenario2() {
 
@@ -44,7 +44,7 @@ public class EMDAirlineSystemUpdate {
         }
     }
 
-    @Description("Disassociation emd coupon 1 with etkt coupon")
+    @Description("ASU_07 - Disassociation emd coupon 1 with etkt coupon")
     @Test
     public void Scenario3() {
 

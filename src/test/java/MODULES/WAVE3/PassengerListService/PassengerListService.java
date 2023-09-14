@@ -17,7 +17,7 @@ public class PassengerListService {
         createFolders(getResponseDirectory() + "PassengerListService");
     }
 
-    @Description("Display the passenger list All option")
+    @Description("PLS_01 - Display the passenger list All option")
     @Test
     public void Scenario1() {
 
@@ -30,7 +30,7 @@ public class PassengerListService {
         }
     }
 
-    @Description("Multiple passenger list request")
+    @Description("PLS_18 - Multiple passenger list request")
     @Test
     public void Scenario2() {
 
@@ -43,7 +43,7 @@ public class PassengerListService {
         }
     }
 
-    @Description("Display the passenger list Inbound connection option")
+    @Description("PLS_07 - Display the passenger list Inbound connection option")
     @Test
     public void Scenario3() {
 
@@ -56,7 +56,7 @@ public class PassengerListService {
         }
 
     }
-    @Description("Pax List Request Positive Non Revenue")
+    @Description("PLS_06 - Pax List Request Positive Non Revenue")
     @Test
     public void Scenario4() {
 

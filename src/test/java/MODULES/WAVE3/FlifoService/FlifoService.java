@@ -14,7 +14,7 @@ public class FlifoService {
         createFolders(getResponseDirectory() + "FlifoService");
     }
 
-    @Description("Flifo_for_one_flight_specifying_departure_arrival_city_actual_times")
+    @Description("FS_03 - Flifo_for_one_flight_specifying_departure_arrival_city_actual_times")
     @Test
     public void Scenario1() {
 
@@ -27,7 +27,7 @@ public class FlifoService {
         }
     }
 
-    @Description("Flifo_for_Two_flights")
+    @Description("FS_06 - Flifo_for_Two_flights")
     @Test
     public void Scenario2() {
 
@@ -40,7 +40,7 @@ public class FlifoService {
         }
     }
 
-    @Description("Flifo_for_codeshare_flight")
+    @Description("FS_15 - Flifo_for_codeshare_flight")
     @Test
     public void Scenario3() {
 
@@ -52,7 +52,7 @@ public class FlifoService {
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
-    @Description("Flifo_for_a_flight_with_crossing_date")
+    @Description("FS_23 - Flifo_for_a_flight_with_crossing_date")
     @Test
     public void Scenario4() {
 
@@ -65,7 +65,7 @@ public class FlifoService {
         }
     }
 
-    @Description("FLIFO_History_for_host_airline")
+    @Description("FS_26 - FLIFO_History_for_host_airline")
     @Test
     public void Scenario5() {
 
@@ -77,7 +77,7 @@ public class FlifoService {
             System.out.println("SCENARIO 5 failed due to :" + e);
         }
     }
-    @Description("FLIFO_History_for_codeshare_airline")
+    @Description("FS_27 - FLIFO_History_for_codeshare_airline")
     @Test
     public void Scenario6() {
 

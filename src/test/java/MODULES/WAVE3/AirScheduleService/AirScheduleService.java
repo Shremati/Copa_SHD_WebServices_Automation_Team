@@ -14,7 +14,7 @@ public class AirScheduleService {
         createFolders(getResponseDirectory() + "AirScheduleService");
     }
 
-    @Description("One request with vendor preferences")
+    @Description("AS_01 - One request with vendor preferences")
     @Test
     public void Scenario1() {
 
@@ -27,7 +27,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Get Schedule Display - One request")
+    @Description("AS_02 - Get Schedule Display - One request")
     @Test
     public void Scenario2() {
 
@@ -40,7 +40,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Request with departure time that will return date change flights")
+    @Description("AS_08 - Request with departure time that will return date change flights")
     @Test
     public void Scenario3() {
 
@@ -53,7 +53,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Get Direct Service Display - Error showing unimplemented method")
+    @Description("AS_09 - Get Direct Service Display - Error showing unimplemented method")
     @Test
     public void Scenario4() {
 
@@ -66,7 +66,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Get Flight Details - Error showing unimplemented method")
+    @Description("AS_10 - Get Flight Details - Error showing unimplemented method")
     @Test
     public void Scenario5() {
 
@@ -79,7 +79,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Host airline, 2 leg flight")
+    @Description("AS_12 - Host airline, 2 leg flight")
     @Test
     public void Scenario6() {
 
@@ -92,7 +92,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Host airline, one leg flight")
+    @Description("AS_11 - Host airline, one leg flight")
     @Test
     public void Scenario7() {
 
@@ -105,7 +105,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Multiple requests, mixed host and other airline")
+    @Description("AS_14 - Multiple requests, mixed host and other airline")
     @Test
     public void Scenario8() {
 
@@ -119,7 +119,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("One request  with 7 vendor preferences")
+    @Description("AS_03 - One request  with 7 vendor preferences")
     @Test
     public void Scenario9() {
 
@@ -134,7 +134,7 @@ public class AirScheduleService {
     }
 
 
-    @Description("Other airline flight")
+    @Description("AS_13 - Other airline flight")
     @Test
     public void Scenario10() {
 
@@ -148,7 +148,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Request missing departure date")
+    @Description("AS_04 - Request missing departure date")
     @Test
     public void Scenario11() {
 
@@ -163,7 +163,7 @@ public class AirScheduleService {
     }
 
 
-    @Description("Request missing destination location and departure date")
+    @Description("AS_06 - Request missing destination location and departure date")
     @Test
     public void Scenario12() {
 
@@ -177,7 +177,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Request missing origin location")
+    @Description("AS_05 - Request missing origin location")
     @Test
     public void Scenario13() {
 
@@ -191,7 +191,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("Request with vendor preferences shows traffic restrictions as comments")
+    @Description("AS_07 - Request with vendor preferences shows traffic restrictions as comments")
     @Test
     public void Scenario14() {
 

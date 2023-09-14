@@ -15,7 +15,7 @@ public class TicketingService {
         createFolders(getResponseDirectory() + "TicketingService");
     }
 
-    @Description("Ticket a booking with one flight, one passenger with credit card form of payment")
+    @Description("TIS_01 - Ticket a booking with one flight, one passenger with credit card form of payment")
     @Test
     public void Scenario1() {
 
@@ -29,7 +29,7 @@ public class TicketingService {
 
     }
 
-    @Description("Ticket one passenger, 6 flights in booking with credit card form of payment (conjunction tickets)")
+    @Description("TIS_03 - Ticket one passenger, 6 flights in booking with credit card form of payment (conjunction tickets)")
     @Test
     public void Scenario2() {
 
@@ -72,7 +72,7 @@ public class TicketingService {
 
     }
 
-    @Description("Issue bulk ticket for a PNR with two pax")
+    @Description("TIS_20 - Issue bulk ticket for a PNR with two pax")
     @Test
     public void Scenario5() {
 
@@ -86,7 +86,7 @@ public class TicketingService {
 
     }
 
-    @Description("Issue inclusive tour ticket for a pnr with two pax")
+    @Description("TIS_21 - Issue inclusive tour ticket for a pnr with two pax")
     @Test
     public void Scenario6() {
 
@@ -101,7 +101,7 @@ public class TicketingService {
     }
 
 
-    @Description("Issue ticket for a booking with an infant")
+    @Description("TIS_33 - Issue ticket for a booking with an infant")
     @Test
     public void Scenario7() {
 
@@ -114,5 +114,4 @@ public class TicketingService {
         }
 
     }
-
 }
