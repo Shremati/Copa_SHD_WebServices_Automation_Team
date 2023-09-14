@@ -20,13 +20,13 @@ public class Checkin
         createFolders(getResponseDirectory()+"Checkin");
     }
 
-    @Description(" Check-in 1 passenger, 1 Baggage")
+    @Description("CS_01 - Check-in 1 passenger, 1 Baggage")
     @Test
     public void Scenario1()
     {
         try
         {
-          checkin_one_pax_and_baggage.Execute();
+            checkin_one_pax_and_baggage.Execute();
 
         }catch(Exception e)
         {
@@ -35,7 +35,7 @@ public class Checkin
         }
     }
 
-    @Description("Error Change seat - Invalid seat (Negative Scenario)")
+    @Description("CS_34 - Error Change seat - Invalid seat (Negative Scenario)")
     @Test
     public void Scenario2()
     {
@@ -51,7 +51,7 @@ public class Checkin
     }
 
 
-    @Description("Hold seat from similar name list")
+    @Description("CS_36 - Hold seat from similar name list")
 
     @Test
     public void Scenario3()
@@ -65,7 +65,7 @@ public class Checkin
             System.out.println("SCENARIO 3 failed due to :"+e);
         }
     }
-    @Description("Check-in Non-Revenue passenger")
+    @Description("CS_17 - Check-in Non-Revenue passenger")
     @Test
     public void Scenario4()
     {
@@ -83,7 +83,7 @@ public class Checkin
     }
 
 
-    @Description("Error Check-in - Invalid passenger")
+    @Description("CS_20 - Error Check-in - Invalid passenger")
     @Test
     public void Scenario5()
     {
@@ -101,7 +101,7 @@ public class Checkin
     }
 
 
-    @Description("Check-in  a specific passenger in a group")
+    @Description("CS_21 - Check-in  a specific passenger in a group")
     @Test
     public void Scenario6()
     {
@@ -118,7 +118,7 @@ public class Checkin
 
     }
 
-    @Description("Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
+    @Description("CS_26 - Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
     @Test
     public void Scenario7()
     {
@@ -135,7 +135,7 @@ public class Checkin
 
     }
 
-    @Description("Checkin_Frequent Flyer")
+    @Description("CS_07 - Checkin_Frequent Flyer")
     @Test
     public void Scenario8()
     {
@@ -152,7 +152,7 @@ public class Checkin
 
     }
 
-    @Description("Check-in 3 passengers (under same surname) and specific seating option ")
+    @Description("CS_12 - Check-in 3 passengers (under same surname) and specific seating option ")
     @Test
     public void Scenario9()
     {
@@ -169,7 +169,7 @@ public class Checkin
 
     }
 
-    @Description("Cancel held seat")
+    @Description("CS_39 - Cancel held seat")
     @Test
     public void Scenario10()
     {
@@ -186,7 +186,7 @@ public class Checkin
 
     }
 
-    @Description("Basic seat change")
+    @Description("CS_31 - Basic seat change")
     @Test
     public void Scenario11()
     {
@@ -203,6 +203,21 @@ public class Checkin
 
     }
 
+    @Description("CS_18 - Checkin after add passenger message")
+    @Test
+    public void Scenario12()
+    {
 
+        try
+        {
+            Check_in_after_add_passenger_message.Execute();
+
+        }catch(Exception e)
+        {
+            failTest(e);
+            System.out.println("SCENARIO 12 failed due to :"+e);
+        }
+
+    }
 }
 
