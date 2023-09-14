@@ -8,18 +8,20 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_APIS extends FrameworkConstants {
+public class Add_APIS_bagtag_display_all extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -35,7 +37,6 @@ public class Display_APIS extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
@@ -49,19 +50,15 @@ public class Display_APIS extends FrameworkConstants {
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer.write(response.asPrettyString());
-        writer.close();
 
-//                ********* Clearing Temp_Request.xml *********
+//                     ********* Clearing Temp_Request.xml *********
 
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
 
-        excelwriter();
-
     }
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -71,47 +68,16 @@ public class Display_APIS extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
 
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Add_APIS_bagtag_display_all.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),filepath1);
-
-        wb.close();
-
-    }
-
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(2);
-
-
-        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
-        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
-
-        InputRow.getCell(11).setCellValue(AgencyName);
-        InputRow.getCell(12).setCellValue(AgencyName1);
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(9).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
 
     }
 

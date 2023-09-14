@@ -8,8 +8,8 @@
                 </air:POS>
                 <air:PassengerInfo RPH="1" ResBookDesigCode="Y">
                     <air1:PassengerName>
-                        <com:GivenName>EPIC</com:GivenName>
-                        <com:Surname>JOHN</com:Surname>
+                        <com:GivenName>TEST</com:GivenName>
+                        <com:Surname>ONE</com:Surname>
                     </air1:PassengerName>
 
                     <air1:BookingReferenceID Type="14" ID="BJJWKW"/>

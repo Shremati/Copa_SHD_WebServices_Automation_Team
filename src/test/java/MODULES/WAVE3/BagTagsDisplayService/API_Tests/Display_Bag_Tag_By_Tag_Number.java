@@ -28,20 +28,19 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-        Create_booking_service Prerequisite = new Create_booking_service();
+        Create_booking_bagtag_by_tag_number Prerequisite = new Create_booking_bagtag_by_tag_number();
         Prerequisite.run();
 
-        Issue_ticket Prerequisite1 = new Issue_ticket();
+        Issue_ticket_bagtag_by_tag_number Prerequisite1 = new Issue_ticket_bagtag_by_tag_number();
         Prerequisite1.run();
 
-        Display_APIS Prerequisite2 = new Display_APIS();
+        Display_APIS_bagtag_by_tag_number Prerequisite2 = new Display_APIS_bagtag_by_tag_number();
         Prerequisite2.run();
 
-        Add_APIS Prerequisite3 = new Add_APIS();
+        Add_APIS_bagtag_by_tag_number Prerequisite3 = new Add_APIS_bagtag_by_tag_number();
         Prerequisite3.run();
 
-        Checkin_and_baggage Prerequisite4 = new Checkin_and_baggage();
+        Checkin_and_baggage_bagtag_by_tag_number Prerequisite4 = new Checkin_and_baggage_bagtag_by_tag_number();
         Prerequisite4.run();
 
 
@@ -96,16 +95,13 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
 
 
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("bag1:FlightLegInfo", "ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(13).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("bag1:FlightLegInfo", "ArrivalDateTime", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "RPH", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath());
 
-
         wb.close();
     }
-
-
 
 }

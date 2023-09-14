@@ -48,13 +48,18 @@ public class Add_APIS extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+
+
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
-
 
     }
 
@@ -67,19 +72,18 @@ public class Add_APIS extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
 
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Add_APIS.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(9).getStringCellValue(),filepath1);
+
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 
     }
-
-
 
 }

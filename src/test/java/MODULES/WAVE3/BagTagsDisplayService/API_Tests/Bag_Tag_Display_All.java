@@ -31,19 +31,19 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Create_booking_service Prerequisite = new Create_booking_service();
+        Create_booking_bagtag_display_all Prerequisite = new Create_booking_bagtag_display_all();
         Prerequisite.run();
 
-        Issue_ticket Prerequisite1 = new Issue_ticket();
+        Issue_ticket_bagtag_display_all Prerequisite1 = new Issue_ticket_bagtag_display_all();
         Prerequisite1.run();
 
-        Display_APIS Prerequisite2 = new Display_APIS();
+        Display_APIS_bagtag_display_all Prerequisite2 = new Display_APIS_bagtag_display_all();
         Prerequisite2.run();
 
-        Add_APIS Prerequisite3 = new Add_APIS();
+        Add_APIS_bagtag_display_all Prerequisite3 = new Add_APIS_bagtag_display_all();
         Prerequisite3.run();
 
-        Checkin_and_baggage Prerequisite4 = new Checkin_and_baggage();
+        Checkin_and_baggage_bagtag_display_all Prerequisite4 = new Checkin_and_baggage_bagtag_display_all();
         Prerequisite4.run();
 
 
@@ -101,10 +101,7 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
-
         wb.close();
     }
-
-
 
 }

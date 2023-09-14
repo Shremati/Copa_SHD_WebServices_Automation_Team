@@ -65,9 +65,7 @@ public class Create_booking_service extends FrameworkConstants {
 
         excelwriter();
 
-
     }
-
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
@@ -78,7 +76,7 @@ public class Create_booking_service extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
 
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Create_booking_service.xml";
@@ -102,7 +100,7 @@ public class Create_booking_service extends FrameworkConstants {
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(2);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
@@ -128,7 +126,5 @@ public class Create_booking_service extends FrameworkConstants {
         writer.close();
 
     }
-
-
 
 }

@@ -2,7 +2,6 @@ package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -10,18 +9,20 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Checkin_and_baggage extends FrameworkConstants {
+public class Checkin_and_baggage_bagtag_display_all extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -50,15 +51,9 @@ public class Checkin_and_baggage extends FrameworkConstants {
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
-
 
 //                ********* Clearing Temp_Request.xml *********
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
 
@@ -73,10 +68,11 @@ public class Checkin_and_baggage extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Checkin_and_baggage.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Checkin_and_baggage_bagtag_display_all.xml";
+
 
 
         XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);

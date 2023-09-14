@@ -28,6 +28,8 @@ public class BagTagDisplayService {
         }
     }
 
+
+    //Expected response: "No bagtags found"
     @Description("Bag Tag Display OA")
     @Test
     public void Scenario2() {
@@ -52,6 +54,7 @@ public class BagTagDisplayService {
         }
     }
 
+    //Need to update
     @Description("Bag Tag Display by Tag Number OA")
     @Test
     public void Scenario4() {
@@ -65,6 +68,5 @@ public class BagTagDisplayService {
         }
 
     }
-
 
 }

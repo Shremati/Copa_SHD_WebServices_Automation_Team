@@ -103,12 +103,7 @@ public class Bag_Tag_Display_by_Tag_Number_OA extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath());
 
-
-
         wb.close();
     }
-
-
-
 
 }

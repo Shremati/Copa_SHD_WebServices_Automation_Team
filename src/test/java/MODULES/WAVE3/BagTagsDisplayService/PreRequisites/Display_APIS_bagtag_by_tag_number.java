@@ -8,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_APIS extends FrameworkConstants {
+public class Display_APIS_bagtag_by_tag_number extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -71,10 +70,10 @@ public class Display_APIS extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
 
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS_bagtag_by_tag_number.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),filepath1);
 
@@ -92,7 +91,7 @@ public class Display_APIS extends FrameworkConstants {
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -8,7 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,12 +19,13 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_APIS extends FrameworkConstants {
+public class Create_booking_bagtag_by_tag_number extends FrameworkConstants {
 
     public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
 
         UpdatePayload();
 
@@ -42,11 +43,12 @@ public class Display_APIS extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getAdvancepassengerinfo())
+                .post(getCreatebookingservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -59,9 +61,11 @@ public class Display_APIS extends FrameworkConstants {
         writer.write("");
         writer.close();
 
+
         excelwriter();
 
     }
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -71,15 +75,18 @@ public class Display_APIS extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
 
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Create_booking_bagtag_by_tag_number.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
-
     }
 
 
@@ -92,14 +99,21 @@ public class Display_APIS extends FrameworkConstants {
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
 
-        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
-        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
+        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+        String ArrivalDateTime = XMLParser.GetAttributeValue("ns3:FlightSegment", "ArrivalDateTime", getTemp_responsePath());
 
-        InputRow.getCell(11).setCellValue(AgencyName);
-        InputRow.getCell(12).setCellValue(AgencyName1);
+
+
+        InputRow.getCell(9).setCellValue(PNR);
+        InputRow.getCell(7).setCellValue(Givenname);
+        InputRow.getCell(8).setCellValue(Surname);
+        InputRow.getCell(13).setCellValue(ArrivalDateTime);
+
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

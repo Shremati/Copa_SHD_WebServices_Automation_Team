@@ -56,9 +56,6 @@ public class Issue_ticket extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
-
-
     }
 
 
@@ -70,7 +67,7 @@ public class Issue_ticket extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("BagTags");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFRow InputRow=sheet.getRow(2);
 
 
         String filepath1;
@@ -82,6 +79,5 @@ public class Issue_ticket extends FrameworkConstants {
         wb.close();
 
     }
-
 
 }

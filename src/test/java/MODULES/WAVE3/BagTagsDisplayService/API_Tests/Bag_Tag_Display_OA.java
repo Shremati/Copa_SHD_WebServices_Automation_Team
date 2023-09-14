@@ -25,7 +25,6 @@ public class Bag_Tag_Display_OA extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -102,8 +101,6 @@ public class Bag_Tag_Display_OA extends FrameworkConstants {
 
         wb.close();
     }
-
-
 
 }
 
