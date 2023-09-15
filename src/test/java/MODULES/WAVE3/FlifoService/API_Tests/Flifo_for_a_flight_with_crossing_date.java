@@ -8,7 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,7 +47,7 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
         writer.close();
 
 
-//We need to give the same flight, which is used in update.xml
+   //We need to give the same flight, which is used in UpdatePayload_1() request
 
         UpdatePayload_2();
 
@@ -69,7 +69,7 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .log().all().extract().response();
 
 
-        writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlifoService\\Flifo_for_codeshare_flight.xml"));
+        writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -81,6 +81,24 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
 
     }
 
+    public static void UpdatePayload_1() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Reading Testdata from Excel ************
+
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+        XSSFRow InputRow = sheet.getRow(4);
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date_update.xml";
+
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
+        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
+
+
+        wb.close();
+    }
 
     public static void UpdatePayload_2() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
@@ -103,22 +121,5 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
 
     }
 
-    public static void UpdatePayload_1() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
-        //        ********** Reading Testdata from Excel ************
-
-        FileInputStream fis = new FileInputStream(new File(getTestData()));
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("FlifoService");
-        XSSFRow InputRow = sheet.getRow(4);
-
-        String filepath1;
-        filepath1 = getRequestDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date_update.xml";
-
-        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
-        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
-
-
-        wb.close();
-    }
 }

@@ -9,7 +9,7 @@ import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ti
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

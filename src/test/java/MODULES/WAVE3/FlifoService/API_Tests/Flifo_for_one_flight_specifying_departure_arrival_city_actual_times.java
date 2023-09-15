@@ -5,7 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Flifo_for_one_flight_specifying_departure_arrival_city_actual_times extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException

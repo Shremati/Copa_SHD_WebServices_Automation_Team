@@ -97,7 +97,7 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         String TicketNumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(), 0);
         InputRow.getCell(28).setCellValue(TicketNumber);
 
-        String TicketNumber1 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),9);
+        String TicketNumber1 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),4);
         InputRow.getCell(33).setCellValue(TicketNumber1);
 
 
