@@ -28,6 +28,7 @@
                     <air1:BookingReferenceID Type="14" ID="A0LILG"/>
                 </air:PassengerInfo>
                 <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1"/>
+<!-- Partially given API data  -->
                 <air:PassengerFlightInfo PassengerRPH="2" FlightRPH="1">
                     <air1:BookingInfo ResBookDesigCode="Y"/>
                     <air1:AgencyRequirements AgencyName="MXOU" DocLevelInd="1">

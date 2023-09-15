@@ -4,7 +4,7 @@ import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

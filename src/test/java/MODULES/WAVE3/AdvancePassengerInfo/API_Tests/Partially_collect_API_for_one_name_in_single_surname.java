@@ -2,6 +2,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_partially_collect_API_for_one_name_in_single_surname;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Partially_Collect_API;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,8 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
+import org.testng.Assert;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -30,6 +31,8 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
         Create_booking_partially_collect_API_for_one_name_in_single_surname Prerequisite1 = new Create_booking_partially_collect_API_for_one_name_in_single_surname();
         Prerequisite1.run();
 
+        Display_API_Partially_Collect_API Prerequisite2 = new Display_API_Partially_Collect_API();
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -51,7 +54,7 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE")); //Partially Completed APIS for 2nd Pax only
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Partially_collect_API_for_one_name_in_single_surname.xml"));
         writer.write(response.asPrettyString());

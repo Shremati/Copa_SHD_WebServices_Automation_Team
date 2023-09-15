@@ -6,7 +6,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_A
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Collect_API_for_a_single_pax;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

@@ -4,11 +4,12 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +47,8 @@ public class Display_API_Update_Delete_api_data_2 extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-//        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -71,11 +73,10 @@ public class Display_API_Update_Delete_api_data_2 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Collect_API_for_a_single_pax.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Update_Delete_api_data.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("com:GivenName", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
-        XMLParser.SetTagtext("com:Surname", InputRow.getCell(9).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 

@@ -71,11 +71,10 @@ public class Display_API_Update_Delete_api_data_1 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Collect_API_for_a_single_pax.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Update_Delete_api_data.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("com:GivenName", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
-        XMLParser.SetTagtext("com:Surname", InputRow.getCell(9).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 

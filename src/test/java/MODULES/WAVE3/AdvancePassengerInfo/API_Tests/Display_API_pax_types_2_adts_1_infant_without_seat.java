@@ -5,7 +5,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_pax_types
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -24,7 +24,6 @@ import static io.restassured.RestAssured.given;
 public class Display_API_pax_types_2_adts_1_infant_without_seat extends FrameworkConstants {
 
     public static String SOAPRequest;
-
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {

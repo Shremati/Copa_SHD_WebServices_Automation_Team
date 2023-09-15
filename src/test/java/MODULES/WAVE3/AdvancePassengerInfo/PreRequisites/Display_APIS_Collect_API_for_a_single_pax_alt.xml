@@ -11,7 +11,6 @@
                         <com:GivenName>ALEX</com:GivenName>
                         <com:Surname>ROIVAS</com:Surname>
                     </air1:PassengerName>
-
                     <air1:BookingReferenceID Type="14" ID="BJJWKW"/>
                 </air:PassengerInfo>
             </air:EDS_AirAPIReadRQ>

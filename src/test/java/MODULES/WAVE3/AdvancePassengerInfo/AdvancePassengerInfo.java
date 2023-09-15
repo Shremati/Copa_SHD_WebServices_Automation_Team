@@ -14,9 +14,7 @@ public class AdvancePassengerInfo {
         createFolders(getResponseDirectory() + "AdvancePassengerInfo");
     }
 
-//    Choose and APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight
-//    Government Agencies - For markets such as LAX , we take USIN, For markets such as MEX , we take MXIN , otherwise it give :INVALID GOVERNMENT AGENCY" error
-//    If you change markets to PTY-LAX or PTY-MEX, please make the above changes in datasheet
+//    Choose an APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight but not always , only on some days. So try changing dates
 
     @Description("APIS_01 - Display API requirements for a single passenger in booking.")
     @Test
@@ -68,14 +66,13 @@ public class AdvancePassengerInfo {
         }
     }
 
-    //need to change
+
     @Description("APIS_20 - ModifyAPI Update and Delete API data")
     @Test
     public void APIS_20() {
         try {
 
             Modify_API_for_deleting_API_data.Execute();
-//AgencyNames given manually in datasheet
 
         } catch (Exception e) {
             failTest(e);
