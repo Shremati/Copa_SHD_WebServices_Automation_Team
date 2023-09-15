@@ -5,6 +5,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -30,10 +31,14 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
         Create_booking_for_2pax_in_different_bookings_1 Prerequisite1 = new Create_booking_for_2pax_in_different_bookings_1();
         Prerequisite1.run(); //1st PNR getting stored in column 7
 
+        Display_API_Collect_API_2pax_diff_bookings_1 Prerequisite2 = new Display_API_Collect_API_2pax_diff_bookings_1();
+        Prerequisite2.run();
 
-        Create_booking_for_2pax_in_different_bookings_2 Prerequisite2 = new Create_booking_for_2pax_in_different_bookings_2();
-        Prerequisite2.run(); //2nd PNR getting stored in column 14
+        Create_booking_for_2pax_in_different_bookings_2 Prerequisite3 = new Create_booking_for_2pax_in_different_bookings_2();
+        Prerequisite3.run(); //2nd PNR getting stored in column 14
 
+        Display_API_Collect_API_2pax_diff_bookings_2 Prerequisite4  = new Display_API_Collect_API_2pax_diff_bookings_2();
+        Prerequisite4.run();
 
         UpdatePayload();
 
@@ -56,6 +61,8 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_2pax_in_different_bookings.xml"));
         writer.write(response.asPrettyString());
@@ -89,6 +96,10 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
 
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
+
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(28).getStringCellValue(),getTemp_requestPath(),3);
+
 
         wb.close();
 

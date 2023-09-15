@@ -8,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,22 +18,19 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkConstants {
+public class Display_API_Collect_API_2pax_diff_bookings_2 extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
 
 
         Response response = given()
@@ -60,7 +56,7 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
         writer.write("");
         writer.close();
 
-
+        excelwriter();
     }
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
@@ -71,12 +67,14 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
 
-        XSSFRow InputRow=sheet.getRow(7);
+        XSSFRow InputRow=sheet.getRow(9);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_APIS_Collect_API_for_a_single_pax_alt.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Collect_API_2pax_diff_bookings.xml";
 
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(14).getStringCellValue(),filepath1);
+        XMLParser.SetTagtext("com:GivenName", InputRow.getCell(10).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtext("com:Surname", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
 
         wb.close();
 
@@ -91,16 +89,16 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
-        XSSFRow InputRow=sheet.getRow(7);
+        XSSFRow InputRow=sheet.getRow(9);
 
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
         String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
 
 
-        InputRow.getCell(15).setCellValue(AgencyName);
-        InputRow.getCell(16).setCellValue(AgencyName1);
 
+        InputRow.getCell(27).setCellValue(AgencyName);
+        InputRow.getCell(28).setCellValue(AgencyName1);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -109,12 +107,10 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
         wb.close();
 
 //          ********* Clearing Temp_Response.xml *********
-
         BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
         writer.write("");
         writer.close();
 
     }
-
 
 }

@@ -5,6 +5,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_error_not
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -52,7 +53,7 @@ public class Display_API_error_not_API_flight extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("NOT APIS FLIGHT"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_error_not_API_flight.xml"));
         writer.write(response.asPrettyString());

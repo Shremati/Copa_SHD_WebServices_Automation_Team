@@ -6,6 +6,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_A
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Collect_API_for_a_single_pax;
 import frameworkconstants.FrameworkConstants;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -43,7 +44,8 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
 
 
         Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
-        
+
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_Single_passenger.xml"));
         writer.write(response.asPrettyString());

@@ -7,6 +7,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_delete_API_da
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -59,6 +60,7 @@ public class Delete_API_data_Address extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Delete_API_data_Address.xml"));
         writer.write(response.asPrettyString());

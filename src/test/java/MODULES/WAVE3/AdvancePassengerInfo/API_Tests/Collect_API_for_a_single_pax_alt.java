@@ -7,6 +7,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_APIS_Collect_API
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -31,9 +32,6 @@ public class Collect_API_for_a_single_pax_alt extends FrameworkConstants {
         Create_booking_collect_API_for_a_single_pax_alt Prerequisite1 = new Create_booking_collect_API_for_a_single_pax_alt();
         Prerequisite1.run();
 
-        Add_APIS_Collect_API_for_a_single_pax_alt Prerequisite2 = new Add_APIS_Collect_API_for_a_single_pax_alt();
-        Prerequisite2.run();
-
         Display_APIS_Collect_API_for_a_single_pax_alt Prerequisite3 = new Display_APIS_Collect_API_for_a_single_pax_alt();
         Prerequisite3.run();
 
@@ -57,7 +55,7 @@ public class Collect_API_for_a_single_pax_alt extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_single_pax_alt.xml"));
         writer.write(response.asPrettyString());

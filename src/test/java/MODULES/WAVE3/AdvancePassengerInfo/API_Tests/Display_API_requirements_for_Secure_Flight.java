@@ -5,6 +5,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_Display_A
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -52,6 +53,7 @@ public class Display_API_requirements_for_Secure_Flight extends FrameworkConstan
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_requirements_for_Secure_Flight.xml"));
         writer.write(response.asPrettyString());

@@ -7,6 +7,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_APIS_Collect_API
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -32,10 +33,10 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
         Prerequisite1.run();
 
         Display_APIS_Collect_API_1adult_and_1infant_without_seats Prerequisite2 = new Display_APIS_Collect_API_1adult_and_1infant_without_seats();
-        Prerequisite2.run(); //Here AgencyNames are taken from DisplayAPIS response
+        Prerequisite2.run();
 
         Add_APIS_Collect_API_1adult_and_1infant_without_seats Prerequisite3 = new Add_APIS_Collect_API_1adult_and_1infant_without_seats();
-        Prerequisite3.run();
+        Prerequisite3.run(); //Here AgencyNames are taken from DisplayAPIS response
 
         UpdatePayload();
 
@@ -57,7 +58,8 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_1adult_and_1infant_without_seats.xml"));
         writer.write(response.asPrettyString());

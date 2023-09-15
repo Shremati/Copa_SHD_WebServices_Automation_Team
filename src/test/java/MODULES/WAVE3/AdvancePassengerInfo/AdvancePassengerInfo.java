@@ -60,7 +60,7 @@ public class AdvancePassengerInfo {
         try {
 
             Collect_API_for_a_Single_passenger.Execute();
-//AgencyNames given manually in datasheet
+
 
         } catch (Exception e) {
             failTest(e);
@@ -68,6 +68,7 @@ public class AdvancePassengerInfo {
         }
     }
 
+    //need to change
     @Description("APIS_20 - ModifyAPI Update and Delete API data")
     @Test
     public void APIS_20() {
@@ -101,7 +102,7 @@ public class AdvancePassengerInfo {
         try {
 
             Collect_API_for_a_single_pax_alt.Execute();
-//AgencyNames given manually in datasheet
+//AgencyNames taken from DisplayAPIS response
 
         } catch (Exception e) {
             failTest(e);
@@ -122,6 +123,7 @@ public class AdvancePassengerInfo {
         }
     }
 
+
     @Description("APIS_16 - Collect API for 2pax in different bookings")
     @Test
     public void APIS_16() {
@@ -129,6 +131,7 @@ public class AdvancePassengerInfo {
 
             Collect_API_for_2pax_in_different_bookings.Execute();
 
+          //AgencyNames taken from both DisplayAPIS responses
         } catch (Exception e) {
             failTest(e);
             System.out.println("APIS_16 failed due to :" + e);
