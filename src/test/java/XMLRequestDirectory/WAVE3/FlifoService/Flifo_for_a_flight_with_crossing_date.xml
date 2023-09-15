@@ -1,13 +1,33 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/" xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:flif="http://www.eds.com/AirlineSOASchema/Flifo/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirFlifoRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+
     <soapenv:Header/>
+
     <soapenv:Body>
-        <scr:sendEntry>
-            <scr1:OTA_ScreenTextRQ Version="3.000" MessageFunction="">
-                <scr1:POS>
+
+        <flif:getFlifo>
+
+            <air:OTA_AirFlifoRQ EchoToken="Test_01" TimeStamp="2023-09-06T06:44:07" Version="4.00">
+
+                <air:POS>
+
                     <com:Source AirlineVendorID="CM"/>
-                </scr1:POS>
-                <scr1:ScreenEntry>2P432/10AUG OUT PTY 1205A</scr1:ScreenEntry>
-            </scr1:OTA_ScreenTextRQ>
-        </scr:sendEntry>
+
+                </air:POS>
+
+                <air:FlightSegment UTC_PreferenceInd="false">
+
+                    <air:Airline Code="CM"/>
+
+                    <air:FlightNumber>391</air:FlightNumber>
+
+                    <air:DepartureDate>2023-09-17</air:DepartureDate>
+
+                </air:FlightSegment>
+
+            </air:OTA_AirFlifoRQ>
+
+        </flif:getFlifo>
+
     </soapenv:Body>
+
 </soapenv:Envelope>

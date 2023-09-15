@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -45,7 +46,8 @@ public class Host_airline_one_leg_flight extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:FlightDetails>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Host_airline_one_leg_flight.xml"));
         writer.write(response.asPrettyString());

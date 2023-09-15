@@ -4,10 +4,10 @@
         <enc:encodeDecode>
             <con:EDS_ConversionRQ Version="4.000">
                 <con:POS>
-                    <com:Source AirlineVendorID="CM"/>
+                    <com:Source AgentSine="0009MM" AirlineVendorID="CM" AirportCode="WEB"/>
                 </con:POS>
                 <con:Conversion>
-                    <con:CityAirportConversion>lax</con:CityAirportConversion>
+                    <con:CityAirportConversion>LAX</con:CityAirportConversion>
                 </con:Conversion>
             </con:EDS_ConversionRQ>
         </enc:encodeDecode>

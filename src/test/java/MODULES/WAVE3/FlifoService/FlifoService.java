@@ -8,6 +8,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//6 Scenarios
 public class FlifoService {
 
     FlifoService() {
@@ -16,77 +17,79 @@ public class FlifoService {
 
     @Description("FS_03 - Flifo_for_one_flight_specifying_departure_arrival_city_actual_times")
     @Test
-    public void Scenario1() {
+    public void FS_03() {
 
         try {
             Flifo_for_one_flight_specifying_departure_arrival_city_actual_times.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("FS_03 failed due to :" + e);
         }
     }
 
     @Description("FS_06 - Flifo_for_Two_flights")
     @Test
-    public void Scenario2() {
+    public void FS_06() {
 
         try {
             Flifo_for_Two_flights.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("FS_06 failed due to :" + e);
         }
     }
 
     @Description("FS_15 - Flifo_for_codeshare_flight")
     @Test
-    public void Scenario3() {
+    public void FS_15() {
 
         try {
             Flifo_for_codeshare_flight.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("FS_15 failed due to :" + e);
         }
     }
     @Description("FS_23 - Flifo_for_a_flight_with_crossing_date")
     @Test
-    public void Scenario4() {
+    public void FS_23() {
 
         try {
             Flifo_for_a_flight_with_crossing_date.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :" + e);
+            System.out.println("FS_23 failed due to :" + e);
         }
     }
 
     @Description("FS_26 - FLIFO_History_for_host_airline")
     @Test
-    public void Scenario5() {
+    //Requires shares to run a command, 2P365/05SEP ETD CTG 1120A DELAY, in order to generate history details
+    public void FS_26() {
 
         try {
             FLIFO_History_for_host_airline.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 5 failed due to :" + e);
+            System.out.println("FS_26 failed due to :" + e);
         }
     }
     @Description("FS_27 - FLIFO_History_for_codeshare_airline")
     @Test
-    public void Scenario6() {
+    //Requires shares to run a command, 2P365/05SEP ETD CTG 1120A DELAY, in order to generate history details
+    public void FS_27() {
 
         try {
             FLIFO_History_for_codeshare_airline.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 6 failed due to :" + e);
+            System.out.println("FS_27 failed due to :" + e);
         }
     }
 }

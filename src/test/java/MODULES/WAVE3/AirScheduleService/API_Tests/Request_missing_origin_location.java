@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -48,6 +49,8 @@ public class Request_missing_origin_location extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
+        Assert.assertTrue(response.getBody().asString().contains("No Departure Airport Specified"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Request_missing_origin_location.xml"));
         writer.write(response.asPrettyString());

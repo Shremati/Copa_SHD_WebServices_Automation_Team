@@ -5,6 +5,7 @@ import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -46,6 +47,9 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("UNITED AIRLINES INC"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_multiple_mixed_messages_of_city_airport_airline_country_flight.xml"));

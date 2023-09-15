@@ -3,9 +3,13 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Update_and_Delete_API_data;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Update_Delete_api_data_1;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Update_Delete_api_data_2;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_for_updating_API_data;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -29,10 +33,15 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         Create_Booking_Update_and_Delete_API_data Prerequisite1 = new Create_Booking_Update_and_Delete_API_data();
         Prerequisite1.run();
 
-        Modify_API_for_updating_API_data Prerequisite2 = new Modify_API_for_updating_API_data();
-        Prerequisite2.run();
+        Display_API_Update_Delete_api_data_1 Prerequisite2 = new Display_API_Update_Delete_api_data_1();
+        Prerequisite2.run(); //APIS INCOMPLETE
 
-        UpdatePayload();
+        Modify_API_for_updating_API_data Prerequisite3 = new Modify_API_for_updating_API_data();
+        Prerequisite3.run(); //APIS COMPLETE
+
+        Prerequisite2.run();//For update response, 'APIS Complete' message should available in display response.
+
+        UpdatePayload(); //ModifyAPI request for deleting API
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -40,14 +49,27 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
-
-
+        Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
+                .body(SOAPRequest)
+                .when()
+                .post(getAdvancepassengerinfo())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Modify_API_for_deleting_API_data.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+
+        Display_API_Update_Delete_api_data_2 PostRequest = new Display_API_Update_Delete_api_data_2();
+        PostRequest.run();
+
+        //Assertion given inside PostRequest
 
 
 //                ********* Clearing Temp_Request.xml *********

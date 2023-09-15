@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -46,6 +47,9 @@ public class Request_with_vendor_preferences_shows_traffic_restrictions_as_comme
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+        Assert.assertTrue(response.getBody().asString().contains("ONLINE CONEX/STPVR TFC ONLY"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Request_with_vendor_preferences_shows_traffic_restrictions_as_comments.xml"));

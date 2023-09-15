@@ -4,6 +4,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -48,7 +49,8 @@ public class Invalid_Request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Invalid_Request.xml"));
         writer.write(response.asPrettyString());

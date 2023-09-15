@@ -9,47 +9,47 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-01T00:00:00" RPH="1" FlightNumber="243" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-09-11T00:00:00" RPH="1" FlightNumber="306" ResBookDesigCode="K" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-11T00:00:00" RPH="2" FlightNumber="415" ResBookDesigCode="K" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-02T00:00:00" RPH="2" FlightNumber="877" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-09-15T00:00:00" RPH="3" FlightNumber="495" ResBookDesigCode="K" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="BOG"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-02T00:00:00" RPH="3" FlightNumber="419" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="MIA"/>
-                                <air1:MarketingAirline Code="CM"/>
-                            </air1:FlightSegment>
-                        </air1:OriginDestinationOption>
-                        <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-03T00:00:00" RPH="4" FlightNumber="173" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="MIA"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
-                                <air1:MarketingAirline Code="CM"/>
-                            </air1:FlightSegment>
-                        </air1:OriginDestinationOption>
-                        <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-03-03T00:00:00" RPH="5" FlightNumber="302" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-09-15T00:00:00" RPH="4" FlightNumber="302" ResBookDesigCode="K" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="LAX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
-                        <!--<air1:OriginDestinationOption>
-                           <air1:FlightSegment DepartureDateTime="2013-05-09T00:00:00" RPH="6" FlightNumber="413" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                              <com:DepartureAirport LocationCode="DEN"/>
-                              <com:ArrivalAirport LocationCode="LAX"/>
-                              <air1:MarketingAirline Code="CM"/>
-                           </air1:FlightSegment>
-                        </air1:OriginDestinationOption>-->
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-20T00:00:00" RPH="5" FlightNumber="473" ResBookDesigCode="K" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-20T00:00:00" RPH="6" FlightNumber="779" ResBookDesigCode="K" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="SJO"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
                     </air1:OriginDestinationOptions>
                 </air:AirItinerary>
                 <air:PriceInfo>
@@ -57,7 +57,7 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode NotValidBefore="2023-02-10" NotValidAfter="2023-03-03">Y</air1:FareBasisCode>
+                                <air1:FareBasisCode NotValidBefore="2023-09-07" NotValidAfter="2023-12-30">K</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
@@ -95,7 +95,7 @@
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-02-28T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2023-09-07T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

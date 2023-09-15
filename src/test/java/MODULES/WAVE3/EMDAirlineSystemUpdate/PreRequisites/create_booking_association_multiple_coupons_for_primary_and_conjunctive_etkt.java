@@ -103,6 +103,18 @@ public class create_booking_association_multiple_coupons_for_primary_and_conjunc
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),3);
 
+        //5th Seg
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),4);
+
+
+        //6th Seg
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(32).getNumericCellValue()),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(29).getStringCellValue(),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(30).getStringCellValue(),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(31).getStringCellValue(),getTemp_requestPath(),5);
 
         wb.close();
     }

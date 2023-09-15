@@ -20,21 +20,44 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-
-        UpdatePayload();
-
-//    ******** Read the updated request and send it to fetch the response *********
+        UpdatePayload_1();
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getScreentextservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+
+//We need to give the same flight, which is used in update.xml
+
+        UpdatePayload_2();
+
+//    ******** Read the updated request and send it to fetch the response *********
+
+       fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
+        response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .body(SOAPRequest)
@@ -46,11 +69,9 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .log().all().extract().response();
 
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_for_codeshare_flight.xml"));
+        writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlifoService\\Flifo_for_codeshare_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -61,23 +82,43 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload_2() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("FlifoService");
-        XSSFRow InputRow=sheet.getRow(4); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow = sheet.getRow(4);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"FlifoService\\Flifo_for_a_flight_with_crossing_date.xml";
+        filepath1 = getRequestDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(2).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
+        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtext("air:DepartureDate",Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath());
 
 
         wb.close();
 
+    }
+
+    public static void UpdatePayload_1() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Reading Testdata from Excel ************
+
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+        XSSFRow InputRow = sheet.getRow(4);
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date_update.xml";
+
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
+        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
+
+
+        wb.close();
     }
 }

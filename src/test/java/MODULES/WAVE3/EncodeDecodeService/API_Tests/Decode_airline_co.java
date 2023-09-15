@@ -5,6 +5,7 @@ import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -50,6 +51,8 @@ public class Decode_airline_co extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("COBALTAIR LTD"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_airline_co.xml"));
@@ -81,7 +84,7 @@ public class Decode_airline_co extends FrameworkConstants
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Decode_airline_co.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtext("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),filepath1);
 
         wb.close();
 

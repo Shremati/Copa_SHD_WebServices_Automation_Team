@@ -3,7 +3,9 @@ package MODULES.WAVE3.FlifoService.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -20,8 +22,9 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class FLIFO_History_for_host_airline extends FrameworkConstants {
+
     public static String SOAPRequest;
-@Test
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -37,6 +40,7 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())
@@ -45,7 +49,8 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\FLIFO_History_for_host_airline.xml"));
         writer.write(response.asPrettyString());
@@ -69,14 +74,14 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("FlifoService");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=getRequestDirectory()+"FlifoService\\FLIFO_History_for_hosts_airline.xml";
 
         XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
-
-
+        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath());
 
         wb.close();
 

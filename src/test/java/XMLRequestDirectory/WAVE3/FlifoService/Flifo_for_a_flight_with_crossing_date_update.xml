@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scr="http://www.eds.com/AirlineSOASchema/ScreenText/" xmlns:scr1="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <scr:sendEntry>
+            <scr1:OTA_ScreenTextRQ EchoToken="UpdateFlifo" Version="4.0" MessageFunction="">
+                <!--Optional:-->
+                <scr1:POS>
+                    <!--com:Source AirlineVendorID="Z2"/-->
+                    <com:Source AgentSine="0005MB" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="CRC"/>
+                </scr1:POS>
+                <scr1:ScreenEntry>2S391/17SEPLAS-O/700A/750APTY</scr1:ScreenEntry>
+            </scr1:OTA_ScreenTextRQ>
+        </scr:sendEntry>
+    </soapenv:Body>
+</soapenv:Envelope>

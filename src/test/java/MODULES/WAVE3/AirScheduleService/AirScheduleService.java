@@ -8,6 +8,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//14 Scenarios
 public class AirScheduleService {
 
     AirScheduleService() {
@@ -16,98 +17,98 @@ public class AirScheduleService {
 
     @Description("AS_01 - One request with vendor preferences")
     @Test
-    public void Scenario1() {
+    public void AS_01() {
 
         try {
             One_request_with_vendor_preferences.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("AS_01 failed due to :" + e);
         }
     }
 
     @Description("AS_02 - Get Schedule Display - One request")
     @Test
-    public void Scenario2() {
+    public void AS_02() {
 
         try {
             One_request.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("AS_02 failed due to :" + e);
         }
     }
 
     @Description("AS_08 - Request with departure time that will return date change flights")
     @Test
-    public void Scenario3() {
+    public void AS_08() {
 
         try {
             Request_with_departure_time_that_will_return_date_change_flights.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("AS_08 failed due to :" + e);
         }
     }
 
     @Description("AS_09 - Get Direct Service Display - Error showing unimplemented method")
     @Test
-    public void Scenario4() {
+    public void AS_09() {
 
         try {
             Get_Direct_Service_Display_Error_showing_unimplemented_method.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :" + e);
+            System.out.println("AS_09 failed due to :" + e);
         }
     }
 
     @Description("AS_10 - Get Flight Details - Error showing unimplemented method")
     @Test
-    public void Scenario5() {
+    public void AS_10() {
 
         try {
             Get_Flight_Details_Error_showing_unimplemented_method.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 5 failed due to :" + e);
+            System.out.println("AS_10 failed due to :" + e);
         }
     }
 
     @Description("AS_12 - Host airline, 2 leg flight")
     @Test
-    public void Scenario6() {
+    public void AS_12() {
 
         try {
             Host_airline_2_leg_flight.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 6 failed due to :" + e);
+            System.out.println("AS_12 failed due to :" + e);
         }
     }
 
     @Description("AS_11 - Host airline, one leg flight")
     @Test
-    public void Scenario7() {
+    public void AS_11() {
 
         try {
             Host_airline_one_leg_flight.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 7 failed due to :" + e);
+            System.out.println("AS_11 failed due to :" + e);
         }
     }
 
     @Description("AS_14 - Multiple requests, mixed host and other airline")
     @Test
-    public void Scenario8() {
+    public void AS_14() {
 
         try {
             Multiple_requests_mixed_host_and_other_airline.Execute();
@@ -115,13 +116,13 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 8 failed due to :" + e);
+            System.out.println("AS_14 failed due to :" + e);
         }
     }
 
     @Description("AS_03 - One request  with 7 vendor preferences")
     @Test
-    public void Scenario9() {
+    public void AS_03() {
 
         try {
 
@@ -129,14 +130,14 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 9 failed due to :" + e);
+            System.out.println("AS_03 failed due to :" + e);
         }
     }
 
 
     @Description("AS_13 - Other airline flight")
     @Test
-    public void Scenario10() {
+    public void AS_13() {
 
         try {
 
@@ -144,13 +145,13 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 10 failed due to :" + e);
+            System.out.println("AS_13 failed due to :" + e);
         }
     }
 
     @Description("AS_04 - Request missing departure date")
     @Test
-    public void Scenario11() {
+    public void AS_04() {
 
         try {
 
@@ -158,14 +159,14 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 11 failed due to :" + e);
+            System.out.println("AS_04 failed due to :" + e);
         }
     }
 
 
     @Description("AS_06 - Request missing destination location and departure date")
     @Test
-    public void Scenario12() {
+    public void AS_06() {
 
         try {
 
@@ -173,13 +174,13 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 12 failed due to :" + e);
+            System.out.println("AS_06 failed due to :" + e);
         }
     }
 
     @Description("AS_05 - Request missing origin location")
     @Test
-    public void Scenario13() {
+    public void AS_05() {
 
         try {
 
@@ -187,13 +188,13 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 13 failed due to :" + e);
+            System.out.println("AS_05 failed due to :" + e);
         }
     }
 
     @Description("AS_07 - Request with vendor preferences shows traffic restrictions as comments")
     @Test
-    public void Scenario14() {
+    public void AS_07() {
 
         try {
 
@@ -201,7 +202,7 @@ public class AirScheduleService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 14 failed due to :" + e);
+            System.out.println("AS_07 failed due to :" + e);
         }
     }
 }

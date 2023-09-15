@@ -6,6 +6,7 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -59,6 +60,11 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        if(response.getBody().asString().contains("<ns4:Warnings>")){
+            Assert.fail();
+        }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EMDAirlineSystemUpdate\\Disassociation_emd_coupon_1_with_etkt_coupon_1.xml"));
         writer.write(response.asPrettyString());

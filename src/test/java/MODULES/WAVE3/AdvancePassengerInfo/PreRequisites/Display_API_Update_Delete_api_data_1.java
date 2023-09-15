@@ -1,4 +1,4 @@
-package MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites;
+package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -18,19 +18,18 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt extends FrameworkConstants
-{
+public class Display_API_Update_Delete_api_data_1 extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
         UpdatePayload();
 
-//                       ********** Reading the xml request file **********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
@@ -40,11 +39,12 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getIssueticketservice())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -57,11 +57,8 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         writer.close();
 
 
-        excelwriter();
-
+       excelwriter();
     }
-
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -69,19 +66,20 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("EMDAirlineSystemUpdate");
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
 
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\EMDAirlineSystemUpdate\\PreRequisites\\issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Display_API_Collect_API_for_a_single_pax.xml";
 
-
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(22).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
+        XMLParser.SetTagtext("com:GivenName", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtext("com:Surname", InputRow.getCell(9).getStringCellValue(), getTemp_requestPath());
 
         wb.close();
-    }
 
+    }
 
     public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -91,15 +89,17 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("EMDAirlineSystemUpdate");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFRow InputRow=sheet.getRow(4);
 
-        String TicketNumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(), 0);
-        InputRow.getCell(28).setCellValue(TicketNumber);
 
-        String TicketNumber1 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),9);
-        InputRow.getCell(33).setCellValue(TicketNumber1);
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
+        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
 
+
+
+        InputRow.getCell(15).setCellValue(AgencyName);
+        InputRow.getCell(16).setCellValue(AgencyName1);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -108,10 +108,12 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         wb.close();
 
 //          ********* Clearing Temp_Response.xml *********
-
         BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
         writer.write("");
         writer.close();
 
     }
+
+
+
 }

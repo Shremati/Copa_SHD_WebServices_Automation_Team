@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -47,7 +48,9 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardPassenger_function_using_BoardingOption_as_Sequence.xml"));
         writer.write(response.asPrettyString());

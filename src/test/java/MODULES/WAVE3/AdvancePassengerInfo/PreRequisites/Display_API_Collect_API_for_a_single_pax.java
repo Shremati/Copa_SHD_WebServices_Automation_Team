@@ -59,6 +59,7 @@ public class Display_API_Collect_API_for_a_single_pax extends FrameworkConstants
         writer.close();
 
 
+        excelwriter();
 
     }
 
