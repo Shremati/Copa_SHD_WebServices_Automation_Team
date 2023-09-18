@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -46,6 +47,8 @@ public class MSM_02_Add_Seat extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns6:Success/>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifySeatMap\\MSM_02_Add_Seat.xml"));
         writer.write(response.asPrettyString());

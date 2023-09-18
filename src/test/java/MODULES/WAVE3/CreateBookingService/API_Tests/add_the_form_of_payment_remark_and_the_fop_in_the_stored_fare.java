@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,7 +48,10 @@ public class add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare exten
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>ADDING FOP RMK AND FOP TO THE STORED FARE</ns3:Remark>"));
+        Assert.assertFalse(response.getBody().asString().contains("Warning"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare.xml"));
         writer.write(response.asPrettyString());

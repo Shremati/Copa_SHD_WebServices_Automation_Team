@@ -1,18 +1,19 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
-    <soapenv:Header/>
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
+    <soapenv:Header />
     <soapenv:Body>
         <cre:createBooking>
             <air:OTA_AirBookRQ Version="4.000">
                 <air:POS>
-                    <com:Source AirlineVendorID="CM"/>
+                    <com:Source AirlineVendorID="CM" />
                 </air:POS>
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-01-22T00:54:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="LAX"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
-                                <air1:MarketingAirline Code="CM"/>
+                            <air1:FlightSegment DepartureDateTime="2023-09-17T11:25:23" FlightNumber="415" NumberInParty="2" RPH="1" ResBookDesigCode="Y" Status="11">
+                                <com:DepartureAirport LocationCode="PTY" />
+                                <com:ArrivalAirport LocationCode="BOG" />
+                                <air1:MarketingAirline Code="CM" />
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                     </air1:OriginDestinationOptions>
@@ -20,21 +21,21 @@
                 <air:PriceInfo>
                     <air1:PTC_FareBreakdowns>
                         <air1:PTC_FareBreakdown>
-                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2" />
                             <air1:FareBasisCodes>
                                 <air1:FareBasisCode>USD</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
-                                <air1:BaseFare Amount="1279.00" CurrencyCode="USD"/>
+                                <air1:BaseFare Amount="1279.00" CurrencyCode="USD" />
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AH" Amount="1.25"/>
-                                    <air1:Tax TaxCode="XT" Amount="31.20"/>
+                                    <air1:Tax Amount="1.25" TaxCode="AH" />
+                                    <air1:Tax Amount="31.20" TaxCode="XT" />
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
                                 <air1:Remark>MY REMARK</air1:Remark>
                             </air1:PassengerFare>
-                            <air1:TravelerRefNumber RPH="1"/>
-                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:TravelerRefNumber RPH="1" />
+                            <air1:TravelerRefNumber RPH="2" />
                             <air1:Endorsements>
                                 <air1:Endorsement>MY ENDORSEMENT</air1:Endorsement>
                             </air1:Endorsements>
@@ -47,15 +48,15 @@
                             <com:GivenName>BANU</com:GivenName>
                             <com:Surname>SONU</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="MY RMK"/>
-                        <air1:TravelerRefNumber RPH="1"/>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-1010" PhoneUseType="4" Remark="MY RMK" />
+                        <air1:TravelerRefNumber RPH="1" />
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
                             <com:GivenName>MANU</com:GivenName>
                             <com:Surname>ANU</com:Surname>
                         </air1:PersonName>
-                        <air1:TravelerRefNumber RPH="2"/>
+                        <air1:TravelerRefNumber RPH="2" />
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>
@@ -66,16 +67,16 @@
                 <air:Fulfillment>
                     <air1:PaymentDetails>
                         <air1:PaymentDetail Remark="RMK">
-                            <com:PaymentCard CardNumber="4444333322221111" ExpireDate="1212" ExtendPaymentIndicator="true"/>
-                            <com:PaymentAmount ApprovalCode="12345"/>
+                            <com:PaymentCard CardNumber="4444333322221111" ExpireDate="1212" ExtendPaymentIndicator="true" />
+                            <com:PaymentAmount ApprovalCode="12345" />
                         </air1:PaymentDetail>
                         <air1:PaymentDetail Remark="FQ">
-                            <com:PaymentCard CardNumber="4444333322229876" ExpireDate="1212" ExtendPaymentIndicator="true"/>
-                            <com:PaymentAmount ApprovalCode="54321"/>
+                            <com:PaymentCard CardNumber="4444333322221111" ExpireDate="1212" ExtendPaymentIndicator="true" />
+                            <com:PaymentAmount ApprovalCode="54321" />
                         </air1:PaymentDetail>
                     </air1:PaymentDetails>
                 </air:Fulfillment>
-                <air:Ticketing TicketingStatus="3"/>
+                <air:Ticketing TicketingStatus="3" />
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

@@ -8,6 +8,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//38 Scenarios
 public class CreateBookingService {
 
     CreateBookingService()
@@ -15,117 +16,117 @@ public class CreateBookingService {
         createFolders(getResponseDirectory()+"CreateBookingService");
     }
 
-    @Description(" Create a booking with 1 segment, 1 passenger, stored fare, 1 telephone and ticketing")
+    @Description("CBS_02 - Create a booking with 1 segment, 1 passenger, stored fare, 1 telephone and ticketing")
     @Test
-    public void Scenario1() {
+    public void CBS_02() {
 
         try {
             create_booking_1seg_1pax_stored_fare_1telephone_ticketing.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("CBS_02 failed due to :" + e);
         }
     }
 
-    @Description("Create a booking with 4 segments, 2 passengers (1 frequent flyer and 1 infant), stored fare, 1 telephone, 1 remark, 2 SSRs and ticketing.")
+    @Description("CBS_05 - Create a booking with 4 segments, 2 passengers (1 frequent flyer and 1 infant), stored fare, 1 telephone, 1 remark, 2 SSRs and ticketing.")
     @Test
-    public void Scenario2() {
+    public void CBS_05() {
 
         try {
             create_booking_four_seg_two_pax_two_SSR.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("CBS_05 failed due to :" + e);
         }
 
     }
 
-    @Description("Create a booking with 4 segments (HA), 2 passengers (1 frequent flyer and 1 infant), 1 email, stored fare, 1 OSI, 1 remark, Advance Seat Assignment and ticketing.")
+    @Description("CBS_06 - Create a booking with 4 segments (HA), 2 passengers (1 frequent flyer and 1 infant), 1 email, stored fare, 1 OSI, 1 remark, Advance Seat Assignment and ticketing.")
     @Test
-    public void Scenario3() {
+    public void CBS_06() {
 
         try {
             create_booking_four_seg_2_pax_one_remark_asa.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("CBS_06 failed due to :" + e);
         }
 
     }
 
-    @Description("Check for invalid Ticketing in request")
+    @Description("CBS_13 - Check for invalid Ticketing in request")
     @Test
-    public void Scenario4() {
+    public void CBS_13() {
 
         try {
             check_for_invalid_ticketing_in_request.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :" + e);
+            System.out.println("CBS_13 failed due to :" + e);
         }
     }
 
-    @Description("Check for invalid PriceInfo in request")
+    @Description("CBS_14 - Check for invalid PriceInfo in request")
     @Test
-    public void Scenario5() {
+    public void CBS_14() {
         try {
             check_for_invalid_priceinfo_in_request.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 5 failed due to :" + e);
+            System.out.println("CBS_14 failed due to :" + e);
         }
 
     }
 
-    @Description("Add a default time limit when no data is specified in Ticketing")
+    @Description("CBS_19 - Add a default time limit when no data is specified in Ticketing")
     @Test
-    public void Scenario6() {
+    public void CBS_19() {
 
         try {
             add_a_default_time_limit_when_no_data_is_specified_in_ticketing.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 6 failed due to :" + e);
+            System.out.println("CBS_19 failed due to :" + e);
         }
 
     }
 
-    @Description("Create a booking with 1 segment, 1 passenger, stored fare (1 fare basis code, base fare, not valid before/after date, fare calculation line, bagagge allowance, sale location, 1 free-flow remark, tour code and form of payment CASH) and time limit")
+    @Description("CBS_23 - Create a booking with 1 segment, 1 passenger, stored fare (1 fare basis code, base fare, not valid before/after date, fare calculation line, bagagge allowance, sale location, 1 free-flow remark, tour code and form of payment CASH) and time limit")
     @Test
-    public void Scenario7() {
+    public void CBS_23() {
         try {
             create_booking_1seg_1pax_stored_fare_time_limit.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 7 failed due to :" + e);
+            System.out.println("CBS_23 failed due to :" + e);
         }
 
     }
 
-    @Description("Create a booking with 2 segments, 2 passengers, stored fare (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 3 free-flow remark, tour code, 2 endorsements, last ticketing date, bankers rate and form of payment CHECK) and ticketing")
+    @Description("CBS_25 - Create a booking with 2 segments, 2 passengers, stored fare (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 3 free-flow remark, tour code, 2 endorsements, last ticketing date, bankers rate and form of payment CHECK) and ticketing")
     @Test
-    public void Scenario8() {
+    public void CBS_25() {
 
         try {
             create_booking_2seg_2pax_stored_fare.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 8failed due to :" + e);
+            System.out.println("CBS_25 failed due to :" + e);
         }
 
     }
 
-    @Description("Create a booking with 2 segments, 2 passengers, stored fare per passenger (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 1 free-flow remark, tour code, 2 endorsements, last ticketing date, original origin/destination city, bankers rate, original issue and form of payment Credit Card) and ticketing")
+    @Description("CBS_27 - Create a booking with 2 segments, 2 passengers, stored fare per passenger (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 1 free-flow remark, tour code, 2 endorsements, last ticketing date, original origin/destination city, bankers rate, original issue and form of payment Credit Card) and ticketing")
     @Test
-    public void Scenario9() {
+    public void CBS_27() {
 
         try {
 
@@ -133,14 +134,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 9 failed due to :" + e);
+            System.out.println("CBS_27 failed due to :" + e);
         }
 
     }
 
-    @Description("Stored fare - Ticketing item: Invalid bagagge allowance")
+    @Description("CBS_33 - Stored fare - Ticketing item: Invalid bagagge allowance")
     @Test
-    public void Scenario10() {
+    public void CBS_33() {
 
         try {
 
@@ -148,14 +149,15 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 10 failed due to :" + e);
+            System.out.println("CBS_33 failed due to :" + e);
         }
+
 
     }
 
-    @Description("Waitlist booking (action code - LL)")
+    @Description("CBS_55 - Waitlist booking (action code - LL)")
     @Test
-    public void Scenario11() {
+    public void CBS_55() {
 
         try {
 
@@ -164,14 +166,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 11 failed due to :" + e);
+            System.out.println("CBS_55 failed due to :" + e);
         }
 
     }
 
-    @Description("Group booking")
+    @Description("CBS_59 - Group booking")
     @Test
-    public void Scenario12() {
+    public void CBS_59() {
 
         try {
 
@@ -179,14 +181,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 12 failed due to :" + e);
+            System.out.println("CBS_59 failed due to :" + e);
         }
 
     }
 
-    @Description("Special passenger type - Non Revenue Space Available staff travel")
+    @Description("CBS_65 - Special passenger type - Non Revenue Space Available staff travel")
     @Test
-    public void Scenario13() {
+    public void CBS_65() {
 
         try {
 
@@ -194,14 +196,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 13 failed due to :" + e);
+            System.out.println("CBS_65 failed due to :" + e);
         }
 
     }
 
-    @Description("Special passenger type - Jump seat")
+    @Description("CBS_67 - Special passenger type - Jump seat")
     @Test
-    public void Scenario14() {
+    public void CBS_67() {
 
         try {
 
@@ -209,14 +211,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 14 failed due to :" + e);
+            System.out.println("CBS_67 failed due to :" + e);
         }
 
     }
 
-    @Description("Passengers with frequent traveler number for reward redemption (SSR FQTR) and name remark")
+    @Description("CBS_80 - Passengers with frequent traveler number for reward redemption (SSR FQTR) and name remark")
     @Test
-    public void Scenario15() {
+    public void CBS_80() {
 
         try {
 
@@ -224,14 +226,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 15 failed due to :" + e);
+            System.out.println("CBS_80 failed due to :" + e);
         }
 
     }
 
-    @Description("Add the Form Of Payment remark and the FOP in the stored fare")
+    @Description("CBS_99 - Add the Form Of Payment remark and the FOP in the stored fare")
     @Test
-    public void Scenario16() {
+    public void CBS_99() {
 
         try {
 
@@ -239,13 +241,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 16 failed due to :" + e);
+            System.out.println("CBS_99 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking with 2 segments , 2pax (1 FF), stored fare, 2 phones, 1 remark and ticketing")
+    @Description("CBS_03 - CreateBooking with 2 segments , 2pax (1 FF), stored fare, 2 phones, 1 remark and ticketing")
     @Test
-    public void Scenario17() {
+    public void CBS_03() {
 
         try {
 
@@ -253,13 +255,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 17 failed due to :" + e);
+            System.out.println("CBS_03 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking with 4seg, 2pax, stored fare, 2phones,1remark, 2OSIs, 2SSRs and ticketing")
+    @Description("CBS_04 - CreateBooking with 4seg, 2pax, stored fare, 2phones,1remark, 2OSIs, 2SSRs and ticketing")
     @Test
-    public void Scenario18() {
+    public void CBS_04() {
 
         try {
 
@@ -267,12 +269,12 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 18 failed due to :" + e);
+            System.out.println("CBS_04 failed due to :" + e);
         }
     }
-    @Description("CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
+    @Description("CBS_07 - CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
     @Test
-    public void Scenario19() {
+    public void CBS_07() {
 
         try {
 
@@ -280,13 +282,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 19 failed due to :" + e);
+            System.out.println("CBS_07 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking with 3 seg(1ARNK),2pax(1FF),stored fare,2phones,1OSI,3remarks,SeatAssignment and ticketing")
+    @Description("CBS_10 - CreateBooking with 3 seg(1ARNK),2pax(1FF),stored fare,2phones,1OSI,3remarks,SeatAssignment and ticketing")
     @Test
-    public void Scenario20() {
+    public void CBS_10() {
 
         try {
 
@@ -294,13 +296,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 20 failed due to :" + e);
+            System.out.println("CBS_10 failed due to :" + e);
         }
     }
 
-    @Description("Check_for_invalid_AirItinerary_in_request")
+    @Description("CBS_11 - Check_for_invalid_AirItinerary_in_request")
     @Test
-    public void Scenario21() {
+    public void CBS_11() {
 
         try {
 
@@ -308,12 +310,12 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 21 failed due to :" + e);
+            System.out.println("CBS_11 failed due to :" + e);
         }
     }
-    @Description("Check for invalid AirTraveler in request")
+    @Description("CBS_12 - Check for invalid AirTraveler in request")
     @Test
-    public void Scenario22() {
+    public void CBS_12() {
 
         try {
 
@@ -321,13 +323,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 22 failed due to :" + e);
+            System.out.println("CBS_12 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking Failure in one of the components of the system (SDS unavailable or SHARES unreachable)")
+    @Description("CBS_16 - CreateBooking Failure in one of the components of the system (SDS unavailable or SHARES unreachable)")
     @Test
-    public void Scenario23() {
+    public void CBS_16() {
 
         try {
 
@@ -336,14 +338,14 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 23 failed due to :" + e);
+            System.out.println("CBS_16 failed due to :" + e);
         }
     }
 
 
-    @Description("Invalid information specified in AirItinerary")
+    @Description("CBS_17 - Invalid information specified in AirItinerary")
     @Test
-    public void Scenario24() {
+    public void CBS_17() {
 
         try {
 
@@ -351,13 +353,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 24 failed due to :" + e);
+            System.out.println("CBS_17 failed due to :" + e);
         }
     }
 
-    @Description("Invalid information specified in AirTraveler")
+    @Description("CBS_18 - Invalid information specified in AirTraveler")
     @Test
-    public void Scenario25() {
+    public void CBS_18() {
 
         try {
 
@@ -365,13 +367,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 25 failed due to :" + e);
+            System.out.println("CBS_18 failed due to :" + e);
         }
     }
 
-    @Description("Invalid information specified in PriceInfo")
+    @Description("CBS_20 - Invalid information specified in PriceInfo")
     @Test
-    public void Scenario26() {
+    public void CBS_20() {
 
         try {
 
@@ -379,13 +381,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 26 failed due to :" + e);
+            System.out.println("CBS_20 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking with 1 seg, 1 pax, stored fare (base fare, NVA date, fare calculation line, BA and tour code) and TL")
+    @Description("CBS_29 - CreateBooking with 1 seg, 1 pax, stored fare (base fare, NVA date, fare calculation line, BA and tour code) and TL")
     @Test
-    public void Scenario27() {
+    public void CBS_29() {
 
         try {
 
@@ -393,27 +395,27 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 27 failed due to :" + e);
+            System.out.println("CBS_29 failed due to :" + e);
         }
     }
 
-    @Description("Bundled segment - Invalid information in one segment")
+    @Description("CBS_51 - Bundled segment - Invalid information in one segment")
     @Test
-    public void Scenario28() {
+    public void CBS_51() {
 
         try {
 
             Bundled_segment_Invalid_information_in_one_segment.Execute();
-
+                // Currently having GUI Issue conjuctive PNR
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 28 failed due to :" + e);
+            System.out.println("CBS_51 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item  Invalid tour code")
+    @Description("CBS_34 - Stored fare - Ticketing item  Invalid tour code")
     @Test
-    public void Scenario29() {
+    public void CBS_34() {
 
         try {
 
@@ -421,13 +423,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 29 failed due to :" + e);
+            System.out.println("CBS_34 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item Invalid original issued info")
+    @Description("CBS_35 - Stored fare - Ticketing item Invalid original issued info")
     @Test
-    public void Scenario30() {
+    public void CBS_35() {
 
         try {
 
@@ -435,13 +437,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 30 failed due to :" + e);
+            System.out.println("CBS_35 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item Invalid bankers rate info")
+    @Description("CBS_36 - Stored fare - Ticketing item Invalid bankers rate info")
     @Test
-    public void Scenario31() {
+    public void CBS_36() {
 
         try {
 
@@ -449,13 +451,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 31 failed due to :" + e);
+            System.out.println("CBS_36 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item Invalid remark")
+    @Description("CBS_37 - Stored fare - Ticketing item Invalid remark")
     @Test
-    public void Scenario32() {
+    public void CBS_37() {
 
         try {
 
@@ -463,13 +465,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 32 failed due to :" + e);
+            System.out.println("CBS_37 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item Invalid original origin destination city")
+    @Description("CBS_38 - Stored fare - Ticketing item Invalid original origin destination city")
     @Test
-    public void Scenario33() {
+    public void CBS_38() {
 
         try {
 
@@ -477,15 +479,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 33 failed due to :" + e);
+            System.out.println("CBS_38 failed due to :" + e);
         }
     }
 
-//Stored fare - Ticketing item Invalid form of payment
-
-    @Description("Stored fare - Ticketing item Invalid form of payment")
+    @Description("CBS_39 - Stored fare - Ticketing item Invalid form of payment")
     @Test
-    public void Scenario34() {
+    public void CBS_39() {
 
         try {
 
@@ -493,13 +493,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 34 failed due to :" + e);
+            System.out.println("CBS_39 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item No form of payment")
+    @Description("CBS_40 - Stored fare - Ticketing item No form of payment")
     @Test
-    public void Scenario35() {
+    public void CBS_40() {
 
         try {
 
@@ -507,13 +507,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 35 failed due to :" + e);
+            System.out.println("CBS_40 failed due to :" + e);
         }
     }
 
-    @Description("Stored fare - Ticketing item too long remark")
+    @Description("CBS_41 - Stored fare - Ticketing item too long remark")
     @Test
-    public void Scenario36() {
+    public void CBS_41() {
 
         try {
 
@@ -521,13 +521,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 36 failed due to :" + e);
+            System.out.println("CBS_41 failed due to :" + e);
         }
     }
 
-    @Description("Create a booking with 1 segment, 1 passenger, stored fare, ticketing and place it on queue")
+    @Description("CBS_43 - Create a booking with 1 segment, 1 passenger, stored fare, ticketing and place it on queue")
     @Test
-    public void Scenario37() {
+    public void CBS_43() {
 
         try {
 
@@ -535,13 +535,13 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 37 failed due to :" + e);
+            System.out.println("CBS_43 failed due to :" + e);
         }
     }
 
-    @Description("CreateBooking with 1seg,1pax,stored fare(FBC, base fare, fare calculation line and issue in exchange without coupons) and TL")
+    @Description("CBS_28 - CreateBooking with 1seg,1pax,stored fare(FBC, base fare, fare calculation line and issue in exchange without coupons) and TL")
     @Test
-    public void Scenario38() {
+    public void CBS_28() {
 
         try {
 
@@ -549,7 +549,7 @@ public class CreateBookingService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 38 failed due to :" + e);
+            System.out.println("CBS_28 failed due to :" + e);
         }
     }
 

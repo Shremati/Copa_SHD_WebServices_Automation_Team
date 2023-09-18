@@ -51,13 +51,15 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add original origin/destination city Transaction -  (1) INVALID CITY CODE S) (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_origin_destination_city.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -129,17 +131,5 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_origin_destination_city.xml";
-
-        String Expected = XMLParser.GetTagText("Warning",filepath);
-        String Actual = "Error Response to Add original origin/destination city Transaction -  (1) INVALID CITY CODE S) (2) /FLWG DATA NOT ENTERED/PROCESSED:";
-        Assert.assertTrue(Expected.contains(Actual));
-
-    }
 
 }

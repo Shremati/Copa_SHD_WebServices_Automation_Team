@@ -10,35 +10,36 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//2 Scenarios
 public class ScreenTextService {
 
     ScreenTextService() {
         createFolders(getResponseDirectory() + "ScreenTextService");
     }
 
-    @Description("Send entry")
+    @Description("ST_01 - Send entry")
     @Test
-    public void Scenario1() {
+    public void ST_01() {
 
         try {
             Send_entry.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("ST_01 failed due to :" + e);
         }
     }
 
-    @Description("Error ScreenText - Not allowed entry")
+    @Description("ST_02 - Error ScreenText - Not allowed entry")
     @Test
-    public void Scenario2() {
+    public void ST_02() {
 
         try {
             Error_screentext_not_allowed_entry.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("ST_02 failed due to :" + e);
         }
     }
 }

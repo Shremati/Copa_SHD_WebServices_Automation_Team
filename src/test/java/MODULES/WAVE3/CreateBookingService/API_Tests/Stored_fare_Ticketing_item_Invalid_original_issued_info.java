@@ -52,13 +52,15 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_issued_info.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Validationcheck();
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -130,20 +132,6 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
         out.close();
 
         wb.close();
-
-    }
-
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_issued_info.xml";
-
-        String Expected = XMLParser.GetTagText("Warning",filepath);
-        String Actual = "Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:";
-
-        Assert.assertTrue(Expected.contains(Actual));
 
     }
 

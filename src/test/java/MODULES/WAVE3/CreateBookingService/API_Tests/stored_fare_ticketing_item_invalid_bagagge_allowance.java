@@ -47,14 +47,13 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID FORMAT-ORIG ISSUE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-        Validationcheck();
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -87,24 +86,6 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
 
 
         wb.close();
-
-    }
-
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml";
-
-        String Expected_1 = XMLParser.GetTagTextatIndex("Warning",filepath,0);
-        String Actual_1 = "Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE (2) /FLWG DATA NOT ENTERED/PROCESSED:";
-        String Expected_2 = XMLParser.GetTagTextatIndex("Warning",filepath,1);
-        String Actual_2 = "Error Response to Add Original Issued Transaction -  (1) INVALID FORMAT-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:";
-
-        Assert.assertTrue(Expected_1.contains(Actual_1));
-        Assert.assertTrue(Expected_2.contains(Actual_2));
-
 
     }
 

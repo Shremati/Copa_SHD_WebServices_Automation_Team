@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +24,10 @@ import static io.restassured.RestAssured.given;
 public class Refund_multiple_tickets extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String TicketNumber_1;
+    public static String TicketNumber_2;
+    public static String PNR;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -58,6 +63,9 @@ public class Refund_multiple_tickets extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_1+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_2+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml"));
@@ -94,6 +102,9 @@ public class Refund_multiple_tickets extends FrameworkConstants
 //        Updating PNR
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
+       TicketNumber_1 = InputRow.getCell(16).getStringCellValue();
+       TicketNumber_2 = InputRow.getCell(17).getStringCellValue();
+       PNR = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

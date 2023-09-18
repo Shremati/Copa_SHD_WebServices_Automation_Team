@@ -48,12 +48,12 @@ public class Invalid_information_specified_in_PriceInfo extends FrameworkConstan
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Create Stored Fare Transaction -  (1) TOO MANY PASSENGERS IN TYPE (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Invalid_information_specified_in_PriceInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-        Validationcheck();
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -92,18 +92,5 @@ public class Invalid_information_specified_in_PriceInfo extends FrameworkConstan
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_PriceInfo.xml";
-
-        String Expected = XMLParser.GetTagText("Error",filepath);
-        String Actual = "Error Response to Create Stored Fare Transaction -  (1) TOO MANY PASSENGERS IN TYPE (2) /FLWG DATA NOT ENTERED/PROCESSED:";
-
-        Assert.assertTrue(Expected.contains(Actual));
-
-    }
 
 }

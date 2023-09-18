@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +25,6 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -46,6 +46,7 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("INVALID RESPONSE"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_City_list_by_country_starting_letter.xml"));
@@ -70,7 +71,7 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(13); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(13);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TimaticService\\Display_City_list_by_country_starting_letter.xml";

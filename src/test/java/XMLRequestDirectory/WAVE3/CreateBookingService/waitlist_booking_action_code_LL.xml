@@ -9,7 +9,7 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-01-20T07:50:00" RPH="1" FlightNumber="243" ResBookDesigCode="E" NumberInParty="1" Status="9">
+                            <air1:FlightSegment DepartureDateTime="2023-01-20T07:50:00" RPH="1" FlightNumber="243" ResBookDesigCode="Y" NumberInParty="1" Status="9">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>

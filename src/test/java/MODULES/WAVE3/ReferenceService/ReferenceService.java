@@ -9,35 +9,36 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//2 Scenarios
 public class ReferenceService {
-
     ReferenceService() {
         createFolders(getResponseDirectory() + "ReferenceService");
     }
 
-    @Description("Display Category list")
+    @Description("RS_01 - Display Category list")
     @Test
-    public void Scenario1() {
+    public void RS_01() {
         try {
             Display_Category_List.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("RS_01 failed due to :" + e);
         }
 
     }
 
-    @Description("Display Category list")
+    @Description("RS_06 - Display Page Data")
     @Test
-    public void Scenario2() {
+    public void RS_06() {
 
         try {
+
             Display_Page_Data.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("RS_06 failed due to :" + e);
         }
     }
 }

@@ -12,6 +12,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 Scenarios
 public class DepartureControlDisplay {
 
     DepartureControlDisplay()
@@ -19,9 +20,9 @@ public class DepartureControlDisplay {
         createFolders(getResponseDirectory()+"DepartureControlDisplay");
     }
 
-    @Description("Get Flight History Info")
+    @Description("DCD_03 - Get Flight History Info")
     @Test
-    public void Scenario1()
+    public void DCD_03()
     {
         try
         {
@@ -30,13 +31,13 @@ public class DepartureControlDisplay {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("DCD_03 failed due to :"+e);
         }
     }
 
-    @Description("Get Seated Passenger Count")
+    @Description("DCD_02 - Get Seated Passenger Count")
     @Test
-    public void Scenario2()
+    public void DCD_02()
     {
         try
         {
@@ -45,13 +46,13 @@ public class DepartureControlDisplay {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("DCD_02 failed due to :"+e);
         }
     }
 
-    @Description("Get Summary Map Info")
+    @Description("DCD_01 - Get Summary Map Info")
     @Test
-    public void Scenario3()
+    public void DCD_01()
     {
         try
         {
@@ -60,7 +61,7 @@ public class DepartureControlDisplay {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("DCD_01 failed due to :"+e);
         }
     }
 

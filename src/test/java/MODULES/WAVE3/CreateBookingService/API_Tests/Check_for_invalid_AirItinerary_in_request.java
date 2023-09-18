@@ -48,12 +48,13 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Message Contains No OriginDestinationOptions"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Check_for_invalid_AirItinerary_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Validationcheck();
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -86,19 +87,7 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Check_for_invalid_AirItinerary_in_request.xml";
-
-        String Expected = XMLParser.GetTagText("Error",filepath);
-        String Actual = "Message Contains No OriginDestinationOptions";
-
-        Assert.assertEquals(Actual,Expected);
-
-    }
 
 
 }

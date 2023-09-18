@@ -3,12 +3,14 @@ package MODULES.WAVE3.ScreenTextService.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.internal.shadowed.jackson.annotation.JsonTypeInfo;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +48,7 @@ public class Error_screentext_not_allowed_entry extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Invalid ScreenText request - A"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ScreenTextService\\Error_screentext_not_allowed_entry.xml"));
         writer.write(response.asPrettyString());
@@ -75,7 +77,6 @@ public class Error_screentext_not_allowed_entry extends FrameworkConstants
 
         String filepath1;
         filepath1=getRequestDirectory()+"ScreenTextService\\Error_screentext_not_allowed_entry.xml";
-
 
         XMLParser.SetTagtextatIndex("scr1:ScreenEntry",InputRow.getCell(1).getStringCellValue(),filepath1,0);
 

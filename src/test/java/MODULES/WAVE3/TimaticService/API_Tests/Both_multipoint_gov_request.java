@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,8 +25,6 @@ public class Both_multipoint_gov_request extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -46,13 +45,12 @@ public class Both_multipoint_gov_request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("INPUT FORMAT ERROR"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Both_multipoint_gov_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -70,7 +68,7 @@ public class Both_multipoint_gov_request extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(7); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(7);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TimaticService\\Both_multipoint_gov_request.xml";

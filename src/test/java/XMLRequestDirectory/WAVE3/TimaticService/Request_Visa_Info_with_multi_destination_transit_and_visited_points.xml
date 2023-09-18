@@ -6,23 +6,30 @@
                 <eds:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </eds:POS>
-                <eds:VisaHealthInformation PassportType="GOVERNMENT" DisplayType="Both">
+                <eds:VisaHealthInformation PassportType="NORMAL" DisplayType="Visa">
                     <eds:DocHolderNationality>
-                        <air:Country Code="BA"/>
+                        <air:Country Code="FR"/>
                     </eds:DocHolderNationality>
                     <eds:CountryOfResidence LocationCode="NYC"/>
                     <eds:EmbarkationLocation>
                         <air:Country Code="US"/>
                     </eds:EmbarkationLocation>
-                    <eds:DestinationLocation LocationCode="BLB"/>
-                    <eds:DestinationLocation LocationCode="CIX"/>
-                    <eds:TransitLocation>
-                        <air:Country Code="RK"/>
-                    </eds:TransitLocation>
-                    <eds:TransitLocation>
+                    <eds:DestinationLocation LocationCode="LON"/>
+                    <eds:DestinationLocation>
                         <air:Country Code="TT"/>
+                    </eds:DestinationLocation>
+                    <eds:DestinationLocation LocationCode="LNE"/>
+                    <eds:TransitLocation>
+                        <air:Country Code="VE"/>
                     </eds:TransitLocation>
-                    <eds:TransitLocation LocationCode="AKG"/>
+                    <eds:TransitLocation>
+                        <air:Country Code="IT"/>
+                    </eds:TransitLocation>
+                    <eds:TransitLocation LocationCode="BIA"/>
+                    <eds:VisitedLocation>
+                        <air:Country Code="GB"/>
+                    </eds:VisitedLocation>
+                    <eds:VisitedLocation LocationCode="LDE"/>
                     <eds:VisitedLocation>
                         <air:Country Code="DK"/>
                     </eds:VisitedLocation>

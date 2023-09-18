@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 
+//4 Scenarios
 public class ModifySeatMap extends FrameworkConstants {
 
     ModifySeatMap()
@@ -18,9 +19,9 @@ public class ModifySeatMap extends FrameworkConstants {
         createFolders(getResponseDirectory()+"ModifySeatMap");
     }
 
-    @Description("Block Seat")
+    @Description("MSM_01 - Block Seat")
     @Test(priority = 1)
-    public void Scenario1()
+    public void MSM_01()
     {
         try
         {
@@ -29,13 +30,13 @@ public class ModifySeatMap extends FrameworkConstants {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("MSM_01 failed due to :"+e);
         }
     }
 
-    @Description("Add Seat")
+    @Description("MSM_02 - Add Seat")
     @Test(priority = 2)
-    public void Scenario2()
+    public void MSM_02()
     {
         try
         {
@@ -44,13 +45,13 @@ public class ModifySeatMap extends FrameworkConstants {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("MSM_02 failed due to :"+e);
         }
     }
 
-    @Description("Delete Error")
+    @Description("MSM_03 - Delete Error")
     @Test(priority = 3)
-    public void Scenario3()
+    public void MSM_03()
     {
         try
         {
@@ -59,13 +60,13 @@ public class ModifySeatMap extends FrameworkConstants {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("MSM_03 failed due to :"+e);
         }
     }
 
-    @Description("Add Error")
+    @Description("MSM_04 - Add Error")
     @Test(priority = 4)
-    public void Scenario4()
+    public void MSM_04()
     {
         try
         {
@@ -74,7 +75,7 @@ public class ModifySeatMap extends FrameworkConstants {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :"+e);
+            System.out.println("MSM_04 failed due to :"+e);
         }
     }
 

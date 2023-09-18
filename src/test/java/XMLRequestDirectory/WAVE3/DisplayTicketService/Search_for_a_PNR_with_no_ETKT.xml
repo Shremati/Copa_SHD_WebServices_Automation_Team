@@ -2,14 +2,17 @@
     <soapenv:Header/>
     <soapenv:Body>
         <dis:displayTicketsByRecordLocator>
-            <EDS_DisplayTicketRQ Version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ">
-                <POS>
-                    <Source ISOCountry="IN" ISOCurrency="" AgentDutyCode="GS" AirlineVendorID="CM" TerminalID="123456" DataIndicator="AIS" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-                        <RequestorID Type="6" ID_Context="IATA" ID="99999999"/>
-                    </Source>
-                </POS>
-                <RecordLocator>AKAG1J</RecordLocator>
-            </EDS_DisplayTicketRQ>
+            <dis1:EDS_DisplayTicketRQ Version="4.000">
+                <dis1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dis1:POS>
+                <dis1:RecordLocator>BFV5XE</dis1:RecordLocator>
+                <dis1:TicketRequests>
+                    <dis1:TicketRequest>
+                        <dis1:TicketNumber></dis1:TicketNumber>
+                    </dis1:TicketRequest>
+                </dis1:TicketRequests>
+            </dis1:EDS_DisplayTicketRQ>
         </dis:displayTicketsByRecordLocator>
     </soapenv:Body>
 </soapenv:Envelope>

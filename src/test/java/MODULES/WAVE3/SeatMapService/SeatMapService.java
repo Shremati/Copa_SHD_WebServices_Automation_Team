@@ -10,22 +10,23 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//1 Scenario
 public class SeatMapService {
 
     SeatMapService() {
         createFolders(getResponseDirectory() + "SeatMapService");
     }
 
-    @Description("Display a single 737 aircraft on a one legged flight. Map contains 2 compartments")
+    @Description("SMS_01 - Display a single 737 aircraft on a one legged flight. Map contains 2 compartments")
     @Test
-    public void Scenario1() {
+    public void SMS_01() {
 
         try {
             Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("SMS_01 failed due to :" + e);
         }
     }
 }

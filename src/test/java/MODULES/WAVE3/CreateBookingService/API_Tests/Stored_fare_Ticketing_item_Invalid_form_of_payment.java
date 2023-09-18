@@ -50,13 +50,13 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Stored_fare_Ticketing_item_Invalid_form_of_payment.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -130,17 +130,5 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_form_of_payment.xml";
-
-        String Expected = XMLParser.GetTagText("Warning",filepath);
-        String Actual = "Invalid form of payment";
-        Assert.assertTrue(Expected.contains(Actual));
-
-    }
 
 }

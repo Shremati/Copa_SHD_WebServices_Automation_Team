@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,10 +29,13 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
     {
 
         create_booking_for_two_pax Prerequisite1 =new create_booking_for_two_pax();
-        Issue_ticket Prerequisite2 = new Issue_ticket();
-
         Prerequisite1.run();
+
+        Issue_ticket Prerequisite2 = new Issue_ticket();
         Prerequisite2.run();
+
+
+
 
         UpdatePayload();
 
@@ -53,7 +57,7 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_2_eticketed_passengers.xml"));
         writer.write(response.asPrettyString());

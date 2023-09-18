@@ -48,12 +48,13 @@ public class Invalid_information_specified_in_AirTraveler extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("The First Traveler Cannot Be an Infant Type"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Invalid_information_specified_in_AirTraveler.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Validationcheck();
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -90,18 +91,6 @@ public class Invalid_information_specified_in_AirTraveler extends FrameworkConst
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_AirTraveler.xml";
-
-        String Expected = XMLParser.GetTagText("Error",filepath);
-        String Actual = "The First Traveler Cannot Be an Infant Type";
-
-        Assert.assertEquals(Actual,Expected);
-
-    }
 
 }

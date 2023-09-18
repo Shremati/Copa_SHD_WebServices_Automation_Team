@@ -48,13 +48,14 @@ public class Invalid_information_specified_in_AirItinerary extends FrameworkCons
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Invalid_information_specified_in_AirItinerary.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
-        Validationcheck();
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -85,20 +86,6 @@ public class Invalid_information_specified_in_AirItinerary extends FrameworkCons
 
         wb.close();
 
-
-    }
-
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_AirItinerary.xml";
-
-        String Expected = XMLParser.GetTagText("Error",filepath);
-        String Actual = "Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR";
-
-        Assert.assertEquals(Actual,Expected);
 
     }
 

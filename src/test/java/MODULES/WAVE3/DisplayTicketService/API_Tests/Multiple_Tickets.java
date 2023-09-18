@@ -12,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,6 +27,8 @@ public class Multiple_Tickets extends FrameworkConstants
 {
 
     public static String SOAPRequest;
+    public static String TicketNumber_1;
+    public static String TicketNumber_2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -59,6 +62,9 @@ public class Multiple_Tickets extends FrameworkConstants
                 .log().all().extract().response();
 
 
+        //Getting ticketnumber from excelwriter
+        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
+        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
         writer.write(response.asPrettyString());
@@ -73,7 +79,6 @@ public class Multiple_Tickets extends FrameworkConstants
 
     }
 
-
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
@@ -83,12 +88,15 @@ public class Multiple_Tickets extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
         XSSFRow InputRow=sheet.getRow(4);
 
-        String filepath1 ,filepath2;
+        String filepath1;
 
         filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
 
         XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
+
+        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
+        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 
