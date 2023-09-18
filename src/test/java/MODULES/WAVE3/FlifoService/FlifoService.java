@@ -85,7 +85,7 @@ public class FlifoService {
     public void FS_27() {
 
         try {
-            FLIFO_History_for_codeshare_airline.Execute();
+            FLIFO_History_for_codeshare_airline.Execute();  //Shares entry doesnt work here
 
         } catch (Exception e) {
             failTest(e);
