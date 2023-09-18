@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import frameworkconstants.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +24,7 @@ import static io.restassured.RestAssured.given;
 public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -52,6 +54,9 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_12_Passengers_with_advance_seats.xml"));
         writer.write(response.asPrettyString());
@@ -83,6 +88,8 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

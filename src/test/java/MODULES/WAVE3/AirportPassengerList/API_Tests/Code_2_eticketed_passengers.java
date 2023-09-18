@@ -24,6 +24,8 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
 {
 
     public static String SOAPRequest;
+    public static String PNR;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -57,7 +59,10 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_2_eticketed_passengers.xml"));
         writer.write(response.asPrettyString());
@@ -91,6 +96,8 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

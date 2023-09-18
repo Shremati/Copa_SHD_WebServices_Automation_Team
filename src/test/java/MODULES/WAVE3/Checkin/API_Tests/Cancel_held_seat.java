@@ -42,8 +42,6 @@ public class Cancel_held_seat extends FrameworkConstants {
         Hold_seat Prerequisite1 = new Hold_seat();
         Prerequisite1.run();
 
-
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

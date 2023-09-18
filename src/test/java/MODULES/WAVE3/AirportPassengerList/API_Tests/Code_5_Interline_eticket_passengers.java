@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,15 +25,16 @@ import static io.restassured.RestAssured.given;
 public class Code_5_Interline_eticket_passengers extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         create_booking_for_two_pax_code_5 Prerequisite1 = new create_booking_for_two_pax_code_5();
-        Issue_Ticket_code_5 Prerequisite2 = new Issue_Ticket_code_5();
-
         Prerequisite1.run();
+
+        Issue_Ticket_code_5 Prerequisite2 = new Issue_Ticket_code_5();
         Prerequisite2.run();
 
         UpdatePayload();
@@ -55,7 +57,9 @@ public class Code_5_Interline_eticket_passengers extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_5_Interline_eticket_passengers.xml"));
         writer.write(response.asPrettyString());
@@ -88,6 +92,8 @@ public class Code_5_Interline_eticket_passengers extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

@@ -31,7 +31,7 @@ public class AirportPassengerList {
     @Test
     public void APL_06() {
         try {
-            Code_5_Interline_eticket_passengers.Execute();
+            Code_5_Interline_eticket_passengers.Execute();  //Need to check
 
         } catch (Exception e) {
             failTest(e);
@@ -87,7 +87,7 @@ public class AirportPassengerList {
 
     @Description("APL_34 - Custom  list: Code 42  - Specific SSR")
     @Test
-    public void APL_34() {
+    public void APL_34() {  //need to create a PNR
 
         try {
             Code_42_specific_SSR.Execute();
@@ -99,7 +99,7 @@ public class AirportPassengerList {
 
     @Description("APL_01 - Standard list Code 0 All Passengers")
     @Test
-    public void APL_01() {
+    public void APL_01() { // need to create PNR
 
         try {
             Standard_list_Code_0_All_Passengers.Execute();
@@ -111,7 +111,7 @@ public class AirportPassengerList {
 
     @Description("APL_23 - Standard list Code 30 passengers with no meals")
     @Test
-//Give a flight which contain bookings having no meal. Taking input from same row as scenario
+//Give a flight which contain bookings having no meal. Need Shares PNR having no meal
     public void APL_23() {
 
         try {
@@ -124,7 +124,7 @@ public class AirportPassengerList {
 
     @Description("APL_36 - Standard list Code 44 passengers with elite frequent traveler numbers")
     @Test
-    public void APL_36() {
+    public void APL_36() {  //need to create a ff pnr
 
         try {
             Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.Execute();

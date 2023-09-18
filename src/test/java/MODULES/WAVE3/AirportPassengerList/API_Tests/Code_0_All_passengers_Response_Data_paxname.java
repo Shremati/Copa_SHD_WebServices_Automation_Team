@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,7 +48,8 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_0_All_passengers_Response_Data_paxname.xml"));
         writer.write(response.asPrettyString());
