@@ -96,10 +96,10 @@ public class Display_APIS_Basic_seat_change extends FrameworkConstants {
 
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
-        //   String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+           String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
 
         InputRow.getCell(18).setCellValue(AgencyName);
-        //    InputRow.getCell(19).setCellValue(AgencyName1);
+            InputRow.getCell(19).setCellValue(AgencyName1);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

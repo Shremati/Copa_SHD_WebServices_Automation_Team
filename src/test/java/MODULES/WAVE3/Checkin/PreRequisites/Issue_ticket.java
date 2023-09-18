@@ -77,14 +77,13 @@ public class Issue_ticket extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
         XSSFRow InputRow=sheet.getRow(4);
-        XSSFRow InputRowPNR=sheet.getRow(1);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\IssueTicket.xml";
 
 
         XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(15).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRowPNR.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
 
     }

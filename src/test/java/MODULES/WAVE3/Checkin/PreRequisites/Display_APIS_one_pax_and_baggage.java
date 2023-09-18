@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -8,7 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,9 +19,10 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_Non_Revenue_pax extends FrameworkConstants {
+public class Display_APIS_one_pax_and_baggage extends FrameworkConstants {
 
     public static String SOAPRequest;
+
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -70,10 +71,10 @@ public class Display_Non_Revenue_pax extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Display_Non_Revenue_pax.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Display_APIS_one_pax_and_baggage.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
 
@@ -91,7 +92,7 @@ public class Display_Non_Revenue_pax extends FrameworkConstants {
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow=sheet.getRow(1);
 
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
@@ -113,4 +114,5 @@ public class Display_Non_Revenue_pax extends FrameworkConstants {
         writer.close();
 
     }
+
 }

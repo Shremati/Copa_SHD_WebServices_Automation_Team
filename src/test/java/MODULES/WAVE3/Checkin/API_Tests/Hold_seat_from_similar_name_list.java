@@ -2,6 +2,7 @@ package MODULES.WAVE3.Checkin.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_hold_seat_from_similar_name_list;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.create_booking_for_two_pax;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
@@ -11,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,10 +31,10 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        create_booking_service_singlepax Prerequisite1 = new create_booking_service_singlepax();
-        Issue_ticket Prerequisite2 = new Issue_ticket();
-
+        Create_booking_hold_seat_from_similar_name_list Prerequisite1 = new Create_booking_hold_seat_from_similar_name_list();
         Prerequisite1.run();
+
+        Issue_ticket Prerequisite2 = new Issue_ticket();
         Prerequisite2.run();
 
         UpdatePayload();
@@ -55,6 +57,8 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Checkin\\Hold_seat_from_similar_name_list.xml"));
         writer.write(response.asPrettyString());

@@ -9,7 +9,7 @@
                 <air:PassengerInfo RPH="1" ResBookDesigCode="Y">
                     <air1:PassengerName>
                         <com:GivenName>TEST</com:GivenName>
-                        <com:Surname>ONE</com:Surname>
+                        <com:Surname>ABC</com:Surname>
                     </air1:PassengerName>
 
                     <air1:BookingReferenceID Type="14" ID="BJJWKW"/>

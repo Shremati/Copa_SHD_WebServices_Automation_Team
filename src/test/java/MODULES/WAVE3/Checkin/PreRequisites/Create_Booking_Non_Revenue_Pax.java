@@ -78,7 +78,7 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
-        XSSFRow InputRow=sheet.getRow(5 );
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Create_Booking_Non_Revenue_Pax.xml";

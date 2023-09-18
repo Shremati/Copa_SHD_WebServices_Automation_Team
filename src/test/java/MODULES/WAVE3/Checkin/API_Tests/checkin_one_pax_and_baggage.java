@@ -2,6 +2,9 @@ package MODULES.WAVE3.Checkin.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.Checkin.PreRequisites.Add_APIS_one_pax_and_baggage;
+import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_one_pax_and_baggage;
+import MODULES.WAVE3.Checkin.PreRequisites.Issue_booking_one_pax_baggage;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +12,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,6 +35,16 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         create_booking_service_singlepax Prerequisite = new create_booking_service_singlepax();
         Prerequisite.run();
 
+        Issue_booking_one_pax_baggage Prerequisite1 = new Issue_booking_one_pax_baggage();
+        Prerequisite1.run();
+
+        Display_APIS_one_pax_and_baggage Prerequisite2 = new Display_APIS_one_pax_and_baggage();
+        Prerequisite2.run();
+
+        Add_APIS_one_pax_and_baggage Prerequisite3  = new Add_APIS_one_pax_and_baggage();
+        Prerequisite3.run();
+
+
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -50,6 +65,10 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+        Assert.assertTrue(response.getBody().asString().contains("BaggageInfo"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\checkin_one_pax_and_baggage.xml"));

@@ -22,7 +22,7 @@ public class Checkin
 
     @Description("CS_01 - Check-in 1 passenger, 1 Baggage")
     @Test
-    public void Scenario1()
+    public void CS_01()
     {
         try
         {
@@ -31,13 +31,13 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("CS_01 failed due to :"+e);
         }
     }
 
     @Description("CS_34 - Error Change seat - Invalid seat (Negative Scenario)")
     @Test
-    public void Scenario2()
+    public void CS_34()
     {
         try
         {
@@ -46,15 +46,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("CS_34 failed due to :"+e);
         }
     }
 
 
     @Description("CS_36 - Hold seat from similar name list")
-
     @Test
-    public void Scenario3()
+    public void CS_36()
     {
         try
         {
@@ -62,12 +61,12 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("CS_36 failed due to :"+e);
         }
     }
     @Description("CS_17 - Check-in Non-Revenue passenger")
     @Test
-    public void Scenario4()
+    public void CS_17()
     {
         try
         {
@@ -77,7 +76,7 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :"+e);
+            System.out.println("CS_17 failed due to :"+e);
         }
 
     }
@@ -85,9 +84,8 @@ public class Checkin
 
     @Description("CS_20 - Error Check-in - Invalid passenger")
     @Test
-    public void Scenario5()
+    public void CS_20()
     {
-
         try
         {
             Error_check_in_invalid_pax.Execute();
@@ -95,7 +93,7 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 5 failed due to :"+e);
+            System.out.println("CS_20 failed due to :"+e);
         }
 
     }
@@ -103,7 +101,7 @@ public class Checkin
 
     @Description("CS_21 - Check-in  a specific passenger in a group")
     @Test
-    public void Scenario6()
+    public void CS_21()
     {
 
         try
@@ -113,14 +111,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 6 failed due to :"+e);
+            System.out.println("CS_21 failed due to :"+e);
         }
 
     }
 
     @Description("CS_26 - Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
     @Test
-    public void Scenario7()
+    public void CS_26()
     {
 
         try
@@ -130,14 +128,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 7 failed due to :"+e);
+            System.out.println("CS_26 failed due to :"+e);
         }
 
     }
 
     @Description("CS_07 - Checkin_Frequent Flyer")
     @Test
-    public void Scenario8()
+    public void CS_07()
     {
 
         try
@@ -147,14 +145,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 8 failed due to :"+e);
+            System.out.println("CS_07 failed due to :"+e);
         }
 
     }
 
     @Description("CS_12 - Check-in 3 passengers (under same surname) and specific seating option ")
     @Test
-    public void Scenario9()
+    public void CS_12()
     {
 
         try
@@ -164,14 +162,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 9 failed due to :"+e);
+            System.out.println("CS_12 failed due to :"+e);
         }
 
     }
 
     @Description("CS_39 - Cancel held seat")
     @Test
-    public void Scenario10()
+    public void CS_39()
     {
 
         try
@@ -181,14 +179,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 10 failed due to :"+e);
+            System.out.println("CS_39 failed due to :"+e);
         }
 
     }
 
     @Description("CS_31 - Basic seat change")
     @Test
-    public void Scenario11()
+    public void CS_31()
     {
 
         try
@@ -198,14 +196,14 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 11 failed due to :"+e);
+            System.out.println("CS_31 failed due to :"+e);
         }
 
     }
 
     @Description("CS_18 - Checkin after add passenger message")
     @Test
-    public void Scenario12()
+    public void CS_18()
     {
 
         try
@@ -215,7 +213,7 @@ public class Checkin
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 12 failed due to :"+e);
+            System.out.println("CS_18 failed due to :"+e);
         }
 
     }

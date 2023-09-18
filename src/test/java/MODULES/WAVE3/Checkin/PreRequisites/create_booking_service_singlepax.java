@@ -109,7 +109,7 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
 
-        InputRow.getCell(14).setCellValue(PNR);
+        InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(10).setCellValue(Givenname);
         InputRow.getCell(11).setCellValue(Surname);
 

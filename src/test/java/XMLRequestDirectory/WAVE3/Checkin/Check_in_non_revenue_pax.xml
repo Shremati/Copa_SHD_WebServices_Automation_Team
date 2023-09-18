@@ -13,8 +13,8 @@
                 </air:FlightInfo>
                 <air:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1">
                     <com1:PassengerName>
-                        <com:GivenName>KLABEN</com:GivenName>
-                        <com:Surname>SHANE</com:Surname>
+                        <com:GivenName>THREE</com:GivenName>
+                        <com:Surname>TEST</com:Surname>
                     </com1:PassengerName>
                     <com1:PassengerType Gender="M"/>
                 </air:PassengerInfo>
