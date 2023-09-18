@@ -48,7 +48,7 @@ public class FLIFO_History_for_codeshare_airline extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
+        Assert.assertTrue(response.getBody().asString().contains("HistoryItem"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\FLIFO_History_for_codeshare_airline.xml"));
         writer.write(response.asPrettyString());

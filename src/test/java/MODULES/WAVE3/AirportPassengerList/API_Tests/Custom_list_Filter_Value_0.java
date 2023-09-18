@@ -52,6 +52,7 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("SecurityCode=\"N\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Custom_list_Filter_Value_0.xml"));
         writer.write(response.asPrettyString());

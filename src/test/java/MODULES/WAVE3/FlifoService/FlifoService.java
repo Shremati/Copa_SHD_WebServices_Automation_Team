@@ -53,16 +53,16 @@ public class FlifoService {
             System.out.println("FS_15 failed due to :" + e);
         }
     }
-    @Description("FS_23 - Flifo_for_a_flight_with_crossing_date")
+    @Description("FS_21 - Flifo_for_a_flight_with_crossing_date")
     @Test
-    public void FS_23() {
+    public void FS_21() {
 
         try {
             Flifo_for_a_flight_with_crossing_date.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("FS_23 failed due to :" + e);
+            System.out.println("FS_21 failed due to :" + e);
         }
     }
 
@@ -81,7 +81,7 @@ public class FlifoService {
     }
     @Description("FS_27 - FLIFO_History_for_codeshare_airline")
     @Test
-    //Requires shares to run a command, 2P365/05SEP ETD CTG 1120A DELAY, in order to generate history details
+
     public void FS_27() {
 
         try {

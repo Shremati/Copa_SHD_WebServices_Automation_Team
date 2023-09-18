@@ -148,7 +148,7 @@ public class AirportPassengerList {
 
     @Description("APL_07 - Standard list Code 6 Out of sync electronic tickets")
     @Test
-    public void APL_07() {
+    public void APL_07() {//create PNR, modify it .
 
         try {
             Standard_list_Code_6_Out_of_synch_electronic_tickets.Execute();

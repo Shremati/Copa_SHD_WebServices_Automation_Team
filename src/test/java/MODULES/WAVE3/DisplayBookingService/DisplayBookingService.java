@@ -347,7 +347,7 @@ public class DisplayBookingService
 
         try {
 
-            Error_displaying_a_booking_from_a_specific_address_LNIATA.Execute();
+            Error_displaying_a_booking_from_a_specific_address_LNIATA.Execute();  //We need a LNIATA where PNR is not created for a given day
 
         } catch (Exception e) {
             failTest(e);

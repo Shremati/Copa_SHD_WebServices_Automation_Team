@@ -28,16 +28,41 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-        UpdatePayload();
-
-//    ******** Read the updated request and send it to fetch the response *********
+        UpdatePayload_1();
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getScreentextservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+//        *********** Main Request ************
+
+        UpdatePayload_2();
+
+//    ******** Read the updated request and send it to fetch the response *********
+
+        fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
+        response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
@@ -50,12 +75,11 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
+        Assert.assertTrue(response.getBody().asString().contains("HistoryItem"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\FLIFO_History_for_host_airline.xml"));
+        writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\FLIFO_History_for_host_airline.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -65,8 +89,29 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
 
     }
 
+    public static void UpdatePayload_1() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+        //        ********** Reading Testdata from Excel ************
+
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+        XSSFRow InputRow = sheet.getRow(5);
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "FlifoService\\ScreenTextRequest.xml";
+
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
+        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
+
+
+        wb.close();
+
+    }
+
+
+    public static void UpdatePayload_2() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************

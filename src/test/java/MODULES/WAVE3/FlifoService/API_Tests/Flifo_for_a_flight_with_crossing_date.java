@@ -42,10 +42,14 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
+        //        *********** Main Request ************
 
    //We need to give the same flight, which is used in UpdatePayload_1() request
 
@@ -53,7 +57,7 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
 
 //    ******** Read the updated request and send it to fetch the response *********
 
-       fileInputStream = new FileInputStream(getTemp_requestPath());
+        fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
@@ -68,6 +72,8 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("TimeType=\"Actual\""));
 
         writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date.xml"));
         writer.write(response.asPrettyString());
@@ -91,7 +97,7 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
         XSSFRow InputRow = sheet.getRow(4);
 
         String filepath1;
-        filepath1 = getRequestDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date_update.xml";
+        filepath1 = getRequestDirectory() + "FlifoService\\ScreenTextRequest.xml";
 
         XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(2).getStringCellValue(), filepath1);
         XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath());
