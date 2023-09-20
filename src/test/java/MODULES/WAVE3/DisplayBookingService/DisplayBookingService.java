@@ -21,14 +21,14 @@ public class DisplayBookingService
 
     @Description("DBS_01 - Display a host airline booking")
     @Test
-    public void Scenario1() {
+    public void DBS_01() {
 
         try {
             Display_a_host_airline_booking.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("DBS_01 failed due to :" + e);
         }
     }
 
@@ -314,7 +314,7 @@ public class DisplayBookingService
     }
     @Description("DBS_02 - Display_booking_on_another_airline_booking")
     @Test
-    public void Scenario22() {
+    public void DBS_02() {
 
         try {
 
