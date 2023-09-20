@@ -1,5 +1,4 @@
-package MODULES.WAVE3.QueueService.API_Tests;
-
+package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -10,7 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,11 +19,11 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Queue_Passenger_List extends FrameworkConstants {
+public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         UpdatePayload();
@@ -42,17 +40,15 @@ public class Queue_Passenger_List extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getQueueservice())
+                .post(getDeparturecontrolservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("QueueInfo"));
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Queue_Passenger_List.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -73,22 +69,23 @@ public class Queue_Passenger_List extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(13);
+        XSSFSheet sheet = wb.getSheet("DepartureControlService");
+        XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"QueueService\\Queue_Passenger_List.xml";
+        filepath1=getRequestDirectory()+"DepartureControlService\\Assign_aircraft.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
 
-        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:Equipment","AirEquipType",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        XMLParser.updateAttributeValue("que1:QueueInfo","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("que1:QueueInfo","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
         wb.close();
 
     }
+
+
+
 }

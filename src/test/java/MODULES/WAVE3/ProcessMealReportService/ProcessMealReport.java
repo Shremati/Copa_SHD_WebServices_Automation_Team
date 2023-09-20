@@ -19,7 +19,7 @@ public class ProcessMealReport {
 
     @Description("PMR_01 - Meal Report Preliminary")
     @Test
-    public void Scenario1()
+    public void PMR_01()
     {
         try
         {
@@ -28,13 +28,13 @@ public class ProcessMealReport {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("PMR_01 failed due to :"+e);
         }
     }
 
     @Description("PMR_03 - Meal Report Invalid Flight Number")
     @Test
-    public void Scenario2()
+    public void PMR_03()
     {
         try
         {
@@ -43,13 +43,13 @@ public class ProcessMealReport {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("PMR_03 failed due to :"+e);
         }
     }
 
     @Description("PMR_02 - Meal Report Final")
     @Test
-    public void Scenario3()
+    public void PMR_02()
     {
         try
         {
@@ -58,7 +58,7 @@ public class ProcessMealReport {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("PMR_02 failed due to :"+e);
         }
     }
 }

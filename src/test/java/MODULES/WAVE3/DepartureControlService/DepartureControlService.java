@@ -8,7 +8,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//16 Scenarios
+//15 Scenarios
 public class DepartureControlService {
 
     DepartureControlService()
@@ -58,10 +58,11 @@ public class DepartureControlService {
 
     @Description("DPS_13 - Block more than one seat")
     @Test
+    //ensure that 3 consecutive seats should be available, as we have given seat count as 3
     public void DPS_13() {
 
         try {
-            block_more_than_one_seat.Execute(); //Give proper seat details in data sheet
+            block_more_than_one_seat.Execute(); //Give proper seat details in data sheet, in GUI - Tools menu --> Seat Map, give the flt details
 
         } catch (Exception e) {
             failTest(e);
@@ -84,10 +85,11 @@ public class DepartureControlService {
 
     @Description("DPS_16 - Unblock more than one seat")
     @Test
+    //use DPS_13 to block one/more than one seat and use that blocked seat here
     public void DPS_16() {
 
         try {
-            unblock_more_than_one_seat.Execute(); //Give proper seat details in data sheet
+            unblock_more_than_one_seat.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -100,7 +102,7 @@ public class DepartureControlService {
     public void DPS_18() {
 
         try {
-            define_inoperative_seat.Execute(); //Give proper seat details in data sheet
+            define_inoperative_seat.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -110,10 +112,11 @@ public class DepartureControlService {
 
     @Description("DPS_20 - Clear inoperative seat")
     @Test
+    //use DPS_18 to define inoperative seat and use that inoperative seat here
     public void DPS_20() {
 
         try {
-            clear_inoperative_seat.Execute();//Give proper seat details in data sheet
+            clear_inoperative_seat.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -126,7 +129,7 @@ public class DepartureControlService {
     public void DPS_22() {
 
         try {
-            cancel_misconnect.Execute();  //Give proper flight details in data sheet
+            cancel_misconnect.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -136,6 +139,7 @@ public class DepartureControlService {
 
     @Description("DPS_25 - Reinstate connecting passengers")
     @Test
+    //We need to give the same test data details as DPS_22, because it reinstates the same cancel misconnect flight, taken in DPS_22
     public void DPS_25() {
 
         try {
@@ -173,7 +177,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_36 - Add/Update/Delete board point messages")
+    @Description("DPS_36 - Add/Update/Delete board point messages + Invalid item to process")
     @Test
     public void DPS_36() {
 
@@ -201,6 +205,7 @@ public class DepartureControlService {
 
     @Description("DPS_39 - Remove boarding restriction")
     @Test
+    //Compartment code is the class, and we dont have to change the compartment code and seat count
     public void DPS_39() {
 
         try {

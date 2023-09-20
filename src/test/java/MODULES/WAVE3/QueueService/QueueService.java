@@ -33,6 +33,7 @@ public class QueueService {
 
     @Description("QS_07 - Display queue booking from empty queue (Negative Scenario)")
     @Test
+    //We need a pseudocity code with no queue PNRs
     public void QS_07() {
 
         try {
@@ -48,6 +49,7 @@ public class QueueService {
 
     @Description("QS_11 - Queue booking")
     @Test
+    //The psedocity code has to be the departure airport code
     public void QS_11() {
 
         try {
@@ -90,6 +92,7 @@ public class QueueService {
 
     @Description("QS_20 - Display and remove message")
     @Test
+    //Needs to be checked
     public void QS_20() {
 
         try {

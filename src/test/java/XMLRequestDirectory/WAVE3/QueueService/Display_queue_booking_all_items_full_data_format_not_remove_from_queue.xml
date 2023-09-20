@@ -8,8 +8,8 @@
                 </read:POS>
                 <read:ReadRequests>
                     <read:AirReadRequest>
-                        <read:QueueInfo FirstItemOnlyInd="false" RemoveFromQueueInd="false" FullDataInd="true">
-                            <read:Queue PseudoCityCode="LAX" QueueNumber="07"/>
+                        <read:QueueInfo FirstItemOnlyInd="true" RemoveFromQueueInd="false" FullDataInd="true">
+                            <read:Queue PseudoCityCode="LAX" QueueNumber="70"/>
                         </read:QueueInfo>
                     </read:AirReadRequest>
                 </read:ReadRequests>

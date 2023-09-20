@@ -6,11 +6,11 @@
                 <dep1:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </dep1:POS>
-                <dep1:MessageFunction Function="SeatReac_Both"/>
+                <dep1:MessageFunction Function="AssignAircraft"/>
                 <dep1:FlightInfo>
-                    <dep1:FlightLegInfo DepartureDateTime="2023-02-16T09:14:00" FlightNumber="120">
-                        <com:DepartureAirport LocationCode="PTY"/>
-                        <com:Equipment AirEquipType="1857"/>
+                    <dep1:FlightLegInfo DepartureDateTime="2011-10-13T00:00:00" FlightNumber="100">
+                        <com:DepartureAirport LocationCode="LAX"/>
+                        <com:Equipment AirEquipType="111"/>
                     </dep1:FlightLegInfo>
                 </dep1:FlightInfo>
             </dep1:EDS_DepartureControlRQ>

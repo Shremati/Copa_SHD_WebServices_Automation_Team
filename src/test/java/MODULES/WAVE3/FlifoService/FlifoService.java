@@ -55,10 +55,10 @@ public class FlifoService {
     }
     @Description("FS_21 - Flifo_for_a_flight_with_crossing_date")
     @Test
-    public void FS_21() {
+    public void FS_21() {  //Give today or future date
 
         try {
-            Flifo_for_a_flight_with_crossing_date.Execute();
+            Flifo_for_a_flight_with_crossing_date.Execute(); //Give history date, today or older. Make sure departure date and screen entry date match
 
         } catch (Exception e) {
             failTest(e);
@@ -72,7 +72,7 @@ public class FlifoService {
     public void FS_26() {
 
         try {
-            FLIFO_History_for_host_airline.Execute();
+            FLIFO_History_for_host_airline.Execute();  //Give history date, today or older. Make sure departure date and screen entry date match
 
         } catch (Exception e) {
             failTest(e);
