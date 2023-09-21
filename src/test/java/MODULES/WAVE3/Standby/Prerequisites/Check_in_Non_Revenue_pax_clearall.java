@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -47,6 +48,8 @@ public class Check_in_Non_Revenue_pax_clearall extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));

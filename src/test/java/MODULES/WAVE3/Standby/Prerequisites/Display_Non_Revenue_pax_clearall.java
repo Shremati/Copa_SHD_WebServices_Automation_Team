@@ -96,9 +96,12 @@ public class Display_Non_Revenue_pax_clearall extends FrameworkConstants {
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
         String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+        String AgencyName2 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),2);
 
         InputRow.getCell(11).setCellValue(AgencyName);
         InputRow.getCell(12).setCellValue(AgencyName1);
+        InputRow.getCell(13).setCellValue(AgencyName2);
+
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

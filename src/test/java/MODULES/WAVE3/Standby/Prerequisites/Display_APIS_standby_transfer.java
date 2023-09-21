@@ -1,6 +1,5 @@
-package MODULES.WAVE3.ManageSessions.PreRequisites;
+package MODULES.WAVE3.Standby.Prerequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -19,14 +18,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Get_Token extends FrameworkConstants {
+public class Display_APIS_standby_transfer extends FrameworkConstants {
 
     public static String SOAPRequest;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -43,12 +40,11 @@ public class Get_Token extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getManagesessions())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -61,12 +57,9 @@ public class Get_Token extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
         excelwriter();
 
-
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -74,14 +67,14 @@ public class Get_Token extends FrameworkConstants {
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("ManageSessions");
+        XSSFSheet sheet = wb.getSheet("Standby");
 
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Get_Token.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Display_APIS_standby_transfer.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(5).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
 
         wb.close();
 
@@ -96,14 +89,18 @@ public class Get_Token extends FrameworkConstants {
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("ManageSessions");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFSheet sheet = wb.getSheet("Standby");
+        XSSFRow InputRow=sheet.getRow(8);
 
 
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
+        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+        String AgencyName2 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),2);
 
-        String TransactionIdentifier = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
+        InputRow.getCell(11).setCellValue(AgencyName);
+        InputRow.getCell(12).setCellValue(AgencyName1);
+        InputRow.getCell(13).setCellValue(AgencyName2);
 
-        InputRow.getCell(3).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

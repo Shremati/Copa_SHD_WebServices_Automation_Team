@@ -1,6 +1,5 @@
-package MODULES.WAVE3.Standby.API_Tests;
+package MODULES.WAVE3.Standby.Prerequisites;
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -10,7 +9,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,19 +19,20 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class STB_06_Release_Advance_Seats extends FrameworkConstants {
+public class Modify_APIS_standby_transfer extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -41,46 +40,50 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getStandby())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ADVANCED  SEATS UNHELD"));
+        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"));
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-//                ********* Clearing Temp_Request.xml *********
+//                     ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
+
 
     }
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(6);
+
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Modify_APIS_standby_transfer.xml";
 
-        XMLParser.updateAttributeValue("DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),2);
 
         wb.close();
 
     }
+
 
 }

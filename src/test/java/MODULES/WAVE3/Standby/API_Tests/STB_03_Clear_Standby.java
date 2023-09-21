@@ -2,8 +2,6 @@ package MODULES.WAVE3.Standby.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Checkin.API_Tests.check_in_non_revenue_pax;
-import MODULES.WAVE3.Checkin.Checkin;
 import MODULES.WAVE3.Standby.Prerequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -12,7 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,7 +43,7 @@ public class STB_03_Clear_Standby extends FrameworkConstants {
         Check_in_Non_Revenue_pax Prerequisite5 = new Check_in_Non_Revenue_pax();
         Prerequisite5.run();
 
-        Enable_Standby Prerequisite6 = new Enable_Standby();
+        Start_Standby_clear_standby Prerequisite6 = new Start_Standby_clear_standby();
         Prerequisite6.run();
 
         UpdatePayload();
@@ -67,6 +65,10 @@ public class STB_03_Clear_Standby extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("PassengerDetails"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_03_Clear_Standby.xml"));
         writer.write(response.asPrettyString());

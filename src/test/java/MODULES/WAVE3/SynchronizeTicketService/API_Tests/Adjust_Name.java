@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,7 +38,7 @@ public class Adjust_Name extends FrameworkConstants {
        Modify_Booking1 Prerequisite3 = new Modify_Booking1();
        Prerequisite3.run();//Here ModificationType="3" , so we will need to modify only the pax name
 
-       Display_Booking_adjust_flight_no Prerequisite4 = new Display_Booking_adjust_flight_no();
+       Display_Booking_adjust_name Prerequisite4 = new Display_Booking_adjust_name();
        Prerequisite4.run();
 
        UpdatePayload(); //synchronize will reissue the out of sync ticket with the new name
@@ -62,6 +63,9 @@ public class Adjust_Name extends FrameworkConstants {
                .and()
                .log().all().extract().response();
 
+       Assert.assertTrue(response.getBody().asString().contains("Success"));
+       Assert.assertTrue(response.getBody().asString().contains("TicketGroup"));
+       Assert.assertTrue(response.getBody().asString().contains("<ns5:Passenger PassengerName=\"MUDLER/FOXXX\" PassengerType=\"ADT\">"));
 
 
        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Name.xml"));

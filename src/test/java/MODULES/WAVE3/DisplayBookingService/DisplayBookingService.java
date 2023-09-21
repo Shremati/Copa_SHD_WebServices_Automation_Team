@@ -48,7 +48,7 @@ public class DisplayBookingService
     @Description("DBS_10 - Display a booking from a specific address (LNIATA) without reloc given")
     @Test
     public void DBS_10() {
-
+ //We need a LNIATA number
         try {
             Display_a_booking_from_a_specific_address_lniata_without_recloc_given.Execute();
 
@@ -72,7 +72,7 @@ public class DisplayBookingService
         }
     }
 
-
+//need to resume
     @Description("DBS_15 - Display confirmed and waitlist booking list")
     @Test
     public void DBS_15() {

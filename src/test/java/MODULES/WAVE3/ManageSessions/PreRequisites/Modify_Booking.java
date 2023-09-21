@@ -85,6 +85,9 @@ public class Modify_Booking extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("n1:FlightSegment","FlightNumber", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode", InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("n5:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());

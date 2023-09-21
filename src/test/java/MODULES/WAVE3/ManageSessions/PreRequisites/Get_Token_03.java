@@ -100,9 +100,9 @@ public class Get_Token_03 extends FrameworkConstants {
 
 
 
-        String PNR = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns4:EDS_GeneralRS","TransactionIdentifier",getTemp_responsePath());
 
-        InputRow.getCell(3).setCellValue(PNR);
+        InputRow.getCell(3).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

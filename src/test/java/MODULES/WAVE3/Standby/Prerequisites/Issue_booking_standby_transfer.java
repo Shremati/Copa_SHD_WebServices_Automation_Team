@@ -1,4 +1,4 @@
-package MODULES.WAVE3.Standby.API_Tests;
+package MODULES.WAVE3.Standby.Prerequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -9,8 +9,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,19 +19,22 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class STB_06_Release_Advance_Seats extends FrameworkConstants {
+public class Issue_booking_standby_transfer extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
 
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -41,44 +42,44 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getStandby())
+                .post(getTicketing())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ADVANCED  SEATS UNHELD"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-//                ********* Clearing Temp_Request.xml *********
+//                     ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
+
 
     }
+
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(6);
+
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Issue_booking_standby_transfer.xml";
 
-        XMLParser.updateAttributeValue("DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
+        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
 
     }

@@ -1,8 +1,7 @@
-package MODULES.WAVE3.Standby.API_Tests;
+package MODULES.WAVE3.Standby.Prerequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.Standby.Prerequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -21,30 +20,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class STB_04_ClearAll_Standby extends FrameworkConstants {
+public class Checkin_standby_transfer extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-        Create_Booking_Non_Revenue_Pax_clearall Pre1 = new Create_Booking_Non_Revenue_Pax_clearall();
-        Pre1.run();
-
-        Issue_ticket_non_revenue_pax_clearall Pre2 = new Issue_ticket_non_revenue_pax_clearall();
-        Pre2.run();
-
-        Display_Non_Revenue_pax_clearall Pre3 = new Display_Non_Revenue_pax_clearall();
-        Pre3.run();
-
-        Modify_APIS_Non_Revenue_pax_clearall Pre4 = new Modify_APIS_Non_Revenue_pax_clearall();
-        Pre4.run();
-
-        Check_in_Non_Revenue_pax_clearall Pre5 = new Check_in_Non_Revenue_pax_clearall();
-        Pre5.run();
-
-        Start_Standby_clearall Pre6 = new Start_Standby_clearall();
-        Pre6.run();
 
         UpdatePayload();
 
@@ -60,18 +41,21 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getStandby())
+                .post(getCheckin())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("PassengerDetails"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_04_ClearAll_Standby.xml"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -79,6 +63,7 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
         writer.flush();
 
     }
+
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -88,17 +73,19 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Standby\\STB_04_ClearAll_Standby.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Checkin_standby_transfer.xml";
 
-        XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:CarrierInfo","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+
+        XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
     }
+
+
 }

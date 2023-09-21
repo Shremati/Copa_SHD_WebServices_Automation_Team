@@ -2,6 +2,7 @@ package MODULES.WAVE3.Standby.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.Standby.Prerequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -27,6 +29,25 @@ public class STB_08_Standby_Transfer extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        Create_booking_standby_transfer Prerequisite1 = new Create_booking_standby_transfer();
+        Prerequisite1.run();
+
+        Issue_booking_standby_transfer Prerequisite2 = new Issue_booking_standby_transfer();
+        Prerequisite2.run();
+
+        Display_APIS_standby_transfer Prerequisite3 = new Display_APIS_standby_transfer();
+        Prerequisite3.run();
+
+        Modify_APIS_standby_transfer Prerequisite4 = new Modify_APIS_standby_transfer();
+        Prerequisite4.run();
+
+        Checkin_standby_transfer Prerequisite5 = new Checkin_standby_transfer();
+        Prerequisite5.run();
+
+        Start_standby_transfer Prerequisite6 = new Start_standby_transfer();
+        Prerequisite6.run();
+
 
         UpdatePayload();
 
@@ -47,6 +68,9 @@ public class STB_08_Standby_Transfer extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("MASS TRANSFER COMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_08_Standby_Transfer.xml"));
         writer.write(response.asPrettyString());

@@ -17,7 +17,7 @@ public class SynchronizeTicketService
 
     @Description("STS_07 - Adjust Flight No and Date")
     @Test
-    public void Scenario1()
+    public void STS_07()
     {
 
         try
@@ -26,7 +26,7 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("STS_07 failed due to :"+e);
         }
 
 
@@ -34,7 +34,7 @@ public class SynchronizeTicketService
     }
     @Description("STS_01 - Adjust Name")
     @Test
-    public void Scenario2()
+    public void STS_01()
     {
 
         try
@@ -43,13 +43,13 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("STS_01 failed due to :"+e);
         }
 
     }
     @Description("STS_03 - Adjust Class")
     @Test
-    public void Scenario3()
+    public void STS_03()
     {
 
         try
@@ -58,7 +58,7 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("STS_03 failed due to :"+e);
         }
     }
 

@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -49,6 +50,8 @@ public class Check_in_Non_Revenue_pax extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -73,7 +76,7 @@ public class Check_in_Non_Revenue_pax extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Check_in_Non_Revenue_pax.xml";

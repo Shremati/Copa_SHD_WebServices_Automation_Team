@@ -83,10 +83,11 @@ public class Add_session extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Add_session.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
+
+        XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
@@ -104,9 +105,9 @@ public class Add_session extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
-        InputRow.getCell(3).setCellValue(PNR);
+        InputRow.getCell(3).setCellValue(TransactionIdentifier);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

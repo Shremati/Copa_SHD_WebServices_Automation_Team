@@ -8,6 +8,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//9 Scenarios
 public class Standby {
 
     Standby()
@@ -15,9 +16,9 @@ public class Standby {
         createFolders(getResponseDirectory()+"Standby");
     }
 
-    @Description("Start Standby")
+    @Description("STB_01 - Start Standby")
     @Test
-    public void Scenario1()
+    public void STB_01()
     {
         try
         {
@@ -26,13 +27,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("STB_01 failed due to :"+e);
         }
     }
 
-    @Description("Enable Standby")
+    @Description("STB_02 - Enable Standby")
     @Test
-    public void Scenario2()
+    public void STB_02()
     {
         try
         {
@@ -41,13 +42,16 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("STB_02 failed due to :"+e);
         }
     }
 
-    @Description("Clear Standby")
+    @Description("STB_03 - Clear Standby")
     @Test
-    public void Scenario3()
+    //We are removing the pax from standby
+    //Normal pax cant go to standby checkin, we need to do Weight Balance Restriction in checkin
+    //We used Non-revenue pax(NRPS), because they by default go to standby
+    public void STB_03()
     {
         try
         {
@@ -56,13 +60,15 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :"+e);
+            System.out.println("STB_03 failed due to :"+e);
         }
     }
 
-    @Description("ClearAll Standby")
+    @Description("STB_04 - ClearAll Standby")
     @Test
-    public void Scenario4()
+    //We need to keep the countries same for the markets, Eg.: PTY-LAX, PTY-MIA, so that agency requirements dont change
+    //Make sure that the flt has not initiated standby
+    public void STB_04()
     {
         try
         {
@@ -71,13 +77,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 4 failed due to :"+e);
+            System.out.println("STB_04 failed due to :"+e);
         }
     }
 
-    @Description("Release Held Seats")
+    @Description("STB_05 - Release Held Seats")
     @Test
-    public void Scenario5()
+    public void STB_05()
     {
         try
         {
@@ -86,13 +92,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 5 failed due to :"+e);
+            System.out.println("STB_05 failed due to :"+e);
         }
     }
 
-    @Description("Release Advance Seats")
+    @Description("STB_06 - Release Advance Seats")
     @Test
-    public void Scenario6()
+    public void STB_06()
     {
         try
         {
@@ -101,13 +107,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 6 failed due to :"+e);
+            System.out.println("STB_06 failed due to :"+e);
         }
     }
 
-    @Description("Advance Seats Class Specific")
+    @Description("STB_07 - Advance Seats Class Specific")
     @Test
-    public void Scenario7()
+    public void STB_07()
     {
         try
         {
@@ -116,13 +122,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 7 failed due to :"+e);
+            System.out.println("STB_07 failed due to :"+e);
         }
     }
 
-    @Description("Standby Transfer")
+    @Description("STB_08 - Standby Transfer")
     @Test
-    public void Scenario8()
+    public void STB_08()
     {
         try
         {
@@ -131,13 +137,13 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 8 failed due to :"+e);
+            System.out.println("STB_08 failed due to :"+e);
         }
     }
 
-    @Description("Cancel Immediate Standby")
+    @Description("STB_10 - Cancel Immediate Standby")
     @Test
-    public void Scenario9()
+    public void STB_10()
     {
         try
         {
@@ -146,7 +152,7 @@ public class Standby {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 9 failed due to :"+e);
+            System.out.println("STB_10 failed due to :"+e);
         }
     }
 
