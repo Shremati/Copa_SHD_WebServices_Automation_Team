@@ -13,7 +13,7 @@
             <read:DepartureAirport LocationCode="LAX"/>
             <read:DepartureDate>2014-11-06</read:DepartureDate>
             <read:Name>
-              <com:Surname>SMITH</com:Surname>
+              <com:Surname>PONSE</com:Surname>
             </read:Name>
             <read:CustLoyalty ProgramID="CM" MembershipID="230021925"/>
           </read:AirReadRequest>

@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -62,6 +63,9 @@ public class Display_confirmed_and_waitlist_booking_list extends FrameworkConsta
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_confirmed_and_waitlist_booking_list.xml"));
@@ -97,7 +101,8 @@ public class Display_confirmed_and_waitlist_booking_list extends FrameworkConsta
         XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),0);
 
         PNR1 = InputRow.getCell(10).getStringCellValue();
-        PNR2 = InputRow.getCell(10).getStringCellValue();
+        PNR2 = InputRow.getCell(15).getStringCellValue();
+
         wb.close();
 
     }

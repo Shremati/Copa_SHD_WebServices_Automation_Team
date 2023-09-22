@@ -9,7 +9,7 @@
         <read:ReadRequests>
           <read:AirReadRequest Start="2023-02-15" End="2023-02-15">
             <read:Name>
-              <com:Surname>JONES</com:Surname>
+              <com:Surname>SMITH</com:Surname>
             </read:Name>
           </read:AirReadRequest>
         </read:ReadRequests>

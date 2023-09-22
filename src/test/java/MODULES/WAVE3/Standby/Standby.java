@@ -132,7 +132,7 @@ public class Standby {
     {
         try
         {
-            STB_08_Standby_Transfer.Execute();
+            STB_08_Standby_Transfer.Execute(); //Mass Transfer Scenario. Both flights should be from same markets.
 
         }catch(Exception e)
         {

@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-08-20T00:00:00" RPH="1" FlightNumber="138" ResBookDesigCode="H" NumberInParty="1" Status="9">
+                            <air1:FlightSegment DepartureDateTime="2023-09-06T00:00:00" RPH="1" FlightNumber="302" ResBookDesigCode="Y" NumberInParty="2" Status="9">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="MEX"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -20,7 +20,7 @@
                 <air:PriceInfo>
                     <air1:PTC_FareBreakdowns>
                         <air1:PTC_FareBreakdown>
-                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
                             <air1:FareBasisCodes>
                                 <air1:FareBasisCode>X</air1:FareBasisCode>
                             </air1:FareBasisCodes>
@@ -34,6 +34,7 @@
                                 <air1:FareBaggageAllowance UnitOfMeasureQuantity="1" UnitOfMeasure="PC" FlightSegmentRPH="1"/>
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
                             <air1:Endorsements>
                                 <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
                             </air1:Endorsements>
@@ -43,11 +44,18 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>MICHAEL</com:GivenName>
-                            <com:Surname>BURNS</com:Surname>
+                            <com:GivenName>HUSBAND</com:GivenName>
+                            <com:Surname>HOPKINS</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1414" Remark="PHONE REMARK"/>
                         <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>WIFE</com:GivenName>
+                            <com:Surname>HOPKINS</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>

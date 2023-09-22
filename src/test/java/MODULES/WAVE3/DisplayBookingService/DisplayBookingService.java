@@ -48,7 +48,7 @@ public class DisplayBookingService
     @Description("DBS_10 - Display a booking from a specific address (LNIATA) without reloc given")
     @Test
     public void DBS_10() {
- //We need a LNIATA number
+ //Provide a LNIATA where PNR is created in SHARES for a given day
         try {
             Display_a_booking_from_a_specific_address_lniata_without_recloc_given.Execute();
 
@@ -72,7 +72,7 @@ public class DisplayBookingService
         }
     }
 
-//need to resume
+
     @Description("DBS_15 - Display confirmed and waitlist booking list")
     @Test
     public void DBS_15() {
@@ -94,7 +94,7 @@ public class DisplayBookingService
 
         try {
 
-            Search_a_booking_by_frequent_traveler_number.Execute(); //It will fail because pnr with fqtv cant be created due to a defect
+            Search_a_booking_by_frequent_traveler_number.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -173,14 +173,15 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_42 - Date range search (single result)")
+    @Description("DBS_42 - Data range search (single result)")
     @Test
     public void DBS_42() {
 
         try {
 
-            Date_range_search.Execute();
+            Date_range_search.Execute(); //PNR created instantly will not show up in the data range search instantly
 
+            //Try to search for a historical PNR.
         } catch (Exception e) {
             failTest(e);
             System.out.println("DBS_42 failed due to :" + e);
@@ -314,7 +315,7 @@ public class DisplayBookingService
     }
     @Description("DBS_02 - Display_booking_on_another_airline_booking")
     @Test
-    public void DBS_02() {
+    public void DBS_02() {  //Need to check
 
         try {
 
@@ -322,7 +323,7 @@ public class DisplayBookingService
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 22 failed due to :" + e);
+            System.out.println("DBS_02 failed due to :" + e);
         }
     }
 
@@ -414,7 +415,7 @@ public class DisplayBookingService
     @Description("DBS_13 - Display_waitlist_booking")
     @Test
     public void DBS_13() {
-
+//For waitlist scenarios , we need to give flights which are not available so that the pax can go into waitlist, Like Y0,B0, where seats are 0
         try {
 
             Display_waitlist_booking.Execute();
@@ -428,10 +429,10 @@ public class DisplayBookingService
     @Description("DBS_14 - Display waitlist booking list(including_multiple_name_entries_in_list_on_same_booking)")
     @Test
     public void DBS_14() {
-
+//Waitlist case, so give 0 availability flights i.e. where no seats are there
         try {
 
-            Display_Booking_multiple_name_entries_in_list_on_same_booking.Execute();
+            Display_Booking_multiple_name_entries_in_list_on_same_booking.Execute(); // It will give 2 PNRS created under waitlist
 
         } catch (Exception e) {
             failTest(e);

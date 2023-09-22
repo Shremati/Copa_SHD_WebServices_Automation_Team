@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,6 +28,7 @@ import static io.restassured.RestAssured.given;
 public class Date_range_search extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -59,8 +61,10 @@ public class Date_range_search extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ReservationsList"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Date_range_search.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Data_range_search.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -87,10 +91,11 @@ public class Date_range_search extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Date_range_search.xml";
 
-        XMLParser.updateAttributeValueatIndex("read:AirReadRequest", "Start", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("read:AirReadRequest", "End", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("read:AirReadRequest", "Start", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()-1),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("read:AirReadRequest", "End", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()+1),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
 
+        PNR = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

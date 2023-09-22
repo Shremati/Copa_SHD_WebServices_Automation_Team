@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -52,6 +53,12 @@ public class Advance_seat_assignment_on_oa_flight extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
+        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Advance_seat_assignment_on_oa_flight.xml"));
