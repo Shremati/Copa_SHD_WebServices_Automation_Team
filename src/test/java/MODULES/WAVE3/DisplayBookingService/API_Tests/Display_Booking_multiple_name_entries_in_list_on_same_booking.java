@@ -84,7 +84,7 @@ public class Display_Booking_multiple_name_entries_in_list_on_same_booking exten
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
-        XSSFRow InputRow=sheet.getRow(31);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_Booking_multiple_name_entries_in_list_on_same_booking.xml";

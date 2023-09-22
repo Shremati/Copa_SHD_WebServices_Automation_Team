@@ -71,7 +71,7 @@ public class Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
 
-        XSSFRow InputRow=sheet.getRow(31);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking.xml";
@@ -95,7 +95,7 @@ public class Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
-        XSSFRow InputRow=sheet.getRow(31);
+        XSSFRow InputRow=sheet.getRow(29);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
