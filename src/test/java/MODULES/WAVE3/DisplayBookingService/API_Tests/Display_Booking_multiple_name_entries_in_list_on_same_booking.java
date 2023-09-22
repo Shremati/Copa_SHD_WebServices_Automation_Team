@@ -11,7 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,7 +31,7 @@ public class Display_Booking_multiple_name_entries_in_list_on_same_booking exten
     {
         //        PreRequisite for Scenario ------> Create Booking
 
-        Create_Booking_1_Confirmed_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite = new Create_Booking_1_Confirmed_Booking_multiple_name_entries_in_list_on_same_booking();
+        Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite = new Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking();
         Prerequisite.run();
 
         Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite2 = new Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking();

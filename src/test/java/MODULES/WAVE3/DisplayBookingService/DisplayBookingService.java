@@ -1,10 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService;
 
 import MODULES.WAVE3.DisplayBookingService.API_Tests.*;
-import MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests.Display_loyalty_account;
-import MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests.Display_partner_airline_elite_member_loyalty_account;
-import MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests.Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account;
-import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -315,8 +311,10 @@ public class DisplayBookingService
     }
     @Description("DBS_02 - Display_booking_on_another_airline_booking")
     @Test
-    public void DBS_02() {  //Need to check
+    public void DBS_02() {
 
+        //Take connecting flights , try not to change the markets ....take the given flights and only try to change the dates.
+        // Give same date for both seg as it's a connecting flight
         try {
 
             Display_booking_on_another_airline_booking.Execute();
@@ -441,13 +439,14 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_17 - Display_booking_same_passenger_name_in_both_lists")
+    @Description("DBS_17 - Display confirmed and waitlist booking same passenger name in both lists")
     @Test
     public void DBS_17() {
-
+//Pax name same and statuses will be different  in both create booking
+//        We need to ensure for confirmed (availability should be there) and for waitlist(availability should not be there)
         try {
 
-            Display_booking_same_passenger_name_in_both_lists.Execute();
+            Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists.Execute();
 
         } catch (Exception e) {
             failTest(e);
