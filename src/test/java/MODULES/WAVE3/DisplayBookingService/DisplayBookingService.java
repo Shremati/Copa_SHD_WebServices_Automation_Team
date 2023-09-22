@@ -432,7 +432,7 @@ public class DisplayBookingService
 //Waitlist case, so give 0 availability flights i.e. where no seats are there
         try {
 
-            Display_Booking_multiple_name_entries_in_list_on_same_booking.Execute(); // It will give 2 PNRS created under waitlist
+            Display_Booking_multiple_name_entries_in_list_on_same_booking.Execute(); // It will give 2 PNRS created under waitlist i.e. status=9
 
         } catch (Exception e) {
             failTest(e);

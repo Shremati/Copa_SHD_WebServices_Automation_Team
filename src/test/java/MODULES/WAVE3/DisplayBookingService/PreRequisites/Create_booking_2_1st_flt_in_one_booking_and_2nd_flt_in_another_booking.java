@@ -57,6 +57,8 @@ public class Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_book
         writer.write("");
         writer.close();
 
+        excelwriter();
+
     }
 
 
@@ -85,5 +87,35 @@ public class Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_book
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
         wb.close();
     }
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("DisplayBookingService");
+        XSSFRow InputRow=sheet.getRow(35);
+
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+        InputRow.getCell(15).setCellValue(PNR);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
+    }
+
 
 }

@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -25,6 +26,8 @@ import static io.restassured.RestAssured.given;
 public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_in_another_booking extends FrameworkConstants {
 
     public static String SOAPRequest;
+    public static String PNR1;
+    public static String PNR2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
@@ -58,6 +61,10 @@ public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_i
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "DisplayBookingService\\Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_in_another_booking.xml"));
         writer.write(response.asPrettyString());
@@ -88,6 +95,9 @@ public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_i
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 0);
         XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(), getTemp_requestPath(), 0);
+
+        PNR1 = InputRow.getCell(10).getStringCellValue();
+        PNR2 = InputRow.getCell(15).getStringCellValue();
 
         wb.close();
 

@@ -1,0 +1,6 @@
+package MODULES.WAVE3.DisplayBookingService.PreRequisites;
+
+import frameworkconstants.FrameworkConstants;
+
+public class Create_booking_2_Display_booking_same_passenger_name_in_both_lists extends FrameworkConstants {
+}

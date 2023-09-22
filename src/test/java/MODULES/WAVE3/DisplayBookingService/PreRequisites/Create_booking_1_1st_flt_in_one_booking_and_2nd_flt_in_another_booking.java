@@ -99,6 +99,8 @@ public class Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_book
 
         InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
 
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+        InputRow.getCell(10).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
