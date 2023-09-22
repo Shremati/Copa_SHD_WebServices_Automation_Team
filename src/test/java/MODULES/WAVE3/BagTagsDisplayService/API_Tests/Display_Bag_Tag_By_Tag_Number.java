@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -65,6 +66,10 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"));
+        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"BagTagDisplayService\\Display_Bag_Tag_By_Tag_Number.xml"));
         writer.write(response.asPrettyString());
@@ -100,6 +105,7 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "RPH", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:OperatingAirline", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
 
         wb.close();
     }

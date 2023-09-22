@@ -19,7 +19,7 @@
                     <com1:PassengerType Gender="F"/>
                 </air:PassengerInfo>
                 <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
-                    <com1:SeatBoardingInfo SeatNumber="17C"/>
+                    <com1:SeatBoardingInfo SeatNumber="08C"/>
                 </air:PassengerFlightInfo>
                 <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="1">
                     <com1:CheckedBaggageDetails>

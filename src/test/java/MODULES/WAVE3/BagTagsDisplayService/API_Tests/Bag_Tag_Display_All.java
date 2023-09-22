@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -67,6 +68,11 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"));
+        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"));
+
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"BagTagDisplayService\\Bag_Tag_Display_All.xml"));

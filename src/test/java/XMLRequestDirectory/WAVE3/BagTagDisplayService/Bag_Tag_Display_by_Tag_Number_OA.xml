@@ -7,7 +7,7 @@
                     <com:Source  AirlineVendorID="CM">
                     </com:Source>
                 </bag1:POS>
-                <bag1:FlightInfo OptionalParameter="ALL" BagTagNumber="227051">
+                <bag1:FlightInfo OptionalParameter="ALL" BagTagNumber="123456">
                     <bag1:FlightLegInfo DepartureDateTime="2023-08-09T00:00:00" ArrivalDateTime="2023-08-09T00:00:00" RPH="1" FlightNumber="476">
                         <com:DepartureAirport LocationCode="PTY"/>
                         <com:ArrivalAirport LocationCode="DEN"/>

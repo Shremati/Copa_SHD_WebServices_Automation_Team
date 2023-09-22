@@ -18,27 +18,26 @@ public class BagTagDisplayService {
 
     @Description("BTD_01 - Bag Tag Display All")
     @Test
-    public void Scenario1() {
+    public void BTD_01() {
         try {
             Bag_Tag_Display_All.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("BTD_01 failed due to :" + e);
         }
     }
 
 
-    //Expected response: "No bagtags found"
-    @Description("BTD_02 - Bag Tag Display OA")
+    @Description("BTD_02 - Bag Tag Display OA")      //Expected response: "No bagtags found"
     @Test
-    public void Scenario2() {
+    public void BTD_02() {
         try {
             Bag_Tag_Display_OA.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("BTD_02 failed due to :" + e);
         }
     }
 
@@ -47,14 +46,16 @@ public class BagTagDisplayService {
     @Test
     public void Scenario3() {
         try {
+
             Display_Bag_Tag_By_Tag_Number.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("SCENARIO 3 failed due to :" + e);
         }
     }
 
-    //Need to update
+
     @Description("BTD_04 - Bag Tag Display by Tag Number OA")
     @Test
     public void Scenario4() {
