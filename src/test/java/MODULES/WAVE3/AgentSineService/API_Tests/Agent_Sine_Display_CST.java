@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -48,6 +49,8 @@ public class Agent_Sine_Display_CST extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ResponseComment"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AgentSineService\\Agent_Sine_Display_CST.xml"));
         writer.write(response.asPrettyString());

@@ -48,6 +48,8 @@ public class Max_requests_exceeded extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\Max_requests_exceeded.xml"));
         writer.write(response.asPrettyString());

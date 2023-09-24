@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -46,6 +47,8 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("DUTY REMOVED"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AgentSineService\\Remove_Agent_Duty_Code.xml"));
         writer.write(response.asPrettyString());

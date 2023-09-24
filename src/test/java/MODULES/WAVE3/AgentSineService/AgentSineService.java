@@ -91,6 +91,7 @@ public class AgentSineService {
 
     @Description("Remove Agent Sine")
     @Test
+    //Once, agent sine is removed, run Scenario 1(Add Agent Sine), once again
     public void Scenario6()
     {
         try
