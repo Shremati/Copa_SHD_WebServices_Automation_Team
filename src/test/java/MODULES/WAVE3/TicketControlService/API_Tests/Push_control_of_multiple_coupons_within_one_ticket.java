@@ -2,11 +2,9 @@ package MODULES.WAVE3.TicketControlService.API_Tests;
 
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.RedirectControl;
 import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_push_control_of_multiple_coupons_within_one_ticket;
-import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
 import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_push_control_of_multiple_coupons_within_one_ticket;
-import MODULES.WAVE3.TicketControlService.TicketControlService;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -14,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,6 +36,9 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
         issue_ticket_push_control_of_multiple_coupons_within_one_ticket Prerequisite2 = new issue_ticket_push_control_of_multiple_coupons_within_one_ticket();
         Prerequisite2.run();
 
+        RedirectControl Prerequisite3 = new RedirectControl();
+        Prerequisite3.run();
+
 
         UpdatePayload();
 
@@ -59,6 +61,9 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("requestControlResponse"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Push_control_of_multiple_coupons_within_one_ticket.xml"));
         writer.write(response.asPrettyString());
@@ -66,41 +71,6 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
 
 
  //                ********* Clearing Temp_Request.xml *********
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
-        writer.write("");
-        writer.flush();
-
-
-//    *************************** Post Scenario ********************************
-
-        UpdatePayloadPostScenario();
-
-//    ******** Read the updated request and send it to fetch the response *********
-
-        fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
-        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
-
-        response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getTicketcontroloservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
-
-
-        writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Response_RedirectControl.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
-//                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
@@ -126,27 +96,5 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
         wb.close();
 
     }
-
-    public static void UpdatePayloadPostScenario() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Reading Testdata from Excel ************
-
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("TicketControlService");
-        XSSFRow InputRow=sheet.getRow(2);
-
-        String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\TicketControlService\\PostScenario\\RedirectControl.xml";
-
-        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
-
-        wb.close();
-
-    }
-
-
-
 
 }

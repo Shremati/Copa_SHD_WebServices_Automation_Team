@@ -12,6 +12,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//2 Scenarios
 public class TicketControlService {
 
     TicketControlService()
@@ -21,7 +22,7 @@ public class TicketControlService {
 
     @Description("TCS_01 - Get control of one coupon of one ticket")
     @Test
-    public void Scenario1() {
+    public void TCS_01() {
 
         try {
             Get_control_of_one_coupon_of_one_ticket.Execute();
@@ -29,13 +30,13 @@ public class TicketControlService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("TCS_01 failed due to :" + e);
         }
     }
 
-    @Description("TCS_07 - Push control of multiple coupons within one ticket")
+    @Description("TCS_06 - Push control of multiple coupons within one ticket")
     @Test
-    public void Scenario2() {
+    public void TCS_06() {
 
         try {
             Push_control_of_multiple_coupons_within_one_ticket.Execute();
@@ -43,7 +44,7 @@ public class TicketControlService {
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("TCS_06 failed due to :" + e);
         }
     }
 

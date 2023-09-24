@@ -1,9 +1,7 @@
-package MODULES.WAVE3.TicketingService.API_Tests;
+package MODULES.WAVE3.TicketControlService.PreRequisites;
 
-
+import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_ticket_for_a_booking_with_an_infant;
-import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -22,20 +20,17 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets extends FrameworkConstants
-{
+public class RedirectControl extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-        create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets Prerequisite = new create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets();
-        Prerequisite.run();
-
-
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//                       ********** Reading the xml request file **********
+
+        //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
@@ -48,19 +43,18 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getTicketing())
+                .post(getTicketcontroloservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketInfo TicketNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("redirectControlResponse"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -68,7 +62,9 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
         writer.write("");
         writer.flush();
 
+
     }
+
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
@@ -78,14 +74,13 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("TicketingService");
+        XSSFSheet sheet = wb.getSheet("TicketControlService");
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\TicketControlService\\PreRequisites\\RedirectControl.xml";
 
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
 
         wb.close();
 
