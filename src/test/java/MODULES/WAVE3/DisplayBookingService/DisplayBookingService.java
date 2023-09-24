@@ -314,7 +314,7 @@ public class DisplayBookingService
     public void DBS_02() {
 
         //Take connecting flights , try not to change the markets ....take the given flights and only try to change the dates.
-        // Give same date for both seg as it's a connecting flight
+        // Give same "date" for both seg as it's a connecting flight
         try {
 
             Display_booking_on_another_airline_booking.Execute();
