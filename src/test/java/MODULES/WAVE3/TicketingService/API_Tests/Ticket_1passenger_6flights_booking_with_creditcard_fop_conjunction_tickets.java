@@ -56,6 +56,7 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("TicketInfo TicketNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("ConjunctionNumber"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml"));
         writer.write(response.asPrettyString());

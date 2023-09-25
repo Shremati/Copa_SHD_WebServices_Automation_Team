@@ -9,7 +9,7 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2014-11-06T00:00:00" RPH="1" FlightNumber="550" ResBookDesigCode="M" NumberInParty="1" Status="9">
+                            <air1:FlightSegment DepartureDateTime="2014-11-06T00:00:00" RPH="1" FlightNumber="550" ResBookDesigCode="Y" NumberInParty="1" Status="9">
                                 <com:DepartureAirport LocationCode="LAX"/>
                                 <com:ArrivalAirport LocationCode="DEN"/>
                                 <air1:MarketingAirline Code="CM"/>

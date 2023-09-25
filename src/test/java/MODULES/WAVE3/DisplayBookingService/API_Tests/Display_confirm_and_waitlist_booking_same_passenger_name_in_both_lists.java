@@ -63,7 +63,7 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
-//        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists.xml"));

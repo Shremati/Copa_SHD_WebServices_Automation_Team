@@ -49,6 +49,8 @@ public class Flight_has_one_leg_and_open_status extends FrameworkConstants
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Status=\"Open\""));
+        Assert.assertFalse(response.getBody().asString().contains("Status=\"NotOpen\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlightDepartureInfoService\\Flight_has_one_leg_and_open_status.xml"));
         writer.write(response.asPrettyString());

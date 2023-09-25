@@ -22,7 +22,7 @@ public class FlightDepartureInfoService {
     public void FDIS_03() {
 
         try {
-            Flight_has_two_legs_and_notopen_status.Execute();
+            Flight_has_two_legs_and_notopen_status.Execute(); //PTY-SJO and SJO_GUA has 391 as 2 leg flight. So take this one
 
         } catch (Exception e) {
             failTest(e);
@@ -35,7 +35,7 @@ public class FlightDepartureInfoService {
     public void FDIS_04() {
 
         try {
-            Flight_has_one_leg_and_open_status.Execute();
+            Flight_has_one_leg_and_open_status.Execute(); //1 leg and open flight , ex, 360,120 ,etc
 
         } catch (Exception e) {
             failTest(e);

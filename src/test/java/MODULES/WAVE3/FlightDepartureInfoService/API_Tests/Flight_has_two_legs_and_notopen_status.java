@@ -49,6 +49,8 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
 
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Status=\"NotOpen\""));
+        Assert.assertFalse(response.getBody().asString().contains("Status=\"Open\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlightDepartureInfoService\\Flight_has_two_legs_and_notopen_status.xml"));
         writer.write(response.asPrettyString());
