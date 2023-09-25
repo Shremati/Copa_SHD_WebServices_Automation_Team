@@ -38,7 +38,7 @@ public class TicketingService {
             Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.Execute();
 
             //Last Segment PTY-LAX doesn't always work fine, so PTY-SFO is taken. Give proper flights/markets for all segments which have seats
-            //Dont change the flt nos. ,change the dates instead
+            //Dont change the flt numbers , change the dates instead
         } catch (Exception e) {
             failTest(e);
             System.out.println("TIS_03 failed due to :" + e);
@@ -92,8 +92,9 @@ public class TicketingService {
 
     }
 
+}
 
-    //    @Description("Print an Eticket")
+//    @Description("Print an Eticket")
 //    @Test
 //    public void Scenario3() {
 //
@@ -122,4 +123,3 @@ public class TicketingService {
 //    }
 
 //    TIS_07 -	Ticket with check form of payment(Not Automated)
-}
