@@ -2,6 +2,8 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
+import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -27,8 +29,12 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite1 = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
-        Prerequisite1.Execute();
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        Prerequisite.run();
+
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        Prerequisite2.run();
+
 
         UpdatePayload();
 
@@ -52,7 +58,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Form Of Payment Transaction -  (1) NEED CC/CK NBR IN FOP (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Free-Flow Remark Transaction"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Stored_fare_Ticketing_item_too_long_remark.xml"));
