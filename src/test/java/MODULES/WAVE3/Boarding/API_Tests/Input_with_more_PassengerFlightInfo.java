@@ -48,8 +48,8 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());

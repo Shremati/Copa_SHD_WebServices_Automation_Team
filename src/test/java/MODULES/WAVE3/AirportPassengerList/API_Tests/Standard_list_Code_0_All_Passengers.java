@@ -2,6 +2,7 @@ package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_StandardList_Code_0;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -24,10 +25,13 @@ import static io.restassured.RestAssured.given;
 public class Standard_list_Code_0_All_Passengers extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        Create_Booking_StandardList_Code_0 PreRequisite1 = new Create_Booking_StandardList_Code_0();
+        PreRequisite1.run();
 
         UpdatePayload();
 
@@ -50,7 +54,8 @@ public class Standard_list_Code_0_All_Passengers extends FrameworkConstants
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_0_All_Passengers.xml"));
         writer.write(response.asPrettyString());
@@ -86,6 +91,7 @@ public class Standard_list_Code_0_All_Passengers extends FrameworkConstants
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

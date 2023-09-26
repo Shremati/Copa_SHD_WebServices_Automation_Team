@@ -5,7 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -26,7 +26,6 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -51,9 +50,12 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
         Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
+        Writer writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -89,3 +91,4 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
     }
 }
+

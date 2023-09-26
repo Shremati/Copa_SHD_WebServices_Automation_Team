@@ -24,10 +24,12 @@ import frameworkconstants.*;
 public class Code_42_specific_SSR extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        Create_Booking_Specific_SSR PreRequisite1 = new Create_Booking_Specific_SSR();
+        PreRequisite1.run();
 
         UpdatePayload();
 
@@ -51,6 +53,8 @@ public class Code_42_specific_SSR extends FrameworkConstants
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml"));
         writer.write(response.asPrettyString());
@@ -74,17 +78,16 @@ public class Code_42_specific_SSR extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(1); //Taking flight data from code 2 eticketed pax because similar requirements
+        XSSFRow InputRow=sheet.getRow(19);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Code_42_specific_SSR.xml";
-
-
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

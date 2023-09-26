@@ -27,11 +27,16 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
     {
 
         create_booking_for_one_pax_code_25 Prerequisite1 =new create_booking_for_one_pax_code_25();
+        Prerequisite1.run();
+
         Issue_Ticket_code_25 Prerequisite2 = new Issue_Ticket_code_25();
+        Prerequisite2.run();
+
+
         Hold_Seats_code_25 Prerequisite3 = new Hold_Seats_code_25();
 
-        Prerequisite1.run();
-        Prerequisite2.run();
+
+
         Prerequisite3.run();
 
         UpdatePayload();

@@ -56,6 +56,7 @@ public class AirportPassengerList {
     public void APL_18() {
         try {
             Code_25_Pax_with_held_seats.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_18 failed due to :" + e);
@@ -78,7 +79,9 @@ public class AirportPassengerList {
     public void APL_45() {
 
         try {
+
             Code_0_All_passengers_Response_Data_paxservice_info.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_45 failed due to :" + e);
@@ -87,10 +90,12 @@ public class AirportPassengerList {
 
     @Description("APL_34 - Custom  list: Code 42  - Specific SSR")
     @Test
-    public void APL_34() {  //need to create a PNR
+    public void APL_34() {
 
         try {
+
             Code_42_specific_SSR.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_34 failed due to :" + e);
@@ -99,7 +104,7 @@ public class AirportPassengerList {
 
     @Description("APL_01 - Standard list Code 0 All Passengers")
     @Test
-    public void APL_01() { // need to create PNR
+    public void APL_01() {
 
         try {
             Standard_list_Code_0_All_Passengers.Execute();
@@ -115,7 +120,9 @@ public class AirportPassengerList {
     public void APL_23() {
 
         try {
+
             Standard_list_Code_30_passengers_with_no_meals.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_23 failed due to :" + e);
