@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +26,7 @@ import static io.restassured.RestAssured.given;
 public class Passengers_with_outbound_connections extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -52,6 +53,9 @@ public class Passengers_with_outbound_connections extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Passengers_with_outbound_connections.xml"));
@@ -81,12 +85,13 @@ public class Passengers_with_outbound_connections extends FrameworkConstants
         filepath1=getRequestDirectory()+"AirportPassengerList\\Passengers_with_outbound_connections.xml";
 
 
-
+//        We need to give 1st segment details i.e. 2nd seg flight number ,departure airport and date as its outbound
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath()); //departure airport of 2nd seg
         XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

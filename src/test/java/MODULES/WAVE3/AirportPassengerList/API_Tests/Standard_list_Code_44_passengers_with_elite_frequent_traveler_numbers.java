@@ -2,6 +2,7 @@ package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_StandardList_code_44;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
@@ -23,10 +25,12 @@ import static io.restassured.RestAssured.given;
 public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        Create_Booking_StandardList_code_44 PreRequisite1 = new Create_Booking_StandardList_code_44();
+        PreRequisite1.run();
 
         UpdatePayload();
 
@@ -48,7 +52,9 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.xml"));
         writer.write(response.asPrettyString());
@@ -77,13 +83,12 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
         String filepath1;
         filepath1=getRequestDirectory()+"AirportPassengerList\\Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.xml";
 
-
-
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:ListFunction","ListType",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 

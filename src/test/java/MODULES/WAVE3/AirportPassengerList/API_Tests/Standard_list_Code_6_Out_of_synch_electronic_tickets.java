@@ -2,6 +2,9 @@ package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.CreateBooking_StandardList_Code_6_out_of_sync;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Issue_Ticket_Standard_list_Code_6;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Modify_booking_StandardList_Code_6_out_of_sync;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -24,10 +27,20 @@ import static io.restassured.RestAssured.given;
 public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        CreateBooking_StandardList_Code_6_out_of_sync PreRequisite1 = new CreateBooking_StandardList_Code_6_out_of_sync();
+        PreRequisite1.run();
+
+        Issue_Ticket_Standard_list_Code_6 PreRequisite2 = new Issue_Ticket_Standard_list_Code_6();
+        PreRequisite2.run();
+
+        Modify_booking_StandardList_Code_6_out_of_sync PreRequisite3 = new Modify_booking_StandardList_Code_6_out_of_sync();
+        PreRequisite3.run();
 
         UpdatePayload();
 
@@ -50,7 +63,9 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_6_Out_of_sync_electronic_tickets.xml"));
         writer.write(response.asPrettyString());
@@ -80,12 +95,13 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
         filepath1=getRequestDirectory()+"AirportPassengerList\\Standard_list_Code_6_Out_of_sync_electronic_tickets.xml";
 
 
+//We need to give the modified itenary details
 
-        XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(11).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath());
 
-
+        PNR = InputRow.getCell(7).getStringCellValue();
         wb.close();
 
     }

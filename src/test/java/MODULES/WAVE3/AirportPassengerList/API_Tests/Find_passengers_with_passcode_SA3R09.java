@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +26,7 @@ import static io.restassured.RestAssured.given;
 public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -53,6 +54,9 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Find_passengers_with_passcode_SA3R09.xml"));
@@ -90,6 +94,7 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
 //Filter value-->SurnamePrefix
         XMLParser.SetTagtext("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
 
+        PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
 
