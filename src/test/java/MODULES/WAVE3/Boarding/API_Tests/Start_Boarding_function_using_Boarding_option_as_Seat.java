@@ -26,16 +26,63 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        UpdatePayload_2();
+
+        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
+        Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getScreentextservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+
+        UpdatePayload_1();
+
+        fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
+        response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .body(SOAPRequest)
+                .when()
+                .post(getScreentextservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+        writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
 
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
-        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+        fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
+        response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured())
@@ -55,7 +102,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
         Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
-        Writer writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
+        writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -68,8 +115,26 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
     }
 
+    public static void UpdatePayload_1() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+        //        ********** Reading Testdata from Excel ************
+
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("Boarding");
+        XSSFRow InputRow = sheet.getRow(6);
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "Boarding\\ScreenTextRequest.xml";
+
+
+        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(6).getStringCellValue(), filepath1);
+
+
+        wb.close();
+    }
+
+        public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -89,6 +154,25 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
         wb.close();
 
+    }
+
+    public static void UpdatePayload_2() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Reading Testdata from Excel ************
+
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("Boarding");
+        XSSFRow InputRow = sheet.getRow(6);
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "Boarding\\ScreenTextRequest.xml";
+
+
+        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(7).getStringCellValue(), filepath1);
+
+
+        wb.close();
     }
 }
 
