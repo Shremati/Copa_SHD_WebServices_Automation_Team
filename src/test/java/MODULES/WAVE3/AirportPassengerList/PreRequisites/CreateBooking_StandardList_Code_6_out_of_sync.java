@@ -19,15 +19,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Create_Booking_with_NRSA extends FrameworkConstants
-{
+public class CreateBooking_StandardList_Code_6_out_of_sync extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -65,8 +62,6 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
 
         excelwriter();
 
-
-
     }
 
 
@@ -79,17 +74,19 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
 
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRow=sheet.getRow(7);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Create_Booking_with_NRSA.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\CreateBooking_StandardList_Code_6_out_of_sync.xml";
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
 
@@ -105,15 +102,14 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRow=sheet.getRow(7);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-
         InputRow.getCell(7).setCellValue(PNR);
 
-
-
+        String ArrivalDate1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0);
+        InputRow.getCell(16).setCellValue(ArrivalDate1);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -128,8 +124,5 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
         writer.close();
 
     }
-
-
-
 
 }

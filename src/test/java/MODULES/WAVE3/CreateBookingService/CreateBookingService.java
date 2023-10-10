@@ -406,7 +406,7 @@ public class CreateBookingService {
         try {
 
             Bundled_segment_Invalid_information_in_one_segment.Execute();
-                // Currently having GUI Issue conjuctive PNR
+                // Currently having GUI Issue conjunctive PNR
         } catch (Exception e) {
             failTest(e);
             System.out.println("CBS_51 failed due to :" + e);

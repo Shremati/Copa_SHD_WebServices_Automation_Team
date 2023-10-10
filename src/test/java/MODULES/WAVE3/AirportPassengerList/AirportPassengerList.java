@@ -19,6 +19,7 @@ public class AirportPassengerList {
     @Test
     public void APL_03() {
         try {
+
             Code_2_eticketed_passengers.Execute();
 
         } catch (Exception e) {
@@ -31,6 +32,7 @@ public class AirportPassengerList {
     @Test
     public void APL_06() {
         try {
+
             Code_5_Interline_eticket_passengers.Execute();  //Need to check
 
         } catch (Exception e) {
@@ -43,6 +45,7 @@ public class AirportPassengerList {
     @Test
     public void APL_11() {
         try {
+
             Code_12_Passengers_with_advance_seats.Execute();
 
         } catch (Exception e) {
@@ -55,7 +58,9 @@ public class AirportPassengerList {
     @Test
     public void APL_18() {
         try {
+
             Code_25_Pax_with_held_seats.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_18 failed due to :" + e);
@@ -66,7 +71,9 @@ public class AirportPassengerList {
     @Test
     public void APL_41() {
         try {
+
             Code_0_All_passengers_Response_Data_paxname.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_41 failed due to :" + e);
@@ -78,7 +85,9 @@ public class AirportPassengerList {
     public void APL_45() {
 
         try {
+
             Code_0_All_passengers_Response_Data_paxservice_info.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_45 failed due to :" + e);
@@ -87,10 +96,12 @@ public class AirportPassengerList {
 
     @Description("APL_34 - Custom  list: Code 42  - Specific SSR")
     @Test
-    public void APL_34() {  //need to create a PNR
+    public void APL_34() {
 
         try {
+
             Code_42_specific_SSR.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_34 failed due to :" + e);
@@ -99,10 +110,12 @@ public class AirportPassengerList {
 
     @Description("APL_01 - Standard list Code 0 All Passengers")
     @Test
-    public void APL_01() { // need to create PNR
+    public void APL_01() {
 
         try {
+
             Standard_list_Code_0_All_Passengers.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_01  failed due to :" + e);
@@ -115,7 +128,9 @@ public class AirportPassengerList {
     public void APL_23() {
 
         try {
+
             Standard_list_Code_30_passengers_with_no_meals.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_23 failed due to :" + e);
@@ -124,10 +139,14 @@ public class AirportPassengerList {
 
     @Description("APL_36 - Standard list Code 44 passengers with elite frequent traveler numbers")
     @Test
-    public void APL_36() {  //need to create a ff pnr
+    public void APL_36() {
+
+//       Only  LoyalLevel="PREMIER SILVER" works here. So, give FF number accordingly
 
         try {
+
             Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_36 failed due to :" + e);
@@ -140,6 +159,7 @@ public class AirportPassengerList {
 
         try {
             Custom_list_Filter_Value_0.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_52 failed due to :" + e);
@@ -148,10 +168,12 @@ public class AirportPassengerList {
 
     @Description("APL_07 - Standard list Code 6 Out of sync electronic tickets")
     @Test
-    public void APL_07() {//create PNR, modify it .
+    public void APL_07() {
 
         try {
+
             Standard_list_Code_6_Out_of_synch_electronic_tickets.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_07 failed due to :" + e);
@@ -161,11 +183,13 @@ public class AirportPassengerList {
     @Description("APL_53 - Custom list Filter Value 1 Surname")
     @Test
 
-//    Filter based on NAME
+
     public void APL_53() {
 
         try {
+
             Custom_list_Filter_Value_1_Surname.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_53 failed due to :" + e);
@@ -176,9 +200,10 @@ public class AirportPassengerList {
     @Test
     public void APL_54() {
 
-        //    Filter based on com:SurnamePrefix
         try {
+
             Find_passengers_with_passcode_SA3R09.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_54 failed due to :" + e);
@@ -190,7 +215,9 @@ public class AirportPassengerList {
     public void APL_57() {
 
         try {
+
             DCS_reference_number.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_57 failed due to :" + e);
@@ -202,7 +229,9 @@ public class AirportPassengerList {
     public void APL_19() {
 
         try {
+
             Standard_list_Code_26_passengers_with_inbound_connections.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_19 failed due to :" + e);
@@ -214,7 +243,9 @@ public class AirportPassengerList {
     public void APL_21() {
 
         try {
+
             Large_parties.Execute();  //5 passengers PNR
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_21 failed due to :" + e);
@@ -226,7 +257,9 @@ public class AirportPassengerList {
     public void APL_24() {
 
         try {
+
             Passengers_with_outbound_connections.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_24 failed due to :" + e);
@@ -238,7 +271,9 @@ public class AirportPassengerList {
     public void APL_26() {
 
         try {
+
             Code_33_Specific_passengers.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_26 failed due to :" + e);
@@ -250,7 +285,9 @@ public class AirportPassengerList {
     public void APL_27() {
 
         try {
+
             Code_34_specific_party.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_27 failed due to :" + e);
@@ -262,7 +299,9 @@ public class AirportPassengerList {
     public void APL_29() {
 
         try {
+
             Code_36_requiring_seats.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("APL_29 failed due to :" + e);

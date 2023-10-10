@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Issue_Ticket_code_5 extends FrameworkConstants {
+public class Issue_Ticket_DSC_Refno extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -51,6 +51,7 @@ public class Issue_Ticket_code_5 extends FrameworkConstants {
         writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
@@ -67,7 +68,7 @@ public class Issue_Ticket_code_5 extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
 
-        XSSFRow InputRow=sheet.getRow(17);
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Issue_ticket.xml";

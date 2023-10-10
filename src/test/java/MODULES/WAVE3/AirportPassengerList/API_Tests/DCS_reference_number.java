@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_with_NRSA;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Custom_list_Filter_Value_5_Booking;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Issue_Ticket_DSC_Refno;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -11,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,13 +27,16 @@ import static io.restassured.RestAssured.given;
 public class DCS_reference_number extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         Custom_list_Filter_Value_5_Booking Prerequisite =new Custom_list_Filter_Value_5_Booking();
         Prerequisite.run();
+
+        Issue_Ticket_DSC_Refno Prerequisite2 = new Issue_Ticket_DSC_Refno();
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -53,6 +58,10 @@ public class DCS_reference_number extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\DCS_reference_number.xml"));
@@ -88,6 +97,7 @@ public class DCS_reference_number extends FrameworkConstants
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.SetTagtextatIndex("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
+        PNR = InputRow.getCell(7).getStringCellValue();
         wb.close();
 
     }

@@ -1,4 +1,4 @@
-package MODULES.WAVE3.AirportPassengerList.PreRequisites;
+package MODULES.WAVE3.CreateBookingService.PreRequest;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
@@ -9,29 +9,23 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Create_Booking_with_NRSA extends FrameworkConstants
-{
+public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends FrameworkConstants {
 
     public static String SOAPRequest;
 
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
         UpdatePayload();
-
-//               ********** Reading the xml request file **********
+//                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
@@ -50,25 +44,18 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-//                ********* Clearing Temp_Request.xml *********
-
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
-        writer.write("");
-        writer.close();
-
-
         excelwriter();
 
-
-
     }
-
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
@@ -77,22 +64,21 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("AirportPassengerList");
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRow=sheet.getRow(39);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Create_Booking_with_NRSA.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PreRequest\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
 
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());
 
         wb.close();
-
     }
 
 
@@ -104,16 +90,14 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("AirportPassengerList");
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
+        XSSFRow InputRow=sheet.getRow(39);
 
+        String filepath;
+        filepath = getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
 
-        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-
-        InputRow.getCell(7).setCellValue(PNR);
-
-
-
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
+        InputRow.getCell(17).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
@@ -121,15 +105,5 @@ public class Create_Booking_with_NRSA extends FrameworkConstants
 
         wb.close();
 
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
     }
-
-
-
-
 }

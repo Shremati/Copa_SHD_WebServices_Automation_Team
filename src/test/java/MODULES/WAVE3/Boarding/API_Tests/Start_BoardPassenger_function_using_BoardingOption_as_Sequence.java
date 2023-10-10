@@ -5,11 +5,11 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +23,8 @@ import static io.restassured.RestAssured.given;
 public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String DCSSeqNumber;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -48,9 +50,15 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingInformation"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+        Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\""+DCSSeqNumber+"\""));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardPassenger_function_using_BoardingOption_as_Sequence.xml"));
         writer.write(response.asPrettyString());
@@ -84,6 +92,7 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture",Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air:PassengerFlightInfo","DCS_SequenceNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        DCSSeqNumber = InputRow.getCell(5).getStringCellValue();
 
         wb.close();
 

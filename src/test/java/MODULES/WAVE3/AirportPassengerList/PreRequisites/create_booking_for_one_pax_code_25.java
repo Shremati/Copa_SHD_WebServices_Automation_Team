@@ -106,11 +106,9 @@ public class create_booking_for_one_pax_code_25 extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Timestamp = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TimeStamp",getTemp_responsePath());
-
 
         InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Timestamp);
+
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

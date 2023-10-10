@@ -109,13 +109,9 @@ public class BookingRequest extends FrameworkConstants
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Timestamp = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TimeStamp",getTemp_responsePath());
-
-
-
         InputRow.getCell(7).setCellValue(PNR);
-        InputRow.getCell(8).setCellValue(Timestamp);
 
+        InputRow.getCell(10).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
 
 
 

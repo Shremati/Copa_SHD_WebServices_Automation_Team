@@ -8,7 +8,7 @@
                 </air1:POS>
                 <air1:ListRequest>
                     <air1:CustomList>
-                        <air1:FilterValues Type="5">3</air1:FilterValues>
+                        <air1:FilterValues Type="21">3</air1:FilterValues>
                     </air1:CustomList>
                     <air1:FlightInfo DepartureDateTime="2023-08-22T00:00:00" FlightNumber="306">
                         <com:DepartureAirport LocationCode="LAX"/>

@@ -3,6 +3,8 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.API_Tests.create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
+import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
+import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -29,8 +31,12 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite1 = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
-        Prerequisite1.Execute();
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        Prerequisite.run();
+
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        Prerequisite2.run();
+
 
         UpdatePayload();
 
@@ -55,7 +61,6 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml"));
         writer.write(response.asPrettyString());

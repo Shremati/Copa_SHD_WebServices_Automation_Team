@@ -47,11 +47,12 @@ public class Issue_ticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
@@ -73,9 +74,7 @@ public class Issue_ticket extends FrameworkConstants
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AirportPassengerList\\PreRequisites\\Issue_ticket.xml";
 
-
-        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", InputRow.getCell(8).getStringCellValue(),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),filepath1,0);
         wb.close();
 
     }
