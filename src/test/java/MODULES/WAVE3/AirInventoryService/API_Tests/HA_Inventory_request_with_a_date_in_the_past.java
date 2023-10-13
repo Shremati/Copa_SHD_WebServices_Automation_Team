@@ -48,7 +48,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:FlightErrorText>INVLD FLT NBR</ns4:FlightErrorText>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:FlightErrorText>INVLD FLT NUMBER/DATE</ns4:FlightErrorText>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirInventoryService\\HA_Inventory_request_with_a_date_in_the_past.xml"));

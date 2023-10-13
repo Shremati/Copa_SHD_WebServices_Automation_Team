@@ -79,4 +79,135 @@ public class EncodeDecodeService {
             System.out.println("EDS_15 failed due to :" + e);
         }
     }
+
+    @Description("EDS_02 - Encode city South")
+    @Test
+    public void EDS_02() {
+
+        try {
+            Encode_city_South.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_02 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_05 - Decode country US")
+    @Test
+    public void EDS_05() {
+
+        try {
+            Decode_country_US.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_05 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_06 - Encode country South")
+    @Test
+    public void EDS_06() {
+
+        try {
+            Encode_country_South.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_06 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_08 - Request with empty conversion")
+    @Test
+    public void EDS_08() {
+
+        try {
+            Request_with_empty_conversion.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_08 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_09 - Request with mixed errors and correct conversion types")
+    @Test
+    public void EDS_09() {
+
+        try {
+            Request_with_mixed_errors_and_correct_conversion_types.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_09 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_10 - Encode decode codeshare flight")
+    @Test
+    public void EDS_10() {
+
+        try {
+            Encode_decode_codeshare_flight.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_10 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_13 - Decode city code LAX using default values for sign in")
+    @Test
+    public void EDS_13() {
+
+        try {
+            Decode_city_code_LAX_using_default_values_for_sign_in.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_13 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_14 - Decode city code LAX specifying a duty code for sign in")
+    @Test
+    public void EDS_14() {
+
+        try {
+            Decode_city_code_LAX_specifying_a_duty_code_for_sign_in.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_14 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_18 - Invalid information in POS for sign in invalid ERSP psswrd")
+    @Test
+    public void EDS_18() {
+
+        try {
+            Invalid_information_in_POS_for_sign_in_invalid_ERSP_psswrd.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_18 failed due to :" + e);
+        }
+    }
+
+    @Description("EDS_17 - Decode city code LAX specifying an agent sine, duty code, airport code and ERSP password for sign in")
+    @Test
+    public void EDS_17() {
+
+        try {
+            Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_and_ERSP_psswrd_for_sign_in.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_17 failed due to :" + e);
+        }
+    }
 }
+

@@ -1,10 +1,6 @@
-package MODULES.WAVE3.DisplayTicketService.API_Tests;
+package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -23,25 +19,15 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Multiple_Tickets extends FrameworkConstants
-{
+public class Request_with_mixed_errors_and_correct_conversion_types extends FrameworkConstants {
 
     public static String SOAPRequest;
-    public static String TicketNumber_1;
-    public static String TicketNumber_2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
-        Prerequisite1.run();
-
-        Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
-        Prerequisite2.run();
-
 
         UpdatePayload();
-
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -55,18 +41,21 @@ public class Multiple_Tickets extends FrameworkConstants
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getDisplayticketservices())
+                .post(getEncodedecodeservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
 
-        //Getting ticketnumber from excelwriter
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Warnings"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid country in message"));
+        Assert.assertTrue(response.getBody().asString().contains("FR * FRANCE (2) FU    **NO MATCHING ITEM**"));
+        Assert.assertTrue(response.getBody().asString().contains("Conversion"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_with_mixed_errors_and_correct_conversion_types.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -79,27 +68,34 @@ public class Multiple_Tickets extends FrameworkConstants
 
     }
 
+
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
+
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFSheet sheet = wb.getSheet("EncodeDecodeService");
+        XSSFRow InputRow=sheet.getRow(10);
 
         String filepath1;
+        filepath1=getRequestDirectory()+"EncodeDecodeService\\Request_with_mixed_errors_and_correct_conversion_types.xml";
 
-        filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
 
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(2).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),2);
 
-        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
-        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
+
+        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+
 
         wb.close();
 
     }
+
 
 }

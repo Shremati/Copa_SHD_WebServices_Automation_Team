@@ -1,10 +1,9 @@
-package MODULES.WAVE3.DisplayTicketService.API_Tests;
+package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
+import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_flight_cancelled;
+import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_landing_cancel;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -23,25 +22,17 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Multiple_Tickets extends FrameworkConstants
-{
+public class Flifo_with_flight_cancelled extends FrameworkConstants {
 
     public static String SOAPRequest;
-    public static String TicketNumber_1;
-    public static String TicketNumber_2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
+        Update_Flifo_flight_cancelled Prerequisite1 = new Update_Flifo_flight_cancelled();
         Prerequisite1.run();
 
-        Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
-        Prerequisite2.run();
-
-
         UpdatePayload();
-
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -55,18 +46,21 @@ public class Multiple_Tickets extends FrameworkConstants
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getDisplayticketservices())
+                .post(getFlifo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
 
-        //Getting ticketnumber from excelwriter
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightStatus=\"Flight Cancelled"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Comment>N JFK/  FX CANCELLED DUE MECHANICAL</ns5:Comment>"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_flight_cancelled.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -79,24 +73,26 @@ public class Multiple_Tickets extends FrameworkConstants
 
     }
 
+
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
+
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+        XSSFRow InputRow=sheet.getRow(17);
 
         String filepath1;
+        filepath1=getRequestDirectory()+"FlifoService\\Flifo_with_flight_cancelled.xml";
 
-        filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
+        XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
+        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:DepartureAirport","LocationCode", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:ArrivalAirport","LocationCode", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
 
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-
-        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
-        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

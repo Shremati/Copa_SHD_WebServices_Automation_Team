@@ -1,0 +1,50 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dis="http://www.eds.com/AirlineSOASchema/DisplayTicket/" xmlns:dis1="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dis:displayTickets>
+            <dis1:EDS_DisplayTicketRQ Version="4.000">
+                <dis1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dis1:POS>
+                <dis1:TicketRequests>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816539"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816540"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816541"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816542"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816543"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816544"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816545"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816546"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816547"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816548"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816549"/>
+                    </dis1:TicketRequest>
+                    <dis1:TicketRequest>
+                        <dis1:TicketDocument  TicketDocumentNbr="2302182816550"/>
+                    </dis1:TicketRequest>
+                </dis1:TicketRequests>
+            </dis1:EDS_DisplayTicketRQ>
+        </dis:displayTickets>
+    </soapenv:Body>
+</soapenv:Envelope>

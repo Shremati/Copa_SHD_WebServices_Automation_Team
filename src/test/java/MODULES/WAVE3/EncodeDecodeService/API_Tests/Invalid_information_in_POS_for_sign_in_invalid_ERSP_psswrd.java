@@ -1,10 +1,6 @@
-package MODULES.WAVE3.DisplayTicketService.API_Tests;
+package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -23,25 +19,15 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Multiple_Tickets extends FrameworkConstants
-{
+public class Invalid_information_in_POS_for_sign_in_invalid_ERSP_psswrd extends FrameworkConstants {
 
     public static String SOAPRequest;
-    public static String TicketNumber_1;
-    public static String TicketNumber_2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
-        Prerequisite1.run();
-
-        Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
-        Prerequisite2.run();
-
 
         UpdatePayload();
-
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -55,21 +41,19 @@ public class Multiple_Tickets extends FrameworkConstants
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getDisplayticketservices())
+                .post(getEncodedecodeservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("System Processing Error: (1) INVLD SINE"));
 
-        //Getting ticketnumber from excelwriter
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Invalid_information_in_POS_for_sign_in_invalid_ERSP_psswrd.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -83,23 +67,21 @@ public class Multiple_Tickets extends FrameworkConstants
     {
 
         //        ********** Reading Testdata from Excel ************
+
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFSheet sheet = wb.getSheet("EncodeDecodeService");
+        XSSFRow InputRow=sheet.getRow(14);
 
         String filepath1;
+        filepath1=getRequestDirectory()+"EncodeDecodeService\\Invalid_information_in_POS_for_sign_in_invalid_ERSP_psswrd.xml";
 
-        filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
 
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-
-        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
-        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         wb.close();
 
     }
+
 
 }

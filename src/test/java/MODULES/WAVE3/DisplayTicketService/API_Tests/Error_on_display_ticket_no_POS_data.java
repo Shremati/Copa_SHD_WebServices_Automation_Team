@@ -1,10 +1,6 @@
 package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -23,22 +19,12 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Multiple_Tickets extends FrameworkConstants
-{
+public class Error_on_display_ticket_no_POS_data extends FrameworkConstants {
 
     public static String SOAPRequest;
-    public static String TicketNumber_1;
-    public static String TicketNumber_2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
-        Prerequisite1.run();
-
-        Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
-        Prerequisite2.run();
-
 
         UpdatePayload();
 
@@ -62,11 +48,10 @@ public class Multiple_Tickets extends FrameworkConstants
                 .log().all().extract().response();
 
 
-        //Getting ticketnumber from excelwriter
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("POS_Type is Required"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Error_on_display_ticket_no_POS_data.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -86,20 +71,19 @@ public class Multiple_Tickets extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFRow InputRow=sheet.getRow(13);
 
         String filepath1;
 
-        filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
+        filepath1=getRequestDirectory()+"DisplayTicketService\\Error_on_display_ticket_no_POS_data.xml";
 
         XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
 
-        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
-        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 
     }
+
+
 
 }

@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:flif="http://www.eds.com/AirlineSOASchema/Flifo/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirFlifoRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <flif:getFlifo>
+            <air:OTA_AirFlifoRQ EchoToken="Test_04" TimeStamp="2023-09-05T06:44:07" Version="2.00">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment UTC_PreferenceInd="false">
+                    <air:Airline Code="CM"/>
+                    <air:FlightNumber>360</air:FlightNumber>
+                    <air:DepartureDate DepartureTime="07:30:00">2010-05-22T08:30:00</air:DepartureDate>
+                    <air:DepartureAirport LocationCode="PTY"/>
+                    <air:ArrivalAirport LocationCode="LAX"/>
+                </air:FlightSegment>
+            </air:OTA_AirFlifoRQ>
+        </flif:getFlifo>
+    </soapenv:Body>
+</soapenv:Envelope>

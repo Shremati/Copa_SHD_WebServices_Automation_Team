@@ -39,7 +39,7 @@
             <class name="MODULES.WAVE3.ModifySeatMap.ModifySeatMap"/>
             <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport"/>
             <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService"/>
-<!--        <class name="MODULES.WAVE3.AgentSineService.AgentSineService"/>-->
+            <class name="MODULES.WAVE3.AgentSineService.AgentSineService"/>
 
 
 <!--        <class name="MODULES.WAVE3.CreateBooking41Service.CreateBooking41Service"/>-->

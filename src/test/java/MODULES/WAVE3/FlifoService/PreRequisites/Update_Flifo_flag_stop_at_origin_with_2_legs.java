@@ -1,15 +1,14 @@
-package MODULES.WAVE3.EncodeDecodeService.API_Tests;
+package MODULES.WAVE3.FlifoService.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
-import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
-import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,21 +19,21 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Encode_airline_united extends FrameworkConstants
-{
+public class Update_Flifo_flag_stop_at_origin_with_2_legs extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -42,25 +41,27 @@ public class Encode_airline_united extends FrameworkConstants
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getEncodedecodeservice())
+                .post(getScreentextservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("UNITED AIRLINES INC"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Encode_airline_united.xml"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
 
+//                     ********* Clearing Temp_Request.xml *********
 
-//                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
 
     }
 
@@ -68,18 +69,19 @@ public class Encode_airline_united extends FrameworkConstants
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("EncodeDecodeService");
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+
+        XSSFRow InputRow=sheet.getRow(20);
+
 
         String filepath1;
-        filepath1=getRequestDirectory()+"EncodeDecodeService\\Encode_airline_united.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\FlifoService\\PreRequisites\\Update_Flifo_flag_stop_at_origin_with_2_legs.xml";
 
-
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(2).getStringCellValue(),filepath1);
+        XMLParser.SetTagtextatIndex("scr1:ScreenEntry",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

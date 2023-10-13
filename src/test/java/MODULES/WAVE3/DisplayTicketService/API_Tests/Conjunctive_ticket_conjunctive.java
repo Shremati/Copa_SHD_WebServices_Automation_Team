@@ -1,10 +1,8 @@
 package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
-import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_conjunctive_tkt_conjunctive;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_booking_conjunctive_tkt_conjunctive;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -23,20 +21,19 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Multiple_Tickets extends FrameworkConstants
-{
+public class Conjunctive_ticket_conjunctive extends FrameworkConstants {
 
     public static String SOAPRequest;
-    public static String TicketNumber_1;
-    public static String TicketNumber_2;
+    public static String Conjunctive_Ticket1;
+    public static String Conjunctive_Ticket2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
+        Create_booking_conjunctive_tkt_conjunctive Prerequisite1 = new Create_booking_conjunctive_tkt_conjunctive();
         Prerequisite1.run();
 
-        Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
+        Issue_booking_conjunctive_tkt_conjunctive Prerequisite2 = new Issue_booking_conjunctive_tkt_conjunctive();
         Prerequisite2.run();
 
 
@@ -63,10 +60,12 @@ public class Multiple_Tickets extends FrameworkConstants
 
 
         //Getting ticketnumber from excelwriter
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_1));
-        Assert.assertTrue(response.getBody().asString().contains(TicketNumber_2));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns6:FormAndSerialNumber>" + Conjunctive_Ticket1 +"</ns6:FormAndSerialNumber>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns6:FormAndSerialNumber>" + Conjunctive_Ticket2 +"</ns6:FormAndSerialNumber>"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Multiple_Tickets.xml"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Conjunctive_ticket_conjunctive.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -86,20 +85,24 @@ public class Multiple_Tickets extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(4);
+        XSSFRow InputRow=sheet.getRow(9);
 
         String filepath1;
 
-        filepath1=getRequestDirectory()+"DisplayTicketService\\Multiple_Tickets.xml";
+        filepath1=getRequestDirectory()+"DisplayTicketService\\Conjunctive_ticket_conjunctive.xml";
 
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
+        String conjunctive1 = InputRow.getCell(9).getStringCellValue();
+        String conjunctive2 = InputRow.getCell(10).getStringCellValue().substring(11,13);
+        String TicketDocumentNbr = conjunctive1 + "-" + conjunctive2;
 
-        TicketNumber_1 = InputRow.getCell(9).getStringCellValue();
-        TicketNumber_2 = InputRow.getCell(10).getStringCellValue();
+        XMLParser.updateAttributeValue("dis1:TicketDocument","TicketDocumentNbr",TicketDocumentNbr,filepath1);
+
+        Conjunctive_Ticket1 = InputRow.getCell(9).getStringCellValue().substring(3,13);
+        Conjunctive_Ticket2 = InputRow.getCell(10).getStringCellValue().substring(3,13);
 
         wb.close();
 
     }
+
 
 }
