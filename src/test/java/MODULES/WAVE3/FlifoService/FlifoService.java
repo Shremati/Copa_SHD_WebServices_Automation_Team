@@ -210,8 +210,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_11 - Flifo with landing cancel")
-    @Test
+    @Description("FS_11 - Flifo with landing cancel")   //change the date in the ScreenEntry in the excel sheet
+    @Test                                              //can be run once, throws an error if ran multiple times
     public void FS_11() {
 
         try {
@@ -223,8 +223,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_12 - Flifo with flight cancelled")
-    @Test
+    @Description("FS_12 - Flifo with flight cancelled")   //change the date in the ScreenEntry in the excel sheet
+    @Test                                                //can be run once, throws an error if ran multiple times
     public void FS_12() {
 
         try {
@@ -236,8 +236,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_10 - Flifo with forecast")
-    @Test
+    @Description("FS_10 - Flifo with forecast")    //change the date in the ScreenEntry in the excel sheet
+    @Test                                          //can be run once, throws an error if ran multiple times
     public void FS_10() {
 
         try {
@@ -262,8 +262,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_22 - Flifo Flag Stop at the origin flight with 2 legs")
-    @Test
+    @Description("FS_22 - Flifo Flag Stop at the origin flight with 2 legs")   //change the date in the ScreenEntry in the excel sheet
+    @Test                                                                      //can be run once, throws an error if ran multiple times
     public void FS_22() {
 
         try {
@@ -275,8 +275,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_25 - Flifo Flag Stop An intermediate stop flag flying with 2 legs")
-    @Test
+    @Description("FS_25 - Flifo Flag Stop An intermediate stop flag flying with 2 legs")      //change the date in the ScreenEntry in the excel sheet
+    @Test                                                                                    //can be run once, throws an error if ran multiple times
     public void FS_25() {
 
         try {
@@ -288,8 +288,8 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_24 - Flifo Flag Stop at the end flight with 2 legs")
-    @Test
+    @Description("FS_24 - Flifo Flag Stop at the end flight with 2 legs")    //change the date in the ScreenEntry in the excel sheet
+    @Test                                                                    //can be run once, throws an error if ran multiple times
     public void FS_24() {
 
         try {
@@ -314,7 +314,7 @@ public class FlifoService {
         }
     }
 
-    @Description("FS_07 - Flifo for flight with en route date change")
+    @Description("FS_07 - Flifo for flight with enroute date change")
     @Test
     public void FS_07() {
 
