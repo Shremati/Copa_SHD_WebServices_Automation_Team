@@ -9,7 +9,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +19,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Request_Visa_Info_with_multi_destination_transit_and_visited_points extends FrameworkConstants {
+public class display_with_sections_Geographical_information extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -48,9 +47,8 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("PassportType=\"NORMAL\""));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_the_List_of_News_Items.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_with_sections_Geographical_information.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -71,19 +69,13 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(17);
+        XSSFRow InputRow=sheet.getRow(35);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TimaticService\\Request_Visa_Info_with_multi_destination_transit_and_visited_points.xml";
+        filepath1=getRequestDirectory()+"TimaticService\\display_with_sections_Geographical_information.xml";
 
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValue("eds:CountryOfResidence","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValueatIndex("eds:DestinationLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("eds:Location","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

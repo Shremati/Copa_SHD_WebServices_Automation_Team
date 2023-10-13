@@ -2,7 +2,7 @@ package MODULES.WAVE3.SeatMapService;
 
 import MODULES.WAVE3.ScreenTextService.API_Tests.Error_screentext_not_allowed_entry;
 import MODULES.WAVE3.ScreenTextService.API_Tests.Send_entry;
-import MODULES.WAVE3.SeatMapService.API_Tests.Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp;
+import MODULES.WAVE3.SeatMapService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -29,4 +29,107 @@ public class SeatMapService {
             System.out.println("SMS_01 failed due to :" + e);
         }
     }
+
+    @Description("SMS_02 - Display a single 737 aircraft on a two flights. Each map contains 2 compartments")
+    @Test
+    public void SMS_02() {
+
+        try {
+            display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_compartments.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_02 failed due to :" + e);
+        }
+    }
+
+
+    @Description("SMS_03 - Requested flight is in 'open seating' mode, so no map is available.")
+    @Test
+    public void SMS_03() {
+
+        try {
+            requested_flight_is_in_open_seating_mode_so_no_map_is_available.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_03 failed due to :" + e);
+        }
+    }
+
+    @Description("SMS_04 - Requested flight is in 'manual mode', so no seat map is available")
+    @Test
+    public void SMS_04() {
+
+        try {
+
+            Requested_flight_is_in_manual_mode_so_no_seat_map_is_available.Execute(); //Flight should be open
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_04 failed due to :" + e);
+        }
+    }
+
+
+    @Description("SMS_05 - Enroute ship change returns multiple seat maps")
+    @Test
+    public void SMS_05() {
+
+        try {
+
+            Enroute_ship_change_returns_multiple_seat_maps.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_05 failed due to :" + e);
+        }
+    }
+
+
+    @Description("SMS_07 - Other airline seat map request with Business Cabin")
+    @Test
+    public void SMS_07() {
+
+        try {
+
+            other_airline_seat_map_request_with_Business_Cabin.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_07 failed due to :" + e);
+        }
+    }
+
+    @Description("SMS_08 - Request is for more greater than max allowed, 5")
+    @Test
+    public void SMS_08() {
+
+        try {
+
+            Request_is_for_more_greater_than_max_allowed_5.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_08 failed due to :" + e);
+        }
+    }
+
+
+    @Description("SMS_09 - Request is for Extra LegRoomSeat Display")
+    @Test
+    public void SMS_09() {
+
+        try {
+
+            request_is_for_Extra_LegRoomSeat_Display.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("SMS_09 failed due to :" + e);
+        }
+    }
+
+
+
 }

@@ -1,6 +1,8 @@
-package MODULES.WAVE3.TimaticService.API_Tests;
+package MODULES.WAVE3.SeatMapService.API_Tests;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.SeatMapService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,7 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,12 +21,16 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Request_Visa_Info_with_multi_destination_transit_and_visited_points extends FrameworkConstants {
+public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available extends FrameworkConstants {
 
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        manual_mode_turn_off_auto_set_mode PreRequisite2 = new manual_mode_turn_off_auto_set_mode();
+        PreRequisite2.run();
+
 
         UpdatePayload();
 
@@ -41,24 +46,24 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getTimaticservice())
+                .post(getSeatmapservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("PassportType=\"NORMAL\""));
+    //    Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_the_List_of_News_Items.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\Requested_flight_is_in_manual_mode_so_no_seat_map_is_available.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
+
 
     }
 
@@ -70,23 +75,20 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(17);
+        XSSFSheet sheet = wb.getSheet("SeatMapService");
+        XSSFRow InputRow=sheet.getRow(8);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TimaticService\\Request_Visa_Info_with_multi_destination_transit_and_visited_points.xml";
+        filepath1=getRequestDirectory()+"SeatMapService\\Requested_flight_is_in_manual_mode_so_no_seat_map_is_available.xml";
 
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValue("eds:CountryOfResidence","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValueatIndex("eds:DestinationLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 
     }
+
 
 }

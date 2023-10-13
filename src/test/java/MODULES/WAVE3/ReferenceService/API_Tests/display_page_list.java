@@ -1,4 +1,4 @@
-package MODULES.WAVE3.TimaticService.API_Tests;
+package MODULES.WAVE3.ReferenceService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -9,7 +9,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,12 +19,13 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Request_Visa_Info_with_multi_destination_transit_and_visited_points extends FrameworkConstants {
+public class display_page_list extends FrameworkConstants {
 
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
 
         UpdatePayload();
 
@@ -41,19 +41,24 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getTimaticservice())
+                .post(getReferenceservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("PassportType=\"NORMAL\""));
+        Assert.assertTrue(response.getBody().asString().contains("CM PAGE LIST      ABORDAJE    CAT:A01 SUB:B01"));
+        Assert.assertTrue(response.getBody().asString().contains("1 C01 TIEMPOS ABORDAJE"));
+        Assert.assertTrue(response.getBody().asString().contains("2 C02 ASIGNACION ASIENTOS"));
+        Assert.assertTrue(response.getBody().asString().contains("3 C03 ABORDAJE WCI"));
+        Assert.assertTrue(response.getBody().asString().contains("4 C04 REPORTE ABORDAJE"));
+        Assert.assertTrue(response.getBody().asString().contains("5 C05 REACOM.PESO/BALANCE"));
+        Assert.assertTrue(response.getBody().asString().contains("6 C06 NECESIDADES ABORDAJE"));
+        Assert.assertTrue(response.getBody().asString().contains("7 C07 VUELOS AREA REMOTA"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_the_List_of_News_Items.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\display_page_list.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -70,20 +75,15 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(17);
+        XSSFSheet sheet = wb.getSheet("ReferenceService");
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TimaticService\\Request_Visa_Info_with_multi_destination_transit_and_visited_points.xml";
+        filepath1=getRequestDirectory()+"ReferenceService\\display_page_list.xml";
 
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValue("eds:CountryOfResidence","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValueatIndex("eds:DestinationLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
