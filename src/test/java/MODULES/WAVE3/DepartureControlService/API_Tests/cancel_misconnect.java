@@ -30,11 +30,11 @@ public class cancel_misconnect extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-//        Create_booking_cancel_misconnect Prerequisite = new Create_booking_cancel_misconnect();
-//        Prerequisite.run();
-//
-//        Issue_ticket_cancel_misconnect Prerequisite2 = new Issue_ticket_cancel_misconnect();
-//        Prerequisite2.run();;
+        Create_booking_cancel_misconnect Prerequisite = new Create_booking_cancel_misconnect();
+        Prerequisite.run();
+
+        Issue_ticket_cancel_misconnect Prerequisite2 = new Issue_ticket_cancel_misconnect();
+        Prerequisite2.run();
 
         Checkin_cancel_misconnect Prerequisite3 = new Checkin_cancel_misconnect();
         Prerequisite3.run();

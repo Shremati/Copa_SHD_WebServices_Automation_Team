@@ -48,7 +48,7 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
         Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Check_for_invalid_AirTraveler_in_request.xml"));

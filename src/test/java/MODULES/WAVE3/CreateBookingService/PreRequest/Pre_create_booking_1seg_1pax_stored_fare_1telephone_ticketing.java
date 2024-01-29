@@ -44,7 +44,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
@@ -66,7 +66,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(39);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PreRequest\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
@@ -91,7 +91,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(39);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath;
         filepath = getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";

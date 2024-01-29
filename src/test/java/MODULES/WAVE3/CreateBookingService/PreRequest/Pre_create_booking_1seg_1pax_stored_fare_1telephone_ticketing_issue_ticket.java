@@ -63,7 +63,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow=sheet.getRow(39);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PreRequest\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket.xml";
@@ -84,7 +84,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(39);
+        XSSFRow InputRow=sheet.getRow(29);
 
         String filepath;
         filepath = getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket.xml";
