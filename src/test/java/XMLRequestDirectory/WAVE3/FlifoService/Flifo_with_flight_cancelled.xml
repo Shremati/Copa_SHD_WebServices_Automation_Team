@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:flif="http://www.eds.com/AirlineSOASchema/Flifo/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirFlifoRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <flif:getFlifo>
+            <air:OTA_AirFlifoRQ EchoToken="Test_12" TimeStamp="2023-09-05T08:29:17" Version="4.00">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment UTC_PreferenceInd="false">
+                    <air:Airline Code="CM"/>
+                    <air:FlightNumber>807</air:FlightNumber>
+                    <air:DepartureDate>2023-09-06</air:DepartureDate>
+                    <air:DepartureAirport LocationCode="JFK"/>
+                    <air:ArrivalAirport LocationCode="PTY"/>
+                </air:FlightSegment>
+            </air:OTA_AirFlifoRQ>
+        </flif:getFlifo>
+    </soapenv:Body>
+</soapenv:Envelope>

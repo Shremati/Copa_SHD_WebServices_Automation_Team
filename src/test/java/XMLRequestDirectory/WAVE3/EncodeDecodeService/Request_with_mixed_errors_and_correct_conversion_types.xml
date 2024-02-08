@@ -1,0 +1,30 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:enc="http://www.eds.com/AirlineSOASchema/EncodeDecode/" xmlns:con="http://www.eds.com/AirlineSOASchema/ConversionRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <enc:encodeDecode>
+            <con:EDS_ConversionRQ Version="4.0">
+                <con:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </con:POS>
+                <con:Conversion>
+                    <con:CountryConversion></con:CountryConversion>
+                </con:Conversion>
+                <con:Conversion>
+                    <con:CityAirportConversion>Los Ange</con:CityAirportConversion>
+                </con:Conversion>
+                <con:Conversion>
+                    <con:CountryConversion>BOSNIA</con:CountryConversion>
+                </con:Conversion>
+                <con:Conversion>
+                    <con:AirlineConversion>United</con:AirlineConversion>
+                </con:Conversion>
+                <con:Conversion>
+                    <con:CountryConversion>FU</con:CountryConversion>
+                </con:Conversion>
+                <con:Conversion>
+                    <con:CityAirportConversion>nyc</con:CityAirportConversion>
+                </con:Conversion>
+            </con:EDS_ConversionRQ>
+        </enc:encodeDecode>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:flif="http://www.eds.com/AirlineSOASchema/Flifo/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirFlifoRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <flif:getFlifo>
+            <air:OTA_AirFlifoRQ EchoToken="Test_01" Version="4.00">
+                <air:POS>
+                    <com:Source ISOCountry="US" AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment UTC_PreferenceInd="true">
+                    <air:Airline Code="CM"/>
+                    <air:FlightNumber>391</air:FlightNumber>
+                    <air:DepartureDate>2023-09-05</air:DepartureDate>
+                </air:FlightSegment>
+            </air:OTA_AirFlifoRQ>
+        </flif:getFlifo>
+    </soapenv:Body>
+</soapenv:Envelope>

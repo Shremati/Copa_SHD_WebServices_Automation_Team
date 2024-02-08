@@ -3,8 +3,7 @@ package MODULES.WAVE3.TicketControlService;
 
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Association_multiple_coupons_for_primary_and_conjunctive_etkt;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Disassociation_emd_coupon_1_with_etkt_coupon_1;
-import MODULES.WAVE3.TicketControlService.API_Tests.Get_control_of_one_coupon_of_one_ticket;
-import MODULES.WAVE3.TicketControlService.API_Tests.Push_control_of_multiple_coupons_within_one_ticket;
+import MODULES.WAVE3.TicketControlService.API_Tests.*;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -47,5 +46,42 @@ public class TicketControlService {
             System.out.println("TCS_06 failed due to :" + e);
         }
     }
+    @Description("TCS_09 - Missing Validating Airline code in RequestControl request")
+    @Test
+    public void TCS_09() {
 
+        try {
+            Missing_Validating_Airline_code_in_RequestControl_request.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_09 failed due to :" + e);
+        }
+    }
+
+    @Description("TCS_10 - Missing Validating Airline code in RedirectControl request.")
+    @Test
+    public void TCS_10() {
+
+        try {
+
+            Missing_Validating_Airline_code_in_RedirectControl_request.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_10 failed due to :" + e);
+        }
+    }
+
+    @Description("TCS_11 - Missing the ticket document number in the RequestControl request.")
+    @Test
+    public void TCS_11() {
+
+        try {
+
+            Missing_the_ticket_document_number_in_the_RequestControl_request.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_11 failed due to :" + e);
+        }
+    }
 }

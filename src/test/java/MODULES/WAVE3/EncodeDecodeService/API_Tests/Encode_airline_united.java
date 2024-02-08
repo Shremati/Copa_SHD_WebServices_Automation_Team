@@ -85,7 +85,4 @@ public class Encode_airline_united extends FrameworkConstants
 
     }
 
-
-
-
 }

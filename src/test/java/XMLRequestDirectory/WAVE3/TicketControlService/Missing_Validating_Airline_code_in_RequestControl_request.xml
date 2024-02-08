@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.eds.com/AirlineSOASchema/TicketControl/" xmlns:tic1="http://www.iata.org/IATA/2007/00/TicketAirlineRequestControlRQ" xmlns:et="http://www.iata.org/IATA/2007/00/CommonTypes">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <tic:requestControl>
+      <tic1:IATA_TicketAirlineRequestAirportControlRQ Version="4.0" TicketDocQuantity="1">
+        <tic1:POS>
+          <et:Source AirlineVendorID="CM"/>
+        </tic1:POS>
+        <tic1:ValidatingAirline />
+        <tic1:TicketDocument TicketDocumentNbr="2302182825356">
+          <tic1:CouponInfo Number="2">
+          </tic1:CouponInfo>
+        </tic1:TicketDocument>
+      </tic1:IATA_TicketAirlineRequestAirportControlRQ>
+    </tic:requestControl>
+  </soapenv:Body>
+</soapenv:Envelope>

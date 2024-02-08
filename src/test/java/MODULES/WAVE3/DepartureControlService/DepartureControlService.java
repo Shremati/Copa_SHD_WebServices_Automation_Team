@@ -216,6 +216,20 @@ public class DepartureControlService {
             System.out.println("DPS_39 failed due to :" + e);
         }
     }
+
+    @Description("DPS_02 - Assign aircraft to downline station.")
+    @Test
+    public void DPS_02() {
+
+        try {
+            assign_aircraft_to_downline_station.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("DPS_02 failed due to :" + e);
+        }
+    }
+
 }
 
 //DPS_30	Close flight(Not Automated)

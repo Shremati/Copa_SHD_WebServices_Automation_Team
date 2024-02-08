@@ -20,7 +20,7 @@ public class ConnectionFlightInfo {
 
     @Description("CFI_01 - Get Inbound Flight Info")
     @Test
-    public void Scenario1()
+    public void CFI_01()
     {
         try
         {
@@ -29,13 +29,13 @@ public class ConnectionFlightInfo {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("CFI_01 failed due to :"+e);
         }
     }
 
     @Description("CFI_02 - Get Outbound Flight Info")
     @Test
-    public void Scenario2()
+    public void CFI_02()
     {
         try
         {
@@ -44,7 +44,7 @@ public class ConnectionFlightInfo {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("CFI_02 failed due to :"+e);
         }
     }
 }

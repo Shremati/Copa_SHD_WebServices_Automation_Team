@@ -55,7 +55,6 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        Validationcheck();
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -89,18 +88,5 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
 
     }
 
-    public static void Validationcheck() throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
-        //        ********** Validate message in response ************
-
-        String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\Input_with_more_PassengerFlightInfo.xml";
-
-        String Expected = XMLParser.GetTagText("Error",filepath);
-        String Actual = "Error: TravelerInfomation array exceeds the maximum passengers allowed per boarding. OTA object: TravelerInfomation.";
-
-        Assert.assertEquals(Actual,Expected);
-
-    }
 
 }

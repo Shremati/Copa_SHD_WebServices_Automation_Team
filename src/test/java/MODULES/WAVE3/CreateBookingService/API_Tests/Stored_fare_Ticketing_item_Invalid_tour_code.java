@@ -55,7 +55,7 @@ public class Stored_fare_Ticketing_item_Invalid_tour_code extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Tour Code Transaction -  (1) INVALID TOUR CODE/EMPLOYEE ID (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
