@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,6 +20,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Display_City_list_by_Country_code extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -44,6 +46,7 @@ public class Display_City_list_by_Country_code extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
 
 
 
@@ -69,15 +72,13 @@ public class Display_City_list_by_Country_code extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(13); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(13);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TimaticService\\Display_City_list_by_Country_code.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
 
     }

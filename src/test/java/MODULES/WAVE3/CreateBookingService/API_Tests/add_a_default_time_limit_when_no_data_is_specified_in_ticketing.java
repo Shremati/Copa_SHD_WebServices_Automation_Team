@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +47,10 @@ public class add_a_default_time_limit_when_no_data_is_specified_in_ticketing ext
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\add_a_default_time_limit_when_no_data_is_specified_in_ticketing.xml"));
         writer.write(response.asPrettyString());

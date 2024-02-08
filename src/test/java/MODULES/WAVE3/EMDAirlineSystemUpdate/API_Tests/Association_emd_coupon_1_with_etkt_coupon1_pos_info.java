@@ -9,6 +9,7 @@ import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ti
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -32,12 +33,12 @@ public class Association_emd_coupon_1_with_etkt_coupon1_pos_info extends Framewo
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite = new create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite2 = new issue_ticket_association_emd_coupon_1_with_etkt_coupon1_pos_info();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
 
         UpdatePayload();
@@ -61,6 +62,11 @@ public class Association_emd_coupon_1_with_etkt_coupon1_pos_info extends Framewo
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        if(response.getBody().asString().contains("<ns4:Warnings>")){
+            Assert.fail();
+        }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EMDAirlineSystemUpdate\\Association_emd_coupon_1_with_etkt_coupon1_pos_info.xml"));
         writer.write(response.asPrettyString());

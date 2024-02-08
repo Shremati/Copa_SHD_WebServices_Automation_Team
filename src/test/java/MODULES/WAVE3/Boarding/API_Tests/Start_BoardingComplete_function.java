@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,7 +48,12 @@ public class Start_BoardingComplete_function extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardingComplete_function.xml"));
         writer.write(response.asPrettyString());

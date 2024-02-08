@@ -1,0 +1,74 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-11-08T00:00:00" RPH="1" FlightNumber="306" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                        </air1:PTC_FareBreakdown>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>HUSBAND</com:GivenName>
+                            <com:Surname>SMITH</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0129"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>WIFE</com:GivenName>
+                            <com:Surname>SMITH</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0128"/>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                </air:TravelerInfo>
+                <air:Ticketing TicketTimeLimit="2023-10-10T00:00:00"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

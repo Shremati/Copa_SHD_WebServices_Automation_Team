@@ -2,6 +2,7 @@ package MODULES.WAVE3.DepartureControlService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.DepartureControlService.PreRequisites.Assign_aircraft_restrict_checkin;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,6 +27,9 @@ public class restrict_checkin extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        Assign_aircraft_restrict_checkin Prerequisite1 = new Assign_aircraft_restrict_checkin();
+        Prerequisite1.run();
 
         UpdatePayload();
 
@@ -46,7 +51,8 @@ public class restrict_checkin extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("RestrictCheckInToGate"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\restrict_checkin.xml"));
         writer.write(response.asPrettyString());

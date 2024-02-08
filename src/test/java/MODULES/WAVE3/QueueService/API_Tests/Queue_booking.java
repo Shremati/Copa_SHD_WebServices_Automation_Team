@@ -2,6 +2,7 @@ package MODULES.WAVE3.QueueService.API_Tests;
 
 
 import GENERICS.XMLParser;
+import MODULES.WAVE3.QueueService.PreRequisites.Create_Booking_for_queue_booking;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,11 +22,14 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Queue_booking extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+        Create_Booking_for_queue_booking Prerequisite = new Create_Booking_for_queue_booking();
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -45,6 +50,9 @@ public class Queue_booking extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("queueBookingResponse"));
 
 
 
@@ -70,14 +78,15 @@ public class Queue_booking extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"QueueService\\Queue_booking.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("air1:Queue","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:Queue","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

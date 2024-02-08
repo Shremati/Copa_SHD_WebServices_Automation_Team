@@ -1,0 +1,22 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:flif="http://www.eds.com/AirlineSOASchema/Flifo/"
+                  xmlns:air="http://www.opentravel.org/OTA/2003/05/AirFlifoRQ"
+                  xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <flif:getFlifoHistory>
+            <air:OTA_AirFlifoRQ EchoToken="History_02" Version="4.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment UTC_PreferenceInd="false">
+                    <air:Airline Code="UA"/>
+                    <air:FlightNumber>1934</air:FlightNumber>
+                    <air:DepartureDate>2023-08-10</air:DepartureDate>
+                    <air:DepartureAirport LocationCode=""/>
+                    <air:ArrivalAirport LocationCode=""/>
+                </air:FlightSegment>
+            </air:OTA_AirFlifoRQ>
+        </flif:getFlifoHistory>
+    </soapenv:Body>
+</soapenv:Envelope>

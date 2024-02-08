@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,6 +47,7 @@ public class Multiple_passenger_list_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Multiple_passenger_list_request.xml"));
@@ -78,11 +80,11 @@ public class Multiple_passenger_list_request extends FrameworkConstants
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,1);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),1);
 
         wb.close();
 

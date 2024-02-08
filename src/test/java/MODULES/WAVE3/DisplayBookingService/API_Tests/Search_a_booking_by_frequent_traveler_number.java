@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,25 +25,24 @@ import static io.restassured.RestAssured.given;
 public class Search_a_booking_by_frequent_traveler_number extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR1;
+    public static String PNR2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+        //        We need to create and issue 2 bookings , 1 with FQTV and 1 without FQTV having only same surname
 
-        create_booking1_search_a_booking_by_frequent_traveler_number Prerequisite = new create_booking1_search_a_booking_by_frequent_traveler_number();
-        Prerequisite.run(); //excel gets updated
+        create_booking_for_one_pax_with_fqtv Prerequisite1 = new create_booking_for_one_pax_with_fqtv();
+        Prerequisite1.run();
 
-        issue_ticket1_search_a_booking_by_frequent_traveler_number Prerequisite2 = new issue_ticket1_search_a_booking_by_frequent_traveler_number();
-        Prerequisite2.run(); //excel gets updated
+        issue_ticket_for_one_pax_with_fqtv Prerequisite2 = new issue_ticket_for_one_pax_with_fqtv();
+        Prerequisite2.run();
 
+        create_booking_for_one_pax_without_fqtv Prerequisite3 = new create_booking_for_one_pax_without_fqtv();
+        Prerequisite3.run();
 
-//        PreRequisite for Scenario ------> Create Booking
-
-        create_booking2_search_a_booking_by_frequent_traveler_number Prerequisite3 = new create_booking2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite3.run(); //excel gets updated
-
-        issue_ticket2_search_a_booking_by_frequent_traveler_number Prerequisite4 = new issue_ticket2_search_a_booking_by_frequent_traveler_number();
-        Prerequisite4.run(); //excel gets updated
+        issue_ticket_for_one_pax_without_fqtv Prerequisite4 = new issue_ticket_for_one_pax_without_fqtv();
+        Prerequisite4.run();
 
         UpdatePayload();
 
@@ -65,11 +65,13 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
+        Assert.assertFalse(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Search_a_booking_by_frequent_traveler_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -96,8 +98,10 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
         XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(2).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("read:CustLoyalty","MembershipID", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),0);
+
+        PNR1 = InputRow.getCell(10).getStringCellValue();
+        PNR2 = InputRow.getCell(15).getStringCellValue();
 
 
         wb.close();

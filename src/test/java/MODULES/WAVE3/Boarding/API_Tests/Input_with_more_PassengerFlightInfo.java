@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,7 +27,6 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -48,12 +48,12 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -74,7 +74,7 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("Boarding");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String filepath1,filepath2;
+        String filepath1;
         filepath1=getRequestDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml";
 
 
@@ -84,8 +84,9 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
 
-
         wb.close();
 
     }
+
+
 }

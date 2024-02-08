@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -49,6 +50,10 @@ public class One_request_with_vendor_preferences extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+
+
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\One_request_with_vendor_preferences.xml"));
@@ -78,10 +83,6 @@ public class One_request_with_vendor_preferences extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"AirScheduleService\\One_request_with_vendor_preferences.xml";
 
-
-//        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("com:OriginLocation","LocationCode",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("com:DestinationLocation","LocationCode",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1,0);
         XMLParser.updateAttributeValueatIndex("com:OriginLocation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);

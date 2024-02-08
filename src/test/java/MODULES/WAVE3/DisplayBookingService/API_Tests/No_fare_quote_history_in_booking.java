@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,10 +28,9 @@ public class No_fare_quote_history_in_booking extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_no_fare_quote_history_in_booking Prerequisite = new create_booking_no_fare_quote_history_in_booking();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -54,6 +54,8 @@ public class No_fare_quote_history_in_booking extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("No fare quote history to display"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\No_fare_quote_history_in_booking.xml"));
         writer.write(response.asPrettyString());

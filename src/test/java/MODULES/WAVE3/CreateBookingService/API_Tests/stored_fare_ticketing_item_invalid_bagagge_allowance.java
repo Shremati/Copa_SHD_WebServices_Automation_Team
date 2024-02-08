@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,12 +47,13 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID FORMAT-ORIG ISSUE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -80,6 +82,7 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:Date","Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
 
 
         wb.close();

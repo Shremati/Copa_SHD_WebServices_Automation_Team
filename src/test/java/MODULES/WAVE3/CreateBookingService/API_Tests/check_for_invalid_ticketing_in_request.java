@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,13 +47,12 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\check_for_invalid_ticketing_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -85,4 +85,5 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants
         wb.close();
 
     }
+
 }

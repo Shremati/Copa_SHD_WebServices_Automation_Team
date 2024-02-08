@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,9 +48,10 @@ public class assign_aircraft extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AssignAircraft"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\assign_checkin.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\assign_aircraft.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -71,7 +73,7 @@ public class assign_aircraft extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DepartureControlService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DepartureControlService\\assign_aircraft.xml";
@@ -80,6 +82,7 @@ public class assign_aircraft extends FrameworkConstants
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:Equipment","AirEquipType",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

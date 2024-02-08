@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +26,6 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -47,6 +47,7 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyInventoryService\\ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.xml"));
@@ -71,16 +72,28 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ModifyInventoryService");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Modifyinventoryservice\\ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.xml";
 
 
+
         XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_ddMMYYYY(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:BoardPoint",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:OffPoint",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:BoardPoint","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.SetTagtextatIndex("air1:ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:AuthorizationLevelValue", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+
+
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:BoardPoint","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:OffPoint","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.SetTagtextatIndex("air1:ResBookDesigCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("air1:MaximumSeat", InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

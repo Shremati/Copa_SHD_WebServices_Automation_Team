@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <api:modifyAPI>
+            <air:EDS_AirAPIModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:FlightSegment DepartureDateTime="2023-08-11T05:51:34" RPH="1">
+                    <com:DepartureAirport LocationCode="PTY"/>
+                    <com:ArrivalAirport LocationCode="MCO"/>
+                    <com:OperatingAirline Code="CM" FlightNumber="285"/>
+                </air:FlightSegment>
+                <air:PassengerInfo RPH="1" SurnameBookedNumber="1">
+                    <air1:PassengerName>
+                        <com:GivenName>ABCDEFGH</com:GivenName>
+                        <com:Surname>IJKLMN</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID ID="AVWZP0" Type="14"/>
+                </air:PassengerInfo>
+                <air:PassengerInfo RPH="2" SurnameBookedNumber="2">
+                    <air1:PassengerName>
+                        <com:GivenName>XYZLMNOP</com:GivenName>
+                        <com:Surname>IJKLMN</com:Surname>
+                    </air1:PassengerName>
+                    <air1:BookingReferenceID ID="AVWZP0" Type="14"/>
+                </air:PassengerInfo>
+                <air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>ABCDEFGH</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>ABCDEFGH</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>ABCDEFGH</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+                <air:PassengerFlightInfo FlightRPH="1" PassengerRPH="2">
+                    <air1:BookingInfo ResBookDesigCode="Y"/>
+                    <air1:AgencyRequirements AgencyName="USSF" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-13" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>XYZLMNOP</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-13" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>XYZLMNOP</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                    </air1:AgencyRequirements>
+                    <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                        <air1:API_Info BirthDate="1990-05-13" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
+                            <com:DocHolderFormattedName>
+                                <com:GivenName>XYZLMNOP</com:GivenName>
+                                <com:Surname>IJKLMN</com:Surname>
+                            </com:DocHolderFormattedName>
+                        </air1:API_Info>
+                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                    </air1:AgencyRequirements>
+                </air:PassengerFlightInfo>
+            </air:EDS_AirAPIModifyRQ>
+        </api:modifyAPI>
+    </soapenv:Body>
+</soapenv:Envelope>

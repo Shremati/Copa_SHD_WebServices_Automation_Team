@@ -3,7 +3,7 @@ package MODULES.WAVE3.DisplayBooking41Service.API_Tests;
 
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_active_fare_quote_and_fare_quote_history;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.display_booking_display_active_fare_quote_and_fare_quote_history;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.display_fare_quote;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.modify_ticket_display_active_fare_quote_and_fare_quote_history;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -33,7 +33,7 @@ public class Display_active_fare_quote_and_fare_quote_history_41 extends Framewo
         create_booking_display_active_fare_quote_and_fare_quote_history Prerequisite = new create_booking_display_active_fare_quote_and_fare_quote_history();
         Prerequisite.run(); //excel gets updated
 
-        display_booking_display_active_fare_quote_and_fare_quote_history Prerequisite2 = new display_booking_display_active_fare_quote_and_fare_quote_history();
+        display_fare_quote Prerequisite2 = new display_fare_quote();
         Prerequisite2.run();
 
         modify_ticket_display_active_fare_quote_and_fare_quote_history Prerequisite3 = new modify_ticket_display_active_fare_quote_and_fare_quote_history();

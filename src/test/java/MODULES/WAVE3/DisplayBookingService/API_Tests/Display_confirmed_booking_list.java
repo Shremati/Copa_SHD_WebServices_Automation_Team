@@ -13,6 +13,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,16 +28,17 @@ import static io.restassured.RestAssured.given;
 public class Display_confirmed_booking_list extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_confirmed_booking_list Prerequisite = new create_booking_display_confirmed_booking_list();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_display_confirmed_booking_list Prerequisite2 = new issue_ticket_display_confirmed_booking_list();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -58,6 +61,9 @@ public class Display_confirmed_booking_list extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_confirmed_booking_list.xml"));
         writer.write(response.asPrettyString());
@@ -92,6 +98,7 @@ public class Display_confirmed_booking_list extends FrameworkConstants
         XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
 
+        PNR = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

@@ -73,7 +73,7 @@ public class create_booking_advance_seat_assignment_on_oa_flight_41 extends Fram
         XSSFRow InputRow=sheet.getRow(20);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_advance_seat_assignment_on_oa_flight.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\create_booking_on_OA_flights_for_2_segments.xml";
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);

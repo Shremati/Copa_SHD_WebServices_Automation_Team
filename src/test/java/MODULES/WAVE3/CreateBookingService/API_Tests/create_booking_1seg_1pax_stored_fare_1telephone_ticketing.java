@@ -2,7 +2,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41;
+import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -10,6 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,15 +48,18 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
         excelwriter();
 
-        create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41 postCheck = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41();
+        create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket postCheck = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
         postCheck.run();
 
 

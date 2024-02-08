@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,11 +21,11 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Queue_Multiple_Messages extends FrameworkConstants {
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -46,6 +47,7 @@ public class Queue_Multiple_Messages extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Queue_Multiple_Messages.xml"));
@@ -70,14 +72,12 @@ public class Queue_Multiple_Messages extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("QueueService");
-        XSSFRow InputRow=sheet.getRow(7); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(7);
 
         String filepath1;
         filepath1=getRequestDirectory()+"QueueService\\Queue_Multiple_Messages.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

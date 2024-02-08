@@ -12,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,12 +29,10 @@ public class Void_a_ticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_void_a_ticket Prerequisite = new create_booking_void_a_ticket();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_void_a_ticket Prerequisite2 = new issue_ticket_void_a_ticket();
         Prerequisite2.run(); //generates ticket number
@@ -46,22 +45,6 @@ public class Void_a_ticket extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
-//        RequestSpecification requestSpecification =
-//                given().
-//                        baseUri(getBaseURL())
-//                        .header("Content-Type", "text/xml")
-//                        .filter(new AllureRestAssured())
-//                        .body(SOAPRequest);
-//
-//
-//        requestSpecification.
-//                when()
-//                .post(getModifyticketingservice())
-//                .then()
-//                .statusCode(200)
-//                .and()
-//                .log().all().extract().response();
 
 
         Response response = given()
@@ -76,6 +59,8 @@ public class Void_a_ticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("RequestType=\"Void\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_a_ticket.xml"));
         writer.write(response.asPrettyString());

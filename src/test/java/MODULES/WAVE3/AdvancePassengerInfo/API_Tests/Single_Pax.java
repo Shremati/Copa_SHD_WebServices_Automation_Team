@@ -1,8 +1,10 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
+import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,6 +16,8 @@ import javax.xml.transform.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
@@ -29,8 +33,8 @@ public class Single_Pax extends FrameworkConstants
 
 //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-        Prerequisite.run(); //excel gets updated
+       create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
+       Prerequisite.run();
 
 
        UpdatePayload();
@@ -41,24 +45,15 @@ public class Single_Pax extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
 
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
+
+        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -76,8 +71,8 @@ public class Single_Pax extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Single_Pax.xml";

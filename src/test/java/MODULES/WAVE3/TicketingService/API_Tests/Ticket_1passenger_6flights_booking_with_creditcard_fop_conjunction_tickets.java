@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,10 +28,9 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets Prerequisite = new create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -54,6 +54,9 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo TicketNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("ConjunctionNumber"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml"));
         writer.write(response.asPrettyString());
@@ -83,14 +86,10 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
         filepath1=getRequestDirectory()+"TicketingService\\Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets.xml";
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();
 
     }
-
-
-
 
 }

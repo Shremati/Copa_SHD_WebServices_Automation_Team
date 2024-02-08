@@ -6,6 +6,7 @@ import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -27,7 +28,6 @@ public class Decode_city_code_lax extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -48,6 +48,9 @@ public class Decode_city_code_lax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("LOS ANGELES"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_city_code_lax.xml"));
@@ -78,13 +81,10 @@ public class Decode_city_code_lax extends FrameworkConstants
         filepath1=getRequestDirectory()+"EncodeDecodeService\\Decode_city_code_lax.xml";
 
 
-        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),filepath1,0);
 
         wb.close();
 
     }
-
-
-
 
 }

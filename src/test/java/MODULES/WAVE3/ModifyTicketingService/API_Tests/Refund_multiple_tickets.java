@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,20 +24,20 @@ import static io.restassured.RestAssured.given;
 public class Refund_multiple_tickets extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String TicketNumber_1;
+    public static String TicketNumber_2;
+    public static String PNR;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+
 
         create_booking_refund_multiple_tickets Prerequisite = new create_booking_refund_multiple_tickets();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
         issue_ticket_refund_multiple_tickets Prerequisite2 = new issue_ticket_refund_multiple_tickets();
-        Prerequisite2.run(); //generates ticket number
-
-        //        PreRequisite for Scenario
+        Prerequisite2.run();
 
         modify_ticket_refund_multiple_tickets Prerequisite3 = new modify_ticket_refund_multiple_tickets();
         Prerequisite3.run();
@@ -62,9 +63,12 @@ public class Refund_multiple_tickets extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_1+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_2+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_a_ticket.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -91,9 +95,16 @@ public class Refund_multiple_tickets extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml";
 
+//        Updating Ticket Numbers
         XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
+
+//        Updating PNR
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
+       TicketNumber_1 = InputRow.getCell(16).getStringCellValue();
+       TicketNumber_2 = InputRow.getCell(17).getStringCellValue();
+       PNR = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

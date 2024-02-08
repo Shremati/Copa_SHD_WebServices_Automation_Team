@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,6 +47,20 @@ public class create_booking_1seg_1pax_stored_fare_time_limit extends FrameworkCo
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"));
+        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:SalesLocation"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_1seg_1pax_stored_fare_time_limit.xml"));
         writer.write(response.asPrettyString());
@@ -81,7 +96,8 @@ public class create_booking_1seg_1pax_stored_fare_time_limit extends FrameworkCo
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
-
+        XMLParser.updateAttributeValue("air1:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());
 
         wb.close();
 

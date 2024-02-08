@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,15 +30,12 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
         issue_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite2 = new issue_ticket_get_control_of_one_coupon_of_one_ticket();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
 
         UpdatePayload();
@@ -60,6 +58,9 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml"));

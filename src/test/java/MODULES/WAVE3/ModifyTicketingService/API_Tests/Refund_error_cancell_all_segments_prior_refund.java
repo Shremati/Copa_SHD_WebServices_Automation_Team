@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,12 +30,11 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+
 
         create_booking_refund_error_cancell_all_segments_prior_refund Prerequisite = new create_booking_refund_error_cancell_all_segments_prior_refund();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_refund_error_cancell_all_segments_prior_refund Prerequisite2 = new issue_ticket_refund_error_cancell_all_segments_prior_refund();
         Prerequisite2.run(); //generates ticket number
@@ -61,6 +61,8 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID - CANCEL ALL SEGMENTS PRIOR TO REFUND"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_error_cancell_all_segments_prior_refund.xml"));
         writer.write(response.asPrettyString());
@@ -91,7 +93,6 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
 
         XMLParser.SetTagtextatIndex("air:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-
 
         wb.close();
 

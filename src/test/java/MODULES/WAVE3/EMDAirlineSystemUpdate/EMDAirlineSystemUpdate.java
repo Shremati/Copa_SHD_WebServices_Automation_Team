@@ -12,48 +12,49 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 Scenarios
 public class EMDAirlineSystemUpdate {
 
     EMDAirlineSystemUpdate() {
         createFolders(getResponseDirectory() + "EMDAirlineSystemUpdate");
     }
 
-    @Description("Association: EMD coupon 1 with ETKT coupon 1 (POS info)")
+    @Description("ASU_02 - Association: EMD coupon 1 with ETKT coupon 1 (POS info)")
     @Test
-    public void Scenario1() {
+    public void ASU_02() {
 
         try {
             Association_emd_coupon_1_with_etkt_coupon1_pos_info.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("ASU_02 failed due to :" + e);
         }
     }
 
-    @Description("Error ScreenText - Not allowed entry")
+    @Description("ASU_06 - Association multiple coupons for primary and conjunctive etkt")
     @Test
-    public void Scenario2() {
+    public void ASU_06() {
 
         try {
             Association_multiple_coupons_for_primary_and_conjunctive_etkt.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("ASU_06 failed due to :" + e);
         }
     }
 
-    @Description("Error ScreenText - Not allowed entry")
+    @Description("ASU_07 - Disassociation emd coupon 1 with etkt coupon")
     @Test
-    public void Scenario3() {
+    public void ASU_07() {
 
         try {
             Disassociation_emd_coupon_1_with_etkt_coupon_1.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("ASU_07 failed due to :" + e);
         }
     }
 }

@@ -1,0 +1,22 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirportPassengerList/" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirportListRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getPassengerList>
+            <air1:EDS_AirportListRQ EchoToken="Test_52" Version="4.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air1:POS>
+                <air1:ListRequest>
+                    <air1:CustomList>
+                        <air1:FilterValues Type="0">N</air1:FilterValues>
+                    </air1:CustomList>
+                    <air1:FlightInfo DepartureDateTime="2023-08-19T00:00:00" FlightNumber="306">
+                        <com:DepartureAirport LocationCode="LAX"/>
+                        <com:ArrivalAirport/>
+                        <air2:MarketingAirline Code="CM"/>
+                    </air1:FlightInfo>
+                </air1:ListRequest>
+            </air1:EDS_AirportListRQ>
+        </air:getPassengerList>
+    </soapenv:Body>
+</soapenv:Envelope>

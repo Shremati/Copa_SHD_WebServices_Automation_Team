@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,16 +28,17 @@ public class Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_ph
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
+//        Only 1 modification is done here under category other
 
         create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite = new create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         display_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite2 = new display_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
         Prerequisite2.run();
 
         modify_ticket_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite3 = new modify_ticket_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
-        Prerequisite3.run();
+        Prerequisite3.run(); //ModificationType="5" , so we change other things , we are modifying or to be specific we are deleting the older remarks and adding new remark
+
 
 
         UpdatePayload();
@@ -60,6 +62,9 @@ public class Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_ph
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingHistory"));
+        Assert.assertTrue(response.getBody().asString().contains("Operation=\"Add\">OTRO REMARK"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone.xml"));
         writer.write(response.asPrettyString());
@@ -95,3 +100,19 @@ public class Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_ph
     }
 
 }
+
+//<air1:Remark>SOUTH PARK</air1:Remark>
+//<air1:Remark>REMARK ONE</air1:Remark>
+//<air1:Remark>REMARK TWO</air1:Remark>
+//<air1:Remark>REMARK THREE</air1:Remark>
+//<air1:Remark>FOR MODIFY TRAVELER INFO TEST</air1:Remark>
+
+//This below piece of tag in modify request will delete the remarks and add new remarks
+
+//<!--Remarks-->
+//<air1:Remarks>
+//<air1:Remark Operation="Delete">REMARK ONE</air1:Remark>
+//<air1:Remark Operation="Delete">REMARK TWO</air1:Remark>
+//<air1:Remark Operation="Delete">REMARK THREE</air1:Remark>
+//<air1:Remark Operation="Add">OTRO REMARK</air1:Remark>
+//</air1:Remarks>

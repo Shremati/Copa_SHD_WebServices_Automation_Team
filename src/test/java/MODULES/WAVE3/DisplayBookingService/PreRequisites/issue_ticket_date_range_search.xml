@@ -7,7 +7,7 @@
     <soapenv:Header/>
     <soapenv:Body>
         <tic:issueTicket>
-            <tic1:EDS_TicketingRQ EchoToken="Test_1" TimeStamp="2023-02-09T06:40:07" Version="4.000">
+            <tic1:EDS_TicketingRQ EchoToken="Test_1" TimeStamp="2023-08-29T06:40:07" Version="4.000">
                 <tic1:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </tic1:POS>

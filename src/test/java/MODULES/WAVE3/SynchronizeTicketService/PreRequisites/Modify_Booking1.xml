@@ -24,7 +24,7 @@
                         <air1:AirTraveler PassengerTypeCode="ADT">
                             <!--The new name-->
                             <air1:PersonName>
-                                <com:GivenName>FOX</com:GivenName>
+                                <com:GivenName>FOXXX</com:GivenName>
                                 <com:Surname>MULDER</com:Surname>
                             </air1:PersonName>
                             <!--The passenger to update his/her name.-->

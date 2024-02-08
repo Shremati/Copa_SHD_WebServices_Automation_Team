@@ -7,6 +7,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,7 +25,6 @@ public class Search_for_a_non_existent_credit_card extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -44,7 +45,8 @@ public class Search_for_a_non_existent_credit_card extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid Request. Cannot determine search type"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Search_for_a_non_existent_credit_card.xml"));
         writer.write(response.asPrettyString());

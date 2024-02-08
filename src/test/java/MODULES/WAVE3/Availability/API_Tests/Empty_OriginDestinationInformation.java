@@ -3,6 +3,7 @@ package MODULES.WAVE3.Availability.API_Tests;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,6 +39,8 @@ public class Empty_OriginDestinationInformation extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid request format"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\Empty_OriginDestinationInformation.xml"));

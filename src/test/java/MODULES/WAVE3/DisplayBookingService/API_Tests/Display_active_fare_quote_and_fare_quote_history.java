@@ -1,7 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
@@ -11,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,18 +25,18 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
 {
     public static String SOAPRequest;
 
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_active_fare_quote_and_fare_quote_history Prerequisite = new create_booking_display_active_fare_quote_and_fare_quote_history();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        display_booking_display_active_fare_quote_and_fare_quote_history Prerequisite2 = new display_booking_display_active_fare_quote_and_fare_quote_history();
+        display_fare_quote Prerequisite2 = new display_fare_quote();
         Prerequisite2.run();
 
         modify_ticket_display_active_fare_quote_and_fare_quote_history Prerequisite3 = new modify_ticket_display_active_fare_quote_and_fare_quote_history();
-        Prerequisite3.run();
+        Prerequisite3.run(); // even though modificationtype=5 ,we are not changing/modifying any value
 
 
         UpdatePayload();
@@ -60,6 +60,9 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("HistoryItems"));
+        Assert.assertTrue(response.getBody().asString().contains("FARE QUOTE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_active_fare_quote_and_fare_quote_history.xml"));
         writer.write(response.asPrettyString());
@@ -88,12 +91,8 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_active_fare_quote_and_fare_quote_history.xml";
 
-//        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(3).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
 
+       XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
 
         wb.close();
 

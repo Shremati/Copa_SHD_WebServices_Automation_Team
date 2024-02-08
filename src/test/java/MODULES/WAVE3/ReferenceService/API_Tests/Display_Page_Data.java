@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,6 +21,7 @@ import frameworkconstants.*;
 import static io.restassured.RestAssured.given;
 
 public class Display_Page_Data extends FrameworkConstants{
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -46,7 +48,7 @@ public class Display_Page_Data extends FrameworkConstants{
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("CAT:A08 SUB:B01 PGE:C01"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\Display_Page_Data_Response.xml"));
         writer.write(response.asPrettyString());
@@ -70,16 +72,16 @@ public class Display_Page_Data extends FrameworkConstants{
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ReferenceService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"ReferenceService\\Display_Page_Data.xml";
 
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),filepath1);
-//        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue()),getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValue("eds:ReferenceRequest","Page",InputRow.getCell(4).getStringCellValue(),0);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","Page",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest","IndexedPage",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

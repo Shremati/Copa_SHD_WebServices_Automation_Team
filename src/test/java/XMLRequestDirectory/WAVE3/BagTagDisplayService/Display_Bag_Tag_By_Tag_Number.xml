@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bag="http://www.eds.com/AirlineSOASchema/BagTagDisplay/" xmlns:bag1="http://www.eds.com/AirlineSOASchema/BagTagDisplayRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <bag:displayBagTagByTagNumber>
+            <bag1:HP_BagTagDisplayRQ  Version="4.000">
+                <bag1:POS>
+                    <!--1 to 10 repetitions:-->
+                    <com:Source  AirlineVendorID="CM">
+                    </com:Source>
+                </bag1:POS>
+                <!--1 to 5 repetitions:-->
+                <bag1:FlightInfo OptionalParameter="ALL" BagTagNumber="123456">
+                    <bag1:FlightLegInfo DepartureDateTime="2023-08-03T00:00:00" ArrivalDateTime="2023-08-03T00:00:00" RPH="1" FlightNumber="360">
+                        <com:DepartureAirport LocationCode="PTY"/>
+                        <com:ArrivalAirport LocationCode="LAX"/>
+                        <com:OperatingAirline FlightNumber="360" ResBookDesigCode="Y"></com:OperatingAirline>
+                        <air1:SeatNumber>5B</air1:SeatNumber>
+                    </bag1:FlightLegInfo>
+                </bag1:FlightInfo>
+            </bag1:HP_BagTagDisplayRQ>
+        </bag:displayBagTagByTagNumber>
+    </soapenv:Body>
+</soapenv:Envelope>

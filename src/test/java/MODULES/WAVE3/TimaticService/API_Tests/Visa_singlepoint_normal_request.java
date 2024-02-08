@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,6 +46,7 @@ public class Visa_singlepoint_normal_request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Visa_singlepoint_normal_request.xml"));
@@ -69,15 +71,19 @@ public class Visa_singlepoint_normal_request extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TimaticService");
-        XSSFRow InputRow=sheet.getRow(2); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TimaticService\\Visa_singlepoint_normal_request.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(2).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-
+        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValue("eds:CountryOfResidence","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:DestinationLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
         wb.close();
 
     }

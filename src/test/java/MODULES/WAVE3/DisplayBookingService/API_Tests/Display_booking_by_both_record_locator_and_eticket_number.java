@@ -13,6 +13,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -32,13 +34,10 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_booking_by_both_record_locator_and_eticket_number Prerequisite = new create_booking_display_booking_by_both_record_locator_and_eticket_number();
-        Prerequisite.run(); //excel gets updated
-
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
         issue_ticket_display_booking_by_both_record_locator_and_eticket_number Prerequisite2 = new issue_ticket_display_booking_by_both_record_locator_and_eticket_number();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
 
         UpdatePayload();
@@ -61,6 +60,12 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
+        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_by_both_record_locator_and_eticket_number.xml"));

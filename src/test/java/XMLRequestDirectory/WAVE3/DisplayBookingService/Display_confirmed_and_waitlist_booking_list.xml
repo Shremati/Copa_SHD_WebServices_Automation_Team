@@ -9,11 +9,11 @@
                 <read:ReadRequests>
                     <read:AirReadRequest>
                         <read:Airline Code="CM"/>
-                        <read:FlightNumber>226</read:FlightNumber>
-                        <read:DepartureAirport LocationCode="LAX"/>
-                        <read:DepartureDate>2023-01-24</read:DepartureDate>
+                        <read:FlightNumber>138</read:FlightNumber>
+                        <read:DepartureAirport LocationCode="PTY"/>
+                        <read:DepartureDate>2023-08-20</read:DepartureDate>
                         <read:Name>
-                            <com:Surname>RICK</com:Surname>
+                            <com:Surname>THOMPSON</com:Surname>
                         </read:Name>
                     </read:AirReadRequest>
                 </read:ReadRequests>

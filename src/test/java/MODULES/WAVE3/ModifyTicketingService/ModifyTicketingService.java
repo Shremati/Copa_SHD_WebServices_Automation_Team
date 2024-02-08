@@ -11,76 +11,78 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//5 Scenarios
+
 public class ModifyTicketingService {
     ModifyTicketingService() {
         createFolders(getResponseDirectory() + "ModifyTicketingService");
     }
 
-    @Description("Void a Ticket")
+    @Description("MTS_01 - Void a Ticket")
     @Test
-    public void Scenario1() {
+    public void MTS_01() {
 
         try {
             Void_a_ticket.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("MTS_01 failed due to :" + e);
         }
 
     }
 
-    @Description("Multiple passenger list request")
+    @Description("MTS_04 - Multiple passenger list request")
     @Test
-    public void Scenario2() {
+    public void MTS_04() {
 
         try {
             Refund_multiple_tickets.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("MTS_04 failed due to :" + e);
         }
     }
 
-    @Description("Print an Eticket")
+    @Description("MTS_05 - Print an Eticket")
     @Test
-    public void Scenario3() {
+    public void MTS_05() {
 
         try {
             Print_an_eticket.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("MTS_05 failed due to :" + e);
         }
 
     }
 
-    @Description("Refund Error - cancell all segments prior refund")
+    @Description("MTS_12 - Refund Error - cancel all segments prior refund")
     @Test
-    public void Scenario4() {
+    public void MTS_12() {
 
         try {
             Refund_error_cancell_all_segments_prior_refund.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("MTS_12 failed due to :" + e);
         }
 
     }
 
-    @Description("Void Error - no valid coupons to void (ticket already voided)")
+    @Description("MTS_18 - Void Error - no valid coupons to void (ticket already voided)")
     @Test
-    public void Scenario5() {
+    public void MTS_18() {
 
         try {
             Void_error_no_valid_coupons_to_void_ticket_already_voided.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("MTS_18 failed due to :" + e);
         }
 
     }

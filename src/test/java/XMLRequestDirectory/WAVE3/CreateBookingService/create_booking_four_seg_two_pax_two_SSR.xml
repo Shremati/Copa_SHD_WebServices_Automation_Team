@@ -84,13 +84,13 @@
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:SpecialServiceRequests>
-                            <air1:SpecialServiceRequest SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
+                            <air1:SpecialServiceRequest SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
                                 <air1:Airline Code="CM"/>
-                                <air1:Text>Need WCHR pax 1</air1:Text>
+                                <air1:Text>Need SPEQ pax 1</air1:Text>
                             </air1:SpecialServiceRequest>
-                            <air1:SpecialServiceRequest SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2">
+                            <air1:SpecialServiceRequest SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2">
                                 <air1:Airline Code="CM"/>
-                                <air1:Text>Need WCHR pax 1</air1:Text>
+                                <air1:Text>Need SPEQ pax 1</air1:Text>
                             </air1:SpecialServiceRequest>
                         </air1:SpecialServiceRequests>
                         <air1:Remarks>

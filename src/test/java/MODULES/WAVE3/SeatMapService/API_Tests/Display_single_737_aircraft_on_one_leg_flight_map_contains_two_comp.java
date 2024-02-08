@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,13 +48,13 @@ public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -81,7 +82,7 @@ public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

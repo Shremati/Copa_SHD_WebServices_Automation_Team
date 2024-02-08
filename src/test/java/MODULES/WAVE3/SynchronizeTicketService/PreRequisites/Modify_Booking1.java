@@ -3,6 +3,7 @@ package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -41,6 +42,7 @@ public class Modify_Booking1 extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())
@@ -79,47 +81,34 @@ public class Modify_Booking1 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Modify_Booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Modify_Booking1.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(6).getNumericCellValue()),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-        XMLParser.updateAttributeValue("n1:BookingReferenceID","ID", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+//        1st part of request i.e. <air:AirBookModifyRQ ModificationType="3"> tag contains the new name of the pax and the info about which pax to change i.e. air1:TravelerRefNumber RPH="1"
+//        air1:TravelerRefNumber RPH="1" refers to first pax
 
+        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(18).getStringCellValue(),filepath1,0);
+        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),0);
 
-
-//        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("n5:BookingReferenceID","ID", InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+//       2nd part of request i.e. <air:AirReservation> will contain the original booking itenary data
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(7).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ResBookDesigCode",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),0);
 
 
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(8).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ResBookDesigCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(21).getStringCellValue(),getTemp_requestPath(),1);
 
 
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("n1:BookingReferenceID","ID", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath());
 
-
-
-//
-//
-//        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-//        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(8).getStringCellValue(),filepath1,0);
-//
-//        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-////        XMLParser.updateAttributeValueatIndex("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath(), 0);
-//
-//        //        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-////        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-////        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-////        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-////        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-//
-////        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
 
         wb.close();
 
@@ -139,15 +128,10 @@ public class Modify_Booking1 extends FrameworkConstants {
 
 
 
-        String TransactionIdentifie = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
 
-        InputRow.getCell(5).setCellValue(TransactionIdentifie);
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
-
+        InputRow.getCell(12).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

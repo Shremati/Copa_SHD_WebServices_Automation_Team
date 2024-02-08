@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ava="http://www.eds.com/AirlineSOASchema/Availability/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirAvailRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirPreferences">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ava:getAvailability>
+            <air:OTA_AirAvailRQ EchoToken="Test_21" Version="4.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:ProcessingInfo SearchType="Reward"/>
+                <air:OriginDestinationInformation RPH="1">
+                    <com:DepartureDateTime>2023-08-29</com:DepartureDateTime>
+                    <com:OriginLocation LocationCode="LAX"/>
+                    <com:DestinationLocation LocationCode="JFK"/>
+                    <air:TravelPreferences>
+                        <air2:BookingClassPrefs ResBookDesigCode="Q" SeatsNeeded="2"/>
+                    </air:TravelPreferences>
+                </air:OriginDestinationInformation>
+            </air:OTA_AirAvailRQ>
+        </ava:getAvailability>
+    </soapenv:Body>
+</soapenv:Envelope>

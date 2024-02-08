@@ -1,0 +1,90 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-08-23T00:00:00" RPH="1" FlightNumber="306" ResBookDesigCode="Y" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="4"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-10-06" NotValidAfter="2023-11-10">Y</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="1456.50" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="US" Amount="15.40"/>
+                                    <air1:Tax TaxCode="XT" Amount="89.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="1" UnitOfMeasure="PC"/>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                            <air1:TravelerRefNumber RPH="4"/>
+                            <air1:Endorsements>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                            </air1:Endorsements>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>RAY</com:GivenName>
+                            <com:Surname>LIOTA</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212" Remark="EXT ONE"/>
+                        <air1:Email>RAY.LIOTA@STARFOX.COM</air1:Email>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>DAVID</com:GivenName>
+                            <com:Surname>SANDERS</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1214" Remark="EXT TWO"/>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>ALICE</com:GivenName>
+                            <com:Surname>COOPER</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1216" Remark="EXT THREE"/>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>FIONA</com:GivenName>
+                            <com:Surname>SILVETTI</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1218" Remark="EXT FOUR"/>
+                        <air1:TravelerRefNumber RPH="4"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:Remarks>
+                            <air1:Remark>ENJOY YOUR VACATIONS</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

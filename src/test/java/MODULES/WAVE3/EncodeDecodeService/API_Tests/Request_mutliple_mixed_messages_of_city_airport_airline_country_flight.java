@@ -5,6 +5,7 @@ import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -47,8 +48,11 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("UNITED AIRLINES INC"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_mutliple_mixed_messages_of_city_airport_airline_country_flight.xml"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_multiple_mixed_messages_of_city_airport_airline_country_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -77,18 +81,18 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
 
 
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CountryConversion",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("con:CityAirportConversion",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+
+        XMLParser.SetTagtextatIndex("con:AirlineConversion",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+
 
         wb.close();
 
     }
-
-
-
 
 }

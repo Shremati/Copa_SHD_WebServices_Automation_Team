@@ -12,6 +12,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -31,8 +33,7 @@ public class Display_a_host_airline_booking extends FrameworkConstants
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_a_host_airline_booking Prerequisite = new create_booking_display_a_host_airline_booking();
-        Prerequisite.run(); //excel gets updated
-
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -54,6 +55,12 @@ public class Display_a_host_airline_booking extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
+        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_a_host_airline_booking.xml"));

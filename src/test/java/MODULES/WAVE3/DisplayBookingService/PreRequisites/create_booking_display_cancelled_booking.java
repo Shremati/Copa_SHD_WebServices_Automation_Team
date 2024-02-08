@@ -3,6 +3,7 @@ package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -37,6 +38,7 @@ public class create_booking_display_cancelled_booking extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -101,9 +103,8 @@ public class create_booking_display_cancelled_booking extends FrameworkConstants
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
 
-        InputRow.getCell(13).setCellValue(XMLParser.GetTagText("GivenName",getTemp_responsePath()));
-        InputRow.getCell(14).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
-
+        String ArrivalDate = XMLParser.GetAttributeValue("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath());
+        InputRow.getCell(21).setCellValue(ArrivalDate);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

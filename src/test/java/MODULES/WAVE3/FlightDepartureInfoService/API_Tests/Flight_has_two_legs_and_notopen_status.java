@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +26,6 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -48,6 +48,9 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Status=\"NotOpen\""));
+        Assert.assertFalse(response.getBody().asString().contains("Status=\"Open\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlightDepartureInfoService\\Flight_has_two_legs_and_notopen_status.xml"));
         writer.write(response.asPrettyString());
@@ -78,9 +81,9 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants
 
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("read:DepartureAirport","CodeContext",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

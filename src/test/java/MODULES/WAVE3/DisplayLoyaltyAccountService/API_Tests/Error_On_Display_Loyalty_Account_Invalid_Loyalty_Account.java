@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,7 +46,7 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("ACCOUNT NUMBER 230021875 WAS NOT FOUND"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayLoyaltyAccountService\\ErrorOnDisplayLoyaltyAccountInvalidLoyaltyAccount.xml"));
         writer.write(response.asPrettyString());
@@ -81,8 +82,5 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
         wb.close();
 
     }
-
-
-
 
 }

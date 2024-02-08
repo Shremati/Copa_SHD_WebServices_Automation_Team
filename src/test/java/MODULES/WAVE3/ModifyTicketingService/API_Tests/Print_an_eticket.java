@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,16 +30,13 @@ public class Print_an_eticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_print_an_eticket Prerequisite = new create_booking_print_an_eticket();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_print_an_eticket Prerequisite2 = new issue_ticket_print_an_eticket();
-        Prerequisite2.run(); //generates ticket number
-
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -61,6 +59,8 @@ public class Print_an_eticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID ETKT ITEM NUMBER"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Print_an_eticket.xml"));
         writer.write(response.asPrettyString());
@@ -91,7 +91,6 @@ public class Print_an_eticket extends FrameworkConstants
 
         XMLParser.SetTagtextatIndex("tic:TicketNumber", InputRow.getCell(16).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("tic:RecordLocator","ID", InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-
 
         wb.close();
 

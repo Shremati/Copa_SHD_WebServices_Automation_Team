@@ -2,6 +2,7 @@ package MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,6 +37,7 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())
@@ -92,8 +94,11 @@ public class issue_ticket_association_multiple_coupons_for_primary_and_conjuncti
         XSSFSheet sheet = wb.getSheet("EMDAirlineSystemUpdate");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
+        String TicketNumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(), 0);
         InputRow.getCell(28).setCellValue(TicketNumber);
+
+        String TicketNumber1 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),4);
+        InputRow.getCell(33).setCellValue(TicketNumber1);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

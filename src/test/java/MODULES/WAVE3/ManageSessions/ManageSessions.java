@@ -11,50 +11,51 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 Scenarios
 public class ManageSessions {
 
     ManageSessions() {
         createFolders(getResponseDirectory() + "ManageSessions");
     }
 
-    @Description("Modify_name")
+    @Description("MS_24 - Modify_name")
     @Test
-    public void Scenario1() {
+    public void MS_24() {
 
         try {
             Modify_name.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("MS_24 failed due to :" + e);
         }
 
     }
 
-    @Description("Modify_name")
+    @Description("MS_31 - Create_a_booking_for_a_group_FinalizeSession")
     @Test
-    public void Scenario2() {
+    public void MS_31() {
 
         try {
             Create_a_booking_for_a_group.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("MS_31 failed due to :" + e);
         }
 
     }
 
-    @Description("Create Booking 2 Segments")
+    @Description("MS_03 - Create Booking 2 Segments - releaseToken")
     @Test
-    public void Scenario3() {
+    public void MS_03() {
 
         try {
             Create_a_booking_for_two_segments.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("MS_03 failed due to :" + e);
         }
     }
 }

@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,7 +27,6 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
 
         UpdatePayload();
 
@@ -48,7 +48,8 @@ public class display_passenger_list_All_option extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ReservationsList"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Display the passenger list option.xml"));
         writer.write(response.asPrettyString());
@@ -80,13 +81,10 @@ public class display_passenger_list_All_option extends FrameworkConstants
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 
     }
-
-
-
 
 }

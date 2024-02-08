@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:boar="http://www.eds.com/AirlineSOASchema/Boarding/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirBoardingRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <boar:boarding>
+            <air:EDS_AirBoardingRQ Version="4.00">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:MessageFunction Function="BoardPassenger"/>
+                <air:FlightInfo RPH="1" BoardingOption="Sequence">
+                    <air1:CarrierInfo FlightNumber="500"/>
+                    <air1:DepartureInformation DateOfDeparture="2023-08-014" LocationCode="PTY"/>
+                </air:FlightInfo>
+                <air:PassengerFlightInfo  DCS_SequenceNumber="2"/>
+            </air:EDS_AirBoardingRQ>
+        </boar:boarding>
+    </soapenv:Body>
+</soapenv:Envelope>

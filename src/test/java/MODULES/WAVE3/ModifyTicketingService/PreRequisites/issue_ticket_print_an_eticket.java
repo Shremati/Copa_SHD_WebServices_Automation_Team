@@ -2,6 +2,7 @@ package MODULES.WAVE3.ModifyTicketingService.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,6 +37,7 @@ public class issue_ticket_print_an_eticket extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())
@@ -92,9 +94,14 @@ public class issue_ticket_print_an_eticket extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("ModifyTicketingService");
         XSSFRow InputRow=sheet.getRow(3);
 
+        String AudCouponCheckDigit ="";
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(16).setCellValue(TicketNumber);
 
+        if(XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath())!=null) {
+            AudCouponCheckDigit = XMLParser.GetTagText("ns4:AudCouponCheckDigit", getTemp_responsePath());
+        }
+
+        InputRow.getCell(16).setCellValue(TicketNumber+AudCouponCheckDigit);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

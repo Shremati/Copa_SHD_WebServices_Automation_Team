@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:enc="http://www.eds.com/AirlineSOASchema/EncodeDecode/" xmlns:con="http://www.eds.com/AirlineSOASchema/ConversionRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <enc:encodeDecode>
+            <con:EDS_ConversionRQ Version="4.000">
+                <con:POS>
+                    <com:Source AgentSine="0001BJ" AgentDutyCode="SU" AirlineVendorID="CM" AirportCode="CRC" ERSP_UserID=""/>
+                </con:POS>
+                <con:Conversion>
+                    <con:CityAirportConversion>lax</con:CityAirportConversion>
+                </con:Conversion>
+            </con:EDS_ConversionRQ>
+        </enc:encodeDecode>
+    </soapenv:Body>
+</soapenv:Envelope>

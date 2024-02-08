@@ -2,6 +2,7 @@ package MODULES.WAVE3.TicketingService.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,6 +37,7 @@ public class issue_ticket_reissue_add_collect_with_credit_card extends Framework
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())
@@ -93,7 +95,12 @@ public class issue_ticket_reissue_add_collect_with_credit_card extends Framework
         XSSFRow InputRow=sheet.getRow(4);
 
         String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(16).setCellValue(TicketNumber);
+        String AudCouponCheckDigit="";
+        if(XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath())!=null)
+        {
+            AudCouponCheckDigit = XMLParser.GetTagText("ns4:AudCouponCheckDigit",getTemp_responsePath());
+        }
+        InputRow.getCell(16).setCellValue(TicketNumber+AudCouponCheckDigit);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

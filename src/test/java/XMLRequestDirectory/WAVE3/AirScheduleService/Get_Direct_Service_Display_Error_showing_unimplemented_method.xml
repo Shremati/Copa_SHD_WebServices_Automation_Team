@@ -1,0 +1,30 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirSchedule/" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirScheduleRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getDirectServiceDisplay>
+            <air1:OTA_AirScheduleRQ EchoToken="Test_1" Version="4.0">
+                <!--Optional:-->
+                <air1:POS>
+                    <!--1 to 10 repetitions:-->
+                    <com:Source AirlineVendorID="CM">
+                    </com:Source>
+                </air1:POS>
+                <air1:OriginDestinationInformation>
+                    <!--You have a CHOICE of the next 2 items at this level-->
+                    <com:DepartureDateTime>2023-08-30T07:00:00</com:DepartureDateTime>
+                    <!-- <com:ArrivalDateTime WindowBefore="?" WindowAfter="?" CrossDateAllowedIndicator="?">?</com:ArrivalDateTime> -->
+                    <com:OriginLocation LocationCode="LAX"/>
+                    <com:DestinationLocation LocationCode="LAS"/>
+                </air1:OriginDestinationInformation>
+                <!--Optional:-->
+
+                <!--0 to 99 repetitions:-->
+                <air1:VendorPref Code="US"/>
+                <!--0 to 3 repetitions:-->
+                <!-- <air1:FlightTypePref PreferLevel="?" FlightType="?" MaxConnections="?" NonScheduledFltInfo="?" BackhaulIndicator="?" GroundTransportIndicator="?" DirectAndNonStopOnlyInd="?" NonStopsOnlyInd="?" OnlineConnectionsOnlyInd="?" RoutingType="?" ExcludeTrainInd="?"/> -->
+                <!--0 to 9 repetitions:-->
+                <!-- <air1:EquipPref AirEquipType="?" ChangeofGauge="?" PreferLevel="?" WideBody="?">?</air1:EquipPref>-->
+            </air1:OTA_AirScheduleRQ>
+        </air:getDirectServiceDisplay>
+    </soapenv:Body>
+</soapenv:Envelope>

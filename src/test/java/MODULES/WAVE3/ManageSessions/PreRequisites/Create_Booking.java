@@ -3,6 +3,7 @@ package MODULES.WAVE3.ManageSessions.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -41,6 +42,7 @@ public class Create_Booking extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -82,23 +84,11 @@ public class Create_Booking extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\ManageSessions\\PreRequisites\\Create_Booking.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath());
 
 
-
-
-
-
-
-
-        //        XMLParser.updateAttributeValueatIndex("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath(), 0);
-
-        //        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-//        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-
-//        XMLParser.updateAttributeValue("air1:FareBasisCode","LocationCode",InputRow.getCell(4).getStringCellValue(),filepath);
 
         wb.close();
 
@@ -119,18 +109,10 @@ public class Create_Booking extends FrameworkConstants {
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-        System.out.print(PNR);
         InputRow.getCell(4).setCellValue(PNR);
-        System.out.print(InputRow);
-//        System.out.println(Inpu);
 
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
-
+        String ArrivalDate = XMLParser.GetAttributeValue("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath());
+        InputRow.getCell(2).setCellValue(ArrivalDate);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

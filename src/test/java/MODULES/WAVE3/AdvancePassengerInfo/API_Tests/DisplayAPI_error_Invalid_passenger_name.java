@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -15,6 +16,8 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
@@ -28,10 +31,8 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
     {
 
 
-//        PreRequisite for Scenario ------> Create Booking
-
         create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -42,24 +43,12 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
-
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -77,20 +66,15 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
 
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1); //Taking PNR from scenario create booking for 1 pax
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml";
 
 
-
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
-
-
-//        XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

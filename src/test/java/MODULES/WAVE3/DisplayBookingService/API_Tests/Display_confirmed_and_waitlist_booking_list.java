@@ -14,6 +14,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,16 +29,18 @@ import static io.restassured.RestAssured.given;
 public class Display_confirmed_and_waitlist_booking_list extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR1;
+    public static String PNR2;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking1_display_confirmed_and_waitlist_booking_list Prerequisite = new create_booking1_display_confirmed_and_waitlist_booking_list();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run(); //Confirmed Booking
 
         create_booking2_display_confirmed_and_waitlist_booking_list Prerequisite2 = new create_booking2_display_confirmed_and_waitlist_booking_list();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();//Waitlist Booking
 
         UpdatePayload();
 
@@ -58,6 +62,10 @@ public class Display_confirmed_and_waitlist_booking_list extends FrameworkConsta
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_confirmed_and_waitlist_booking_list.xml"));
@@ -92,6 +100,8 @@ public class Display_confirmed_and_waitlist_booking_list extends FrameworkConsta
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),0);
 
+        PNR1 = InputRow.getCell(10).getStringCellValue();
+        PNR2 = InputRow.getCell(15).getStringCellValue();
 
         wb.close();
 

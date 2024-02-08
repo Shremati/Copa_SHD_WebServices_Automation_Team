@@ -3,10 +3,10 @@ package MODULES.WAVE3.DisplayBooking41Service.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking1_search_a_booking_by_frequent_traveler_number;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking2_search_a_booking_by_frequent_traveler_number;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.issue_ticket1_search_a_booking_by_frequent_traveler_number;
-import MODULES.WAVE3.DisplayBookingService.PreRequisites.issue_ticket2_search_a_booking_by_frequent_traveler_number;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_for_one_pax_with_fqtv;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_for_one_pax_without_fqtv;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.issue_ticket_for_one_pax_with_fqtv;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.issue_ticket_for_one_pax_without_fqtv;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -32,19 +32,19 @@ public class Search_a_booking_by_frequent_traveler_number_41 extends FrameworkCo
     {
         //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking1_search_a_booking_by_frequent_traveler_number Prerequisite = new create_booking1_search_a_booking_by_frequent_traveler_number();
+        create_booking_for_one_pax_with_fqtv Prerequisite = new create_booking_for_one_pax_with_fqtv();
         Prerequisite.run(); //excel gets updated
 
-        issue_ticket1_search_a_booking_by_frequent_traveler_number Prerequisite2 = new issue_ticket1_search_a_booking_by_frequent_traveler_number();
+        issue_ticket_for_one_pax_with_fqtv Prerequisite2 = new issue_ticket_for_one_pax_with_fqtv();
         Prerequisite2.run(); //excel gets updated
 
 
 //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking2_search_a_booking_by_frequent_traveler_number Prerequisite3 = new create_booking2_search_a_booking_by_frequent_traveler_number();
+        create_booking_for_one_pax_without_fqtv Prerequisite3 = new create_booking_for_one_pax_without_fqtv();
         Prerequisite3.run(); //excel gets updated
 
-        issue_ticket2_search_a_booking_by_frequent_traveler_number Prerequisite4 = new issue_ticket2_search_a_booking_by_frequent_traveler_number();
+        issue_ticket_for_one_pax_without_fqtv Prerequisite4 = new issue_ticket_for_one_pax_without_fqtv();
         Prerequisite4.run(); //excel gets updated
 
         UpdatePayload();

@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tim="http://www.eds.com/AirlineSOASchema/Timatic/" xmlns:eds="http://www.eds.com/AirlineSOASchema/EDS_TimaticRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <tim:displayTimatic>
+            <eds:EDS_TimaticRQ Version="4.0">
+                <eds:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </eds:POS>
+                <eds:TopicDisplay Section="Customs" Subsection="ADDITIONAL INFORMATION">
+                    <eds:Location>
+                        <air:Country Code="GB"/>
+                    </eds:Location>
+                </eds:TopicDisplay>
+            </eds:EDS_TimaticRQ>
+        </tim:displayTimatic>
+    </soapenv:Body>
+</soapenv:Envelope>

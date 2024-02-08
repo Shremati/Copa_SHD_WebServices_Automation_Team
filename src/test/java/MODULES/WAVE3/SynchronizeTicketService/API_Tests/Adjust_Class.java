@@ -5,11 +5,13 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,6 +23,7 @@ import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 
 public class Adjust_Class extends FrameworkConstants {
+
    public static String SOAPRequest;
 
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -28,14 +31,15 @@ public class Adjust_Class extends FrameworkConstants {
 
        Create_Booking2 Prerequisite1 = new Create_Booking2();
        Prerequisite1.run();
-//        System.out.println(PNR);
 
        Issue_Booking2 Prerequisite2 = new Issue_Booking2();
        Prerequisite2.run();
 
        Modify_Booking2 Prerequisite3 = new Modify_Booking2();
-       Prerequisite3.run();
+       Prerequisite3.run(); //ModificationType="5" ,so we are modifying other itenary details, to be specific , class is modified and RPH=2 is fixed
 
+       Display_Booking_adjust_class Prerequisite4 = new Display_Booking_adjust_class();
+       Prerequisite4.run();
 
        UpdatePayload();
 
@@ -50,6 +54,7 @@ public class Adjust_Class extends FrameworkConstants {
        Response response = given()
                .baseUri(getBaseURL())
                .header("Content-Type", "text/xml")
+               .filter(new AllureRestAssured())
                .body(SOAPRequest)
                .when()
                .post(getSynchronizeticketservice())
@@ -58,9 +63,11 @@ public class Adjust_Class extends FrameworkConstants {
                .and()
                .log().all().extract().response();
 
+       Assert.assertTrue(response.getBody().asString().contains("Success"));
+       Assert.assertTrue(response.getBody().asString().contains("ADJUSTED"));
 
 
-       BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+       BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Class.xml"));
        writer.write(response.asPrettyString());
        writer.close();
 
@@ -71,7 +78,6 @@ public class Adjust_Class extends FrameworkConstants {
        writer.close();
 
 
-//            excelwriter();
 
 
    }
@@ -90,53 +96,14 @@ public class Adjust_Class extends FrameworkConstants {
        String filepath1;
        filepath1=getRequestDirectory()+"SynchronizeTicketService\\Adjust_Class.xml";
 
-//        XMLParser.updateAttributeValue("air1:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
-       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(5).getStringCellValue(),filepath1);
-//       XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","DepartureDateTime",InputRow.getCell(1).getNumericCellValue(),getTemp_requestPath());
-//            XMLParser.updateAttributeValue("tic:OriginalAirlineInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
 
+       XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(12).getStringCellValue(),filepath1);
 
 
        wb.close();
 
    }
 
-
-   public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-   {
-
-       //        ********** Writing TestData into Excel ************
-
-       File xlsxFile = new File(getTestData());
-       FileInputStream inputStream = new FileInputStream(xlsxFile);
-       XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-       XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-       XSSFRow InputRow=sheet.getRow(3);
-
-
-
-       String PNR = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
-
-       System.out.print(PNR);
-       InputRow.getCell(5).setCellValue(PNR);
-       System.out.print(InputRow);
-
-
-
-       FileOutputStream out = new FileOutputStream(new File(getTestData()));
-       wb.write(out);
-       out.close();
-
-       wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-       BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-       writer.write("");
-       writer.close();
-
-   }
 
 }
 

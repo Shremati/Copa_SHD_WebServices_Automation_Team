@@ -1,0 +1,20 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:agen="http://www.hp.com/AirlineSOASchema/AgentSine/" xmlns:air="http://www.hp.com/AirlineSOASchema/AirAgentSineRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <agen:agentSine>
+            <air:HP_AirAgentSineRQ EchoToken="1" Version="4.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AgentInfoRQ>
+                    <air:AgentInfo CityCode="PTY">
+                        <air:AgentDetails>
+                            <air:AgentDutyCode/>
+                            <air:AgentDutyCode/>
+                        </air:AgentDetails>
+                    </air:AgentInfo>
+                </air:AgentInfoRQ>
+            </air:HP_AirAgentSineRQ>
+        </agen:agentSine>
+    </soapenv:Body>
+</soapenv:Envelope>

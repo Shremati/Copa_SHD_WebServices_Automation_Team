@@ -2,7 +2,7 @@ package MODULES.WAVE3.CreateBooking41Service.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41;
+import MODULES.WAVE3.CreateBooking41Service.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket_41;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;

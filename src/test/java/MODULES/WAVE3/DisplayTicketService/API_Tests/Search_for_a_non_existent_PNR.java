@@ -3,11 +3,13 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +26,6 @@ public class Search_for_a_non_existent_PNR extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -36,6 +37,7 @@ public class Search_for_a_non_existent_PNR extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())
@@ -44,6 +46,7 @@ public class Search_for_a_non_existent_PNR extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Dislay Ticket Error: (1) NO MATCH FOUND"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Search_for_a_non_existent_PNR.xml"));
@@ -68,15 +71,12 @@ public class Search_for_a_non_existent_PNR extends FrameworkConstants {
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayTicketService\\Search_for_a_non_existent_PNR.xml";
 
-        XMLParser.updateAttributeValue("Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-
+        XMLParser.SetTagtext("RecordLocator",InputRow.getCell(11).getStringCellValue(),filepath1);
         wb.close();
 
     }

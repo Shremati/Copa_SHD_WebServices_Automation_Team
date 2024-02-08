@@ -2,7 +2,7 @@ package MODULES.WAVE3.TicketingService.API_Tests;
 
 
 import GENERICS.XMLParser;
-import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_ticket_for_a_booking_with_an_infant;
+import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,11 +27,9 @@ public class Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_issue_ticket_for_a_booking_with_an_infant Prerequisite = new create_booking_issue_ticket_for_a_booking_with_an_infant();
-        Prerequisite.run(); //excel gets updated
-
+        create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax();
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -53,6 +52,8 @@ public class Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax extends Framewor
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FareAmountType=\"IT\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax.xml"));
         writer.write(response.asPrettyString());
@@ -76,7 +77,7 @@ public class Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax extends Framewor
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TicketingService");
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TicketingService\\Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax.xml";

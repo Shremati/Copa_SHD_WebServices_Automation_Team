@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aut="http://www.eds.com/AirlineSOASchema/Authorization/" xmlns:aut1="http://www.opentravel.org/OTA/2003/05/AuthorizationRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <aut:authorize>
+            <aut1:OTA_AuthorizationRQ Version="4.0">
+                <aut1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </aut1:POS>
+                <aut1:AuthorizationDetail>
+                </aut1:AuthorizationDetail>
+            </aut1:OTA_AuthorizationRQ>
+        </aut:authorize>
+    </soapenv:Body>
+</soapenv:Envelope>

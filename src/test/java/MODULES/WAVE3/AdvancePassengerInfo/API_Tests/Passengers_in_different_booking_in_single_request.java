@@ -1,10 +1,12 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,6 +18,8 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
@@ -29,10 +33,10 @@ public class Passengers_in_different_booking_in_single_request extends Framework
     {
 
         create_booking_service_onepax Prerequisite1 = new create_booking_service_onepax();
-        Prerequisite1.run();
+        Prerequisite1.run(); //1st PNR generated in column 7
 
         create_booking_service_singlepax Prerequisite2 = new create_booking_service_singlepax();
-        Prerequisite2.run();
+        Prerequisite2.run(); //2nd PNR generated in column 14
 
 
         UpdatePayload();
@@ -44,19 +48,10 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
-
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Passengers_in_different_booking_in_single_request.xml"));
         writer.write(response.asPrettyString());
@@ -78,10 +73,10 @@ public class Passengers_in_different_booking_in_single_request extends Framework
         //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(1);
 
-        String filepath1 ,filepath2;
+        String filepath1;
 
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Passengers_in_different_booking_in_single_request.xml";
 

@@ -62,7 +62,7 @@ public class Utils
         if (folder.mkdirs()) {
             System.out.println("Folder created successfully.");
         } else {
-            System.out.println("Failed to create the folder.");
+            System.out.println("Folder Exists");
         }
     }
 

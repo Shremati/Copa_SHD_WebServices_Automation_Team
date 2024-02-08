@@ -13,6 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,10 +30,9 @@ public class Display_booking_history_for_cm_flight extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_booking_history_for_cm_flight Prerequisite = new create_booking_display_booking_history_for_cm_flight();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -56,6 +56,9 @@ public class Display_booking_history_for_cm_flight extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingHistory"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_history_for_cm_flight.xml"));
         writer.write(response.asPrettyString());

@@ -1,0 +1,132 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-06T00:00:00" RPH="1" FlightNumber="354" ResBookDesigCode="S" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="CUN"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-06T00:00:00" RPH="2" FlightNumber="120" ResBookDesigCode="S" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="MEX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-08T00:00:00" RPH="3" FlightNumber="137" ResBookDesigCode="S" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="MEX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-08T00:00:00" RPH="4" FlightNumber="243" ResBookDesigCode="B" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="BOG"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-10T00:00:00" RPH="5" FlightNumber="335" ResBookDesigCode="B" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="BOG"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-09-10T00:00:00" RPH="6" FlightNumber="9999" ResBookDesigCode="B" NumberInParty="4" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="4"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2011-10-04" NotValidAfter="2011-10-06">AAA</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="2" NotValidBefore="2011-10-06" NotValidAfter="2011-10-08">BBB</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="3" NotValidBefore="2011-10-08" NotValidAfter="2011-10-10">CCC</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="4" NotValidBefore="2011-10-10" NotValidAfter="2011-10-12">DDD</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="5" NotValidBefore="2011-10-12" NotValidAfter="2011-10-14">EEE</air1:FareBasisCode>
+                                <air1:FareBasisCode FlightSegmentRPH="6" NotValidBefore="2011-10-14" NotValidAfter="2011-10-16">FFF</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="1456.50" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="US" Amount="15.40"/>
+                                    <air1:Tax TaxCode="XT" Amount="89.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="1" UnitOfMeasure="PC"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="2" UnitOfMeasureQuantity="2" UnitOfMeasure="PC"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="3" UnitOfMeasureQuantity="3" UnitOfMeasure="PC"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="4" UnitOfMeasureQuantity="30" UnitOfMeasure="K"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="5" UnitOfMeasureQuantity="20" UnitOfMeasure="K"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="6" UnitOfMeasureQuantity="10" UnitOfMeasure="K"/>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                            <air1:TravelerRefNumber RPH="4"/>
+                            <air1:Endorsements>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                            </air1:Endorsements>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>BERENISE</com:GivenName>
+                            <com:Surname>HERNANDEZ</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1212" Remark="A PHONE REMARK"/>
+                        <air1:Email>BERENISE.HERNANDEZ@MYDOMAIN.COM</air1:Email>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>SUSANA</com:GivenName>
+                            <com:Surname>HERNANDEZ</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>ISRAEL</com:GivenName>
+                            <com:Surname>HERNANDEZ</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>ANGEL</com:GivenName>
+                            <com:Surname>HERNANDEZ</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="4"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:Remarks>
+                            <air1:Remark>ENJOY YOUR VACATIONS</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,118 @@
+package MODULES.WAVE3.CreateBookingService.API_Tests;
+
+import GENERICS.Utils;
+import GENERICS.XMLParser;
+import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.response.Response;
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.*;
+
+import static io.restassured.RestAssured.given;
+
+public class CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_calculation_line_BA_and_tour_code_and_TL extends FrameworkConstants {
+
+
+    public static String SOAPRequest;
+
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
+        UpdatePayload();
+
+//                       ********** Reading the xml request file **********
+
+        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
+
+        Response response = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
+                .body(SOAPRequest)
+                .when()
+                .post(getCreatebookingservice())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertFalse(response.getBody().asString().contains("Error"));
+        Assert.assertFalse(response.getBody().asString().contains("Warning"));
+
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_calculation_line_BA_and_tour_code_and_TL.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+
+        excelwriter();
+
+
+    }
+
+
+
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+//        ********** Reading Testdata from Excel ************
+        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
+
+        XSSFRow InputRow=sheet.getRow(27);
+
+
+        String filepath1;
+        filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_calculation_line_BA_and_tour_code_and_TL.xml";
+
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1,0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FareBasisCode","NotValidAfter",Utils.getDate_YYYYMMdd(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath());
+        wb.close();
+
+    }
+
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
+        XSSFRow InputRow = sheet.getRow(27);
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_calculation_line_BA_and_tour_code_and_TL.xml";
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
+
+        InputRow.getCell(17).setCellValue(PNR);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+    }
+
+}

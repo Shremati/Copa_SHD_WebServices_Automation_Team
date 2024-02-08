@@ -60,8 +60,6 @@ public class create_booking_display_active_fare_quote_and_fare_quote_history ext
 
     }
 
-
-
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 

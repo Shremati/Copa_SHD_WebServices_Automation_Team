@@ -9,6 +9,7 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.issue_ticket_associati
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -29,15 +30,12 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite = new create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt();
-        Prerequisite.run(); //excel gets updated
-
-        //        PreRequisite for Scenario ------> Issue Ticket
+        Prerequisite.run();
 
         issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite2 = new issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt();
-        Prerequisite2.run(); //generates ticket number
+        Prerequisite2.run();
 
 
         UpdatePayload();
@@ -60,6 +58,11 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        if(response.getBody().asString().contains("<ns4:Warnings>")){
+            Assert.fail();
+        }
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EMDAirlineSystemUpdate\\Association_multiple_coupons_for_primary_and_conjunctive_etkt.xml"));
@@ -90,6 +93,7 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
         filepath1=getRequestDirectory()+"EMDAirlineSystemUpdate\\Association_multiple_coupons_for_primary_and_conjunctive_etkt.xml";
 
         XMLParser.updateAttributeValueatIndex("emd1:TicketDocument", "TicketDocumentNbr", InputRow.getCell(28).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("emd1:TicketDocument", "TicketDocumentNbr", InputRow.getCell(33).getStringCellValue(),getTemp_requestPath(),1);
 
 
         wb.close();

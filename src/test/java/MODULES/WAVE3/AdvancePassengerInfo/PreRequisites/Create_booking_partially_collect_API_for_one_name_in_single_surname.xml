@@ -1,0 +1,42 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-08-19T00:00:00" RPH="1" FlightNumber="137" ResBookDesigCode="Y" NumberInParty="5" Status="11">
+                                <com:DepartureAirport LocationCode="MEX"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>CINDY/DAVE</com:GivenName>
+                            <com:Surname>2WILLIAMS</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1414"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>ERIC/FANNY/GINA</com:GivenName>
+                            <com:Surname>3JOHNSON</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1414"/>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +47,8 @@ public class clear_inoperative_seat extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("UndoInopSeat"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\clear_inoperative_seat.xml"));
         writer.write(response.asPrettyString());
@@ -79,7 +81,7 @@ public class clear_inoperative_seat extends FrameworkConstants
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:ConnectingFlightInfo",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:SeatNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

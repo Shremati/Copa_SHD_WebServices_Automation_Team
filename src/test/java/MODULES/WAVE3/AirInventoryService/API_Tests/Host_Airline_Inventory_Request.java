@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -50,13 +51,12 @@ public class Host_Airline_Inventory_Request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirInventoryService\\Host_Airline_Inventory_Request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -73,7 +73,7 @@ public class Host_Airline_Inventory_Request extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AirInventoryService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AirInventoryService\\Host Airline Inventory Request.xml";

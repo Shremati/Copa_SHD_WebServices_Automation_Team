@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,13 +25,14 @@ import static io.restassured.RestAssured.given;
 public class Display_passenger_list_Inbound_connection_option extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_display_pass_inbound_connection Prerequisite = new create_booking_display_pass_inbound_connection();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -52,6 +54,8 @@ public class Display_passenger_list_Inbound_connection_option extends FrameworkC
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID=\""+PNR+"\""));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Display_passenger_list_Inbound_connection_option.xml"));
@@ -84,17 +88,12 @@ public class Display_passenger_list_Inbound_connection_option extends FrameworkC
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
+        PNR = InputRow.getCell(9).getStringCellValue();
 
-//        XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,1);
-//        XMLParser.updateAttributeValueatIndex("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(3).getNumericCellValue()),getTemp_requestPath(),1);
 
         wb.close();
 
     }
-
-
-
 
 }

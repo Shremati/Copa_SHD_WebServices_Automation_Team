@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.PreRequisites;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -41,6 +42,7 @@ public class Issue_ticket extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getTicketing())
@@ -49,16 +51,17 @@ public class Issue_ticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+        writer.write(response.asPrettyString());
+        writer.close();
+
 
 
 //                     ********* Clearing Temp_Request.xml *********
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
-
-
 
 
     }
@@ -74,21 +77,15 @@ public class Issue_ticket extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("CheckIn");
 
         XSSFRow InputRow=sheet.getRow(4);
-        XSSFRow InputRowPNR=sheet.getRow(1);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\IssueTicket.xml";
 
 
         XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(15).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRowPNR.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
 
     }
-
-
-
-
-
 
 }

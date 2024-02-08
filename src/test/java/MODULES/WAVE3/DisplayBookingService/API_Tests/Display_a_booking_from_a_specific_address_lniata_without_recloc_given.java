@@ -1,12 +1,15 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.XMLParser;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,7 +26,8 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+        create_booking_display_a_host_airline_booking Prerequisite = new create_booking_display_a_host_airline_booking();
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -36,6 +40,7 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -45,6 +50,11 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
                 .log().all().extract().response();
 
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
+        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_a_booking_from_a_specific_address_lniata_without_recloc_given.xml"));
         writer.write(response.asPrettyString());

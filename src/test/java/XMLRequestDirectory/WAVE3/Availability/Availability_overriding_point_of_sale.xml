@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ava="http://www.eds.com/AirlineSOASchema/Availability/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirAvailRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirPreferences">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ava:getAvailability>
+            <air:OTA_AirAvailRQ Version="4.000" MaxResponses="10">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM" AgentSine="0252DO" AgentDutyCode="SU" AirportCode="PTY" ERSP_UserID="" PseudoCityCode="PTY"/>
+                </air:POS>
+                <air:OriginDestinationInformation>
+                    <com:DepartureDateTime>2023-08-22</com:DepartureDateTime>
+                    <com:OriginLocation LocationCode="PTY"/>
+                    <com:DestinationLocation LocationCode="MEX"/>
+                </air:OriginDestinationInformation>
+            </air:OTA_AirAvailRQ>
+        </ava:getAvailability>
+    </soapenv:Body>
+</soapenv:Envelope>

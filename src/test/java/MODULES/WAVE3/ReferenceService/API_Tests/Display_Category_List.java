@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,6 +21,7 @@ import frameworkconstants.*;
 import static io.restassured.RestAssured.given;
 
 public class Display_Category_List extends FrameworkConstants{
+
     public static String SOAPRequest;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -46,6 +48,7 @@ public class Display_Category_List extends FrameworkConstants{
                 .and()
                 .log().all().extract().response();
 
+            Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>CM CATEGORY LIST    </ns4:TextData>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\Display_Category_List_Response.xml"));
@@ -70,14 +73,12 @@ public class Display_Category_List extends FrameworkConstants{
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ReferenceService");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"ReferenceService\\Display_Category_List.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();
 

@@ -70,7 +70,7 @@ public class create_booking_display_pass_inbound_connection extends FrameworkCon
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("PassengerListService");
 
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\PassengerListService\\PreRequisites\\create_booking_display_pass_inbound_connection.xml";
@@ -100,25 +100,12 @@ public class create_booking_display_pass_inbound_connection extends FrameworkCon
         File xlsxFile = new File(getTestData());
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("ModifyBookingSer_CancelBooking");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFSheet sheet = wb.getSheet("PassengerListService");
+        XSSFRow InputRow=sheet.getRow(4);
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(9).setCellValue(PNR);
-
-        InputRow.getCell(10).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","DepartureDateTime",getTemp_responsePath(),0));
-        InputRow.getCell(11).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
-        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0));
-        InputRow.getCell(13).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport","LocationCode",getTemp_responsePath(),0));
-        InputRow.getCell(14).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport","LocationCode",getTemp_responsePath(),0));
-
-//        InputRow.getCell(15).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","DepartureDateTime",getTemp_responsePath(),1));
-//        InputRow.getCell(16).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),1));
-//        InputRow.getCell(17).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),1));
-//        InputRow.getCell(18).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport","LocationCode",getTemp_responsePath(),1));
-//        InputRow.getCell(19).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport","LocationCode",getTemp_responsePath(),1));
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

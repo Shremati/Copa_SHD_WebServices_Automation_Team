@@ -13,6 +13,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,15 +29,17 @@ public class Credit_card_search_partial_cc_number extends FrameworkConstants
 {
     public static String SOAPRequest;
 
+
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_credit_card_search_partial_cc_number Prerequisite = new create_booking_credit_card_search_partial_cc_number();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_credit_card_search_partial_cc_number Prerequisite2 = new issue_ticket_credit_card_search_partial_cc_number();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -57,6 +61,9 @@ public class Credit_card_search_partial_cc_number extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid Request. Cannot determine search type"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Credit_card_search_partial_cc_number.xml"));

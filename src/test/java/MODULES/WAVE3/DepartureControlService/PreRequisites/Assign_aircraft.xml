@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dep="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:dep1="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dep:requestControl>
+            <dep1:EDS_DepartureControlRQ Version="4.000">
+                <dep1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dep1:POS>
+                <dep1:MessageFunction Function="AssignAircraft"/>
+                <dep1:FlightInfo>
+                    <dep1:FlightLegInfo DepartureDateTime="2011-10-13T00:00:00" FlightNumber="100">
+                        <com:DepartureAirport LocationCode="LAX"/>
+                        <com:Equipment AirEquipType="111"/>
+                    </dep1:FlightLegInfo>
+                </dep1:FlightInfo>
+            </dep1:EDS_DepartureControlRQ>
+        </dep:requestControl>
+    </soapenv:Body>
+</soapenv:Envelope>

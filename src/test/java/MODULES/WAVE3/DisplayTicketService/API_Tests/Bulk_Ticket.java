@@ -6,11 +6,13 @@ import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_bulk_ticket;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,6 +50,7 @@ public class Bulk_Ticket extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())
@@ -62,6 +65,8 @@ public class Bulk_Ticket extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns6:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("FareAmountType=\"Bulk\""));
 
 
 //                ********* Clearing Temp_Request.xml *********

@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,6 +47,9 @@ public class special_passenger_type_non_revenue_space_available_staff_travel ext
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>NON REVENUE SPACE AVAILABLE STAFF TRAVEL</ns3:Remark>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\special_passenger_type_non_revenue_space_available_staff_travel.xml"));

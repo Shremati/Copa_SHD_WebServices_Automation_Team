@@ -9,8 +9,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
-
+import MODULES.WAVE3.DepartureControlService.PreRequisites.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
@@ -25,6 +26,8 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation Prerequisite = new create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation();
+        Prerequisite.run();
 
         UpdatePayload();
 
@@ -46,7 +49,8 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SeatReac_Both"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\assign_aircraft_with_generic_specific_seat_reaccommodation.xml"));
         writer.write(response.asPrettyString());
@@ -79,8 +83,9 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:Equipment","AirEquipType",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:Equipment","AirEquipType",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
+        //if you are changing the markets, change the location code also, in cell no. 3(location code is same as the departure location code)
 
         wb.close();
 

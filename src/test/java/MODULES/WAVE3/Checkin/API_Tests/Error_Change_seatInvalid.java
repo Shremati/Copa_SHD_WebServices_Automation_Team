@@ -3,11 +3,13 @@ package MODULES.WAVE3.Checkin.API_Tests;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +27,6 @@ public class Error_Change_seatInvalid extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -37,6 +38,7 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())
@@ -44,6 +46,10 @@ public class Error_Change_seatInvalid extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("INVLD SEAT/ROW/SEATING OPTION Z"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Checkin\\Error_Change_seatInvalid.xml"));
@@ -65,7 +71,7 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\Error_Change_seatInvalid.xml";

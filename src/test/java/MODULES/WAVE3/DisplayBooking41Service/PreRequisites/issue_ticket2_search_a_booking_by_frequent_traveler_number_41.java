@@ -72,7 +72,7 @@ public class issue_ticket2_search_a_booking_by_frequent_traveler_number_41 exten
         XSSFRow InputRow=sheet.getRow(6);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\issue_ticket2_search_a_booking_by_frequent_traveler_number.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayBookingService\\PreRequisites\\issue_ticket_for_one_pax_without_fqtv.xml";
 
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(15).getStringCellValue(),filepath1,0);

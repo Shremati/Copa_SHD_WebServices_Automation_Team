@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,6 +47,7 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Required data missing: seat number"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\error_on_block_seat_invalid_seat_number.xml"));
@@ -70,7 +72,7 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DepartureControlService");
-        XSSFRow InputRow=sheet.getRow(5); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=getRequestDirectory()+"DepartureControlService\\error_on_block_seat_invalid_seat_number.xml";

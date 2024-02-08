@@ -8,6 +8,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,18 +48,27 @@ public class create_booking_four_seg_two_pax_two_SSR extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("ns4:TicketInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_four_seg_two_pax_two_SSR.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
-
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
+
+        excelwriter();
+
+//        create_booking_four_seg_two_pax_two_SSR_issue_ticket Prerequisite1 = new create_booking_four_seg_two_pax_two_SSR_issue_ticket();
+//        Prerequisite1.run();
+
 
     }
 
@@ -72,7 +83,7 @@ public class create_booking_four_seg_two_pax_two_SSR extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String filepath1,filepath2;
+        String filepath1;
         filepath1=getRequestDirectory()+"CreateBookingService\\create_booking_four_seg_two_pax_two_SSR.xml";
 
 
@@ -99,6 +110,31 @@ public class create_booking_four_seg_two_pax_two_SSR extends FrameworkConstants
         XMLParser.updateAttributeValueatIndex("air1:FareBasisCode","NotValidBefore", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:FareBasisCode","NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(13).getNumericCellValue()),getTemp_requestPath(),0);
 
+
+        wb.close();
+
+    }
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
+        XSSFRow InputRow = sheet.getRow(2);
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\create_booking_four_seg_two_pax_two_SSR.xml";
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
+        InputRow.getCell(17).setCellValue(PNR);
+
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
 
         wb.close();
 

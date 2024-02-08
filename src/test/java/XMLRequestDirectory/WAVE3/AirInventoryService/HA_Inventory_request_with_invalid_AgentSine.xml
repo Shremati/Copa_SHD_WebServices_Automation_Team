@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirInventory/" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirInventoryRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getAirInventory>
+            <air1:EDS_AirInventoryRQ Version="3.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM" AirportCode="TRR"/>
+                </air1:POS>
+                <air1:InventoryRequests>
+                    <air1:InventoryRequest>
+                        <air1:FlightNumber>360</air1:FlightNumber>
+                        <air1:CarrierCode Code="CM"/>
+                        <air1:Date>2023-08-22</air1:Date>
+                        <air1:OriginLocation LocationCode="PTY"/>
+                        <air1:DestinationLocation LocationCode="LAX"/>
+                    </air1:InventoryRequest>
+                </air1:InventoryRequests>
+            </air1:EDS_AirInventoryRQ>
+        </air:getAirInventory>
+    </soapenv:Body>
+</soapenv:Envelope>

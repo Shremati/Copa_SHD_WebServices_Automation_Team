@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -49,6 +50,10 @@ public class Start_Boarding_using_Boarding_option_as_sequence extends FrameworkC
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_using_Boarding_option_as_sequence.xml"));

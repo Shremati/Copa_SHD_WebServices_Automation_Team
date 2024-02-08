@@ -6,6 +6,7 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -26,20 +27,16 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite = new create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
-        //        PreRequisite for Scenario ------> Issue Ticket
 
         issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite2 = new issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite2.run(); //generates ticket number
-
-        //        PreRequisite for Scenario ------> Create Booking
+        Prerequisite2.run();
 
         associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite3 = new associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite3.run(); //excel gets updated
+        Prerequisite3.run();
 
 
         UpdatePayload();
@@ -63,6 +60,11 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
+        if(response.getBody().asString().contains("<ns4:Warnings>")){
+            Assert.fail();
+        }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EMDAirlineSystemUpdate\\Disassociation_emd_coupon_1_with_etkt_coupon_1.xml"));
         writer.write(response.asPrettyString());

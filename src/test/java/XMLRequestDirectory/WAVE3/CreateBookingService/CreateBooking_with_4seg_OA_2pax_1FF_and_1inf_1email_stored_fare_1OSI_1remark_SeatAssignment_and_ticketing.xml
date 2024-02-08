@@ -1,0 +1,125 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-12-12T00:00:00" RPH="1" FlightNumber="2217" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="IAH"/>
+                                <com:ArrivalAirport LocationCode="MIA"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-12-12T00:00:00" RPH="2" FlightNumber="2362" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="MIA"/>
+                                <com:ArrivalAirport LocationCode="ORD"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-12-26T00:00:00" RPH="3" FlightNumber="2311" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="MIA"/>
+                                <com:ArrivalAirport LocationCode="IAH"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2023-12-26T00:00:00" RPH="4" FlightNumber="1916" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="IAH"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="3"/>
+                        </air1:PTC_FareBreakdown>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="INF" Quantity="1"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="34.90" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AG" Amount="7.20"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>MY FARE CALC LINE FOR INF END</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>SANDRA</com:GivenName>
+                            <com:Surname>SILVER</com:Surname>
+                        </air1:PersonName>
+                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0129"/>
+                        <air1:Email>modificados@gmail.com</air1:Email>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230436782"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler BirthDate="2022-01-01" PassengerTypeCode="INF">
+                        <air1:PersonName>
+                            <com:GivenName>LAPBABY</com:GivenName>
+                            <com:Surname>SMITH</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>WIFE</com:GivenName>
+                            <com:Surname>SMITH</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="3"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:SeatRequests>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="1"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="2"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="3"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="3"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="4"/>
+                            <air1:SeatRequest SeatPreference="15" TravelerRefNumberRPHList="3" FlightRefNumberRPHList="4"/>
+                        </air1:SeatRequests>
+                        <air1:OtherServiceInformations>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="CM"/>
+                                <air1:Text>OSI ONE</air1:Text>
+                            </air1:OtherServiceInformation>
+                        </air1:OtherServiceInformations>
+                        <air1:Remarks>
+                            <air1:Remark>have a nice party</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketTimeLimit="2023-12-01T00:00:00"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -10,50 +10,51 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 Scenarios
 public class ModifyInventoryService {
 
     ModifyInventoryService() {
         createFolders(getResponseDirectory() + "ModifyInventoryService");
     }
 
-    @Description("ModifyInventory Request contains single Authorization level")
+    @Description("MIS_01 - ModifyInventory Request contains single Authorization level")
     @Test
-    public void Scenario1() {
+    public void MIS_01() {
         try {
             ModifyInventory_Request_contains_single_Authorization_level.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+            System.out.println("MIS_01 failed due to :" + e);
         }
 
 
     }
 
-    @Description("ModifyInventory Request contains single MaxSeatsAllotted")
+    @Description("MIS_17 - ModifyInventory Request contains single MaxSeatsAllotted")
     @Test
-    public void Scenario2() {
+    public void MIS_17() {
 
         try {
             ModifyInventory_Request_contains_single_MaxSeatsAllotted.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+            System.out.println("MIS_17 failed due to :" + e);
         }
 
     }
 
-    @Description("ModifyInventory Request with AuthorizationLevel and MaxSeatsAllotted for CM carrier")
+    @Description("MIS_24 - ModifyInventory Request with AuthorizationLevel and MaxSeatsAllotted for CM carrier")
     @Test
-    public void Scenario3() {
+    public void MIS_24() {
 
         try {
             ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+            System.out.println("MIS_24 failed due to :" + e);
         }
     }
 }

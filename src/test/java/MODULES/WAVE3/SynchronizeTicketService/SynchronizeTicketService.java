@@ -7,53 +7,58 @@ import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
-import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-public class SynchronizeTicketService {
+public class SynchronizeTicketService
+{
     SynchronizeTicketService() {
         createFolders(getResponseDirectory() + "SynchronizeTicketService");
     }
 
-    @Description("Adjust_Flight_No")
+    @Description("STS_07 - Adjust Flight No and Date")
     @Test
-    public void Scenario1() {
+    public void STS_07()
+    {
 
-        try {
+        try
+        {
             Adjust_Flight_No.Execute();
 
-        } catch (Exception e) {
-            failTest(e);
-            System.out.println("SCENARIO 1 failed due to :" + e);
+        }catch(Exception e)
+        {
+            System.out.println("STS_07 failed due to :"+e);
         }
 
 
+
     }
-
-    @Description("Adjust_Name")
+    @Description("STS_01 - Adjust Name")
     @Test
-    public void Scenario2() {
+    public void STS_01()
+    {
 
-        try {
+        try
+        {
             Adjust_Name.Execute();
 
-        } catch (Exception e) {
-            failTest(e);
-            System.out.println("SCENARIO 2 failed due to :" + e);
+        }catch(Exception e)
+        {
+            System.out.println("STS_01 failed due to :"+e);
         }
 
     }
-
-    @Description("Adjust_Class")
+    @Description("STS_03 - Adjust Class")
     @Test
-    public void Scenario3() {
+    public void STS_03()
+    {
 
-        try {
+        try
+        {
             Adjust_Class.Execute();
 
-        } catch (Exception e) {
-            failTest(e);
-            System.out.println("SCENARIO 3 failed due to :" + e);
+        }catch(Exception e)
+        {
+            System.out.println("STS_03 failed due to :"+e);
         }
     }
 

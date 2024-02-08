@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirSchedule/" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirScheduleRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <air:getScheduleDisplay>
+            <air1:OTA_AirScheduleRQ EchoToken="Test_4" Version="4.0">
+                <air1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air1:POS>
+                <air1:OriginDestinationInformation>
+                    <com:OriginLocation LocationCode="PTY"/>
+                    <com:DestinationLocation LocationCode="LAX"/>
+                </air1:OriginDestinationInformation>
+                <air1:VendorPref Code="CM"/>
+            </air1:OTA_AirScheduleRQ>
+        </air:getScheduleDisplay>
+    </soapenv:Body>
+</soapenv:Envelope>

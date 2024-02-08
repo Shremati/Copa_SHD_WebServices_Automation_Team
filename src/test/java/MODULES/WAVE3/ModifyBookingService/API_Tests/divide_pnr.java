@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,7 +31,7 @@ public class divide_pnr extends FrameworkConstants
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_divide_pnr Prerequisite = new create_booking_divide_pnr();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -53,6 +54,9 @@ public class divide_pnr extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>PEPPY</GivenName>"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>FOX</GivenName>"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyBookingService\\DividePNR.xml"));
@@ -76,26 +80,24 @@ public class divide_pnr extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("ModifyBookingSer_CancelBooking");
-        XSSFRow InputRow=sheet.getRow(3); //Taking scenario create booking for 1 pax
+        XSSFSheet sheet = wb.getSheet("ModifyBookingService");
+        XSSFRow InputRow=sheet.getRow(3);
 
         String filepath1;
         filepath1=getRequestDirectory()+"ModifyBookingservice\\DividePNR.xml";
 
 
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),0);
-
         XMLParser.updateAttributeValueatIndex("n5:BookingReferenceID","ID",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
+
+//        <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","DepartureDateTime",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","ArrivalDateTime",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.updateAttributeValueatIndex("n1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

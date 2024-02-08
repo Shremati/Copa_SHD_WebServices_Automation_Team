@@ -1,4 +1,4 @@
-package MODULES.WAVE3.CreateBookingService.PostCheck;
+package MODULES.WAVE3.CreateBooking41Service.PostCheck;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;

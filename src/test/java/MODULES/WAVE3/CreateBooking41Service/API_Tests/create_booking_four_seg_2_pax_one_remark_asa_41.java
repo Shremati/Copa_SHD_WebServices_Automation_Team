@@ -72,7 +72,7 @@ public class create_booking_four_seg_2_pax_one_remark_asa_41 extends FrameworkCo
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow=sheet.getRow(3);
 
-        String filepath1,filepath2;
+        String filepath1;
         filepath1=getRequestDirectory()+"CreateBookingService\\create_booking_four_seg_2_pax_one_remark_asa.xml";
 
 

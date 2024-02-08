@@ -1,0 +1,178 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://www.eds.com/AirlineSOASchema/ModifyBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <mod:modifyBooking>
+            <air:OTA_AirBookModifyRQ Version="4.000">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <!--Possible values for ModificationType:
+                      Value   Action
+                        1     CANCEL_BOOKING
+                        3     MODIFY_NAME
+                        4     REPLACE_NAME
+                        5     OTHER
+                        6     DIVIDE_PNR
+                        8     REDUCE_PARTY-->
+                <air:AirBookModifyRQ ModificationType="6">
+                    <!--DIVIDE_PNR-->
+                    <!--Required data: the names to divide out from the reservation in TravelerInfo-->
+                    <air1:TravelerInfo>
+                        <!--Only RPH and name are mandatory for DividePNR-->
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>FALCO</com:GivenName>
+                                <com:Surname>LOMBARDI</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="2"/>
+                        </air1:AirTraveler>
+                        <air1:AirTraveler PassengerTypeCode="ADT">
+                            <air1:PersonName>
+                                <com:GivenName>SLIPPY</com:GivenName>
+                                <com:Surname>TOAD</com:Surname>
+                            </air1:PersonName>
+                            <air1:TravelerRefNumber RPH="4"/>
+                        </air1:AirTraveler>
+                    </air1:TravelerInfo>
+                    <!--the booking to modify-->
+                    <air1:BookingReferenceID Type="14" ID="A5JC4R"/>
+                </air:AirBookModifyRQ>
+                <!--we include the original reservation to check if both reservations(SHARES and this AirReservation) are in sync-->
+                <air:AirReservation LastModified="2023-01-24T14:26:59Z" CreateDateTime="2023-01-24T14:26:00Z">
+                    <n1:AirItinerary xmlns:n1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n1:OriginDestinationOptions>
+                            <n1:OriginDestinationOption>
+                                <n1:FlightSegment DepartureDateTime="2023-01-26T07:46:00" ArrivalDateTime="2023-01-26T11:26:00" RPH="1" FlightNumber="446" ResBookDesigCode="Y" NumberInParty="4" Status="26" E_TicketEligibility="Eligible" DepartureDay="Thu">
+                                    <com:DepartureAirport LocationCode="PTY"/>
+                                    <com:ArrivalAirport LocationCode="MCO"/>
+                                    <n1:MarketingAirline Code="CM"/>
+                                </n1:FlightSegment>
+                            </n1:OriginDestinationOption>
+                        </n1:OriginDestinationOptions>
+                    </n1:AirItinerary>
+                    <n2:PriceInfo xmlns:n2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n2:PTC_FareBreakdowns>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-26" NotValidAfter="2023-01-26">XY</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="125.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="12.00"/>
+                                        <n2:Tax TaxCode="CD" Amount="8.50"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="145.50" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>FARE CALC ADT 1 3 END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                                <n2:Endorsements>
+                                    <n2:Endorsement>ENDOSO UNO</n2:Endorsement>
+                                </n2:Endorsements>
+                            </n2:PTC_FareBreakdown>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-26" NotValidAfter="2023-01-26">XY</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="125.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="12.00"/>
+                                        <n2:Tax TaxCode="CD" Amount="8.50"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="145.50" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>FARE CALC ADT 1 3 END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="3" SurnameRefNumber="3"/>
+                                <n2:Endorsements>
+                                    <n2:Endorsement>ENDOSO UNO</n2:Endorsement>
+                                </n2:Endorsements>
+                            </n2:PTC_FareBreakdown>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-26" NotValidAfter="2023-01-26">XY</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="11.50"/>
+                                        <n2:Tax TaxCode="CD" Amount="8.50"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="130.00" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>FARE CALC ADT 2 4 END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                                <n2:Endorsements>
+                                    <n2:Endorsement>ENDOSO UNO</n2:Endorsement>
+                                </n2:Endorsements>
+                            </n2:PTC_FareBreakdown>
+                            <n2:PTC_FareBreakdown>
+                                <n2:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                                <n2:FareBasisCodes>
+                                    <n2:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-26" NotValidAfter="2023-01-26">XY</n2:FareBasisCode>
+                                </n2:FareBasisCodes>
+                                <n2:PassengerFare>
+                                    <n2:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                    <n2:Taxes>
+                                        <n2:Tax TaxCode="AG" Amount="11.50"/>
+                                        <n2:Tax TaxCode="CD" Amount="8.50"/>
+                                    </n2:Taxes>
+                                    <n2:TotalFare Amount="130.00" CurrencyCode="USD"/>
+                                    <n2:UnstructuredFareCalc>FARE CALC ADT 2 4 END</n2:UnstructuredFareCalc>
+                                </n2:PassengerFare>
+                                <n2:TravelerRefNumber RPH="4" SurnameRefNumber="4"/>
+                                <n2:Endorsements>
+                                    <n2:Endorsement>ENDOSO UNO</n2:Endorsement>
+                                </n2:Endorsements>
+                            </n2:PTC_FareBreakdown>
+                        </n2:PTC_FareBreakdowns>
+                        <n2:PriceRequestInformation PricingSource="Private">
+                            <n2:NegotiatedFareCode>422105</n2:NegotiatedFareCode>
+                        </n2:PriceRequestInformation>
+                    </n2:PriceInfo>
+                    <n3:TravelerInfo xmlns:n3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>FOX</com:GivenName>
+                                <com:Surname>MCCLOUD</com:Surname>
+                            </n3:PersonName>
+                            <n3:Telephone PhoneUseType="0" AreaCityCode="000" PhoneNumber=" " LocationCode="WEB"/>
+                            <n3:TravelerRefNumber RPH="1" SurnameRefNumber="1"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>FALCO</com:GivenName>
+                                <com:Surname>LOMBARDI</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="2" SurnameRefNumber="2"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>PEPPY</com:GivenName>
+                                <com:Surname>HARE</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="3" SurnameRefNumber="3"/>
+                        </n3:AirTraveler>
+                        <n3:AirTraveler PassengerTypeCode="ADT">
+                            <n3:PersonName>
+                                <com:GivenName>SLIPPY</com:GivenName>
+                                <com:Surname>TOAD</com:Surname>
+                            </n3:PersonName>
+                            <n3:TravelerRefNumber RPH="4" SurnameRefNumber="4"/>
+                        </n3:AirTraveler>
+                        <n3:SpecialReqDetails>
+                            <n3:Remarks>
+                                <n3:Remark>FOR DIVIDE PNR TEST</n3:Remark>
+                            </n3:Remarks>
+                        </n3:SpecialReqDetails>
+                    </n3:TravelerInfo>
+                    <n4:Ticketing TicketingStatus="3" xmlns:n4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                    <n5:BookingReferenceID Type="14" ID="A5JC4R" xmlns:n5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes"/>
+                </air:AirReservation>
+            </air:OTA_AirBookModifyRQ>
+        </mod:modifyBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -2,6 +2,9 @@ package MODULES.WAVE3.DepartureControlService.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.DepartureControlService.PreRequisites.Checkin_cancel_misconnect;
+import MODULES.WAVE3.DepartureControlService.PreRequisites.Create_booking_cancel_misconnect;
+import MODULES.WAVE3.DepartureControlService.PreRequisites.Issue_ticket_cancel_misconnect;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,6 +29,16 @@ public class cancel_misconnect extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        Create_booking_cancel_misconnect Prerequisite = new Create_booking_cancel_misconnect();
+        Prerequisite.run();
+
+        Issue_ticket_cancel_misconnect Prerequisite2 = new Issue_ticket_cancel_misconnect();
+        Prerequisite2.run();
+
+        Checkin_cancel_misconnect Prerequisite3 = new Checkin_cancel_misconnect();
+        Prerequisite3.run();
+
 
         UpdatePayload();
 
@@ -46,7 +60,8 @@ public class cancel_misconnect extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("CancelMisconnects"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\cancel_misconnect.xml"));
         writer.write(response.asPrettyString());
@@ -77,9 +92,9 @@ public class cancel_misconnect extends FrameworkConstants
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:ConnectingFlightInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();

@@ -2,12 +2,18 @@ package MODULES.WAVE3.Checkin.API_Tests;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.Checkin.PreRequisites.Add_APIS_one_pax_and_baggage;
+import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_one_pax_and_baggage;
+import MODULES.WAVE3.Checkin.PreRequisites.Issue_booking_one_pax_baggage;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,11 +32,17 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-//        PreRequisite for Scenario ------> Create Booking
-
         create_booking_service_singlepax Prerequisite = new create_booking_service_singlepax();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
+
+        Issue_booking_one_pax_baggage Prerequisite1 = new Issue_booking_one_pax_baggage();
+        Prerequisite1.run();
+
+        Display_APIS_one_pax_and_baggage Prerequisite2 = new Display_APIS_one_pax_and_baggage();
+        Prerequisite2.run();
+
+        Add_APIS_one_pax_and_baggage Prerequisite3  = new Add_APIS_one_pax_and_baggage();
+        Prerequisite3.run();
 
 
         UpdatePayload();
@@ -44,6 +56,7 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCheckin())
@@ -52,6 +65,10 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+        Assert.assertTrue(response.getBody().asString().contains("BaggageInfo"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\checkin_one_pax_and_baggage.xml"));
@@ -76,11 +93,10 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CheckIn");
-        XSSFRow InputRow=sheet.getRow(1); //Taking scenario create booking for 1 pax
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
         filepath1=getRequestDirectory()+"Checkin\\checkin_one_pax_and_baggage.xml";
-
 
 
         XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);

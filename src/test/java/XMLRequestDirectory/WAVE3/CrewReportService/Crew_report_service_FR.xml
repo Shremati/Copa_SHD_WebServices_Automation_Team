@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:crew="http://www.eds.com/AirlineSOASchema/CrewReport/" xmlns:crew1="http://www.eds.com/AirlineSOASchema/CrewReportRQ">
+    <soapenv:Header />
+    <soapenv:Body>
+        <crew:processCrewReport>
+            <crew1:HP_CrewReportRQ Version="4.0">
+                <crew1:POS>
+                    <com:Source AirlineVendorID="CM" />
+                </crew1:POS>
+                <crew1:ReportInfo>
+                    <crew1:FlightLegInfo DepartureDateTime="2023-08-03T00:00:00" FlightNumber="360">
+                        <com:DepartureAirport LocationCode="PTY" />
+                    </crew1:FlightLegInfo>
+                </crew1:ReportInfo>
+                <crew1:ReportInd>FR</crew1:ReportInd>
+            </crew1:HP_CrewReportRQ>
+        </crew:processCrewReport>
+    </soapenv:Body>
+</soapenv:Envelope>

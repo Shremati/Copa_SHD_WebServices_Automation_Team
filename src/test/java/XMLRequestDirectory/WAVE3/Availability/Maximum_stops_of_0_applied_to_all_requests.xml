@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ava="http://www.eds.com/AirlineSOASchema/Availability/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirAvailRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirPreferences">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ava:getAvailability>
+            <air:OTA_AirAvailRQ EchoToken="Test_08" Version="4.0">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:OriginDestinationInformation RPH="1">
+                    <com:DepartureDateTime>2023-09-29</com:DepartureDateTime>
+                    <com:OriginLocation LocationCode="LAX"/>
+                    <com:DestinationLocation LocationCode="SLC"/>
+                </air:OriginDestinationInformation>
+                <air:OriginDestinationInformation RPH="2">
+                    <com:DepartureDateTime>2023-10-10</com:DepartureDateTime>
+                    <com:OriginLocation LocationCode="SLC"/>
+                    <com:DestinationLocation LocationCode="LAX"/>
+                </air:OriginDestinationInformation>
+                <air:TravelPreferences MaxStopsQuantity="0"/>
+            </air:OTA_AirAvailRQ>
+        </ava:getAvailability>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,10 +28,9 @@ public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
 
         UpdatePayload();
@@ -54,6 +54,8 @@ public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FareAmountType=\"Bulk\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Issue_bulk_ticket_for_a_pnr_with_two_pax.xml"));
         writer.write(response.asPrettyString());
@@ -77,7 +79,7 @@ public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TicketingService");
-        XSSFRow InputRow=sheet.getRow(8);
+        XSSFRow InputRow=sheet.getRow(5);
 
         String filepath1;
         filepath1=getRequestDirectory()+"TicketingService\\Issue_bulk_ticket_for_a_pnr_with_two_pax.xml";

@@ -56,8 +56,7 @@ public class modify_ticket_display_booking_history_with_adding_deleting_remarks_
         writer.close();
 
 
-//        excelwriter();
-
+//        Response might throw SSR not available or ASA(Advance Seat Assignment error) because of unavailability of the given seat and SSR in the modify Request
     }
 
 
@@ -80,7 +79,8 @@ public class modify_ticket_display_booking_history_with_adding_deleting_remarks_
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ArrivalDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ArrivalDateTime", InputRow.getCell(21).getStringCellValue(),getTemp_requestPath(),0);
+
 
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);

@@ -1,0 +1,12 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://www.eds.com/AirlineSOASchema/ManageSession/" xmlns:ses="http://www.eds.com/AirlineSOASchema/SessionRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <man:releaseSession>
+            <ses:EDS_SessionRQ Version="4.000" TransactionIdentifier="FEAF211ACMCMRPCT05A19F8DF0">
+                <ses:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </ses:POS>
+            </ses:EDS_SessionRQ>
+        </man:releaseSession>
+    </soapenv:Body>
+</soapenv:Envelope>

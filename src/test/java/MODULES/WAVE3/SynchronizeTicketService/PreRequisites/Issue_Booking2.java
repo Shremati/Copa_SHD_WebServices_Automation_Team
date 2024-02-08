@@ -2,6 +2,7 @@ package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -26,7 +27,6 @@ public class Issue_Booking2 extends FrameworkConstants {
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -40,6 +40,7 @@ public class Issue_Booking2 extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticket())
@@ -61,8 +62,6 @@ public class Issue_Booking2 extends FrameworkConstants {
         writer.close();
 
 
-//        excelwriter();
-
 
     }
 
@@ -81,58 +80,10 @@ public class Issue_Booking2 extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking2.xml";
 
 
-//        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(5).getStringCellValue(),filepath1,0);
-
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
         wb.close();
 
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("SynchronizeTicketService");
-        XSSFRow InputRow=sheet.getRow(3);
-
-
-//        InputRow.getCell(9).setCellValue(230 + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
-////        InputRow.getCell(10).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),1));
-////        String  Ticket_One = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-////        String  Ticket_Two = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//
-//
-//
-////        InputRow.getCell(7).setCellValue(Ticket_One);
-////        InputRow.getCell(8).setCellValue(Ticket_Two);
-        String TransactionIdentifie = XMLParser.GetAttributeValue("ns4:TicketingResults","RecordLocator",getTemp_responsePath());
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
-
-
-        InputRow.getCell(5).setCellValue(TransactionIdentifie);
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
-
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 }

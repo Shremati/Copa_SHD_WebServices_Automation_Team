@@ -86,12 +86,6 @@ public class create_booking_2seg_2pax_stored_fare_41 extends FrameworkConstants
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(),1);
 
-//        XMLParser.updateAttributeValueatIndex("ns3:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(20).getNumericCellValue()), getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValueatIndex("ns3:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(21).getNumericCellValue()), getTemp_requestPath(),0);
-//        XMLParser.updateAttributeValueatIndex("ns3:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(21).getNumericCellValue()), getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("ns3:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(22).getNumericCellValue()), getTemp_requestPath(),1);
-
-
         wb.close();
 
 

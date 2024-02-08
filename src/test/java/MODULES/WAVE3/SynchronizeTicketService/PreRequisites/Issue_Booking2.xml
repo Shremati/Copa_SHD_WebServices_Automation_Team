@@ -13,7 +13,7 @@
                     <tic1:TicketType>Electronic</tic1:TicketType>
                 </tic1:TicketingRequest>
                 <tic1:TicketingAction>Issue</tic1:TicketingAction>
-                <tic1:RecordLocator>A1XWC4</tic1:RecordLocator>
+                <tic1:RecordLocator>BBNICX</tic1:RecordLocator>
             </tic1:EDS_TicketingRQ>
         </tic:issueTicket>
     </soapenv:Body>

@@ -14,6 +14,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,16 +29,17 @@ import static io.restassured.RestAssured.given;
 public class Credit_card_search extends FrameworkConstants
 {
     public static String SOAPRequest;
+    public static String PNR;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
 
         create_booking_credit_card_search Prerequisite = new create_booking_credit_card_search();
-        Prerequisite.run(); //excel gets updated
+        Prerequisite.run();
 
         issue_ticket_credit_card_search Prerequisite2 = new issue_ticket_credit_card_search();
-        Prerequisite2.run(); //excel gets updated
+        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -59,6 +62,9 @@ public class Credit_card_search extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+//        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid Request. Cannot determine search type"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Credit_card_search.xml"));
         writer.write(response.asPrettyString());
@@ -88,7 +94,7 @@ public class Credit_card_search extends FrameworkConstants
         filepath1=getRequestDirectory()+"DisplayBookingService\\Credit_card_search.xml";
 
         XMLParser.updateAttributeValueatIndex("read:CreditCardInfo", "CardNumber", InputRow.getCell(18).getStringCellValue(),filepath1,0);
-
+        PNR = InputRow.getCell(10).getStringCellValue();
 
         wb.close();
 

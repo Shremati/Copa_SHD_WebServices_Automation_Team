@@ -2,6 +2,7 @@ package MODULES.WAVE3.Checkin.PreRequisites;
 
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -40,6 +41,7 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -62,7 +64,6 @@ public class create_booking_service_singlepax extends  FrameworkConstants
 
 
         excelwriter();
-
 
     }
 
@@ -108,7 +109,7 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
 
-        InputRow.getCell(14).setCellValue(PNR);
+        InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(10).setCellValue(Givenname);
         InputRow.getCell(11).setCellValue(Surname);
 
@@ -126,7 +127,5 @@ public class create_booking_service_singlepax extends  FrameworkConstants
         writer.close();
 
     }
-
-
 
 }

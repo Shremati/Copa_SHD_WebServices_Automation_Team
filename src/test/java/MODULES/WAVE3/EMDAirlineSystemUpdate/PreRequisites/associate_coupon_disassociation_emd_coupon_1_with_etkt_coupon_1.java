@@ -2,6 +2,7 @@ package MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -36,6 +37,7 @@ public class associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 ext
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getEmdairlinesystemupdateservice())
@@ -55,7 +57,6 @@ public class associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 ext
         writer.close();
 
 
-//        excelwriter();
 
     }
 
@@ -74,40 +75,9 @@ public class associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 ext
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\EMDAirlineSystemUpdate\\PreRequisites\\associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1.xml";
 
-
-//        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(22).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("emd1:TicketDocument", "TicketDocumentNbr", InputRow.getCell(28).getStringCellValue(),filepath1,0);
 
         wb.close();
     }
 
-
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
-
-        //        ********** Writing TestData into Excel ************
-
-        File xlsxFile = new File(getTestData());
-        FileInputStream inputStream = new FileInputStream(xlsxFile);
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-        XSSFSheet sheet = wb.getSheet("EMDAirlineSystemUpdate");
-        XSSFRow InputRow=sheet.getRow(3);
-
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(28).setCellValue(TicketNumber);
-
-
-        FileOutputStream out = new FileOutputStream(new File(getTestData()));
-        wb.write(out);
-        out.close();
-
-        wb.close();
-
-//          ********* Clearing Temp_Response.xml *********
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
-        writer.write("");
-        writer.close();
-
-    }
 }

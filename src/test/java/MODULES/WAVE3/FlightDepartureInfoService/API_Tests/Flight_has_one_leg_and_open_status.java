@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,7 +48,9 @@ public class Flight_has_one_leg_and_open_status extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Status=\"Open\""));
+        Assert.assertFalse(response.getBody().asString().contains("Status=\"NotOpen\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlightDepartureInfoService\\Flight_has_one_leg_and_open_status.xml"));
         writer.write(response.asPrettyString());
@@ -78,8 +81,8 @@ public class Flight_has_one_leg_and_open_status extends FrameworkConstants
 
 
         XMLParser.SetTagtextatIndex("read:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("read:DepartureAirport",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("read:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("read:DepartureAirport","CodeContext",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),getTemp_requestPath(),0);
 
         wb.close();

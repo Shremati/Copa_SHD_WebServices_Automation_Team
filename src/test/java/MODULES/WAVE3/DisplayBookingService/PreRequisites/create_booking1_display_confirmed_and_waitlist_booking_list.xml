@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-01-24T08:01:00" RPH="1" FlightNumber="226" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-08-20T00:00:00" RPH="1" FlightNumber="138" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="MIA"/>
+                                <com:ArrivalAirport LocationCode="MEX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -20,9 +20,9 @@
                 <air:PriceInfo>
                     <air1:PTC_FareBreakdowns>
                         <air1:PTC_FareBreakdown>
-                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2023-01-24" NotValidAfter="2023-01-24">X</air1:FareBasisCode>
+                                <air1:FareBasisCode>X</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="114.60" CurrencyCode="USD"/>
@@ -34,6 +34,7 @@
                                 <air1:FareBaggageAllowance UnitOfMeasureQuantity="1" UnitOfMeasure="PC" FlightSegmentRPH="1"/>
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
+                            <air1:TravelerRefNumber RPH="2"/>
                             <air1:Endorsements>
                                 <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
                             </air1:Endorsements>
@@ -43,15 +44,22 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>JOHN</com:GivenName>
-                            <com:Surname>SMITH</com:Surname>
+                            <com:GivenName>MALE</com:GivenName>
+                            <com:Surname>THOMPSON</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1414" Remark="PHONE REMARK"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>FEMALE</com:GivenName>
+                            <com:Surname>THOMPSON</com:Surname>
+                        </air1:PersonName>
+                        <air1:TravelerRefNumber RPH="2"/>
+                    </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>
-                            <air1:Remark>FOR CONFIRMED BOOKING TESTING</air1:Remark>
+                            <air1:Remark>FOR WAITLIST BOOKING TESTING(CONFIRMED BOOKING)</air1:Remark>
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>

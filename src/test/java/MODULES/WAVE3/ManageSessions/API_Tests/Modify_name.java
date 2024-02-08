@@ -4,11 +4,13 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Create_Booking;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Modify_Booking;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,9 +28,9 @@ public class Modify_name extends FrameworkConstants {
     {
 
         Create_Booking Prerequisite1 = new Create_Booking();
-        Prerequisite1.run();
+        Prerequisite1.run();//Creating 3 pax RPH=1,2,3
 
-        Modify_Booking Prerequisite2 = new Modify_Booking();
+        Modify_Booking Prerequisite2 = new Modify_Booking(); //We are changing/modifying the names of above 3 pax
         Prerequisite2.run();
 
 
@@ -44,6 +46,7 @@ public class Modify_name extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())
@@ -52,6 +55,10 @@ public class Modify_name extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("LISA"));
+        Assert.assertTrue(response.getBody().asString().contains("GIRLFRIEND"));
+        Assert.assertTrue(response.getBody().asString().contains("MINI"));
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ManageSessions\\Modify_name.xml"));
@@ -82,10 +89,6 @@ public class Modify_name extends FrameworkConstants {
         filepath1=getRequestDirectory()+"ManageSessions\\Modify_name.xml";
 
         XMLParser.updateAttributeValueatIndex("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1,0);
-
-
-//        XMLParser.updateAttributeValueatIndex("dis1:TicketDocument","TicketDocumentNbr",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
-
 
         wb.close();
 

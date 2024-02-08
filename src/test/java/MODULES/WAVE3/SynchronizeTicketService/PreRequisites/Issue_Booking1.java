@@ -2,6 +2,7 @@ package MODULES.WAVE3.SynchronizeTicketService.PreRequisites;
 
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -40,6 +41,7 @@ public class Issue_Booking1 extends FrameworkConstants {
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticket())
@@ -60,9 +62,7 @@ public class Issue_Booking1 extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
-//        excelwriter();
-
+       excelwriter();
 
     }
 
@@ -78,17 +78,13 @@ public class Issue_Booking1 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Issue_Booking1.xml";
 
-
-//        XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(5).getStringCellValue(),filepath1,0);
-
+        XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(12).getStringCellValue(),filepath1,0);
 
         wb.close();
 
     }
-
 
     public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -102,23 +98,9 @@ public class Issue_Booking1 extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
 
-//        InputRow.getCell(9).setCellValue(230 + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),0));
-////        InputRow.getCell(10).setCellValue(XMLParser.GetAttributeValueatIndex("ns4:TicketInfo","TicketNumber",getTemp_responsePath(),1));
-////        String  Ticket_One = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-////        String  Ticket_Two = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//
-//
-//
-////        InputRow.getCell(7).setCellValue(Ticket_One);
-////        InputRow.getCell(8).setCellValue(Ticket_Two);
-        String TransactionIdentifie = XMLParser.GetAttributeValue("ns4:TicketingResults","RecordLocator",getTemp_responsePath());
-//        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
-//        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
-
-        InputRow.getCell(5).setCellValue(TransactionIdentifie);
-//        InputRow.getCell(8).setCellValue(Givenname);
-//        InputRow.getCell(9).setCellValue(Surname);
+        String ticketdocumentnumber = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),0);
+        InputRow.getCell(22).setCellValue(ticketdocumentnumber);
 
 
 
@@ -135,4 +117,5 @@ public class Issue_Booking1 extends FrameworkConstants {
         writer.close();
 
     }
+
 }

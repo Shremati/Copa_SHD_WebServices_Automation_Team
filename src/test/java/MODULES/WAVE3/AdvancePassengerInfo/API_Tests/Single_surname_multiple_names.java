@@ -1,13 +1,16 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
+import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_multiplepax_with_same_surname;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,8 +18,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import static io.restassured.RestAssured.given;import frameworkconstants.*;
+import frameworkconstants.*;
 
 public class Single_surname_multiple_names extends FrameworkConstants
 {
@@ -26,11 +28,8 @@ public class Single_surname_multiple_names extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
-//        PreRequisite for Scenario ------> Create Booking
-
-        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
-        Prerequisite.run(); //excel gets updated
+        create_booking_multiplepax_with_same_surname Prerequisite = new create_booking_multiplepax_with_same_surname();
+        Prerequisite.run();  //Booking with 3 pax with same surname
 
 
         UpdatePayload();
@@ -41,24 +40,15 @@ public class Single_surname_multiple_names extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
-                .when()
-                .post(getAdvancepassengerinfo())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
+        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
-
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_surname_multiple_names.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -76,11 +66,12 @@ public class Single_surname_multiple_names extends FrameworkConstants
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheetAt(0);
-        XSSFRow InputRow=sheet.getRow(2);//Taking scenario create booking for multiple pax with same surname
+        XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
+        XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
         filepath1=getRequestDirectory()+"AdvancePassengerInfo\\Single_surname_multiple_names.xml";
+
 
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1,0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
