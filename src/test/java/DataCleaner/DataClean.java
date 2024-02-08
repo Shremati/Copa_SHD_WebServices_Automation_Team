@@ -17,6 +17,8 @@ public class DataClean
         deleteFolder(new File(getAllureResults()));
         deleteFolder(new File(getTarget()));
 
+        //Latest working code 08-Feb-2024
+
     }
 
 }
