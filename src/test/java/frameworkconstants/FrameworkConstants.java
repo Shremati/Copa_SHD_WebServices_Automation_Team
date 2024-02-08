@@ -2,14 +2,15 @@ package frameworkconstants;
 
 public class FrameworkConstants {
 
+
+    public static String SharesCURL    = "http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
     public static String BaseURL_Tulsa = "http://shdsitm.airservices.svcs.entsvcs.net:18119";      //TULSA SIT
     public static String BaseURL_Azure = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:8080";  //AZURE SIT
 
 
     public static String getBaseURL() {
-        return BaseURL_Tulsa;
+        return SharesCURL;
     }
-
 
     //    ***************************** POST REQUESTS ***********************************
 
