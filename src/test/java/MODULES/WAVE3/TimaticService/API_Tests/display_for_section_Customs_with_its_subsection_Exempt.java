@@ -48,6 +48,7 @@ public class display_for_section_Customs_with_its_subsection_Exempt extends Fram
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("SUBSECTION EXEMPT (EM) HAS NO INFORMATION"));
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_for_section_Customs_with_its_subsection_Exempt.xml"));
         writer.write(response.asPrettyString());

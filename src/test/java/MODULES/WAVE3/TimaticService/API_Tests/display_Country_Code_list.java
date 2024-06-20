@@ -5,6 +5,8 @@ import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
+import org.apache.poi.ss.formula.functions.Na;
+import org.apache.poi.ss.formula.functions.Now;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -47,10 +49,12 @@ public class display_Country_Code_list extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_Country_Code_list.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
 
 
 //                ********* Clearing Temp_Request.xml *********

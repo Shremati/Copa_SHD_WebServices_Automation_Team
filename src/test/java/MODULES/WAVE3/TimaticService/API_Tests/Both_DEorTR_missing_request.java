@@ -48,7 +48,7 @@ public class Both_DEorTR_missing_request extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Both_DEorTR_missing_request.xml"));
         writer.write(response.asPrettyString());

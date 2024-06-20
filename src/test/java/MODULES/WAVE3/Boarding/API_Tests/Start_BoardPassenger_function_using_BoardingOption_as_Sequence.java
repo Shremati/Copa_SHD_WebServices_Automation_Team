@@ -50,6 +50,7 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
                 .and()
                 .log().all().extract().response();
 
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingInformation"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));

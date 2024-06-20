@@ -48,7 +48,7 @@ public class Display_for_section_Currency_with_its_subsection extends FrameworkC
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_for_section_Currency_with_its_subsection.xml"));
         writer.write(response.asPrettyString());
