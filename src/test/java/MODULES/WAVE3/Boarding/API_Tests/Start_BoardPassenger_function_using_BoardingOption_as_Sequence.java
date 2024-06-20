@@ -57,7 +57,8 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
         Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
         Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\""+DCSSeqNumber+"\""));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
+        AssertWarning(response,true);
+
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardPassenger_function_using_BoardingOption_as_Sequence.xml"));

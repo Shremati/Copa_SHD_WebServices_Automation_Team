@@ -1,5 +1,8 @@
 package frameworkconstants;
 
+import io.restassured.response.Response;
+import org.testng.Assert;
+
 public class FrameworkConstants {
 
     public static String BaseURL_Tulsa = "http://shdsitm.airservices.svcs.entsvcs.net:18119";      //TULSA SIT
@@ -198,5 +201,23 @@ public class FrameworkConstants {
     public static String getTarget() {
         return target;
     }
+
+
+
+    public static void AssertWarning(Response response,Boolean assertType)
+    {
+        if(assertType==true)
+        {
+            Assert.assertTrue(response.getBody().asString().contains("Warnings"));
+        }
+        else
+        {
+            Assert.assertTrue(false);
+        }
+
+    }
+
+
+
 
 }

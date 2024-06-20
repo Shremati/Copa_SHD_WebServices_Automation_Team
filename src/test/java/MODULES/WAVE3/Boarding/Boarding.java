@@ -92,10 +92,12 @@ public class Boarding {
     //To have a sequence number, the pax has to be checked-in
     public void BS_04() {
 
-        try {
+        try
+        {
             Start_BoardPassenger_function_using_BoardingOption_as_Sequence.Execute();
-
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             failTest(e);
             System.out.println("BS_04 failed due to :" + e);
         }
