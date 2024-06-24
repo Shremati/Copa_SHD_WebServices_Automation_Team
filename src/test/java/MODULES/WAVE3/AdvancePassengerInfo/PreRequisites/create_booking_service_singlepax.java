@@ -47,7 +47,8 @@ public class create_booking_service_singlepax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

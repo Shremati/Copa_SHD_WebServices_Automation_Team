@@ -49,6 +49,8 @@ public class Display_API_error_invalid_booking extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("PNR NOT FOUND"));
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_error_invalid_booking.xml"));
         writer.write(response.asPrettyString());

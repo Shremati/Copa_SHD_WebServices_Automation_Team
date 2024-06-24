@@ -56,6 +56,9 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE")); //Partially Completed APIS for 2nd Pax only
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Partially_collect_API_for_one_name_in_single_surname.xml"));
         writer.write(response.asPrettyString());
         writer.close();

@@ -55,6 +55,9 @@ public class Display_API_requirements_for_Secure_Flight extends FrameworkConstan
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"));
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_requirements_for_Secure_Flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();

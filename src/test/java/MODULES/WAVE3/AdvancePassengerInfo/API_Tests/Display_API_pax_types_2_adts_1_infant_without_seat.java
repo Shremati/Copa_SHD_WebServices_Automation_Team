@@ -57,6 +57,9 @@ public class Display_API_pax_types_2_adts_1_infant_without_seat extends Framewor
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"));
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_API_pax_types_2_adts_1_infant_without_seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();

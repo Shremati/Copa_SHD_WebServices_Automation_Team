@@ -49,6 +49,9 @@ public class Create_booking_for_2pax_in_different_bookings_1 extends FrameworkCo
                 .log().all().extract().response();
 
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();

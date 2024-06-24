@@ -51,6 +51,8 @@ public class Display_API_delete_API_address extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

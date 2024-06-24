@@ -51,6 +51,8 @@ public class Display_API_error_invalid_passenger_name extends FrameworkConstants
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("PASSENGER NOT FOUND"));
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
         writer.write(response.asPrettyString());
