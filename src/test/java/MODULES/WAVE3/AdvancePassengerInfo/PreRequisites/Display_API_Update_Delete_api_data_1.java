@@ -45,6 +45,8 @@ public class Display_API_Update_Delete_api_data_1 extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

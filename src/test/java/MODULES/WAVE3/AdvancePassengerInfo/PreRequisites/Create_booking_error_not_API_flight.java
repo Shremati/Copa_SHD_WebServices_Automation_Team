@@ -50,6 +50,8 @@ public class Create_booking_error_not_API_flight extends FrameworkConstants {
                 .log().all().extract().response();
 
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

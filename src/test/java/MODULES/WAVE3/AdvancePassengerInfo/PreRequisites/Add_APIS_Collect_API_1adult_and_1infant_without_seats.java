@@ -48,7 +48,8 @@ public class Add_APIS_Collect_API_1adult_and_1infant_without_seats extends Frame
                 .and()
                 .log().all().extract().response();
 
-
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
 //                     ********* Clearing Temp_Request.xml *********
 

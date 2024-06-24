@@ -46,6 +46,9 @@ public class Single_surname_multiple_names extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"));
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_surname_multiple_names.xml"));
         writer.write(response.asPrettyString());
         writer.close();

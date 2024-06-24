@@ -48,6 +48,7 @@ public class display_for_section_Health_with_its_subsection_for_warning extends 
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_for_section_Health_with_its_subsection_for_warning.xml"));
         writer.write(response.asPrettyString());

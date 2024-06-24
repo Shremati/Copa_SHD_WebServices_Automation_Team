@@ -49,7 +49,8 @@ public class Single_Pax extends FrameworkConstants
         Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
         Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"));
-
+        AssertWarning(response,false);
+        AssertResponseTime(response,10000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));
         writer.write(response.asPrettyString());

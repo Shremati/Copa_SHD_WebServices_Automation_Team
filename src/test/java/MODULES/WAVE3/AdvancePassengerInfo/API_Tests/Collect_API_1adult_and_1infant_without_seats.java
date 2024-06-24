@@ -61,6 +61,10 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"));
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_1adult_and_1infant_without_seats.xml"));
         writer.write(response.asPrettyString());
         writer.close();

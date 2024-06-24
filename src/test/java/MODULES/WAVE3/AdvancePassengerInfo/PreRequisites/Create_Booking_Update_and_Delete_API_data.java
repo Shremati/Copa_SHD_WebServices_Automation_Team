@@ -46,6 +46,8 @@ public class Create_Booking_Update_and_Delete_API_data extends FrameworkConstant
                 .and()
                 .log().all().extract().response();
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

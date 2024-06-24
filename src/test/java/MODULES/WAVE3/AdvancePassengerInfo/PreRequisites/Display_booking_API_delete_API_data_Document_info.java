@@ -48,7 +48,8 @@ public class Display_booking_API_delete_API_data_Document_info extends Framework
                 .and()
                 .log().all().extract().response();
 
-
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

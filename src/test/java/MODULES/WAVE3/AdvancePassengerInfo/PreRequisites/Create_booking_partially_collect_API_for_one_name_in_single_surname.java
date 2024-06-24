@@ -48,6 +48,8 @@ public class Create_booking_partially_collect_API_for_one_name_in_single_surname
                 .and()
                 .log().all().extract().response();
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

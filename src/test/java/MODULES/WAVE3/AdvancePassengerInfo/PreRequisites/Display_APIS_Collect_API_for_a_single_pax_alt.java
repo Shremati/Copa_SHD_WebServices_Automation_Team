@@ -50,6 +50,9 @@ public class Display_APIS_Collect_API_for_a_single_pax_alt extends FrameworkCons
                 .log().all().extract().response();
 
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();

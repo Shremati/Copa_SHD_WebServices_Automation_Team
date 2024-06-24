@@ -47,7 +47,7 @@ public class Display_City_list_by_Country_code extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-
+        AssertWarning(response,false);
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_City_list_by_Country_code.xml"));

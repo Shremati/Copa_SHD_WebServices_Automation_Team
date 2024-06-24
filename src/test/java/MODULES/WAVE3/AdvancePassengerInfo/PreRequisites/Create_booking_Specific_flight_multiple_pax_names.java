@@ -48,6 +48,8 @@ public class Create_booking_Specific_flight_multiple_pax_names extends Framework
                 .and()
                 .log().all().extract().response();
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

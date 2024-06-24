@@ -47,6 +47,7 @@ public class display_Country_Group extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_Country_Group.xml"));
         writer.write(response.asPrettyString());

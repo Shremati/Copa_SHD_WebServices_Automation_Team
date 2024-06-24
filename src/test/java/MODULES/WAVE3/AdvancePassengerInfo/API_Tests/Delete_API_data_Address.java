@@ -61,6 +61,8 @@ public class Delete_API_data_Address extends FrameworkConstants {
 
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Delete_API_data_Address.xml"));
         writer.write(response.asPrettyString());

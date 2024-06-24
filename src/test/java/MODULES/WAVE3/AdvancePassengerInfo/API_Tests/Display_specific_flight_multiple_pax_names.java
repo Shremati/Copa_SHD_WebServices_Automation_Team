@@ -56,6 +56,9 @@ public class Display_specific_flight_multiple_pax_names extends FrameworkConstan
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"));
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"));
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Display_specific_flight_multiple_pax_names.xml"));
         writer.write(response.asPrettyString());
         writer.close();

@@ -48,6 +48,8 @@ public class Display_APIS_Collect_API_1adult_and_1infant_without_seats extends F
                 .and()
                 .log().all().extract().response();
 
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

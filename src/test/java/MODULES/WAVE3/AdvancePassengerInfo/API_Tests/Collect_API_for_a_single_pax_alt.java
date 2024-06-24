@@ -56,6 +56,8 @@ public class Collect_API_for_a_single_pax_alt extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_single_pax_alt.xml"));
         writer.write(response.asPrettyString());

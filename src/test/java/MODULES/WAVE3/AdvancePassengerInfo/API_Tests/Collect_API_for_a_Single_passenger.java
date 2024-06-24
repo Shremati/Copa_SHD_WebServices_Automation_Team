@@ -46,6 +46,10 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
         Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"));
+        AssertWarning(response,false);
+        AssertResponseTime(response,1000L);
+
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Collect_API_for_a_Single_passenger.xml"));
         writer.write(response.asPrettyString());

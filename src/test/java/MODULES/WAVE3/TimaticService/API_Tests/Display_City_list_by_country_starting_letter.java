@@ -47,7 +47,7 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("INVALID RESPONSE"));
-
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Display_City_list_by_country_starting_letter.xml"));
         writer.write(response.asPrettyString());

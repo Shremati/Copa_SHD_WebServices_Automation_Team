@@ -48,6 +48,7 @@ public class display_for_section_Customs_with_its_subsection_Wild_Fauna_and_Flor
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\display_for_section_Customs_with_its_subsection_Wild_Fauna_and_Flora.xml"));
         writer.write(response.asPrettyString());

@@ -46,7 +46,7 @@ public class Both_multipoint_gov_request extends FrameworkConstants {
                 .log().all().extract().response();
 
         Assert.assertTrue(response.getBody().asString().contains("INPUT FORMAT ERROR"));
-
+        AssertWarning(response,false);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Both_multipoint_gov_request.xml"));
         writer.write(response.asPrettyString());
