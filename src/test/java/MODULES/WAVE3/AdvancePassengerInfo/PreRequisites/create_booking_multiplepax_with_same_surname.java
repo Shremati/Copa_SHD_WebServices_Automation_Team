@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -58,12 +59,13 @@ public class create_booking_multiplepax_with_same_surname extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-        AssertWarning(response,false);
-        AssertResponseTime(response,1000L);
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

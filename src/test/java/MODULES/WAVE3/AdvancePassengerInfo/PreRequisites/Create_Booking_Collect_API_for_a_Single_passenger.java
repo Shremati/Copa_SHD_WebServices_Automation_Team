@@ -57,13 +57,13 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
                 .log().all().extract().response();
 
 
-        AssertWarning(response,false);
-        AssertResponseTime(response,1000L);
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

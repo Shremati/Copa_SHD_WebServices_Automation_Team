@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
+
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 public class AdvancePassengerInfo {
