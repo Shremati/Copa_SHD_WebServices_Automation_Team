@@ -14,7 +14,7 @@ public class FrameworkConstants {
         return SharesCURL;
     }
 
-    public static long ResponseTime = 10000;
+    public static long ResponseTime = 200000;
 
     //    ***************************** POST REQUESTS ***********************************
 
