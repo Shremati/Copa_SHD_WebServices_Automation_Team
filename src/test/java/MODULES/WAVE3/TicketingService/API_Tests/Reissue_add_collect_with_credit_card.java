@@ -1,6 +1,7 @@
 package MODULES.WAVE3.TicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1;
@@ -70,7 +71,8 @@ public class Reissue_add_collect_with_credit_card extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

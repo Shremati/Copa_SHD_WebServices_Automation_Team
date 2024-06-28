@@ -1,6 +1,7 @@
 package MODULES.WAVE3.TicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_ticket_for_a_booking_with_an_infant;
 import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop;
@@ -53,14 +54,15 @@ public class Ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketInfo TicketNumber"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo TicketNumber"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
