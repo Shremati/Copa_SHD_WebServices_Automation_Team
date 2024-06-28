@@ -3,6 +3,8 @@ package GENERICS;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Assertions
 {
@@ -30,4 +32,18 @@ public class Assertions
         response.then().time(Matchers.lessThan(expectedResponseTime));
     }
 
+    public static String GetActualValue(Response response,String tag)
+    {
+        Pattern pattern = Pattern.compile("<"+tag+">(.*?)</"+tag+">");
+        Matcher matcher = pattern.matcher(response.asPrettyString());
+        if (matcher.find())
+        {
+            String nsBarValue = matcher.group(1);
+            return nsBarValue;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ReferenceService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -48,12 +49,15 @@ public class Display_Category_List extends FrameworkConstants{
                 .and()
                 .log().all().extract().response();
 
-            Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>CM CATEGORY LIST    </ns4:TextData>"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\Display_Category_List_Response.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>CM CATEGORY LIST    </ns4:TextData>"));
+        Assert.assertTrue(Assertions.GetActualValue(response,"ns4:TextData").contains("CM CATEGORY LIST"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 
