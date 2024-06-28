@@ -1,5 +1,6 @@
 package MODULES.WAVE3.SeatMapService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,14 +49,17 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_compartments.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
         Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
         Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
         Assert.assertTrue(response.getBody().asString().contains("<Equipment AirEquipType=\"739\">737-900</Equipment>"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_compartments.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

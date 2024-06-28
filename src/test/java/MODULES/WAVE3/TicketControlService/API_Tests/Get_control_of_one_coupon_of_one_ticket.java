@@ -1,6 +1,7 @@
 package MODULES.WAVE3.TicketControlService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_refund_error_cancell_all_segments_prior_refund;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_refund_error_cancell_all_segments_prior_refund;
@@ -59,15 +60,15 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,6 +1,7 @@
 package MODULES.WAVE3.SynchronizeTicketService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.*;
@@ -25,6 +26,8 @@ import static io.restassured.RestAssured.given;
 public class Adjust_Name extends FrameworkConstants {
 
    public static String SOAPRequest;
+   public static String GivenName=null;
+   public static String Surname=null;
 
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
    {
@@ -63,14 +66,17 @@ public class Adjust_Name extends FrameworkConstants {
                .and()
                .log().all().extract().response();
 
-       Assert.assertTrue(response.getBody().asString().contains("Success"));
-       Assert.assertTrue(response.getBody().asString().contains("TicketGroup"));
-       Assert.assertTrue(response.getBody().asString().contains("<ns5:Passenger PassengerName=\"MUDLER/FOXXX\" PassengerType=\"ADT\">"));
-
-
        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Name.xml"));
        writer.write(response.asPrettyString());
        writer.close();
+
+
+       Assert.assertTrue(response.getBody().asString().contains("Success"));
+       Assert.assertTrue(response.getBody().asString().contains("TicketGroup"));
+       Assert.assertTrue(response.getBody().asString().contains("PassengerName=\""+Surname+"/"+GivenName+"\" PassengerType=\"ADT\""));
+
+       Assertions.AssertWarning(response,false);
+       Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 
@@ -99,6 +105,8 @@ public class Adjust_Name extends FrameworkConstants {
        XMLParser.updateAttributeValue("tic:BookingTicketingRefID","ID",InputRow.getCell(12).getStringCellValue(),filepath1);
        XMLParser.updateAttributeValue("tic:TicketDocument","TicketDocumentNbr",InputRow.getCell(22).getStringCellValue(),getTemp_requestPath());
 
+       GivenName=InputRow.getCell(18).getStringCellValue();
+       Surname=InputRow.getCell(19).getStringCellValue();
 
        wb.close();
 

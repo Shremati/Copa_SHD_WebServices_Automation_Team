@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
+import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 public class SynchronizeTicketService
@@ -26,6 +27,7 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
+            failTest(e);
             System.out.println("STS_07 failed due to :"+e);
         }
 
@@ -43,6 +45,7 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
+            failTest(e);
             System.out.println("STS_01 failed due to :"+e);
         }
 
@@ -58,6 +61,7 @@ public class SynchronizeTicketService
 
         }catch(Exception e)
         {
+            failTest(e);
             System.out.println("STS_03 failed due to :"+e);
         }
     }

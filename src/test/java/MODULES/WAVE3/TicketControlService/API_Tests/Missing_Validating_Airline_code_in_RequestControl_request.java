@@ -1,5 +1,6 @@
 package MODULES.WAVE3.TicketControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.TicketControlService.PreRequisites.Issue_Ticket_missing_airline_code;
 import MODULES.WAVE3.TicketControlService.PreRequisites.Pre_create_booking_missing_airline_code;
@@ -55,13 +56,15 @@ public class Missing_Validating_Airline_code_in_RequestControl_request extends F
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("HOST ALREADY HAS CONTROL"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Missing_Validating_Airline_code_in_RequestControl_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("HOST ALREADY HAS CONTROL"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

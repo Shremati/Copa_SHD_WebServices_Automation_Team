@@ -1,5 +1,6 @@
 package MODULES.WAVE3.TimaticService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -46,11 +47,14 @@ public class Request_Visa_Health_Info_without_specifying_the_Nationality_Embarka
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Required Data Missing: No EmbarkationLocation Specified"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TimaticService\\Request_Visa_Health_Info_without_specifying_the_Nationality_Embarkation_health_EM_missing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Required Data Missing: No EmbarkationLocation Specified"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

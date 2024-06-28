@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirInventoryService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,13 +49,14 @@ public class HA_Inventory_request_with_invalid_flight_number extends FrameworkCo
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:FlightErrorText>INVLD FLT NBR</ns4:FlightErrorText>"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirInventoryService\\HA_Inventory_request_with_invalid_flight_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:FlightErrorText>INVLD FLT NBR</ns4:FlightErrorText>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

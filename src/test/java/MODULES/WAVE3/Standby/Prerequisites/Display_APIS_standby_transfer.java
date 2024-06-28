@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Standby.Prerequisites;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -46,10 +47,12 @@ public class Display_APIS_standby_transfer extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 
