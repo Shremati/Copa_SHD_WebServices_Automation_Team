@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirScheduleService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -46,12 +47,15 @@ public class Get_Flight_Details_Error_showing_unimplemented_method extends Frame
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("System Processing Error: (1) The parameter pFlight is Mandatory"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Get_Flight_Details_Error_showing_unimplemented_method.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("System Processing Error: (1) The parameter pFlight is Mandatory"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

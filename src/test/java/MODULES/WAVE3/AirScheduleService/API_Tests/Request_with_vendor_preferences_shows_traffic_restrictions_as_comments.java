@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirScheduleService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,14 +48,17 @@ public class Request_with_vendor_preferences_shows_traffic_restrictions_as_comme
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
-        Assert.assertTrue(response.getBody().asString().contains("ONLINE CONEX/STPVR TFC ONLY"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Request_with_vendor_preferences_shows_traffic_restrictions_as_comments.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+        Assert.assertTrue(response.getBody().asString().contains("ONLINE CONEX/STPVR TFC ONLY"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
