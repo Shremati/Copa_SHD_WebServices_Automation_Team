@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Availability.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,12 +49,16 @@ public class Max_requests_exceeded extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\Max_requests_exceeded.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirScheduleService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -50,14 +51,16 @@ public class Request_with_departure_time_that_will_return_date_change_flights ex
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Request_with_departure_time_that_will_return_date_change_flights.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Availability.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,13 +48,15 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\Maximum_stops_of_0_applied_to_only_to_2nd_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

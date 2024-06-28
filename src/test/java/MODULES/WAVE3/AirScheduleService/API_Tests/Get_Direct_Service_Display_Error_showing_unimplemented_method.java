@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirScheduleService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -46,11 +47,15 @@ public class Get_Direct_Service_Display_Error_showing_unimplemented_method exten
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("The requested operation is not implemented in this application"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Get_Direct_Service_Display_Error_showing_unimplemented_method.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("The requested operation is not implemented in this application"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

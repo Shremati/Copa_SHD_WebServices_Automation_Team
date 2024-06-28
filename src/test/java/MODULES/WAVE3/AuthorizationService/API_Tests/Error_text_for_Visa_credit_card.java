@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AuthorizationService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -49,15 +50,17 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"));
-        Assert.assertTrue(response.getBody().asString().contains("INVALID FORMAT"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Error_text_for_Visa_credit_card.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID FORMAT"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Availability.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,12 +48,15 @@ public class Multiple_requests extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\Multiple_requests.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

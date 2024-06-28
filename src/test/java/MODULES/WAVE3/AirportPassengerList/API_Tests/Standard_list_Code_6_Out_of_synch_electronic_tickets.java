@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.CreateBooking_StandardList_Code_6_out_of_sync;
@@ -62,16 +63,17 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
-        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_6_Out_of_sync_electronic_tickets.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

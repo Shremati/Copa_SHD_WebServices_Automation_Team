@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AuthorizationService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -49,14 +50,15 @@ public class Invalid_Request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
-        Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Invalid_Request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
+        Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
