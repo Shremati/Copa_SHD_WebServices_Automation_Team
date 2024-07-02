@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ReferenceService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,6 +48,10 @@ public class display_subject_list extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\display_subject_list.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("CM SUBJECT LIST    POLITICAS ATO/SAB    CAT:A01"));
         Assert.assertTrue(response.getBody().asString().contains("1 B01 ABORDAJE"));
         Assert.assertTrue(response.getBody().asString().contains("2 B03 CHECK-IN"));
@@ -57,12 +62,8 @@ public class display_subject_list extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("7 B08 SOBREVENTA-IROPS"));
         Assert.assertTrue(response.getBody().asString().contains("8 B09 COMPENSACIONES-IROPS"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\display_subject_list.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

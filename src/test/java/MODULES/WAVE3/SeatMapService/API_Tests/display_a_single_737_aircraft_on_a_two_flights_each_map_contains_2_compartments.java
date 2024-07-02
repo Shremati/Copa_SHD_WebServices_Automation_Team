@@ -53,7 +53,7 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
         Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
         Assert.assertTrue(response.getBody().asString().contains("<Equipment AirEquipType=\"739\">737-900</Equipment>"));

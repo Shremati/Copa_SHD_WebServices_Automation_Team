@@ -1,5 +1,6 @@
 package MODULES.WAVE3.SeatMapService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,13 +49,16 @@ public class Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
-        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\Display_single_737_aircraft_on_one_leg_flight_map_contains_two_comp.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

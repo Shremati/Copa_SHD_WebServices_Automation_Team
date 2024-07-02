@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ScreenTextService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -46,12 +47,14 @@ public class error_screenText_missing_field extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("No message function to process"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ScreenTextService\\error_screenText_missing_field.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("No message function to process"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

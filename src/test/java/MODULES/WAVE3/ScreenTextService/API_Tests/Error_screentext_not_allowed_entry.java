@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ScreenTextService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,13 +49,14 @@ public class Error_screentext_not_allowed_entry extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Invalid ScreenText request - A"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ScreenTextService\\Error_screentext_not_allowed_entry.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Invalid ScreenText request - A"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
