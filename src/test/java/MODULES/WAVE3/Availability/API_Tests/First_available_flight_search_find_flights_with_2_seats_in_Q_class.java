@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Availability.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,15 +49,16 @@ public class First_available_flight_search_find_flights_with_2_seats_in_Q_class 
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ResBookDesigCode=\"Q\""));
-
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Availability\\First_available_flight_search_find_flights_with_2_seats_in_Q_class.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ResBookDesigCode=\"Q\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

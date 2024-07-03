@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirportPassengerList.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -50,15 +51,16 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
                 .log().all().extract().response();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
-        Assert.assertTrue(response.getBody().asString().contains("SecurityCode=\"N\""));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Custom_list_Filter_Value_0.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ns5:FlightInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("SecurityCode=\"N\""));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

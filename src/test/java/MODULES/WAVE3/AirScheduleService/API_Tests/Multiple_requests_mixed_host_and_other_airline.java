@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AirScheduleService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,12 +48,16 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:FlightDetails>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Multiple_requests_mixed_host_and_other_airline.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:FlightDetails>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

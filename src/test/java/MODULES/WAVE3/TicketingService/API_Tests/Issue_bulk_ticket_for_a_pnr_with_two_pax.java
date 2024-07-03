@@ -1,6 +1,7 @@
 package MODULES.WAVE3.TicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax;
 import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_ticket_for_a_booking_with_an_infant;
@@ -21,6 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasXPath;
 
 public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
 {
@@ -54,12 +57,24 @@ public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("FareAmountType=\"Bulk\""));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketingService\\Issue_bulk_ticket_for_a_pnr_with_two_pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        if (response.getBody().asString().contains("NumberOfTickets=\"0002\""))
+        {
+            System.out.println("\nTicketing status: Fully ticketed");
+        }
+        else
+        {
+            System.out.println("\nTicketing status: Partially ticketed");
+        }
+        Assert.assertTrue(response.getBody().asString().contains("NumberOfTickets=\"0002\""));
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FareAmountType=\"Bulk\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 

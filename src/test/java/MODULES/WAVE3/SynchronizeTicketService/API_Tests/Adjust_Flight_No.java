@@ -1,6 +1,7 @@
 package MODULES.WAVE3.SynchronizeTicketService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.Create_Booking;
@@ -68,13 +69,15 @@ import static io.restassured.RestAssured.given;
                     .and()
                     .log().all().extract().response();
 
-            Assert.assertTrue(response.getBody().asString().contains("Success"));
-            Assert.assertTrue(response.getBody().asString().contains("ADJUSTED"));
-
-
             BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SynchronizeTicketService\\Adjust_Flight_No.xml"));
             writer.write(response.asPrettyString());
             writer.close();
+
+            Assert.assertTrue(response.getBody().asString().contains("Success"));
+            Assert.assertTrue(response.getBody().asString().contains("ADJUSTED"));
+
+            Assertions.AssertWarning(response,false);
+            Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

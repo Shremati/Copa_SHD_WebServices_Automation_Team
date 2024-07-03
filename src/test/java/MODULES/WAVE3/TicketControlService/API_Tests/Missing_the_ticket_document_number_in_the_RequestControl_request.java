@@ -1,5 +1,6 @@
 package MODULES.WAVE3.TicketControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
 import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
@@ -49,13 +50,15 @@ public class Missing_the_ticket_document_number_in_the_RequestControl_request ex
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertFalse(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Missing_the_ticket_document_number_in_the_RequestControl_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertFalse(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
