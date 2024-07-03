@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ConnectionFlightInfo.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,14 +49,16 @@ public class Get_outbound_flight_info extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("CM OUTBOUND CONNECTIONS FROM"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ConnectionFlightInfo\\Get_outbound_flight_info.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("CM OUTBOUND CONNECTIONS FROM"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

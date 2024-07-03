@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -49,6 +50,9 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
 //                ********* Clearing Temp_Request.xml *********
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -81,6 +85,5 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
 
         wb.close();
     }
-
 
 }

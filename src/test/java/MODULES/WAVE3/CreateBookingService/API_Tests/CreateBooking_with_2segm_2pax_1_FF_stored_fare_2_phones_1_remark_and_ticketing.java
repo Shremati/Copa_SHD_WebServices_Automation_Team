@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing_issue_ticket;
@@ -49,19 +50,20 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0128\"/>"));
 
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

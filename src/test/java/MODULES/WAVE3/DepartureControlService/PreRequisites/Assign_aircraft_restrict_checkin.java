@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -52,7 +53,8 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -85,7 +87,5 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         wb.close();
 
     }
-
-
 
 }

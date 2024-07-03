@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -48,6 +49,11 @@ public class Start_CancelBoardedPassenger_function extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_CancelBoardedPassenger_function.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("Function=\"CancelBoardedPassenger\""));
         Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
@@ -55,14 +61,9 @@ public class Start_CancelBoardedPassenger_function extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
         Assert.assertTrue(response.getBody().asString().contains("SeatNumber"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_CancelBoardedPassenger_function.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,true);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

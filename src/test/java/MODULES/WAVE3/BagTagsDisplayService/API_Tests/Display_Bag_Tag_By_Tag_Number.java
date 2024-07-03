@@ -1,5 +1,6 @@
 package MODULES.WAVE3.BagTagsDisplayService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.BagTagsDisplayService.PreRequisites.*;
@@ -66,16 +67,17 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"));
-        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"BagTagDisplayService\\Display_Bag_Tag_By_Tag_Number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"));
+        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

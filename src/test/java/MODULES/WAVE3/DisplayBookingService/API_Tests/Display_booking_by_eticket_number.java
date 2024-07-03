@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_display_by_eticket_number;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Issue_ticket_display_booking_by_eticket_number;
@@ -59,6 +60,11 @@ public class Display_booking_by_eticket_number extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_by_eticket_number.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
         Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
@@ -66,11 +72,8 @@ public class Display_booking_by_eticket_number extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_by_eticket_number.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

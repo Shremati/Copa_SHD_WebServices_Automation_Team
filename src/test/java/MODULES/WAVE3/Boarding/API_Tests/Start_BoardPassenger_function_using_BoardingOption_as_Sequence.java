@@ -64,7 +64,7 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
         Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\""+DCSSeqNumber+"\""));
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.BagTagsDisplayService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.BagTagsDisplayService.PreRequisites.*;
@@ -71,7 +72,8 @@ public class Bag_Tag_Display_by_Tag_Number_OA extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
