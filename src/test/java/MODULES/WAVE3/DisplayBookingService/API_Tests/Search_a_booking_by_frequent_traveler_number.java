@@ -1,6 +1,7 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.*;
@@ -65,13 +66,17 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
-        Assert.assertFalse(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Search_a_booking_by_frequent_traveler_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
+        Assert.assertFalse(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

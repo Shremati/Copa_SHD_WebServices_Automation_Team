@@ -1,6 +1,7 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info;
@@ -56,18 +57,19 @@ public class Display_a_host_airline_booking extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_a_host_airline_booking.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
         Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
         Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
         Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_a_host_airline_booking.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

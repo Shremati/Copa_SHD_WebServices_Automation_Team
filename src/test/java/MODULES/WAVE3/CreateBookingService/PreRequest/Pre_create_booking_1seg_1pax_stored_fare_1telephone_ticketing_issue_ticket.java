@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.PreRequest;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -48,6 +49,8 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

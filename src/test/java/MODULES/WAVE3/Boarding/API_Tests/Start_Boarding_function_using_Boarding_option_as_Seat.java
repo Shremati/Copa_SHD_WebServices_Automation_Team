@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,6 +49,9 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
 
         UpdatePayload_1();
 
@@ -66,12 +70,16 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
 
         writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
         UpdatePayload();
@@ -94,18 +102,20 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
-        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
-        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
         writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

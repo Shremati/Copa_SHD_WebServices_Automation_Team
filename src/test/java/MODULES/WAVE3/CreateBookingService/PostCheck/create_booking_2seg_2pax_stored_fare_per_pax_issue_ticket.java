@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.PostCheck;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -48,6 +49,8 @@ public class create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket extends F
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

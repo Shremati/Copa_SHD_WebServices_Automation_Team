@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,13 +48,17 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE"));
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID FORMAT-ORIG ISSUE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID FORMAT-ORIG ISSUE"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

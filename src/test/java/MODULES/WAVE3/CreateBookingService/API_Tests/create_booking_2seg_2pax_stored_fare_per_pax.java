@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket_41;
@@ -47,7 +48,12 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_2seg_2pax_stored_fare_per_pax.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
@@ -62,19 +68,15 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
         Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"));
         Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_2seg_2pax_stored_fare_per_pax.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 
         create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket_41 postCheck = new create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket_41();
         postCheck.run();
 
-
     }
-
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException

@@ -48,18 +48,19 @@ public class Start_BoardingComplete_function extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
-        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
-        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardingComplete_function.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

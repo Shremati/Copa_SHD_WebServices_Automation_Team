@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_booking_display_another_airline_booking;
 import frameworkconstants.FrameworkConstants;
@@ -48,12 +49,15 @@ public class Error_displaying_the_booking extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("UNBL TO RTRV PNR"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Error_displaying_the_booking.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("UNBL TO RTRV PNR"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

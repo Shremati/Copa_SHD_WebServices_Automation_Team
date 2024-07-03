@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.Issue_Ticket_CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3remarks_SeatAssignment_and_ticketing;
@@ -48,16 +49,20 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3remarks_SeatAssignment_and_ticketing.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
         Assert.assertTrue(response.getBody().asString().contains("<air1:Email>modificados@gmail.com</air1:Email>"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3remarks_SeatAssignment_and_ticketing.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

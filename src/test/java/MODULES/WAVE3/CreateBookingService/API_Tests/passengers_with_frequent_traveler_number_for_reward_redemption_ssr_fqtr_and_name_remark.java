@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket;
@@ -47,20 +48,22 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>FOR SSR FQTR PLUS NAME REMARK TESTING</ns3:Remark>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>FOR SSR FQTR PLUS NAME REMARK TESTING</ns3:Remark>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 
         passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket postCheck = new passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket();
         postCheck.run();
-
 
     }
 

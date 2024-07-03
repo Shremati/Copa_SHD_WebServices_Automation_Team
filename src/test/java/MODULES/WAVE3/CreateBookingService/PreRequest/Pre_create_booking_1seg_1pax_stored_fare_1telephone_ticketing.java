@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.PreRequest;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -44,14 +45,18 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
                 .and()
                 .log().all().extract().response();
 
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

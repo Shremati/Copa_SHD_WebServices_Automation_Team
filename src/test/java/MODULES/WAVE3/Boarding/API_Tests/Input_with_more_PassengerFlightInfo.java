@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -48,13 +49,16 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
