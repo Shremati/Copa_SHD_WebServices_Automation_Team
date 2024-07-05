@@ -58,7 +58,7 @@ public class create_booking_four_seg_two_pax_two_SSR extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("ns4:TicketInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
 
         Assertions.AssertWarning(response,false);

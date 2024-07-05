@@ -3,8 +3,10 @@
     <soapenv:Body>
         <scr:sendEntry>
             <scr1:OTA_ScreenTextRQ Version="4.000" MessageFunction="A">
-                <scr1:POS><com:Source AirlineVendorID="CM"/>
-                </scr1:POS><scr1:ScreenEntry>W*</scr1:ScreenEntry>
+                <scr1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </scr1:POS>
+                <scr1:ScreenEntry>A PTYMEX</scr1:ScreenEntry>
             </scr1:OTA_ScreenTextRQ>
         </scr:sendEntry>
     </soapenv:Body>

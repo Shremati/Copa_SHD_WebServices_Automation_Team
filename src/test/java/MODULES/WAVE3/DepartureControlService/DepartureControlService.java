@@ -168,7 +168,8 @@ public class DepartureControlService {
     @Test
     public void DPS_32() {
 
-        try {
+        try
+        {
             display_board_point_messages.Execute();
 
         } catch (Exception e) {
@@ -182,7 +183,7 @@ public class DepartureControlService {
     public void DPS_36() {
 
         try {
-            add_Update_Delete_board_point_messages.Execute(); //Before running test case , open the request in XML request directory and change the REMARKS which you want to add/delete
+            add_Update_Delete_board_point_messages.Execute();
 
         } catch (Exception e) {
             failTest(e);

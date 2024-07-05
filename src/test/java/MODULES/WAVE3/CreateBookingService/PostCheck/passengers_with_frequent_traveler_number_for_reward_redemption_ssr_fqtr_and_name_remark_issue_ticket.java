@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,6 +49,8 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);

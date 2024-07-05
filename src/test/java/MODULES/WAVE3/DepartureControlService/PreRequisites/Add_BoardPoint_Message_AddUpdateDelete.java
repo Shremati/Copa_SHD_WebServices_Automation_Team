@@ -1,12 +1,8 @@
-package MODULES.WAVE3.DepartureControlService.API_Tests;
+package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Checkin_cancel_misconnect;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Create_booking_cancel_misconnect;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Issue_ticket_cancel_misconnect;
-import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
@@ -22,27 +18,18 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static frameworkconstants.FrameworkConstants.*;
+import static frameworkconstants.FrameworkConstants.getTemp_requestPath;
 import static io.restassured.RestAssured.given;
 
-public class cancel_misconnect extends FrameworkConstants
+public class Add_BoardPoint_Message_AddUpdateDelete
 {
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public  void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Create_booking_cancel_misconnect Prerequisite = new Create_booking_cancel_misconnect();
-        Prerequisite.run();
-
-        Issue_ticket_cancel_misconnect Prerequisite2 = new Issue_ticket_cancel_misconnect();
-        Prerequisite2.run();
-
-        //need to add display and add APIS
-        Checkin_cancel_misconnect Prerequisite3 = new Checkin_cancel_misconnect();
-        Prerequisite3.run();
-
-
-        UpdatePayload();
+        UpdatePayload();  //Adding 3 messages as per request
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -63,12 +50,12 @@ public class cancel_misconnect extends FrameworkConstants
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\cancel_misconnect.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("CancelMisconnects"));
+        Assert.assertTrue(response.getBody().asString().contains("MessageInfo"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -76,7 +63,7 @@ public class cancel_misconnect extends FrameworkConstants
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
 
     }
 
@@ -89,22 +76,26 @@ public class cancel_misconnect extends FrameworkConstants
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DepartureControlService");
-        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRow=sheet.getRow(14);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"DepartureControlService\\cancel_misconnect.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Add_BoardPoint_Message.xml";
+
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:ConnectingFlightInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();
 
     }
 
-
-
-
+    public String getMessage(int RPH) throws ParserConfigurationException, IOException, TransformerException, SAXException
+    {
+        String filepath;
+        filepath=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Add_BoardPoint_Message.xml";
+        System.out.println("ns4:MessageInfo RPH=\"0"+(RPH+1)+"\"");
+        return XMLParser.GetTagTextatIndex("air1:MessageInfo",filepath,RPH);
+    }
 }

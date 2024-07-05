@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dep="http://www.eds.com/AirlineSOASchema/DepartureControl/" xmlns:dep1="http://www.eds.com/AirlineSOASchema/DepartureControlRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dep:requestControl>
+            <dep1:EDS_DepartureControlRQ Version="3.000">
+                <dep1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dep1:POS>
+                <dep1:MessageFunction Function="FlightMessageUpdate"/>
+                <dep1:FlightInfo>
+                    <dep1:FlightLegInfo DepartureDateTime="2024-06-13T00:00:00" FlightNumber="334">
+                        <com:DepartureAirport LocationCode="PTY"/>
+                        <air1:MessageInfo Operation="Add">MESSAGE TWO TESTCASE ONE</air1:MessageInfo>
+                        <air1:MessageInfo Operation="Add">MESSAGE FOUR TESTCASE ONE</air1:MessageInfo>
+                        <air1:MessageInfo Operation="Add">MESSAGE THREE TESTCASE ONE</air1:MessageInfo>
+                    </dep1:FlightLegInfo>
+                </dep1:FlightInfo>
+            </dep1:EDS_DepartureControlRQ>
+        </dep:requestControl>
+    </soapenv:Body>
+</soapenv:Envelope>

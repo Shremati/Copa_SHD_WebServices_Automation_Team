@@ -97,6 +97,11 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
+        //FFNumber
+        XMLParser.updateAttributeValue("air1:CustLoyalty", "MembershipID",  InputRow.getCell(36).getStringCellValue(), getTemp_requestPath());
+        //Name of the FFPax
+        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(37).getStringCellValue(), getTemp_requestPath(),0); //Taking 1st pax as its
+        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(38).getStringCellValue(), getTemp_requestPath(),0);
 
         wb.close();
 

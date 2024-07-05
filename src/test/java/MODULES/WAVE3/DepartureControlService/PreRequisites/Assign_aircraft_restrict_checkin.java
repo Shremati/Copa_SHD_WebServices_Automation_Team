@@ -75,7 +75,7 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"DepartureControlService\\Assign_aircraft.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Assign_aircraft.xml";
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
