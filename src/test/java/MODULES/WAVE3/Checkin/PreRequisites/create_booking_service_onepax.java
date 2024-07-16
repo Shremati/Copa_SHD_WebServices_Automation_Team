@@ -61,11 +61,12 @@ public class create_booking_service_onepax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

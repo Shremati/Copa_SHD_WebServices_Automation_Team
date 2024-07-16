@@ -52,7 +52,7 @@ public class Approval_for_visa_credit_card extends FrameworkConstants
                 .log().all().extract().response();
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Authorizationservice.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Approval_for_visa_credit_card.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
