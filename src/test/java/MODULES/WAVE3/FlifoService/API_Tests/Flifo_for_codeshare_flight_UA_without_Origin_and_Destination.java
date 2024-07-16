@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_with_forecast;
@@ -48,17 +49,16 @@ public class Flifo_for_codeshare_flight_UA_without_Origin_and_Destination extend
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_for_codeshare_flight_UA_without_Origin_and_Destination.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
         Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_for_codeshare_flight_UA_without_Origin_and_Destination.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

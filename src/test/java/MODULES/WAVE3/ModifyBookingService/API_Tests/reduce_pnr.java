@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifyBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_reduce_pnr;
 import frameworkconstants.FrameworkConstants;
@@ -55,15 +56,16 @@ public class reduce_pnr extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<GivenName>ALONDRA</GivenName>"));
-        Assert.assertTrue(response.getBody().asString().contains("<GivenName>PETER</GivenName>"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyBookingService\\ReducePNR.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>ALONDRA</GivenName>"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>PETER</GivenName>"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

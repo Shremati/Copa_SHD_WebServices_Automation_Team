@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifyInventoryService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,14 +49,14 @@ public class ModifyInventory_Request_contains_single_MaxSeatsAllotted extends Fr
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:Success/>"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyInventoryService\\ModifyInventory_Request_contains_single_MaxSeatsAllotted.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

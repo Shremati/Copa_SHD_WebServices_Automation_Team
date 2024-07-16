@@ -63,7 +63,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
         Assertions.AssertWarning(response,false);

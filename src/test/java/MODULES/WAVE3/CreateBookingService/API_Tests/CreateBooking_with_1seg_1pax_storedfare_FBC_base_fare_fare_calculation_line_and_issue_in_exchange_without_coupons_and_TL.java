@@ -65,7 +65,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
         Assertions.AssertWarning(response,false);

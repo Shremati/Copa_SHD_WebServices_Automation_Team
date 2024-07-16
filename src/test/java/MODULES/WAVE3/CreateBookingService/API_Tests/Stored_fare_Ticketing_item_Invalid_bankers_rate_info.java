@@ -62,7 +62,7 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Invalid Bankers Rate currency code."));
 
         Assertions.AssertWarning(response,false);

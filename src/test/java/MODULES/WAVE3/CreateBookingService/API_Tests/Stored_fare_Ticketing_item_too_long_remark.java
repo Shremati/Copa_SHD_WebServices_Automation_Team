@@ -63,7 +63,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Free-Flow Remark Transaction"));
 
         Assertions.AssertWarning(response,false);

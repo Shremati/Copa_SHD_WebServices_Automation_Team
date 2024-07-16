@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifyBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_divide_pnr;
@@ -54,16 +55,16 @@ public class divide_pnr extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<GivenName>PEPPY</GivenName>"));
-        Assert.assertTrue(response.getBody().asString().contains("<GivenName>FOX</GivenName>"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyBookingService\\DividePNR.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>PEPPY</GivenName>"));
+        Assert.assertTrue(response.getBody().asString().contains("<GivenName>FOX</GivenName>"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

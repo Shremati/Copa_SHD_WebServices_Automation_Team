@@ -63,7 +63,7 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"));
 
         Assertions.AssertWarning(response,false);

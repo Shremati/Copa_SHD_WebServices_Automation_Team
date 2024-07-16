@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifySeatMap.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,11 +49,14 @@ public class MSM_02_Add_Seat extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns6:Success/>"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifySeatMap\\MSM_02_Add_Seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

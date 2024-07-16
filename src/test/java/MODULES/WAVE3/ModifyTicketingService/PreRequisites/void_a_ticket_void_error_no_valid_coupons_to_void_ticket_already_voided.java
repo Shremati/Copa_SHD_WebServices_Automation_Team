@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifyTicketingService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -50,6 +51,9 @@ public class void_a_ticket_void_error_no_valid_coupons_to_void_ticket_already_vo
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

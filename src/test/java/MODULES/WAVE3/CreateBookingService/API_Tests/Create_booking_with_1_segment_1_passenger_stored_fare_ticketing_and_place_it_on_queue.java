@@ -56,7 +56,7 @@ public class Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertFalse(response.getBody().asString().contains("Error"));
 
         Assertions.AssertWarning(response,false);

@@ -1,15 +1,14 @@
 package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
 import GENERICS.Assertions;
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +19,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Checkin_cancel_misconnect extends FrameworkConstants {
+public class Display_APIS_one_pax_and_baggage_CancelMisconnect extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -29,19 +28,21 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
 
         UpdatePayload();
 
-//                       ********** Reading the xml request file **********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
+
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getCheckin())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
@@ -50,9 +51,6 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
-
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -63,10 +61,9 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
         writer.write("");
         writer.close();
 
+        excelwriter();
 
     }
-
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
@@ -79,15 +76,45 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(9);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Checkin_cancel_misconnect.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Display_APIS_one_pax_and_baggage_CancelMisconnect.xml";
 
-
-        XMLParser.updateAttributeValueatIndex("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:DepartureInformation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:CarrierInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
-
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(13).getStringCellValue(),filepath1);
 
         wb.close();
+
+    }
+
+
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("DepartureControlService");
+        XSSFRow InputRow=sheet.getRow(19);
+
+
+        String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
+        String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);
+
+        InputRow.getCell(22).setCellValue(AgencyName);
+        InputRow.getCell(23).setCellValue(AgencyName1);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
     }
 
 }

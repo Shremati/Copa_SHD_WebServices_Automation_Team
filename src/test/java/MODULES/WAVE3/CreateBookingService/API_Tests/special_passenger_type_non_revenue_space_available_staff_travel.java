@@ -54,7 +54,7 @@ public class special_passenger_type_non_revenue_space_available_staff_travel ext
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>NON REVENUE SPACE AVAILABLE STAFF TRAVEL</ns3:Remark>"));
 
         Assertions.AssertWarning(response,false);

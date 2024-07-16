@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -45,12 +46,15 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //        *********** Main Request ************
 
@@ -74,12 +78,15 @@ public class FLIFO_History_for_host_airline extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("HistoryItem"));
-
         writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\FLIFO_History_for_host_airline.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("HistoryItem"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

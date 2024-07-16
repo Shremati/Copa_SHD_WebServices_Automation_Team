@@ -1,7 +1,6 @@
-package MODULES.WAVE3.ModifyInventoryService.API_Tests;
+package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
 import GENERICS.Assertions;
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -21,20 +20,21 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class ModifyInventory_Request_contains_single_Authorization_level extends FrameworkConstants
-{
+public class Add_APIS_one_pax_and_baggage_cancelMisconnect extends FrameworkConstants {
+
     public static String SOAPRequest;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         UpdatePayload();
 
-//    ******** Read the updated request and send it to fetch the response *********
+//               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+
 
         Response response = given()
                 .baseUri(getBaseURL())
@@ -42,25 +42,28 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
                 .filter(new AllureRestAssured())
                 .body(SOAPRequest)
                 .when()
-                .post(getModifyinventoryservice())
+                .post(getAdvancepassengerinfo())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyInventoryService\\ModifyInventory_Request_contains_single_Authorization_level.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
 
-//                ********* Clearing Temp_Request.xml *********
+
+//                     ********* Clearing Temp_Request.xml *********
+
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
-        writer.flush();
+        writer.close();
+
 
     }
 
@@ -68,29 +71,23 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
-        //        ********** Reading Testdata from Excel ************
-
+//        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("ModifyInventoryService");
-        XSSFRow InputRow=sheet.getRow(1);
+        XSSFSheet sheet = wb.getSheet("DepartureControlService");
+
+        XSSFRow InputRow=sheet.getRow(9);
+        XSSFRow InputRowAPIS=sheet.getRow(19);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"Modifyinventoryservice\\ModifyInventory_Request_contains_single_Authorization_level.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Add_APIS_one_pax_and_baggage_CancelMisconnect.xml";
 
-
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(1).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValue("air1:BoardPoint","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-
-        XMLParser.SetTagtextatIndex("air1:ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air1:AuthorizationLevelValue",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(13).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRowAPIS.getCell(22).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRowAPIS.getCell(23).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 
     }
-
-
-
 
 }

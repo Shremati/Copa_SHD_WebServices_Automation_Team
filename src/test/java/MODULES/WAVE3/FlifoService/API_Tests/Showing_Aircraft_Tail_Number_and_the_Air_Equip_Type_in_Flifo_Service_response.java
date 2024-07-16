@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.FlifoService.PreRequisites.Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type;
@@ -50,18 +51,16 @@ public class Showing_Aircraft_Tail_Number_and_the_Air_Equip_Type_in_Flifo_Servic
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Showing_Aircraft_Tail_Number_and_the_Air_Equip_Type_in_Flifo_Service_response.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
         Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"));
 
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Showing_Aircraft_Tail_Number_and_the_Air_Equip_Type_in_Flifo_Service_response.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

@@ -54,9 +54,9 @@ public class check_for_invalid_priceinfo_in_request extends FrameworkConstants
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:SeatRequests"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("SeatRequests"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);

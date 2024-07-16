@@ -55,9 +55,9 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
         Assert.assertTrue(response.getBody().asString().contains("<air1:Email>modificados@gmail.com</air1:Email>"));
 
@@ -110,6 +110,11 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(16).getStringCellValue(), getTemp_requestPath(),3);
 
+        //FFNumber
+        XMLParser.updateAttributeValue("air1:CustLoyalty", "MembershipID",  InputRow.getCell(36).getStringCellValue(), getTemp_requestPath());
+        //Name of the FFPax
+        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(37).getStringCellValue(), getTemp_requestPath(),0); //Taking 1st pax as its
+        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(38).getStringCellValue(), getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
 

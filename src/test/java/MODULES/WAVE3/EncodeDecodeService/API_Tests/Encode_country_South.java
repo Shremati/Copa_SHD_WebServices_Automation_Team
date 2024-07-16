@@ -1,5 +1,6 @@
 package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,6 +48,10 @@ public class Encode_country_South extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Encode_country_South.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ConversionRequest=\"South\""));
         Assert.assertTrue(response.getBody().asString().contains("CountryConversion"));
@@ -54,11 +59,8 @@ public class Encode_country_South extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("<ns4:CountryName>SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</ns4:CountryName>"));
         Assert.assertTrue(response.getBody().asString().contains("<ns4:CountryName>SOUTH SUDAN</ns4:CountryName>"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Encode_country_South.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

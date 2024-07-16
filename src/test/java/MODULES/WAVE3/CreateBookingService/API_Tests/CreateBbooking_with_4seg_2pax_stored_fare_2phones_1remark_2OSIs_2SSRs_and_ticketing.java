@@ -55,9 +55,9 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"1\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));

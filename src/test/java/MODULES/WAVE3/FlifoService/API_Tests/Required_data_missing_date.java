@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,17 +49,16 @@ public class Required_data_missing_date extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Required_data_missing_date.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("DepartureDate"));
         Assert.assertTrue(response.getBody().asString().contains("Required data missing"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Required_data_missing_date.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

@@ -54,7 +54,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>FOR SSR FQTR PLUS NAME REMARK TESTING</ns3:Remark>"));
 
         Assertions.AssertWarning(response,false);

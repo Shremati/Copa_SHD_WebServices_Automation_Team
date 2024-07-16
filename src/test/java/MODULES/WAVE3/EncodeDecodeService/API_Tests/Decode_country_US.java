@@ -1,5 +1,6 @@
 package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,16 +48,17 @@ public class Decode_country_US extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_country_US.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ConversionRequest=\"US\""));
         Assert.assertTrue(response.getBody().asString().contains("CountryConversion"));
         Assert.assertTrue(response.getBody().asString().contains("<ns4:CountryName>UNITED STATES OF AMERICA</ns4:CountryName>"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_country_US.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

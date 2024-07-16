@@ -60,9 +60,11 @@ public class Invalid_information_specified_in_AirItinerary extends FrameworkCons
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
 
+//                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
+
 
     }
 

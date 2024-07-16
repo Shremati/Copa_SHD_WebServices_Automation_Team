@@ -1,6 +1,7 @@
 package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
@@ -63,16 +64,16 @@ public class Refund_multiple_tickets extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_1+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
-        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_2+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_multiple_tickets.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_1+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
+        Assert.assertTrue(response.getBody().asString().contains("<ModifyResult TicketNumber=\""+TicketNumber_2+"\" RecordLocator=\""+PNR+"\" RequestType=\"Refund\">"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

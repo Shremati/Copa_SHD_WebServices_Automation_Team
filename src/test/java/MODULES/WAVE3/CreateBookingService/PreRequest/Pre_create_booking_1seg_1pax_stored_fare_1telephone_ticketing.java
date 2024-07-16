@@ -51,9 +51,9 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);

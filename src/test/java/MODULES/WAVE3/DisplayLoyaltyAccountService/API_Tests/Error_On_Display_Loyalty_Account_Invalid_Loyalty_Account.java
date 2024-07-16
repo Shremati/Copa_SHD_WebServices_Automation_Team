@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -46,13 +47,14 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("ACCOUNT NUMBER 230021875 WAS NOT FOUND"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayLoyaltyAccountService\\ErrorOnDisplayLoyaltyAccountInvalidLoyaltyAccount.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("ACCOUNT NUMBER 230021875 WAS NOT FOUND"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,16 +49,15 @@ public class Flifo_for_one_flight_specifying_departure_arrival_city_actual_times
                 .and()
                 .log().all().extract().response();
 
-
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_for_one_flight_specifying_departure_arrival_city_actual_times.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

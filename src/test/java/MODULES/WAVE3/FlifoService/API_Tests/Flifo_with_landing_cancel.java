@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_landing_cancel;
@@ -51,6 +52,9 @@ public class Flifo_with_landing_cancel extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_landing_cancel.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
@@ -58,13 +62,8 @@ public class Flifo_with_landing_cancel extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("FlightStatus=\"Landing Cancelled\""));
         Assert.assertTrue(response.getBody().asString().contains("<ns6:Comment>N LAX/  LX SNOWSTORM IN PTY</ns6:Comment>"));
 
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_landing_cancel.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

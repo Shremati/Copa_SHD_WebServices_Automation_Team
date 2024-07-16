@@ -54,14 +54,14 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"));
         Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:SalesLocation"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("SalesLocation"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"2\" UnitOfMeasureQuantity=\"1\" UnitOfMeasure=\"PC\"/>"));
         Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"));
         Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));

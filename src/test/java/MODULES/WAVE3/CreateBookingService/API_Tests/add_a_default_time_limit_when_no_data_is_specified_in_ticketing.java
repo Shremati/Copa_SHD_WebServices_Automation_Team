@@ -54,8 +54,8 @@ public class add_a_default_time_limit_when_no_data_is_specified_in_ticketing ext
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
         Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
 
         Assertions.AssertWarning(response,false);

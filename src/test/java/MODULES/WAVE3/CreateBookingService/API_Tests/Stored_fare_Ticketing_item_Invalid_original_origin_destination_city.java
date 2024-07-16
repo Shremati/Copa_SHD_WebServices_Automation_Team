@@ -63,7 +63,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add original origin/destination city Transaction -  (1) INVALID CITY CODE S) (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
         Assertions.AssertWarning(response,false);

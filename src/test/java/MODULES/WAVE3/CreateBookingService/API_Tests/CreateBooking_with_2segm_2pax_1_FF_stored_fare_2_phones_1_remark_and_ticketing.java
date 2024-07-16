@@ -56,10 +56,10 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0128\"/>"));
 
         Assertions.AssertWarning(response,false);

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_flight_cancelled;
@@ -52,6 +53,9 @@ public class Flifo_with_flight_cancelled extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_flight_cancelled.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
@@ -59,12 +63,8 @@ public class Flifo_with_flight_cancelled extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("FlightStatus=\"Flight Cancelled"));
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Comment>N JFK/  FX CANCELLED DUE MECHANICAL</ns5:Comment>"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_flight_cancelled.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

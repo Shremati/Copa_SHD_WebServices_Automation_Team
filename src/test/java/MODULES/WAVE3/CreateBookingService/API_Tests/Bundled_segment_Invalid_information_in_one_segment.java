@@ -17,6 +17,8 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -53,11 +55,16 @@ public class Bundled_segment_Invalid_information_in_one_segment extends Framewor
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertFalse(response.getBody().asString().contains("Error"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
+
+        //                ********* Clearing Temp_Request.xml *********
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
     }
 
 

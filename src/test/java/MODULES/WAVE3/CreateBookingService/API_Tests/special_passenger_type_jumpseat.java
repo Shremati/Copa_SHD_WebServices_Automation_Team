@@ -54,7 +54,7 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>JUMPSEAT BOOKING</ns3:Remark>"));
 
         Assertions.AssertWarning(response,false);

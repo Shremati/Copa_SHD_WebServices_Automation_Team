@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.FlifoService.PreRequisites.Update_Flifo_with_forecast;
@@ -51,20 +52,17 @@ public class Flifo_with_forecast extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_forecast.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("FlightInfoDetails"));
         Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"));
         Assert.assertTrue(response.getBody().asString().contains("<ns6:Comment>F PTY/  STORM CLEARED ENROUTE</ns6:Comment>"));
 
-
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Flifo_with_forecast.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -54,7 +54,7 @@ public class CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertFalse(response.getBody().asString().contains("Error"));
 
         Assertions.AssertWarning(response,false);

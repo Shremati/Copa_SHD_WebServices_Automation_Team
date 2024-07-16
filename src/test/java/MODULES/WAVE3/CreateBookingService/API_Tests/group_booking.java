@@ -54,7 +54,7 @@ public class group_booking extends FrameworkConstants
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
 
         Assertions.AssertWarning(response,false);

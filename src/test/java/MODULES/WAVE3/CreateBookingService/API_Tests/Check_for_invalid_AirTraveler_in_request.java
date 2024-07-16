@@ -54,15 +54,16 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
-        writer.write("");
-        writer.flush();
-
         Assert.assertTrue(response.getBody().asString().contains("Errors"));
         Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"));
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
+
+        //                ********* Clearing Temp_Request.xml *********
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
 
     }
 

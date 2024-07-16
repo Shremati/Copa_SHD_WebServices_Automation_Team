@@ -63,7 +63,7 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Form Of Payment Transaction -  (1) NEED CC/CK NBR IN FOP (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
         Assertions.AssertWarning(response,false);

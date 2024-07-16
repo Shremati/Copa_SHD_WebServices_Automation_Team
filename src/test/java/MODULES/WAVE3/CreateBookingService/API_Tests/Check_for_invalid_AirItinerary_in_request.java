@@ -60,10 +60,10 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);
 
+        //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
-
     }
 
 

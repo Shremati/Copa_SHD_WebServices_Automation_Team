@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayLoyaltyAccountService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -46,13 +47,14 @@ public class Display_partner_airline_elite_member_loyalty_account extends Framew
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Unable to display loyalty account -  (1) FQTV NUMBER NOT FOUND"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayLoyaltyAccountService\\Display_partner_airline_elite_member_loyalty_account.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Unable to display loyalty account -  (1) FQTV NUMBER NOT FOUND"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

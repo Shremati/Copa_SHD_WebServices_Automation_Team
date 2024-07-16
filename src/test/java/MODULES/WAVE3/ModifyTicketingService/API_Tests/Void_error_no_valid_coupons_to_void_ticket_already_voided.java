@@ -1,6 +1,7 @@
 package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
@@ -61,14 +62,15 @@ public class Void_error_no_valid_coupons_to_void_ticket_already_voided extends F
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("INVALID - NO VALID COUPONS TO VOID"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Void_error_no_valid_coupons_to_void_ticket_already_voided.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID - NO VALID COUPONS TO VOID"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

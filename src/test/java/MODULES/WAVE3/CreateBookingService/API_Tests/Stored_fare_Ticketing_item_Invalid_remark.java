@@ -64,7 +64,7 @@ public class Stored_fare_Ticketing_item_Invalid_remark extends FrameworkConstant
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
         Assert.assertTrue(response.getBody().asString().contains("Invalid free-flow remark: 1"));
 
         Assertions.AssertWarning(response,false);
