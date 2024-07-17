@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ManageSessions.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -53,11 +54,12 @@ public class Finalise_booking extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"));
         Assert.assertTrue(response.getBody().asString().contains("CustLoyalty"));
 
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

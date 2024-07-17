@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ManageSessions.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -50,11 +51,12 @@ public class Add_session extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 
@@ -105,7 +107,7 @@ public class Add_session extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(2);
 
-        String TransactionIdentifier = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
+        String TransactionIdentifier = XMLParser.GetAttributeValue("ns6:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
         InputRow.getCell(3).setCellValue(TransactionIdentifier);
 
