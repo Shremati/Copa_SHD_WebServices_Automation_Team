@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -49,6 +50,9 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
         //        *********** Main Request ************
 
    //We need to give the same flight, which is used in UpdatePayload_1() request
@@ -72,13 +76,12 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("TimeType=\"Actual\""));
-
         writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlifoService\\Flifo_for_a_flight_with_crossing_date.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

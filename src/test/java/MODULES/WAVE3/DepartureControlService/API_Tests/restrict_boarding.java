@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DepartureControlService.PreRequisites.Assign_aircraft_restrict_boarding;
@@ -52,15 +53,16 @@ public class restrict_boarding extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("WeightRestriction"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\restrict_boarding.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("WeightRestriction"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -93,8 +95,5 @@ public class restrict_boarding extends FrameworkConstants
         wb.close();
 
     }
-
-
-
 
 }

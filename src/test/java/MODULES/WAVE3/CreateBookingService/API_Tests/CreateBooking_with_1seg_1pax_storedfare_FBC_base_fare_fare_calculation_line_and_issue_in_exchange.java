@@ -1,8 +1,8 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.API_Tests.create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
 import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
 import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
@@ -13,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +23,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL extends FrameworkConstants {
+public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange extends FrameworkConstants {
 
     public static String SOAPRequest;
 
@@ -58,13 +57,17 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         Validationcheck();
 

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,14 +48,15 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Required data missing: seat number"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\error_on_block_seat_invalid_seat_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Required data missing: seat number"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -86,8 +88,5 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
         wb.close();
 
     }
-
-
-
 
 }

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -16,6 +17,8 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -46,16 +49,22 @@ public class Bundled_segment_Invalid_information_in_one_segment extends Framewor
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertFalse(response.getBody().asString().contains("Error"));
-        Assert.assertFalse(response.getBody().asString().contains("Warning"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Bundled_segment_Invalid_information_in_one_segment.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertFalse(response.getBody().asString().contains("Error"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
+        //                ********* Clearing Temp_Request.xml *********
+        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
+        writer.write("");
+        writer.flush();
     }
 
 

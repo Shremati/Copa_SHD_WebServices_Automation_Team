@@ -1,10 +1,9 @@
 package MODULES.WAVE3.DepartureControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Checkin_cancel_misconnect;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Create_booking_cancel_misconnect;
-import MODULES.WAVE3.DepartureControlService.PreRequisites.Issue_ticket_cancel_misconnect;
+import MODULES.WAVE3.DepartureControlService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -36,9 +35,15 @@ public class cancel_misconnect extends FrameworkConstants
         Issue_ticket_cancel_misconnect Prerequisite2 = new Issue_ticket_cancel_misconnect();
         Prerequisite2.run();
 
-        Checkin_cancel_misconnect Prerequisite3 = new Checkin_cancel_misconnect();
+        Display_APIS_one_pax_and_baggage_CancelMisconnect Prerequisite3 = new Display_APIS_one_pax_and_baggage_CancelMisconnect();
         Prerequisite3.run();
 
+        Add_APIS_one_pax_and_baggage_cancelMisconnect  Prerequisite4 = new Add_APIS_one_pax_and_baggage_cancelMisconnect();
+        Prerequisite4.run();
+
+        //need to add display and add APIS
+        Checkin_cancel_misconnect Prerequisite5 = new Checkin_cancel_misconnect();
+        Prerequisite5.run();
 
         UpdatePayload();
 
@@ -60,14 +65,16 @@ public class cancel_misconnect extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("CancelMisconnects"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\cancel_misconnect.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("CancelMisconnects"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -89,7 +96,6 @@ public class cancel_misconnect extends FrameworkConstants
 
         String filepath1;
         filepath1=getRequestDirectory()+"DepartureControlService\\cancel_misconnect.xml";
-
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);

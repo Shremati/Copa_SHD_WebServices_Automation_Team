@@ -545,7 +545,7 @@ public class CreateBookingService {
 
         try {
 
-            CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.Execute();
+            CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.Execute();
 
         } catch (Exception e) {
             failTest(e);

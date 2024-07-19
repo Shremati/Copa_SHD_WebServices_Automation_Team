@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,6 +49,11 @@ public class Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequenc
                 .and()
                 .log().all().extract().response();
 
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingInformation"));
         Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
@@ -55,13 +61,9 @@ public class Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequenc
         Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
         Assert.assertTrue(response.getBody().asString().contains("Status=\"OPEN\""));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -36,7 +37,6 @@ public class Create_booking_display_by_tag_number_OA extends FrameworkConstants 
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
 
-
         Response response = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
@@ -50,10 +50,12 @@ public class Create_booking_display_by_tag_number_OA extends FrameworkConstants 
                 .log().all().extract().response();
 
 
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

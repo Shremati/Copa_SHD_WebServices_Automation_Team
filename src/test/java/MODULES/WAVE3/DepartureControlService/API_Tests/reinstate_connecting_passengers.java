@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,15 +49,15 @@ public class reinstate_connecting_passengers extends FrameworkConstants
                 .log().all().extract().response();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("UndoCancelMisconnects"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\reinstate_connecting_passengers.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("UndoCancelMisconnects"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -89,6 +90,5 @@ public class reinstate_connecting_passengers extends FrameworkConstants
         wb.close();
 
     }
-
 
 }

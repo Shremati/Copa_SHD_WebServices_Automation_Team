@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -49,17 +50,15 @@ public class Return_error_msg_if_it_is_more_than_250_flts_in_the_request extends
                 .log().all().extract().response();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("\"FlightSegment\">Maximum number of items exceeded"));
-//
-
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlifoService\\Return_error_msg_if_it_is_more_than_250_flts_in_the_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Errors"));
+        Assert.assertTrue(response.getBody().asString().contains("\"FlightSegment\">Maximum number of items exceeded"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

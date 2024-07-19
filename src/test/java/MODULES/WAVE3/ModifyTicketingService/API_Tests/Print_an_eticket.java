@@ -1,6 +1,7 @@
 package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_print_an_eticket;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
@@ -59,14 +60,15 @@ public class Print_an_eticket extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("INVALID ETKT ITEM NUMBER"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Print_an_eticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID ETKT ITEM NUMBER"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

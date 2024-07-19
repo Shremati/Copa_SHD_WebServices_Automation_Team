@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.PostCheck;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -8,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,6 +50,10 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 
@@ -67,7 +73,6 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PostCheck\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket.xml";
-
 
         XMLParser.SetTagtextatIndex("tic1:RecordLocator", InputRow.getCell(17).getStringCellValue(),filepath1,0);
 

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_Booking_Non_Revenue_Pax;
@@ -54,14 +55,15 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("NO RECORD - CREATE PNR THIS PAX"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Error_check_in_invalid_pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("NO RECORD - CREATE PNR THIS PAX"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

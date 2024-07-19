@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Add_APIS_one_pax_and_baggage;
@@ -75,6 +76,8 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

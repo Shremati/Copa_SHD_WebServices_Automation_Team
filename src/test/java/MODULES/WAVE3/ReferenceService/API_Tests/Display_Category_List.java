@@ -53,7 +53,6 @@ public class Display_Category_List extends FrameworkConstants{
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>CM CATEGORY LIST    </ns4:TextData>"));
         Assert.assertTrue(Assertions.GetActualValue(response,"ns4:TextData").contains("CM CATEGORY LIST"));
 
         Assertions.AssertWarning(response,false);

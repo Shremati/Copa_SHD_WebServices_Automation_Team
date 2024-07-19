@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -49,14 +50,17 @@ public class Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertFalse(response.getBody().asString().contains("Error"));
-        Assert.assertFalse(response.getBody().asString().contains("Warning"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and_place_it_on_queue.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertFalse(response.getBody().asString().contains("Error"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

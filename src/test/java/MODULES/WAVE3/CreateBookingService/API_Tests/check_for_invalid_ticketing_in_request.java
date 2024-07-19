@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -47,12 +48,15 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\check_for_invalid_ticketing_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

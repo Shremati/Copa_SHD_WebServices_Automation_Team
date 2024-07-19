@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_time_limit_issue_ticket_41;
@@ -47,25 +48,28 @@ public class create_booking_1seg_1pax_stored_fare_time_limit extends FrameworkCo
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"));
-        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:SalesLocation"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBaggageAllowance"));
-        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\create_booking_1seg_1pax_stored_fare_time_limit.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"));
+        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("SalesLocation"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"));
+        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

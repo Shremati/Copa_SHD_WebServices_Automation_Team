@@ -1,6 +1,7 @@
 package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_refund_error_cancell_all_segments_prior_refund;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
@@ -61,14 +62,15 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("INVALID - CANCEL ALL SEGMENTS PRIOR TO REFUND"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ModifyTicketingService\\Refund_error_cancell_all_segments_prior_refund.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("INVALID - CANCEL ALL SEGMENTS PRIOR TO REFUND"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

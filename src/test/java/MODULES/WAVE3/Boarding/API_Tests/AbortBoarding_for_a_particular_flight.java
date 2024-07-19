@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -49,18 +50,19 @@ public class AbortBoarding_for_a_particular_flight extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
-        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
-        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\AbortBoarding_for_a_particular_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

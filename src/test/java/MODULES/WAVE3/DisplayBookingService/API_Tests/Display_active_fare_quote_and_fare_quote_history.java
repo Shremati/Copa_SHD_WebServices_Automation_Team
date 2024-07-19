@@ -1,6 +1,7 @@
 package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
@@ -60,15 +61,17 @@ public class Display_active_fare_quote_and_fare_quote_history extends FrameworkC
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("HistoryItems"));
-        Assert.assertTrue(response.getBody().asString().contains("FARE QUOTE"));
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_active_fare_quote_and_fare_quote_history.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("HistoryItems"));
+        Assert.assertTrue(response.getBody().asString().contains("FARE QUOTE"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

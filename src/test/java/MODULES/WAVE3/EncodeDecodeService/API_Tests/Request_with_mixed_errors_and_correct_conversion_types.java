@@ -1,5 +1,6 @@
 package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,6 +48,9 @@ public class Request_with_mixed_errors_and_correct_conversion_types extends Fram
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_with_mixed_errors_and_correct_conversion_types.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("Warnings"));
@@ -54,12 +58,8 @@ public class Request_with_mixed_errors_and_correct_conversion_types extends Fram
         Assert.assertTrue(response.getBody().asString().contains("FR * FRANCE (2) FU    **NO MATCHING ITEM**"));
         Assert.assertTrue(response.getBody().asString().contains("Conversion"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Request_with_mixed_errors_and_correct_conversion_types.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ProcessMealReportService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -51,13 +52,14 @@ public class Meal_Report_Invalid_Flight_Number extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-
-        Assert.assertTrue(response.getBody().asString().contains("INVLD FLT NBR"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ProcessMealReport\\Meal_Report_Invalid_Flight_Number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("INVLD FLT NBR"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

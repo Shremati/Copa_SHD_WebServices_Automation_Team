@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ManageSessions.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Create_Booking;
 import MODULES.WAVE3.ManageSessions.PreRequisites.Modify_Booking;
@@ -55,16 +56,17 @@ public class Modify_name extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ManageSessions\\Modify_name.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
+
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("LISA"));
         Assert.assertTrue(response.getBody().asString().contains("GIRLFRIEND"));
         Assert.assertTrue(response.getBody().asString().contains("MINI"));
 
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ManageSessions\\Modify_name.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

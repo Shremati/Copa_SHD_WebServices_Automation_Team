@@ -1,5 +1,6 @@
 package MODULES.WAVE3.EncodeDecodeService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,6 +48,9 @@ public class Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_a
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_and_ERSP_psswrd_for_sign_in.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("ConversionRequest=\"lax\""));
@@ -55,11 +59,8 @@ public class Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_a
         Assert.assertTrue(response.getBody().asString().contains("<CountryName>UNITED STATES OF AMERICA</CountryName>"));
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_and_ERSP_psswrd_for_sign_in.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

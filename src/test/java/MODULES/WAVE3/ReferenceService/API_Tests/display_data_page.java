@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ReferenceService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -47,13 +48,14 @@ public class display_data_page extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("CM DATA PAGE      TIEMPOS ABORDAJE      CAT:A01 SUB:B01 PGE:C01"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\display_data_page.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("CM DATA PAGE      TIEMPOS ABORDAJE      CAT:A01 SUB:B01 PGE:C01"));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,18 +49,20 @@ public class Invalid_information_specified_in_PriceInfo extends FrameworkConstan
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Create Stored Fare Transaction -  (1) TOO MANY PASSENGERS IN TYPE (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\Invalid_information_specified_in_PriceInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Create Stored Fare Transaction -  (1) TOO MANY PASSENGERS IN TYPE (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
+//                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
-
-
 
     }
 

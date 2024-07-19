@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlightDepartureInfoService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,14 +49,16 @@ public class Flight_has_one_leg_and_open_status extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("Status=\"Open\""));
-        Assert.assertFalse(response.getBody().asString().contains("Status=\"NotOpen\""));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"FlightDepartureInfoService\\Flight_has_one_leg_and_open_status.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Status=\"Open\""));
+        Assert.assertFalse(response.getBody().asString().contains("Status=\"NotOpen\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

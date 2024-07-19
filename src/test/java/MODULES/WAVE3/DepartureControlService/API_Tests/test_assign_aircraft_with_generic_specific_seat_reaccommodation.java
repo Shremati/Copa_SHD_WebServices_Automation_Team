@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.DepartureControlService.PreRequisites.create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation;
@@ -56,11 +57,12 @@ public class test_assign_aircraft_with_generic_specific_seat_reaccommodation ext
                 .log().all().extract().response();
 
 
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\assign_aircraft_with_generic_specific_seat_reaccommodation.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -95,8 +97,5 @@ public class test_assign_aircraft_with_generic_specific_seat_reaccommodation ext
         wb.close();
 
     }
-
-
-
 
 }

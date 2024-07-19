@@ -1,5 +1,6 @@
 package MODULES.WAVE3.PassengerListService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.PassengerListService.PreRequisites.Create_Booking_Request;
@@ -52,14 +53,15 @@ public class Pax_List_Request_Positive_Non_Revenue extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID=\""+PNR+"\""));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"PassengerListService\\Pax_List_Request_Positive_Non_Revenue.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID=\""+PNR+"\""));
 
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

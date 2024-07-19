@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Boarding.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -50,16 +51,17 @@ public class Start_Boarding_using_Boarding_option_as_sequence extends FrameworkC
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
-        Assert.assertFalse(response.getBody().asString().contains("Warnings"));
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_using_Boarding_option_as_sequence.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

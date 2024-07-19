@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ProcessMealReportService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -51,15 +52,16 @@ public class Meal_Report_Preliminary extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ProcessMealReport\\Meal_Report_Preliminary.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("PRELIMINARY MEAL ORDER"));
 
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ProcessMealReport\\Meal_Report_Preliminary.xml"));
-        writer.write(response.asPrettyString());
-        writer.close();
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

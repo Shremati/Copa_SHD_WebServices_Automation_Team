@@ -1,6 +1,7 @@
 package MODULES.WAVE3.QueueService.API_Tests;
 
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -54,7 +55,8 @@ public class Transfer_Queue_Today_to_End_Date extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

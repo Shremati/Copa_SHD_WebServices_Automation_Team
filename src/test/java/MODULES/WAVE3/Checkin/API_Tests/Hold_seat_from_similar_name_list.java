@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_hold_seat_from_similar_name_list;
@@ -57,12 +58,15 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Checkin\\Hold_seat_from_similar_name_list.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

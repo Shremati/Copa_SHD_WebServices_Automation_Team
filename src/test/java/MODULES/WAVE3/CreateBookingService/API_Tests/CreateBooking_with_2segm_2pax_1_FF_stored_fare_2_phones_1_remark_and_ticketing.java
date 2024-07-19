@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing_issue_ticket;
@@ -49,19 +50,20 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0128\"/>"));
-
-
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"));
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0128\"/>"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 
@@ -95,6 +97,11 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(),1);
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMdd(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
+        //FFNumber
+        XMLParser.updateAttributeValue("air1:CustLoyalty", "MembershipID",  InputRow.getCell(36).getStringCellValue(), getTemp_requestPath());
+        //Name of the FFPax
+        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(37).getStringCellValue(), getTemp_requestPath(),0); //Taking 1st pax as its
+        XMLParser.SetTagtextatIndex("com:Surname", InputRow.getCell(38).getStringCellValue(), getTemp_requestPath(),0);
 
         wb.close();
 

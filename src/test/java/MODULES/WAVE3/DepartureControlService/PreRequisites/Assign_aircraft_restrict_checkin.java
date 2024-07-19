@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -52,7 +53,8 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -73,7 +75,7 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(11);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"DepartureControlService\\Assign_aircraft.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Assign_aircraft.xml";
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
@@ -85,7 +87,5 @@ public class Assign_aircraft_restrict_checkin extends FrameworkConstants {
         wb.close();
 
     }
-
-
 
 }

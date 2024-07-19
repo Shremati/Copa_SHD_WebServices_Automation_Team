@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -8,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -49,6 +51,12 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
 //                ********* Clearing Temp_Request.xml *********
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -81,6 +89,5 @@ public class Checkin_cancel_misconnect extends FrameworkConstants {
 
         wb.close();
     }
-
 
 }

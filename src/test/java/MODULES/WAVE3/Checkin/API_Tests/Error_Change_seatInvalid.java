@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
@@ -47,15 +48,15 @@ public class Error_Change_seatInvalid extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
 
-
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("INVLD SEAT/ROW/SEATING OPTION Z"));
-
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Checkin\\Error_Change_seatInvalid.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("INVLD SEAT/ROW/SEATING OPTION Z"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

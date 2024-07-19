@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -52,6 +53,9 @@ public class Display_booking_specific_pax_in_group extends FrameworkConstants {
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                     ********* Clearing Temp_Request.xml *********
 

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.SeatMapService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.SeatMapService.PreRequisites.open_seating_Turn_off_auto_set_mode;
@@ -59,12 +60,16 @@ public class requested_flight_is_in_open_seating_mode_so_no_map_is_available ext
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\requested_flight_is_in_open_seating_mode_so_no_map_is_available.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

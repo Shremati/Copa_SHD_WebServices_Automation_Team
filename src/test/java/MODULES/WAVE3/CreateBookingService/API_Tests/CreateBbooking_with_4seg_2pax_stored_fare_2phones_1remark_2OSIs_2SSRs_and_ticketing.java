@@ -1,5 +1,6 @@
 package MODULES.WAVE3.CreateBookingService.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing;
@@ -48,19 +49,22 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("ns3:BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"1\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"2\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"1\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"2\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();
 

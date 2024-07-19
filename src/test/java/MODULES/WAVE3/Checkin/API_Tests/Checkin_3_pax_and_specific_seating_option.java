@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.API_Tests;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_Checkin_3_Pax;
@@ -64,14 +65,15 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
                     .and()
                     .log().all().extract().response();
 
-            Assert.assertTrue(response.getBody().asString().contains("Success"));
-            Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
-
-
             BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Checkin_3_pax_and_specific_seating_option.xml"));
             writer.write(response.asPrettyString());
             writer.close();
 
+            Assert.assertTrue(response.getBody().asString().contains("Success"));
+            Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+
+            Assertions.AssertWarning(response,false);
+            Assertions.AssertResponseTime(response,ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********

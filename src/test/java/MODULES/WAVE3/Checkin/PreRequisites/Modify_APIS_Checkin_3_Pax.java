@@ -1,5 +1,6 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -48,11 +49,15 @@ public class Modify_APIS_Checkin_3_Pax extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
 
-        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"));
-
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"));
+
+        Assertions.AssertWarning(response,false);
+        Assertions.AssertResponseTime(response,ResponseTime);
+
 //                     ********* Clearing Temp_Request.xml *********
 
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
