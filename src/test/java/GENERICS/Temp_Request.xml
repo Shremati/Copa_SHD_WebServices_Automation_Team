@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
+    
+
+<soapenv:Header/>
+    
+
+<soapenv:Body>
+        
+
+<cre:createBooking>
+            
+
+<air:OTA_AirBookRQ Version="4.000">
+                
+
+<air:POS>
+                    
+
+<com:Source AirlineVendorID="CM"/>
+                
+
+</air:POS>
+                
+
+<air:PriceInfo>
+                    
+
+<air1:PTC_FareBreakdowns>
+                        
+
+<air1:PTC_FareBreakdown>
+                            
+
+<air1:PassengerTypeQuantity Code="ADT" Quantity="3"/>
+                            
+
+<air1:FareBasisCodes>
+                                
+
+<air1:FareBasisCode NotValidAfter="2024-08-05" NotValidBefore="2024-07-31">X</air1:FareBasisCode>
+                            
+
+</air1:FareBasisCodes>
+                            
+
+<air1:PassengerFare>
+                                
+
+<air1:BaseFare Amount="272.00" CurrencyCode="USD"/>
+                                
+
+<air1:Taxes>
+                                    
+
+<air1:Tax Amount="27.20" TaxCode="AG"/>
+                                
+
+</air1:Taxes>
+                                
+
+<air1:TotalFare Amount="299.20" CurrencyCode="USD"/>
+                                
+
+<air1:UnstructuredFareCalc>SOME DETAILS</air1:UnstructuredFareCalc>
+                            
+
+</air1:PassengerFare>
+                            
+
+<air1:TravelerRefNumber RPH="1"/>
+                            
+
+<air1:TravelerRefNumber RPH="2"/>
+                            
+
+<air1:TravelerRefNumber RPH="3"/>
+                        
+
+</air1:PTC_FareBreakdown>
+                    
+
+</air1:PTC_FareBreakdowns>
+                
+
+</air:PriceInfo>
+                
+
+<air:TravelerInfo>
+                    
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+<air1:PersonName>
+                            
+
+<com:GivenName>JOHNNY</com:GivenName>
+                            
+
+<com:Surname>WALKER</com:Surname>
+                        
+
+</air1:PersonName>
+                        
+
+<air1:Telephone AreaCityCode="555" PhoneNumber="555-0129" PhoneUseType="3"/>
+                        
+
+<air1:TravelerRefNumber RPH="1"/>
+                    
+
+</air1:AirTraveler>
+                    
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+<air1:PersonName>
+                            
+
+<com:GivenName>DON</com:GivenName>
+                            
+
+<com:Surname>JULIO</com:Surname>
+                        
+
+</air1:PersonName>
+                        
+
+<air1:TravelerRefNumber RPH="2"/>
+                    
+
+</air1:AirTraveler>
+                    
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+<air1:PersonName>
+                            
+
+<com:GivenName>WILLIAN</com:GivenName>
+                            
+
+<com:Surname>LAWSONS</com:Surname>
+                        
+
+</air1:PersonName>
+                        
+
+<air1:TravelerRefNumber RPH="3"/>
+                    
+
+</air1:AirTraveler>
+                    
+
+<air1:SpecialReqDetails>
+                        
+
+<air1:SeatRequests>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="1" SeatPreference="15" TravelerRefNumberRPHList="1"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="1" SeatPreference="15" TravelerRefNumberRPHList="2"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="1" SeatPreference="15" TravelerRefNumberRPHList="3"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="2" SeatPreference="19" TravelerRefNumberRPHList="1"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="2" SeatPreference="19" TravelerRefNumberRPHList="2"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="2" SeatPreference="19" TravelerRefNumberRPHList="3"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="3" SeatPreference="13" TravelerRefNumberRPHList="1"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="3" SeatPreference="13" TravelerRefNumberRPHList="2"/>
+                            
+
+<air1:SeatRequest FlightRefNumberRPHList="3" SeatPreference="13" TravelerRefNumberRPHList="3"/>
+                        
+
+</air1:SeatRequests>
+                    
+
+</air1:SpecialReqDetails>
+                
+
+</air:TravelerInfo>
+                
+
+<air:Ticketing TicketingStatus="3"/>
+            
+
+</air:OTA_AirBookRQ>
+        
+
+</cre:createBooking>
+    
+
+</soapenv:Body>
+
+</soapenv:Envelope>

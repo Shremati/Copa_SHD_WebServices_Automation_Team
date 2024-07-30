@@ -2,6 +2,8 @@ package MODULES.WAVE3.AirInventoryService;
 
 import MODULES.WAVE3.AirInventoryService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,8 +11,10 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //13 Scenarios
+@Listeners(TestListener.class)
 public class AirInventoryService {
 
+    String class_name=this.getClass().getName();
     AirInventoryService() {
         createFolders(getResponseDirectory() + "AirInventoryService");
     }

@@ -2,6 +2,8 @@ package MODULES.WAVE3.CreateBookingService;
 
 import MODULES.WAVE3.CreateBookingService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,6 +11,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //38 Scenarios
+@Listeners(TestListener.class)
 public class CreateBookingService {
 
     CreateBookingService()
@@ -16,8 +19,7 @@ public class CreateBookingService {
         createFolders(getResponseDirectory()+"CreateBookingService");
     }
 
-    @Description("CBS_02 - Create a booking with 1 segment, 1 passenger, stored fare, 1 telephone and ticketing")
-    @Test
+    @Test(description = "CBS_02 - Create a booking with 1 segment, 1 passenger, stored fare, 1 telephone and ticketing")
     public void CBS_02() {
 
         try {
@@ -29,8 +31,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_05 - Create a booking with 4 segments, 2 passengers (1 frequent flyer and 1 infant), stored fare, 1 telephone, 1 remark, 2 SSRs and ticketing.")
-    @Test
+    @Test(description = "CBS_05 - Create a booking with 4 segments, 2 passengers (1 frequent flyer and 1 infant), stored fare, 1 telephone, 1 remark, 2 SSRs and ticketing.")
     public void CBS_05() {
 
         try {
@@ -43,8 +44,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_06 - Create a booking with 4 segments (HA), 2 passengers (1 frequent flyer and 1 infant), 1 email, stored fare, 1 OSI, 1 remark, Advance Seat Assignment and ticketing.")
-    @Test
+    @Test(description = "CBS_06 - Create a booking with 4 segments (HA), 2 passengers (1 frequent flyer and 1 infant), 1 email, stored fare, 1 OSI, 1 remark, Advance Seat Assignment and ticketing.")
     public void CBS_06() {
 
         try {
@@ -57,8 +57,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_13 - Check for invalid Ticketing in request")
-    @Test
+    @Test(description = "CBS_13 - Check for invalid Ticketing in request")
     public void CBS_13() {
 
         try {
@@ -70,8 +69,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_14 - Check for invalid PriceInfo in request")
-    @Test
+    @Test(description = "CBS_14 - Check for invalid PriceInfo in request")
     public void CBS_14() {
         try {
             check_for_invalid_priceinfo_in_request.Execute();
@@ -83,8 +81,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_19 - Add a default time limit when no data is specified in Ticketing")
-    @Test
+    @Test(description = "CBS_19 - Add a default time limit when no data is specified in Ticketing")
     public void CBS_19() {
 
         try {
@@ -97,8 +94,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_23 - Create a booking with 1 segment, 1 passenger, stored fare (1 fare basis code, base fare, not valid before/after date, fare calculation line, bagagge allowance, sale location, 1 free-flow remark, tour code and form of payment CASH) and time limit")
-    @Test
+    @Test(description = "CBS_23 - Create a booking with 1 segment, 1 passenger, stored fare (1 fare basis code, base fare, not valid before/after date, fare calculation line, bagagge allowance, sale location, 1 free-flow remark, tour code and form of payment CASH) and time limit")
     public void CBS_23() {
         try {
             create_booking_1seg_1pax_stored_fare_time_limit.Execute();
@@ -110,8 +106,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_25 - Create a booking with 2 segments, 2 passengers, stored fare (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 3 free-flow remark, tour code, 2 endorsements, last ticketing date, bankers rate and form of payment CHECK) and ticketing")
-    @Test
+    @Test(description = "CBS_25 - Create a booking with 2 segments, 2 passengers, stored fare (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 3 free-flow remark, tour code, 2 endorsements, last ticketing date, bankers rate and form of payment CHECK) and ticketing")
     public void CBS_25() {
 
         try {
@@ -124,8 +119,8 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_27 - Create a booking with 2 segments, 2 passengers, stored fare per passenger (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 1 free-flow remark, tour code, 2 endorsements, last ticketing date, original origin/destination city, bankers rate, original issue and form of payment Credit Card) and ticketing")
-    @Test
+    @Test(description = "CBS_27 - Create a booking with 2 segments, 2 passengers, stored fare per passenger (2 fare basis code, base fare, not valid before/after date, fare calculation line, 2 bagagge allowance, sale location, 1 free-flow remark, tour code, 2 endorsements, last ticketing date, original origin/destination city, bankers rate, original issue and form of payment Credit Card) and ticketing")
+
     public void CBS_27() {
 
         try {
@@ -139,8 +134,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_33 - Stored fare - Ticketing item: Invalid bagagge allowance")
-    @Test
+    @Test(description = "CBS_33 - Stored fare - Ticketing item: Invalid bagagge allowance")
     public void CBS_33() {
 
         try {
@@ -151,12 +145,9 @@ public class CreateBookingService {
             failTest(e);
             System.out.println("CBS_33 failed due to :" + e);
         }
-
-
     }
 
-    @Description("CBS_55 - Waitlist booking (action code - LL)")
-    @Test
+    @Test(description = "CBS_55 - Waitlist booking (action code - LL)")
     public void CBS_55() {
 
         try {
@@ -171,8 +162,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_59 - Group booking")
-    @Test
+    @Test(description = "CBS_59 - Group booking")
     public void CBS_59() {
 
         try {
@@ -186,8 +176,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_65 - Special passenger type - Non Revenue Space Available staff travel")
-    @Test
+    @Test(description = "CBS_65 - Special passenger type - Non Revenue Space Available staff travel")
     public void CBS_65() {
 
         try {
@@ -201,8 +190,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_67 - Special passenger type - Jump seat")
-    @Test
+    @Test(description = "CBS_67 - Special passenger type - Jump seat")
     public void CBS_67() {
 
         try {
@@ -216,8 +204,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_80 - Passengers with frequent traveler number for reward redemption (SSR FQTR) and name remark")
-    @Test
+    @Test(description = "CBS_80 - Passengers with frequent traveler number for reward redemption (SSR FQTR) and name remark")
     public void CBS_80() {
 
         try {
@@ -231,8 +218,7 @@ public class CreateBookingService {
 
     }
 
-    @Description("CBS_99 - Add the Form Of Payment remark and the FOP in the stored fare")
-    @Test
+    @Test(description = "CBS_99 - Add the Form Of Payment remark and the FOP in the stored fare")
     public void CBS_99() {
 
         try {
@@ -245,8 +231,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_03 - CreateBooking with 2 segments , 2pax (1 FF), stored fare, 2 phones, 1 remark and ticketing")
-    @Test
+    @Test(description = "CBS_03 - CreateBooking with 2 segments , 2pax (1 FF), stored fare, 2 phones, 1 remark and ticketing")
     public void CBS_03() {
 
         try {
@@ -259,8 +244,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_04 - CreateBooking with 4seg, 2pax, stored fare, 2phones,1remark, 2OSIs, 2SSRs and ticketing")
-    @Test
+    @Test(description = "CBS_04 - CreateBooking with 4seg, 2pax, stored fare, 2phones,1remark, 2OSIs, 2SSRs and ticketing")
     public void CBS_04() {
 
         try {
@@ -272,8 +256,7 @@ public class CreateBookingService {
             System.out.println("CBS_04 failed due to :" + e);
         }
     }
-    @Description("CBS_07 - CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
-    @Test
+    @Test(description = "CBS_07 - CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
     public void CBS_07() {
 
         try {
@@ -286,8 +269,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_10 - CreateBooking with 3 seg(1ARNK),2pax(1FF),stored fare,2phones,1OSI,3remarks,SeatAssignment and ticketing")
-    @Test
+    @Test(description = "CBS_10 - CreateBooking with 3 seg(1ARNK),2pax(1FF),stored fare,2phones,1OSI,3remarks,SeatAssignment and ticketing")
     public void CBS_10() {
 
         try {
@@ -300,8 +282,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_11 - Check_for_invalid_AirItinerary_in_request")
-    @Test
+    @Test(description = "CBS_11 - Check_for_invalid_AirItinerary_in_request")
     public void CBS_11() {
 
         try {
@@ -313,8 +294,8 @@ public class CreateBookingService {
             System.out.println("CBS_11 failed due to :" + e);
         }
     }
-    @Description("CBS_12 - Check for invalid AirTraveler in request")
-    @Test
+
+    @Test(description = "CBS_12 - Check for invalid AirTraveler in request")
     public void CBS_12() {
 
         try {
@@ -327,8 +308,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_16 - CreateBooking Failure in one of the components of the system (SDS unavailable or SHARES unreachable)")
-    @Test
+    @Test(description = "CBS_16 - CreateBooking Failure in one of the components of the system (SDS unavailable or SHARES unreachable)")
     public void CBS_16() {
 
         try {
@@ -343,8 +323,7 @@ public class CreateBookingService {
     }
 
 
-    @Description("CBS_17 - Invalid information specified in AirItinerary")
-    @Test
+    @Test(description = "CBS_17 - Invalid information specified in AirItinerary")
     public void CBS_17() {
 
         try {
@@ -357,8 +336,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_18 - Invalid information specified in AirTraveler")
-    @Test
+    @Test(description = "CBS_18 - Invalid information specified in AirTraveler")
     public void CBS_18() {
 
         try {
@@ -371,8 +349,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_20 - Invalid information specified in PriceInfo")
-    @Test
+    @Test(description = "CBS_20 - Invalid information specified in PriceInfo")
     public void CBS_20() {
 
         try {
@@ -385,8 +362,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_29 - CreateBooking with 1 seg, 1 pax, stored fare (base fare, NVA date, fare calculation line, BA and tour code) and TL")
-    @Test
+    @Test(description = "CBS_29 - CreateBooking with 1 seg, 1 pax, stored fare (base fare, NVA date, fare calculation line, BA and tour code) and TL")
     public void CBS_29() {
 
         try {
@@ -399,8 +375,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_51 - Bundled segment - Invalid information in one segment")
-    @Test
+    @Test(description = "CBS_51 - Bundled segment - Invalid information in one segment")
     public void CBS_51() {
 
         try {
@@ -413,8 +388,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_34 - Stored fare - Ticketing item  Invalid tour code")
-    @Test
+    @Test(description = "CBS_34 - Stored fare - Ticketing item  Invalid tour code")
     public void CBS_34() {
 
         try {
@@ -427,8 +401,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_35 - Stored fare - Ticketing item Invalid original issued info")
-    @Test
+    @Test(description = "CBS_35 - Stored fare - Ticketing item Invalid original issued info")
     public void CBS_35() {
 
         try {
@@ -441,8 +414,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_36 - Stored fare - Ticketing item Invalid bankers rate info")
-    @Test
+    @Test(description = "CBS_36 - Stored fare - Ticketing item Invalid bankers rate info")
     public void CBS_36() {
 
         try {
@@ -455,8 +427,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_37 - Stored fare - Ticketing item Invalid remark")
-    @Test
+    @Test(description = "CBS_37 - Stored fare - Ticketing item Invalid remark")
     public void CBS_37() {
 
         try {
@@ -469,8 +440,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_38 - Stored fare - Ticketing item Invalid original origin destination city")
-    @Test
+    @Test(description = "CBS_38 - Stored fare - Ticketing item Invalid original origin destination city")
     public void CBS_38() {
 
         try {
@@ -483,8 +453,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_39 - Stored fare - Ticketing item Invalid form of payment")
-    @Test
+    @Test(description = "CBS_39 - Stored fare - Ticketing item Invalid form of payment")
     public void CBS_39() {
 
         try {
@@ -497,8 +466,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_40 - Stored fare - Ticketing item No form of payment")
-    @Test
+    @Test(description = "CBS_40 - Stored fare - Ticketing item No form of payment")
     public void CBS_40() {
 
         try {
@@ -511,8 +479,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_41 - Stored fare - Ticketing item too long remark")
-    @Test
+    @Test(description = "CBS_41 - Stored fare - Ticketing item too long remark")
     public void CBS_41() {
 
         try {
@@ -525,8 +492,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_43 - Create a booking with 1 segment, 1 passenger, stored fare, ticketing and place it on queue")
-    @Test
+    @Test(description = "CBS_43 - Create a booking with 1 segment, 1 passenger, stored fare, ticketing and place it on queue")
     public void CBS_43() {
 
         try {
@@ -539,8 +505,7 @@ public class CreateBookingService {
         }
     }
 
-    @Description("CBS_28 - CreateBooking with 1seg,1pax,stored fare(FBC, base fare, fare calculation line and issue in exchange without coupons) and TL")
-    @Test
+    @Test(description = "CBS_28 - CreateBooking with 1seg,1pax,stored fare(FBC, base fare, fare calculation line and issue in exchange without coupons) and TL")
     public void CBS_28() {
 
         try {

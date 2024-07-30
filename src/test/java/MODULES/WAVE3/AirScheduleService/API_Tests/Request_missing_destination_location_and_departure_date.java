@@ -5,6 +5,8 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -12,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -24,6 +27,7 @@ import static io.restassured.RestAssured.given;
 public class Request_missing_destination_location_and_departure_date extends FrameworkConstants {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -35,18 +39,20 @@ public class Request_missing_destination_location_and_departure_date extends Fra
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest); 
+
+        Response response=requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getAirscheduleservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirScheduleService\\Request_missing_destination_location_and_departure_date.xml"));
         writer.write(response.asPrettyString());

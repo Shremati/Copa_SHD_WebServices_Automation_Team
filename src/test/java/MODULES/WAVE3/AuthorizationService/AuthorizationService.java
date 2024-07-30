@@ -4,6 +4,8 @@ import MODULES.WAVE3.AuthorizationService.API_Tests.Approval_for_visa_credit_car
 import MODULES.WAVE3.AuthorizationService.API_Tests.Error_text_for_Visa_credit_card;
 import MODULES.WAVE3.AuthorizationService.API_Tests.Invalid_Request;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -11,14 +13,15 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //3 Scenarios
+@Listeners(TestListener.class)
 public class AuthorizationService {
 
     AuthorizationService() {
         createFolders(getResponseDirectory() + "AuthorizationService");
     }
 
-    @Description("AuthS_01 - Approval for Visa credit card")
-    @Test
+   // @Description("AuthS_01 - Approval for Visa credit card")
+    @Test (description = "AuthS_01 - Approval for Visa credit card")
     public void AuthS_01() {
 
         try {
@@ -30,8 +33,7 @@ public class AuthorizationService {
         }
     }
 
-    @Description("AuthS_03 - Error_text_for_Visa_credit_card")
-    @Test
+    @Test(description = "AuthS_03 - Error_text_for_Visa_credit_card")
     public void AuthS_03() {
 
         try {
@@ -43,8 +45,7 @@ public class AuthorizationService {
         }
     }
 
-    @Description("AuthS_12 - Invalid_Request")
-    @Test
+    @Test(description = "AuthS_12 - Invalid_Request")
     public void AuthS_12() {
 
         try {

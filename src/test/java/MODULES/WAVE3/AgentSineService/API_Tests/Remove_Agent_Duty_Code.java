@@ -5,13 +5,16 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -24,31 +27,33 @@ import static io.restassured.RestAssured.given;
 public class Remove_Agent_Duty_Code extends FrameworkConstants {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest); 
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getAgentsine())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AgentSineService\\Remove_Agent_Duty_Code.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AgentSineService\\Remove_Agent_Duty_Code.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -56,8 +61,8 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         Assert.assertTrue(response.getBody().asString().contains("DUTY REMOVED"));
 
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assertions.AssertWarning(response, false);
+        Assertions.AssertResponseTime(response, ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -68,18 +73,17 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AgentSine");
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow = sheet.getRow(5);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AgentSineService\\Remove_Agent_Duty_Code.xml";
+        filepath1 = getRequestDirectory() + "AgentSineService\\Remove_Agent_Duty_Code.xml";
 
 
         XMLParser.updateAttributeValue("air:AgentDetails", "AgentNumber", InputRow.getCell(1).getStringCellValue(), filepath1);
@@ -87,8 +91,6 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
 
         wb.close();
     }
-
-
 
 
 }

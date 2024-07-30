@@ -2,6 +2,8 @@ package MODULES.WAVE3.AirScheduleService;
 
 import MODULES.WAVE3.AirScheduleService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,6 +11,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //14 Scenarios
+@Listeners(TestListener.class)
 public class AirScheduleService {
 
     AirScheduleService() {

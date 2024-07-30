@@ -5,12 +5,15 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -20,45 +23,47 @@ import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
-public class Invalid_Request extends FrameworkConstants
-{
+public class Invalid_Request extends FrameworkConstants {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
-
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
-
-
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getAuthorizationservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Invalid_Request.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AuthorizationService\\Invalid_Request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
+        ExtentLogger.info("Assertion passed - contains ns5:Errors");
         Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."));
+        ExtentLogger.info("Assertion passed - contains Invalid type of request.");
 
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -68,21 +73,20 @@ public class Invalid_Request extends FrameworkConstants
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("AuthorizationService");
-        XSSFRow InputRow=sheet.getRow(3);
+        XSSFRow InputRow = sheet.getRow(3);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"AuthorizationService\\Invalid_Request.xml";
+        filepath1 = getRequestDirectory() + "AuthorizationService\\Invalid_Request.xml";
 
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(6).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(6).getStringCellValue(), filepath1);
 
         wb.close();
 
