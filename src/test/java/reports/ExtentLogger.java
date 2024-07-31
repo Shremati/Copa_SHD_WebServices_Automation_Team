@@ -11,12 +11,19 @@ import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 
 
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,38 +31,36 @@ import java.util.Map;
 public final class ExtentLogger {
 
     static String reportName;
-    private ExtentLogger(){}
 
-    public static void pass(String message)
-    {
+    private ExtentLogger() {
+    }
+
+    public static void pass(String message) {
         ExtentManager.getTest().pass(message);
     }
 
-    public static void fail(String message)
-    {
+    public static void fail(String message) {
         ExtentManager.getTest().fail(MarkupHelper.createLabel(message, ExtentColor.RED));
     }
-    public static void setReportName(String rname)
-    {
-      reportName=rname;
+
+    public static void setReportName(String rname) {
+        reportName = rname;
     }
-    public static String getReportName()
-    {
+
+    public static String getReportName() {
         return reportName;
     }
-    public static void info(String message)
-    {
+
+    public static void info(String message) {
         ExtentManager.getTest().info(message);
     }
 
-    public static void logJSONResponse(String message)
-    {
+    public static void logJSONResponse(String message) {
         info("Response Below: ");
         ExtentManager.getTest().info(MarkupHelper.createCodeBlock(message, CodeLanguage.JSON));
     }
 
-    public static void logXMLResponse(String message)
-    {
+    public static void logXMLResponse(String message) {
         info("Response Details below: ");
         Markup m = MarkupHelper.createCodeBlock(message);
         ExtentManager.getTest().info(m);
@@ -63,6 +68,7 @@ public final class ExtentLogger {
 
     public static void logXMLRequest(String message) {
         info("Request Details below: ");
+        message = removeSpacesInXml(message);
         Markup m = MarkupHelper.createCodeBlock(message);
         ExtentManager.getTest().info(m);
     }
@@ -82,6 +88,7 @@ public final class ExtentLogger {
 
         }
     }
+
     public static void logXMLRequest(RequestSpecification requestSpecification) {
         info("Request Details below: ");
         RequestSpecificationImpl specImpl = (RequestSpecificationImpl) requestSpecification;
@@ -127,24 +134,48 @@ public final class ExtentLogger {
         }*/
 
     }
-    public static void logJSONRequest(RequestSpecification requestSpecification)
-    {
+
+    public static void logJSONRequest(RequestSpecification requestSpecification) {
         info("Request Details below: ");
         QueryableRequestSpecification query = SpecificationQuerier.query(requestSpecification);
         info(query.getBaseUri());
-        String message=query.getBody();
+        String message = query.getBody();
         ExtentManager.getTest().info(MarkupHelper.createCodeBlock(message, CodeLanguage.JSON));
-        for(Header h:query.getHeaders())
-            info(h.getName()+" : "+h.getValue());
+        for (Header h : query.getHeaders())
+            info(h.getName() + " : " + h.getValue());
 
         Map<String, String> map = new HashMap<>();
-        map=query.getQueryParams();
+        map = query.getQueryParams();
 
-        for(String s : map.keySet())
-        {
+        for (String s : map.keySet()) {
             String key = s.toString();
             String val = map.get(s).toString();
-            info(key +" : "+val);
+            info(key + " : " + val);
+        }
+    }
+
+    public static String removeSpacesInXml(String xml) {
+        try {
+            String compactXml = xml.replaceAll(">\\s+<", "><");
+            // Parse the XML string into a Document
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(new StringReader(compactXml)));
+
+            // Transform the Document back into a formatted string
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            StringWriter writer = new StringWriter();
+            transformer.transform(new DOMSource(document), new StreamResult(writer));
+
+            return writer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
