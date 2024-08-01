@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -39,6 +40,8 @@ public class Approval_for_visa_credit_card extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+
         requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
@@ -53,6 +56,8 @@ public class Approval_for_visa_credit_card extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AuthorizationService\\Approval_for_visa_credit_card.xml"));
         writer.write(response.asPrettyString());

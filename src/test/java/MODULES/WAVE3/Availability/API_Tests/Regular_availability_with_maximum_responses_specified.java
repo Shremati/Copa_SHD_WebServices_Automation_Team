@@ -31,7 +31,7 @@ public class Regular_availability_with_maximum_responses_specified extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
-
+        ExtentLogger.info("Base URL : "+getBaseURL());
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());

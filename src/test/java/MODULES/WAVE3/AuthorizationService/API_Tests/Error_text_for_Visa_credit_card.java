@@ -20,6 +20,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -36,6 +37,9 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        //ExtentLogger.info("Authorization : "+getAuthorizationservice());
+
         requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
@@ -50,7 +54,7 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AuthorizationService\\Error_text_for_Visa_credit_card.xml"));
         writer.write(response.asPrettyString());
         writer.close();

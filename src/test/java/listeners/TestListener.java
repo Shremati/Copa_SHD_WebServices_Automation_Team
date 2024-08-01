@@ -4,6 +4,8 @@ import org.testng.*;
 import reports.ExtentLogger;
 import reports.ExtentReport;
 
+import static frameworkconstants.FrameworkConstants.getBaseURL;
+
 public class TestListener implements ITestListener, ISuiteListener, IClassListener, IInvokedMethodListener {
 
     String testDescription;
@@ -15,6 +17,7 @@ public class TestListener implements ITestListener, ISuiteListener, IClassListen
         String rName[] = name.split("\\.");
         ExtentLogger.setReportName(rName[0]);
         ExtentReport.initReports();
+
         }
 
     public void onAfterClass(org.testng.ITestClass testClass) {

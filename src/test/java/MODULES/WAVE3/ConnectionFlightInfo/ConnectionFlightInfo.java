@@ -5,12 +5,14 @@ import MODULES.WAVE3.Checkin.API_Tests.checkin_one_pax_and_baggage;
 import MODULES.WAVE3.ConnectionFlightInfo.API_Tests.Get_inbound_flight_info;
 import MODULES.WAVE3.ConnectionFlightInfo.API_Tests.Get_outbound_flight_info;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
-
+@Listeners(TestListener.class)
 public class ConnectionFlightInfo {
 
     ConnectionFlightInfo()
@@ -18,8 +20,7 @@ public class ConnectionFlightInfo {
         createFolders(getResponseDirectory()+"ConnectionFlightInfo");
     }
 
-    @Description("CFI_01 - Get Inbound Flight Info")
-    @Test
+    @Test(description = "CFI_01 - Get Inbound Flight Info")
     public void CFI_01()
     {
         try
@@ -33,8 +34,7 @@ public class ConnectionFlightInfo {
         }
     }
 
-    @Description("CFI_02 - Get Outbound Flight Info")
-    @Test
+    @Test(description = "CFI_02 - Get Outbound Flight Info")
     public void CFI_02()
     {
         try

@@ -5,18 +5,21 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -27,41 +30,54 @@ public class Encode_decode_codeshare_flight extends FrameworkConstants {
     public static String FlightNumber;
     public static String AirlineCode;
 
+    static RequestSpecification requestSpecification;
 
-
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
-
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getEncodedecodeservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"EncodeDecodeService\\Encode_decode_codeshare_flight.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "EncodeDecodeService\\Encode_decode_codeshare_flight.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("Conversion ConversionRequest=\""+AirlineCode+ " " +FlightNumber+"\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightConversion"));
+        ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assert.assertTrue(response.getBody().asString().contains("Conversion ConversionRequest=\"" + AirlineCode + " " + FlightNumber + "\""),
+                "Do not contain Conversion ConversionRequest");
+
+        ExtentLogger.info("Assertion passed - contains Conversion ConversionRequest");
+
+        Assert.assertTrue(response.getBody().asString().contains("FlightConversion"),
+                "Do not contain FlightConversion");
+        ExtentLogger.info("Assertion passed - contains FlightConversion");
+
+        Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
+        Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -71,22 +87,21 @@ public class Encode_decode_codeshare_flight extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("EncodeDecodeService");
-        XSSFRow InputRow=sheet.getRow(11);
+        XSSFRow InputRow = sheet.getRow(11);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"EncodeDecodeService\\Encode_decode_codeshare_flight.xml";
+        filepath1 = getRequestDirectory() + "EncodeDecodeService\\Encode_decode_codeshare_flight.xml";
 
 
-        XMLParser.updateAttributeValue("con:Airline","Code", InputRow.getCell(9).getStringCellValue(),filepath1);
-        XMLParser.SetTagtextatIndex("con:FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValue("con:Airline", "Code", InputRow.getCell(9).getStringCellValue(), filepath1);
+        XMLParser.SetTagtextatIndex("con:FlightNumber", InputRow.getCell(10).getStringCellValue(), getTemp_requestPath(), 0);
 
         FlightNumber = InputRow.getCell(10).getStringCellValue();
         AirlineCode = InputRow.getCell(9).getStringCellValue();

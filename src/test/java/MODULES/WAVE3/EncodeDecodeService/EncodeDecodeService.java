@@ -2,21 +2,22 @@ package MODULES.WAVE3.EncodeDecodeService;
 
 import MODULES.WAVE3.EncodeDecodeService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//5 Scenarios
+@Listeners(TestListener.class)
 public class EncodeDecodeService {
 
     EncodeDecodeService() {
         createFolders(getResponseDirectory() + "EncodeDecodeService");
     }
 
-    @Description("EDS_01 - Decode city code LAX")
-    @Test
+    @Test(description = "EDS_01 - Decode city code LAX")
     public void EDS_01() {
 
         try {
@@ -28,8 +29,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_03 - Decode airline CO")
-    @Test
+    @Test(description = "EDS_03 - Decode airline CO")
     public void EDS_03() {
 
         try {
@@ -41,8 +41,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_04 - Encode airline United")
-    @Test
+    @Test(description = "EDS_04 - Encode airline United")
     public void EDS_04() {
 
         try {
@@ -54,21 +53,19 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_7 - Request mutliple mixed messages of airport, airline and country")
-    @Test
-    public void EDS_7() {
+    @Test(description = "EDS_07 - Request mutliple mixed messages of airport, airline and country")
+    public void EDS_07() {
 
         try {
             Request_mutliple_mixed_messages_of_city_airport_airline_country_flight.Execute();
 
         } catch (Exception e) {
             failTest(e);
-            System.out.println("EDS_7 failed due to :" + e);
+            System.out.println("EDS_07 failed due to :" + e);
         }
     }
 
-    @Description("EDS_15 - Decode city code LAX specifying an agent sine and airport code for sign in")
-    @Test
+    @Test(description = "EDS_15 - Decode city code LAX specifying an agent sine and airport code for sign in")
     public void EDS_15() {
 
         try {
@@ -80,8 +77,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_02 - Encode city South")
-    @Test
+    @Test(description = "EDS_02 - Encode city South")
     public void EDS_02() {
 
         try {
@@ -93,8 +89,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_05 - Decode country US")
-    @Test
+    @Test(description = "EDS_05 - Decode country US")
     public void EDS_05() {
 
         try {
@@ -106,8 +101,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_06 - Encode country South")
-    @Test
+    @Test(description = "EDS_06 - Encode country South")
     public void EDS_06() {
 
         try {
@@ -119,8 +113,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_08 - Request with empty conversion")
-    @Test
+    @Test(description = "EDS_08 - Request with empty conversion")
     public void EDS_08() {
 
         try {
@@ -132,8 +125,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_09 - Request with mixed errors and correct conversion types")
-    @Test
+    @Test(description = "EDS_09 - Request with mixed errors and correct conversion types")
     public void EDS_09() {
 
         try {
@@ -145,8 +137,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_10 - Encode decode codeshare flight")
-    @Test
+    @Test(description = "EDS_10 - Encode decode codeshare flight")
     public void EDS_10() {
 
         try {
@@ -158,8 +149,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_13 - Decode city code LAX using default values for sign in")
-    @Test
+    @Test(description = "EDS_13 - Decode city code LAX using default values for sign in")
     public void EDS_13() {
 
         try {
@@ -171,8 +161,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_14 - Decode city code LAX specifying a duty code for sign in")
-    @Test
+    @Test(description = "EDS_14 - Decode city code LAX specifying a duty code for sign in")
     public void EDS_14() {
 
         try {
@@ -184,8 +173,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_18 - Invalid information in POS for sign in invalid ERSP psswrd")
-    @Test
+    @Test(description = "EDS_18 - Invalid information in POS for sign in invalid ERSP psswrd")
     public void EDS_18() {
 
         try {
@@ -197,8 +185,7 @@ public class EncodeDecodeService {
         }
     }
 
-    @Description("EDS_17 - Decode city code LAX specifying an agent sine, duty code, airport code and ERSP password for sign in")
-    @Test
+    @Test(description = "EDS_17 - Decode city code LAX specifying an agent sine, duty code, airport code and ERSP password for sign in")
     public void EDS_17() {
 
         try {

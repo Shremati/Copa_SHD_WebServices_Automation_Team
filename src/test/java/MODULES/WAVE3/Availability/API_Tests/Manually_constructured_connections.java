@@ -57,7 +57,7 @@ public class Manually_constructured_connections extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Expected Success but not found");
 
         Assertions.AssertWarning(response, false);
         Assertions.AssertResponseTime(response, ResponseTime);

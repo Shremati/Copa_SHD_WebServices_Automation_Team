@@ -4,21 +4,22 @@ import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Flight_has_one_leg_and
 import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Flight_has_two_legs_and_notopen_status;
 import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Request_has_an_invalid_flight_number;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//3 Scenarios
+@Listeners(TestListener.class)
 public class FlightDepartureInfoService {
 
     FlightDepartureInfoService() {
         createFolders(getResponseDirectory() + "FlightDepartureInfoService");
     }
 
-    @Description("FDIS_03 - Flight has two legs and NotOpen status")
-    @Test
+    @Test(description = "FDIS_03 - Flight has two legs and NotOpen status")
     public void FDIS_03() {
 
         try {
@@ -30,8 +31,7 @@ public class FlightDepartureInfoService {
         }
     }
 
-    @Description("FDIS_04 - Flight has one leg and OPEN status")
-    @Test
+    @Test(description = "FDIS_04 - Flight has one leg and OPEN status")
     public void FDIS_04() {
 
         try {
@@ -43,8 +43,7 @@ public class FlightDepartureInfoService {
         }
     }
 
-    @Description("FDIS_09 - The request has an invalid flight number")
-    @Test
+    @Test(description = "FDIS_09 - The request has an invalid flight number")
     public void FDIS_09() {
 
         try {
