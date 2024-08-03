@@ -6,21 +6,22 @@ import MODULES.WAVE3.ScreenTextService.API_Tests.Send_entry;
 import MODULES.WAVE3.ScreenTextService.API_Tests.error_screenText_missing_field;
 import MODULES.WAVE3.ScreenTextService.API_Tests.stateful_screenText_send_entry;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//2 Scenarios
+@Listeners(TestListener.class)
 public class ScreenTextService {
 
     ScreenTextService() {
         createFolders(getResponseDirectory() + "ScreenTextService");
     }
 
-    @Description("ST_01 - Send entry")
-    @Test
+    @Test(description = "ST_01 - Send entry")
     public void ST_01() {
 
         try {
@@ -32,8 +33,7 @@ public class ScreenTextService {
         }
     }
 
-    @Description("ST_02 - Error ScreenText - Not allowed entry")
-    @Test
+    @Test(description = "ST_02 - Error ScreenText - Not allowed entry")
     public void ST_02() {
 
         try {
@@ -45,8 +45,7 @@ public class ScreenTextService {
         }
     }
 
-    @Description("ST_03 - Error ScreenText - Missing field")
-    @Test
+    @Test(description = "ST_03 - Error ScreenText - Missing field")
     public void ST_03() {
 
         try {
@@ -59,8 +58,7 @@ public class ScreenTextService {
     }
 
 
-    @Description("ST_04 - Stateful ScreenText")
-    @Test
+    @Test(description = "ST_04 - Stateful ScreenText")
     public void ST_04() {
 
         try {

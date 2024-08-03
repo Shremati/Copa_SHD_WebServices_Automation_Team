@@ -5,6 +5,8 @@ import MODULES.WAVE3.ManageSessions.API_Tests.Create_a_booking_for_two_segments;
 import MODULES.WAVE3.ManageSessions.API_Tests.Modify_name;
 import MODULES.WAVE3.QueueService.API_Tests.Display_queue_booking_all_items_full_data_format_not_remove_from_queue;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -12,14 +14,14 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //3 Scenarios
+@Listeners(TestListener.class)
 public class ManageSessions {
 
     ManageSessions() {
         createFolders(getResponseDirectory() + "ManageSessions");
     }
 
-    @Description("MS_24 - Modify_name")
-    @Test
+    @Test(description = "MS_24 - Modify_name")
     public void MS_24() {
 
         try {
@@ -32,8 +34,7 @@ public class ManageSessions {
 
     }
 
-    @Description("MS_31 - Create_a_booking_for_a_group_FinalizeSession")
-    @Test
+    @Test(description = "MS_31 - Create_a_booking_for_a_group_FinalizeSession")
     public void MS_31() {
 
         try {
@@ -46,8 +47,7 @@ public class ManageSessions {
 
     }
 
-    @Description("MS_03 - Create Booking 2 Segments - releaseToken")
-    @Test
+    @Test(description = "MS_03 - Create Booking 2 Segments - releaseToken")
     public void MS_03() {
 
         try {

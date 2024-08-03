@@ -4,6 +4,8 @@ import org.testng.*;
 import reports.ExtentLogger;
 import reports.ExtentReport;
 
+import java.io.IOException;
+
 import static frameworkconstants.FrameworkConstants.getBaseURL;
 
 public class TestListener implements ITestListener, ISuiteListener, IClassListener, IInvokedMethodListener {
@@ -16,9 +18,13 @@ public class TestListener implements ITestListener, ISuiteListener, IClassListen
         name=name.substring(14);
         String rName[] = name.split("\\.");
         ExtentLogger.setReportName(rName[0]);
-        ExtentReport.initReports();
-
+        try {
+            ExtentReport.initReports();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+    }
 
     public void onAfterClass(org.testng.ITestClass testClass) {
         ExtentReport.tearDownReports(); }
@@ -57,6 +63,10 @@ public class TestListener implements ITestListener, ISuiteListener, IClassListen
 
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         // Can be used for post-invocation logic
+    }
+    public String getTestName()
+    {
+        return testName;
     }
 
 }

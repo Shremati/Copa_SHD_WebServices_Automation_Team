@@ -2,20 +2,21 @@ package MODULES.WAVE3.ReferenceService;
 
 import MODULES.WAVE3.ReferenceService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//2 Scenarios
+@Listeners(TestListener.class)
 public class ReferenceService {
     ReferenceService() {
         createFolders(getResponseDirectory() + "ReferenceService");
     }
 
-    @Description("RS_01 - Display Category list")
-    @Test
+    @Test(description = "RS_01 - Display Category list")
     public void RS_01() {
         try {
             Display_Category_List.Execute();
@@ -27,12 +28,10 @@ public class ReferenceService {
 
     }
 
-    @Description("RS_06 - Display Page Data")
-    @Test
+    @Test(description = "RS_06 - Display Page Data")
     public void RS_06() {
 
         try {
-
             Display_Page_Data.Execute();
 
         } catch (Exception e) {
@@ -41,8 +40,7 @@ public class ReferenceService {
         }
     }
 
-    @Description("RS_02 - Display Subject list")
-    @Test
+    @Test(description = "RS_02 - Display Subject list")
     public void RS_02() {
 
         try {
@@ -55,8 +53,7 @@ public class ReferenceService {
         }
     }
 
-    @Description("RS_03 - Display Page list")
-    @Test
+    @Test(description = "RS_03 - Display Page list")
     public void RS_03() {
 
         try {
@@ -69,8 +66,7 @@ public class ReferenceService {
         }
     }
 
-    @Description("RS_04 - Display data page")
-    @Test
+    @Test(description = "RS_04 - Display data page")
     public void RS_04() {
 
         try {
@@ -84,8 +80,7 @@ public class ReferenceService {
     }
 
 
-    @Description("RS_07 - Invalid request (define category and page but no subject) - Negative")
-    @Test
+    @Test(description = "RS_07 - Invalid request (define category and page but no subject) - Negative")
     public void RS_07() {
 
         try {
@@ -98,8 +93,7 @@ public class ReferenceService {
         }
     }
 
-    @Description("RS_08 - Error - DATA PAGE DOES NOT EXIST - Negative")
-    @Test
+    @Test(description = "RS_08 - Error - DATA PAGE DOES NOT EXIST - Negative")
     public void RS_08() {
 
         try {
@@ -112,8 +106,7 @@ public class ReferenceService {
         }
     }
 
-    @Description("RS_09 - Error - DATA PAGE DOES NOT EXIST - Negative")
-    @Test
+    @Test(description = "RS_09 - Error - DATA PAGE DOES NOT EXIST - Negative")
     public void RS_09() {
 
         try {

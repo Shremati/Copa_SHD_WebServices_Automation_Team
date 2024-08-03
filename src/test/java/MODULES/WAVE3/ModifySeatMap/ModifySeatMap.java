@@ -6,12 +6,14 @@ import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_03_Delete_Error;
 import MODULES.WAVE3.ModifySeatMap.API_Tests.MSM_04_Add_Error;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 
-//4 Scenarios
+@Listeners(TestListener.class)
 public class ModifySeatMap extends FrameworkConstants {
 
     ModifySeatMap()
@@ -19,7 +21,6 @@ public class ModifySeatMap extends FrameworkConstants {
         createFolders(getResponseDirectory()+"ModifySeatMap");
     }
 
-    @Description("MSM_01 - Block Seat")
     @Test(priority = 1)
     public void MSM_01()
     {
@@ -34,8 +35,7 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Description("MSM_02 - Add Seat")
-    @Test(priority = 2)
+    @Test(description = "MSM_02 - Add Seat",priority = 2)
     public void MSM_02()
     {
         try
@@ -49,8 +49,7 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Description("MSM_03 - Delete Error")
-    @Test(priority = 3)
+    @Test(description = "MSM_03 - Delete Error",priority = 3)
     public void MSM_03()
     {
         try
@@ -64,8 +63,7 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Description("MSM_04 - Add Error")
-    @Test(priority = 4)
+    @Test(description = "MSM_04 - Add Error",priority = 4)
     public void MSM_04()
     {
         try

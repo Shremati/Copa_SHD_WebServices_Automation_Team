@@ -3,21 +3,22 @@ package MODULES.WAVE3.TicketingService;
 import MODULES.WAVE3.ModifyTicketingService.API_Tests.*;
 import MODULES.WAVE3.TicketingService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//7 Scenarios
+@Listeners(TestListener.class)
 public class TicketingService {
 
     TicketingService() {
         createFolders(getResponseDirectory() + "TicketingService");
     }
 
-    @Description("TIS_01 - Ticket a booking with one flight, one passenger with credit card form of payment")
-    @Test
+    @Test(description = "TIS_01 - Ticket a booking with one flight, one passenger with credit card form of payment")
     public void TIS_01() {
 
         try {
@@ -30,8 +31,7 @@ public class TicketingService {
 
     }
 
-    @Description("TIS_03 - Ticket one passenger, 6 flights in booking with credit card form of payment (conjunction tickets)")
-    @Test
+    @Test(description = "TIS_03 - Ticket one passenger, 6 flights in booking with credit card form of payment (conjunction tickets)")
     public void TIS_03() {
 
         try {
@@ -43,13 +43,9 @@ public class TicketingService {
             failTest(e);
             System.out.println("TIS_03 failed due to :" + e);
         }
-
-
     }
 
-
-    @Description("TIS_20 - Issue bulk ticket for a PNR with two pax")
-    @Test
+    @Test(description = "TIS_20 - Issue bulk ticket for a PNR with two pax")
     //Shares direct 004 test cases shows TIS_20 as TIS_22
     public void TIS_20() {
 
@@ -63,8 +59,7 @@ public class TicketingService {
 
     }
 
-    @Description("TIS_21 - Issue inclusive tour ticket for a pnr with two pax")
-    @Test
+    @Test(description = "TIS_21 - Issue inclusive tour ticket for a pnr with two pax")
     public void TIS_21() {
 
         try {
@@ -76,10 +71,7 @@ public class TicketingService {
         }
 
     }
-
-
-    @Description("TIS_33 - Issue ticket for a booking with an infant")
-    @Test
+    @Test(description = "TIS_33 - Issue ticket for a booking with an infant")
     public void TIS_33() {
 
         try {

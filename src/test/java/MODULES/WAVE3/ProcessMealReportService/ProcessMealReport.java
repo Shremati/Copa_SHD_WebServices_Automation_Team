@@ -4,12 +4,15 @@ import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Final;
 import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Invalid_Flight_Number;
 import MODULES.WAVE3.ProcessMealReportService.API_Tests.Meal_Report_Preliminary;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+@Listeners(TestListener.class)
 public class ProcessMealReport {
 
     ProcessMealReport()
@@ -17,8 +20,7 @@ public class ProcessMealReport {
         createFolders(getResponseDirectory()+"ProcessMealReport");
     }
 
-    @Description("PMR_01 - Meal Report Preliminary")
-    @Test
+    @Test(description = "PMR_01 - Meal Report Preliminary")
     public void PMR_01()
     {
         try
@@ -32,8 +34,7 @@ public class ProcessMealReport {
         }
     }
 
-    @Description("PMR_03 - Meal Report Invalid Flight Number")
-    @Test
+    @Test(description = "PMR_03 - Meal Report Invalid Flight Number")
     public void PMR_03()
     {
         try
@@ -47,8 +48,7 @@ public class ProcessMealReport {
         }
     }
 
-    @Description("PMR_02 - Meal Report Final")
-    @Test
+    @Test(description = "PMR_02 - Meal Report Final")
     public void PMR_02()
     {
         try

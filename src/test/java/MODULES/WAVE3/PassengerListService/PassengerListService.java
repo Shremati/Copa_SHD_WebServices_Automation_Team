@@ -5,6 +5,8 @@ import MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_requ
 import MODULES.WAVE3.PassengerListService.API_Tests.Pax_List_Request_Positive_Non_Revenue;
 import MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_option;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -12,14 +14,14 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //4 Scenarios
+@Listeners(TestListener.class)
 public class PassengerListService {
 
     PassengerListService() {
         createFolders(getResponseDirectory() + "PassengerListService");
     }
 
-    @Description("PLS_01 - Display the passenger list All option")
-    @Test
+    @Test(description = "PLS_01 - Display the passenger list All option")
     public void PLS_01() {
 
         try {
@@ -31,8 +33,7 @@ public class PassengerListService {
         }
     }
 
-    @Description("PLS_18 - Multiple passenger list request")
-    @Test
+    @Test(description = "PLS_18 - Multiple passenger list request")
     public void PLS_18() {
 
         try {
@@ -44,8 +45,7 @@ public class PassengerListService {
         }
     }
 
-    @Description("PLS_07 - Display the passenger list Inbound connection option")
-    @Test
+    @Test(description = "PLS_07 - Display the passenger list Inbound connection option")
     public void PLS_07() {
 
         try {
@@ -57,8 +57,7 @@ public class PassengerListService {
         }
 
     }
-    @Description("PLS_06 - Pax List Request Positive Non Revenue")
-    @Test
+    @Test(description = "PLS_06 - Pax List Request Positive Non Revenue")
     public void PLS_06() {
 
         try {
@@ -68,6 +67,5 @@ public class PassengerListService {
             failTest(e);
             System.out.println("PLS_06 failed due to :" + e);
         }
-
     }
 }

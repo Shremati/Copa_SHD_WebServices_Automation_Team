@@ -2,20 +2,21 @@ package MODULES.WAVE3.ModifyBookingService;
 
 import MODULES.WAVE3.ModifyBookingService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
-
+@Listeners(TestListener.class)
 public class ModifyBookingService {
 
     ModifyBookingService() {
         createFolders(getResponseDirectory() + "ModifyBookingService");
     }
 
-    @Description("MBS_01 - Cancel Booking")
-    @Test
+    @Test(description = "MBS_01 - Cancel Booking")
     public void MBS_01() {
 
         try {
@@ -27,8 +28,7 @@ public class ModifyBookingService {
         }
     }
 
-    @Description("MBS_04 - Itinerary Changes")
-    @Test
+    @Test(description = "MBS_04 - Itinerary Changes")
     public void MBS_04() {
 
         try {
@@ -40,8 +40,7 @@ public class ModifyBookingService {
         }
     }
 
-    @Description("MBS_07 - Other Changes")
-    @Test
+    @Test(description = "MBS_07 - Other Changes")
     public void MBS_07() {
 
         try {
@@ -54,8 +53,7 @@ public class ModifyBookingService {
     }
 
 
-    @Description("MBS_08 - Divide PNR")
-    @Test
+    @Test(description = "MBS_08 - Divide PNR")
     public void MBS_08() {
 
         try {
@@ -68,8 +66,7 @@ public class ModifyBookingService {
 
     }
 
-    @Description("MBS_10 - Reduce PNR")
-    @Test
+    @Test(description = "MBS_10 - Reduce PNR")
     public void MBS_10() {
 
         try {

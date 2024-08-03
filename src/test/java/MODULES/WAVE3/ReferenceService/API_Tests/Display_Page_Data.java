@@ -5,6 +5,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,31 +18,35 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
+
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_Page_Data extends FrameworkConstants{
+public class Display_Page_Data extends FrameworkConstants {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
-
-
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
-                .body(SOAPRequest)
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getReferenceservice())
                 .then()
@@ -49,14 +54,21 @@ public class Display_Page_Data extends FrameworkConstants{
                 .and()
                 .log().all().extract().response();
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"ReferenceService\\Display_Page_Data_Response.xml"));
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "ReferenceService\\Display_Page_Data_Response.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("CAT:A08 SUB:B01 PGE:C01"));
+        Assert.assertTrue(response.getBody().asString().contains("CAT:A08 SUB:B01 PGE:C01"),
+                "Do not contain CAT:A08 SUB:B01 PGE:C01");
+        ExtentLogger.info("Assertion passed - contains CAT:A08 SUB:B01 PGE:C01");
 
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
+        Assertions.AssertResponseTime(response, ResponseTime);
 
 
 //                ********* Clearing Temp_Request.xml *********
@@ -67,24 +79,23 @@ public class Display_Page_Data extends FrameworkConstants{
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("ReferenceService");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow = sheet.getRow(2);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"ReferenceService\\Display_Page_Data.xml";
+        filepath1 = getRequestDirectory() + "ReferenceService\\Display_Page_Data.xml";
 
-        XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","Category",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","Subject",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","Page",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("eds:ReferenceRequest","IndexedPage",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:Source", "AirlineVendorID", InputRow.getCell(1).getStringCellValue(), filepath1);
+        XMLParser.updateAttributeValue("eds:ReferenceRequest", "Category", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest", "Subject", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest", "Page", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("eds:ReferenceRequest", "IndexedPage", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
 
         wb.close();
 

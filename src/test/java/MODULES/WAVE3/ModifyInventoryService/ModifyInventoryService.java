@@ -4,21 +4,22 @@ import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_co
 import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_contains_single_MaxSeatsAllotted;
 import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//3 Scenarios
+@Listeners(TestListener.class)
 public class ModifyInventoryService {
 
     ModifyInventoryService() {
         createFolders(getResponseDirectory() + "ModifyInventoryService");
     }
 
-    @Description("MIS_01 - ModifyInventory Request contains single Authorization level")
-    @Test
+    @Test(description = "MIS_01 - ModifyInventory Request contains single Authorization level")
     public void MIS_01() {
         try {
             ModifyInventory_Request_contains_single_Authorization_level.Execute();
@@ -31,8 +32,7 @@ public class ModifyInventoryService {
 
     }
 
-    @Description("MIS_17 - ModifyInventory Request contains single MaxSeatsAllotted")
-    @Test
+    @Test(description = "MIS_17 - ModifyInventory Request contains single MaxSeatsAllotted")
     public void MIS_17() {
 
         try {
@@ -45,8 +45,7 @@ public class ModifyInventoryService {
 
     }
 
-    @Description("MIS_24 - ModifyInventory Request with AuthorizationLevel and MaxSeatsAllotted for CM carrier")
-    @Test
+    @Test(description = "MIS_24 - ModifyInventory Request with AuthorizationLevel and MaxSeatsAllotted for CM carrier")
     public void MIS_24() {
 
         try {
