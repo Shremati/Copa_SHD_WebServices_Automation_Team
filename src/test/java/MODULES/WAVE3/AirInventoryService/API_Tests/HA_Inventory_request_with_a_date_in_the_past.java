@@ -51,6 +51,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AirInventoryService\\HA_Inventory_request_with_a_date_in_the_past.xml"));
         writer.write(response.asPrettyString());
         writer.close();

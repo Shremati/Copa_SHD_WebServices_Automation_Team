@@ -79,7 +79,7 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("FlightInfo"), "Does not contain \"FlightInfo\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightInfo\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""), "Does not contain \"ID=\\"+PNR+"\"\" in the response");
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""), "Does not contain \"ID=\""+PNR+"\"\" in the response");
         ExtentLogger.info("Assertion passed - contains \"ID=\\"+PNR+"\"\"");
 
         Assertions.AssertWarning(response,false);
