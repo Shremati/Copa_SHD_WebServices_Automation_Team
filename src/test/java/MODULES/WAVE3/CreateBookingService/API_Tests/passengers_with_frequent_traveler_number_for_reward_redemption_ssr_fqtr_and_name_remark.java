@@ -57,11 +57,19 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>FOR SSR FQTR PLUS NAME REMARK TESTING</ns3:Remark>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>FOR SSR FQTR PLUS NAME REMARK TESTING</ns3:Remark>"),
+                "Do not contain FOR SSR FQTR PLUS NAME REMARK TESTING");
+        ExtentLogger.info("Assertion passed - contain FOR SSR FQTR PLUS NAME REMARK TESTING");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);
 
         excelwriter();

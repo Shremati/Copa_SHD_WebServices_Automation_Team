@@ -62,10 +62,17 @@ public class Add_Agent_Sine extends FrameworkConstants {
         writer.close();
 
         try {
-            Assert.assertTrue(response.getBody().asString().contains("Success"));
-            Assert.assertTrue(response.getBody().asString().contains("SINE ADDED"));
+            Assert.assertTrue(response.getBody().asString().contains("Success"),
+                    "Do not contain Success");
+            ExtentLogger.info("Assertion passed - contains Success");
+
+            Assert.assertTrue(response.getBody().asString().contains("SINE ADDED"),
+                    "Do not contain SINE ADDED");
+            ExtentLogger.info("Assertion passed - contains SINE ADDED");
 
             Assertions.AssertWarning(response, false);
+            ExtentLogger.info("Assertion passed - Do not have warning");
+
             Assertions.AssertResponseTime(response, ResponseTime);
         } catch (Exception e) {
             e.printStackTrace();

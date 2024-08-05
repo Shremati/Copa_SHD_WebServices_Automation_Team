@@ -21,6 +21,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -38,6 +39,7 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -53,19 +55,38 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OSI_1remark_SeatAssignment_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
-        Assert.assertTrue(response.getBody().asString().contains("<air1:Email>modificados@gmail.com</air1:Email>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"),
+                "Do not contain Telephone");
+        ExtentLogger.info("Assertion passed - contain Telephone");
+
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
+                "Do not contain BaseFare");
+        ExtentLogger.info("Assertion passed - contain BaseFare");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"),
+                "Do not contain HAVE A NICE PARTY");
+        ExtentLogger.info("Assertion passed - contain HAVE A NICE PARTY");
+
+        Assert.assertTrue(response.getBody().asString().contains("<air1:Email>modificados@gmail.com</air1:Email>"),
+                "Do not contain modificados@gmail.com");
+        ExtentLogger.info("Assertion passed - contain modificados@gmail.com");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
         excelwriter();

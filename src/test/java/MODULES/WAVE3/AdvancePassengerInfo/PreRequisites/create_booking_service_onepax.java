@@ -12,6 +12,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import GENERICS.*;
 import frameworkconstants.*;
+import reports.ExtentLogger;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import java.io.FileInputStream;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -32,7 +35,7 @@ public class create_booking_service_onepax extends FrameworkConstants
 {
 
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -46,12 +49,15 @@ public class create_booking_service_onepax extends FrameworkConstants
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -59,14 +65,16 @@ public class create_booking_service_onepax extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
-
-
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

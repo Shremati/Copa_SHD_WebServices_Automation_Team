@@ -57,10 +57,17 @@ public class Missing_destination_location extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("Invalid request format"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"),
+                "Do not contain Errors");
+        ExtentLogger.info("Assertion passed - contains Errors");
+
+        Assert.assertTrue(response.getBody().asString().contains("Invalid request format"),
+                "Do not contain Invalid request format");
+        ExtentLogger.info("Assertion passed - contains Invalid request format");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

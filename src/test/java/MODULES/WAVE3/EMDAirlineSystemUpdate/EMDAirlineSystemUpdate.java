@@ -6,6 +6,8 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Association_multiple_coupo
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Disassociation_emd_coupon_1_with_etkt_coupon_1;
 import MODULES.WAVE3.TicketControlService.API_Tests.Get_control_of_one_coupon_of_one_ticket;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -13,6 +15,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //3 Scenarios
+@Listeners(TestListener.class)
 public class EMDAirlineSystemUpdate {
 
     EMDAirlineSystemUpdate() {

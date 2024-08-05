@@ -23,21 +23,19 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_partner_airline_elite_member_loyalty_account extends FrameworkConstants
-{
+public class Display_partner_airline_elite_member_loyalty_account extends FrameworkConstants {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -45,7 +43,7 @@ public class Display_partner_airline_elite_member_loyalty_account extends Framew
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification        .body(SOAPRequest)
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getDisplayloyaltyaccountservice())
                 .then()
@@ -53,9 +51,9 @@ public class Display_partner_airline_elite_member_loyalty_account extends Framew
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayLoyaltyAccountService\\Display_partner_airline_elite_member_loyalty_account.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "DisplayLoyaltyAccountService\\Display_partner_airline_elite_member_loyalty_account.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -63,8 +61,8 @@ public class Display_partner_airline_elite_member_loyalty_account extends Framew
                 "Do not contain Unable to display loyalty account");
 
         ExtentLogger.info("Assertion passed - contains Unable to display loyalty account");
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assertions.AssertWarning(response, false);
+        Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -74,28 +72,25 @@ public class Display_partner_airline_elite_member_loyalty_account extends Framew
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("DisplayLoyaltyAccountService");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFRow InputRow = sheet.getRow(2);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"DisplayLoyaltyAccountService\\Display_partner_airline_elite_member_loyalty_account.xml";
+        filepath1 = getRequestDirectory() + "DisplayLoyaltyAccountService\\Display_partner_airline_elite_member_loyalty_account.xml";
 
 
-        XMLParser.updateAttributeValueatIndex("read:UniqueID","ID",InputRow.getCell(1).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
 
 
         wb.close();
 
     }
-
-
 
 
 }

@@ -4,6 +4,7 @@ import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -18,21 +19,24 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import GENERICS.Assertions;
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 public class Single_Pax extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
 
 //        PreRequisite for Scenario ------> Create Booking
-
+        ExtentLogger.info("Prerequisite 1");
        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
        Prerequisite.run();
 
@@ -44,18 +48,35 @@ public class Single_Pax extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
+        requestSpecification = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
+        Response response=requestSpecification
+                .body(SOAPRequest)
+                .when()
+                .post(getAdvancepassengerinfo())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
-
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"),"Not contains \"APIS INCOMPLETE\" in response");
+        ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

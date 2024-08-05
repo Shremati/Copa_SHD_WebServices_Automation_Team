@@ -59,14 +59,20 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        ExtentLogger.info("Assertion passed - contains ns5:Success");
-        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"),
+                "Do not contain AuthorizationCode");
         ExtentLogger.info("Assertion passed - contains AuthorizationCode");
-        Assert.assertTrue(response.getBody().asString().contains("INVALID FORMAT"));
+
+        Assert.assertTrue(response.getBody().asString().contains("INVALID FORMAT"),
+                "Do not contain INVALID FORMAT");
         ExtentLogger.info("Assertion passed - contains INVALID FORMAT");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

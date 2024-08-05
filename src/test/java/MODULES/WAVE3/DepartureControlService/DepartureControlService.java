@@ -2,6 +2,8 @@ package MODULES.WAVE3.DepartureControlService;
 
 import MODULES.WAVE3.DepartureControlService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,6 +11,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //15 Scenarios
+@Listeners(TestListener.class)
 public class DepartureControlService {
 
     DepartureControlService()
@@ -16,8 +19,7 @@ public class DepartureControlService {
         createFolders(getResponseDirectory()+"DepartureControlService");
     }
 
-    @Description("DPS_01 - Assign aircraft")
-    @Test
+    @Test(description = "DPS_01 - Assign aircraft")
     public void DPS_01() {
 
         try {
@@ -29,8 +31,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_07 - Assign aircraft with generic and specific seat re accommodation")
-    @Test
+    @Test(description = "DPS_07 - Assign aircraft with generic and specific seat re accommodation")
     public void DPS_07() {
 
         try {
@@ -43,8 +44,7 @@ public class DepartureControlService {
     }
 
 
-    @Description("DPS_10 - Start Checkin")
-    @Test
+    @Test(description = "DPS_10 - Start Checkin")
     public void DPS_10() {
 
         try {
@@ -56,8 +56,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_13 - Block more than one seat")
-    @Test
+    @Test(description = "DPS_13 - Block more than one seat")
     //ensure that 3 consecutive seats should be available, as we have given seat count as 3
     public void DPS_13() {
 
@@ -70,8 +69,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_14 - Error on block seat - Invalid seat number")
-    @Test
+    @Test(description = "DPS_14 - Error on block seat - Invalid seat number")
     public void DPS_14() {
 
         try {
@@ -83,8 +81,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_16 - Unblock more than one seat")
-    @Test
+    @Test(description = "DPS_16 - Unblock more than one seat")
     //use DPS_13 to block one/more than one seat and use that blocked seat here
     public void DPS_16() {
 
@@ -97,8 +94,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_18 - Define inoperative seat")
-    @Test
+    @Test(description = "DPS_18 - Define inoperative seat")
     public void DPS_18() {
 
         try {
@@ -110,8 +106,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_20 - Clear inoperative seat")
-    @Test
+    @Test(description = "DPS_20 - Clear inoperative seat")
     //use DPS_18 to define inoperative seat and use that inoperative seat here
     public void DPS_20() {
 
@@ -124,8 +119,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_22 - Cancel Misconnect")
-    @Test
+    @Test(description = "DPS_22 - Cancel Misconnect")
     public void DPS_22() {
 
         try {
@@ -137,8 +131,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_25 - Reinstate connecting passengers")
-    @Test
+    @Test(description = "DPS_25 - Reinstate connecting passengers")
     //We need to give the same test data details as DPS_22, because it reinstates the same cancel misconnect flight, taken in DPS_22
     public void DPS_25() {
 
@@ -151,8 +144,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_28 - Restrict checkin")
-    @Test
+    @Test(description = "DPS_28 - Restrict checkin")
     public void DPS_28() {
 
         try {
@@ -164,8 +156,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_32 - Display board point messages")
-    @Test
+    @Test(description = "DPS_32 - Display board point messages")
     public void DPS_32() {
 
         try
@@ -178,8 +169,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_36 - Add/Update/Delete board point messages + Invalid item to process")
-    @Test
+    @Test(description = "DPS_36 - Add/Update/Delete board point messages + Invalid item to process")
     public void DPS_36() {
 
         try {
@@ -191,8 +181,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_38 - Restrict boarding")
-    @Test
+    @Test(description = "DPS_38 - Restrict boarding")
     public void DPS_38() {
 
         try {
@@ -204,8 +193,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_39 - Remove boarding restriction")
-    @Test
+    @Test(description = "DPS_39 - Remove boarding restriction")
     //Compartment code is the class, and we dont have to change the compartment code and seat count
     public void DPS_39() {
 
@@ -218,8 +206,7 @@ public class DepartureControlService {
         }
     }
 
-    @Description("DPS_02 - Assign aircraft to downline station.")
-    @Test
+    @Test(description = "DPS_02 - Assign aircraft to downline station.")
     public void DPS_02() {
 
         try {

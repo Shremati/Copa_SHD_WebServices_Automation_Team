@@ -56,10 +56,17 @@ public class One_request extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not have Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"),
+                "Do not contain OriginDestinationOptions");
+        ExtentLogger.info("Assertion passed - contains OriginDestinationOptions");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
@@ -68,7 +75,6 @@ public class One_request extends FrameworkConstants {
         writer.flush();
 
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 

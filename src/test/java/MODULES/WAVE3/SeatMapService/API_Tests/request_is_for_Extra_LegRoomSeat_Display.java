@@ -6,28 +6,32 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class request_is_for_Extra_LegRoomSeat_Display extends FrameworkConstants {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -35,11 +39,16 @@ public class request_is_for_Extra_LegRoomSeat_Display extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getSeatmapservice());
 
-        Response response = given()
+
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getSeatmapservice())
@@ -47,16 +56,26 @@ public class request_is_for_Extra_LegRoomSeat_Display extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"SeatMapService\\request_is_for_Extra_LegRoomSeat_Display.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""));
-        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Business\""), "Does not contain \"CabinType=\"Business\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"CabinType=\"Business\"\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""), "Does not contain \"CabinType=\"Economy\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"CabinType=\"Economy\"\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

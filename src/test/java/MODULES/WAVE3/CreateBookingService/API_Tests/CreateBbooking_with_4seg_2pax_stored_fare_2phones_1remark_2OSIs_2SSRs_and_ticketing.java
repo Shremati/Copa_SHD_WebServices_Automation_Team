@@ -21,6 +21,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -38,7 +39,7 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -54,21 +55,44 @@ public class CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SS
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\CreateBooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"),
+                "Do not contain Telephone");
+        ExtentLogger.info("Assertion passed - contain Telephone");
+
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
+                "Do not contain BaseFare");
+        ExtentLogger.info("Assertion passed - contain BaseFare");
+
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"),
+                "Do not contain TicketTimeLimit");
+        ExtentLogger.info("Assertion passed - contain TicketTimeLimit");
+
         Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"1\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"));
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"),
+                "Do not contain HAVE A NICE PARTY");
+        ExtentLogger.info("Assertion passed - contain HAVE A NICE PARTY");
+
         Assert.assertTrue(response.getBody().asString().contains("<ns3:SpecialServiceRequest TravelerRefNumberRPHList=\"2\" FlightRefNumberRPHList=\"1\" SSRCode=\"WCHR\" ServiceQuantity=\"1\" Status=\"11\">")); //Add 2
+        ExtentLogger.info("Assertion passed - contain Success");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
         excelwriter();

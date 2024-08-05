@@ -18,8 +18,7 @@ public class AirScheduleService {
         createFolders(getResponseDirectory() + "AirScheduleService");
     }
 
-    @Description("AS_01 - One request with vendor preferences")
-    @Test
+    @Test(description = "AS_01 - One request with vendor preferences")
     public void AS_01() {
 
         try {
@@ -31,8 +30,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_02 - Get Schedule Display - One request")
-    @Test
+    @Test(description = "AS_02 - Get Schedule Display - One request")
     public void AS_02() {
 
         try {
@@ -44,8 +42,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_08 - Request with departure time that will return date change flights")
-    @Test
+    @Test(description = "AS_08 - Request with departure time that will return date change flights")
     public void AS_08() {
 
         try {
@@ -57,8 +54,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_09 - Get Direct Service Display - Error showing unimplemented method")
-    @Test
+    @Test(description = "AS_09 - Get Direct Service Display - Error showing unimplemented method")
     public void AS_09() {
 
         try {
@@ -70,8 +66,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_10 - Get Flight Details - Error showing unimplemented method")
-    @Test
+    @Test(description = "AS_10 - Get Flight Details - Error showing unimplemented method")
     public void AS_10() {
 
         try {
@@ -83,8 +78,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_12 - Host airline, 2 leg flight")
-    @Test
+    @Test(description = "AS_12 - Host airline, 2 leg flight")
     public void AS_12() {
 
         try {
@@ -96,8 +90,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_11 - Host airline, one leg flight")
-    @Test
+    @Test(description = "AS_11 - Host airline, one leg flight")
     public void AS_11() {
 
         try {
@@ -109,8 +102,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_14 - Multiple requests, mixed host and other airline")
-    @Test
+    @Test(description = "AS_14 - Multiple requests, mixed host and other airline")
     public void AS_14() {
 
         try {
@@ -123,8 +115,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_03 - One request  with 7 vendor preferences")
-    @Test
+    @Test(description = "AS_03 - One request  with 7 vendor preferences")
     public void AS_03() {
 
         try {
@@ -138,8 +129,7 @@ public class AirScheduleService {
     }
 
 
-    @Description("AS_13 - Other airline flight")
-    @Test
+    @Test(description = "AS_13 - Other airline flight")
     public void AS_13() {
 
         try {
@@ -152,8 +142,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_04 - Request missing departure date")
-    @Test
+    @Test(description = "AS_04 - Request missing departure date")
     public void AS_04() {
 
         try {
@@ -167,8 +156,7 @@ public class AirScheduleService {
     }
 
 
-    @Description("AS_06 - Request missing destination location and departure date")
-    @Test
+    @Test(description = "AS_06 - Request missing destination location and departure date")
     public void AS_06() {
 
         try {
@@ -181,8 +169,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_05 - Request missing origin location")
-    @Test
+    @Test(description = "AS_05 - Request missing origin location")
     public void AS_05() {
 
         try {
@@ -195,8 +182,7 @@ public class AirScheduleService {
         }
     }
 
-    @Description("AS_07 - Request with vendor preferences shows traffic restrictions as comments")
-    @Test
+    @Test(description = "AS_07 - Request with vendor preferences shows traffic restrictions as comments")
     public void AS_07() {
 
         try {

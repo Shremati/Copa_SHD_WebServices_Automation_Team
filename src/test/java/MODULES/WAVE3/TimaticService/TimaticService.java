@@ -2,6 +2,8 @@ package MODULES.WAVE3.TimaticService;
 
 import MODULES.WAVE3.TimaticService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,15 +11,14 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //17Scenarios
-
+@Listeners(TestListener.class)
 public class TimaticService {
 
     TimaticService() {
         createFolders(getResponseDirectory() + "TimaticService");
     }
 
-    @Description("TT_01 - Request_Visa_Info_one_destination_transit_visited_point")
-    @Test
+    @Test(description = "TT_01 - Request_Visa_Info_one_destination_transit_visited_point")
     public void TT_01_1() {
 
         try {
@@ -30,8 +31,7 @@ public class TimaticService {
 
     }
 
-    @Description("TT_01 - Request_Visa_Info_one_destination_transit_visited_point")
-    @Test
+    @Test(description = "TT_01 - Request_Visa_Info_one_destination_transit_visited_point")
     public void TT_01_2() {
 
         try {
@@ -44,8 +44,7 @@ public class TimaticService {
 
     }
 
-    @Description("TT_01 - Visa_singlepoint_seaman_request")
-    @Test
+    @Test(description = "TT_01 - Visa_singlepoint_seaman_request")
     public void TT_01_3() {
 
         try {
@@ -58,8 +57,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_08 - Both_DEorTR_missing_request")
-    @Test
+    @Test(description = "TT_08 - Both_DEorTR_missing_request")
+    
     public void TT_08_1() {
 
         try {
@@ -72,8 +71,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_08 - Health_DEorTR_missing_request")
-    @Test
+    @Test(description = "TT_08 - Health_DEorTR_missing_request")
+    
     public void TT_08_2() {
 
         try {
@@ -86,8 +85,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_08 - Visa_DEorTR_missing_request")
-    @Test
+    @Test(description = "TT_08 - Visa_DEorTR_missing_request")
+    
     public void TT_08_3() {
 
         try {
@@ -100,8 +99,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_06 - Both_multipoint_gov_request")
-    @Test
+    @Test(description = "TT_06 - Both_multipoint_gov_request")
+    
     public void TT_06_1() {
 
         try {
@@ -114,8 +113,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_06 - Both_multipoint_normal_request")
-    @Test
+    @Test(description = "TT_06 - Both_multipoint_normal_request")
+    
     public void TT_06_2() {
 
         try {
@@ -128,8 +127,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_06 - Both_multipoint_seaman_request")
-    @Test
+    @Test(description = "TT_06 - Both_multipoint_seaman_request")
+    
     public void TT_06_3() {
 
         try {
@@ -143,8 +142,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_24 - Display_Country_List_in_a_Group")
-    @Test
+    @Test(description = "TT_24 - Display_Country_List_in_a_Group")
+    
     public void TT_24() {
 
         try {
@@ -159,8 +158,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_26 - Display_Rules_with_Rule_Index")
-    @Test
+    @Test(description = "TT_26 - Display_Rules_with_Rule_Index")
+    
     public void TT_26() {
 
         try {
@@ -172,8 +171,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_28 - Display_the_List_of_News_Items")
-    @Test
+    @Test(description = "TT_28 - Display_the_List_of_News_Items")
+    
     public void TT_28() {
 
         try {
@@ -185,8 +184,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_20 - Display_City_list_by_Country_code")
-    @Test
+    @Test(description = "TT_20 - Display_City_list_by_Country_code")
+    
     public void TT_20() {
 
         try {
@@ -200,8 +199,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_22 - Display_City_list_by_country_starting_letter")
-    @Test
+    @Test(description = "TT_22 - Display_City_list_by_country_starting_letter")
+    
     public void TT_22() {
 
         try {
@@ -213,8 +212,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_10 - Display_for_section_Passport_with_its_subsection")
-    @Test
+    @Test(description = "TT_10 - Display_for_section_Passport_with_its_subsection")
+    
     public void TT_10() {
 
         try {
@@ -229,8 +228,8 @@ public class TimaticService {
 
     }
 
-    @Description("TT_13 - Display_for_section_Currency_with_its_subsection")
-    @Test
+    @Test(description = "TT_13 - Display_for_section_Currency_with_its_subsection")
+    
     public void TT_13() {
 
         try {
@@ -241,8 +240,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_15 - Display_all_sections_for_a_country")
-    @Test
+    @Test(description = "TT_15 - Display_all_sections_for_a_country")
+    
     public void TT_15() {
 
         try {
@@ -253,8 +252,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_02_1 - Request Visa Info with multi destination, transit and visited points for normal")
-    @Test
+    @Test(description = "TT_02_1 - Request Visa Info with multi destination, transit and visited points for normal")
     public void TT_02_1() {
 
         try {
@@ -267,8 +265,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_02_2 - Request Visa Info with multi destination, transit and visited points for Seaman")
-    @Test
+    @Test(description = "TT_02_2 - Request Visa Info with multi destination, transit and visited points for Seaman")
+    
     public void TT_02_2() {
 
         try {
@@ -281,8 +279,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_02_3 - Request Visa Info with multi destination, transit and visited points for Government")
-    @Test
+    @Test(description = "TT_02_3 - Request Visa Info with multi destination, transit and visited points for Government")
     public void TT_02_3() {
 
         try {
@@ -297,8 +294,7 @@ public class TimaticService {
 
 
 
-    @Description("TT_03_1 - Request Health Info with one destination, one transit and one visited point for Normal")
-    @Test
+    @Test(description = "TT_03_1 - Request Health Info with one destination, one transit and one visited point for Normal")
     public void TT_03_1() {
 
         try {
@@ -311,8 +307,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_03_2 - Request Health Info with one destination, one transit and one visited point for seamen")
-    @Test
+    @Test(description = "TT_03_2 - Request Health Info with one destination, one transit and one visited point for seamen")
     public void TT_03_2() {
 
         try {
@@ -325,8 +320,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_03_3 - Request Health Info with one destination, one transit and one visited point for Gov")
-    @Test
+    @Test(description = "TT_03_3 - Request Health Info with one destination, one transit and one visited point for Gov")
     public void TT_03_3() {
 
         try {
@@ -339,8 +333,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_04_1 - Request Health Info with multi destination, transit and visited points for Normal")
-    @Test
+    @Test(description = "TT_04_1 - Request Health Info with multi destination, transit and visited points for Normal")
     public void TT_04_1() {
 
         try {
@@ -353,8 +346,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_04_2 - Request Health Info with multi destination, transit and visited points for Seamen")
-    @Test
+    @Test(description = "TT_04_2 - Request Health Info with multi destination, transit and visited points for Seamen")
     public void TT_04_2() {
 
         try {
@@ -367,13 +359,12 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_04_3 - Request Health Info with multi destination, transit and visited points for gov")
-    @Test
+    @Test(description = "TT_04_3 - Request Health Info with multi destination, transit and visited points for gov")
     public void TT_04_3() {
 
         try {
 
-            Request_Health_Info_with_multi_destination_transit_and_visited_points_for_seamen.Execute();
+            Request_Health_Info_with_multi_destination_transit_and_visited_points_for_gov.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -383,8 +374,7 @@ public class TimaticService {
 
 
 
-    @Description("TT_05_1 - Request Vias&Health Info with one destination, one transit and one visited point for normal")
-    @Test
+    @Test(description = "TT_05_1 - Request Vias&Health Info with one destination, one transit and one visited point for normal")
     public void TT_05_1() {
 
         try {
@@ -397,8 +387,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_05_2 - Request Vias&Health Info with one destination, one transit and one visited point for seamen")
-    @Test
+    @Test(description = "TT_05_2 - Request Vias&Health Info with one destination, one transit and one visited point for seamen")
     public void TT_05_2() {
 
         try {
@@ -411,8 +400,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_05_3 - Request Vias&Health Info with one destination, one transit and one visited point for gov")
-    @Test 
+    @Test(description = "TT_05_3 - Request Vias&Health Info with one destination, one transit and one visited point for gov")
     public void TT_05_3() {
 
         try {
@@ -425,8 +413,7 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_07_1 - Request Visa / Health Info without specifying the Nationality / Embarkation visa NA missing")
-    @Test
+    @Test(description = "TT_07_1 - Request Visa / Health Info without specifying the Nationality / Embarkation visa NA missing")
     public void TT_07_1() {
         try {
 
@@ -438,8 +425,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_07_2 - Request Visa / Health Info without specifying the Nationality / Embarkation health EM missing")
-    @Test
+    @Test(description = "TT_07_2 - Request Visa / Health Info without specifying the Nationality / Embarkation health EM missing")
+    
     public void TT_07_2() {
         try {
 
@@ -451,8 +438,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_07_3 - Request Visa / Health Info without specifying the Nationality / Embarkation both NA missing")
-    @Test
+    @Test(description = "TT_07_3 - Request Visa / Health Info without specifying the Nationality / Embarkation both NA missing")
+    
     public void TT_07_3() {
         try {
 
@@ -464,8 +451,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_07_4 - Request Visa / Health Info without specifying the Nationality / Embarkation both EM missing")
-    @Test
+    @Test(description = "TT_07_4 - Request Visa / Health Info without specifying the Nationality / Embarkation both EM missing")
+    
     public void TT_07_4() {
         try {
 
@@ -478,8 +465,8 @@ public class TimaticService {
     }
 
 
-    @Description("TT_09_1 - Display with sections customs")
-    @Test
+    @Test(description = "TT_09_1 - Display with sections customs")
+    
     public void TT_09_1() {
         try {
 
@@ -491,8 +478,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_2 - Display with sections currency")
-    @Test
+    @Test(description = "TT_09_2 - Display with sections currency")
+    
     public void TT_09_2() {
         try {
 
@@ -504,8 +491,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_3 - Display with sections Geographical Information")
-    @Test
+    @Test(description = "TT_09_3 - Display with sections Geographical Information")
+    
     public void TT_09_3() {
         try {
 
@@ -517,8 +504,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_4 - Display with sections health")
-    @Test
+    @Test(description = "TT_09_4 - Display with sections health")
+    
     public void TT_09_4() {
         try {
 
@@ -530,8 +517,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_5 - Display with sections passport")
-    @Test
+    @Test(description = "TT_09_5 - Display with sections passport")
+    
     public void TT_09_5() {
         try {
 
@@ -543,8 +530,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_6 - Display with sections visa/passport")
-    @Test
+    @Test(description = "TT_09_6 - Display with sections visa/passport")
+    
     public void TT_09_6() {
         try {
 
@@ -556,8 +543,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_7 - Display with sections Stateless/Refugees")
-    @Test
+    @Test(description = "TT_09_7 - Display with sections Stateless/Refugees")
+    
     public void TT_09_7() {
         try {
 
@@ -569,8 +556,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_8 - Display with sections tax")
-    @Test
+    @Test(description = "TT_09_8 - Display with sections tax")
+    
     public void TT_09_8() {
         try {
 
@@ -582,8 +569,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_09_9 - Display with sections tax")
-    @Test
+    @Test(description = "TT_09_9 - Display with sections tax")
+    
     public void TT_09_9() {
         try {
 
@@ -596,8 +583,8 @@ public class TimaticService {
     }
 
 
-    @Description("TT_09_10 - Display with sections visa")
-    @Test
+    @Test(description = "TT_09_10 - Display with sections visa")
+    
     public void TT_09_10() {
         try {
 
@@ -609,8 +596,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_1 - Display for section Visa with its subsection Transit without Visa")
-    @Test
+    @Test(description = "TT_11_1 - Display for section Visa with its subsection Transit without Visa")
+    
     public void TT_11_1() {
         try {
 
@@ -622,8 +609,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_2 - Display for section Visa with its subsection Visa Exemptions")
-    @Test
+    @Test(description = "TT_11_2 - Display for section Visa with its subsection Visa Exemptions")
+    
     public void TT_11_2() {
         try {
 
@@ -635,8 +622,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_3 - Display for section Visa with its subsection Merchant Seaman")
-    @Test
+    @Test(description = "TT_11_3 - Display for section Visa with its subsection Merchant Seaman")
+    
     public void TT_11_3() {
         try {
 
@@ -648,8 +635,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_4 - Display for section Visa with its subsection Crew Members")
-    @Test
+    @Test(description = "TT_11_4 - Display for section Visa with its subsection Crew Members")
+    
     public void TT_11_4() {
         try {
 
@@ -662,8 +649,8 @@ public class TimaticService {
     }
 
 
-    @Description("TT_11_5 - Display for section Visa with its subsection Military")
-    @Test
+    @Test(description = "TT_11_5 - Display for section Visa with its subsection Military")
+    
     public void TT_11_5() {
         try {
 
@@ -675,8 +662,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_6 - Display for section Visa with its subsection Visa Issuance")
-    @Test
+    @Test(description = "TT_11_6 - Display for section Visa with its subsection Visa Issuance")
+    
     public void TT_11_6() {
         try {
 
@@ -688,8 +675,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_7 - Display for section Visa with its subsection Minors")
-    @Test
+    @Test(description = "TT_11_7 - Display for section Visa with its subsection Minors")
+    
     public void TT_11_7() {
         try {
 
@@ -701,8 +688,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_8 - Display for section Visa with its subsection Warning")
-    @Test
+    @Test(description = "TT_11_8 - Display for section Visa with its subsection Warning")
+    
     public void TT_11_8() {
         try {
 
@@ -714,8 +701,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_9 - Display for section Visa with its subsection Notes")
-    @Test
+    @Test(description = "TT_11_9 - Display for section Visa with its subsection Notes")
+    
     public void TT_11_9() {
         try {
 
@@ -727,8 +714,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_10 - Display for section Visa with its subsection Additional Information")
-    @Test
+    @Test(description = "TT_11_10 - Display for section Visa with its subsection Additional Information")
+    
     public void TT_11_10() {
         try {
 
@@ -740,8 +727,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_11_11 - Display for section Visa with its subsection Compulsory Currency Exchange")
-    @Test
+    @Test(description = "TT_11_11 - Display for section Visa with its subsection Compulsory Currency Exchange")
+    
     public void TT_11_11() {
         try {
 
@@ -753,8 +740,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_1 - Display for section Customs with its subsection Import")
-    @Test
+    @Test(description = "TT_12_1 - Display for section Customs with its subsection Import")
+    
     public void TT_12_1() {
         try {
 
@@ -766,8 +753,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_2 - Display for section Customs with its subsection ARMS AND AMMUNITION")
-    @Test
+    @Test(description = "TT_12_2 - Display for section Customs with its subsection ARMS AND AMMUNITION")
+    
     public void TT_12_2() {
         try {
 
@@ -779,8 +766,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_3 - Display for section Customs with its subsection Wild Fauna and Flora")
-    @Test
+    @Test(description = "TT_12_3 - Display for section Customs with its subsection Wild Fauna and Flora")
+    
     public void TT_12_3() {
         try {
 
@@ -792,8 +779,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_4 - Display for section Customs with its subsection export")
-    @Test
+    @Test(description = "TT_12_4 - Display for section Customs with its subsection export")
+    
     public void TT_12_4() {
         try {
 
@@ -805,8 +792,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_5 - Display for section Customs with its subsection Additional Information")
-    @Test
+    @Test(description = "TT_12_5 - Display for section Customs with its subsection Additional Information")
+    
     public void TT_12_5() {
         try {
 
@@ -818,8 +805,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_6 - Display for section Customs with its subsection Crew Members")
-    @Test
+    @Test(description = "TT_12_6 - Display for section Customs with its subsection Crew Members")
+    
     public void TT_12_6() {
         try {
 
@@ -831,8 +818,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_7 - Display for section Customs with its subsection Pets")
-    @Test
+    @Test(description = "TT_12_7 - Display for section Customs with its subsection Pets")
+    
     public void TT_12_7() {
         try {
 
@@ -844,8 +831,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_8 - Display for section Customs with its subsection Baggage Clearance")
-    @Test
+    @Test(description = "TT_12_8 - Display for section Customs with its subsection Baggage Clearance")
+    
     public void TT_12_8() {
         try {
 
@@ -857,8 +844,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_9 - Display for section Customs with its subsection Exempt")
-    @Test
+    @Test(description = "TT_12_9 - Display for section Customs with its subsection Exempt")
+    
     public void TT_12_9() {
         try {
 
@@ -870,8 +857,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_12_10 - Display for section Customs with its subsection Notes")
-    @Test
+    @Test(description = "TT_12_10 - Display for section Customs with its subsection Notes")
+    
     public void TT_12_10() {
         try {
 
@@ -885,8 +872,8 @@ public class TimaticService {
 
         //Display for section Health with its subsection
 
-    @Description("TT_14_1 - Display for section Health with its subsection for exempt")
-    @Test
+    @Test(description = "TT_14_1 - Display for section Health with its subsection for exempt")
+    
     public void TT_14_1() {
         try {
 
@@ -899,8 +886,8 @@ public class TimaticService {
     }
 
 
-    @Description("TT_14_2 - Display for section Health with its subsection for recommended")
-    @Test
+    @Test(description = "TT_14_2 - Display for section Health with its subsection for recommended")
+    
     public void TT_14_2() {
         try {
 
@@ -912,8 +899,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_14_3 - Display for section Health with its subsection for Notes")
-    @Test
+    @Test(description = "TT_14_3 - Display for section Health with its subsection for Notes")
+    
     public void TT_14_3() {
         try {
 
@@ -925,8 +912,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_14_4 - Display for section Health with its subsection for warning")
-    @Test
+    @Test(description = "TT_14_4 - Display for section Health with its subsection for warning")
+    
     public void TT_14_4() {
         try {
 
@@ -938,8 +925,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_16 - Invalid subsection")
-    @Test
+    @Test(description = "TT_16 - Invalid subsection")
+    
     public void TT_16() {
         try {
 
@@ -951,8 +938,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_17 - Miss Required Data")
-    @Test
+    @Test(description = "TT_17 - Miss Required Data")
+    
     public void TT_17() {
         try {
 
@@ -964,8 +951,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_18 - No Information for the Topic")
-    @Test
+    @Test(description = "TT_18 - No Information for the Topic")
+    
     public void TT_18() {
         try {
 
@@ -977,8 +964,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_19 - Display Country Code list")
-    @Test
+    @Test(description = "TT_19 - Display Country Code list")
+    
     public void TT_19() {
         try {
 
@@ -990,8 +977,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_21 - Display City list by location code")
-    @Test
+    @Test(description = "TT_21 - Display City list by location code")
+    
     public void TT_21() {
         try {
 
@@ -1003,8 +990,8 @@ public class TimaticService {
         }
     }
 
-    @Description("TT_23 - Display Country Group")
-    @Test
+    @Test(description = "TT_23 - Display Country Group")
+    
     public void TT_23() {
         try {
 

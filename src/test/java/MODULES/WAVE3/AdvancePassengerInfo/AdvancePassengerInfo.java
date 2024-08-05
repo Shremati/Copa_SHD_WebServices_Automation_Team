@@ -2,13 +2,15 @@ package MODULES.WAVE3.AdvancePassengerInfo;
 
 import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
-
+@Listeners(TestListener.class)
 public class AdvancePassengerInfo {
 
     AdvancePassengerInfo() {
@@ -17,8 +19,7 @@ public class AdvancePassengerInfo {
 
 //    Choose an APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight but not always , only on some days. So try changing dates
 
-    @Description("APIS_01 - Display API requirements for a single passenger in booking.")
-    @Test
+    @Test(description = "APIS_01 - Display API requirements for a single passenger in booking.")
     public void APIS_01() {
         try {
             Single_Pax.Execute();
@@ -29,8 +30,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Display API requirements for the passengers as single surname-multiple names in booking")
-    @Test
+    @Test(description = "APIS_02 -Display API requirements for the passengers as single surname-multiple names in booking")
     public void APIS_02() {
         try {
             Single_surname_multiple_names.Execute();
@@ -41,8 +41,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_11 - Display API requirements in a single request for passengers in different bookings")
-    @Test
+    @Test(description = "APIS_11 - Display API requirements in a single request for passengers in different bookings")
     public void APIS_11() {
         try {
             Passengers_in_different_booking_in_single_request.Execute();
@@ -53,8 +52,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_13 - ModifyAPI  Collect API for a Single passenger")
-    @Test
+    @Test(description = "APIS_13 - ModifyAPI  Collect API for a Single passenger")
     public void APIS_13() {
         try {
 
@@ -68,8 +66,7 @@ public class AdvancePassengerInfo {
     }
 
 
-    @Description("APIS_20 - ModifyAPI Update and Delete API data")
-    @Test
+    @Test(description = "APIS_20 - ModifyAPI Update and Delete API data")
     public void APIS_20() {
         try {
 
@@ -81,8 +78,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_04 - Display API pax types 2 adults 1 infant without seat")
-    @Test
+    @Test(description = "APIS_04 - Display API pax types 2 adults 1 infant without seat")
     public void APIS_04() {
         try {
 
@@ -94,8 +90,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_21 - Collect API for a single pax alt")
-    @Test
+    @Test(description = "APIS_21 - Collect API for a single pax alt")
     public void APIS_21() {
         try {
 
@@ -108,8 +103,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_17 - Collect API 1adult and 1infant without seats")
-    @Test
+    @Test(description = "APIS_17 - Collect API 1adult and 1infant without seats")
     public void APIS_17() {
         try {
 
@@ -122,8 +116,7 @@ public class AdvancePassengerInfo {
     }
 
 
-    @Description("APIS_16 - Collect API for 2pax in different bookings")
-    @Test
+    @Test(description = "APIS_16 - Collect API for 2pax in different bookings")
     public void APIS_16() {
         try {
 
@@ -136,8 +129,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_18 - Delete API data Address")
-    @Test
+    @Test(description = "APIS_18 - Delete API data Address")
     public void APIS_18() {
         try {
 
@@ -150,8 +142,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_19 - Delete API data Document info")
-    @Test
+    @Test(description = "APIS_19 - Delete API data Document info")
     public void APIS_19() {
         try {
 
@@ -164,8 +155,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_08 - Display API error invalid booking")
-    @Test
+    @Test(description = "APIS_08 - Display API error invalid booking")
     public void APIS_08() {
         try {
 
@@ -178,8 +168,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_06 - Display API error invalid passenger name")
-    @Test
+    @Test(description = "APIS_06 - Display API error invalid passenger name")
     public void APIS_06() {
         try {
 
@@ -191,8 +180,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_07 - Display API error not API flight")
-    @Test
+    @Test(description = "APIS_07 - Display API error not API flight")
     public void APIS_07() {
         try {
 
@@ -204,8 +192,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_15 - Partially collect API for one name in a Single surname - multiple name passenger")
-    @Test
+    @Test(description = "APIS_15 - Partially collect API for one name in a Single surname - multiple name passenger")
     public void APIS_15() {
         try {
 
@@ -217,8 +204,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_05 - Display API  2 Adults and 2 Infants without seat")
-    @Test
+    @Test(description = "APIS_05 - Display API  2 Adults and 2 Infants without seat")
     public void APIS_05() {
         try {
 
@@ -231,8 +217,7 @@ public class AdvancePassengerInfo {
     }
 
 
-    @Description("APIS_03 - Display API Adult, Infant with seat and Infant without seat")
-    @Test
+    @Test(description = "APIS_03 - Display API Adult, Infant with seat and Infant without seat")
     public void APIS_03() {
         try {
 
@@ -244,8 +229,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("Display API Secure Flight requirements")
-    @Test
+    @Test(description = "APIS_12 - Display API Secure Flight requirements")
     public void APIS_12() {
         try {
 
@@ -257,8 +241,7 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_09 - Display API requirements only for specific flight")
-    @Test
+    @Test(description = "APIS_09 - Display API requirements only for specific flight")
     public void APIS_09() {
         try {
 
@@ -270,9 +253,8 @@ public class AdvancePassengerInfo {
         }
     }
 
-    @Description("APIS_10 - Display API Specific flight and multiple passenger names")
+    @Test(description = "APIS_10 - Display API Specific flight and multiple passenger names")
     //Here we are giving connecting segments, Eg.: PTY-SCL, SCL-PTY, PTY-SAL
-    @Test
     public void APIS_10() {
         try {
 

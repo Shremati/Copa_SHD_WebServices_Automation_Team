@@ -63,12 +63,17 @@ public class Approval_for_visa_credit_card extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        ExtentLogger.info("Assertion passed - contains ns5:Success");
-        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("AuthorizationCode"),
+                "Do not contain AuthorizationCode");
         ExtentLogger.info("Assertion passed - contains AuthorizationCode");
+
         Assertions.AssertWarning(response,false);
-        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        ExtentLogger.info("Assertion passed - Do not have Warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

@@ -22,6 +22,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -39,7 +40,7 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -55,19 +56,34 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_and_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"));
-        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0128\"/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Telephone LocationCode=\"PTY\" PhoneUseType=\"3\" AreaCityCode=\"555\" PhoneNumber=\"555-0129\"/>"),
+                "Do not contain LocationCode");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"),
+                "Do not contain FareBasisCodes");
+        ExtentLogger.info("Assertion passed - contain FareBasisCodes");
+
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
+                "Do not contain BaseFare");
+        ExtentLogger.info("Assertion passed - contain BaseFare");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
         excelwriter();
@@ -76,7 +92,6 @@ public class CreateBooking_with_2segm_2pax_1_FF_stored_fare_2_phones_1_remark_an
         PostRequest.run();
 
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 

@@ -4,20 +4,20 @@ import MODULES.WAVE3.SynchronizeTicketService.API_Tests.Adjust_Class;
 import MODULES.WAVE3.SynchronizeTicketService.API_Tests.Adjust_Flight_No;
 import MODULES.WAVE3.SynchronizeTicketService.API_Tests.Adjust_Name;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
-
+@Listeners(TestListener.class)
 public class SynchronizeTicketService
 {
     SynchronizeTicketService() {
         createFolders(getResponseDirectory() + "SynchronizeTicketService");
     }
-
-    @Description("STS_07 - Adjust Flight No and Date")
-    @Test
+    @Test(description = "STS_07 - Adjust Flight No and Date")
     public void STS_07()
     {
 
@@ -34,8 +34,7 @@ public class SynchronizeTicketService
 
 
     }
-    @Description("STS_01 - Adjust Name")
-    @Test
+    @Test(description = "STS_01 - Adjust Name")
     public void STS_01()
     {
 
@@ -50,8 +49,7 @@ public class SynchronizeTicketService
         }
 
     }
-    @Description("STS_03 - Adjust Class")
-    @Test
+    @Test(description = "STS_03 - Adjust Class")
     public void STS_03()
     {
 

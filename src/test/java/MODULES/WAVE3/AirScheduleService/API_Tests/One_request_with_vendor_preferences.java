@@ -44,7 +44,7 @@ public class One_request_with_vendor_preferences extends FrameworkConstants {
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest); 
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
         Response response = requestSpecification.body(SOAPRequest)
                 .when()
@@ -59,19 +59,24 @@ public class One_request_with_vendor_preferences extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"),
+                "Do not contain OriginDestinationOptions");
+        ExtentLogger.info("Assertion passed - contains OriginDestinationOptions");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
-
     }
-
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 

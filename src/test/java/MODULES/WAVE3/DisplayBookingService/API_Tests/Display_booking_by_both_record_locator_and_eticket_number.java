@@ -10,6 +10,7 @@ import MODULES.WAVE3.TicketingService.PreRequisites.issue_ticket_reissue_add_col
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,18 +18,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Display_booking_by_both_record_locator_and_eticket_number extends FrameworkConstants
 {
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -36,10 +40,11 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
 
         create_booking_display_booking_by_both_record_locator_and_eticket_number Prerequisite = new create_booking_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite.run();
+        ExtentLogger.info("Prerequisite");
 
         issue_ticket_display_booking_by_both_record_locator_and_eticket_number Prerequisite2 = new issue_ticket_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite2.run();
-
+        ExtentLogger.info("Prerequisite2");
 
         UpdatePayload();
 
@@ -48,12 +53,16 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getDisplaybookingservice());
 
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -61,19 +70,32 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_booking_by_both_record_locator_and_eticket_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"));
-        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"));
-        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOption"), "Does not contain \"OriginDestinationOption\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"OriginDestinationOption\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("PriceInfo"), "Does not contain \"PriceInfo\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"PriceInfo\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfo"), "Does not contain \"TravelerInfo\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"TravelerInfo\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Does not contain \"BookingReferenceID\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"BookingReferenceID\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

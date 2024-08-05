@@ -58,9 +58,13 @@ public class Multiple_requests extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

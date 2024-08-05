@@ -58,10 +58,17 @@ public class Add_Agent_Duty_Code extends FrameworkConstants {
         writer.close();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("DUTY ADDED"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("DUTY ADDED"),
+                "Do not contain DUTY ADDED");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

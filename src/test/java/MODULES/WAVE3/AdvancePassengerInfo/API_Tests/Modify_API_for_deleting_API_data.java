@@ -9,6 +9,7 @@ import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_for_updating_
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -16,26 +17,32 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
 import GENERICS.Assertions;
+import reports.ExtentLogger;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Modify_API_for_deleting_API_data extends FrameworkConstants {
 
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        ExtentLogger.info("Prerequisite 1");
         Create_Booking_Update_and_Delete_API_data Prerequisite1 = new Create_Booking_Update_and_Delete_API_data();
         Prerequisite1.run();
 
+        ExtentLogger.info("Prerequisite 2");
         Display_API_Update_Delete_api_data_1 Prerequisite2 = new Display_API_Update_Delete_api_data_1();
         Prerequisite2.run(); //APIS INCOMPLETE
 
+        ExtentLogger.info("Prerequisite 3");
         Modify_API_for_updating_API_data Prerequisite3 = new Modify_API_for_updating_API_data();
         Prerequisite3.run(); //APIS COMPLETE
 
@@ -48,11 +55,15 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAdvancepassengerinfo())
@@ -60,17 +71,18 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Modify_API_for_deleting_API_data.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        ExtentLogger.info("PostRequest 1");
         Display_API_Update_Delete_api_data_2 PostRequest = new Display_API_Update_Delete_api_data_2();
         PostRequest.run();
 
         //Assertion given inside PostRequest
-
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

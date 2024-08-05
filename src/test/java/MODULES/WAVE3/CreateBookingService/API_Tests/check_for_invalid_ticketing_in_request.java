@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -36,6 +37,7 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -51,14 +53,17 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\check_for_invalid_ticketing_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"));
-
+        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"),
+                "Do not contain Ticketing/TicketTimeLimit");
+        ExtentLogger.info("Assertion passed - contain Ticketing/TicketTimeLimit");
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

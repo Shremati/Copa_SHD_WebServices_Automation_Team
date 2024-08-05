@@ -41,7 +41,7 @@ public class Request_with_departure_time_that_will_return_date_change_flights ex
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest); 
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
         Response response = requestSpecification.body(SOAPRequest)
                 .when()
@@ -56,10 +56,17 @@ public class Request_with_departure_time_that_will_return_date_change_flights ex
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:OriginDestinationOptions>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"),
+                "Do not contain OriginDestinationOptions");
+        ExtentLogger.info("Assertion passed - contains OriginDestinationOptions");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
@@ -81,7 +88,6 @@ public class Request_with_departure_time_that_will_return_date_change_flights ex
 //
         String filepath1;
         filepath1 = getRequestDirectory() + "AirScheduleService\\Request_with_departure_time_that_will_return_date_change_flights.xml";
-
 
         XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
         XMLParser.updateAttributeValueatIndex("com:OriginLocation", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);

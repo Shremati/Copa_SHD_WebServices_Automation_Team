@@ -57,11 +57,17 @@ public class Agent_Sine_DisplayCST_Increased_Security_Users extends FrameworkCon
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("ResponseComment"));
+        Assert.assertTrue(response.getBody().asString().contains("ResponseComment"),
+                "Do not contain ResponseComment");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

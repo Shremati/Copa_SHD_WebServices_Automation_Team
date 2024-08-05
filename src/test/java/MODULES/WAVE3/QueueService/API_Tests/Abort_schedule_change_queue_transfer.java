@@ -6,25 +6,28 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Abort_schedule_change_queue_transfer extends FrameworkConstants {
 
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -35,11 +38,15 @@ public class Abort_schedule_change_queue_transfer extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getQueueservice())
@@ -47,14 +54,20 @@ public class Abort_schedule_change_queue_transfer extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Abort_schedule_change_queue_transfer.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("S.C. TRANSFER NOT ACTIVE"));
+        Assert.assertTrue(response.getBody().asString().contains("S.C. TRANSFER NOT ACTIVE"),"Not contains \"S.C. TRANSFER NOT ACTIVE\" in response");
+        ExtentLogger.info("Assertion passed - contains \"S.C. TRANSFER NOT ACTIVE\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - contains Success");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

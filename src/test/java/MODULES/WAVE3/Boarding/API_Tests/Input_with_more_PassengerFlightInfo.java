@@ -5,6 +5,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,13 +18,16 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
 {
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
@@ -36,11 +40,15 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getBoarding());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())
@@ -48,16 +56,24 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"), "Does not contain \"Errors\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Errors\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("TravelerInfomation array exceeds the maximum passengers allowed per boarding"),
+                "Does not contain \"TravelerInfomation array exceeds the maximum passengers allowed per boarding\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"TravelerInfomation array exceeds the maximum passengers allowed per boarding\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
@@ -82,15 +98,12 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
         filepath1=getRequestDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml";
 
 
-
         XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
-
         wb.close();
 
     }
-
 
 }

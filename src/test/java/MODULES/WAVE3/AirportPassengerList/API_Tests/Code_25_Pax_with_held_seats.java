@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,25 +17,33 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
+
 public class Code_25_Pax_with_held_seats extends FrameworkConstants
 {
     public static String SOAPRequest;
     public static String PNR;
+    static RequestSpecification requestSpecification;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
         create_booking_for_one_pax_code_25 Prerequisite1 =new create_booking_for_one_pax_code_25();
         Prerequisite1.run();
+        ExtentLogger.info("Prerequisite1");
 
         Issue_Ticket_code_25 Prerequisite2 = new Issue_Ticket_code_25();
         Prerequisite2.run();
+        ExtentLogger.info("Prerequisite2");
 
         Hold_Seats_code_25 Prerequisite3 = new Hold_Seats_code_25();
         Prerequisite3.run();
+        ExtentLogger.info("Prerequisite3");
 
         UpdatePayload();
 
@@ -43,11 +52,16 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getAirportpassengerlist());
 
-        Response response = given()
+
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
@@ -55,17 +69,26 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_25_Pax_with_held_seats.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"));
-        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("FlightInfo"), "Does not contain \"FlightInfo\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"FlightInfo\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""), "Does not contain \"ID=\\"+PNR+"\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"ID=\\"+PNR+"\"\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

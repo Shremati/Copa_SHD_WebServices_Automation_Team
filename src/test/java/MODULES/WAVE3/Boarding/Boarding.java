@@ -2,6 +2,8 @@ package MODULES.WAVE3.Boarding;
 
 import MODULES.WAVE3.Boarding.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,13 +11,13 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //8 Scenarios
+@Listeners(TestListener.class)
 public class Boarding {
     Boarding() {
         createFolders(getResponseDirectory() + "Boarding");
     }
 
-    @Description("BS_01 - Start Boarding using Boarding option as ‘Sequence’")
-    @Test
+    @Test(description = "BS_01 - Start Boarding using Boarding option as ‘Sequence’")
     public void BS_01() {
         //change flt number or date before run
         try {
@@ -27,8 +29,7 @@ public class Boarding {
         }
     }
 
-    @Description("BS_08 - Input with more PassengerFlightInfo information with Function as BoardPassenger, BoardingOption as ‘Seat’ for a flight number")
-    @Test
+    @Test(description = "BS_08 - Input with more PassengerFlightInfo information with Function as BoardPassenger, BoardingOption as ‘Seat’ for a flight number")
     public void BS_08() {
 
         try {
@@ -42,8 +43,7 @@ public class Boarding {
     }
 
 
-    @Description("BS_13 - AbortBoarding for a particular flight")
-    @Test
+    @Test(description = "BS_13 - AbortBoarding for a particular flight")
     //Run BS_02 as a pre-requisite(requires shares), and use the same flt number as BS_02
     public void BS_13() {
 
@@ -56,8 +56,7 @@ public class Boarding {
         }
     }
 
-    @Description("BS_14 - Start BoardingComplete function for a flight number")
-    @Test
+    @Test(description = "BS_14 - Start BoardingComplete function for a flight number")
     //We need to initiate boarding, using BS_01, before running this, and also give the same flt number
     public void BS_14() {
 
@@ -71,8 +70,7 @@ public class Boarding {
     }
 
 
-    @Description("BS_09 - Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number")
-    @Test
+    @Test(description = "BS_09 - Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number")
     //We need to initiate boarding, using BS_01, before running this, and also give the same flt number
     public void BS_09() {
 
@@ -85,8 +83,7 @@ public class Boarding {
         }
     }
 
-    @Description("BS_04 - Start_BoardPassenger_function_using_BoardingOption_as_Sequence")
-    @Test
+    @Test(description = "BS_04 - Start_BoardPassenger_function_using_BoardingOption_as_Sequence")
     //Check for data with manual team before executing the Test Case
     //We need an active sequence number,which is present in the Unreconciled window or in the All-passengers list
     //To have a sequence number, the pax has to be checked-in

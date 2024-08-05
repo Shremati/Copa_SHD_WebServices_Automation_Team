@@ -6,24 +6,29 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Start_Boarding_function_using_Boarding_option_as_Seat extends FrameworkConstants
 {
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -32,10 +37,15 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getScreentextservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())
@@ -43,6 +53,8 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -50,6 +62,8 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         writer.close();
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 
@@ -58,10 +72,16 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getScreentextservice());
 
-        response = given()
+
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())
@@ -69,16 +89,23 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"));
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"), "Does not contain \"<ns4:TextData>*</ns4:TextData>\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"<ns4:TextData>*</ns4:TextData>\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 
@@ -89,11 +116,16 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getBoarding());
 
-        response = given()
+
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())
@@ -101,20 +133,35 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
-        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
-        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns7:BoardingInformation>"), "Does not contain \"<ns7:BoardingInformation>\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"<ns7:BoardingInformation>");
+
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Seat\""), "Does not contain \"BoardingOption=\\\"Seat\\\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"BoardingOption=\\\"Seat\\\"\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"), "Does not contain \"FlightNumber\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"FlightNumber\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"), "Does not contain \"DateOfDeparture\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"DateOfDeparture\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"), "Does not contain \"LocationCode\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"LocationCode\"");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

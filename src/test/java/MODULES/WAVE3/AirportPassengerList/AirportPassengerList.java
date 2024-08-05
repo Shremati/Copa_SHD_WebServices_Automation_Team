@@ -2,12 +2,15 @@ package MODULES.WAVE3.AirportPassengerList;
 
 import MODULES.WAVE3.AirportPassengerList.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+@Listeners(TestListener.class)
 public class AirportPassengerList {
 
     // 21 Scenarios
@@ -15,8 +18,7 @@ public class AirportPassengerList {
         createFolders(getResponseDirectory() + "AirportPassengerList");
     }
 
-    @Description("APL_03 - Standard list: Code 2 - Eticketed passengers")
-    @Test
+    @Test(description = "APL_03 - Standard list: Code 2 - Eticketed passengers")
     public void APL_03() {
         try {
 
@@ -28,8 +30,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_06 - Standard list: Code 5 - Interline eticket passengers")
-    @Test
+    @Test(description = "APL_06 - Standard list: Code 5 - Interline eticket passengers")
     public void APL_06() {
         try {
 
@@ -41,8 +42,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_11 - Standard list: Code 12 - Passengers with advance seats")
-    @Test
+    @Test(description = "APL_11 - Standard list: Code 12 - Passengers with advance seats")
     public void APL_11() {
         try {
 
@@ -54,8 +54,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_18 - Standard list: Code 25 - passengers with held seats")
-    @Test
+    @Test(description = "APL_18 - Standard list: Code 25 - passengers with held seats")
     public void APL_18() {
         try {
 
@@ -67,8 +66,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_41 - Custom  list: Code 0  - All passengers,  Response Data = Code 1, passenger name")
-    @Test
+    @Test(description = "APL_41 - Custom  list: Code 0  - All passengers,  Response Data = Code 1, passenger name")
     public void APL_41() {
         try {
 
@@ -80,8 +78,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_45 - Custom  list: Code 0  - All passengers,  Response Data = Code 5, passenger service info")
-    @Test
+    @Test(description = "APL_45 - Custom  list: Code 0  - All passengers,  Response Data = Code 5, passenger service info")
     public void APL_45() {
 
         try {
@@ -94,8 +91,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_34 - Custom  list: Code 42  - Specific SSR")
-    @Test
+    @Test(description = "APL_34 - Custom  list: Code 42  - Specific SSR")
     public void APL_34() {
 
         try {
@@ -108,8 +104,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_01 - Standard list Code 0 All Passengers")
-    @Test
+    @Test(description = "APL_01 - Standard list Code 0 All Passengers")
     public void APL_01() {
 
         try {
@@ -122,8 +117,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_23 - Standard list Code 30 passengers with no meals")
-    @Test
+    @Test(description = "APL_23 - Standard list Code 30 passengers with no meals")
 //Give a flight which contain bookings having no meal. Need Shares PNR having no meal
     public void APL_23() {
 
@@ -137,8 +131,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_36 - Standard list Code 44 passengers with elite frequent traveler numbers")
-    @Test
+    @Test(description = "APL_36 - Standard list Code 44 passengers with elite frequent traveler numbers")
     public void APL_36() {
 
 //       Only  LoyalLevel="PREMIER SILVER" works here. So, give FF number accordingly
@@ -153,8 +146,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_52 - Custom list Filter Value 0")
-    @Test
+    @Test(description = "APL_52 - Custom list Filter Value 0")
     public void APL_52() {
 
         try {
@@ -166,8 +158,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_07 - Standard list Code 6 Out of sync electronic tickets")
-    @Test
+    @Test(description = "APL_07 - Standard list Code 6 Out of sync electronic tickets")
     public void APL_07() {
 
         try {
@@ -180,10 +171,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_53 - Custom list Filter Value 1 Surname")
-    @Test
-
-
+    @Test(description = "APL_53 - Custom list Filter Value 1 Surname")
     public void APL_53() {
 
         try {
@@ -196,8 +184,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_54 - Find passengers with passcode SA3R09")
-    @Test
+    @Test(description = "APL_54 - Find passengers with passcode SA3R09")
     public void APL_54() {
 
         try {
@@ -210,8 +197,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_57 - DCS reference number")
-    @Test
+    @Test(description = "APL_57 - DCS reference number")
     public void APL_57() {
 
         try {
@@ -224,8 +210,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_19 - Standard list Code 26 passengers with inbound connections")
-    @Test
+    @Test(description = "APL_19 - Standard list Code 26 passengers with inbound connections")
     public void APL_19() {
 
         try {
@@ -238,8 +223,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_21 - Large parties")
-    @Test
+    @Test(description = "APL_21 - Large parties")
     public void APL_21() {
 
         try {
@@ -252,8 +236,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_24 - Passengers with outbound connections")
-    @Test
+    @Test(description = "APL_24 - Passengers with outbound connections")
     public void APL_24() {
 
         try {
@@ -266,8 +249,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_26 - Code_33_Specific_passengers")
-    @Test
+    @Test(description = "APL_26 - Code_33_Specific_passengers")
     public void APL_26() {
 
         try {
@@ -280,8 +262,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_27 - Code_34_specific_party")
-    @Test
+    @Test(description = "APL_27 - Code_34_specific_party")
     public void APL_27() {
 
         try {
@@ -294,8 +275,7 @@ public class AirportPassengerList {
         }
     }
 
-    @Description("APL_29 - Code 36 requiring seats")
-    @Test
+    @Test(description = "APL_29 - Code 36 requiring seats")
     public void APL_29() {
 
         try {

@@ -61,12 +61,15 @@ public class Invalid_Request extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"), "Contains NS5: ERROR");
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"), "Do not contain NS5: ERROR");
         ExtentLogger.info("Assertion passed - Contains NS5: ERROR");
-        Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."), "contains: Invalid type of request.");
+
+        Assert.assertTrue(response.getBody().asString().contains("Invalid type of request."), "Do not contain Invalid type of request.");
         ExtentLogger.info("Assertion passed - contains Invalid type of request.");
+
         Assertions.AssertWarning(response, false);
-        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        ExtentLogger.info("Assertion passed - Do not have Warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

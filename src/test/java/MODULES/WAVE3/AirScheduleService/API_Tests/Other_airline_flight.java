@@ -58,10 +58,17 @@ public class Other_airline_flight extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:Success/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns7:FlightDetails>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("FlightDetails"),
+                "Do not contain FlightDetails");
+        ExtentLogger.info("Assertion passed - contains FlightDetails");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - DO not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

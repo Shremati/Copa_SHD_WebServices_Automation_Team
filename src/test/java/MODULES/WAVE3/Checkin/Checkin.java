@@ -2,12 +2,14 @@ package MODULES.WAVE3.Checkin;
 
 import MODULES.WAVE3.Checkin.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
-
+@Listeners(TestListener.class)
 public class Checkin
 {
     //Note: If we execute a particular scenario multiple times,
@@ -20,8 +22,7 @@ public class Checkin
         createFolders(getResponseDirectory()+"Checkin");
     }
 
-    @Description("CS_01 - Check-in 1 passenger, 1 Baggage")
-    @Test
+    @Test(description = "CS_01 - Check-in 1 passenger, 1 Baggage")
     public void CS_01()
     {
         try
@@ -35,8 +36,7 @@ public class Checkin
         }
     }
 
-    @Description("CS_34 - Error Change seat - Invalid seat (Negative Scenario)")
-    @Test
+    @Test(description = "CS_34 - Error Change seat - Invalid seat (Negative Scenario)")
     public void CS_34()
     {
         try
@@ -51,8 +51,7 @@ public class Checkin
     }
 
 
-    @Description("CS_36 - Hold seat from similar name list")
-    @Test
+    @Test(description = "CS_36 - Hold seat from similar name list")
     public void CS_36()
     {
         try
@@ -64,8 +63,7 @@ public class Checkin
             System.out.println("CS_36 failed due to :"+e);
         }
     }
-    @Description("CS_17 - Check-in Non-Revenue passenger")
-    @Test
+    @Test(description = "CS_17 - Check-in Non-Revenue passenger")
     public void CS_17()
     {
         try
@@ -82,8 +80,7 @@ public class Checkin
     }
 
 
-    @Description("CS_20 - Error Check-in - Invalid passenger")
-    @Test
+    @Test(description = "CS_20 - Error Check-in - Invalid passenger")
     public void CS_20()
     {
         try
@@ -99,8 +96,7 @@ public class Checkin
     }
 
 
-    @Description("CS_21 - Check-in  a specific passenger in a group")
-    @Test
+    @Test(description = "CS_21 - Check-in  a specific passenger in a group")
     public void CS_21()
     {
 
@@ -116,8 +112,7 @@ public class Checkin
 
     }
 
-    @Description("CS_26 - Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
-    @Test
+    @Test(description = "CS_26 - Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
     public void CS_26()
     {
 
@@ -133,8 +128,7 @@ public class Checkin
 
     }
 
-    @Description("CS_07 - Checkin_Frequent Flyer")
-    @Test
+    @Test(description = "CS_07 - Checkin_Frequent Flyer")
     public void CS_07()
     {
 
@@ -150,8 +144,7 @@ public class Checkin
 
     }
 
-    @Description("CS_12 - Check-in 3 passengers (under same surname) and specific seating option ")
-    @Test
+    @Test(description = "CS_12 - Check-in 3 passengers (under same surname) and specific seating option ")
     public void CS_12()
     {
 
@@ -167,8 +160,7 @@ public class Checkin
 
     }
 
-    @Description("CS_39 - Cancel held seat")
-    @Test
+    @Test(description = "CS_39 - Cancel held seat")
     public void CS_39()
     {
 
@@ -184,8 +176,7 @@ public class Checkin
 
     }
 
-    @Description("CS_31 - Basic seat change")
-    @Test
+    @Test(description = "CS_31 - Basic seat change")
     public void CS_31()
     {
 
@@ -201,8 +192,7 @@ public class Checkin
 
     }
 
-    @Description("CS_18 - Checkin after add passenger message")
-    @Test
+    @Test(description = "CS_18 - Checkin after add passenger message")
     public void CS_18()
     {
 

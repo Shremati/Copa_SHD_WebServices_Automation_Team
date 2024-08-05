@@ -26,6 +26,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -39,19 +40,22 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
         ExtentLogger.info("Prerequisite 1");
         Create_booking_bagtag_display_all Prerequisite = new Create_booking_bagtag_display_all();
         Prerequisite.run();
+
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_bagtag_display_all Prerequisite1 = new Issue_ticket_bagtag_display_all();
         Prerequisite1.run();
+
         ExtentLogger.info("Prerequisite 3");
         Display_APIS_bagtag_display_all Prerequisite2 = new Display_APIS_bagtag_display_all();
         Prerequisite2.run();
+
         ExtentLogger.info("Prerequisite 4");
         Add_APIS_bagtag_display_all Prerequisite3 = new Add_APIS_bagtag_display_all();
         Prerequisite3.run();
+
         ExtentLogger.info("Prerequisite 5");
         Checkin_and_baggage_bagtag_display_all Prerequisite4 = new Checkin_and_baggage_bagtag_display_all();
         Prerequisite4.run();
-
 
         UpdatePayload();
 
@@ -60,7 +64,7 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -76,16 +80,27 @@ public class Bag_Tag_Display_All extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "BagTagDisplayService\\Bag_Tag_Display_All.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"));
-        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BagTagDetails"),
+                "Do not contain BagTagDetails");
+        ExtentLogger.info("Assertion passed - contains BagTagDetails");
+
+        Assert.assertFalse(response.getBody().asString().contains("No BagTags Found"),
+                "Do not contain No BagTags Found");
+        ExtentLogger.info("Assertion passed - contains No BagTags Found");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

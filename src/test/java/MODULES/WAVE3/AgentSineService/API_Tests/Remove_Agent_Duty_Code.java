@@ -58,10 +58,17 @@ public class Remove_Agent_Duty_Code extends FrameworkConstants {
         writer.close();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("DUTY REMOVED"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("DUTY REMOVED"),
+                "Do not contain DUTY REMOVED");
+        ExtentLogger.info("Assertion passed - contains DUTY REMOVED");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 

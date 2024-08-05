@@ -57,10 +57,17 @@ public class Max_requests_exceeded extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"),
+                "Do not contain Errors");
+        ExtentLogger.info("Assertion passed - contains Errors");
+
+        Assert.assertTrue(response.getBody().asString().contains("Maximum number of items exceeded"),
+                "Do not contain Maximum number of items exceeded");
+        ExtentLogger.info("Assertion passed - contains Maximum number of items exceeded");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - DO not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

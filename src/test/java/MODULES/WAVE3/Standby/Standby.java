@@ -3,12 +3,15 @@ package MODULES.WAVE3.Standby;
 
 import MODULES.WAVE3.Standby.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //9 Scenarios
+@Listeners(TestListener.class)
 public class Standby {
 
     Standby()
@@ -16,8 +19,7 @@ public class Standby {
         createFolders(getResponseDirectory()+"Standby");
     }
 
-    @Description("STB_01 - Start Standby")
-    @Test
+    @Test(description = "STB_01 - Start Standby")
     public void STB_01()
     {
         try
@@ -31,8 +33,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_02 - Enable Standby")
-    @Test
+    @Test(description = "STB_02 - Enable Standby")
     public void STB_02()
     {
         try
@@ -46,8 +47,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_03 - Clear Standby")
-    @Test
+    @Test(description = "STB_03 - Clear Standby")
     //We are removing the pax from standby
     //Normal pax cant go to standby checkin, we need to do Weight Balance Restriction in checkin
     //We used Non-revenue pax(NRPS), because they by default go to standby
@@ -64,8 +64,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_04 - ClearAll Standby")
-    @Test
+    @Test(description = "STB_04 - ClearAll Standby")
     //We need to keep the countries same for the markets, Eg.: PTY-LAX, PTY-MIA, so that agency requirements dont change
     //Make sure that the flt has not initiated standby
     public void STB_04()
@@ -81,8 +80,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_05 - Release Held Seats")
-    @Test
+    @Test(description = "STB_05 - Release Held Seats")
     public void STB_05()
     {
         try
@@ -96,8 +94,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_06 - Release Advance Seats")
-    @Test
+    @Test(description = "STB_06 - Release Advance Seats")
     public void STB_06()
     {
         try
@@ -111,8 +108,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_07 - Advance Seats Class Specific")
-    @Test
+    @Test(description = "STB_07 - Advance Seats Class Specific")
     public void STB_07()
     {
         try
@@ -126,8 +122,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_08 - Standby Transfer")
-    @Test
+    @Test(description = "STB_08 - Standby Transfer")
     public void STB_08()
     {
         try
@@ -141,8 +136,7 @@ public class Standby {
         }
     }
 
-    @Description("STB_10 - Cancel Immediate Standby")
-    @Test
+    @Test(description = "STB_10 - Cancel Immediate Standby")
     public void STB_10()
     {
         try

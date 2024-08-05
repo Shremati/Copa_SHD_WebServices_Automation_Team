@@ -9,6 +9,7 @@ import MODULES.WAVE3.Checkin.PreRequisites.Create_booking_service_3pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Modify_APIS_Checkin_3_Pax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -22,26 +23,32 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static GENERICS.XMLParser.updateAttributeValue;
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
+
 public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstants {
 
         public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
-
+            ExtentLogger.info("Prerequisite 1");
             Create_booking_service_3pax Prerequisite = new Create_booking_service_3pax();
             Prerequisite.run();
 
+            ExtentLogger.info("Prerequisite 2");
             Issue_ticket_3pax Prerequisite1 = new Issue_ticket_3pax();
             Prerequisite1.run();
 
+            ExtentLogger.info("Prerequisite 3");
             Display_APIS_Checkin_3_Pax Prerequisite2 = new Display_APIS_Checkin_3_Pax();
             Prerequisite2.run();
 
+            ExtentLogger.info("Prerequisite 4");
             Modify_APIS_Checkin_3_Pax Prerequisite3 = new Modify_APIS_Checkin_3_Pax();
             Prerequisite3.run();
 
@@ -52,11 +59,15 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
             SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
             SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+            ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-            Response response = given()
+            requestSpecification = given()
                     .baseUri(getBaseURL())
                     .header("Content-Type", "text/xml")
-                    .filter(new AllureRestAssured())
+                    .filter(new AllureRestAssured());
+            ExtentLogger.logXMLRequest(SOAPRequest);
+
+            Response response=requestSpecification
                     .body(SOAPRequest)
                     .when()
                     .post(getCheckin())
@@ -64,15 +75,22 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
                     .statusCode(200)
                     .and()
                     .log().all().extract().response();
+            ExtentLogger.logXMLResponse(response.asPrettyString());
 
+            ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
             BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Checkin_3_pax_and_specific_seating_option.xml"));
             writer.write(response.asPrettyString());
             writer.close();
 
-            Assert.assertTrue(response.getBody().asString().contains("Success"));
-            Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"));
+            Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+            ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+            Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Not contains \"SEATS ASSIGNED\" in response");
+            ExtentLogger.info("Assertion passed - contains \"SEATS ASSIGNED\"");
 
             Assertions.AssertWarning(response,false);
+            ExtentLogger.info("Assertion passed - Do not contain Warning");
+
             Assertions.AssertResponseTime(response,ResponseTime);
 
 

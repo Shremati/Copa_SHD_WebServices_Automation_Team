@@ -5,6 +5,8 @@ import MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbou
 import MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request;
 import MODULES.WAVE3.PassengerListService.API_Tests.display_passenger_list_All_option;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -12,14 +14,13 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //5 Scenarios
-
+@Listeners(TestListener.class)
 public class ModifyTicketingService {
     ModifyTicketingService() {
         createFolders(getResponseDirectory() + "ModifyTicketingService");
     }
 
-    @Description("MTS_01 - Void a Ticket")
-    @Test
+    @Test(description = "MTS_01 - Void a Ticket")
     public void MTS_01() {
 
         try {
@@ -32,8 +33,7 @@ public class ModifyTicketingService {
 
     }
 
-    @Description("MTS_04 - Multiple passenger list request")
-    @Test
+    @Test(description = "MTS_04 - Multiple passenger list request")
     public void MTS_04() {
 
         try {
@@ -45,8 +45,7 @@ public class ModifyTicketingService {
         }
     }
 
-    @Description("MTS_05 - Print an Eticket")
-    @Test
+    @Test(description = "MTS_05 - Print an Eticket")
     public void MTS_05() {
 
         try {
@@ -59,8 +58,7 @@ public class ModifyTicketingService {
 
     }
 
-    @Description("MTS_12 - Refund Error - cancel all segments prior refund")
-    @Test
+    @Test(description = "MTS_12 - Refund Error - cancel all segments prior refund")
     public void MTS_12() {
 
         try {
@@ -73,8 +71,7 @@ public class ModifyTicketingService {
 
     }
 
-    @Description("MTS_18 - Void Error - no valid coupons to void (ticket already voided)")
-    @Test
+    @Test(description = "MTS_18 - Void Error - no valid coupons to void (ticket already voided)")
     public void MTS_18() {
 
         try {
@@ -88,3 +85,4 @@ public class ModifyTicketingService {
     }
 
 }
+

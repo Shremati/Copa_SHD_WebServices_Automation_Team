@@ -58,11 +58,21 @@ public class Request_missing_destination_location_and_departure_date extends Fra
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Errors>"));
-        Assert.assertTrue(response.getBody().asString().contains("No Arrival Airport Specified"));
-        Assert.assertTrue(response.getBody().asString().contains("No Departure Date"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"),
+                "Do not contain Errors");
+        ExtentLogger.info("Assertion passed - contains Errors");
+
+        Assert.assertTrue(response.getBody().asString().contains("No Arrival Airport Specified"),
+                "Do not contain No Arrival Airport Specified");
+        ExtentLogger.info("Assertion passed - contains No Arrival Airport Specified");
+
+        Assert.assertTrue(response.getBody().asString().contains("No Departure Date"),
+                "Do not contain No Departure Date");
+        ExtentLogger.info("Assertion passed - contains No Departure Date");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

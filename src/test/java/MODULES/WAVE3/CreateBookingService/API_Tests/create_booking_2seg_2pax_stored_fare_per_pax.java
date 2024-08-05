@@ -20,6 +20,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -36,6 +37,7 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -51,29 +53,80 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\create_booking_2seg_2pax_stored_fare_per_pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Telephone"));
-        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"));
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
-        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"));
-        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"));
-        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"));
-        Assert.assertTrue(response.getBody().asString().contains("SalesLocation"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"2\" UnitOfMeasureQuantity=\"1\" UnitOfMeasure=\"PC\"/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"));
-        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"));
-        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"),
+                "Do not contain Telephone");
+        ExtentLogger.info("Assertion passed - contain Telephone");
+
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"),
+                "Do not contain FareBasisCodes");
+        ExtentLogger.info("Assertion passed - contain FareBasisCodes");
+
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
+                "Do not contain BaseFare");
+        ExtentLogger.info("Assertion passed - contain BaseFare");
+
+        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"),
+                "Do not contain NotValidBefore");
+        ExtentLogger.info("Assertion passed - contain NotValidBefore");
+
+        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"),
+                "Do not contain NotValidAfter");
+        ExtentLogger.info("Assertion passed - contain NotValidAfter");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"),
+                "Do not have FlightSegmentRPH");
+        ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
+
+        Assert.assertTrue(response.getBody().asString().contains("TourCode"),
+                "Do not contain TourCode");
+        ExtentLogger.info("Assertion passed - contain TourCode");
+
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"),
+                "Do not contain FareBaggageAllowance");
+        ExtentLogger.info("Assertion passed - contain FareBaggageAllowance");
+
+        Assert.assertTrue(response.getBody().asString().contains("SalesLocation"),
+                "DO not contain SalesLocation");
+        ExtentLogger.info("Assertion passed - contain SalesLocation");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"2\" UnitOfMeasureQuantity=\"1\" UnitOfMeasure=\"PC\"/>"),
+                "Do not contain FlightSegmentRPH");
+        ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"),
+                "Do not contain IT6ZZ1TOURUSA");
+        ExtentLogger.info("Assertion passed - contain IT6ZZ1TOURUSA");
+
+        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"),
+                "Do not contain TicketTimeLimit");
+        ExtentLogger.info("Assertion passed - contain TicketTimeLimit");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"),
+                "Do not contain FlightSegmentRPH");
+        ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
+
+        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"),
+                "Do not contain CashIndicator");
+        ExtentLogger.info("Assertion passed - contain CashIndicator");
 
         Assertions.AssertWarning(response, false);
-        Assertions.AssertResponseTime(response, ResponseTime);
+        ExtentLogger.info("Assertion passed - Do not have warning");
 
+        Assertions.AssertResponseTime(response, ResponseTime);
         excelwriter();
 
         create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket_41 postCheck = new create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket_41();

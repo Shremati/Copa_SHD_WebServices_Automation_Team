@@ -57,9 +57,13 @@ public class Get_Direct_Service_Display_Error_showing_unimplemented_method exten
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("The requested operation is not implemented in this application"));
+        Assert.assertTrue(response.getBody().asString().contains("The requested operation is not implemented in this application"),
+                "Do not contain The requested operation is not implemented in this application");
+        ExtentLogger.info("Assertion passed - contains The requested operation is not implemented in this application");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

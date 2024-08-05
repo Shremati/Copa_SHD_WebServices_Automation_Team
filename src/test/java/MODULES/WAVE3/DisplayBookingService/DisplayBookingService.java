@@ -2,12 +2,16 @@ package MODULES.WAVE3.DisplayBookingService;
 
 import MODULES.WAVE3.DisplayBookingService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//24 Scenarios
+@Listeners(TestListener.class)
 public class DisplayBookingService
 {
 
@@ -15,8 +19,7 @@ public class DisplayBookingService
         createFolders(getResponseDirectory() + "DisplayBookingService");
     }
 
-    @Description("DBS_01 - Display a host airline booking")
-    @Test
+    @Test(description = "DBS_01 - Display a host airline booking")
     public void DBS_01() {
 
         try {
@@ -28,8 +31,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_07 - Display booking by both record locator and Eticket number")
-    @Test
+     @Test(description ="DBS_07 - Display booking by both record locator and Eticket number")
     public void DBS_07() {
 
         try {
@@ -41,8 +43,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_10 - Display a booking from a specific address (LNIATA) without reloc given")
-    @Test
+    @Test(description = "DBS_10 - Display a booking from a specific address (LNIATA) without reloc given")
     public void DBS_10() {
  //Provide a LNIATA where PNR is created in SHARES for a given day
         try {
@@ -55,8 +56,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_12 - Display confirmed booking list(including multiple name entries in list on same booking)")
-    @Test
+    @Test(description = "DBS_12 - Display confirmed booking list(including multiple name entries in list on same booking)")
     public void DBS_12() {
 
         try {
@@ -69,8 +69,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_15 - Display confirmed and waitlist booking list")
-    @Test
+    @Test(description = "DBS_15 - Display confirmed and waitlist booking list")
     public void DBS_15() {
 
         try {
@@ -84,8 +83,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_18 - Search a booking by frequent traveler number")
-    @Test
+    @Test(description = "DBS_18 - Search a booking by frequent traveler number")
     public void DBS_18() {
 
         try {
@@ -98,8 +96,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_23 - TC13 - Display confirmed booking by 2nd flight in booking")
-    @Test
+    @Test(description = "DBS_23 - TC13 - Display confirmed booking by 2nd flight in booking")
     public void DBS_23() {
 
         try {
@@ -112,8 +109,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_24 - Display cancelled booking")
-    @Test
+    @Test(description = "DBS_24 - Display cancelled booking")
     public void DBS_24() {
 
         try {
@@ -126,8 +122,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_29 - Credit Card search(multiple results) (Negative scenario)")  //negative scenario
-    @Test
+    @Test(description = "DBS_29 - Credit Card search(multiple results) (Negative scenario)")  //negative scenario
     public void DBS_29() {
 
         try {
@@ -140,8 +135,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_30 - Credit Card search(partial CC number) (Negative scenario)")
-    @Test
+    @Test(description = "DBS_30 - Credit Card search(partial CC number) (Negative scenario)")
     public void DBS_30() {
 
         try {
@@ -155,8 +149,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_33 - FQTV search")
-    @Test
+    @Test(description = "DBS_33 - FQTV search")
     public void DBS_33() {
 
         try {
@@ -169,8 +162,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_42 - Data range search (single result)")
-    @Test
+    @Test(description = "DBS_42 - Data range search (single result)")
     public void DBS_42() {
 
         try {
@@ -184,8 +176,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_49 - Search for a non-existent credit card(Negative Scenario)")
-    @Test
+    @Test(description = "DBS_49 - Search for a non-existent credit card(Negative Scenario)")
     public void DBS_49() {
 
         try {
@@ -198,8 +189,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_70 - Flight data search + given name + surname")
-    @Test
+    @Test(description = "DBS_70 - Flight data search + given name + surname")
     public void DBS_70() {
 
         try {
@@ -212,8 +202,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_73 - TC01 - Display active fare quote and fare quote history")
-    @Test
+    @Test(description = "DBS_73 - TC01 - Display active fare quote and fare quote history")
     public void DBS_73() {
 
         try {
@@ -226,8 +215,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_76 - TC04 - No fare quote history in booking")
-    @Test
+    @Test(description = "DBS_76 - TC04 - No fare quote history in booking")
     public void DBS_76() {
 
         try {
@@ -240,8 +228,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_77 - TC01 - Display booking history with canceling the booking")
-    @Test
+    @Test(description = "DBS_77 - TC01 - Display booking history with canceling the booking")
     public void DBS_77() {
 
         try {
@@ -254,8 +241,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_81 - Display booking history with adding/deleting remarks, SSR, OSI and phone")
-    @Test
+    @Test(description = "DBS_81 - Display booking history with adding/deleting remarks, SSR, OSI and phone")
     public void DBS_81() {
 
         try {
@@ -268,8 +254,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_90 - Display booking history for CM flight")
-    @Test
+    @Test(description = "DBS_90 - Display booking history for CM flight")
     public void DBS_90() {
 
         try {
@@ -282,8 +267,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_93 - Advance Seat Assignment on OA flight")
-    @Test
+    @Test(description = "DBS_93 - Advance Seat Assignment on OA flight")
     public void DBS_93() {  //Use Other Airline flights and markets in Data sheet
 
         try {
@@ -296,8 +280,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_100 - Advance Seat Assignment on a flight with multiple legs")
-    @Test
+    @Test(description = "DBS_100 - Advance Seat Assignment on a flight with multiple legs")
     public void DBS_100() {
 
         try {
@@ -309,8 +292,7 @@ public class DisplayBookingService
             System.out.println("DBS_100 failed due to :" + e);
         }
     }
-    @Description("DBS_02 - Display_booking_on_another_airline_booking")
-    @Test
+    @Test(description = "DBS_02 - Display_booking_on_another_airline_booking")
     public void DBS_02() {
 
         //Take connecting flights , try not to change the markets ....take the given flights and only try to change the dates.
@@ -325,8 +307,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_04 - Error_displaying_the_booking")
-    @Test
+    @Test(description = "DBS_04 - Error_displaying_the_booking")
     public void DBS_04() {
 
         try {
@@ -340,8 +321,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_05 - Error_displaying_a_booking_from_a_specific_address_LNIATA")
-    @Test
+    @Test(description = "DBS_05 - Error_displaying_a_booking_from_a_specific_address_LNIATA")
     public void DBS_05() {
 
         try {
@@ -354,8 +334,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_06 - Display_booking_by_eticket_number")
-    @Test
+    @Test(description = "DBS_06 - Display_booking_by_eticket_number")
     public void DBS_06() {
 
         try {
@@ -368,8 +347,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_08 - Error_display_booking_for_Incorrect_Eticket_Number")
-    @Test
+    @Test(description = "DBS_08 - Error_display_booking_for_Incorrect_Eticket_Number")
     public void DBS_08() {
 
         try {
@@ -382,8 +360,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_09 - Error_display_booking_for_no_Eticket_Number_and_no_Record_locator")
-    @Test
+    @Test(description = "DBS_09 - Error_display_booking_for_no_Eticket_Number_and_no_Record_locator")
     public void DBS_09() {
 
         try {
@@ -396,8 +373,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_11 - Display_Confirmed_Booking")
-    @Test
+    @Test(description = "DBS_11 - Display_Confirmed_Booking")
     public void DBS_11() {
 
         try {
@@ -410,8 +386,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_13 - Display_waitlist_booking")
-    @Test
+    @Test(description = "DBS_13 - Display_waitlist_booking")
     public void DBS_13() {
 //For waitlist scenarios , we need to give flights which are not available so that the pax can go into waitlist, Like Y0,B0, where seats are 0
         try {
@@ -424,8 +399,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_14 - Display waitlist booking list(including_multiple_name_entries_in_list_on_same_booking)")
-    @Test
+    @Test(description = "DBS_14 - Display waitlist booking list(including_multiple_name_entries_in_list_on_same_booking)")
     public void DBS_14() {
 //Waitlist case, so give 0 availability flights i.e. where no seats are there
         try {
@@ -439,8 +413,7 @@ public class DisplayBookingService
     }
 
 
-    @Description("DBS_17 - Display confirmed and waitlist booking same passenger name in both lists")
-    @Test
+    @Test(description = "DBS_17 - Display confirmed and waitlist booking same passenger name in both lists")
     public void DBS_17() {
 //Pax name same and statuses will be different  in both create booking
 //        We need to ensure for confirmed (availability should be there) and for waitlist(availability should not be there)
@@ -454,8 +427,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_21 - Display_booking_missing_required_data_flt_numb_flt_date_or_pax_surname")
-    @Test
+    @Test(description = "DBS_21 - Display_booking_missing_required_data_flt_numb_flt_date_or_pax_surname")
     public void DBS_21() {
 
         try {
@@ -468,8 +440,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_22 - Display_booking_No_bookings_found")
-    @Test
+    @Test(description = "DBS_22 - Display_booking_No_bookings_found")
     public void DBS_22() {
 
         try {
@@ -482,8 +453,7 @@ public class DisplayBookingService
         }
     }
 
-    @Description("DBS_25 - Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_in_another_booking")
-    @Test
+    @Test(description = "DBS_25 - Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_in_another_booking")
     public void DBS_25() {
 
         try {

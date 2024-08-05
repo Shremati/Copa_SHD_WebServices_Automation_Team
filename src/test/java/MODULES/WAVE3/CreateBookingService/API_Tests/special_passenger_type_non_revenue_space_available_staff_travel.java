@@ -56,11 +56,20 @@ public class special_passenger_type_non_revenue_space_available_staff_travel ext
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>NON REVENUE SPACE AVAILABLE STAFF TRAVEL</ns3:Remark>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>NON REVENUE SPACE AVAILABLE STAFF TRAVEL</ns3:Remark>"),
+                "Do not contain NON REVENUE SPACE AVAILABLE STAFF TRAVEL");
+        ExtentLogger.info("Assertion passed - contain NON REVENUE SPACE AVAILABLE STAFF TRAVEL");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

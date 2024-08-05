@@ -2,6 +2,8 @@ package MODULES.WAVE3.QueueService;
 
 import MODULES.WAVE3.QueueService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -9,16 +11,14 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //15 Scenarios
+@Listeners(TestListener.class)
 public class QueueService {
-
 
     QueueService() {
         createFolders(getResponseDirectory() + "QueueService");
     }
 
-
-    @Description("QS_02 - Display queue booking all items full data format not remove from queue")
-    @Test
+    @Test(description = "QS_02 - Display queue booking all items full data format not remove from queue")
     public void QS_02() {
 
         try {
@@ -31,8 +31,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_07 - Display queue booking from empty queue (Negative Scenario)")
-    @Test
+    @Test(description = "QS_07 - Display queue booking from empty queue (Negative Scenario)")
     //We need a pseudocity code with no queue PNRs
     public void QS_07() {
 
@@ -46,9 +45,7 @@ public class QueueService {
 
     }
 
-
-    @Description("QS_11 - Queue booking")
-    @Test
+    @Test(description = "QS_11 - Queue booking")
     //The psedocity code has to be the departure airport code
     public void QS_11() {
 
@@ -62,8 +59,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_15 - Display message")
-    @Test
+    @Test(description = "QS_15 - Display message")
     public void QS_15() {
 
         try {
@@ -76,8 +72,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_18 - Display And Remove Message Default City")
-    @Test
+    @Test(description = "QS_18 - Display And Remove Message Default City")
     public void QS_18() {
 
         try {
@@ -90,8 +85,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_20 - Display and remove message")
-    @Test
+    @Test(description = "QS_20 - Display and remove message")
     //Needs to be checked
     public void QS_20() {
 
@@ -105,8 +99,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_26 - Queue Multiple Messages")
-    @Test
+    @Test(description = "QS_26 - Queue Multiple Messages")
     public void QS_26() {
 
         try {
@@ -119,8 +112,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_29 - Display All Queue Cities")
-    @Test
+    @Test(description = "QS_29 - Display All Queue Cities")
     public void QS_29() {
 
         try {
@@ -133,8 +125,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_33 - Transfer Queue Today to End Date")
-    @Test
+    @Test(description = "QS_33 - Transfer Queue Today to End Date")
     public void QS_33() {
 
         try {
@@ -147,8 +138,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_36 - Abort schedule change queue transfer")
-    @Test
+    @Test(description = "QS_36 - Abort schedule change queue transfer")
     public void QS_36() {
 
         try {
@@ -161,8 +151,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_38 - Sort_Queue")
-    @Test
+    @Test(description = "QS_38 - Sort_Queue")
     public void QS_38() {
 
         try {
@@ -175,8 +164,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_41 - Display Booking queue count for a given city")
-    @Test
+    @Test(description = "QS_41 - Display Booking queue count for a given city")
     public void QS_41() {
 
         try {
@@ -189,8 +177,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_47 - Display queue count for Booking Message Queues")
-    @Test
+    @Test(description = "QS_47 - Display queue count for Booking Message Queues")
     public void QS_47() {
 
         try {
@@ -203,8 +190,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_50 - Queue Passenger List")
-    @Test
+    @Test(description = "QS_50 - Queue Passenger List")
     public void QS_50() {
 
         try {
@@ -217,8 +203,7 @@ public class QueueService {
 
     }
 
-    @Description("QS_54 - Queue a specific passenger list")
-    @Test
+    @Test(description = "QS_54 - Queue a specific passenger list")
     public void QS_54() {
 
         try {

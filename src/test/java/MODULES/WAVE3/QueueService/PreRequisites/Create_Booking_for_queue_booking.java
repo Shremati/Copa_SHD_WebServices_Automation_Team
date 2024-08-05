@@ -1,6 +1,8 @@
 package MODULES.WAVE3.QueueService.PreRequisites;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -8,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.xml.sax.SAXException;
 import GENERICS.*;
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
@@ -16,13 +19,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import java.io.FileInputStream;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Create_Booking_for_queue_booking extends FrameworkConstants {
 
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
 
         UpdatePayload();
@@ -33,10 +37,15 @@ public class Create_Booking_for_queue_booking extends FrameworkConstants {
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -44,12 +53,17 @@ public class Create_Booking_for_queue_booking extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

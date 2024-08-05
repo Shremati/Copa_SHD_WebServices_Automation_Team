@@ -58,9 +58,13 @@ public class Request_missing_departure_date extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("No Departure Date"));
+        Assert.assertTrue(response.getBody().asString().contains("No Departure Date"),
+                "DO not contain No Departure Date");
+        ExtentLogger.info("Assertion passed - contains No Departure Date");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

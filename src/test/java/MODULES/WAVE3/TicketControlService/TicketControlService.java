@@ -5,6 +5,8 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Association_multiple_coupo
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Disassociation_emd_coupon_1_with_etkt_coupon_1;
 import MODULES.WAVE3.TicketControlService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -12,6 +14,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //2 Scenarios
+@Listeners(TestListener.class)
 public class TicketControlService {
 
     TicketControlService()
@@ -19,8 +22,7 @@ public class TicketControlService {
         createFolders(getResponseDirectory()+"TicketControlService");
     }
 
-    @Description("TCS_01 - Get control of one coupon of one ticket")
-    @Test
+    @Test(description = "TCS_01 - Get control of one coupon of one ticket")
     public void TCS_01() {
 
         try {
@@ -33,8 +35,7 @@ public class TicketControlService {
         }
     }
 
-    @Description("TCS_06 - Push control of multiple coupons within one ticket")
-    @Test
+    @Test(description = "TCS_06 - Push control of multiple coupons within one ticket")
     public void TCS_06() {
 
         try {
@@ -46,8 +47,7 @@ public class TicketControlService {
             System.out.println("TCS_06 failed due to :" + e);
         }
     }
-    @Description("TCS_09 - Missing Validating Airline code in RequestControl request")
-    @Test
+    @Test(description = "TCS_09 - Missing Validating Airline code in RequestControl request")
     public void TCS_09() {
 
         try {
@@ -59,8 +59,7 @@ public class TicketControlService {
         }
     }
 
-    @Description("TCS_10 - Missing Validating Airline code in RedirectControl request.")
-    @Test
+    @Test(description = "TCS_10 - Missing Validating Airline code in RedirectControl request.")
     public void TCS_10() {
 
         try {
@@ -72,8 +71,7 @@ public class TicketControlService {
         }
     }
 
-    @Description("TCS_11 - Missing the ticket document number in the RequestControl request.")
-    @Test
+    @Test(description = "TCS_11 - Missing the ticket document number in the RequestControl request.")
     public void TCS_11() {
 
         try {

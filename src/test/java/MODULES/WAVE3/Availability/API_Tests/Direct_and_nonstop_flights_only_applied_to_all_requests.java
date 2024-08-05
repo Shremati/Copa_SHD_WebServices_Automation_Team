@@ -58,9 +58,13 @@ public class Direct_and_nonstop_flights_only_applied_to_all_requests extends Fra
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - DO not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

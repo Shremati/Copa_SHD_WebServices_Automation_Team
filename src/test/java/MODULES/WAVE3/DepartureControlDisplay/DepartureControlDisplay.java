@@ -6,6 +6,8 @@ import MODULES.WAVE3.DepartureControlDisplay.API_Tests.Get_seated_passenger_coun
 import MODULES.WAVE3.DepartureControlDisplay.API_Tests.Get_summary_map_info;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
@@ -13,6 +15,7 @@ import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //3 Scenarios
+@Listeners(TestListener.class)
 public class DepartureControlDisplay {
 
     DepartureControlDisplay()
@@ -20,8 +23,7 @@ public class DepartureControlDisplay {
         createFolders(getResponseDirectory()+"DepartureControlDisplay");
     }
 
-    @Description("DCD_03 - Get Flight History Info")
-    @Test
+    @Test(description = "DCD_03 - Get Flight History Info")
     public void DCD_03()
     {
         try
@@ -35,8 +37,7 @@ public class DepartureControlDisplay {
         }
     }
 
-    @Description("DCD_02 - Get Seated Passenger Count")
-    @Test
+    @Test(description = "DCD_02 - Get Seated Passenger Count")
     public void DCD_02()
     {
         try
@@ -50,8 +51,7 @@ public class DepartureControlDisplay {
         }
     }
 
-    @Description("DCD_01 - Get Summary Map Info")
-    @Test
+    @Test(description = "DCD_01 - Get Summary Map Info")
     public void DCD_01()
     {
         try

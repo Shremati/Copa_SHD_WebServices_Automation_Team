@@ -1,22 +1,25 @@
 package MODULES.WAVE3.DisplayTicketService;
 
+
 import MODULES.WAVE3.DisplayTicketService.API_Tests.*;
 import io.qameta.allure.Description;
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//5 Scenarios
+//13 Scenarios
+@Listeners(TestListener.class)
 public class DisplayTicketService {
 
     DisplayTicketService() {
         createFolders(getResponseDirectory() + "DisplayTicketService");
     }
 
-    @Description("DTS_27 - Search_for_a_non_existent_PNR")
-    @Test
+    @Test(description = "DTS_27 - Search_for_a_non_existent_PNR")
     public void DTS_27() {
 
         try {
@@ -29,8 +32,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_26 - Search_for_a_PNR_with_no_ETKT")
-    @Test
+    @Test(description = "DTS_26 - Search_for_a_PNR_with_no_ETKT")
     public void DTS_26() {
 
         try {
@@ -43,8 +45,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_01 - Retrieve_E_Ticket_History_information_for_a_given_PNR")
-    @Test
+    @Test(description ="DTS_01 - Retrieve_E_Ticket_History_information_for_a_given_PNR")
     public void DTS_01() {
 
         try {
@@ -57,8 +58,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_10 - Multiple_Tickets")
-    @Test
+    @Test(description ="DTS_10 - Multiple_Tickets")
     public void DTS_10() {
 
         try {
@@ -71,8 +71,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_19 - Bulk Ticket or Inclusive Tour ticket")
-    @Test
+    @Test(description ="DTS_19 - Bulk Ticket or Inclusive Tour ticket")
     public void DTS_19() {
 
         try {
@@ -86,8 +85,7 @@ public class DisplayTicketService {
     }
 
 
-    @Description("DTS_02 - Display the history information for the given two tickets")
-    @Test
+    @Test(description ="DTS_02 - Display the history information for the given two tickets")
     public void DTS_02() {
 
         try {
@@ -100,8 +98,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_09 - Single ticket")
-    @Test
+    @Test(description = "DTS_09 - Single ticket")
     public void DTS_09() {
 
         try {
@@ -113,8 +110,7 @@ public class DisplayTicketService {
         }
     }
 
-    @Description("DTS_12 - Conjunctive ticket primary")
-    @Test
+    @Test(description = "DTS_12 - Conjunctive ticket primary")
     public void DTS_12() {
 
         try {
@@ -127,8 +123,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_13 - Conjunctive ticket conjunctive")
-    @Test
+    @Test(description = "DTS_13 - Conjunctive ticket conjunctive")
     public void DTS_13() {
 
         try {
@@ -141,8 +136,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_15 - Error on display ticket - no ticket number")
-    @Test
+    @Test(description = "DTS_15 - Error on display ticket - no ticket number")
     public void DTS_15() {
 
         try {
@@ -155,8 +149,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_16 - Error on display ticket - too many ticket numbers")
-    @Test
+    @Test(description = "DTS_16 - Error on display ticket - too many ticket numbers")
     public void DTS_16() {
 
         try {
@@ -169,8 +162,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_17 - Error on display ticket no ticket data")
-    @Test
+    @Test(description = "DTS_17 - Error on display ticket no ticket data")
     public void DTS_17() {
 
         try {
@@ -183,8 +175,7 @@ public class DisplayTicketService {
 
     }
 
-    @Description("DTS_18 - Error on display ticket no POS data")
-    @Test
+    @Test(description = "DTS_18 - Error on display ticket no POS data")
     public void DTS_18() {
 
         try {
@@ -196,8 +187,6 @@ public class DisplayTicketService {
         }
 
     }
-
-
 
 }
 

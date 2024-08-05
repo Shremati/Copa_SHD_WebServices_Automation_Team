@@ -8,18 +8,21 @@ import MODULES.WAVE3.DisplayBookingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -28,6 +31,8 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
     public static String SOAPRequest;
     public static String PNR1;
     public static String PNR2;
+    static RequestSpecification requestSpecification;
+
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
@@ -35,15 +40,19 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
 
         create_booking_for_one_pax_with_fqtv Prerequisite1 = new create_booking_for_one_pax_with_fqtv();
         Prerequisite1.run();
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_for_one_pax_with_fqtv Prerequisite2 = new issue_ticket_for_one_pax_with_fqtv();
         Prerequisite2.run();
+        ExtentLogger.info("Prerequisite2");
 
         create_booking_for_one_pax_without_fqtv Prerequisite3 = new create_booking_for_one_pax_without_fqtv();
         Prerequisite3.run();
+        ExtentLogger.info("Prerequisite3");
 
         issue_ticket_for_one_pax_without_fqtv Prerequisite4 = new issue_ticket_for_one_pax_without_fqtv();
         Prerequisite4.run();
+        ExtentLogger.info("Prerequisite4");
 
         UpdatePayload();
 
@@ -52,12 +61,16 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getDisplaybookingservice());
 
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -65,17 +78,28 @@ public class Search_a_booking_by_frequent_traveler_number extends FrameworkConst
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Search_a_booking_by_frequent_traveler_number.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""));
-        Assert.assertFalse(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""));
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""), "Does not contain \"AirReservation BookingReferenceID=\""+PNR1+"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"AirReservation BookingReferenceID=\""+PNR1+"\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""), "Does not contain \"AirReservation BookingReferenceID=\""+PNR2+"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"AirReservation BookingReferenceID=\""+PNR2+"\"");
+
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

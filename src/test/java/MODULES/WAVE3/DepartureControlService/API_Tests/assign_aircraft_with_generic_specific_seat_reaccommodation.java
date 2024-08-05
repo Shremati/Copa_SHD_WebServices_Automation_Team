@@ -6,6 +6,7 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -13,20 +14,24 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
 import MODULES.WAVE3.DepartureControlService.PreRequisites.*;
+import reports.ExtentLogger;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class assign_aircraft_with_generic_specific_seat_reaccommodation extends FrameworkConstants
 {
     public static String SOAPRequest;
-
+    static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        ExtentLogger.info("Prerequisite 1");
         create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation Prerequisite = new create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation();
         Prerequisite.run();
 
@@ -37,11 +42,15 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDeparturecontrolservice())
@@ -49,16 +58,23 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\assign_aircraft_with_generic_specific_seat_reaccommodation.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("SeatReac_Both"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains Success in request");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("SeatReac_Both"),"Not contains SeatReac_Both in request");
+        ExtentLogger.info("Assertion passed - contains SeatReac_Both");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

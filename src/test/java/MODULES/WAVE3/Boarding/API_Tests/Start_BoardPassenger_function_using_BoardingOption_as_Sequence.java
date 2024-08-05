@@ -6,18 +6,21 @@ import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -25,12 +28,11 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
 {
     public static String SOAPRequest;
     public static String DCSSeqNumber;
+    static RequestSpecification requestSpecification;
 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -38,11 +40,15 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getBoarding());
 
-        Response response = given()
+        requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured())
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
+
+        Response response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())
@@ -50,21 +56,38 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
-
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardPassenger_function_using_BoardingOption_as_Sequence.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingInformation"));
-        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""));
-        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"));
-        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"));
-        Assert.assertTrue(response.getBody().asString().contains("LocationCode"));
-        Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\""+DCSSeqNumber+"\""));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("BoardingInformation"), "Does not contain \"BoardingInformation\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"BoardingInformation\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("BoardingOption=\"Sequence\""), "Does not contain \"BoardingOption=\\\"Sequence\\\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"BoardingOption=\"Sequence\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("FlightNumber"), "Does not contain \"FlightNumber\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"FlightNumber\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("DateOfDeparture"), "Does not contain \"DateOfDeparture\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"DateOfDeparture\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("LocationCode"), "Does not contain \"LocationCode\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"LocationCode\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\"" + DCSSeqNumber + "\""),
+                  "Does not contain \"DCS_SequenceNumber=\\\""+DCSSeqNumber+"\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"DCS_SequenceNumber=" + DCSSeqNumber+"\"");
 
         Assertions.AssertWarning(response,true);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 

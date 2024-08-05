@@ -17,8 +17,7 @@ public class AgentSineService {
         createFolders(getResponseDirectory()+"AgentSineService");
     }
 
-    @Description("AGS_03 - Add Agent Sine")
-    @Test
+    @Test(description = "AGS_03 - Add Agent Sine")
     public void AGS_03()
     {
         try
@@ -32,8 +31,7 @@ public class AgentSineService {
         }
     }
 
-    @Description("AGS_05 - Add Agent Duty Code")
-    @Test
+    @Test(description = "AGS_05 - Add Agent Duty Code")
     public void AGS_05()
     {
         try
@@ -47,8 +45,7 @@ public class AgentSineService {
         }
     }
 
-    @Description("AGS_01 - Add Sine Display CST")
-    @Test
+    @Test(description = "AGS_01 - Add Sine Display CST")
     public void AGS_01()
     {
         try
@@ -62,8 +59,7 @@ public class AgentSineService {
         }
     }
 
-    @Description("AGS_02 - Agent Sine Display CST Increased Security Users")
-    @Test
+    @Test(description = "AGS_02 - Agent Sine Display CST Increased Security Users")
     public void AGS_02()
     {
         try
@@ -77,8 +73,7 @@ public class AgentSineService {
         }
     }
 
-    @Description("AGS_06 - Remove Agent Duty Code")
-    @Test
+    @Test(description = "AGS_06 - Remove Agent Duty Code")
     public void AGS_06()
     {
         try
@@ -92,8 +87,7 @@ public class AgentSineService {
         }
     }
 
-    @Description("AGS_04 - Remove Agent Sine")
-    @Test
+    @Test(description = "AGS_04 - Remove Agent Sine")
     //Once, agent sine is removed, run Scenario 1(Add Agent Sine), once again
     public void AGS_04()
     {

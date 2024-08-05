@@ -1,40 +1,334 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/CommonTypes" xmlns:tic="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:tic1="http://www.eds.com/AirlineSOASchema/TicketingRQ">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     
+
+
+
+
 <soapenv:Header/>
     
+
+
+
+
 <soapenv:Body>
         
-<tic:issueTicket>
+
+
+
+
+<cre:createBooking>
             
-<tic1:EDS_TicketingRQ EchoToken="Test_1" TimeStamp="2023-01-20T06:44:07" Version="4.000">
+
+
+
+
+<air:OTA_AirBookRQ Version="4.000">
                 
-<tic1:POS>
+
+
+
+
+<air:POS>
                     
+
+
+
+
 <com:Source AirlineVendorID="CM"/>
                 
-</tic1:POS>
+
+
+
+
+</air:POS>
                 
-<tic1:TicketingRequest>
+
+
+
+
+<air:AirItinerary>
                     
-<tic1:FormOfPayment>
+
+
+
+
+<air1:OriginDestinationOptions>
                         
-<tic1:CreditCard AccountNumber="4005554444444403" ApprovalCode="A1234" ExpirationDate="2025-02" Issuer="VI"/>
+
+
+
+
+<air1:OriginDestinationOption>
+                            
+
+
+
+
+<air1:FlightSegment DepartureDateTime="2024-08-06T11:24:26" FlightNumber="419" NumberInParty="1" RPH="1" ResBookDesigCode="Y" Status="11">
+                                
+
+
+
+
+<com:DepartureAirport LocationCode="PTY"/>
+                                
+
+
+
+
+<com:ArrivalAirport LocationCode="MIA"/>
+                                
+
+
+
+
+<air1:MarketingAirline Code="CM"/>
+                            
+
+
+
+
+</air1:FlightSegment>
+                        
+
+
+
+
+</air1:OriginDestinationOption>
                     
-</tic1:FormOfPayment>
+
+
+
+
+</air1:OriginDestinationOptions>
+                
+
+
+
+
+</air:AirItinerary>
+                
+
+
+
+
+<air:PriceInfo>
                     
-<tic1:TicketType>Electronic</tic1:TicketType>
+
+
+
+
+<air1:PTC_FareBreakdowns>
+                        
+
+
+
+
+<air1:PTC_FareBreakdown>
+                            
+
+
+
+
+<air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            
+
+
+
+
+<air1:FareBasisCodes>
+                                
+
+
+
+
+<air1:FareBasisCode>X</air1:FareBasisCode>
+                            
+
+
+
+
+</air1:FareBasisCodes>
+                            
+
+
+
+
+<air1:PassengerFare>
+                                
+
+
+
+
+<air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                
+
+
+
+
+<air1:Taxes>
+                                    
+
+
+
+
+<air1:Tax Amount="13.60" TaxCode="AG"/>
+                                
+
+
+
+
+</air1:Taxes>
+                                
+
+
+
+
+<air1:TotalFare Amount="149.60" CurrencyCode="USD"/>
+                                
+
+
+
+
+<air1:UnstructuredFareCalc>SALUDOS</air1:UnstructuredFareCalc>
+                                
+
+
+
+
+<air1:TPA_Extensions>
+                                    
+
+
+
+
+<air1:NotValidBefore FareBasisCode="X">2023-08-27</air1:NotValidBefore>
+                                    
+
+
+
+
+<air1:NotValidAfter FareBasisCode="X">2023-09-31</air1:NotValidAfter>
+                                
+
+
+
+
+</air1:TPA_Extensions>
+                            
+
+
+
+
+</air1:PassengerFare>
+                            
+
+
+
+
+<air1:TravelerRefNumber RPH="1"/>
+                        
+
+
+
+
+</air1:PTC_FareBreakdown>
+                    
+
+
+
+
+</air1:PTC_FareBreakdowns>
                 
-</tic1:TicketingRequest>
+
+
+
+
+</air:PriceInfo>
                 
-<tic1:TicketingAction>Issue</tic1:TicketingAction>
+
+
+
+
+<air:TravelerInfo>
+                    
+
+
+
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+
+
+
+<air1:PersonName>
+                            
+
+
+
+
+<com:GivenName>PHILLIP</com:GivenName>
+                            
+
+
+
+
+<com:Surname>MORRIS</com:Surname>
+                        
+
+
+
+
+</air1:PersonName>
+                        
+
+
+
+
+<air1:Telephone AreaCityCode="555" PhoneLocationType="B" PhoneNumber="555-1212"/>
+                        
+
+
+
+
+<air1:TravelerRefNumber RPH="1"/>
+                    
+
+
+
+
+</air1:AirTraveler>
                 
-<tic1:RecordLocator>QHAL1O</tic1:RecordLocator>
+
+
+
+
+</air:TravelerInfo>
+                
+
+
+
+
+<air:Ticketing TicketTimeLimit="2024-08-05T11:24:26"/>
             
-</tic1:EDS_TicketingRQ>
+
+
+
+
+</air:OTA_AirBookRQ>
         
-</tic:issueTicket>
+
+
+
+
+</cre:createBooking>
     
+
+
+
+
 </soapenv:Body>
 
 </soapenv:Envelope>
