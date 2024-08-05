@@ -32,6 +32,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         ExtentLogger.info("Prerequisite 1");
@@ -46,6 +47,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         Modify_API_for_updating_API_data Prerequisite3 = new Modify_API_for_updating_API_data();
         Prerequisite3.run(); //APIS COMPLETE
 
+        ExtentLogger.info("Prerequisite 4");
         Prerequisite2.run();//For update response, 'APIS Complete' message should available in display response.
 
         UpdatePayload(); //ModifyAPI request for deleting API
@@ -74,6 +76,7 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Modify_API_for_deleting_API_data.xml"));
         writer.write(response.asPrettyString());
         writer.close();

@@ -79,10 +79,10 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
         writer.close();
 
 
-        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not conatins RecordID=\"1\">0:APIS COMPLETE");
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
-        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not conatins RecordID=\"2\">0:APIS COMPLETE");
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"2\">0:APIS COMPLETE");
 
         Assertions.AssertWarning(response,false);

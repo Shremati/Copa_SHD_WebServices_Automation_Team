@@ -36,7 +36,7 @@ public class Single_Pax extends FrameworkConstants
 
 
 //        PreRequisite for Scenario ------> Create Booking
-        ExtentLogger.info("Prerequisite 1");
+       ExtentLogger.info("Prerequisite 1");
        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
        Prerequisite.run();
 
@@ -67,6 +67,7 @@ public class Single_Pax extends FrameworkConstants
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\Single_Pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
