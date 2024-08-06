@@ -24,6 +24,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -34,9 +35,11 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        ExtentLogger.info("Prerequisite 1");
         Prerequisite.run();
 
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        ExtentLogger.info("Prerequisite 2");
         Prerequisite2.run();
 
         UpdatePayload();
@@ -46,6 +49,7 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -61,16 +65,27 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_form_of_payment.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"),
+                "Do not contain Invalid form of payment");
+        ExtentLogger.info("Assertion passed - contain Invalid form of payment");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

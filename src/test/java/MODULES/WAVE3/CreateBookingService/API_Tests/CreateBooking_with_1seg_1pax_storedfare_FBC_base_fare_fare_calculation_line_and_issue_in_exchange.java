@@ -23,6 +23,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -31,12 +32,13 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        ExtentLogger.info("Prerequisite 1");
         Prerequisite.run();
 
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        ExtentLogger.info("Prerequisite 2");
         Prerequisite2.run();
 
         UpdatePayload();
@@ -44,16 +46,17 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest); 
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification        .body(SOAPRequest)
+        Response response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()
@@ -61,17 +64,27 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
 
-        Assertions.AssertWarning(response,false);
-        Assertions.AssertResponseTime(response,ResponseTime);
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"),
+                "Do not contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
+        ExtentLogger.info("Assertion passed - contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
+
+        Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertResponseTime(response, ResponseTime);
 
         Validationcheck();
 
@@ -85,26 +98,25 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
-    {
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
-        FileInputStream fis=new FileInputStream(new File(getTestData()));
+        FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(38);
+        XSSFRow InputRow = sheet.getRow(38);
         XSSFRow InputRow1 = sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml";
+        filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml";
 
-        XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:ExchangeInfo","TicketDocumentNbr",InputRow1.getCell(18).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air:Ticketing","TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:ExchangeInfo", "TicketDocumentNbr", InputRow1.getCell(18).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
 
         wb.close();
 
@@ -142,7 +154,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml";
 
-        String Expected = XMLParser.GetTagText("Warning",filepath);
+        String Expected = XMLParser.GetTagText("Warning", filepath);
         String Actual = "Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:";
         Assert.assertTrue(Expected.contains(Actual));
 

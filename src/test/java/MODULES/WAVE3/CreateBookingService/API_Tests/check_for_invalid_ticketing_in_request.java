@@ -62,6 +62,7 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"),
                 "Do not contain Ticketing/TicketTimeLimit");
         ExtentLogger.info("Assertion passed - contain Ticketing/TicketTimeLimit");
+
         Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);

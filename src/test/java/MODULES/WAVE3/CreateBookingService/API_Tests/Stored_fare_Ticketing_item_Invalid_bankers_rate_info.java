@@ -34,9 +34,11 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        ExtentLogger.info("Prerequisite 1");
         Prerequisite.run();
 
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        ExtentLogger.info("Prerequisite 2");
         Prerequisite2.run();
 
         UpdatePayload();
@@ -66,11 +68,21 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"));
-        Assert.assertTrue(response.getBody().asString().contains("Invalid Bankers Rate currency code."));
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
+                "Do not contain BookingReferenceID");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
+
+        Assert.assertTrue(response.getBody().asString().contains("Invalid Bankers Rate currency code."),
+                "Do not contain Invalid Bankers Rate currency code.");
+        ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 

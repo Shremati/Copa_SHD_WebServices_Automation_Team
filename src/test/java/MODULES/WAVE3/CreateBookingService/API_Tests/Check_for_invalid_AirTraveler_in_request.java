@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -39,6 +40,7 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -54,15 +56,23 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Check_for_invalid_AirTraveler_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"));
-        Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"));
+        Assert.assertTrue(response.getBody().asString().contains("Errors"),
+                "Do not contain Errors");
+        ExtentLogger.info("Assertion passed - contain Errors");
+
+        Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"),
+                "Do not contain Message Contains No TravelerInfo");
+        ExtentLogger.info("Assertion passed - contain Message Contains No TravelerInfo");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
         //                ********* Clearing Temp_Request.xml *********

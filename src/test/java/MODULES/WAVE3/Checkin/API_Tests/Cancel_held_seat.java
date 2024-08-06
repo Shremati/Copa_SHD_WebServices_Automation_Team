@@ -78,14 +78,14 @@ public class Cancel_held_seat extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Does not contain \"Success\" in response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Not contains \"SEATS ASSIGNED\" in response");
+        Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Does not contain \"SEATS ASSIGNED\" in response");
         ExtentLogger.info("Assertion passed - contains \"SEATS ASSIGNED\"");
 
         Assertions.AssertWarning(response,false);
-        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        ExtentLogger.info("Assertion passed - Does not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
 
