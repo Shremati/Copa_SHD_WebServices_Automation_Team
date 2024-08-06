@@ -38,7 +38,7 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -46,7 +46,8 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()

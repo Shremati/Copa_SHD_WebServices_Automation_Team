@@ -40,7 +40,7 @@ public class Bundled_segment_Invalid_information_in_one_segment extends Framewor
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -56,6 +56,7 @@ public class Bundled_segment_Invalid_information_in_one_segment extends Framewor
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Bundled_segment_Invalid_information_in_one_segment.xml"));

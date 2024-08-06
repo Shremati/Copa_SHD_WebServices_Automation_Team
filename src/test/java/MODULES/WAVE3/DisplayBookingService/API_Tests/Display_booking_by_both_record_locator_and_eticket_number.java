@@ -62,7 +62,7 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())

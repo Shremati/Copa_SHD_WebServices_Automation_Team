@@ -37,6 +37,7 @@ public class Agent_Sine_DisplayCST_Increased_Security_Users extends FrameworkCon
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAgentsine());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

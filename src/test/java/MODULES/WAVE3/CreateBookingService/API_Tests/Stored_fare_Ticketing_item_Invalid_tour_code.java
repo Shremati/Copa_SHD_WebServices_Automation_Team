@@ -49,7 +49,7 @@ public class Stored_fare_Ticketing_item_Invalid_tour_code extends FrameworkConst
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

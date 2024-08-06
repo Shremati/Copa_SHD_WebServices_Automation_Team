@@ -63,7 +63,7 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -72,12 +72,12 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");

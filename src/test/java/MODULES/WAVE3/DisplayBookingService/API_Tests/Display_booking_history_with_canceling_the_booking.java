@@ -58,7 +58,7 @@ public class Display_booking_history_with_canceling_the_booking extends Framewor
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())

@@ -25,7 +25,9 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class waitlist_booking_action_code_LL extends FrameworkConstants {
+public class waitlist_booking_action_code_LL extends FrameworkConstants
+{
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -37,7 +39,7 @@ public class waitlist_booking_action_code_LL extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -53,6 +55,7 @@ public class waitlist_booking_action_code_LL extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\waitlist_booking_action_code_LL.xml"));

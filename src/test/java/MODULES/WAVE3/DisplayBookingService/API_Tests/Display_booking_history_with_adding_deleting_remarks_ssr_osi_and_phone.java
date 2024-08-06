@@ -65,7 +65,7 @@ public class Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_ph
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())

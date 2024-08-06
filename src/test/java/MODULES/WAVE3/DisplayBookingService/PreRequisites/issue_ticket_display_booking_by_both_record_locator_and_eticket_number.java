@@ -46,7 +46,7 @@ public class issue_ticket_display_booking_by_both_record_locator_and_eticket_num
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())

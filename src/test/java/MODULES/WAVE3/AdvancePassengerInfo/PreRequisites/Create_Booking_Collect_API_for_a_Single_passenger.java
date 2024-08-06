@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
 import GENERICS.*;
 import frameworkconstants.*;
 import reports.ExtentLogger;
-
+import org.testng.Assert;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -70,6 +70,8 @@ public class Create_Booking_Collect_API_for_a_Single_passenger extends Framework
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

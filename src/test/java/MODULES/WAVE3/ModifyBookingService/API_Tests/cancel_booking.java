@@ -30,9 +30,9 @@ public class cancel_booking extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
 
         ExtentLogger.info("Prerequisite 1");
+        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
         Prerequisite.run();
 
         UpdatePayload();

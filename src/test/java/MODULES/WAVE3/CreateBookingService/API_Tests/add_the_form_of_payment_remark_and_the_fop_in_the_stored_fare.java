@@ -37,7 +37,7 @@ public class add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare exten
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

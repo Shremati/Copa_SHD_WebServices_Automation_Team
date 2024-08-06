@@ -40,7 +40,7 @@ public class Add_Agent_Sine extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAgentsine());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -62,8 +62,7 @@ public class Add_Agent_Sine extends FrameworkConstants {
         writer.close();
 
         try {
-            Assert.assertTrue(response.getBody().asString().contains("Success"),
-                    "Do not contain Success");
+            Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
             ExtentLogger.info("Assertion passed - contains Success");
 
             Assert.assertTrue(response.getBody().asString().contains("SINE ADDED"),

@@ -64,7 +64,7 @@ public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_i
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())

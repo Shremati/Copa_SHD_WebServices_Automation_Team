@@ -52,7 +52,7 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -61,8 +61,8 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Display_a_booking_from_a_specific_address_lniata_without_recloc_given.xml"));
         writer.write(response.asPrettyString());

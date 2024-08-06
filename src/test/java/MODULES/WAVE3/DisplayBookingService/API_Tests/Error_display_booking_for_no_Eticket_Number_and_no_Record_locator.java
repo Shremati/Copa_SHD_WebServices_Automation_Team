@@ -48,7 +48,7 @@ public class Error_display_booking_for_no_Eticket_Number_and_no_Record_locator e
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -57,12 +57,12 @@ public class Error_display_booking_for_no_Eticket_Number_and_no_Record_locator e
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Error_display_booking_for_no_Eticket_Number_and_no_Record_locator.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
         Assert.assertTrue(response.getBody().asString().contains("RECLOC or Eticket Number is required"), "Does not contain \"RECLOC or Eticket Number is required\" in the response");
         ExtentLogger.info("Assertion passed - contains \"RECLOC or Eticket Number is required\"");

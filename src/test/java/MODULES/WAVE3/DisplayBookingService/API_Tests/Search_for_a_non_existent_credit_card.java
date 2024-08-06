@@ -49,7 +49,7 @@ public class Search_for_a_non_existent_credit_card extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplaybookingservice())
@@ -58,13 +58,12 @@ public class Search_for_a_non_existent_credit_card extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Search_for_a_non_existent_credit_card.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
         Assert.assertTrue(response.getBody().asString().contains("Errors"), "Does not contain \"Errors\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Errors\"");

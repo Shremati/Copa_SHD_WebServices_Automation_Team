@@ -37,7 +37,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -45,7 +45,8 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()

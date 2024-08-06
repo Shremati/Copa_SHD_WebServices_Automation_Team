@@ -46,7 +46,7 @@ public class issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking ext
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())
