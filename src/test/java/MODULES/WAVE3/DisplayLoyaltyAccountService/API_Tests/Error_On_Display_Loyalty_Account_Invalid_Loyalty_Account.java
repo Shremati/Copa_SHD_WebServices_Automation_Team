@@ -37,7 +37,7 @@ public class Error_On_Display_Loyalty_Account_Invalid_Loyalty_Account extends Fr
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getDisplayloyaltyaccountservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

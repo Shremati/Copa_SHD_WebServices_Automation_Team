@@ -61,7 +61,7 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getModifyticketingservice())

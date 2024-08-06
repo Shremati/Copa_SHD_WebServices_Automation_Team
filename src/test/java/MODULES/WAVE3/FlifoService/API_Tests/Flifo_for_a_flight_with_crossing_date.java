@@ -46,7 +46,7 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())

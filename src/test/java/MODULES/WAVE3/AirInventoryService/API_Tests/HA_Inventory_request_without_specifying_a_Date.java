@@ -20,6 +20,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -35,6 +36,7 @@ public class HA_Inventory_request_without_specifying_a_Date extends FrameworkCon
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAirinventoryservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -42,7 +44,8 @@ public class HA_Inventory_request_without_specifying_a_Date extends FrameworkCon
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
                 .then()
@@ -50,6 +53,8 @@ public class HA_Inventory_request_without_specifying_a_Date extends FrameworkCon
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AirInventoryService\\HA_Inventory_request_without_specifying_a_Date.xml"));
         writer.write(response.asPrettyString());

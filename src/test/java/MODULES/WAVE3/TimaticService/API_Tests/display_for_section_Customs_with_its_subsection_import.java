@@ -37,7 +37,7 @@ public class display_for_section_Customs_with_its_subsection_import extends Fram
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTimaticservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

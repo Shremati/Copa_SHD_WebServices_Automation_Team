@@ -36,7 +36,7 @@ public class Invalid_information_in_POS_for_sign_in_invalid_ERSP_psswrd extends 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getEncodedecodeservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

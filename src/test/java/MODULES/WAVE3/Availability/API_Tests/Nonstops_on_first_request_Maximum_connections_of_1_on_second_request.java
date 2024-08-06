@@ -37,6 +37,7 @@ public class Nonstops_on_first_request_Maximum_connections_of_1_on_second_reques
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

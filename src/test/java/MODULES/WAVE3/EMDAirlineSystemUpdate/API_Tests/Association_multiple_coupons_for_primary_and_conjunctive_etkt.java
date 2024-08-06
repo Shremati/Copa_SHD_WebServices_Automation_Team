@@ -51,7 +51,7 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getEmdairlinesystemupdateservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

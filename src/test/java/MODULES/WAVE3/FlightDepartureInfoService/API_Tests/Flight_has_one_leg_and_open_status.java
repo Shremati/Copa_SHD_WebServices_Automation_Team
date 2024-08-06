@@ -36,7 +36,7 @@ public class Flight_has_one_leg_and_open_status extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getFlightdepartureinfoservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

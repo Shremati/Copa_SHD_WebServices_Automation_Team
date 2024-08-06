@@ -56,7 +56,7 @@ public class Display_the_history_information_for_the_given_two_tickets extends F
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())

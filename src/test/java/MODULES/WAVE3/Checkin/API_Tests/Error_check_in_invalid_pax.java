@@ -45,7 +45,7 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         RestAssured.useRelaxedHTTPSValidation();
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCheckin());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

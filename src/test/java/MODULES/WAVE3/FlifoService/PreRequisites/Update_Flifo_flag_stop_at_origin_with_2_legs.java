@@ -47,7 +47,7 @@ public class Update_Flifo_flag_stop_at_origin_with_2_legs extends FrameworkConst
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())

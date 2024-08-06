@@ -53,7 +53,7 @@ public class Flifo_Flag_Stop_at_the_origin_flight_with_2_legs extends FrameworkC
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())

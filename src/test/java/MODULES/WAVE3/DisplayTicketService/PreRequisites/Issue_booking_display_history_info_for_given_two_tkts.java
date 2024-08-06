@@ -47,7 +47,7 @@ public class Issue_booking_display_history_info_for_given_two_tkts extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticket())

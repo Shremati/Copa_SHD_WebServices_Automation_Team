@@ -30,9 +30,9 @@ public class cancel_booking extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
 
         ExtentLogger.info("Prerequisite 1");
-        create_booking_cancel_booking Prerequisite = new create_booking_cancel_booking();
         Prerequisite.run();
 
         UpdatePayload();
@@ -42,7 +42,7 @@ public class cancel_booking extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getModifybookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

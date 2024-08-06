@@ -40,7 +40,7 @@ public class Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax extends Framewor
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getTicketing());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

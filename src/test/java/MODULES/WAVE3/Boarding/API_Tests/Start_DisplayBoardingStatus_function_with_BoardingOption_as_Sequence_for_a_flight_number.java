@@ -47,7 +47,7 @@ public class Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequenc
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())

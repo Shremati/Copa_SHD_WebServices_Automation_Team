@@ -39,7 +39,7 @@ public class create_booking_association_multiple_coupons_for_primary_and_conjunc
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -61,6 +61,9 @@ public class create_booking_association_multiple_coupons_for_primary_and_conjunc
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

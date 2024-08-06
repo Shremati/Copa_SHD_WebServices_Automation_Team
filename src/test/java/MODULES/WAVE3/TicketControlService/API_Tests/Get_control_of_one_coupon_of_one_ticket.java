@@ -51,7 +51,7 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTicketcontroloservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -76,6 +76,7 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
 
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
+
         Assert.assertFalse(response.getBody().asString().contains("Warnings"),"Contains Warnings");
         ExtentLogger.info("Assertion passed - do not have warning");
 

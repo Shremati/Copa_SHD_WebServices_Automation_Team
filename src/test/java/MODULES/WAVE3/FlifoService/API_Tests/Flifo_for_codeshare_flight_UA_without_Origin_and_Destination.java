@@ -50,7 +50,7 @@ public class Flifo_for_codeshare_flight_UA_without_Origin_and_Destination extend
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())

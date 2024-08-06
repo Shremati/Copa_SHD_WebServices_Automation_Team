@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -37,6 +38,7 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAirinventoryservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -44,7 +46,8 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
                 .then()
@@ -53,12 +56,14 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AirInventoryService\\More_than_7_HA_Inventory_requests_at_a_time.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response, false);
         Assertions.AssertResponseTime(response, ResponseTime);

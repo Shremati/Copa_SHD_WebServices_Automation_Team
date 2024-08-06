@@ -37,7 +37,7 @@ public class Request_Visa_Health_Info_without_specifying_the_Nationality_Embarka
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTimaticservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

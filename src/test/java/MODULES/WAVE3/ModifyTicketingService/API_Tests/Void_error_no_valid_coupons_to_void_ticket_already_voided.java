@@ -63,7 +63,7 @@ public class Void_error_no_valid_coupons_to_void_ticket_already_voided extends F
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getModifyticketingservice())

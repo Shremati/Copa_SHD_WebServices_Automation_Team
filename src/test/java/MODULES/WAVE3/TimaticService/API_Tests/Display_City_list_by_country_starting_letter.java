@@ -37,7 +37,7 @@ public class Display_City_list_by_country_starting_letter extends FrameworkConst
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTimaticservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

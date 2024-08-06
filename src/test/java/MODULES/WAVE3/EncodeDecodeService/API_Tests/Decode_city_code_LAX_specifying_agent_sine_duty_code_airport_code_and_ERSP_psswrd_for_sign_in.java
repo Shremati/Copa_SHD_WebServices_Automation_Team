@@ -36,7 +36,7 @@ public class Decode_city_code_LAX_specifying_agent_sine_duty_code_airport_code_a
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getEncodedecodeservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

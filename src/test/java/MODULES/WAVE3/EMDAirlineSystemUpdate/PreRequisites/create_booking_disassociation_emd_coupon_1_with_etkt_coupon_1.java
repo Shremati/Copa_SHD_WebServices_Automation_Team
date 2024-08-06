@@ -39,7 +39,7 @@ public class create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1 exten
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

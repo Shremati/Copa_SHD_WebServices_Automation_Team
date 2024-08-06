@@ -37,6 +37,7 @@ public class Direct_and_nonstop_flights_only_applied_to_first_request extends Fr
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

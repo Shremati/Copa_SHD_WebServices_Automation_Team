@@ -48,7 +48,7 @@ public class Start_Boarding_using_Boarding_option_as_sequence extends FrameworkC
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())

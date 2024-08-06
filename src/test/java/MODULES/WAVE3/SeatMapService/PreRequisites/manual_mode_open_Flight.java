@@ -31,7 +31,13 @@ public class manual_mode_open_Flight extends FrameworkConstants {
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        UpdatePayload();
 
+//               ********** Reading the xml request file **********
+
+        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getDeparturecontrolservice());
 
 

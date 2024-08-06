@@ -28,7 +28,8 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ExtentLogger {
+public final class
+ExtentLogger {
 
     static String reportName;
 

@@ -37,7 +37,7 @@ public class Display_Non_Revenue_pax extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

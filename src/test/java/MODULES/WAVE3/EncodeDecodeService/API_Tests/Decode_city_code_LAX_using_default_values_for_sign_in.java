@@ -36,7 +36,7 @@ public class Decode_city_code_LAX_using_default_values_for_sign_in extends Frame
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getEncodedecodeservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

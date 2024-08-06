@@ -37,6 +37,7 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

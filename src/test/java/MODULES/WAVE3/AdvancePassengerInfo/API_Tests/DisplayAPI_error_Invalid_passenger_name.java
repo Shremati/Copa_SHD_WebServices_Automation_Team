@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,20 +19,23 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
 {
 
     public static String SOAPRequest;
+    static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
+        ExtentLogger.info("Prerequisite 1");
         Prerequisite.run();
 
 
@@ -42,9 +46,25 @@ public class DisplayAPI_error_Invalid_passenger_name extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
-        Response response = RESTWrapper.postResponse(getBaseURL(),getAdvancepassengerinfo(),SOAPRequest);
+        requestSpecification = given()
+                .baseUri(getBaseURL())
+                .header("Content-Type", "text/xml")
+                .filter(new AllureRestAssured());
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
+        Response response=requestSpecification
+                .body(SOAPRequest)
+                .when()
+                .post(getAdvancepassengerinfo())
+                .then()
+                .statusCode(200)
+                .and()
+                .log().all().extract().response();
+        ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AdvancePassengerInfo\\DisplayAPI_error_Invalid_passenger_name.xml"));
         writer.write(response.asPrettyString());

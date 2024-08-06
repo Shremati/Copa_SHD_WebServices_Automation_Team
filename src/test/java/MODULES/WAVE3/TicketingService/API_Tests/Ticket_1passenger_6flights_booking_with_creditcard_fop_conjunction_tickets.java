@@ -33,6 +33,7 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets Prerequisite = new create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets();
         Prerequisite.run();
+        ExtentLogger.info("Prerequisite 1");
 
         UpdatePayload();
 
@@ -41,7 +42,7 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getTicketing());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

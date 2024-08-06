@@ -41,7 +41,7 @@ public class Get_inbound_flight_info extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getConnectionFlightInfo());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -49,7 +49,8 @@ public class Get_inbound_flight_info extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification        .body(SOAPRequest)
+        Response response=requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getConnectionFlightInfo())
                 .then()
@@ -70,6 +71,8 @@ public class Get_inbound_flight_info extends FrameworkConstants {
         ExtentLogger.info("Assertion passed - contains CM INBOUND CONNECTIONS TO");
 
         Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

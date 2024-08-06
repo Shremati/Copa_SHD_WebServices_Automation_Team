@@ -45,7 +45,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())
@@ -81,7 +81,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        response = requestSpecification.body(SOAPRequest)
+        response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())
@@ -125,7 +125,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        response = requestSpecification.body(SOAPRequest)
+        response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())

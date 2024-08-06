@@ -32,7 +32,6 @@ public class Issue_Booking extends FrameworkConstants {
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-
         UpdatePayload();
 
 //               ********** Reading the xml request file **********
@@ -41,7 +40,7 @@ public class Issue_Booking extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getIssueticket());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

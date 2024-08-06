@@ -36,7 +36,7 @@ public class issue_ticket_push_control_of_multiple_coupons_within_one_ticket ext
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getIssueticketservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

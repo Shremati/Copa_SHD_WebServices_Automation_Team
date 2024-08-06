@@ -49,7 +49,7 @@ public class Flifo_for_one_flight_actual_times_in_UTC_format extends FrameworkCo
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())

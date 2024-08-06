@@ -37,6 +37,7 @@ public class First_available_flight_search_find_flights_with_2_seats_in_Q_class 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

@@ -37,12 +37,12 @@ public class Direct_and_nonstop_flights_is_false_applied_to_all_requests extends
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured());
-
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
         Response response = requestSpecification.body(SOAPRequest)

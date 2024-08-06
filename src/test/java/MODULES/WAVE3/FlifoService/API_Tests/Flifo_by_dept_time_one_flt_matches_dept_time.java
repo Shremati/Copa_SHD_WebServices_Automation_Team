@@ -49,7 +49,7 @@ public class Flifo_by_dept_time_one_flt_matches_dept_time extends FrameworkConst
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())

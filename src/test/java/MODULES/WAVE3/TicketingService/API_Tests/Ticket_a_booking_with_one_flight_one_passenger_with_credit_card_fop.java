@@ -43,7 +43,7 @@ public class Ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getTicketing());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

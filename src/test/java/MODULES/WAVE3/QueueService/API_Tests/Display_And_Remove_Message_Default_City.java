@@ -38,7 +38,7 @@ public class Display_And_Remove_Message_Default_City extends FrameworkConstants 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getQueueservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

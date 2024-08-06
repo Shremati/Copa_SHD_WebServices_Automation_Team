@@ -48,7 +48,7 @@ public class issue_ticket_refund_error_cancell_all_segments_prior_refund extends
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticketservice())

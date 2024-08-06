@@ -30,6 +30,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
         Get_Token Prerequisite1 = new Get_Token();
 
         ExtentLogger.info("Prerequisite 1");
@@ -52,7 +53,7 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

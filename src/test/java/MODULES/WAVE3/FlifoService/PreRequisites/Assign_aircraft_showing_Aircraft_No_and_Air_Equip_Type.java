@@ -48,7 +48,7 @@ public class Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type extends Fram
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDeparturecontrolservice())

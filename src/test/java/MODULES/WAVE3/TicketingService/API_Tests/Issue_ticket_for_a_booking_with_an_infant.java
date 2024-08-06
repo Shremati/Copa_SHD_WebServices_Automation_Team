@@ -34,6 +34,7 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         create_booking_issue_ticket_for_a_booking_with_an_infant Prerequisite = new create_booking_issue_ticket_for_a_booking_with_an_infant();
         Prerequisite.run();
+        ExtentLogger.info("Prerequisite 1");
 
         UpdatePayload();
 
@@ -42,7 +43,7 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getTicketing());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -50,7 +51,8 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getTicketing())
                 .then()

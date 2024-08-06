@@ -47,7 +47,7 @@ public class Update_Flifo_intermediate_stop_flag_flying_with_2_legs extends Fram
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getScreentextservice())

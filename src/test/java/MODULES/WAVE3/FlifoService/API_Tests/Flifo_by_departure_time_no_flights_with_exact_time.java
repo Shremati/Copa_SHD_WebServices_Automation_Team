@@ -48,8 +48,7 @@ public class Flifo_by_departure_time_no_flights_with_exact_time extends Framewor
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
-                .body(SOAPRequest)
+        Response response = requestSpecification
                 .when()
                 .post(getFlifo())
                 .then()

@@ -39,7 +39,7 @@ public class Issue_ticket_FF_pax extends FrameworkConstants {
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTicketing());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

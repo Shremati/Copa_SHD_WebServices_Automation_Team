@@ -42,7 +42,7 @@ public class Display_API_pax_types_adt_infant_with_seat_infant_without_seat exte
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

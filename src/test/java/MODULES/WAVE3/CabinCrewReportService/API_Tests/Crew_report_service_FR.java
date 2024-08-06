@@ -38,7 +38,7 @@ public class Crew_report_service_FR extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getCrewreportservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -71,6 +71,8 @@ public class Crew_report_service_FR extends FrameworkConstants {
         ExtentLogger.info("Assertion passed - contains SeatMapDetails");
 
         Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

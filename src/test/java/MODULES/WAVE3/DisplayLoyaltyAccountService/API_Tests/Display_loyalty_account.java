@@ -38,7 +38,7 @@ public class Display_loyalty_account extends FrameworkConstants
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getDisplayloyaltyaccountservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -46,7 +46,8 @@ public class Display_loyalty_account extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification        .body(SOAPRequest)
+        Response response=requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getDisplayloyaltyaccountservice())
                 .then()

@@ -47,7 +47,7 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

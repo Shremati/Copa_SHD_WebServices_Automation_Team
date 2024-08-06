@@ -21,10 +21,12 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class HA_Inventory_request_with_invalid_city_airport_code extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -36,6 +38,7 @@ public class HA_Inventory_request_with_invalid_city_airport_code extends Framewo
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAirinventoryservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -43,7 +46,8 @@ public class HA_Inventory_request_with_invalid_city_airport_code extends Framewo
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
                 .then()
@@ -51,6 +55,8 @@ public class HA_Inventory_request_with_invalid_city_airport_code extends Framewo
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AirInventoryService\\HA_Inventory_request_with_invalid_city_airport_code.xml"));
         writer.write(response.asPrettyString());

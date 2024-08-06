@@ -43,7 +43,7 @@ public class Display_API_requirements_for_Secure_Flight extends FrameworkConstan
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

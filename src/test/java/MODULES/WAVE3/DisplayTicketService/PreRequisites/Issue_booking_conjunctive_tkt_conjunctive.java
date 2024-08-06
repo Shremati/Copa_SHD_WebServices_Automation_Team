@@ -45,7 +45,7 @@ public class Issue_booking_conjunctive_tkt_conjunctive extends FrameworkConstant
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getIssueticket())

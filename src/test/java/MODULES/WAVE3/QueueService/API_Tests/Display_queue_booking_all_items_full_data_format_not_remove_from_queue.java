@@ -39,7 +39,7 @@ public class Display_queue_booking_all_items_full_data_format_not_remove_from_qu
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getQueueservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

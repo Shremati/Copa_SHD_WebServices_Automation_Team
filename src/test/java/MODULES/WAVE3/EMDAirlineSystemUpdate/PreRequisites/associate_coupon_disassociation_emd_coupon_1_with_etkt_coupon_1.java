@@ -38,7 +38,7 @@ public class associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1 ext
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getEmdairlinesystemupdateservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

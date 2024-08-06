@@ -62,7 +62,7 @@ public class Thru_CheckIn_2_passengers_in_same_PNR extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         RestAssured.useRelaxedHTTPSValidation();
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCheckin());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

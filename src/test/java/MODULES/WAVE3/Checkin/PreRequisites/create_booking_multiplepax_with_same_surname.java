@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -29,6 +30,7 @@ import java.util.*;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import frameworkconstants.*;
+import reports.ExtentLogger;
 
 public class create_booking_multiplepax_with_same_surname extends FrameworkConstants
 {
@@ -60,6 +62,9 @@ public class create_booking_multiplepax_with_same_surname extends FrameworkConst
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
 
         Assertions.AssertWarning(response,false);
         Assertions.AssertResponseTime(response,ResponseTime);

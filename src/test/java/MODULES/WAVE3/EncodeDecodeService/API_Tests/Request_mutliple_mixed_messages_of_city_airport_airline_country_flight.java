@@ -36,7 +36,7 @@ public class Request_mutliple_mixed_messages_of_city_airport_airline_country_fli
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getAuthorizationservice());
+        ExtentLogger.info("Base URL : " + getBaseURL() + getEncodedecodeservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

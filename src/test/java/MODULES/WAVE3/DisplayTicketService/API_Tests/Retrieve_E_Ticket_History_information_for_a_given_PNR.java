@@ -45,7 +45,7 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())

@@ -25,8 +25,11 @@ public class Empty_OriginDestinationInformation extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
         FileInputStream fileInputStream = new FileInputStream(getRequestDirectory() + "Availability\\Empty_OriginDestinationInformation.xml");
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+        ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())

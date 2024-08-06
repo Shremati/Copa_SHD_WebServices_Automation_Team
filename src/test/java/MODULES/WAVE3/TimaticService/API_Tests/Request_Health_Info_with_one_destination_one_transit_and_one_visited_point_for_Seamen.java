@@ -38,7 +38,7 @@ public class Request_Health_Info_with_one_destination_one_transit_and_one_visite
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTimaticservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
