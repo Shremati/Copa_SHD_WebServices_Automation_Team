@@ -64,6 +64,9 @@ public class create_booking_other_changes extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("Success"));
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not have warning");
 

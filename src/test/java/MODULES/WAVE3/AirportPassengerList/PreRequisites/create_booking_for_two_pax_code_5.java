@@ -27,8 +27,6 @@ public class create_booking_for_two_pax_code_5 extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-
-
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         UpdatePayload();
@@ -47,7 +45,7 @@ public class create_booking_for_two_pax_code_5 extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
