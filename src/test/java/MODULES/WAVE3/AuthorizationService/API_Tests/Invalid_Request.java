@@ -39,7 +39,6 @@ public class Invalid_Request extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
-        //ExtentLogger.info("Authorization : "+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -47,7 +46,8 @@ public class Invalid_Request extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAuthorizationservice())
                 .then()
@@ -55,6 +55,7 @@ public class Invalid_Request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AuthorizationService\\Invalid_Request.xml"));

@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class Error_text_for_Visa_credit_card extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -38,7 +39,6 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
 
         ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
-        //ExtentLogger.info("Authorization : "+getAuthorizationservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -46,7 +46,8 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAuthorizationservice())
                 .then()
@@ -54,7 +55,9 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AuthorizationService\\Error_text_for_Visa_credit_card.xml"));
         writer.write(response.asPrettyString());
         writer.close();

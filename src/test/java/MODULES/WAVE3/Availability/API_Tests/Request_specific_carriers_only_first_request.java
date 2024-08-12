@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -46,7 +47,8 @@ public class Request_specific_carriers_only_first_request extends FrameworkConst
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAvailability())
                 .then()
@@ -54,6 +56,8 @@ public class Request_specific_carriers_only_first_request extends FrameworkConst
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Request_specific_carriers_only_first_request.xml"));
         writer.write(response.asPrettyString());

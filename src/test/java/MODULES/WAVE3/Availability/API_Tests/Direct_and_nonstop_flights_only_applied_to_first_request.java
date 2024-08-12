@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -30,6 +31,7 @@ public class Direct_and_nonstop_flights_only_applied_to_first_request extends Fr
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -45,7 +47,8 @@ public class Direct_and_nonstop_flights_only_applied_to_first_request extends Fr
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAvailability())
                 .then()
@@ -53,6 +56,8 @@ public class Direct_and_nonstop_flights_only_applied_to_first_request extends Fr
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Direct_and_nonstop_flights_only_applied_to_first_request.xml"));
         writer.write(response.asPrettyString());

@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -42,9 +43,11 @@ public class Regular_availability_with_defaults extends FrameworkConstants {
                 .baseUri(getBaseURL())
                 .header("Content-Type", "text/xml")
                 .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest); 
+        ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAvailability())
                 .then()
@@ -52,6 +55,8 @@ public class Regular_availability_with_defaults extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Regular_availability_with_defaults.xml"));
         writer.write(response.asPrettyString());

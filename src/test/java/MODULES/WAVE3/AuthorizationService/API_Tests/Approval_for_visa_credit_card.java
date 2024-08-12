@@ -48,7 +48,8 @@ public class Approval_for_visa_credit_card extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification.body(SOAPRequest)
+        Response response=requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAuthorizationservice())
                 .then()

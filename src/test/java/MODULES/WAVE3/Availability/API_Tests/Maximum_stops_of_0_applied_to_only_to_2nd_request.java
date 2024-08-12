@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
@@ -45,7 +46,8 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAvailability())
                 .then()
@@ -53,6 +55,8 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Maximum_stops_of_0_applied_to_only_to_2nd_request.xml"));
         writer.write(response.asPrettyString());

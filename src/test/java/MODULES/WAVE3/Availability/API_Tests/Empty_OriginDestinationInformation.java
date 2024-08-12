@@ -17,10 +17,12 @@ import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
 public class Empty_OriginDestinationInformation extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -45,6 +47,8 @@ public class Empty_OriginDestinationInformation extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Empty_OriginDestinationInformation.xml"));
         writer.write(response.asPrettyString());
