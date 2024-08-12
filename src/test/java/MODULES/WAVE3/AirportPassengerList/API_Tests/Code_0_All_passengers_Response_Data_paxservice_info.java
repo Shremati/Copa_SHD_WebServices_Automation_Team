@@ -57,6 +57,7 @@ public class Code_0_All_passengers_Response_Data_paxservice_info extends Framewo
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 

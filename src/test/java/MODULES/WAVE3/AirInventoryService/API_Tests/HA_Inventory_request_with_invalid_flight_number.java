@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class HA_Inventory_request_with_invalid_flight_number extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 

@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 

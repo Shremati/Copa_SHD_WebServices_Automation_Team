@@ -46,7 +46,8 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response=requestSpecification.body(SOAPRequest)
+        Response response=requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
                 .then()
