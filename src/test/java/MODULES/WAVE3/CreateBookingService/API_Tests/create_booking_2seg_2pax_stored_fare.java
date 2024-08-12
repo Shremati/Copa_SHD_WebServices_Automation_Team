@@ -3,7 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_2seg_2pax_stored_fare_issue_ticket_41;
+import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_2seg_2pax_stored_fare_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -110,7 +110,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 
         excelwriter();
 
-        create_booking_2seg_2pax_stored_fare_issue_ticket_41 postCheck = new create_booking_2seg_2pax_stored_fare_issue_ticket_41();
+        create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new create_booking_2seg_2pax_stored_fare_issue_ticket();
         postCheck.run();
 
 

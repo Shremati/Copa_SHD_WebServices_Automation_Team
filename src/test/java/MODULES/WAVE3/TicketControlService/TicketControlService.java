@@ -82,4 +82,28 @@ public class TicketControlService {
             System.out.println("TCS_11 failed due to :" + e);
         }
     }
+
+    @Test(description = "TCS_11 - Missing the ticket document number in the RequestControl request.")
+    public void TCS_02() {
+
+        try {
+
+            Missing_the_ticket_document_number_in_the_RequestControl_request.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_11 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TCS_11 - Missing the ticket document number in the RequestControl request.")
+    public void TCS_03() {
+
+        try {
+
+            Missing_the_ticket_document_number_in_the_RequestControl_request.Execute();
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_11 failed due to :" + e);
+        }
+    }
 }

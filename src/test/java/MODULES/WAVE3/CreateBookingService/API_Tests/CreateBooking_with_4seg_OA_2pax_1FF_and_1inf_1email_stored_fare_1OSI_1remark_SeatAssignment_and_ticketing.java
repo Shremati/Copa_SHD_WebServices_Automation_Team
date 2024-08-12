@@ -47,7 +47,8 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()
@@ -55,6 +56,7 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OSI_1remark_SeatAssignment_and_ticketing.xml"));

@@ -34,7 +34,6 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
     public static String PNR;
     static RequestSpecification requestSpecification;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -66,7 +65,7 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
@@ -75,8 +74,8 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_6_Out_of_sync_electronic_tickets.xml"));
         writer.write(response.asPrettyString());

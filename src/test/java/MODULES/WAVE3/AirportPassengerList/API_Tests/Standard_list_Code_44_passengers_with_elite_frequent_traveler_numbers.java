@@ -32,7 +32,6 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
     public static String PNR;
     static RequestSpecification requestSpecification;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         Create_Booking_StandardList_code_44 PreRequisite1 = new Create_Booking_StandardList_code_44();
@@ -55,7 +54,7 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
@@ -64,8 +63,8 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbers.xml"));
         writer.write(response.asPrettyString());

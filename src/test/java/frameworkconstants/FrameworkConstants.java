@@ -122,15 +122,11 @@ public class FrameworkConstants {
     public static String getSynchronizeticketservice() {
         return synchronizeticketservice;
     }
-    public static String getTicketcontroloservice() {
-        return ticketcontroloservice;
-    }
+    public static String getTicketcontroloservice() {return ticketcontroloservice;}
     public static String getTimaticservice() {
         return timaticservice;
     }
-    public static String getTicketing() {
-        return ticketing;
-    }
+    public static String getTicketing() {return ticketing;}
     public static String getFlifo() {
         return flifo;
     }

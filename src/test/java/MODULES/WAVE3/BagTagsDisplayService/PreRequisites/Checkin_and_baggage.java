@@ -32,6 +32,7 @@ public class Checkin_and_baggage extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -39,7 +40,7 @@ public class Checkin_and_baggage extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getAuthorizationservice());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getCheckin());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -47,7 +48,8 @@ public class Checkin_and_baggage extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCheckin())
                 .then()
@@ -55,6 +57,7 @@ public class Checkin_and_baggage extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));

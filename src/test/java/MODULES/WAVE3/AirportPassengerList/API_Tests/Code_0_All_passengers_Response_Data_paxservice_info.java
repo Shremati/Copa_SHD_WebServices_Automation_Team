@@ -29,7 +29,6 @@ public class Code_0_All_passengers_Response_Data_paxservice_info extends Framewo
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
@@ -49,7 +48,7 @@ public class Code_0_All_passengers_Response_Data_paxservice_info extends Framewo
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())

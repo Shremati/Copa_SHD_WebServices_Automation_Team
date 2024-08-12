@@ -71,7 +71,6 @@ public class create_booking_for_two_pax extends FrameworkConstants
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 

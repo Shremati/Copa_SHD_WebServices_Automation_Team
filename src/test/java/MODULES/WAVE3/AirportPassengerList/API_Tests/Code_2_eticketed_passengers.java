@@ -31,7 +31,6 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
     public static String PNR;
     static RequestSpecification requestSpecification;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         create_booking_for_two_pax Prerequisite1 =new create_booking_for_two_pax();
@@ -59,7 +58,7 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())

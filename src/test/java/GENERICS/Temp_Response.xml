@@ -1,11 +1,213 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <ns4:createBookingResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRS" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns4="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:ns3="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns6:OTA_AirBookRS TimeStamp="2024-08-08T08:05:00" Version="4.000">
-        <ns6:Errors>
-          <Error Type="12" ShortText="10070" Tag="OriginDestinationOptions" RecordID="1">Unable to book requested flight</Error>
-        </ns6:Errors>
-      </ns6:OTA_AirBookRS>
-    </ns4:createBookingResponse>
+    <ns3:issueTicketResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/TicketingRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_TicketingRS EchoToken="Test_1" TimeStamp="2024-08-12T15:09:24" Version="4.000">
+        <ns4:Success/>
+        <ns4:TicketingResults RecordLocator="BJSOK3">
+          <ns4:TicketingResult PassengerRef="1" TransactionRef="1" TransactionType="Issue">
+            <ns4:TicketInfo TicketNumber="2187036512" NumberOfTickets="0001" Status="Success">
+              <ns4:Ticket>
+                <ns4:TicketData>
+                  <ns4:HARecordLocator>BJSOK3</ns4:HARecordLocator>
+                  <ns4:HACarrierCode>CM</ns4:HACarrierCode>
+                  <ns4:DateOfIssue>12AUG24</ns4:DateOfIssue>
+                  <ns4:PlaceOfIssue>PANAMA CITY</ns4:PlaceOfIssue>
+                  <ns4:CountryWhereTicketed>PA</ns4:CountryWhereTicketed>
+                  <ns4:ServicingCarrierCode>2306</ns4:ServicingCarrierCode>
+                  <ns4:FareCalculationMode>1</ns4:FareCalculationMode>
+                  <ns4:AirLineOrAgentID>230</ns4:AirLineOrAgentID>
+                  <ns4:PassengerData>
+                    <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                    <ns4:PNRPaxNameNumber>1</ns4:PNRPaxNameNumber>
+                    <ns4:PNRPaxInitialNumber>1</ns4:PNRPaxInitialNumber>
+                    <ns4:PassengerName>MORRIS/PHILLIP</ns4:PassengerName>
+                    <ns4:PassengerType>ADT</ns4:PassengerType>
+                    <ns4:PaxIndicator>0</ns4:PaxIndicator>
+                    <ns4:FareData>
+                      <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                      <ns4:TotalAmount>149.60</ns4:TotalAmount>
+                      <ns4:BaseFare>USD136.00</ns4:BaseFare>
+                      <ns4:FormOfPayment>FP CCVIXXXXXXXXXXXX4403/0228/NA1234</ns4:FormOfPayment>
+                      <ns4:FareCalcData>/FC SALUDOS</ns4:FareCalcData>
+                      <ns4:ChargeTotalAmount>149.60</ns4:ChargeTotalAmount>
+                      <ns4:ChargeBaseFare>136.00</ns4:ChargeBaseFare>
+                      <ns4:ChargeTax1>13.60</ns4:ChargeTax1>
+                      <ns4:CheckDigit>0</ns4:CheckDigit>
+                      <ns4:Origin>GUA</ns4:Origin>
+                      <ns4:Destination>PTY</ns4:Destination>
+                      <ns4:IssuingAgencyName>COPA AIRLINES-COMPANIA P</ns4:IssuingAgencyName>
+                      <ns4:AgencyPlaceOfIssue>PANAMA CITY</ns4:AgencyPlaceOfIssue>
+                      <ns4:ExpandedIssuingAgentID>D13401RO</ns4:ExpandedIssuingAgentID>
+                      <ns4:CRSTax1>13.60</ns4:CRSTax1>
+                      <ns4:CRSTaxType1>AG</ns4:CRSTaxType1>
+                      <ns4:FormsOfPayment>
+                        <ns4:NumberOfFOP>1</ns4:NumberOfFOP>
+                        <ns4:FOPType>CC</ns4:FOPType>
+                        <ns4:FOPIndicator>3</ns4:FOPIndicator>
+                        <ns4:FOPAmount>149.60</ns4:FOPAmount>
+                        <ns4:CreditCardVendorCode>VI</ns4:CreditCardVendorCode>
+                        <ns4:CreditCardNumber>XXXXXXXXXXXX4403</ns4:CreditCardNumber>
+                        <ns4:CreditCardExpDate>0228</ns4:CreditCardExpDate>
+                        <ns4:CreditCardAppCode>A1234</ns4:CreditCardAppCode>
+                        <ns4:CreditCardAppCodeSource/>
+                        <ns4:CreditCardAuthAmount/>
+                        <ns4:CCAddressVerifCode/>
+                        <ns4:TravelerReference/>
+                        <ns4:CCPaymentTime/>
+                        <ns4:MemberShipStatus2/>
+                        <ns4:TransactionInfo/>
+                        <ns4:CardType/>
+                      </ns4:FormsOfPayment>
+                      <ns4:TaxData>
+                        <ns4:TaxItem>AG13.60</ns4:TaxItem>
+                      </ns4:TaxData>
+                    </ns4:FareData>
+                    <ns4:CouponData>
+                      <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                      <ns4:TicketNumberData>1</ns4:TicketNumberData>
+                      <ns4:SegmentNumber>1</ns4:SegmentNumber>
+                      <ns4:TicketType>HA eTicket</ns4:TicketType>
+                      <ns4:FormAndSerialNumber>2302187036512</ns4:FormAndSerialNumber>
+                      <ns4:TotalBookletsIssued>01</ns4:TotalBookletsIssued>
+                      <ns4:AudCouponCheckDigit>6</ns4:AudCouponCheckDigit>
+                      <ns4:CouponNumber>1</ns4:CouponNumber>
+                      <ns4:CheckDigit>2</ns4:CheckDigit>
+                      <ns4:DataAppIndicator>2</ns4:DataAppIndicator>
+                      <ns4:BoardingPassNumber>0</ns4:BoardingPassNumber>
+                      <ns4:FromCityCode>GUA</ns4:FromCityCode>
+                      <ns4:FromCityName>GUATEMALA CTY GUA</ns4:FromCityName>
+                      <ns4:ToCityCode>PTY</ns4:ToCityCode>
+                      <ns4:ToCityName>PANAMA CITY PTY</ns4:ToCityName>
+                      <ns4:CarrierCode>CM</ns4:CarrierCode>
+                      <ns4:CarrierCodeName>COPA AIRLINES-COMPAN</ns4:CarrierCodeName>
+                      <ns4:FlightNumber>389</ns4:FlightNumber>
+                      <ns4:ClassOfService1>Y</ns4:ClassOfService1>
+                      <ns4:FlightDate>12AUG</ns4:FlightDate>
+                      <ns4:Status>OK</ns4:Status>
+                      <ns4:DepartureTime>712A</ns4:DepartureTime>
+                      <ns4:BinaryFlightNumber>389</ns4:BinaryFlightNumber>
+                      <ns4:BinaryDate>21407</ns4:BinaryDate>
+                      <ns4:FlightDateYear>24</ns4:FlightDateYear>
+                      <ns4:FareBasisCode>AAA</ns4:FareBasisCode>
+                      <ns4:NotValidBeforeDate>10OCT</ns4:NotValidBeforeDate>
+                      <ns4:NotValidAfterDate>16MAR</ns4:NotValidAfterDate>
+                      <ns4:ReasonOfIssuanceCounter>0</ns4:ReasonOfIssuanceCounter>
+                      <ns4:PhoneNumber>00005555551212</ns4:PhoneNumber>
+                      <ns4:NumberOfStops>0</ns4:NumberOfStops>
+                      <ns4:ArrivalTime>1039A</ns4:ArrivalTime>
+                      <ns4:MealCode>M</ns4:MealCode>
+                      <ns4:TicketDataNumber>0</ns4:TicketDataNumber>
+                      <ns4:CRSSegmentNumber>0</ns4:CRSSegmentNumber>
+                      <ns4:SegFareStatus>0</ns4:SegFareStatus>
+                    </ns4:CouponData>
+                  </ns4:PassengerData>
+                </ns4:TicketData>
+              </ns4:Ticket>
+            </ns4:TicketInfo>
+          </ns4:TicketingResult>
+          <ns4:TicketingResult PassengerRef="2" TransactionRef="1" TransactionType="Issue">
+            <ns4:TicketInfo TicketNumber="2187036513" NumberOfTickets="0001" Status="Success">
+              <ns4:Ticket>
+                <ns4:TicketData>
+                  <ns4:HARecordLocator>BJSOK3</ns4:HARecordLocator>
+                  <ns4:HACarrierCode>CM</ns4:HACarrierCode>
+                  <ns4:DateOfIssue>12AUG24</ns4:DateOfIssue>
+                  <ns4:PlaceOfIssue>PANAMA CITY</ns4:PlaceOfIssue>
+                  <ns4:CountryWhereTicketed>PA</ns4:CountryWhereTicketed>
+                  <ns4:ServicingCarrierCode>2306</ns4:ServicingCarrierCode>
+                  <ns4:FareCalculationMode>1</ns4:FareCalculationMode>
+                  <ns4:AirLineOrAgentID>230</ns4:AirLineOrAgentID>
+                  <ns4:PassengerData>
+                    <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                    <ns4:PNRPaxNameNumber>1</ns4:PNRPaxNameNumber>
+                    <ns4:PNRPaxInitialNumber>1</ns4:PNRPaxInitialNumber>
+                    <ns4:PassengerName>MORRIS/SONIA</ns4:PassengerName>
+                    <ns4:PassengerType>ADT</ns4:PassengerType>
+                    <ns4:PaxIndicator>0</ns4:PaxIndicator>
+                    <ns4:FareData>
+                      <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                      <ns4:TotalAmount>149.60</ns4:TotalAmount>
+                      <ns4:BaseFare>USD136.00</ns4:BaseFare>
+                      <ns4:FormOfPayment>FP CCVIXXXXXXXXXXXX4403/0228/NA1234</ns4:FormOfPayment>
+                      <ns4:FareCalcData>/FC SALUDOS</ns4:FareCalcData>
+                      <ns4:ChargeTotalAmount>149.60</ns4:ChargeTotalAmount>
+                      <ns4:ChargeBaseFare>136.00</ns4:ChargeBaseFare>
+                      <ns4:ChargeTax1>13.60</ns4:ChargeTax1>
+                      <ns4:CheckDigit>0</ns4:CheckDigit>
+                      <ns4:Origin>GUA</ns4:Origin>
+                      <ns4:Destination>PTY</ns4:Destination>
+                      <ns4:IssuingAgencyName>COPA AIRLINES-COMPANIA P</ns4:IssuingAgencyName>
+                      <ns4:AgencyPlaceOfIssue>PANAMA CITY</ns4:AgencyPlaceOfIssue>
+                      <ns4:ExpandedIssuingAgentID>D13401RO</ns4:ExpandedIssuingAgentID>
+                      <ns4:CRSTax1>13.60</ns4:CRSTax1>
+                      <ns4:CRSTaxType1>AG</ns4:CRSTaxType1>
+                      <ns4:FormsOfPayment>
+                        <ns4:NumberOfFOP>1</ns4:NumberOfFOP>
+                        <ns4:FOPType>CC</ns4:FOPType>
+                        <ns4:FOPIndicator>3</ns4:FOPIndicator>
+                        <ns4:FOPAmount>149.60</ns4:FOPAmount>
+                        <ns4:CreditCardVendorCode>VI</ns4:CreditCardVendorCode>
+                        <ns4:CreditCardNumber>XXXXXXXXXXXX4403</ns4:CreditCardNumber>
+                        <ns4:CreditCardExpDate>0228</ns4:CreditCardExpDate>
+                        <ns4:CreditCardAppCode>A1234</ns4:CreditCardAppCode>
+                        <ns4:CreditCardAppCodeSource/>
+                        <ns4:CreditCardAuthAmount/>
+                        <ns4:CCAddressVerifCode/>
+                        <ns4:TravelerReference/>
+                        <ns4:CCPaymentTime/>
+                        <ns4:MemberShipStatus2/>
+                        <ns4:TransactionInfo/>
+                        <ns4:CardType/>
+                      </ns4:FormsOfPayment>
+                      <ns4:TaxData>
+                        <ns4:TaxItem>AG13.60</ns4:TaxItem>
+                      </ns4:TaxData>
+                    </ns4:FareData>
+                    <ns4:CouponData>
+                      <ns4:PassengerNumber>1</ns4:PassengerNumber>
+                      <ns4:TicketNumberData>1</ns4:TicketNumberData>
+                      <ns4:SegmentNumber>1</ns4:SegmentNumber>
+                      <ns4:TicketType>HA eTicket</ns4:TicketType>
+                      <ns4:FormAndSerialNumber>2302187036513</ns4:FormAndSerialNumber>
+                      <ns4:TotalBookletsIssued>01</ns4:TotalBookletsIssued>
+                      <ns4:AudCouponCheckDigit>0</ns4:AudCouponCheckDigit>
+                      <ns4:CouponNumber>1</ns4:CouponNumber>
+                      <ns4:CheckDigit>3</ns4:CheckDigit>
+                      <ns4:DataAppIndicator>2</ns4:DataAppIndicator>
+                      <ns4:BoardingPassNumber>0</ns4:BoardingPassNumber>
+                      <ns4:FromCityCode>GUA</ns4:FromCityCode>
+                      <ns4:FromCityName>GUATEMALA CTY GUA</ns4:FromCityName>
+                      <ns4:ToCityCode>PTY</ns4:ToCityCode>
+                      <ns4:ToCityName>PANAMA CITY PTY</ns4:ToCityName>
+                      <ns4:CarrierCode>CM</ns4:CarrierCode>
+                      <ns4:CarrierCodeName>COPA AIRLINES-COMPAN</ns4:CarrierCodeName>
+                      <ns4:FlightNumber>389</ns4:FlightNumber>
+                      <ns4:ClassOfService1>Y</ns4:ClassOfService1>
+                      <ns4:FlightDate>12AUG</ns4:FlightDate>
+                      <ns4:Status>OK</ns4:Status>
+                      <ns4:DepartureTime>712A</ns4:DepartureTime>
+                      <ns4:BinaryFlightNumber>389</ns4:BinaryFlightNumber>
+                      <ns4:BinaryDate>21407</ns4:BinaryDate>
+                      <ns4:FlightDateYear>24</ns4:FlightDateYear>
+                      <ns4:FareBasisCode>AAA</ns4:FareBasisCode>
+                      <ns4:NotValidBeforeDate>10OCT</ns4:NotValidBeforeDate>
+                      <ns4:NotValidAfterDate>16MAR</ns4:NotValidAfterDate>
+                      <ns4:ReasonOfIssuanceCounter>0</ns4:ReasonOfIssuanceCounter>
+                      <ns4:PhoneNumber>00005555551212</ns4:PhoneNumber>
+                      <ns4:NumberOfStops>0</ns4:NumberOfStops>
+                      <ns4:ArrivalTime>1039A</ns4:ArrivalTime>
+                      <ns4:MealCode>M</ns4:MealCode>
+                      <ns4:TicketDataNumber>0</ns4:TicketDataNumber>
+                      <ns4:CRSSegmentNumber>0</ns4:CRSSegmentNumber>
+                      <ns4:SegFareStatus>0</ns4:SegFareStatus>
+                    </ns4:CouponData>
+                  </ns4:PassengerData>
+                </ns4:TicketData>
+              </ns4:Ticket>
+            </ns4:TicketInfo>
+          </ns4:TicketingResult>
+        </ns4:TicketingResults>
+      </ns4:EDS_TicketingRS>
+    </ns3:issueTicketResponse>
   </soap:Body>
 </soap:Envelope>

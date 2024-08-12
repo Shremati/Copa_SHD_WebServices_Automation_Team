@@ -30,7 +30,6 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         UpdatePayload();
@@ -49,7 +48,7 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
