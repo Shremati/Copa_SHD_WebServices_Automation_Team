@@ -57,8 +57,8 @@ public class Input_with_more_PassengerFlightInfo extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Input_with_more_PassengerFlightInfo.xml"));
         writer.write(response.asPrettyString());

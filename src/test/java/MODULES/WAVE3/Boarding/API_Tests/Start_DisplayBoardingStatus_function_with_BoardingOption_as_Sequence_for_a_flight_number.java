@@ -56,8 +56,8 @@ public class Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequenc
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_DisplayBoardingStatus_function_with_BoardingOption_as_Sequence_for_a_flight_number.xml"));
         writer.write(response.asPrettyString());

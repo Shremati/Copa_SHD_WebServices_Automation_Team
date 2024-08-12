@@ -54,8 +54,8 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
@@ -90,12 +90,12 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
-
 
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");

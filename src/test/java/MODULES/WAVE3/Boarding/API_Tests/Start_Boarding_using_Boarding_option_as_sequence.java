@@ -57,8 +57,8 @@ public class Start_Boarding_using_Boarding_option_as_sequence extends FrameworkC
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_using_Boarding_option_as_sequence.xml"));
         writer.write(response.asPrettyString());

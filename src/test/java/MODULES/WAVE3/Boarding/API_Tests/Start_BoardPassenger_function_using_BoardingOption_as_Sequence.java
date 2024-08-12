@@ -57,6 +57,7 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_BoardPassenger_function_using_BoardingOption_as_Sequence.xml"));
