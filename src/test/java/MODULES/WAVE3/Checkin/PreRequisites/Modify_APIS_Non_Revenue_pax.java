@@ -56,11 +56,12 @@ public class Modify_APIS_Non_Revenue_pax extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"));
+        Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"),"Does not contain \"APIS COMPLETE\"");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

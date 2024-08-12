@@ -85,6 +85,7 @@ public class Basic_seat_change extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Basic_seat_change.xml"));
         writer.write(response.asPrettyString());
         writer.close();

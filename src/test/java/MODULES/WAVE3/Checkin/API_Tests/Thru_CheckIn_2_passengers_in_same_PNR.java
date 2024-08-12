@@ -82,6 +82,7 @@ public class Thru_CheckIn_2_passengers_in_same_PNR extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Thru_CheckIn_2_passengers_in_same_PNR.xml"));
         writer.write(response.asPrettyString());
         writer.close();

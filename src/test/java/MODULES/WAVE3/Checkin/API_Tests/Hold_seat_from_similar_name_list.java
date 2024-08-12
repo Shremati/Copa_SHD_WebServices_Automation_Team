@@ -68,6 +68,7 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Checkin\\Hold_seat_from_similar_name_list.xml"));
         writer.write(response.asPrettyString());
         writer.close();
