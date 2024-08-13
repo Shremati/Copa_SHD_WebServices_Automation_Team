@@ -48,7 +48,8 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()
@@ -63,12 +64,13 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("Message Contains No OriginDestinationOptions"),
-                "Do not contain Message Contains No OriginDestinationOptions");
+        Assert.assertTrue(response.getBody().asString().contains("Message Contains No OriginDestinationOptions"), "Do not contain Message Contains No OriginDestinationOptions");
         ExtentLogger.info("Assertion passed - contain Message Contains No OriginDestinationOptions");
 
         Assertions.AssertWarning(response, false);

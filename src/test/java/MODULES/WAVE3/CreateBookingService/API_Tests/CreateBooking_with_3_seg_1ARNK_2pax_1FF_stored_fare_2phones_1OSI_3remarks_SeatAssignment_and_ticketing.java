@@ -64,6 +64,9 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Success"),
                 "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");

@@ -25,7 +25,9 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class special_passenger_type_jumpseat extends FrameworkConstants {
+public class special_passenger_type_jumpseat extends FrameworkConstants
+{
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -54,11 +56,15 @@ public class special_passenger_type_jumpseat extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\special_passenger_type_jumpseat.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");

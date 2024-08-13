@@ -57,18 +57,17 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Check_for_invalid_AirTraveler_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Errors"),
-                "Do not contain Errors");
+        Assert.assertTrue(response.getBody().asString().contains("Errors"), "Do not contain Errors");
         ExtentLogger.info("Assertion passed - contain Errors");
 
-        Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"),
-                "Do not contain Message Contains No TravelerInfo");
+        Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"), "Do not contain Message Contains No TravelerInfo");
         ExtentLogger.info("Assertion passed - contain Message Contains No TravelerInfo");
 
         Assertions.AssertWarning(response, false);

@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class check_for_invalid_ticketing_in_request extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -54,18 +55,19 @@ public class check_for_invalid_ticketing_in_request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\check_for_invalid_ticketing_in_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"),
-                "Do not contain Ticketing/TicketTimeLimit");
+        Assert.assertTrue(response.getBody().asString().contains("<Error Type=\"10\" Tag=\"Ticketing/TicketTimeLimit\">Message Contains No Ticketing/TicketTimeLimit.</Error>"), "Do not contain Ticketing/TicketTimeLimit");
         ExtentLogger.info("Assertion passed - contain Ticketing/TicketTimeLimit");
 
         Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

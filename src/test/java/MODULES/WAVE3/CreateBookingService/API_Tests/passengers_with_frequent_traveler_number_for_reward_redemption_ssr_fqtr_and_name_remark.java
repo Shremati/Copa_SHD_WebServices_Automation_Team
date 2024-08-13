@@ -3,7 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket;
+import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,7 +12,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -25,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -54,11 +54,15 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
@@ -77,7 +81,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
 
         excelwriter();
 
-        passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket postCheck = new passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark_issue_ticket();
+        IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark postCheck = new IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark();
         postCheck.run();
 
     }

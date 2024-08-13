@@ -63,6 +63,9 @@ public class CreateBooking_Failure_in_one_of_the_components_of_the_system_SDS_un
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Success"),
                 "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");

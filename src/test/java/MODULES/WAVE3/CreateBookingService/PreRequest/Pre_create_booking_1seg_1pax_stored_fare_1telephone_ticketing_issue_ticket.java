@@ -26,7 +26,8 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
         UpdatePayload();
 
 //                       ********** Reading the xml request file **********

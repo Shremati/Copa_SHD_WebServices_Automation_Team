@@ -70,6 +70,9 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Success"),
                 "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");

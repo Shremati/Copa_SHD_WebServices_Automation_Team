@@ -3,7 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_2seg_2pax_stored_fare_issue_ticket;
+import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,7 +12,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -25,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -45,7 +45,8 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
                 .then()
@@ -53,54 +54,47 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\create_booking_2seg_2pax_stored_fare.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
-                "Do not contain BookingReferenceID");
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
-        Assert.assertTrue(response.getBody().asString().contains("Telephone"),
-                "Do not contain Telephone");
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"), "Do not contain Telephone");
         ExtentLogger.info("Assertion passed - contain Telephone");
 
-        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"),
-                "Do not contain FareBasisCodes");
+        Assert.assertTrue(response.getBody().asString().contains("FareBasisCodes"), "Do not contain FareBasisCodes");
         ExtentLogger.info("Assertion passed - contain FareBasisCodes");
 
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
-                "Do not contain BaseFare");
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"), "Do not contain BaseFare");
         ExtentLogger.info("Assertion passed - contain BaseFare");
 
-        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"),
-                "Do not contain NotValidBefore");
+        Assert.assertTrue(response.getBody().asString().contains("NotValidBefore"), "Do not contain NotValidBefore");
         ExtentLogger.info("Assertion passed - contain NotValidBefore");
 
-        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"),
-                "Do not contain NotValidAfter");
+        Assert.assertTrue(response.getBody().asString().contains("NotValidAfter"), "Do not contain NotValidAfter");
         ExtentLogger.info("Assertion passed - contain NotValidAfter");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"),
-                "Do not have FlightSegmentRPH");
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"), "Do not have FlightSegmentRPH");
         ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
 
-        Assert.assertTrue(response.getBody().asString().contains("TourCode"),
-                "Do not contain TourCode");
+        Assert.assertTrue(response.getBody().asString().contains("TourCode"), "Do not contain TourCode");
         ExtentLogger.info("Assertion passed - contain TourCode");
 
-        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"),
-                "Do not contain FareBaggageAllowance");
+        Assert.assertTrue(response.getBody().asString().contains("FareBaggageAllowance"), "Do not contain FareBaggageAllowance");
         ExtentLogger.info("Assertion passed - contain FareBaggageAllowance");
 
-        Assert.assertTrue(response.getBody().asString().contains("Invalid ISO country code for Bankers Rate."),
-                "Do not contain Invalid ISO country code for Bankers Rate");
+        Assert.assertTrue(response.getBody().asString().contains("Invalid ISO country code for Bankers Rate."), "Do not contain Invalid ISO country code for Bankers Rate");
         ExtentLogger.info("Assertion passed - contain Invalid ISO country code for Bankers Rate");
 
         Assertions.AssertWarning(response, false);
@@ -110,7 +104,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 
         excelwriter();
 
-        create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new create_booking_2seg_2pax_stored_fare_issue_ticket();
+        IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket();
         postCheck.run();
 
 

@@ -57,21 +57,19 @@ public class Invalid_information_specified_in_AirItinerary extends FrameworkCons
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Invalid_information_specified_in_AirItinerary.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
-        ExtentLogger.info("Assertion passed - contain Success");
-
         Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR"),
                 "Do not contain Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR");
         ExtentLogger.info("Assertion passed - contain Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR");
 
         Assertions.AssertWarning(response, false);
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

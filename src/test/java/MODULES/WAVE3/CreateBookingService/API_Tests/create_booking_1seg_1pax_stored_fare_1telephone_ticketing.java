@@ -3,7 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
+import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,9 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -26,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -55,26 +54,26 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
-                "Do not contain BookingReferenceID");
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
-        Assert.assertTrue(response.getBody().asString().contains("Telephone"),
-                "Do not contain Telephone");
+        Assert.assertTrue(response.getBody().asString().contains("Telephone"), "Do not contain Telephone");
         ExtentLogger.info("Assertion passed - contain Telephone");
 
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
-                "Do not contain BaseFare");
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"), "Do not contain BaseFare");
         ExtentLogger.info("Assertion passed - contain BaseFare");
 
         Assertions.AssertWarning(response, false);
@@ -84,7 +83,7 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
 
         excelwriter();
 
-        create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket postCheck = new create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        IssueTicket_create_booking_1seg_1pax_stored_fare_1telephone_ticketing postCheck = new IssueTicket_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
         postCheck.run();
 
     }

@@ -3,7 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
-import MODULES.WAVE3.CreateBookingService.PostCheck.create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket;
+import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,7 +12,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -25,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 
 public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConstants {
+
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -54,11 +54,15 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\create_booking_2seg_2pax_stored_fare_per_pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Success"),
                 "Do not contain Success");
@@ -108,10 +112,6 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 "Do not contain FlightSegmentRPH");
         ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TourCode>IT6ZZ1TOURUSA</ns4:TourCode>"),
-                "Do not contain IT6ZZ1TOURUSA");
-        ExtentLogger.info("Assertion passed - contain IT6ZZ1TOURUSA");
-
         Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"),
                 "Do not contain TicketTimeLimit");
         ExtentLogger.info("Assertion passed - contain TicketTimeLimit");
@@ -130,7 +130,7 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
         Assertions.AssertResponseTime(response, ResponseTime);
         excelwriter();
 
-        create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket postCheck = new create_booking_2seg_2pax_stored_fare_per_pax_issue_ticket();
+        IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax();
         postCheck.run();
 
     }

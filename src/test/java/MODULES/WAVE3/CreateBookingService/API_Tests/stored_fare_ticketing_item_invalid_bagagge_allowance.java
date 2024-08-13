@@ -25,7 +25,8 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class stored_fare_ticketing_item_invalid_bagagge_allowance extends FrameworkConstants {
+public class stored_fare_ticketing_item_invalid_bagagge_allowance extends FrameworkConstants
+{
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
@@ -54,11 +55,15 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml"));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Success"),
                 "Do not contain Success");

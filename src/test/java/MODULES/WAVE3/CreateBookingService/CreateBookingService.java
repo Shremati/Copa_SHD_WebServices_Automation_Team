@@ -1,7 +1,6 @@
 package MODULES.WAVE3.CreateBookingService;
 
 import MODULES.WAVE3.CreateBookingService.API_Tests.*;
-import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -249,7 +248,7 @@ public class CreateBookingService {
 
         try {
 
-            CreateBbooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.Execute();
+            CreateBooking_with_4seg_2pax_stored_fare_2phones_1remark_2OSIs_2SSRs_and_ticketing.Execute();
 
         } catch (Exception e) {
             failTest(e);
