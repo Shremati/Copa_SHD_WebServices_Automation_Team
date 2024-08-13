@@ -101,7 +101,7 @@ public class Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow = sheet.getRow(37);
-        XSSFRow InputRow1 = sheet.getRow(1);
+
 
         String filepath1;
         filepath1 = getRequestDirectory() + "CreateBookingService\\Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and_place_it_on_queue.xml";
@@ -114,7 +114,7 @@ public class Create_booking_with_1_segment_1_passenger_stored_fare_ticketing_and
         XMLParser.updateAttributeValue("air1:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(21).getNumericCellValue()), getTemp_requestPath());
 
         // Adding queue number
-        XMLParser.updateAttributeValue("air:Queue", "PseudoCityCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air:Queue", "PseudoCityCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Queue", "QueueNumber", InputRow.getCell(35).getStringCellValue(), getTemp_requestPath());
 
 

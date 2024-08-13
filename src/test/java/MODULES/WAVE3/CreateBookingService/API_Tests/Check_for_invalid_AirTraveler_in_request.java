@@ -64,8 +64,11 @@ public class Check_for_invalid_AirTraveler_in_request extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Errors"), "Do not contain Errors");
-        ExtentLogger.info("Assertion passed - contain Errors");
+        ExtentLogger.info("Assertion passed - contains Error");
 
         Assert.assertTrue(response.getBody().asString().contains("Message Contains No TravelerInfo"), "Do not contain Message Contains No TravelerInfo");
         ExtentLogger.info("Assertion passed - contain Message Contains No TravelerInfo");

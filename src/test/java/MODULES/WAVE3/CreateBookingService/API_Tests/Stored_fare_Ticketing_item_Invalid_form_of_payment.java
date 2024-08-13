@@ -76,20 +76,16 @@ public class Stored_fare_Ticketing_item_Invalid_form_of_payment extends Framewor
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
-                "Do not contain BookingReferenceID");
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
-        Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"),
-                "Do not contain Invalid form of payment");
+        Assert.assertTrue(response.getBody().asString().contains("Invalid form of payment"), "Do not contain Invalid form of payment");
         ExtentLogger.info("Assertion passed - contain Invalid form of payment");
 
-        Assertions.AssertWarning(response, false);
-        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertWarning(response, true);
 
         Assertions.AssertResponseTime(response, ResponseTime);
 

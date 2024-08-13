@@ -71,8 +71,7 @@ public class CreateBooking_with_1_seg_1_pax_stored_fare_base_fare_NVA_date_fare_
         Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
-        Assert.assertFalse(response.getBody().asString().contains("Error"),
-                "Do not contain Error");
+        Assert.assertFalse(response.getBody().asString().contains("Error"), "Do not contain Error");
         ExtentLogger.info("Assertion passed - contain Error");
 
         Assertions.AssertWarning(response, false);

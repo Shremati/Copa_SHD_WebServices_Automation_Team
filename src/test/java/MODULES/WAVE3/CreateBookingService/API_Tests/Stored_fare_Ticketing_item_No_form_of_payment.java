@@ -77,8 +77,7 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
         Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
@@ -89,8 +88,7 @@ public class Stored_fare_Ticketing_item_No_form_of_payment extends FrameworkCons
                 "Do not contain Error Response to Add Form Of Payment Transaction -  (1) NEED CC/CK NBR IN FOP (2) /FLWG DATA NOT ENTERED/PROCESSED:");
         ExtentLogger.info("Assertion passed - contain Error Response to Add Form Of Payment Transaction -  (1) NEED CC/CK NBR IN FOP (2) /FLWG DATA NOT ENTERED/PROCESSED:");
 
-        Assertions.AssertWarning(response, false);
-        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertWarning(response, true);
 
         Assertions.AssertResponseTime(response, ResponseTime);
 

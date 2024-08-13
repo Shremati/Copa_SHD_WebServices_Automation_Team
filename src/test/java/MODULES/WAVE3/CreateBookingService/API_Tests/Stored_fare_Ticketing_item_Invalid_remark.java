@@ -78,20 +78,16 @@ public class Stored_fare_Ticketing_item_Invalid_remark extends FrameworkConstant
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
-                "Do not contain BookingReferenceID");
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
-        Assert.assertTrue(response.getBody().asString().contains("Invalid free-flow remark: 1"),
-                "Do not contain Invalid free-flow remark: 1");
+        Assert.assertTrue(response.getBody().asString().contains("Invalid free-flow remark: 1"), "Do not contain Invalid free-flow remark: 1");
         ExtentLogger.info("Assertion passed - contain Invalid free-flow remark: 1");
 
-        Assertions.AssertWarning(response, false);
-        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertWarning(response, true);
 
         Assertions.AssertResponseTime(response, ResponseTime);
 

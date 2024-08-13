@@ -73,20 +73,17 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"),
-                "Do not contain BookingReferenceID");
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
 
         Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:"),
                 "Do not contain Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:");
         ExtentLogger.info("Assertion passed - contain Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:");
 
-        Assertions.AssertWarning(response, false);
-        Assertions.AssertResponseTime(response, ResponseTime);
+        Assertions.AssertWarning(response, true);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));

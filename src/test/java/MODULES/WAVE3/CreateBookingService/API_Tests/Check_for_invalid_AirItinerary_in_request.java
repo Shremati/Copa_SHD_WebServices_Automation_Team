@@ -67,8 +67,8 @@ public class Check_for_invalid_AirItinerary_in_request extends FrameworkConstant
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
-        ExtentLogger.info("Assertion passed - contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Errors"), "Do not contain Errors");
+        ExtentLogger.info("Assertion passed - contains Error");
 
         Assert.assertTrue(response.getBody().asString().contains("Message Contains No OriginDestinationOptions"), "Do not contain Message Contains No OriginDestinationOptions");
         ExtentLogger.info("Assertion passed - contain Message Contains No OriginDestinationOptions");

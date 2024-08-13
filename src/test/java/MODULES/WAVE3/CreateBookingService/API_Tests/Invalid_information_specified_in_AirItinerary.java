@@ -64,8 +64,7 @@ public class Invalid_information_specified_in_AirItinerary extends FrameworkCons
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR"),
-                "Do not contain Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR");
+        Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR"), "Do not contain Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR");
         ExtentLogger.info("Assertion passed - contain Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR");
 
         Assertions.AssertWarning(response, false);
