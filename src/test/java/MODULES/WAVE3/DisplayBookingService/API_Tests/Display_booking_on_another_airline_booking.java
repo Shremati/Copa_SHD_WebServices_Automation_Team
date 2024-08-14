@@ -37,7 +37,7 @@ public class Display_booking_on_another_airline_booking extends FrameworkConstan
 
         Create_booking_display_another_airline_booking Prerequisite = new Create_booking_display_another_airline_booking();
         Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        ExtentLogger.info("Prerequisite 1");
 
         UpdatePayload();
 

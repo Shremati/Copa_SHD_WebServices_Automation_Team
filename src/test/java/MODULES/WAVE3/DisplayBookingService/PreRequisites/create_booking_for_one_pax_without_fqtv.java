@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -64,8 +65,16 @@ public class create_booking_for_one_pax_without_fqtv extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
+
+        Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 

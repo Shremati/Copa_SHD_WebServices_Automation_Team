@@ -12,7 +12,7 @@ public class FrameworkConstants {
     public static String SharesBuild35 = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
 
     public static String getBaseURL() {
-        return SharesBuild35;
+        return SharesCURL;
     }
 
     public static long ResponseTime = 200000;

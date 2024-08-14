@@ -30,7 +30,6 @@ public class Empty_OriginDestinationInformation extends FrameworkConstants {
 
         FileInputStream fileInputStream = new FileInputStream(getRequestDirectory() + "Availability\\Empty_OriginDestinationInformation.xml");
         SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
-        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
         requestSpecification = given()
@@ -39,7 +38,8 @@ public class Empty_OriginDestinationInformation extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getAvailability())
                 .then()

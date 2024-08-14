@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DisplayBookingService.PreRequisites;
 
+import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import frameworkconstants.FrameworkConstants;
@@ -64,8 +65,16 @@ public class Create_booking_display_another_airline_booking extends FrameworkCon
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
+
+        Assertions.AssertWarning(response,false);
+        ExtentLogger.info("Assertion passed - Do not contain Warning");
+
+        Assertions.AssertResponseTime(response,ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********
 
@@ -77,7 +86,6 @@ public class Create_booking_display_another_airline_booking extends FrameworkCon
         excelwriter();
 
     }
-
 
 
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
@@ -98,6 +106,12 @@ public class Create_booking_display_another_airline_booking extends FrameworkCon
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+
 
         wb.close();
     }

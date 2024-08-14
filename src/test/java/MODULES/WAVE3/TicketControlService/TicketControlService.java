@@ -83,12 +83,13 @@ public class TicketControlService {
         }
     }
 
-    @Test(description = "TCS_11 - Missing the ticket document number in the RequestControl request.")
+    @Test(description = "TCS_02 - A booking with two passengers and two tickets. Get control of one coupon for each ticket within the same PNR")
     public void TCS_02() {
 
         try {
 
-            Missing_the_ticket_document_number_in_the_RequestControl_request.Execute();
+            Get_control_of_one_coupon_for_each_ticket_within_the_same_PNR.Execute();
+
         } catch (Exception e) {
             failTest(e);
             System.out.println("TCS_11 failed due to :" + e);

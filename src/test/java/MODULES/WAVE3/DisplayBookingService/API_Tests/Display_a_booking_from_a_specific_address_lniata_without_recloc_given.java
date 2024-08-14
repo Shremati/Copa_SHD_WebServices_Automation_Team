@@ -2,6 +2,7 @@ package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -32,9 +33,10 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        create_booking_display_a_host_airline_booking Prerequisite = new create_booking_display_a_host_airline_booking();
+        ExtentLogger.info("Prerequisite 1");
+        Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given Prerequisite = new Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given();
         Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+
 
         UpdatePayload();
 

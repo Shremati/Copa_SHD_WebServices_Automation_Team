@@ -1,8 +1,9 @@
-package MODULES.WAVE3.DepartureControlDisplay.API_Tests;
+package MODULES.WAVE3.TicketControlService.API_Tests;
 
 import GENERICS.Assertions;
-import GENERICS.Utils;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -25,13 +25,23 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class Get_seated_passenger_count extends FrameworkConstants {
+public class Get_control_of_one_coupon_for_each_ticket_within_the_same_PNR extends FrameworkConstants
+{
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        ExtentLogger.info("Prerequisite 1");
+        create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
+        Prerequisite.run();
+
+        ExtentLogger.info("Prerequisite 2");
+        issue_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite2 = new issue_ticket_get_control_of_one_coupon_of_one_ticket();
+        Prerequisite2.run();
+
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -39,7 +49,7 @@ public class Get_seated_passenger_count extends FrameworkConstants {
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getDepartureControlDisplay());
+        ExtentLogger.info("Base URL : "+getBaseURL()+getTicketcontroloservice());
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -47,27 +57,26 @@ public class Get_seated_passenger_count extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
-                .body(SOAPRequest)
+        Response response=requestSpecification.body(SOAPRequest)
                 .when()
-                .post(getDepartureControlDisplay())
+                .post(getTicketcontroloservice())
                 .then()
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlDisplay\\Get_seated_passenger_count.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"Success\"");
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
+        ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("PassengerCountDetails"), "Does not contain \"PassengerCountDetails\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"PassengerCountDetails\"");
+        Assert.assertFalse(response.getBody().asString().contains("Warnings"),"Contains Warnings");
+        ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
@@ -81,6 +90,7 @@ public class Get_seated_passenger_count extends FrameworkConstants {
 
     }
 
+
     public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
@@ -88,19 +98,26 @@ public class Get_seated_passenger_count extends FrameworkConstants {
 
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sheet = wb.getSheet("DepartureControlDisplay");
-        XSSFRow InputRow=sheet.getRow(2);
+        XSSFSheet sheet = wb.getSheet("TicketControlService");
+        XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"DepartureControlDisplay\\Get_seated_passenger_count.xml";
+        filepath1=getRequestDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml";
+
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
 
 
-        XMLParser.updateAttributeValue("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 
     }
+
+
+
+
+
+
+
+
 
 }

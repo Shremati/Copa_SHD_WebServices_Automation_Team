@@ -57,6 +57,7 @@ public class Error_displaying_a_booking_from_a_specific_address_LNIATA extends F
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayBookingService\\Error_displaying_a_booking_from_a_specific_address_LNIATA.xml"));
@@ -94,7 +95,7 @@ public class Error_displaying_a_booking_from_a_specific_address_LNIATA extends F
         filepath1=getRequestDirectory()+"DisplayBookingService\\Error_displaying_a_booking_from_a_specific_address_LNIATA.xml";
 
         XMLParser.updateAttributeValueatIndex("read:UniqueID", "ID", InputRow.getCell(10).getStringCellValue(),filepath1,0);
-
+        XMLParser.updateAttributeValueatIndex("read:UniqueID", "Instance", InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),0);
         wb.close();
 
     }

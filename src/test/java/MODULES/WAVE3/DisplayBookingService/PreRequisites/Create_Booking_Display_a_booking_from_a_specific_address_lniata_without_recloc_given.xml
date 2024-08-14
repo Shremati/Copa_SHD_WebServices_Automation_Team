@@ -9,16 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2022-02-20T00:00:00" RPH="1" FlightNumber="226" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2023-08-30T00:00:00" RPH="1" FlightNumber="120" ResBookDesigCode="Y" NumberInParty="1" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="MIA"/>
-                                <air1:MarketingAirline Code="CM"/>
-                            </air1:FlightSegment>
-                        </air1:OriginDestinationOption>
-                        <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2022-02-22T00:00:00" RPH="2" FlightNumber="173" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="MIA"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="MEX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -29,20 +22,19 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode FlightSegmentRPH="1" NotValidBefore="2022-02-20" NotValidAfter="2022-02-20">XY</air1:FareBasisCode>
-                                <air1:FareBasisCode FlightSegmentRPH="2" NotValidBefore="2022-02-22" NotValidAfter="2022-02-22">YZ</air1:FareBasisCode>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
-                                <air1:BaseFare Amount="110.00" CurrencyCode="USD"/>
+                                <air1:BaseFare Amount="115.60" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AG" Amount="12.00"/>
-                                    <air1:Tax TaxCode="CD" Amount="8.50"/>
+                                    <air1:Tax TaxCode="AG" Amount="17.30"/>
+                                    <air1:Tax TaxCode="AV" Amount="9.80"/>
                                 </air1:Taxes>
-                                <air1:UnstructuredFareCalc>FARE CALC ADT1END</air1:UnstructuredFareCalc>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
                             <air1:Endorsements>
-                                <air1:Endorsement>ENDOSO UNO</air1:Endorsement>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
                             </air1:Endorsements>
                         </air1:PTC_FareBreakdown>
                     </air1:PTC_FareBreakdowns>
@@ -50,15 +42,21 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>BOOKING</com:GivenName>
-                            <com:Surname>CANCEL</com:Surname>
+                            <com:GivenName>JANE</com:GivenName>
+                            <com:Surname>SMITH</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneLocationType="B" AreaCityCode="555" PhoneNumber="555-1212"/>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="PHONE REMARK"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
+                        <air1:OtherServiceInformations>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="CM"/>
+                                <air1:Text>MY OSI</air1:Text>
+                            </air1:OtherServiceInformation>
+                        </air1:OtherServiceInformations>
                         <air1:Remarks>
-                            <air1:Remark RPH="1">FOR CANCEL BOOKING TEST</air1:Remark>
+                            <air1:Remark>DISPLAY BOOKING BY ETKT</air1:Remark>
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
@@ -67,4 +65,3 @@
         </cre:createBooking>
     </soapenv:Body>
 </soapenv:Envelope>
-
