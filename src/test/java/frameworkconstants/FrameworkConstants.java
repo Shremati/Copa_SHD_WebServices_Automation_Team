@@ -4,6 +4,9 @@ import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class FrameworkConstants {
 
     public static String BaseURL_Tulsa = "http://shdsitm.airservices.svcs.entsvcs.net:18119";      //TULSA SIT
@@ -171,6 +174,7 @@ public class FrameworkConstants {
     public static String AllureResults = ".\\allure-results";
     public static String AllureReports = ".\\allure-report";
     public static String target = ".\\target";
+    public static String Reports = System.getProperty("user.dir");
 
 
 
@@ -197,6 +201,9 @@ public class FrameworkConstants {
     }
     public static String getTarget() {
         return target;
+    }
+    public static String getReports() {
+        return Reports;
     }
 
 

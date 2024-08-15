@@ -67,11 +67,14 @@ public class Utils
     }
 
     // Delete the folder along with the contents
-    public static void deleteFolder(File folder) {
-        if (folder.exists()) {
+    public static void deleteFolder(File folder)
+    {
+        if (folder.exists())
+        {
             File[] files = folder.listFiles();
 
-            if (files != null) {
+            if (files != null)
+            {
                 for (File file : files) {
                     if (file.isDirectory()) {
                         // Recursively delete subdirectories
@@ -87,9 +90,54 @@ public class Utils
             folder.delete();
 
             System.out.println("Folder deleted successfully.");
-        } else {
+        }
+        else {
             System.out.println("Folder does not exist.");
         }
+    }
+
+    public static void deleteReports(File folder)
+    {
+
+        if (folder.exists())
+        {
+            File[] files = folder.listFiles();
+
+            if (files != null)
+            {
+                for (File file : files)
+                {
+                    if (file.isDirectory() && file.getName().contains("COPA_"))
+                    {
+                        // Recursively delete subdirectories
+                        deleteFolder(file);
+                    }
+                    else
+                    {
+                        // Delete files within the folder
+                        if(file.getParent().contains("COPA_"))
+                        {
+                            file.delete();
+                        }
+
+                    }
+                }
+            }
+
+            // Delete the empty folder
+            if(folder.getName().contains("COPA_"))
+            {
+                folder.delete();
+            }
+
+
+            System.out.println("Folder deleted successfully.");
+        }
+        else {
+            System.out.println("Folder does not exist.");
+        }
+
+
     }
 
     public static void failTest(Exception e)
