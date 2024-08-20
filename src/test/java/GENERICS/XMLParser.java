@@ -214,7 +214,18 @@ public class XMLParser
 
     }
 
+    public static int getNoOfTags(String Tag,String fpath) throws IOException, SAXException, ParserConfigurationException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
 
+        NodeList XMLTags =null;
+        XMLTags = document.getElementsByTagName(Tag);
+
+        return XMLTags.getLength();
+    }
 
 
 }

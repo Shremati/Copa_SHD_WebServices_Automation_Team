@@ -18,7 +18,7 @@ public class DataClean
         deleteFolder(new File(getTarget()));
         deleteReports(new File(getReports()));
 
-        //Latest working code 13-Aug-2024
+        //Latest working code 20-Aug-2024
 
     }
 

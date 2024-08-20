@@ -23,7 +23,8 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class display_data_page extends FrameworkConstants {
+public class display_data_page extends FrameworkConstants
+{
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
@@ -44,7 +45,8 @@ public class display_data_page extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getReferenceservice())
                 .then()
@@ -59,6 +61,7 @@ public class display_data_page extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+
         Assert.assertTrue(response.getBody().asString().contains("CM DATA PAGE      TIEMPOS ABORDAJE      CAT:A01 SUB:B01 PGE:C01"),
                 "Do not contain CM DATA PAGE      TIEMPOS ABORDAJE      CAT:A01 SUB:B01 PGE:C01");
         ExtentLogger.info("Assertion passed - contains CM DATA PAGE TIEMPOS ABORDAJE CAT:A01 SUB:B01 PGE:C01");
@@ -67,6 +70,8 @@ public class display_data_page extends FrameworkConstants {
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);
+
+        AssertResponse(getResponseDirectory() + "ReferenceService\\display_data_page.xml");
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -96,4 +101,35 @@ public class display_data_page extends FrameworkConstants {
         wb.close();
 
     }
+    public static void AssertResponse(String filepath) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        for (int i = 2; i < XMLParser.getNoOfTags("ns4:TextData", filepath); i++)
+        {
+            boolean flag=false;
+            String temp= XMLParser.GetTagTextatIndex("ns4:TextData",filepath,i);
+
+            for (int j = i+1; j < XMLParser.getNoOfTags("ns4:TextData", filepath); j++)
+            {
+                  if(!temp.equalsIgnoreCase("") && XMLParser.GetTagTextatIndex("ns4:TextData",filepath,j).equalsIgnoreCase(temp))
+                  {
+                      System.out.println("Its same at index :"+i+" and index: "+j);
+                      System.out.println("TextData at index "+i+": "+temp);
+                      System.out.println("TextData at index "+j+": "+XMLParser.GetTagTextatIndex("ns4:TextData",filepath,j));
+
+                      Assert.fail("Response Contains Repetition of <TextData>");
+                      ExtentLogger.info("Assertion Failed due to Repetition of <TextData>");
+
+                      flag=true;
+                      break;
+                  }
+            }
+
+            if(flag)
+            {
+                break;
+            }
+        }
+    }
+
+
 }
