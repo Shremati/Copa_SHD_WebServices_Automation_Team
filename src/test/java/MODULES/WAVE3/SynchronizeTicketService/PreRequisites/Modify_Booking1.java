@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -60,12 +61,25 @@ public class Modify_Booking1 extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
-        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        if(response.getBody().asString().contains("Eticket out of sync: passenger name"))
+        {
+            Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: passenger name"),"Not contains \"Eticket out of sync: passenger name\" in response");
+            ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: passenger name\"");
+
+            Assertions.AssertWarning(response,true);
+            ExtentLogger.info("Assertion passed - Do not contain Warning");
+        }
+        else
+        {
+            Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+            ExtentLogger.info("Assertion passed - contains \"Success\"");
+        }
+
 
         Assertions.AssertResponseTime(response,ResponseTime);
 

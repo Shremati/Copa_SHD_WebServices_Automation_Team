@@ -64,7 +64,7 @@ public class Display_Booking_adjust_class extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"),"Not contains \"Eticket out of sync: itinerary\" in response");
         ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

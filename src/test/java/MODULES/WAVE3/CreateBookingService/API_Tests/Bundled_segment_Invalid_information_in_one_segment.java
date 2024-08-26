@@ -64,7 +64,7 @@ public class Bundled_segment_Invalid_information_in_one_segment extends Framewor
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully : (1) INVLD FLT NBR"));
+        Assert.assertTrue(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) INVLD FLT NBR"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully : (1) INVLD FLT NBR\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Error"), "Do not contain Error");

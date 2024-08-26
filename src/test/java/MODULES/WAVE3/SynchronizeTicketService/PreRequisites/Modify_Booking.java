@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -62,6 +63,10 @@ public class Modify_Booking extends FrameworkConstants {
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"),"Not contains \"Eticket out of sync: itinerary\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
+
 
         Assertions.AssertWarning(response,true); //Due to "eticket out of sync" message Warning is expected
         ExtentLogger.info("Assertion passed - Do not contain Warning");
