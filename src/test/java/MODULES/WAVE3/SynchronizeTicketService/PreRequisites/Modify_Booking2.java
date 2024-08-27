@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -64,7 +65,13 @@ public class Modify_Booking2 extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"),"Not contains \"Eticket out of sync: itinerary\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

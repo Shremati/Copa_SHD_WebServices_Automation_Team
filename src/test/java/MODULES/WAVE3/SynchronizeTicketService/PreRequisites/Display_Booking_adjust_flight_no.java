@@ -61,6 +61,9 @@ public class Display_Booking_adjust_flight_no extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
         Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"),"Not contains \"Eticket out of sync: itinerary\" in response");
         ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
 

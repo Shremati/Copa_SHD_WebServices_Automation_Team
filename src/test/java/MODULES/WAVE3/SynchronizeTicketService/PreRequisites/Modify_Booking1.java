@@ -68,6 +68,9 @@ public class Modify_Booking1 extends FrameworkConstants {
 
         if(response.getBody().asString().contains("Eticket out of sync: passenger name"))
         {
+            Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+            ExtentLogger.info("Assertion passed - contains \"Success\"");
+
             Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: passenger name"),"Not contains \"Eticket out of sync: passenger name\" in response");
             ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: passenger name\"");
 

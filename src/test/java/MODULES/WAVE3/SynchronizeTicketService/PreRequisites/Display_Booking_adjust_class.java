@@ -57,9 +57,13 @@ public class Display_Booking_adjust_class extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
+
+        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
 
         Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"),"Not contains \"Eticket out of sync: itinerary\" in response");
         ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
