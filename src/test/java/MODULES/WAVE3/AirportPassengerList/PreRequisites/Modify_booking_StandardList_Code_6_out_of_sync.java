@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -47,7 +48,7 @@ public class Modify_booking_StandardList_Code_6_out_of_sync extends FrameworkCon
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+        Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getModifybookingservice())
@@ -56,14 +57,20 @@ public class Modify_booking_StandardList_Code_6_out_of_sync extends FrameworkCon
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        Assert.assertTrue(response.getBody().asString().contains("Eticket out of sync: itinerary"), "Does not contain \"Eticket out of sync: itinerary\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Eticket out of sync: itinerary\"");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

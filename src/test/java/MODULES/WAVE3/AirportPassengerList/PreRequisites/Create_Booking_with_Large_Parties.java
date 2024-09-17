@@ -126,7 +126,7 @@ public class Create_Booking_with_Large_Parties extends FrameworkConstants
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Timestamp = XMLParser.GetAttributeValue("ns5:OTA_AirBookRS","TimeStamp",getTemp_responsePath());
+        String Timestamp = XMLParser.GetAttributeValue("ns6:OTA_AirBookRS","TimeStamp",getTemp_responsePath());
 
 
         InputRow.getCell(7).setCellValue(PNR);

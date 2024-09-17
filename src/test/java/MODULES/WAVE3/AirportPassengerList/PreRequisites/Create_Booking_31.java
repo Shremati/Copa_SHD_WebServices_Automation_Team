@@ -68,10 +68,13 @@ public class Create_Booking_31 extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertTrue(response.getBody().asString().contains("(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED"), "Do not contain \"(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED\"");
+        ExtentLogger.info("Assertion passed - contains \"(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED\"");
+
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

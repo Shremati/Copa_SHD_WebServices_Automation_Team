@@ -68,10 +68,13 @@ public class Create_Booking_Specific_SSR extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertTrue(response.getBody().asString().contains("No Airline Code Specified"), "Do not contain \"No Airline Code Specified\"");
+        ExtentLogger.info("Assertion passed - contains \"No Airline Code Specified\"");
+
         Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
         ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

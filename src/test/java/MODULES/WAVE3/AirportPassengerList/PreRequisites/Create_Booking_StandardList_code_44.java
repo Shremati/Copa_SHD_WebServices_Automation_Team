@@ -103,6 +103,11 @@ public class Create_Booking_StandardList_code_44 extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
 
+        //FFNumber
+        XMLParser.updateAttributeValue("air1:CustLoyalty","MembershipID",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("com:GivenName",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("com:Surname",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath());
+
         wb.close();
     }
 
