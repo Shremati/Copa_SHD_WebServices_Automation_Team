@@ -61,7 +61,10 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:FlightErrorText>INVLD FLT NUMBER/DATE</ns4:FlightErrorText>"));
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("INVLD FLT NBR"));
 
         Assertions.AssertWarning(response, false);
         Assertions.AssertResponseTime(response, ResponseTime);

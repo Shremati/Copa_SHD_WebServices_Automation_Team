@@ -65,7 +65,6 @@ public class Host_Airline_Inventory_Request extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-
         Assertions.AssertWarning(response, false);
         Assertions.AssertResponseTime(response, ResponseTime);
 
