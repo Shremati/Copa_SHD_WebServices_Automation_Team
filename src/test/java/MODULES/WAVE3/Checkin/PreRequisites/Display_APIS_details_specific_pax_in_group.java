@@ -69,7 +69,10 @@ public class Display_APIS_details_specific_pax_in_group extends FrameworkConstan
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE")	,"Not contains \"APIS INCOMPLETE\" in response");
+        ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -66,6 +66,9 @@ public class Display_APIS_one_pax_and_baggage extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE")	,"Not contains \"APIS INCOMPLETE\" in response");
+        ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
+
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 

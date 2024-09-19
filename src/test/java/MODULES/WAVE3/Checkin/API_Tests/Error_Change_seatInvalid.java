@@ -69,7 +69,7 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("INVLD SEAT/ROW/SEATING OPTION Z"));
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

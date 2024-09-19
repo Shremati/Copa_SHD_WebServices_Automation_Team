@@ -74,6 +74,7 @@ public class Checkin_FF_Pax extends FrameworkConstants {
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Checkin\\Checkin_FF_Pax.xml"));
         writer.write(response.asPrettyString());
         writer.close();
@@ -84,7 +85,7 @@ public class Checkin_FF_Pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Not contains \"SEATS ASSIGNED\" in response");
         ExtentLogger.info("Assertion passed - contains \"SEATS ASSIGNED\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

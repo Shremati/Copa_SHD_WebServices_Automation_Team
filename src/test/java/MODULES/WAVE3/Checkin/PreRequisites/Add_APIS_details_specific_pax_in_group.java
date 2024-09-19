@@ -65,7 +65,7 @@ public class Add_APIS_details_specific_pax_in_group extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"),"Not contains \"APIS COMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS COMPLETE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

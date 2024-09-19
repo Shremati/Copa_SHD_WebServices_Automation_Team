@@ -91,7 +91,7 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

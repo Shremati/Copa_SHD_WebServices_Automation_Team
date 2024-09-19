@@ -68,7 +68,7 @@ public class Issue_booking_specific_pax_in_group extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

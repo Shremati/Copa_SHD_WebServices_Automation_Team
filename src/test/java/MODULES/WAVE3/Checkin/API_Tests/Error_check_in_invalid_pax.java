@@ -75,7 +75,7 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("NO RECORD - CREATE PNR THIS PAX"),"Not contains \"NO RECORD - CREATE PNR THIS PAX\" in response");
         ExtentLogger.info("Assertion passed - contains \"NO RECORD - CREATE PNR THIS PAX\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

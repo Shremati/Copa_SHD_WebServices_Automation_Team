@@ -64,7 +64,7 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"),"Not contains \"APIS COMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS COMPLETE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -96,6 +96,13 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
+
+        for(int i=0;i<3;i++)
+        {
+            XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),i);
+            XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(25).getStringCellValue(),getTemp_requestPath(),i);
+
+        }
 
         wb.close();
 

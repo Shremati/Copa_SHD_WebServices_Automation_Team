@@ -75,7 +75,7 @@ public class Collect_API_for_a_single_pax_alt extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not conatins RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

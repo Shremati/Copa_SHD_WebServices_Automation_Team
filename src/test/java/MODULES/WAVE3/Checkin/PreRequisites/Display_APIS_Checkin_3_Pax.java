@@ -65,7 +65,11 @@ public class Display_APIS_Checkin_3_Pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"),"Not contains RecordID=\"1\">0:APIS INCOMPLETE");
+        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS INCOMPLETE");
+
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

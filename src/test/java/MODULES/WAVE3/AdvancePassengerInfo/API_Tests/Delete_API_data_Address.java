@@ -80,7 +80,7 @@ public class Delete_API_data_Address extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains in response RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

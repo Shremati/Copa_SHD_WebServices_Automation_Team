@@ -32,8 +32,9 @@ import reports.ExtentLogger;
 
 public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstants {
 
-        public static String SOAPRequest;
+    public static String SOAPRequest;
     static RequestSpecification requestSpecification;
+
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
             ExtentLogger.info("Prerequisite 1");
@@ -88,7 +89,7 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Not contains \"SEATS ASSIGNED\" in response");
             ExtentLogger.info("Assertion passed - contains \"SEATS ASSIGNED\"");
 
-            Assertions.AssertWarning(response,false);
+            Assertions.AssertWarning(response,true);
             ExtentLogger.info("Assertion passed - Do not contain Warning");
 
             Assertions.AssertResponseTime(response,ResponseTime);

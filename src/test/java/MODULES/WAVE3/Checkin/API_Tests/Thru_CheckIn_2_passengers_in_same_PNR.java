@@ -96,7 +96,7 @@ public class Thru_CheckIn_2_passengers_in_same_PNR extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\"> (1) SEATS ASSIGNED"),"Not contains in response RecordID=\"2\"> (1) SEATS ASSIGNED");
         ExtentLogger.info("Assertion passed - contains RecordID=\"2\"> (1) SEATS ASSIGNED");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

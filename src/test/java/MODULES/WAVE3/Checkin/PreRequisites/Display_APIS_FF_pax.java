@@ -67,7 +67,10 @@ public class Display_APIS_FF_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"),"Not contains RecordID=\"1\">0:APIS INCOMPLETE");
+        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS INCOMPLETE");
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -97,6 +100,10 @@ public class Display_APIS_FF_pax extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Display_APIS_FF_pax.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
+
+        XMLParser.SetTagtext("com:GivenName",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("com:Surname",InputRow.getCell(25).getStringCellValue(),getTemp_requestPath());
+
 
         wb.close();
 

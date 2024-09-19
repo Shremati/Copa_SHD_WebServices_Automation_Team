@@ -64,10 +64,10 @@ public class Issue_booking_one_pax_baggage extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("TicketInfo"));
-
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
+
+        Assert.assertTrue(response.getBody().asString().contains("TicketInfo"));
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

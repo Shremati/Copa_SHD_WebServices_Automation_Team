@@ -82,7 +82,7 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"2\">0:APIS COMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

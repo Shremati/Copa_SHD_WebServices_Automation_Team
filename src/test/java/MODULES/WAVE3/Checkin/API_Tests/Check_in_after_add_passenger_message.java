@@ -96,7 +96,7 @@ public class Check_in_after_add_passenger_message extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("SEATS ASSIGNED"),"Not contains \"SEATS ASSIGNED\" in response");
         ExtentLogger.info("Assertion passed - contains \"SEATS ASSIGNED\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

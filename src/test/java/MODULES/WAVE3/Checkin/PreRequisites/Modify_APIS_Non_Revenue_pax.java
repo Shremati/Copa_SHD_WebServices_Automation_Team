@@ -62,8 +62,9 @@ public class Modify_APIS_Non_Revenue_pax extends FrameworkConstants {
         writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"),"Does not contain \"APIS COMPLETE\"");
+        ExtentLogger.info("Assertion passed - contains \"APIS COMPLETE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
