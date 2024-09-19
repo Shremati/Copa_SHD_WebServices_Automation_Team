@@ -79,7 +79,7 @@ public class Single_surname_multiple_names extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"),"Not contains in response RecordID=\"3\">0:APIS INCOMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"3\">0:APIS INCOMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

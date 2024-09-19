@@ -75,7 +75,7 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE"); //Partially Completed APIS for 2nd Pax only
         ExtentLogger.info("Assertion passed - contains RecordID=\"2\">0:APIS COMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

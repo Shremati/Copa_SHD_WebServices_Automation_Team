@@ -70,7 +70,7 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"),"Not contains in response RecordID=\"1\">0:APIS INCOMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS INCOMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -77,7 +77,7 @@ public class Display_specific_flight_multiple_pax_names extends FrameworkConstan
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"),"Not contains RecordID=\"3\">0:APIS INCOMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"3\">0:APIS INCOMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

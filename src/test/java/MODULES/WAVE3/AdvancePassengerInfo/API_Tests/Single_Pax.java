@@ -75,7 +75,7 @@ public class Single_Pax extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"),"Not contains \"APIS INCOMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -68,7 +68,7 @@ public class Display_API_error_invalid_passenger_name extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("PASSENGER NOT FOUND"),"Not contains \"PASSENGER NOT FOUND\" in response");
         ExtentLogger.info("Assertion passed - contains \"PASSENGER NOT FOUND\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -66,7 +66,7 @@ public class Display_API_error_invalid_booking extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("PNR NOT FOUND"),"Not contains \"PNR NOT FOUND\" in response");
         ExtentLogger.info("Assertion passed - contains \"PNR NOT FOUND\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

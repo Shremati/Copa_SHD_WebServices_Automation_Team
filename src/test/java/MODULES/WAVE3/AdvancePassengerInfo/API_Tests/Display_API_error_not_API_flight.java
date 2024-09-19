@@ -72,7 +72,7 @@ public class Display_API_error_not_API_flight extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("NOT APIS FLIGHT"),"Not contains \"NOT APIS FLIGHT\" in response");
         ExtentLogger.info("Assertion passed - contains \"NOT APIS FLIGHT\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

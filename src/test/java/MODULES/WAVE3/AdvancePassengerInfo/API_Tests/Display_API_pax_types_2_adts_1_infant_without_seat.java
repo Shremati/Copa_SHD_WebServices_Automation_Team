@@ -76,7 +76,7 @@ public class Display_API_pax_types_2_adts_1_infant_without_seat extends Framewor
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"3\">0:APIS INCOMPLETE"),"Not contains RecordID=\"3\">0:APIS INCOMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"3\">0:APIS INCOMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

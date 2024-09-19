@@ -76,7 +76,7 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE");
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE");

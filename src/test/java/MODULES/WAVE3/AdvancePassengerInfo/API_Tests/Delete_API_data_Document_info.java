@@ -79,7 +79,7 @@ public class Delete_API_data_Document_info extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"),"Not in response RecordID=\"1\">0:APIS INCOMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS INCOMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
