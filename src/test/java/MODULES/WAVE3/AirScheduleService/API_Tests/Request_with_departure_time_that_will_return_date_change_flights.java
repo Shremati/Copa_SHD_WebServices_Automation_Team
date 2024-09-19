@@ -96,7 +96,7 @@ public class Request_with_departure_time_that_will_return_date_change_flights ex
         String filepath1;
         filepath1 = getRequestDirectory() + "AirScheduleService\\Request_with_departure_time_that_will_return_date_change_flights.xml";
 
-        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
+        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
         XMLParser.updateAttributeValueatIndex("com:OriginLocation", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DestinationLocation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
 

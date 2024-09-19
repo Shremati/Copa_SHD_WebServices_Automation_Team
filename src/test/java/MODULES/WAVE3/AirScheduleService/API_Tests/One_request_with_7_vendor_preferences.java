@@ -64,15 +64,17 @@ public class One_request_with_7_vendor_preferences extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),
-                "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"),
-                "Do not contain OriginDestinationOptions");
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"), "Do not contain OriginDestinationOptions");
         ExtentLogger.info("Assertion passed - contains OriginDestinationOptions");
 
-        Assertions.AssertWarning(response, false);
+        Assert.assertTrue(response.getBody().asString().contains("not be processed for schedule request"), "Do not contain \"not be processed for schedule request\"");
+        ExtentLogger.info("Assertion passed - contains \"not be processed for schedule request\"");
+
+
+        Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);

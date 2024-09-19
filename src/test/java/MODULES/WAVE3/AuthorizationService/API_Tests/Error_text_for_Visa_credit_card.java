@@ -74,8 +74,9 @@ public class Error_text_for_Visa_credit_card extends FrameworkConstants {
                 "Do not contain INVALID FORMAT");
         ExtentLogger.info("Assertion passed - contains INVALID FORMAT");
 
-        Assertions.AssertWarning(response, false);
+        Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
 //                ********* Clearing Temp_Request.xml *********

@@ -62,8 +62,7 @@ public class Get_Flight_Details_Error_showing_unimplemented_method extends Frame
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("System Processing Error: (1) The parameter pFlight is Mandatory"),
-                "Do not contain System Processing Error: (1) The parameter pFlight is Mandatory");
+        Assert.assertTrue(response.getBody().asString().contains("System Processing Error: (1) The parameter pFlight is Mandatory"), "Do not contain System Processing Error: (1) The parameter pFlight is Mandatory");
         ExtentLogger.info("Assertion passed - contains System Processing Error: (1) The parameter pFlight is Mandatory");
 
         Assertions.AssertWarning(response, false);
