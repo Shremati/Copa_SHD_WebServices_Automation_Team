@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +38,7 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
@@ -78,9 +79,8 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
                 "Do not contain Telephone");
         ExtentLogger.info("Assertion passed - contain Telephone");
 
-        Assert.assertTrue(response.getBody().asString().contains("BaseFare"),
-                "Do not contain BaseFare");
-        ExtentLogger.info("Assertion passed - contain BaseFare");
+        Assert.assertTrue(response.getBody().asString().contains("BaseFare"));
+        ExtentLogger.info("Assertion passed - contain Success");
 
         Assert.assertTrue(response.getBody().asString().contains("<ns3:Remark>HAVE A NICE PARTY</ns3:Remark>"),
                 "Do not contain HAVE A NICE PARTY");
@@ -132,8 +132,8 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(), 3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(16).getStringCellValue(), getTemp_requestPath(), 3);
 
-        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(13).getNumericCellValue()), getTemp_requestPath(), 0);
+//        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 0);
+//        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(13).getNumericCellValue()), getTemp_requestPath(), 0);
 
 
         wb.close();

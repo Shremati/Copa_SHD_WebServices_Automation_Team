@@ -21,6 +21,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +35,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+//
         Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
         ExtentLogger.info("Prerequisite 1");
         Prerequisite.run();
@@ -48,7 +49,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
@@ -80,9 +81,9 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"),
-                "Do not contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
-        ExtentLogger.info("Assertion passed - contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH INVALID DOC NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
+        Assert.assertTrue(response.getBody().asString().contains("Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH NEED COUPON NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:"),
+                "Do not contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH NEED COUPON NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
+        ExtentLogger.info("Assertion passed - contain Error Response to Add Issued in Exchange Transaction -  (1) ISSUE-IN-EXCH NEED COUPON NBR (2) /FLWG DATA NOT ENTERED/PROCESSED:");
 
         Assertions.AssertWarning(response, true);
 
@@ -134,7 +135,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         XSSFRow InputRow = sheet.getRow(38);
 
         String filepath;
-        filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL.xml";
+        filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
 

@@ -21,6 +21,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -37,7 +38,7 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
@@ -85,7 +86,7 @@ public class CreateBooking_with_4seg_OA_2pax_1FF_and_1inf_1email_stored_fare_1OS
                 "Do not contain HAVE A NICE PARTY");
         ExtentLogger.info("Assertion passed - contain HAVE A NICE PARTY");
 
-        Assert.assertTrue(response.getBody().asString().contains("<air1:Email>modificados@gmail.com</air1:Email>"),
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:Text>MODIFICADOS@GMAIL.COM</ns3:Text>"),
                 "Do not contain modificados@gmail.com");
         ExtentLogger.info("Assertion passed - contain modificados@gmail.com");
 

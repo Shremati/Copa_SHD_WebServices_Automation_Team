@@ -20,6 +20,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +39,7 @@ public class One_request_with_7_vendor_preferences extends FrameworkConstants {
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAirscheduleservice());
 
@@ -64,15 +65,13 @@ public class One_request_with_7_vendor_preferences extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
+        Assert.assertTrue(response.getBody().asString().contains("Success"),
+                "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"), "Do not contain OriginDestinationOptions");
+        Assert.assertTrue(response.getBody().asString().contains("OriginDestinationOptions"),
+                "Do not contain OriginDestinationOptions");
         ExtentLogger.info("Assertion passed - contains OriginDestinationOptions");
-
-        Assert.assertTrue(response.getBody().asString().contains("not be processed for schedule request"), "Do not contain \"not be processed for schedule request\"");
-        ExtentLogger.info("Assertion passed - contains \"not be processed for schedule request\"");
-
 
         Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");

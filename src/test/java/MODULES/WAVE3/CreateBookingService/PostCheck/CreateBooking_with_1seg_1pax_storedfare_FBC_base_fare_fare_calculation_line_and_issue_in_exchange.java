@@ -17,11 +17,12 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class IssueTicket_CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL extends FrameworkConstants {
+public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange extends FrameworkConstants {
 
 
     public static String SOAPRequest;
@@ -34,7 +35,7 @@ public class IssueTicket_CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_f
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getIssueticketservice());
 
@@ -103,7 +104,7 @@ public class IssueTicket_CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_f
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow=sheet.getRow(38);
+        XSSFRow InputRow=sheet.getRow(39);
 
         String filepath;
         filepath = getResponseDirectory()+"CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange_without_coupons_and_TL_issue_Ticket.xml";

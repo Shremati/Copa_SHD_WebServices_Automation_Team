@@ -1,0 +1,39 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns5:checkInResponse xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirCheckInRS" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns7:EDS_AirCheckInRS TimeStamp="2025-02-06T08:41:20" Version="4.000">
+        <ns7:Success/>
+        <ns7:Warnings>
+          <Warning Type="12" Tag="" RecordID="1"> (1) SEATS ASSIGNED   FLT  389   C   10 Y  125</Warning>
+        </ns7:Warnings>
+        <ns7:AirCheckInInfo>
+          <ns7:MessageFunction Function="HoldSeat"/>
+          <ns7:FlightInfo RPH="1">
+            <ns3:CarrierInfo FlightNumber="389" Code="CM"/>
+            <ns3:Equipment AircraftTailNumber="1727" AirEquipType="73P"/>
+            <ns3:DepartureInformation DateOfDeparture="2025-02-06" ScheduledDepartureTime="2025-02-06T07:10:00" EstimatedDepartureDateTime="2025-02-06T07:10:00" BoardingDateTime="2025-02-06T06:10:00" LocationCode="GUA" Gate="****"/>
+            <ns3:ArrivalInformation LocationCode="PTY"/>
+          </ns7:FlightInfo>
+          <ns7:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1" SecurityCode="N" InfantIndicator="false">
+            <ns3:PassengerName>
+              <GivenName>TEST</GivenName>
+              <Surname>SIX</Surname>
+            </ns3:PassengerName>
+          </ns7:PassengerInfo>
+          <ns7:PassengerFlightInfo PassengerRPH="1" FlightRPH="1" DCS_PassengerRefNumber="81">
+            <ns3:PassengerProcessingInfo DeniedBoardingVolunteerInd="false" AdvanceBoardingPassInd="false" AdvanceSeatsAssignedInd="false" ApisBypassedInd="false" ApisCompletedInd="false" ProtectPassenger="false" InterlineCheckInInd="false" BagTagsIssuedInd="false" CheckedInInd="false" ConditionalStandbyInd="false" GroupBookingMemberInd="false" HoldingSeatInd="true" MassTransferredPassengerInd="false" OAPassnegerInd="false" StandbyInd="false" StandbyForUpgradeInd="false" SplitPartySeatingInd="false" NoShowInd="false" MisconnectInd="false" NoMealInd="false" HighYieldInd="true" CrewInd="false" DiplomatOrLEO_Ind="false" ArmedPassengerInd="false" ETKToutofsyncInd="false" PassengersWithoutAPISData="false" InvolunatrydeniedBoardingInd="false" EticketInd="false" CabinBagInd="false" UnaccompaniedMinorInd="false" DisabledInd="false" IncapacitatedInd="false" PartialRoutingSeatInd="false" PrisonerGuardInd="false" OxygenInd="false" NoRecInd="false" GoShowInd="false" FlightDeckJumpSeatIndicator="false" CabinJumpSeatIndicator="false" RequiredSeat="false"/>
+            <ns3:BookingInfo ResBookDesigCode="Y">
+              <ns3:BookingReferenceID Type="14" ID="BNOIFP"/>
+              <ns3:FinalDestination LocationCode="PTY"/>
+            </ns3:BookingInfo>
+            <ns3:SeatBoardingInfo SeatNumber="06C" Cabin="Y" SeatStatus="3" NeedThruSeatInd="false">
+              <ns3:DepartureAirport LocationCode="GUA"/>
+              <ns3:ArrivalAirport LocationCode="PTY"/>
+            </ns3:SeatBoardingInfo>
+          </ns7:PassengerFlightInfo>
+          <ns7:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="0" HeadOfBaggagePoolInd="true"/>
+        </ns7:AirCheckInInfo>
+      </ns7:EDS_AirCheckInRS>
+    </ns5:checkInResponse>
+  </soap:Body>
+</soap:Envelope>

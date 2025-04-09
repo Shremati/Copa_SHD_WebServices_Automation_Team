@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -35,7 +36,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
@@ -88,6 +89,9 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"), "Do not have FlightSegmentRPH");
         ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns3:TravelerRefNumber RPH=\"1\" SurnameRefNumber=\"1\"/>"),  "Do not contain TravelerRefNumber");
+        ExtentLogger.info("Assertion passed - contain TravelerRefNumber");
+
         Assert.assertTrue(response.getBody().asString().contains("TourCode"), "Do not contain TourCode");
         ExtentLogger.info("Assertion passed - contain TourCode");
 
@@ -97,7 +101,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Invalid ISO country code for Bankers Rate."), "Do not contain Invalid ISO country code for Bankers Rate");
         ExtentLogger.info("Assertion passed - contain Invalid ISO country code for Bankers Rate");
 
-        Assertions.AssertWarning(response, false);
+        Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);

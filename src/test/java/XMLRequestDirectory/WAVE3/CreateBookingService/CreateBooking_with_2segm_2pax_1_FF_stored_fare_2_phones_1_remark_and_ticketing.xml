@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     <soapenv:Header/>
     <soapenv:Body>
         <cre:createBooking>
@@ -9,16 +9,16 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-09-12T00:00:00" RPH="1" FlightNumber="473" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="LAX"/>
+                            <air1:FlightSegment DepartureDateTime="2025-01-04T11:25:26" FlightNumber="837" NumberInParty="2" RPH="1" ResBookDesigCode="Y" Status="11">
+                                <com:DepartureAirport LocationCode="BOG"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-09-26T00:00:00" RPH="2" FlightNumber="472" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-01-05T11:25:26" FlightNumber="243" NumberInParty="2" RPH="2" ResBookDesigCode="Y" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -29,27 +29,26 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                                <air1:FareBasisCode>Y</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AG" Amount="13.60"/>
+                                    <air1:Tax Amount="13.60" TaxCode="AG"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
-                            <!--<air1:TravelerRefNumber RPH="3"/>-->
                         </air1:PTC_FareBreakdown>
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                                <air1:FareBasisCode>Y</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="34.90" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AG" Amount="7.20"/>
+                                    <air1:Tax Amount="7.20" TaxCode="AG"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
                             </air1:PassengerFare>
@@ -60,19 +59,19 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>SANDRA</com:GivenName>
-                            <com:Surname>SILVER</com:Surname>
+                            <com:GivenName>CARLO</com:GivenName>
+                            <com:Surname>LANDERO</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0129"/>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230436782"/>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-0129" PhoneUseType="3"/>
+                        <air1:CustLoyalty MembershipID="230002804" ProgramID="CM"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
                             <com:GivenName>WIFE</com:GivenName>
                             <com:Surname>SMITH</com:Surname>
-                        </air1:PersonName>	ertyu
-                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0128"/>
+                        </air1:PersonName>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-0128" PhoneUseType="3"/>
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
@@ -81,7 +80,7 @@
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-09-09T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-01-03"/>
                 <air:Ticketing TicketingStatus="3"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>

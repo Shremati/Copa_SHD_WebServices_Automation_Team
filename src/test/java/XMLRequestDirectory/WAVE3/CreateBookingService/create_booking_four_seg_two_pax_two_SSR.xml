@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     <soapenv:Header/>
     <soapenv:Body>
         <cre:createBooking>
@@ -9,30 +9,30 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-20T00:52:00" RPH="1" FlightNumber="303" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="LAX"/>
+                            <air1:FlightSegment DepartureDateTime="2025-01-08T05:12:54" FlightNumber="433" NumberInParty="2" RPH="1" ResBookDesigCode="Y" Status="11">
+                                <com:DepartureAirport LocationCode="MIA"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-20T11:56:00" RPH="2" FlightNumber="415" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-01-09T05:12:54" FlightNumber="415" NumberInParty="2" RPH="2" ResBookDesigCode="Y" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
                                 <com:ArrivalAirport LocationCode="BOG"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-28T05:03:00" RPH="3" FlightNumber="877" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-01-10T05:12:54" FlightNumber="495" NumberInParty="2" RPH="3" ResBookDesigCode="Y" Status="11">
                                 <com:DepartureAirport LocationCode="BOG"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-02-28T07:55:00" RPH="4" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-01-11T05:12:54" FlightNumber="441" NumberInParty="2" RPH="4" ResBookDesigCode="Y" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="MIA"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -43,12 +43,12 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="2"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode NotValidBefore="2023-02-20" NotValidAfter="2023-02-28">BAAAOY2F</air1:FareBasisCode>
+                                <air1:FareBasisCode NotValidAfter="2024-08-21" NotValidBefore="2024-08-20">BAAAOY2F</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="3842.00" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AH" Amount="2.50"/>
+                                    <air1:Tax Amount="2.50" TaxCode="AH"/>
                                 </air1:Taxes>
                                 <air1:TotalFare Amount="3975.15" CurrencyCode="USD"/>
                                 <air1:UnstructuredFareCalc>SALUDOS</air1:UnstructuredFareCalc>
@@ -61,11 +61,11 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>FRED</com:GivenName>
-                            <com:Surname>TRUMP</com:Surname>
+                            <com:GivenName>CARLO</com:GivenName>
+                            <com:Surname>LANDERO</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="3" AreaCityCode="001" PhoneNumber="55503212"/>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230416618"/>
+                        <air1:Telephone AreaCityCode="001" PhoneNumber="55503212" PhoneUseType="3"/>
+                        <air1:CustLoyalty MembershipID="230002804" ProgramID="CM"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler BirthDate="2022-01-01" PassengerTypeCode="INF">
@@ -84,11 +84,11 @@
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:SpecialServiceRequests>
-                            <air1:SpecialServiceRequest SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
+                            <air1:SpecialServiceRequest FlightRefNumberRPHList="1" SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1">
                                 <air1:Airline Code="CM"/>
                                 <air1:Text>Need SPEQ pax 1</air1:Text>
                             </air1:SpecialServiceRequest>
-                            <air1:SpecialServiceRequest SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2">
+                            <air1:SpecialServiceRequest FlightRefNumberRPHList="2" SSRCode="SPEQ" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1">
                                 <air1:Airline Code="CM"/>
                                 <air1:Text>Need SPEQ pax 1</air1:Text>
                             </air1:SpecialServiceRequest>

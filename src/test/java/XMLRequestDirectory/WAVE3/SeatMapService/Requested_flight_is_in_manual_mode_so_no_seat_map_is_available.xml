@@ -8,9 +8,9 @@
                 </air:POS>
                 <air:SeatMapRequests>
                     <air:SeatMapRequest>
-                        <air:FlightSegmentInfo DepartureDateTime="2023-09-04" FlightNumber="360">
+                        <air:FlightSegmentInfo DepartureDateTime="2024-01-27" FlightNumber="188">
                             <com:DepartureAirport LocationCode="PTY"/>
-                            <com:ArrivalAirport LocationCode="LAX"/>
+                            <com:ArrivalAirport LocationCode="MIA"/>
                             <air1:MarketingAirline Code="CM"/>
                         </air:FlightSegmentInfo>
                     </air:SeatMapRequest>

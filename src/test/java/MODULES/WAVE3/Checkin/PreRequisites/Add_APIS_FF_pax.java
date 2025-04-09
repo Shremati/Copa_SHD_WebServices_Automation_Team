@@ -18,6 +18,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +37,7 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
@@ -64,7 +65,7 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("APIS COMPLETE"),"Not contains \"APIS COMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS COMPLETE\"");
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -96,13 +97,6 @@ public class Add_APIS_FF_pax extends FrameworkConstants {
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID", InputRow.getCell(7).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
-
-        for(int i=0;i<3;i++)
-        {
-            XMLParser.SetTagtextatIndex("com:GivenName",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),i);
-            XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(25).getStringCellValue(),getTemp_requestPath(),i);
-
-        }
 
         wb.close();
 

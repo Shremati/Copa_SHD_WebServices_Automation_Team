@@ -22,6 +22,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +51,7 @@ public class Print_an_eticket extends FrameworkConstants
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getModifyticketingservice());
 
@@ -83,7 +84,7 @@ public class Print_an_eticket extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("INVALID ETKT ITEM NUMBER"), "Does not contain \"INVALID ETKT ITEM NUMBER\" in the response");
         ExtentLogger.info("Assertion passed - contains \"INVALID ETKT ITEM NUMBER\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -9,15 +9,15 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-08-31T00:00:00" RPH="1" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-01-28T00:00:00" RPH="1" FlightNumber="293" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <com:ArrivalAirport LocationCode="CUN"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-09-01T00:00:00" RPH="2" FlightNumber="362" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="LAX"/>
+                            <air1:FlightSegment DepartureDateTime="2025-01-31T00:00:00" RPH="2" FlightNumber="123" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="CUN"/>
                                 <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
@@ -48,27 +48,26 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>JAMES</com:GivenName>
-                            <com:Surname>MCCLOUD</com:Surname>
+                            <com:GivenName>ONE</com:GivenName>
+                            <com:Surname>GALLAGHER</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-3010" Remark="A REMARK"/>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-4010" Remark="A REMARK"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>FOX</com:GivenName>
-                            <com:Surname>MCCLOUD</com:Surname>
+                            <com:GivenName>TWO</com:GivenName>
+                            <com:Surname>GALLAGHER</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-3011" Remark="ANOTHER REMARK"/>
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                     <air1:SpecialReqDetails>
                         <air1:Remarks>
-                            <air1:Remark>FOR TESTING ETICKET ADJUST ITINERARY</air1:Remark>
+                            <air1:Remark>FOR TESTING ETICKET ADJUST CLASS OF SERVICE</air1:Remark>
                         </air1:Remarks>
                     </air1:SpecialReqDetails>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-08-31T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-01-123T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

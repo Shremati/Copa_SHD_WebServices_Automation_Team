@@ -3,6 +3,7 @@ package MODULES.WAVE3.QueueService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.QueueService.PreRequisites.Add_QueueMsg_For_supervisor;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -14,10 +15,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
+import MODULES.WAVE3.QueueService.PreRequisites.QueueMsg;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -30,13 +33,15 @@ public class Display_and_remove_message extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+        Add_QueueMsg_For_supervisor PreRequisite1 = new Add_QueueMsg_For_supervisor();
+        PreRequisite1.run();
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getQueueservice());
 

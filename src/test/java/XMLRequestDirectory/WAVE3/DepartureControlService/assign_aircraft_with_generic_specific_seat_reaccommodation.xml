@@ -6,7 +6,7 @@
                 <dep1:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </dep1:POS>
-                <dep1:MessageFunction Function="SeatReac_Both"/>
+                <dep1:MessageFunction Function="SeatReac_Specific"/>
                 <dep1:FlightInfo>
                     <dep1:FlightLegInfo DepartureDateTime="2023-02-16T09:14:00" FlightNumber="120">
                         <com:DepartureAirport LocationCode="PTY"/>

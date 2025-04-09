@@ -17,8 +17,8 @@ public class AgentSineService {
         createFolders(getResponseDirectory()+"AgentSineService");
     }
 
-    @Test(description = "AS_03 - Add Agent Sine")
-    public void AS_03()
+    @Test(description = "AGS_03 - Add Agent Sine")
+    public void AGS_03()
     {
         try
         {
@@ -27,12 +27,12 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_03 failed due to :"+e);
+            System.out.println("AGS_03 failed due to :"+e);
         }
     }
 
-    @Test(description = "AS_05 - Add Agent Duty Code")
-    public void AS_05()
+    @Test(description = "AGS_05 - Add Agent Duty Code")
+    public void AGS_05()
     {
         try
         {
@@ -41,12 +41,12 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_05 failed due to :"+e);
+            System.out.println("AGS_05 failed due to :"+e);
         }
     }
 
-    @Test(description = "AS_01 - Add Sine Display CST")
-    public void AS_01()
+    @Test(description = "AGS_01 - Add Sine Display CST")
+    public void AGS_01()
     {
         try
         {
@@ -55,12 +55,12 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_01 failed due to :"+e);
+            System.out.println("AGS_01 failed due to :"+e);
         }
     }
 
-    @Test(description = "AS_02 - Agent Sine Display CST Increased Security Users")
-    public void AS_02()
+    @Test(description = "AGS_02 - Agent Sine Display CST Increased Security Users")
+    public void AGS_02()
     {
         try
         {
@@ -69,12 +69,12 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_02 failed due to :"+e);
+            System.out.println("AGS_02 failed due to :"+e);
         }
     }
 
-    @Test(description = "AS_06 - Remove Agent Duty Code")
-    public void AS_06()
+    @Test(description = "AGS_06 - Remove Agent Duty Code")
+    public void AGS_06()
     {
         try
         {
@@ -83,13 +83,13 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_06 failed due to :"+e);
+            System.out.println("AGS_06 failed due to :"+e);
         }
     }
 
-    @Test(description = "AS_04 - Remove Agent Sine")
+    @Test(description = "AGS_04 - Remove Agent Sine")
     //Once, agent sine is removed, run Scenario 1(Add Agent Sine), once again
-    public void AS_04()
+    public void AGS_04()
     {
         try
         {
@@ -98,7 +98,7 @@ public class AgentSineService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("AS_04 failed due to :"+e);
+            System.out.println("AGS_04 failed due to :"+e);
         }
     }
 }

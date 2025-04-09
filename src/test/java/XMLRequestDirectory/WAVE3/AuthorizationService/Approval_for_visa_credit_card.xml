@@ -8,7 +8,7 @@
                 </aut1:POS>
                 <aut1:AuthorizationDetail>
                     <air:CreditCardAuthorization Amount="50" CurrencyCode="USD">
-                        <air:CreditCard CardCode="VI" CardNumber="4005554444444403" ExpireDate="0225">
+                        <air:CreditCard CardCode="VI" CardNumber="4444333322221111" ExpireDate="0225">
                         </air:CreditCard>
                     </air:CreditCardAuthorization>
                 </aut1:AuthorizationDetail>

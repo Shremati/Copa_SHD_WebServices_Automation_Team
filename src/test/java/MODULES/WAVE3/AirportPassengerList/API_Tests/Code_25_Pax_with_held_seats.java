@@ -15,6 +15,7 @@ import MODULES.WAVE3.AirportPassengerList.PreRequisites.*;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +51,7 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getAirportpassengerlist());
 
@@ -83,8 +84,8 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("FlightInfo"), "Does not contain \"FlightInfo\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightInfo\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""), "Does not contain ID=\""+PNR+"\" in the response");
-        ExtentLogger.info("Assertion passed - contains ID=\""+PNR+"\"");
+        Assert.assertTrue(response.getBody().asString().contains("ID=\""+PNR+"\""), "Does not contain \"ID=\\"+PNR+"\"\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"ID=\\"+PNR+"\"\"");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

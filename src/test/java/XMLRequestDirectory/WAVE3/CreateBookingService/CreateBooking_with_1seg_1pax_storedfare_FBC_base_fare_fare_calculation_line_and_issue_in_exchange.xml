@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2023-10-18T00:00:00" RPH="1" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="LAX"/>
+                            <air1:FlightSegment DepartureDateTime="2025-01-16T00:00:00" RPH="1" FlightNumber="495" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="BOG"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -30,7 +30,7 @@
                                     <air1:Tax TaxCode="AG" Amount="130.60"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>MY FARE CALC LINE END</air1:UnstructuredFareCalc>
-                                <air1:ExchangeInfo TicketDocumentNbr="23021828048693"/>
+                                <air1:ExchangeInfo TicketDocumentNbr="53600078901234"/>
                                 <!-- for VS -->
                                 <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="93200055500340"/-->
                                 <!-- for MX -->
@@ -48,11 +48,11 @@
                             <com:GivenName>PHILLIP</com:GivenName>
                             <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212"/>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-0010" PhoneUseType="4"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-10-01T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-01-05T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

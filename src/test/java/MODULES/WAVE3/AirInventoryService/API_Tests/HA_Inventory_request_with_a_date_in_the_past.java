@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +36,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAirinventoryservice());
 
@@ -65,6 +66,7 @@ public class HA_Inventory_request_with_a_date_in_the_past extends FrameworkConst
         ExtentLogger.info("Assertion passed - contains Success");
 
         Assert.assertTrue(response.getBody().asString().contains("INVLD FLT NBR"));
+        ExtentLogger.info("Assertion passed - contains INVLD FLT NBR");
 
         Assertions.AssertWarning(response, false);
         Assertions.AssertResponseTime(response, ResponseTime);

@@ -101,9 +101,9 @@ public class Boarding {
     }
 }
 
-//    @Description("BS_02 - Start_Boarding_function_using_Boarding_option_as_Seat")
-//    @Test
-//    //Run this shares command first 6-PR470/21JULPTY.INIT#SEAT
+//    @Test(description ="BS_02 - Start_Boarding_function_using_Boarding_option_as_Seat")
+////    @Test
+////    //Run this shares command first 6-PR470/21JULPTY.INIT#SEAT
 //    public void BS_02() {
 //
 //        try {
@@ -114,12 +114,12 @@ public class Boarding {
 //            System.out.println("BS_02 failed due to :" + e);
 //        }
 //    }
-
-
-//    @Description("BS_11 - Start CancelBoardedPassenger function with BoardingOption as ‘Seat’")
-//    @Test
-//    //Run BS_02 shares command
-//    //Then run this shares command 6-PRS500/05SEP/PTY#22C
+//
+//
+//    @Test(description = "BS_11 - Start CancelBoardedPassenger function with BoardingOption as ‘Seat’")
+////    @Test
+////    //Run BS_02 shares command
+////    //Then run this shares command 6-PRS500/05SEP/PTY#22C
 //    public void BS_11() {
 //
 //        try {

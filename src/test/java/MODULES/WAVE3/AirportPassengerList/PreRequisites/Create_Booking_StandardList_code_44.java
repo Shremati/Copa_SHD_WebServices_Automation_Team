@@ -18,6 +18,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +38,7 @@ public class Create_Booking_StandardList_code_44 extends FrameworkConstants {
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
@@ -102,11 +103,6 @@ public class Create_Booking_StandardList_code_44 extends FrameworkConstants {
         XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
-
-        //FFNumber
-        XMLParser.updateAttributeValue("air1:CustLoyalty","MembershipID",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath());
-        XMLParser.SetTagtext("com:GivenName",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath());
-        XMLParser.SetTagtext("com:Surname",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
     }

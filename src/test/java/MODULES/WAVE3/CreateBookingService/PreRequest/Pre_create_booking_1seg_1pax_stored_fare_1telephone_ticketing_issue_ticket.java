@@ -17,6 +17,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -33,7 +34,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getIssueticketservice());
 
@@ -63,7 +64,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
                 "Do not have TicketInfo");
         ExtentLogger.info("Assertion passed - contain TicketInfo");
 
-        Assertions.AssertWarning(response, false);
+        Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);
@@ -80,7 +81,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
 
-        XSSFRow InputRow = sheet.getRow(29);
+        XSSFRow InputRow = sheet.getRow(38);
 
         String filepath1;
         filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\CreateBookingService\\PreRequest\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket.xml";
@@ -100,7 +101,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow = sheet.getRow(29);
+        XSSFRow InputRow = sheet.getRow(38);
 
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket.xml";

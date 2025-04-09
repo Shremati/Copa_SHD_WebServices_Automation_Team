@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -40,7 +41,7 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getDeparturecontrolservice());
 
@@ -69,8 +70,8 @@ public class assign_aircraft_with_generic_specific_seat_reaccommodation extends 
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains Success in request");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("SeatReac_Both"),"Not contains SeatReac_Both in request");
-        ExtentLogger.info("Assertion passed - contains SeatReac_Both");
+        Assert.assertTrue(response.getBody().asString().contains("SeatReac_Specific"),"Not contains SeatReac_Both in request");
+        ExtentLogger.info("Assertion passed - contains SeatReac_Specific");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

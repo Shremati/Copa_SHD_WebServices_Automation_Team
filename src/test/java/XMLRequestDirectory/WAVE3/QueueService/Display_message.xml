@@ -9,7 +9,7 @@
                 <read:ReadRequests>
                     <read:AirReadRequest>
                         <read:QueueInfo>
-                            <read:Queue PseudoCityCode="LAX"/>
+                            <read:Queue PseudoCityCode="IAD"/>
                         </read:QueueInfo>
                     </read:AirReadRequest>
                 </read:ReadRequests>

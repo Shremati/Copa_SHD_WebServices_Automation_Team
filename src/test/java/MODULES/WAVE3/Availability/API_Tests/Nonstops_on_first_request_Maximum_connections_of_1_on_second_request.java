@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +37,7 @@ public class Nonstops_on_first_request_Maximum_connections_of_1_on_second_reques
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest = IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAvailability());
 
@@ -92,9 +93,9 @@ public class Nonstops_on_first_request_Maximum_connections_of_1_on_second_reques
         filepath1 = getRequestDirectory() + "Availability\\Nonstops_on_first_request_Maximum_connections_of_1_on_second_request.xml";
 
 
-        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
-        XMLParser.updateAttributeValueatIndex("com:OriginLocation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex("com:DestinationLocation", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()), filepath1, 0);
+        XMLParser.updateAttributeValueatIndex("com:OriginLocation", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("com:DestinationLocation", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 0);
 
         XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("com:OriginLocation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 1);

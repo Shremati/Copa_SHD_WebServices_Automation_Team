@@ -15,6 +15,7 @@ import GENERICS.Assertions;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class Single_Pax extends FrameworkConstants
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getAdvancepassengerinfo());
 
@@ -75,7 +76,7 @@ public class Single_Pax extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"),"Not contains \"APIS INCOMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

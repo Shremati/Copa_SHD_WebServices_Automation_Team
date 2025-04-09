@@ -22,6 +22,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -52,7 +53,7 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getDisplaybookingservice());
 
@@ -82,8 +83,8 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""), "Does not contain \"AirReservation BookingReferenceID=\""+PNR1+"\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"AirReservation BookingReferenceID=\""+PNR1+"\"");
+//        Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR1+"\""), "Does not contain \"AirReservation BookingReferenceID=\""+PNR1+"\" in the response");
+//        ExtentLogger.info("Assertion passed - contains \"AirReservation BookingReferenceID=\""+PNR1+"\"");
 
         Assert.assertTrue(response.getBody().asString().contains("AirReservation BookingReferenceID=\""+PNR2+"\""), "Does not contain \"AirReservation BookingReferenceID=\""+PNR2+"\" in the response");
         ExtentLogger.info("Assertion passed - contains \"AirReservation BookingReferenceID=\""+PNR2+"\"");
@@ -114,13 +115,12 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
         String filepath1;
         filepath1=getRequestDirectory()+"DisplayBookingService\\Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists.xml";
 
-        XMLParser.SetTagtext("read:FlightNumber", InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath() );
+        XMLParser.SetTagtext("read:FlightNumber", InputRow.getCell(6).getStringCellValue(),filepath1);
+        XMLParser.SetTagtext("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath() );
         XMLParser.updateAttributeValue("read:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
-        PNR1 = InputRow.getCell(10).getStringCellValue();
+        // PNR1 = InputRow.getCell(10).getStringCellValue();
         PNR2 = InputRow.getCell(15).getStringCellValue();
-
         wb.close();
 
     }

@@ -17,6 +17,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -34,7 +35,7 @@ public class IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket exten
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getIssueticketservice());
 
@@ -67,7 +68,7 @@ public class IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket exten
         Assert.assertTrue(response.getBody().asString().contains("TicketInfo"),"Does not contain TicketInfo");
         ExtentLogger.info("Assertion passed - contains TicketInfo");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         Assertions.AssertResponseTime(response,ResponseTime);
 
         excelwriter();

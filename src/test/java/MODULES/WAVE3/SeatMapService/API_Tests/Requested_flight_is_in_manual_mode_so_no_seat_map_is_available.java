@@ -19,6 +19,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +44,7 @@ public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available exte
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getSeatmapservice());
 
@@ -72,9 +73,9 @@ public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available exte
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        //    Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
+       // Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -96,7 +97,7 @@ public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available exte
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("SeatMapService");
-        XSSFRow InputRow=sheet.getRow(8);
+        XSSFRow InputRow=sheet.getRow(3); // we are taking input from SMS_03
 
         String filepath1;
         filepath1=getRequestDirectory()+"SeatMapService\\Requested_flight_is_in_manual_mode_so_no_seat_map_is_available.xml";

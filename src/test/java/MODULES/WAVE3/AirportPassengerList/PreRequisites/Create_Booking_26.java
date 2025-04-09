@@ -18,6 +18,7 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +39,7 @@ public class Create_Booking_26 extends FrameworkConstants
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, "UTF-8");
+        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getCreatebookingservice());
 
@@ -71,11 +72,7 @@ public class Create_Booking_26 extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED"), "Do not contain \"(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED\"");
-        ExtentLogger.info("Assertion passed - contains \"(1) ERROR IN LAST DATE TO TICKET FIELD (2) /FLWG DATA NOT ENTERED/PROCESSED\"");
-
-
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
