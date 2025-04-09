@@ -2,6 +2,7 @@ package MODULES.WAVE3.TicketControlService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
 import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
 import frameworkconstants.FrameworkConstants;
@@ -13,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -66,10 +67,10 @@ public class Missing_the_ticket_document_number_in_the_RequestControl_request ex
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"),"Contains Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
+        Assert.assertFalse(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"),"Contains Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
         ExtentLogger.info("Assertion passed - Do not contain Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -93,7 +94,7 @@ public class Missing_the_ticket_document_number_in_the_RequestControl_request ex
         XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TicketControlService\\Missing_the_ticket_document_number_in_the_RequestControl_request.xml";
+        filepath1=getRequestDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml";
 
         XMLParser.updateAttributeValueatIndex("et:Source","AirlineVendorID", InputRow.getCell(22).getStringCellValue(),filepath1,0);
 

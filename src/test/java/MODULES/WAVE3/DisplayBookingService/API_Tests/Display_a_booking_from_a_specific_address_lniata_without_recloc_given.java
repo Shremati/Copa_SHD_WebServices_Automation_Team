@@ -2,6 +2,7 @@ package MODULES.WAVE3.DisplayBookingService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_a_host_airline_booking;
 import frameworkconstants.FrameworkConstants;
@@ -13,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;

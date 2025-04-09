@@ -3,6 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.CreateBookingService.PostCheck.IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -13,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;

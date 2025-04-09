@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.PreRequisites;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -19,7 +21,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -70,7 +71,13 @@ public class Display_APIS_Thru_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS INCOMPLETE"),"Not contains RecordID=\"1\">0:APIS INCOMPLETE");
+        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS INCOMPLETE");
+
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS INCOMPLETE"),"Not contains RecordID=\"2\">0:APIS INCOMPLETE");
+        ExtentLogger.info("Assertion passed - contains RecordID=\"2\">0:APIS INCOMPLETE");
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

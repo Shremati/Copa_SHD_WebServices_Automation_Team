@@ -2,6 +2,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Collect_API_for_a_single_pax;
 import frameworkconstants.FrameworkConstants;
@@ -9,6 +10,7 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -20,7 +22,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -76,7 +77,7 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains in response RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

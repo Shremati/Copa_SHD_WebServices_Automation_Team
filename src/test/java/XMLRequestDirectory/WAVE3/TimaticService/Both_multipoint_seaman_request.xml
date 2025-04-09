@@ -4,7 +4,7 @@
         <tim:displayTimatic>
             <eds:EDS_TimaticRQ Version="4.0">
                 <eds:POS>
-                    <com:Source AirlineVendorID="CM"/>
+                    <com:Source AirlineVendorID="VS"/>
                 </eds:POS>
                 <eds:VisaHealthInformation PassportType="SEAMAN" DisplayType="Both">
                     <eds:DocHolderNationality>

@@ -3,6 +3,7 @@ package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.Checkin.PreRequisites.create_booking_service_singlepax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -13,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -20,7 +22,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +73,7 @@ public class Checkin_and_baggage extends FrameworkConstants {
                 "Do not contain SEATS ASSIGNED");
         ExtentLogger.info("Assertion passed - contains SEATS ASSIGNED");
 
-        Assertions.AssertWarning(response, true);
+        Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);

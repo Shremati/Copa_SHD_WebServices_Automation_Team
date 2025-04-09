@@ -58,7 +58,7 @@
                         </air1:PaymentDetail>
                     </air1:PaymentDetails>
                 </air:Fulfillment>
-                <air:Ticketing TicketTimeLimit="2025-01-03T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-01-30T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

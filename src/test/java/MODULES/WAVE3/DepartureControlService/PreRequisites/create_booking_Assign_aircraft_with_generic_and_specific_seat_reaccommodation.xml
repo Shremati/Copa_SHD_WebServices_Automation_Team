@@ -12,7 +12,7 @@
                             <air1:FlightSegment DepartureDateTime="2011-10-13T00:00:00" RPH="1" FlightNumber="156" ResBookDesigCode="Y" NumberInParty="3" Status="11">
                                 <com:DepartureAirport LocationCode="LAX"/>
                                 <com:ArrivalAirport LocationCode="LAS"/>
-                                <air1:MarketingAirline Code="US"/>
+                                <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                     </air1:OriginDestinationOptions>

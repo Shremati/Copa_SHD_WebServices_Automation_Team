@@ -3,6 +3,7 @@ package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -64,7 +65,7 @@ public class Modify_booking_StandardList_Code_6_out_of_sync extends FrameworkCon
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

@@ -3,6 +3,7 @@ package MODULES.WAVE3.TicketingService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.associate_coupon_disassociation_emd_coupon_1_with_etkt_coupon_1;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1;
@@ -23,7 +24,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;

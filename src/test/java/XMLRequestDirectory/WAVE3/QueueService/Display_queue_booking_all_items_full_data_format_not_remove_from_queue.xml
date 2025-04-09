@@ -9,7 +9,7 @@
                 <read:ReadRequests>
                     <read:AirReadRequest>
                         <read:QueueInfo FirstItemOnlyInd="true" RemoveFromQueueInd="false" FullDataInd="true">
-                            <read:Queue PseudoCityCode="LAX" QueueNumber="70"/>
+                            <read:Queue PseudoCityCode="PTY" QueueNumber="33"/>
                         </read:QueueInfo>
                     </read:AirReadRequest>
                 </read:ReadRequests>

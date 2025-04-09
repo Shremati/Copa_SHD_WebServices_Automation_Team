@@ -8,6 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -17,7 +18,6 @@ import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;

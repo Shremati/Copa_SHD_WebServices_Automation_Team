@@ -2,6 +2,7 @@ package MODULES.WAVE3.TicketControlService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.TicketControlService.PreRequisites.Issue_Ticket_missing_airline_code;
 import MODULES.WAVE3.TicketControlService.PreRequisites.Pre_create_booking_missing_airline_code;
 import frameworkconstants.FrameworkConstants;
@@ -13,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -79,7 +80,7 @@ public class Missing_Validating_Airline_code_in_RequestControl_request extends F
         Assert.assertTrue(response.getBody().asString().contains("HOST ALREADY HAS CONTROL"),"Do not have HOST ALREADY HAS CONTROL");
         ExtentLogger.info("Assertion passed - contains HOST ALREADY HAS CONTROL");
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

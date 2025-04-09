@@ -67,7 +67,7 @@
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2023-10-10T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-01-27T00:00:00"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

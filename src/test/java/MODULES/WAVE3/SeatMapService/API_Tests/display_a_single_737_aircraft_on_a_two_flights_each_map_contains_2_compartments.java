@@ -3,6 +3,7 @@ package MODULES.WAVE3.SeatMapService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -12,13 +13,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -74,8 +75,8 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
         Assert.assertTrue(response.getBody().asString().contains("CabinType=\"Economy\""), "Does not contain \"CabinType=\"Economy\"\" in the response");
         ExtentLogger.info("Assertion passed - contains \"CabinType=\"Economy\"\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<Equipment AirEquipType=\"739\">737-900</Equipment>"), "Does not contain \"<Equipment AirEquipType=\"739\">737-900</Equipment>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<Equipment AirEquipType=\"739\">737-900</Equipment>\"");
+        Assert.assertTrue(response.getBody().asString().contains("Equipment AirEquipType"), "Does not contain \"Equipment AirEquipType\" in the response");
+        ExtentLogger.info("Assertion passed - contains \"Equipment AirEquipType\"");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

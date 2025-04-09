@@ -3,6 +3,7 @@ package MODULES.WAVE3.CreateBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing;
 import MODULES.WAVE3.CreateBookingService.PreRequest.Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket;
 import frameworkconstants.FrameworkConstants;
@@ -15,13 +16,13 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 

@@ -1,6 +1,7 @@
 package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_display_history_info_for_given_two_tkts;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_booking_display_history_info_for_given_two_tkts;
 import frameworkconstants.FrameworkConstants;
@@ -12,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -19,7 +21,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;

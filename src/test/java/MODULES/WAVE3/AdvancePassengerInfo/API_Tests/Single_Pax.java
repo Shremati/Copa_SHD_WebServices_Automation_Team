@@ -1,11 +1,13 @@
 package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,7 +17,6 @@ import GENERICS.Assertions;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -76,7 +77,7 @@ public class Single_Pax extends FrameworkConstants
         Assert.assertTrue(response.getBody().asString().contains("APIS INCOMPLETE"),"Not contains \"APIS INCOMPLETE\" in response");
         ExtentLogger.info("Assertion passed - contains \"APIS INCOMPLETE\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

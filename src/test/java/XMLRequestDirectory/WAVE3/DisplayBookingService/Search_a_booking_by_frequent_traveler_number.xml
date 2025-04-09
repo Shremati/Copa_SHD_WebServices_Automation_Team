@@ -13,9 +13,9 @@
             <read:DepartureAirport LocationCode="LAX"/>
             <read:DepartureDate>2014-11-06</read:DepartureDate>
             <read:Name>
-              <com:Surname>PONSE</com:Surname>
+              <com:Surname>Gold</com:Surname>
             </read:Name>
-            <read:CustLoyalty ProgramID="CM" MembershipID="230021925"/>
+            <read:CustLoyalty ProgramID="CM" MembershipID="230266192"/>
           </read:AirReadRequest>
         </read:ReadRequests>
       </read:OTA_ReadRQ>

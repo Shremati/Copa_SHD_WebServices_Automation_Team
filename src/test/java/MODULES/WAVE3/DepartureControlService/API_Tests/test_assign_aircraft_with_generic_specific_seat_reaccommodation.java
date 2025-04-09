@@ -3,6 +3,7 @@ package MODULES.WAVE3.DepartureControlService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.DepartureControlService.PreRequisites.create_booking_Assign_aircraft_with_generic_and_specific_seat_reaccommodation;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import frameworkconstants.FrameworkConstants;
@@ -17,7 +18,6 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 

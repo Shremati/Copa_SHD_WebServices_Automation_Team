@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.Checkin.PreRequisites.Add_APIS_one_pax_and_baggage;
 import MODULES.WAVE3.Checkin.PreRequisites.Display_APIS_one_pax_and_baggage;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_booking_one_pax_baggage;
@@ -15,13 +16,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -92,7 +93,7 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

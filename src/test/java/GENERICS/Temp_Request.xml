@@ -1,108 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://www.iata.org/IATA/2007/00/CommonTypes" xmlns:emd="http://www.hp.com/AirlineSOASchema/EMDAirlineSystemUpdate/" xmlns:emd1="http://www.iata.org/IATA/2007/00/EMD_AirlineSystemUpdateRQ">
     
-
-
 <soapenv:Header/>
     
-
-
 <soapenv:Body>
         
-
-
-<chec:checkIn>
+<emd:systemUpdate>
             
-
-
-<air:EDS_AirCheckInRQ Version="4.000">
+<emd1:IATA_EMD_AirlineSystemUpdateRQ TktDocQuantity="1" Version="4.000">
                 
-
-
-<air:POS>
+<emd1:POS>
                     
-
-
 <com:Source AirlineVendorID="CM"/>
                 
-
-
-</air:POS>
+</emd1:POS>
                 
-
-
-<air:MessageFunction Function="HoldSeat"/>
-                
-
-
-<air:FlightInfo RPH="1">
+<emd1:Passenger>
                     
-
-
-<com1:CarrierInfo Code="CM" FlightNumber="389"/>
-                    
-
-
-<com1:DepartureInformation DateOfDeparture="2025-02-06T02:11:18" LocationCode="GUA"/>
-                
-
-
-</air:FlightInfo>
-                
-
-
-<air:PassengerInfo GivenNameRefNumber="1" RPH="1" SurnameRefNumber="1">
-                    
-
-
-<com1:PassengerName>
+<emd1:Name>
                         
-
-
-<com:GivenName>TEST</com:GivenName>
+<com:GivenName>JANE</com:GivenName>
                         
-
-
-<com:Surname>SIX</com:Surname>
+<com:Surname>MARC</com:Surname>
                     
-
-
-</com1:PassengerName>
+</emd1:Name>
                     
-
-
-<com1:PassengerType Gender="Male"/>
-                
-
-
-</air:PassengerInfo>
-                
-
-
-<air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
+<emd1:TicketDocument InConnectionDocNbr="5364550022480" TicketDocumentNbr="2302240006488" Type="Ticket">
+                        
+<emd1:CouponInfo AssociateInd="true" InConnectionNbr="1" Number="1"/>
                     
-
-
-<com1:SeatBoardingInfo SeatCharacteristics="3 49"/>
+</emd1:TicketDocument>
                 
-
-
-</air:PassengerFlightInfo>
-                
-
-
-<air:BaggageInfo CheckedBagCountTotal="0" PassengerRPH="1"/>
+</emd1:Passenger>
             
-
-
-</air:EDS_AirCheckInRQ>
+</emd1:IATA_EMD_AirlineSystemUpdateRQ>
         
-
-
-</chec:checkIn>
+</emd:systemUpdate>
     
-
-
 </soapenv:Body>
 
 </soapenv:Envelope>

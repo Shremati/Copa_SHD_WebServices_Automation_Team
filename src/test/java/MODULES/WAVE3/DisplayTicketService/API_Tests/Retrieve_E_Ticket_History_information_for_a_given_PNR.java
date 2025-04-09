@@ -2,6 +2,10 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_NonTicketed_PNR;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_display_history_info_for_given_two_tkts;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_NonTicketed_PNR;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -11,13 +15,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +35,13 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        Create_NonTicketed_PNR Prerequisite1 = new Create_NonTicketed_PNR();
+        Prerequisite1.run();
+        ExtentLogger.info("Prerequisite1");
+
+        Issue_NonTicketed_PNR Prerequisite2 = new Issue_NonTicketed_PNR();
+        Prerequisite2.run();
+        ExtentLogger.info("Prerequisite2");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -67,7 +78,6 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DisplayTicketService\\Retrieve_E_Ticket_History_information_for_a_given_PNR.xml"));
         writer.write(response.asPrettyString());
         writer.close();
-
 
 
 //                ********* Clearing Temp_Request.xml *********

@@ -3,6 +3,7 @@ package MODULES.WAVE3.Checkin.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.Checkin.PreRequisites.Create_Booking_Non_Revenue_Pax;
 import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_non_revenue_pax;
 import frameworkconstants.FrameworkConstants;
@@ -15,6 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
@@ -22,7 +24,6 @@ import reports.ExtentLogger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -76,7 +77,7 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("NO RECORD - CREATE PNR THIS PAX"),"Not contains \"NO RECORD - CREATE PNR THIS PAX\" in response");
         ExtentLogger.info("Assertion passed - contains \"NO RECORD - CREATE PNR THIS PAX\"");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

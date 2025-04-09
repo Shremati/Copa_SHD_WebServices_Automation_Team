@@ -3,6 +3,7 @@ package frameworkconstants;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,10 +14,8 @@ public class FrameworkConstants {
     public static String BaseURL_Azure = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:8080";  //AZURE SIT
     public static String SharesCURL    = "http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
     public static String SharesBuild35 = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
-    public static String SharesBGUI = "http://uat-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
-    public static String SharesBNonGUI = "http://uat-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18111";
 
-    public static String getBaseURL() { return SharesBGUI;}
+    public static String getBaseURL() { return SharesCURL;}
 
     public static long ResponseTime = 200000;
 

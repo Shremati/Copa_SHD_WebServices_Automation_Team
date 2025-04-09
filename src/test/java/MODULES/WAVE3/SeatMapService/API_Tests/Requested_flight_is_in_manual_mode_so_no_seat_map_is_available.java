@@ -3,6 +3,7 @@ package MODULES.WAVE3.SeatMapService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
+import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.SeatMapService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -13,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
@@ -73,7 +74,7 @@ public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available exte
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-       // Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
+        //    Assert.assertTrue(response.getBody().asString().contains("FLIGHT IN OPEN SEATING. NO SEAT MAP AVAILABLE"));
 
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
@@ -97,7 +98,7 @@ public class Requested_flight_is_in_manual_mode_so_no_seat_map_is_available exte
         FileInputStream fis=new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("SeatMapService");
-        XSSFRow InputRow=sheet.getRow(3); // we are taking input from SMS_03
+        XSSFRow InputRow=sheet.getRow(3);//we are taking Input Data for SMS_03 bcz SMS_03 will act as pre-req here.
 
         String filepath1;
         filepath1=getRequestDirectory()+"SeatMapService\\Requested_flight_is_in_manual_mode_so_no_seat_map_is_available.xml";

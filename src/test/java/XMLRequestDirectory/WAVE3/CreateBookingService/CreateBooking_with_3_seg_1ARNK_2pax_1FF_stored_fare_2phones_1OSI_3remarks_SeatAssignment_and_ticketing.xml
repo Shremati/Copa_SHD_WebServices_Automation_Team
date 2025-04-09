@@ -66,11 +66,11 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>SANDRA</com:GivenName>
-                            <com:Surname>SILVER</com:Surname>
+                            <com:GivenName>Joshua</com:GivenName>
+                            <com:Surname>Gold</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-0129"/>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230436782"/>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230266192"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
