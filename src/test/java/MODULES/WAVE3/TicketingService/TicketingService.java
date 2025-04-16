@@ -84,6 +84,19 @@ public class TicketingService {
 
     }
 
+    @Test(description = "TIS_07 - Ticket with check form of payment")
+    public void TIS_07() {
+
+        try {
+            Ticket_with_check_form_of_payment.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TIS_07 failed due to :" + e);
+        }
+
+    }
+
 }
 
 //    @Description("Print an Eticket")

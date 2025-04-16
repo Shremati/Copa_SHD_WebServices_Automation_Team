@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dis="http://www.eds.com/AirlineSOASchema/DisplayTicket/" xmlns:dis1="http://www.eds.com/AirlineSOASchema/DisplayTicketRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <dis:displayTicketsByRecordLocator>
+            <dis1:EDS_DisplayTicketRQ Version="4.000">
+                <dis1:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </dis1:POS>
+                <dis1:RecordLocator>BHCF0A</dis1:RecordLocator>
+                <dis1:TicketRequests>
+                    <dis1:TicketRequest>
+                        <dis1:TicketNumber/>
+                    </dis1:TicketRequest>
+                </dis1:TicketRequests>
+            </dis1:EDS_DisplayTicketRQ>
+        </dis:displayTicketsByRecordLocator>
+    </soapenv:Body>
+</soapenv:Envelope>

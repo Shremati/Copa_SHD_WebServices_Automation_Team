@@ -196,5 +196,29 @@ public class EncodeDecodeService {
             System.out.println("EDS_17 failed due to :" + e);
         }
     }
+
+    @Test(description = "EDS_11 - Request multiple mixed messages of city, airport, airline, country, and flight")
+    public void EDS_11() {
+
+        try {
+            Request_multiple_mixed_messages_of_city_airport_airline_country_and_flight.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_11 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "EDS_16 - Decode city code LAX specifying an agent sine, duty code and airport code for sign in")
+    public void EDS_16() {
+
+        try {
+            Decode_city_code_LAX_specifying_an_agent_sine_duty_code_and_airport_code_for_sign_in.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("EDS_16 failed due to :" + e);
+        }
+    }
 }
 

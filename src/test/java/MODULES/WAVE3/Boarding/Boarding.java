@@ -89,45 +89,43 @@ public class Boarding {
     //To have a sequence number, the pax has to be checked-in
     public void BS_04() {
 
-        try
-        {
+        try {
             Start_BoardPassenger_function_using_BoardingOption_as_Sequence.Execute();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             failTest(e);
             System.out.println("BS_04 failed due to :" + e);
         }
     }
-}
 
-//    @Test(description ="BS_02 - Start_Boarding_function_using_Boarding_option_as_Seat")
-////    @Test
-////    //Run this shares command first 6-PR470/21JULPTY.INIT#SEAT
-//    public void BS_02() {
-//
-//        try {
-//            Start_Boarding_function_using_Boarding_option_as_Seat.Execute();
-//
-//        } catch (Exception e) {
-//            failTest(e);
-//            System.out.println("BS_02 failed due to :" + e);
-//        }
-//    }
-//
-//
-//    @Test(description = "BS_11 - Start CancelBoardedPassenger function with BoardingOption as ‘Seat’")
-////    @Test
-////    //Run BS_02 shares command
-////    //Then run this shares command 6-PRS500/05SEP/PTY#22C
-//    public void BS_11() {
-//
-//        try {
-//            Start_CancelBoardedPassenger_function.Execute();  //The pax moves from reconciled to unreconciled
-//
-//
-//        } catch (Exception e) {
-//            failTest(e);
-//            System.out.println("BS_11 failed due to :" + e);
-//        }
-//    }
+    @Test(description = "BS_02 - Start_Boarding_function_using_Boarding_option_as_Seat")
+//    @Test
+//    //Run this shares command first 6-PR470/21JULPTY.INIT#SEAT
+    public void BS_02() {
+
+        try {
+            Start_Boarding_function_using_Boarding_option_as_Seat.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("BS_02 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "BS_11 - Start CancelBoardedPassenger function with BoardingOption as ‘Seat’")
+//    @Test
+//    //Run BS_02 shares command
+//    //Then run this shares command 6-PRS500/05SEP/PTY#22C
+    public void BS_11() {
+
+        try {
+            Start_CancelBoardedPassenger_function.Execute();  //The pax moves from reconciled to unreconciled
+
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("BS_11 failed due to :" + e);
+        }
+    }
+
+
+}

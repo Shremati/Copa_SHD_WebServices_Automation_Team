@@ -218,7 +218,19 @@ public class DepartureControlService {
         }
     }
 
+    @Test(description = "DPS_30 - Restrict checkin and close flight")
+    public void DPS_30() {
+
+        try {
+            close_flight.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("DPS_30 failed due to :" + e);
+        }
+    }
+
 }
 
-//DPS_30	Close flight(Not Automated)
+//DPS_30	Close flight(Not Automated)  automated on 14-04-2025
 //DPS_02	Assign aircraft to downline station

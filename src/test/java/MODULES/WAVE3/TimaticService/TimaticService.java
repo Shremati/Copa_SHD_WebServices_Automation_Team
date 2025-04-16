@@ -715,7 +715,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_11_10 - Display for section Visa with its subsection Additional Information")
-    
     public void TT_11_10() {
         try {
 
@@ -728,7 +727,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_11_11 - Display for section Visa with its subsection Compulsory Currency Exchange")
-    
     public void TT_11_11() {
         try {
 
@@ -741,7 +739,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_1 - Display for section Customs with its subsection Import")
-    
     public void TT_12_1() {
         try {
 
@@ -754,7 +751,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_2 - Display for section Customs with its subsection ARMS AND AMMUNITION")
-    
     public void TT_12_2() {
         try {
 
@@ -767,7 +763,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_3 - Display for section Customs with its subsection Wild Fauna and Flora")
-    
     public void TT_12_3() {
         try {
 
@@ -780,7 +775,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_4 - Display for section Customs with its subsection export")
-    
     public void TT_12_4() {
         try {
 
@@ -793,7 +787,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_5 - Display for section Customs with its subsection Additional Information")
-    
     public void TT_12_5() {
         try {
 
@@ -806,7 +799,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_6 - Display for section Customs with its subsection Crew Members")
-    
     public void TT_12_6() {
         try {
 
@@ -819,7 +811,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_7 - Display for section Customs with its subsection Pets")
-    
     public void TT_12_7() {
         try {
 
@@ -832,7 +823,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_8 - Display for section Customs with its subsection Baggage Clearance")
-    
     public void TT_12_8() {
         try {
 
@@ -845,7 +835,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_9 - Display for section Customs with its subsection Exempt")
-    
     public void TT_12_9() {
         try {
 
@@ -858,7 +847,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_12_10 - Display for section Customs with its subsection Notes")
-    
     public void TT_12_10() {
         try {
 
@@ -873,7 +861,6 @@ public class TimaticService {
         //Display for section Health with its subsection
 
     @Test(description = "TT_14_1 - Display for section Health with its subsection for exempt")
-    
     public void TT_14_1() {
         try {
 
@@ -887,7 +874,6 @@ public class TimaticService {
 
 
     @Test(description = "TT_14_2 - Display for section Health with its subsection for recommended")
-    
     public void TT_14_2() {
         try {
 
@@ -900,7 +886,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_14_3 - Display for section Health with its subsection for Notes")
-    
     public void TT_14_3() {
         try {
 
@@ -913,7 +898,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_14_4 - Display for section Health with its subsection for warning")
-    
     public void TT_14_4() {
         try {
 
@@ -926,7 +910,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_16 - Invalid subsection")
-    
     public void TT_16() {
         try {
 
@@ -939,7 +922,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_17 - Miss Required Data")
-    
     public void TT_17() {
         try {
 
@@ -952,7 +934,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_18 - No Information for the Topic")
-    
     public void TT_18() {
         try {
 
@@ -965,7 +946,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_19 - Display Country Code list")
-    
     public void TT_19() {
         try {
 
@@ -978,7 +958,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_21 - Display City list by location code")
-    
     public void TT_21() {
         try {
 
@@ -991,7 +970,6 @@ public class TimaticService {
     }
 
     @Test(description = "TT_23 - Display Country Group")
-    
     public void TT_23() {
         try {
 
@@ -1000,6 +978,18 @@ public class TimaticService {
         } catch (Exception e) {
             failTest(e);
             System.out.println("TT_23 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TT_29 - Display News for a News Index")
+    public void TT_29() {
+        try {
+
+            Display_News_for_a_News_Index.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TT_29 failed due to :" + e);
         }
     }
 

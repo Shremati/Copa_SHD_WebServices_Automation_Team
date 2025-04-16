@@ -188,6 +188,19 @@ public class DisplayTicketService {
 
     }
 
+    @Test(description = "DTS_14 - Conjunctive ticket (primary + conjunctive)")
+    public void DTS_14() {
+
+        try {
+            Conjunctive_ticket_primary_conjunctive.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("DTS_14 failed due to :" + e);
+        }
+
+    }
+
 }
 
-//Conjunctive ticket (primary + conjunctive) (Not Automated)
+//Conjunctive ticket (primary + conjunctive) (Not Automated)   Automated on 16-04-2025

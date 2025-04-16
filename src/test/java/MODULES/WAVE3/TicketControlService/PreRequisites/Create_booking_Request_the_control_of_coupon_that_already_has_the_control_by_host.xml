@@ -1,0 +1,94 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cre:createBooking>
+            <air:OTA_AirBookRQ Version="4.00">
+                <air:POS>
+                    <com:Source AirlineVendorID="CM"/>
+                </air:POS>
+                <air:AirItinerary>
+                    <air1:OriginDestinationOptions>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2025-01-30T11:56:00" RPH="1" FlightNumber="1250" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="IAH"/>
+                                <com:ArrivalAirport LocationCode="PTY"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2025-02-01T07:27:00" RPH="1" FlightNumber="380" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="GUA"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2025-02-02T07:00:00" RPH="1" FlightNumber="1901" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="GUA"/>
+                                <com:ArrivalAirport LocationCode="IAH"/>
+                                <air1:MarketingAirline Code="UA"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
+                    </air1:OriginDestinationOptions>
+                </air:AirItinerary>
+                <air:PriceInfo>
+                    <air1:PTC_FareBreakdowns>
+                        <air1:PTC_FareBreakdown>
+                            <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            <air1:FareBasisCodes>
+                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            </air1:FareBasisCodes>
+                            <air1:PassengerFare>
+                                <air1:BaseFare Amount="126.90" CurrencyCode="USD"/>
+                                <air1:Taxes>
+                                    <air1:Tax TaxCode="AT" Amount="12.20"/>
+                                    <air1:Tax TaxCode="VT" Amount="7.60"/>
+                                </air1:Taxes>
+                                <air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            </air1:PassengerFare>
+                            <air1:TravelerRefNumber RPH="1"/>
+                            <air1:Endorsements>
+                                <air1:Endorsement>ENDORSEMENT ONE</air1:Endorsement>
+                            </air1:Endorsements>
+                        </air1:PTC_FareBreakdown>
+                    </air1:PTC_FareBreakdowns>
+                </air:PriceInfo>
+                <air:TravelerInfo>
+                    <air1:AirTraveler PassengerTypeCode="ADT">
+                        <air1:PersonName>
+                            <com:GivenName>JENNY</com:GivenName>
+                            <com:Surname>PLATINUM</com:Surname>
+                        </air1:PersonName>
+                        <air1:CustLoyalty ProgramID="CM" MembershipID="230022732"/>
+                        <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1010" Remark="REMARK ONE"/>
+                        <air1:TravelerRefNumber RPH="1"/>
+                    </air1:AirTraveler>
+                    <air1:SpecialReqDetails>
+                        <air1:SpecialServiceRequests>
+                            <air1:SpecialServiceRequest SSRCode="WCHR" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="1">
+                                <air1:Text>Needed WCHR for passenger 1</air1:Text>
+                            </air1:SpecialServiceRequest>
+                            <air1:SpecialServiceRequest SSRCode="WCHR" Status="11" TravelerRefNumberRPHList="1" FlightRefNumberRPHList="2">
+                                <air1:Text>Needed WCHR for passenger 1</air1:Text>
+                            </air1:SpecialServiceRequest>
+                        </air1:SpecialServiceRequests>
+                        <air1:OtherServiceInformations>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="US"/>
+                                <air1:Text>DOCO API OTHER TRVL INFO</air1:Text>
+                            </air1:OtherServiceInformation>
+                            <air1:OtherServiceInformation>
+                                <air1:Airline Code="US"/>
+                                <air1:Text>AVML ASIAN VEGETARIAN MEAL</air1:Text>
+                            </air1:OtherServiceInformation>
+                        </air1:OtherServiceInformations>
+                        <air1:Remarks>
+                            <air1:Remark>have a nice party</air1:Remark>
+                        </air1:Remarks>
+                    </air1:SpecialReqDetails>
+                </air:TravelerInfo>
+                <air:Ticketing TicketingStatus="3"/>
+            </air:OTA_AirBookRQ>
+        </cre:createBooking>
+    </soapenv:Body>
+</soapenv:Envelope>

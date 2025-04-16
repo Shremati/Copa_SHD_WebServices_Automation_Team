@@ -465,8 +465,34 @@ public class DisplayBookingService
             System.out.println("DBS_25 failed due to :" + e);
         }
     }
+
+    @Test(description = "DBS_16 - Display confirmed and waitlist booking list (multiple name entries in list on same booking)")
+    public void DBS_16() {
+
+        try {
+
+            Display_confirmed_and_waitlist_booking_list_multiple_name_entries_in_list_on_same_booking.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("DBS_16 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "DBS_19 - Search a booking by telephone number")
+    public void DBS_19() {
+
+        try {
+
+            Search_a_booking_by_telephone_number.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("DBS_19 failed due to :" + e);
+        }
+    }
 }
 
-//    DBS_19	Search a booking by telephone number (Not Automated)
+//    DBS_19	Search a booking by telephone number (Not Automated)    automated on 15-04-2025
 //    DBS_16	Display confirmed and waitlist booking list (multiple name entries in list on same booking)
 

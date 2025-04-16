@@ -312,5 +312,17 @@ public class FlifoService {
         }
     }
 
+    @Test(description = "FS_23 - Flifo for a flight with crossing date: Scheduled time is few minutes before midnight and Actual time is few minutes after midnight")
+    public void FS_23() {
+
+        try {
+            Flifo_for_a_flight_with_crossing_date_Scheduled_time_is_few_minutes_before_midnight_and_Actual_time_is_few_minutes_after_midnight.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("FS_23 failed due to :" + e);
+        }
+    }
+
 
 }

@@ -4,6 +4,7 @@ import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_get_control_of_one_coupon_of_one_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.display_ticket_get_control_of_one_coupon_of_one_ticket;
 import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_get_control_of_one_coupon_of_one_ticket;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -43,6 +44,10 @@ public class Get_control_of_one_coupon_for_each_ticket_within_the_same_PNR exten
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite2 = new issue_ticket_get_control_of_one_coupon_of_one_ticket();
         Prerequisite2.run();
+
+        ExtentLogger.info("Prerequisite 3");
+        display_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite3 = new display_ticket_get_control_of_one_coupon_of_one_ticket();
+        Prerequisite3.run();
 
         UpdatePayload();
 
@@ -107,7 +112,6 @@ public class Get_control_of_one_coupon_for_each_ticket_within_the_same_PNR exten
         filepath1=getRequestDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml";
 
         XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
-
 
 
         wb.close();

@@ -517,5 +517,57 @@ public class CreateBookingService {
         }
     }
 
+    @Test(description = "CBS_01 - Create a booking with 1 segment, 1 passenger, stored fare and time limit")
+    public void CBS_01() {
+
+        try {
+
+            Create_a_booking_with_1_segment_1_passenger_stored_fare_and_time_limit.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("CBS_01 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "CBS_15 - Invalid data in request")
+    public void CBS_15() {
+
+        try {
+
+            Create_booking_Invalid_data_in_request.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("CBS_15 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "CBS_21 - Create a booking with 1 segment, 1 passenger, stored fare (with basic info) and time limit")
+    public void CBS_21() {
+
+        try {
+
+            Create_a_booking_with_1_segment_1_passenger_stored_fare_with_basic_info_and_time_limit.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("CBS_21 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "CBS_44 - Queue Invalid queue number")
+    public void CBS_44() {
+
+        try {
+
+            Queue_Invalid_queue_number.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("CBS_44 failed due to :" + e);
+        }
+    }
+
 }
 

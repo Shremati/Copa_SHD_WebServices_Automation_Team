@@ -288,5 +288,18 @@ public class AirportPassengerList {
         }
     }
 
+    @Test(description = "APL_05 - Code 4 Eticketed passengers, not checked in")
+    public void APL_05() {
+
+        try {
+
+            Eticketed_passengers_not_checked_in_04.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("APL_05 failed due to :" + e);
+        }
+    }
+
 //APL_05 -	Code 4 - Eticketed passengers, not checked in (Not Automated)
 }

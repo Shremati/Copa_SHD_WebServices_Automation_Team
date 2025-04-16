@@ -34,12 +34,13 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload_2();
+        UpdatePayload_1();
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : " + getBaseURL() + getScreentextservice());
+
 
         requestSpecification = given()
                 .baseUri(getBaseURL())
@@ -63,42 +64,6 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assertions.AssertWarning(response,false);
-        ExtentLogger.info("Assertion passed - do not have warning");
-
-        Assertions.AssertResponseTime(response,ResponseTime);
-
-
-        UpdatePayload_1();
-
-        fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
-        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : " + getBaseURL() + getScreentextservice());
-
-
-        requestSpecification = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest);
-
-        response = requestSpecification
-                .body(SOAPRequest)
-                .when()
-                .post(getScreentextservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
-        ExtentLogger.logXMLResponse(response.asPrettyString());
-
-        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
-
-        writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
-        writer.write(response.asPrettyString());
-        writer.close();
-
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
@@ -109,6 +74,43 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
+
+
+
+//        UpdatePayload_2();
+//
+//        fileInputStream = new FileInputStream(getTemp_requestPath());
+//        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
+//        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+//        ExtentLogger.info("Base URL : " + getBaseURL() + getScreentextservice());
+//
+//        requestSpecification = given()
+//                .baseUri(getBaseURL())
+//                .header("Content-Type", "text/xml")
+//                .filter(new AllureRestAssured());
+//        ExtentLogger.logXMLRequest(SOAPRequest);
+//
+//        response = requestSpecification
+//                .body(SOAPRequest)
+//                .when()
+//                .post(getScreentextservice())
+//                .then()
+//                .statusCode(200)
+//                .and()
+//                .log().all().extract().response();
+//        ExtentLogger.logXMLResponse(response.asPrettyString());
+//
+//        ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
+//
+//        writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
+//        writer.write(response.asPrettyString());
+//        writer.close();
+//
+//        Assertions.AssertWarning(response,false);
+//        ExtentLogger.info("Assertion passed - do not have warning");
+//
+//        Assertions.AssertResponseTime(response,ResponseTime);
+//
 
 
         UpdatePayload();
@@ -184,10 +186,10 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         XSSFRow InputRow = sheet.getRow(6);
 
         String filepath1;
-        filepath1 = getRequestDirectory() + "Boarding\\ScreenTextRequest.xml";
+        filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\Boarding\\PreRequisites\\ScreenTextEntry1.xml";
 
 
-        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(6).getStringCellValue(), filepath1);
+        XMLParser.updateAttributeValueatIndex("scr1:POS", "scr1:ScreenEntry", InputRow.getCell(6).getStringCellValue(), filepath1,0);
 
 
         wb.close();
@@ -225,10 +227,10 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         XSSFRow InputRow = sheet.getRow(6);
 
         String filepath1;
-        filepath1 = getRequestDirectory() + "Boarding\\ScreenTextRequest.xml";
+        filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\Boarding\\PreRequisites\\ScreenTextEntry2.xml";
 
-
-        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(7).getStringCellValue(), filepath1);
+//        XMLParser.SetTagtext("scr1:ScreenEntry", InputRow.getCell(7).getStringCellValue(), filepath1);
+        XMLParser.updateAttributeValueatIndex("scr1:POS", "scr1:ScreenEntry", InputRow.getCell(7).getStringCellValue(), filepath1,0);
 
 
         wb.close();

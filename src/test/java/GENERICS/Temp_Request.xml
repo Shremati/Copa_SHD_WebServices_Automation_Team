@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://www.iata.org/IATA/2007/00/CommonTypes" xmlns:emd="http://www.hp.com/AirlineSOASchema/EMDAirlineSystemUpdate/" xmlns:emd1="http://www.iata.org/IATA/2007/00/EMD_AirlineSystemUpdateRQ">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:tic="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:tic1="http://www.eds.com/AirlineSOASchema/TicketingRQ">
     
 <soapenv:Header/>
     
 <soapenv:Body>
         
-<emd:systemUpdate>
+<tic:issueTicket>
             
-<emd1:IATA_EMD_AirlineSystemUpdateRQ TktDocQuantity="1" Version="4.000">
+<tic1:EDS_TicketingRQ Version="4.0">
                 
-<emd1:POS>
+<tic1:POS>
                     
 <com:Source AirlineVendorID="CM"/>
                 
-</emd1:POS>
+</tic1:POS>
                 
-<emd1:Passenger>
+<tic1:TicketingRequest ValidatingCarrierCode="">
                     
-<emd1:Name>
+<tic1:FormOfPayment>
                         
-<com:GivenName>JANE</com:GivenName>
-                        
-<com:Surname>MARC</com:Surname>
+<tic1:CreditCard AccountNumber="4005554444444403" ApprovalCode="A1234" ExpirationDate="2010-08" Issuer="VI"/>
                     
-</emd1:Name>
+</tic1:FormOfPayment>
                     
-<emd1:TicketDocument InConnectionDocNbr="5364550022480" TicketDocumentNbr="2302240006488" Type="Ticket">
-                        
-<emd1:CouponInfo AssociateInd="true" InConnectionNbr="1" Number="1"/>
-                    
-</emd1:TicketDocument>
+<tic1:TicketType>Electronic</tic1:TicketType>
                 
-</emd1:Passenger>
+</tic1:TicketingRequest>
+                
+<tic1:TicketingAction>Issue</tic1:TicketingAction>
+                
+<tic1:RecordLocator>BIXKQ0</tic1:RecordLocator>
             
-</emd1:IATA_EMD_AirlineSystemUpdateRQ>
+</tic1:EDS_TicketingRQ>
         
-</emd:systemUpdate>
+</tic:issueTicket>
     
 </soapenv:Body>
 

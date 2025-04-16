@@ -107,4 +107,69 @@ public class TicketControlService {
             System.out.println("TCS_03 failed due to :" + e);
         }
     }
+
+    @Test(description = "TCS_05 - Get control of one coupon of one ticket with involuntary indicator")
+    public void TCS_05() {
+
+        try {
+
+            Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_05 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TCS_14 - Push the control of coupon that the partner already has the control")
+    public void TCS_14() {
+
+        try {
+
+            Push_the_control_of_coupon_that_the_partner_already_has_the_control.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_14 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TCS_13 - The Request specifies an invalid coupon for the control")
+    public void TCS_13() {
+
+        try {
+
+            The_Request_specifies_an_invalid_coupon_for_the_control.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_13 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TCS_12 - Request the control of coupon that already has the control by host")
+    public void TCS_12() {
+
+        try {
+
+            Request_the_control_of_coupon_that_already_has_the_control_by_host.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_12 failed due to :" + e);
+        }
+    }
+
+    @Test(description = "TCS_08 - Push control of multiple ticket/coupons for multiple PNR")
+    public void TCS_08() {
+
+        try {
+
+            Push_control_of_multiple_ticket_coupons_for_multiple_PNR.Execute();
+
+        } catch (Exception e) {
+            failTest(e);
+            System.out.println("TCS_08 failed due to :" + e);
+        }
+    }
 }

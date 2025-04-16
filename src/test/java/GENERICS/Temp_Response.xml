@@ -1,0 +1,21 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns3:issueTicketResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/TicketingRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:EDS_TicketingRS TimeStamp="2025-04-16T14:19:38" Version="4.000">
+        <ns4:Success/>
+        <ns4:Warnings>
+          <Warning Type="13" ShortText="10027" Tag="TicketingResult" RecordID="1"> (1) INVALID PFC/S</Warning>
+          <Warning Type="13" ShortText="10027" Tag="TicketingResult" RecordID="2"> (1) FIN OR IGN TRANS</Warning>
+        </ns4:Warnings>
+        <ns4:TicketingResults RecordLocator="BIXKQ0">
+          <ns4:TicketingResult PassengerRef="1" TransactionRef="1" TransactionType="Issue">
+            <ns4:TicketInfo Status="Fail"/>
+          </ns4:TicketingResult>
+          <ns4:TicketingResult PassengerRef="2" TransactionRef="1" TransactionType="Issue">
+            <ns4:TicketInfo Status="Fail"/>
+          </ns4:TicketingResult>
+        </ns4:TicketingResults>
+      </ns4:EDS_TicketingRS>
+    </ns3:issueTicketResponse>
+  </soap:Body>
+</soap:Envelope>
