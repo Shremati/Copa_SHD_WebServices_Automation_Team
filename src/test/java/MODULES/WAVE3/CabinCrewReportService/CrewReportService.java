@@ -18,7 +18,7 @@ public class CrewReportService {
         createFolders(getResponseDirectory()+"CrewReportService");
     }
 
-    @Test(description = "Crew_report1 - Crew Report Service FR")
+    @Test(description = "CR_01 - Crew_report1 - Crew Report Service FR")
     public void Crew_report1()
     {
         try
@@ -28,11 +28,11 @@ public class CrewReportService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 1 failed due to :"+e);
+            System.out.println("CR_01 failed due to :"+e);
         }
     }
 
-    @Test(description = "Crew_report2 - Crew Report Service PR")
+    @Test(description = "CR_02 - Crew_report2 - Crew Report Service PR")
     public void Crew_report2()
     {
         try
@@ -42,7 +42,7 @@ public class CrewReportService {
         }catch(Exception e)
         {
             failTest(e);
-            System.out.println("SCENARIO 2 failed due to :"+e);
+            System.out.println("CR_02 failed due to :"+e);
         }
     }
 

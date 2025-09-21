@@ -57,7 +57,7 @@ public class PassengerListService {
         }
 
     }
-    @Test(description = "PLS_06 - Pax List Request Positive Non Revenue")
+    @Test(description = "PLS_06 - Display the passenger list Positive Non-Revenue option")
     public void PLS_06() {
 
         try {

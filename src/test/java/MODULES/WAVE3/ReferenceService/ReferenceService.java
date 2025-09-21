@@ -10,6 +10,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//8 scenarios
 @Listeners(TestListener.class)
 public class ReferenceService {
     ReferenceService() {
@@ -28,7 +29,7 @@ public class ReferenceService {
 
     }
 
-    @Test(description = "RS_06 - Display Page Data")
+    @Test(description = "RS_06 - Display Page Data (category/subject/page + quickpath)")
     public void RS_06() {
 
         try {
@@ -66,7 +67,7 @@ public class ReferenceService {
         }
     }
 
-    @Test(description = "RS_04 - Display data page")
+    @Test(description = "RS_04 - Display page data")
     public void RS_04() {
 
         try {
@@ -106,7 +107,7 @@ public class ReferenceService {
         }
     }
 
-    @Test(description = "RS_09 - Error - DATA PAGE DOES NOT EXIST - Negative")
+    @Test(description = "RS_09 - Error - CATEGORY DOES NOT EXIST - Negative")
     public void RS_09() {
 
         try {

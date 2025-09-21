@@ -65,8 +65,8 @@ public class Screen_Text_Flifo_for_a_flight_with_crossing_date extends Framework
 
         Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>") || response.getBody().asString().contains("RPLCD FLWG MSG"));
 
-        if(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"))
-            ExtentLogger.info("Assertion passed - contains \"<ns4:TextData>*</ns4:TextData>\"");
+        if(response.getBody().asString().contains("*"))
+            ExtentLogger.info("Assertion passed - contains *");
         else if(response.getBody().asString().contains("RPLCD FLWG MSG"))
             ExtentLogger.info("Assertion passed - contains \"RPLCD FLWG MSG\"");
 

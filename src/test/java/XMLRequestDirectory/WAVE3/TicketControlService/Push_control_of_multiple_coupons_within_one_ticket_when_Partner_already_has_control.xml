@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.eds.com/AirlineSOASchema/TicketControl/" xmlns:tic1="http://www.iata.org/IATA/2007/00/TicketAirlineRedirectControlRQ" xmlns:et="http://www.iata.org/IATA/2007/00/CommonTypes">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <tic:redirectControl>
+            <tic1:IATA_TicketAirlineRedirectAirportControlRQ Version="2.1">
+                <tic1:POS>
+                    <et:Source AirlineVendorID="CM"/>
+                </tic1:POS>
+                <tic1:RedirectedInfo>
+                    <tic1:ToAirline Code="UA"/>
+                </tic1:RedirectedInfo>
+                <tic1:TicketDocument TicketDocumentNbr="2302187111674">
+                    <tic1:CouponInfo Number="1"/>
+                    <tic1:CouponInfo Number="2" InvoluntaryIndCode="I"/>
+                </tic1:TicketDocument>
+            </tic1:IATA_TicketAirlineRedirectAirportControlRQ>
+        </tic:redirectControl>
+    </soapenv:Body>
+</soapenv:Envelope>

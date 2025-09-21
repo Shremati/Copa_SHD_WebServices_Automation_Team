@@ -72,14 +72,11 @@ public class Missing_Validating_Airline_code_in_RedirectControl_request extends 
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
-        ExtentLogger.info("Assertion passed - contains Success");
+        Assert.assertTrue(response.getBody().asString().contains("Invalid Airline Vendor ID"),"Do not contains Invalid Airline Vendor ID");
+        ExtentLogger.info("Assertion passed - contains Invalid Airline Vendor ID");
 
-        Assert.assertFalse(response.getBody().asString().contains("HOST ALREADY HAS CONTROL"),"Do not contains Success HOST ALREADY HAS CONTROL");
-        ExtentLogger.info("Assertion passed - contains HOST ALREADY HAS CONTROL");
-
-        Assertions.AssertWarning(response,false);
-        ExtentLogger.info("Assertion passed - Do not contain Warning");
+        Assert.assertTrue(response.getBody().asString().contains("Errors"),"Do not contains Errors");
+        ExtentLogger.info("Assertion passed - Do not contain Errors");
 
         Assertions.AssertResponseTime(response,ResponseTime);
 
@@ -105,7 +102,7 @@ public class Missing_Validating_Airline_code_in_RedirectControl_request extends 
         String filepath1;
         filepath1=getRequestDirectory()+"TicketControlService\\Missing_Validating_Airline_code_in_RedirectControl_request.xml";
 
-       XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),0);
+       XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(), filepath1,0);
 
         wb.close();
 

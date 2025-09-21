@@ -51,6 +51,7 @@ public class Flifo_by_departure_time_no_flights_with_exact_time extends Framewor
         ExtentLogger.logXMLRequest(SOAPRequest);
 
         Response response = requestSpecification
+                .body(SOAPRequest)
                 .when()
                 .post(getFlifo())
                 .then()
@@ -106,11 +107,10 @@ public class Flifo_by_departure_time_no_flights_with_exact_time extends Framewor
         filepath1=getRequestDirectory()+"FlifoService\\Flifo_by_departure_time_no_flights_with_exact_time.xml";
 
         XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
-        //XMLParser.SetTagtext("air:DepartureDate","DepartureTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(),0);
         XMLParser.SetTagtext("air:DepartureDate", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath());
         XMLParser.updateAttributeValueatIndex("air:DepartureAirport", "LocationCode",InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air:ArrivalAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 0);
+//        XMLParser.updateAttributeValue("air:OTA_AirFlifoRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
 
         wb.close();
 

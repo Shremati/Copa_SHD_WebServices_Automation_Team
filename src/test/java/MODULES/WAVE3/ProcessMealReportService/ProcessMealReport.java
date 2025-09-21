@@ -12,6 +12,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 scenarios
 @Listeners(TestListener.class)
 public class ProcessMealReport {
 

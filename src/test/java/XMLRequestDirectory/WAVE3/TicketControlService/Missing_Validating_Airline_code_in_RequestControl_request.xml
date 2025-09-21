@@ -7,7 +7,7 @@
           <et:Source AirlineVendorID="CM"/>
         </tic1:POS>
         <tic1:ValidatingAirline />
-        <tic1:TicketDocument TicketDocumentNbr="2302182825356">
+        <tic1:TicketDocument TicketDocumentNbr="2302230000440">
           <tic1:CouponInfo Number="2">
           </tic1:CouponInfo>
         </tic1:TicketDocument>

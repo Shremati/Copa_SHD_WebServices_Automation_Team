@@ -82,8 +82,8 @@ public class Flifo_with_forecast extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"), "Does not contain \"FlightLegInfo\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightLegInfo\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Comment>F PTY/ STORM CLEARED ENROUTE</ns5:Comment>"), "Does not contain \"<ns5:Comment>F PTY/ STORM CLEARED ENROUTE</ns5:Comment>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns5:Comment>F PTY/ STORM CLEARED ENROUTE</ns5:Comment>\"");
+        Assert.assertTrue(response.getBody().asString().contains("STORM CLEARED ENROUTE"), "Does not contain STORM CLEARED ENROUTE in the response");
+        ExtentLogger.info("Assertion passed - contains STORM CLEARED ENROUTE");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

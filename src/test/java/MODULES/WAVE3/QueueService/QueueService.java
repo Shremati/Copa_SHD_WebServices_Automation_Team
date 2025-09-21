@@ -18,11 +18,11 @@ public class QueueService {
         createFolders(getResponseDirectory() + "QueueService");
     }
 
-    @Test(description = "QS_02 - Display queue booking all items full data format not remove from queue")
+    @Test(description = "QS_02 - Display queue booking first item only, full data format and do not remove from queue")
     public void QS_02() {
 
         try {
-            Display_queue_booking_all_items_full_data_format_not_remove_from_queue.Execute();
+            Display_queue_booking_first_item_only_full_data_format_do_not_remove_from_queue.Execute();
 
         } catch (Exception e) {
             failTest(e);
@@ -99,7 +99,7 @@ public class QueueService {
 
     }
 
-    @Test(description = "QS_26 - Queue Multiple Messages")
+    @Test(description = "QS_26 - Queue Multiple Messages (default city Msg + Spv queue)")
     public void QS_26() {
 
         try {

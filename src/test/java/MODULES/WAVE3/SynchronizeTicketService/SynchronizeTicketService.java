@@ -11,13 +11,15 @@ import org.testng.annotations.Test;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+//3 scenarios
 @Listeners(TestListener.class)
 public class SynchronizeTicketService
 {
     SynchronizeTicketService() {
         createFolders(getResponseDirectory() + "SynchronizeTicketService");
     }
-    @Test(description = "STS_07 - Adjust Flight No and Date")
+    @Test(description = "STS_07 - Adjust flight number and flight Date")
     public void STS_07()
     {
 
@@ -34,7 +36,7 @@ public class SynchronizeTicketService
 
 
     }
-    @Test(description = "STS_01 - Adjust Name")
+    @Test(description = "STS_01 - Adjust Customer Name")
     public void STS_01()
     {
 
@@ -49,7 +51,7 @@ public class SynchronizeTicketService
         }
 
     }
-    @Test(description = "STS_03 - Adjust Class")
+    @Test(description = "STS_03 - Adjust Class of service")
     public void STS_03()
     {
 

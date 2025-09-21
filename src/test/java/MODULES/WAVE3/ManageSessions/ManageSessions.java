@@ -3,8 +3,6 @@ package MODULES.WAVE3.ManageSessions;
 import MODULES.WAVE3.ManageSessions.API_Tests.Create_a_booking_for_a_group;
 import MODULES.WAVE3.ManageSessions.API_Tests.Create_a_booking_for_two_segments;
 import MODULES.WAVE3.ManageSessions.API_Tests.Modify_name;
-import MODULES.WAVE3.QueueService.API_Tests.Display_queue_booking_all_items_full_data_format_not_remove_from_queue;
-import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -47,7 +45,7 @@ public class ManageSessions {
 
     }
 
-    @Test(description = "MS_03 - Create Booking 2 Segments - releaseToken")
+    @Test(description = "MS_03 - Create a booking with 2 segments, 2 passengers (1 frequent flyer), stored fare, 2 telephones, 1 remark and ticketing")
     public void MS_03() {
 
         try {

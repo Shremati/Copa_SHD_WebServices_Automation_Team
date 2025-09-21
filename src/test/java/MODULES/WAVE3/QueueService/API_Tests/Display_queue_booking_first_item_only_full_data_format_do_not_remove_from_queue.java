@@ -13,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -27,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class Display_queue_booking_all_items_full_data_format_not_remove_from_queue extends FrameworkConstants {
+public class Display_queue_booking_first_item_only_full_data_format_do_not_remove_from_queue extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
@@ -60,7 +59,7 @@ public class Display_queue_booking_all_items_full_data_format_not_remove_from_qu
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Display_queue_booking_all_items_full_data_format_not_remove_from_queue.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Display_queue_booking_first_item_only_full_data_format_do_not_remove_from_queue.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -106,7 +105,7 @@ public class Display_queue_booking_all_items_full_data_format_not_remove_from_qu
         XSSFRow InputRow=sheet.getRow(1);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"QueueService\\Display_queue_booking_all_items_full_data_format_not_remove_from_queue.xml";
+        filepath1=getRequestDirectory()+"QueueService\\Display_queue_booking_first_item_only_full_data_format_do_not_remove_from_queue.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("read:Queue","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());

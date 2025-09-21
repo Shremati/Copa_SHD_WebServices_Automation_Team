@@ -80,7 +80,7 @@ public class Missing_Validating_Airline_code_in_RequestControl_request extends F
         Assert.assertTrue(response.getBody().asString().contains("HOST ALREADY HAS CONTROL"),"Do not have HOST ALREADY HAS CONTROL");
         ExtentLogger.info("Assertion passed - contains HOST ALREADY HAS CONTROL");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

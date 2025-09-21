@@ -116,6 +116,7 @@ public class Create_booking_conjunctive_tkt_primary extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(28).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(29).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath());
 
 
         wb.close();

@@ -132,6 +132,7 @@ public class create_booking_four_seg_2_pax_one_remark_asa extends FrameworkConst
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(14).getStringCellValue(), getTemp_requestPath(), 3);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(15).getStringCellValue(), getTemp_requestPath(), 3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(16).getStringCellValue(), getTemp_requestPath(), 3);
+        XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit",  Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
 
 //        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidBefore", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 0);
 //        XMLParser.updateAttributeValueatIndex("air1:FareBasisCode", "NotValidAfter", Utils.getDate_YYYYMMdd(InputRow.getCell(13).getNumericCellValue()), getTemp_requestPath(), 0);

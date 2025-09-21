@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
+
+//5 scenarios
 @Listeners(TestListener.class)
 public class ModifyBookingService {
 
@@ -40,7 +42,7 @@ public class ModifyBookingService {
         }
     }
 
-    @Test(description = "MBS_07 - Other Changes")
+    @Test(description = "MBS_07 - Other Changes (itinerary changes + modify traveler info + modify pricing)")
     public void MBS_07() {
 
         try {

@@ -4,8 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
-import MODULES.WAVE3.Checkin.PreRequisites.Create_Booking_Non_Revenue_Pax;
-import MODULES.WAVE3.Checkin.PreRequisites.Issue_ticket_non_revenue_pax;
+
+import MODULES.WAVE3.Checkin.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -16,8 +16,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import java.nio.charset.StandardCharsets;
-import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -37,6 +35,14 @@ public class Error_check_in_invalid_pax extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        ExtentLogger.info("Prerequisite 1");
+        Create_booking_for_one_pax Prerequisite = new Create_booking_for_one_pax();
+        Prerequisite.run();
+
+        ExtentLogger.info("Prerequisite 2");
+        issue_booking_for_one_pax Prerequisite1 = new issue_booking_for_one_pax();
+        Prerequisite1.run();
 
         UpdatePayload();
 

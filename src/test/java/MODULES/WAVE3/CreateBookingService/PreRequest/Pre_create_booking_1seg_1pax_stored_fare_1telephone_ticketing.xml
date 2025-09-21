@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     <soapenv:Header/>
     <soapenv:Body>
         <cre:createBooking>
@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2025-01-16T00:00:00" RPH="1" FlightNumber="495" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="BOG"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
+                            <air1:FlightSegment DepartureDateTime="2025-04-30T03:28:15" FlightNumber="472" NumberInParty="1" RPH="1" ResBookDesigCode="Y" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -22,21 +22,21 @@
                         <air1:PTC_FareBreakdown>
                             <air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
                             <air1:FareBasisCodes>
-                                <air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                                <air1:FareBasisCode NotValidAfter="2023-01-31" NotValidBefore="2023-01-24">YAAAOY1F</air1:FareBasisCode>
                             </air1:FareBasisCodes>
                             <air1:PassengerFare>
-                                <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                <air1:BaseFare Amount="1279.00" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AG" Amount="130.60"/>
+                                    <air1:Tax Amount="1.25" TaxCode="AH"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>MY FARE CALC LINE END</air1:UnstructuredFareCalc>
-                                <air1:ExchangeInfo TicketDocumentNbr="53600078901234"/>
-                                <!-- for VS -->
-                                <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="93200055500340"/-->
-                                <!-- for MX -->
-                                <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="13213278901236"/-->
-                                <!-- for US -->
-                                <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="03703778901232"/-->
+                                <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasure="PC" UnitOfMeasureQuantity="2"/>
+                                <air1:TourCode>IT6ZZ1TOURUSA</air1:TourCode>
+                                <air1:Remark>A FREEFLOW REMARK</air1:Remark>
+                                <air1:TPA_Extensions>
+                                    <air1:SalesLocation SalesIndicator="true" TicketingIndicator="true"/>
+                                </air1:TPA_Extensions>
+
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
                         </air1:PTC_FareBreakdown>
@@ -48,11 +48,18 @@
                             <com:GivenName>PHILLIP</com:GivenName>
                             <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-0010" PhoneUseType="4"/>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="123456789" PhoneUseType="4"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2025-01-05T00:00:00"/>
+                <air:Fulfillment>
+                    <air1:PaymentDetails>
+                        <air1:PaymentDetail Remark="FQ">
+                            <com:Cash CashIndicator="true"/>
+                        </air1:PaymentDetail>
+                    </air1:PaymentDetails>
+                </air:Fulfillment>
+                <air:Ticketing TicketTimeLimit="2025-04-30T03:28:15"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

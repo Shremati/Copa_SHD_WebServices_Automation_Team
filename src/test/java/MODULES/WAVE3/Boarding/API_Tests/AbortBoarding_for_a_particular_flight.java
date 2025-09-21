@@ -108,8 +108,6 @@ public class AbortBoarding_for_a_particular_flight extends FrameworkConstants
         String filepath1;
         filepath1=getRequestDirectory()+"Boarding\\AbortBoarding_for_a_particular_flight.xml";
 
-
-
         XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());

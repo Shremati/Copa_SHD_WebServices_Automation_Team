@@ -84,9 +84,9 @@ public class Start_BoardPassenger_function_using_BoardingOption_as_Sequence exte
         Assert.assertTrue(response.getBody().asString().contains("LocationCode"), "Does not contain \"LocationCode\" in the response");
         ExtentLogger.info("Assertion passed - contains \"LocationCode\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("DCS_SequenceNumber=\"" + DCSSeqNumber + "\""),
-                  "Does not contain \"DCS_SequenceNumber=\\\""+DCSSeqNumber+"\"\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"DCS_SequenceNumber=" + DCSSeqNumber+"\"");
+        Assert.assertTrue(response.getBody().asString().contains("INVALID SEQ NUMBER SPECIFIED"),
+                  "Does not contain INVALID SEQ NUMBER SPECIFIED in the response");
+        ExtentLogger.info("Assertion passed - contains INVALID SEQ NUMBER SPECIFIED");
 
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");

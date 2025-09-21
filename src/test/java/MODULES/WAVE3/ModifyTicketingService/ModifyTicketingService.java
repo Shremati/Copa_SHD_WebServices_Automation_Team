@@ -33,7 +33,7 @@ public class ModifyTicketingService {
 
     }
 
-    @Test(description = "MTS_04 - Multiple passenger list request")
+    @Test(description = "MTS_04 - Refund multiple tickets")
     public void MTS_04() {
 
         try {

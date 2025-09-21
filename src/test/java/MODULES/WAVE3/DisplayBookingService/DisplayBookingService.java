@@ -45,7 +45,7 @@ public class DisplayBookingService
 
     @Test(description = "DBS_10 - Display a booking from a specific address (LNIATA) without reloc given")
     public void DBS_10() {
- //Provide a LNIATA where PNR is created in SHARES for a given day
+ //Provide a LNIATA where PNR is created in SHARES/Art for a given day (open art and create a PNR, and later give RATS* command and copy the LNIATA and paste it in the excel for this TC)
         try {
             Display_a_booking_from_a_specific_address_lniata_without_recloc_given.Execute();
 
@@ -149,7 +149,7 @@ public class DisplayBookingService
     }
 
 
-    @Test(description = "DBS_33 - FQTV search")
+    @Test(description = "DBS_33 - FQTV search (multiple results)")
     public void DBS_33() {
 
         try {
@@ -292,7 +292,7 @@ public class DisplayBookingService
             System.out.println("DBS_100 failed due to :" + e);
         }
     }
-    @Test(description = "DBS_02 - Display_booking_on_another_airline_booking")
+    @Test(description = "DBS_02 - Display_booking_on_other_airline_booking")
     public void DBS_02() {
 
         //Take connecting flights , try not to change the markets ....take the given flights and only try to change the dates.

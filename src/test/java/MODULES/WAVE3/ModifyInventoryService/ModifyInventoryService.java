@@ -12,6 +12,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//3 scenarios
 @Listeners(TestListener.class)
 public class ModifyInventoryService {
 
@@ -32,7 +33,7 @@ public class ModifyInventoryService {
 
     }
 
-    @Test(description = "MIS_17 - ModifyInventory Request contains single MaxSeatsAllotted")
+    @Test(description = "MIS_17 - ModifyInventory Request with same Maximum seat value")
     public void MIS_17() {
 
         try {

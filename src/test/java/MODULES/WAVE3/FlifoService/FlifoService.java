@@ -10,13 +10,16 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//6 Scenarios
+//25 Scenarios
 @Listeners(TestListener.class)
 public class FlifoService {
 
     FlifoService() {
         createFolders(getResponseDirectory() + "FlifoService");
     }
+
+
+// ********* NOTE : In the screenText 2S392/08APRSJO-O/721A/809AGUA, SJO is the connecting city and GUA is the origin, to get this run 2+fltnumber in shares(Eg: 2360)
 
     @Test(description = "FS_03 - Flifo_for_one_flight_specifying_departure_arrival_city_actual_times")
     public void FS_03() {
@@ -175,7 +178,7 @@ public class FlifoService {
     }
 
     @Test(description = "FS_20 - Showing Aircraft Tail Number and the Air Equip Type in Flifo Service response")
-    public void FS_20() {
+    public void FS_20() {   //check the equipment number in ishares application using the command - "2" + fltNo
 
         try {
             Showing_Aircraft_Tail_Number_and_the_Air_Equip_Type_in_Flifo_Service_response.Execute();
@@ -200,7 +203,7 @@ public class FlifoService {
 
     @Test(description = "FS_11 - Flifo with landing cancel")   //change the date in the ScreenEntry in the excel sheet
                                                               //can be run once, throws an error if ran multiple times
-    public void FS_11() {
+    public void FS_11() {       //Important note: Take todays date only
 
         try {
             Flifo_with_landing_cancel.Execute();
@@ -250,7 +253,7 @@ public class FlifoService {
     }
 
     @Test(description = "FS_22 - Flifo Flag Stop at the origin flight with 2 legs")   //change the date in the ScreenEntry in the excel sheet
-                                                                                   //can be run once, throws an error if ran multiple times
+                                    //391/392 flights can be taken                    //can be run once, throws an error if ran multiple times
     public void FS_22() {
 
         try {

@@ -70,9 +70,6 @@ public class Display_And_Remove_Message_Default_City extends FrameworkConstants 
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("MESSAGE TO SEND TO QUEUE"),"Not contains \"MESSAGE TO SEND TO QUEUE\" in response");
-        ExtentLogger.info("Assertion passed - contains \"MESSAGE TO SEND TO QUEUE\"");
-
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 

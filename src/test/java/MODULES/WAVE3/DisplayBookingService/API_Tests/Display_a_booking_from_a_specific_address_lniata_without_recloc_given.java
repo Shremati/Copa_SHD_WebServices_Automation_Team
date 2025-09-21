@@ -35,9 +35,9 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-//        ExtentLogger.info("Prerequisite 1");
-//        Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given Prerequisite = new Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given();
-//        Prerequisite.run();
+        ExtentLogger.info("Prerequisite 1");
+        Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given Prerequisite = new Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given();
+        Prerequisite.run();
 
 
         UpdatePayload();

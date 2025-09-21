@@ -69,6 +69,9 @@ public class create_booking_booking_with_two_passengers_and_two_tickets extends 
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Expected PNR but not found");
+        ExtentLogger.info("Assertion passed - contains PNR");
+
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 

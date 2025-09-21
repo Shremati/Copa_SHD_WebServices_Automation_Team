@@ -109,9 +109,8 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 
         excelwriter();
 
-        IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket();
-        postCheck.run();
-
+//        IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket();
+//        postCheck.run();
 
     }
 

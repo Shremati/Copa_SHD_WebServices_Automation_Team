@@ -109,11 +109,11 @@ public class issue_ticket_Push_control_of_multiple_ticket_coupons_for_multiple_P
         XSSFSheet sheet = wb.getSheet("TicketControlService");
         XSSFRow InputRow=sheet.getRow(10);
 
-        String TicketNumber = XMLParser.GetTagText("ns4:FormAndSerialNumber",getTemp_responsePath());
-        InputRow.getCell(20).setCellValue(TicketNumber);
-        InputRow.getCell(21).setCellValue(TicketNumber);
-        InputRow.getCell(23).setCellValue(TicketNumber);
-        InputRow.getCell(24).setCellValue(TicketNumber);
+        String TicketNumber1 = "230" + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo", "TicketNumber", getTemp_responsePath(), 0);
+        String TicketNumber2 = "230" + XMLParser.GetAttributeValueatIndex("ns4:TicketInfo", "TicketNumber", getTemp_responsePath(), 1);
+
+        InputRow.getCell(20).setCellValue(TicketNumber1);
+        InputRow.getCell(21).setCellValue(TicketNumber2);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

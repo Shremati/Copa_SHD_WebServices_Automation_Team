@@ -10,6 +10,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+
 @Listeners(TestListener.class)
 public class EncodeDecodeService {
 

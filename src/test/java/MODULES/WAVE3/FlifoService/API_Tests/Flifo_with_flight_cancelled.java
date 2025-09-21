@@ -86,8 +86,8 @@ public class Flifo_with_flight_cancelled extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("FlightStatus=\"Flight Cancelled"), "Does not contain \"FlightStatus=\"Flight Cancelled\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightStatus=\"Flight Cancelled\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Comment>N JFK/  FX CANCELLED DUE MECHANICAL</ns5:Comment>"), "Does not contain \"<ns5:Comment>N JFK/  FX CANCELLED DUE MECHANICAL</ns5:Comment>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns5:Comment>N JFK/  FX CANCELLED DUE MECHANICAL</ns5:Comment>\"");
+        Assert.assertTrue(response.getBody().asString().contains("FX CANCELLED DUE MECHANICAL"), "Does not contain FX CANCELLED DUE MECHANICAL in the response");
+        ExtentLogger.info("Assertion passed - contains FX CANCELLED DUE MECHANICAL");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

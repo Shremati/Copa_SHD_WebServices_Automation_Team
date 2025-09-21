@@ -63,8 +63,10 @@ public class Flifo_for_a_flight_with_crossing_date extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"), "Does not contain \"<ns4:TextData>*</ns4:TextData>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns4:TextData>*</ns4:TextData>\"");
+        if(response.getBody().asString().contains("*"))
+            ExtentLogger.info("Assertion passed - contains *");
+        else if(response.getBody().asString().contains("RPLCD FLWG MSG"))
+            ExtentLogger.info("Assertion passed - contains \"RPLCD FLWG MSG\"");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

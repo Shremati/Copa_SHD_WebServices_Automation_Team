@@ -21,7 +21,7 @@ public class Checkin
     {
         createFolders(getResponseDirectory()+"Checkin");
     }
-
+//
     @Test(description = "CS_01 - Check-in 1 passenger, 1 Baggage")
     public void CS_01()
     {
@@ -111,7 +111,7 @@ public class Checkin
         }
 
     }
-
+//
     @Test(description = "CS_26 - Thru-CheckIn 2 passengers in same PNR, same name and generic seating option")
     public void CS_26()
     {
@@ -176,7 +176,7 @@ public class Checkin
 
     }
 
-    @Test(description = "CS_31 - Basic seat change")
+    @Test(description = "CS_31 - Basic change seat")
     public void CS_31()
     {
 

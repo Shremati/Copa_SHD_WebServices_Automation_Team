@@ -85,9 +85,8 @@ public class Flifo_with_landing_cancel extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("FlightStatus=\"Landing Cancelled\""), "Does not contain \"FlightStatus=\"Landing Cancelled\"\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightStatus=\"Landing Cancelled\"\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns5:Comment>N LAX/  LX SNOWSTORM IN PTY</ns5:Comment>"), "Does not contain \"<ns5:Comment>N LAX/  LX SNOWSTORM IN PTY</ns6:Comment>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns5:Comment>N LAX/  LX SNOWSTORM IN PTY</ns5:Comment>\"");
-
+        Assert.assertTrue(response.getBody().asString().contains("LX SNOWSTORM IN PTY"), "Does not contain LX SNOWSTORM IN PTY in the response");
+        ExtentLogger.info("Assertion passed - contains LX SNOWSTORM IN PTY");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

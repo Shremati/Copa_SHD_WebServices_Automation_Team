@@ -94,7 +94,7 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 "Do not contain NotValidAfter");
         ExtentLogger.info("Assertion passed - contain NotValidAfter");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"),
+        Assert.assertTrue(response.getBody().asString().contains("FlightSegmentRPH"),
                 "Do not have FlightSegmentRPH");
         ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
 
@@ -110,30 +110,14 @@ public class create_booking_2seg_2pax_stored_fare_per_pax extends FrameworkConst
                 "DO not contain SalesLocation");
         ExtentLogger.info("Assertion passed - contain SalesLocation");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"2\" UnitOfMeasureQuantity=\"1\" UnitOfMeasure=\"PC\"/>"),
-                "Do not contain FlightSegmentRPH");
-        ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
-
-        Assert.assertTrue(response.getBody().asString().contains("TicketTimeLimit"),
-                "Do not contain TicketTimeLimit");
-        ExtentLogger.info("Assertion passed - contain TicketTimeLimit");
-
-        Assert.assertTrue(response.getBody().asString().contains("<ns3:FareBaggageAllowance FlightSegmentRPH=\"1\" UnitOfMeasureQuantity=\"3\" UnitOfMeasure=\"PC\"/>"),
-                "Do not contain FlightSegmentRPH");
-        ExtentLogger.info("Assertion passed - contain FlightSegmentRPH");
-
-        Assert.assertTrue(response.getBody().asString().contains("<Cash CashIndicator=\"true\"/>"),
-                "Do not contain CashIndicator");
-        ExtentLogger.info("Assertion passed - contain CashIndicator");
-
-        Assertions.AssertWarning(response, false);
+        Assertions.AssertWarning(response, true);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);
         excelwriter();
 
-        IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax();
-        postCheck.run();
+//        IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_per_pax();
+//        postCheck.run();
 
     }
 

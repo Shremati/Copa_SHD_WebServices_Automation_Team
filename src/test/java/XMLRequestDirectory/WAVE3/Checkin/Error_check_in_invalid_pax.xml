@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
     <soapenv:Header/>
     <soapenv:Body>
         <chec:checkIn>
@@ -6,27 +6,27 @@
                 <air:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </air:POS>
-                <air:MessageFunction Function="CheckIn" />
+                <air:MessageFunction Function="CheckIn"/>
                 <air:FlightInfo RPH="1">
-                    <com1:CarrierInfo Code="CM" FlightNumber="787"/>
-                    <com1:DepartureInformation DateOfDeparture="2023-08-11T00:00:00" LocationCode="PTY"/>
+                    <com1:CarrierInfo Code="CM" FlightNumber="389"/>
+                    <com1:DepartureInformation DateOfDeparture="2025-01-30T11:55:35" LocationCode="GUA"/>
                 </air:FlightInfo>
-                <air:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1">
+                <air:PassengerInfo GivenNameRefNumber="1" RPH="1" SurnameRefNumber="1">
                     <com1:PassengerName>
                         <com:GivenName>ZZZZZZ</com:GivenName>
                         <com:Surname>XXXXX</com:Surname>
                     </com1:PassengerName>
-                    <com1:PassengerType Gender="F" />
+                    <com1:PassengerType Gender="F"/>
                     <PassengerType Code="10"/>
                 </air:PassengerInfo>
-                <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+                <air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
                     <com1:SeatBoardingInfo SeatCharacteristics=""/>
                 </air:PassengerFlightInfo>
-                <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="1">
+                <air:BaggageInfo CheckedBagCountTotal="1" PassengerRPH="1">
                     <com1:CheckedBaggageDetails>
-                        <com1:BagTagDetails SerialNumber="052101" BagTagCount="1" CarrierCode="CM"/>
+                        <com1:BagTagDetails BagTagCount="1" CarrierCode="CM" SerialNumber="052101"/>
                     </com1:CheckedBaggageDetails>
-                    <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="10" />
+                    <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="10"/>
                 </air:BaggageInfo>
             </air:EDS_AirCheckInRQ>
         </chec:checkIn>

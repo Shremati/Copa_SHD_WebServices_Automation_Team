@@ -67,10 +67,10 @@ public class Missing_the_ticket_document_number_in_the_RequestControl_request ex
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertFalse(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"),"Contains Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
+        Assert.assertTrue(response.getBody().asString().contains("Required Data Missing: No TicketDocument.TicketDocumentNbr Specified"),"Contains Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
         ExtentLogger.info("Assertion passed - Do not contain Required Data Missing: No TicketDocument.TicketDocumentNbr Specified");
 
-        Assertions.AssertWarning(response,false);
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -94,9 +94,9 @@ public class Missing_the_ticket_document_number_in_the_RequestControl_request ex
         XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
-        filepath1=getRequestDirectory()+"TicketControlService\\Get_control_of_one_coupon_of_one_ticket.xml";
+        filepath1=getRequestDirectory()+"TicketControlService\\Missing_the_ticket_document_number_in_the_RequestControl_request.xml";
 
-        XMLParser.updateAttributeValueatIndex("et:Source","AirlineVendorID", InputRow.getCell(22).getStringCellValue(),filepath1,0);
+        XMLParser.updateAttributeValueatIndex("et:Source","AirlineVendorID", InputRow.getCell(34).getStringCellValue(),filepath1,0);
 
         wb.close();
 

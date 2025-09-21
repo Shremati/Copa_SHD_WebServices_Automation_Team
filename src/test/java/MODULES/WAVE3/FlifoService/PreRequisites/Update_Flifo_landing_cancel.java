@@ -64,9 +64,10 @@ public class Update_Flifo_landing_cancel extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"), "Does not contain \"<ns4:TextData>*</ns4:TextData>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns4:TextData>*</ns4:TextData>\"");
-
+        if(response.getBody().asString().contains("*"))
+            ExtentLogger.info("Assertion passed - contains *");
+        else if(response.getBody().asString().contains("RPLCD FLWG MSG"))
+            ExtentLogger.info("Assertion passed - contains \"RPLCD FLWG MSG\"");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

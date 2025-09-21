@@ -108,6 +108,10 @@ public class create_booking_display_active_fare_quote_and_fare_quote_history ext
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
+   // The below dates should be current dates only, do not change
+        XMLParser.updateAttributeValueatIndex("air1:Date","Date", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(23).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:Date","Date", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(23).getNumericCellValue()),getTemp_requestPath(),1);
+
         wb.close();
     }
 

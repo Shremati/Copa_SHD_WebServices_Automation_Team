@@ -16,7 +16,7 @@ public class FrameworkConstants {
     public static String SharesBuild35 = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
     public static String UAT = "http://uat-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
 
-    public static String getBaseURL() { return UAT;}
+    public static String getBaseURL() { return SharesCURL;}
 
     public static long ResponseTime = 200000;
 
@@ -205,9 +205,6 @@ public class FrameworkConstants {
     public static String getReports() {
         return Reports;
     }
-
-
-
 
 
 }

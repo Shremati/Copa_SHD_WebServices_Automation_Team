@@ -8,7 +8,7 @@
                 </tic1:POS>
                 <tic1:TicketingRequest>
                     <tic1:FormOfPayment>
-                        <tic1:CreditCard AccountNumber="4444333322221111" ExpirationDate="2025-02" ApprovalCode="A1234" Issuer="VI"/>
+                        <tic1:CreditCard AccountNumber="4444333322221111" ExpirationDate="2027-02" ApprovalCode="A1234" Issuer="VI"/>
                     </tic1:FormOfPayment>
                     <tic1:TicketType>Electronic</tic1:TicketType>
                 </tic1:TicketingRequest>

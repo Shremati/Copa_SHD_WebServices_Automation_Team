@@ -76,7 +76,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
                 "Do not contain BaseFare");
         ExtentLogger.info("Assertion passed - contain BaseFare");
 
-        Assertions.AssertWarning(response, true);
+        Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);

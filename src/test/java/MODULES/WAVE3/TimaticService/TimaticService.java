@@ -10,7 +10,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//17Scenarios
+//75 Scenarios
 @Listeners(TestListener.class)
 public class TimaticService {
 

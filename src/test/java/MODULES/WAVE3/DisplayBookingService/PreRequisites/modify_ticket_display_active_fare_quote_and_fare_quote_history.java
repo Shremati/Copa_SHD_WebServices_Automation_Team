@@ -107,6 +107,11 @@ public class modify_ticket_display_active_fare_quote_and_fare_quote_history exte
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
 
+     // The below dates should be current dates only, do not change
+        XMLParser.updateAttributeValueatIndex("air1:Date","Date", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(23).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:Date","Date", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(23).getNumericCellValue()),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:Date","Date", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(23).getNumericCellValue()),getTemp_requestPath(),2);
+
 
         wb.close();
     }

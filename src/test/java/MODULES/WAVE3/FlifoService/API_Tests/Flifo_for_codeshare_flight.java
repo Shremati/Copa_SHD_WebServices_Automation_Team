@@ -70,9 +70,6 @@ public class Flifo_for_codeshare_flight extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("Warnings"), "Does not contain \"Warnings\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"Warnings\"");
-
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 

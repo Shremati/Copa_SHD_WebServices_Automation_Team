@@ -108,7 +108,7 @@ public class Standby {
         }
     }
 
-    @Test(description = "STB_07 - Advance Seats Class Specific")
+    @Test(description = "STB_07 - Release Advance Seats Class Specific")
     public void STB_07()
     {
         try
@@ -136,7 +136,7 @@ public class Standby {
         }
     }
 
-    @Test(description = "STB_10 - Cancel Immediate Standby")
+    @Test(description = "STB_10 - Cancel Immediate Standby Boarding")
     public void STB_10()
     {
         try

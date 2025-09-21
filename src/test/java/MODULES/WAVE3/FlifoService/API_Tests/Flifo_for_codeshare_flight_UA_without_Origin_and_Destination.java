@@ -78,7 +78,6 @@ public class Flifo_for_codeshare_flight_UA_without_Origin_and_Destination extend
         Assert.assertTrue(response.getBody().asString().contains("FlightLegInfo"), "Does not contain \"FlightLegInfo\" in the response");
         ExtentLogger.info("Assertion passed - contains \"FlightLegInfo\"");
 
-
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 

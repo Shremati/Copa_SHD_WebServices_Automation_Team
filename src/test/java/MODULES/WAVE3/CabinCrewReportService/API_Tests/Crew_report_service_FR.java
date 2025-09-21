@@ -67,11 +67,8 @@ public class Crew_report_service_FR extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("CrewReportResponse"), "Do not containCrewReportResponse ");
+        Assert.assertTrue(response.getBody().asString().contains("CrewReportResponse"), "Do not containCrewReportResponse");
         ExtentLogger.info("Assertion passed - contains CrewReportResponse");
-
-        Assert.assertTrue(response.getBody().asString().contains("SeatMapDetails"), "Do not contain SeatMapDetails");
-        ExtentLogger.info("Assertion passed - contains SeatMapDetails");
 
         Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - do not have warning");

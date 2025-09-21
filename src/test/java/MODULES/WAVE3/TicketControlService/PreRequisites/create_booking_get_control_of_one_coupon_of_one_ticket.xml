@@ -9,15 +9,15 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2024-09-20T18:24:00" RPH="1" FlightNumber="235" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                            <air1:FlightSegment DepartureDateTime="2025-04-22T18:45:00" RPH="1" FlightNumber="446" ResBookDesigCode="Y" NumberInParty="2" Status="11">
                                 <com:DepartureAirport LocationCode="PTY"/>
-                                <com:ArrivalAirport LocationCode="ORD"/>
+                                <com:ArrivalAirport LocationCode="MCO"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2024-09-20T12:20:00" RPH="2" FlightNumber="2180" ResBookDesigCode="Y" NumberInParty="2" Status="11">
-                                <com:DepartureAirport LocationCode="ORD"/>
+                            <air1:FlightSegment DepartureDateTime="2025-04-22T14:02:00" RPH="2" FlightNumber="2714" ResBookDesigCode="Y" NumberInParty="2" Status="11">
+                                <com:DepartureAirport LocationCode="MCO"/>
                                 <com:ArrivalAirport LocationCode="IAH"/>
                                 <air1:MarketingAirline Code="UA"/>
                             </air1:FlightSegment>
@@ -61,20 +61,20 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>Pablo</com:GivenName>
-                            <com:Surname>Aduriz</com:Surname>
+                            <com:GivenName>Joshua</com:GivenName>
+                            <com:Surname>Gold</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212"/>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230411228"/>
+                                          <air1:CustLoyalty ProgramID="CM" MembershipID="JA 230266192"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>Rishi</com:GivenName>
-                            <com:Surname>Embross</com:Surname>
+                            <com:GivenName>Pablo</com:GivenName>
+                            <com:Surname>Aduriz</com:Surname>
                         </air1:PersonName>
-                        <air1:CustLoyalty ProgramID="CM" MembershipID="230001102"/>
-                        <air1:Telephone PhoneUseType="0" AreaCityCode="000" Remark="Rishi.Embross@it.com " LocationCode="WEB"/>
+                                          <air1:CustLoyalty ProgramID="CM" MembershipID="JA 230411228"/>
+                        <air1:Telephone PhoneUseType="0" AreaCityCode="000" Remark="willyone.makeitone@test.com " LocationCode="WEB"/>
                         <air1:Email>andry.shiller@myemail.com</air1:Email>
                         <air1:TravelerRefNumber RPH="2"/>
                     </air1:AirTraveler>

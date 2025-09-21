@@ -90,7 +90,7 @@ public class Push_control_of_multiple_ticket_coupons_for_multiple_PNR extends Fr
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
@@ -117,9 +117,9 @@ public class Push_control_of_multiple_ticket_coupons_for_multiple_PNR extends Fr
         filepath1=getRequestDirectory()+"TicketControlService\\Push_control_of_multiple_ticket_coupons_for_multiple_PNR.xml";
 
         XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,1);
-        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,2);
-        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,3);
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(21).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(23).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),3);
 
         wb.close();
 

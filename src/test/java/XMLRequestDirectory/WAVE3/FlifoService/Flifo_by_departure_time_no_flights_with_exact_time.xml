@@ -2,14 +2,14 @@
     <soapenv:Header/>
     <soapenv:Body>
         <flif:getFlifo>
-            <air:OTA_AirFlifoRQ EchoToken="Test_05" TimeStamp="2023-08-29T00:00:00" Version="2.00">
+            <air:OTA_AirFlifoRQ EchoToken="Test_05" TimeStamp="2024-07-17T00:00:00" Version="2.00">
                 <air:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </air:POS>
                 <air:FlightSegment UTC_PreferenceInd="false">
                     <air:Airline Code="CM"/>
                     <air:FlightNumber/>
-                    <air:DepartureDate DepartureTime="07:30:00">2023-09-05T07:30:00</air:DepartureDate>
+                    <air:DepartureDate DepartureTime="07:30:00">2025-04-24T07:30:00</air:DepartureDate>
                     <air:DepartureAirport LocationCode="LAX"/>
                     <air:ArrivalAirport LocationCode="DEN"/>
                 </air:FlightSegment>

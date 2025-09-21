@@ -37,13 +37,13 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
-
-        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
-        ExtentLogger.info("Prerequisite 2");
-        Prerequisite2.run();
+//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+//        ExtentLogger.info("Prerequisite 1");
+//        Prerequisite.run();
+//
+//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+//        ExtentLogger.info("Prerequisite 2");
+//        Prerequisite2.run();
 
         UpdatePayload();
 

@@ -10,6 +10,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//28 scenarios
 @Listeners(TestListener.class)
 public class Availability {
 
@@ -221,10 +222,10 @@ public class Availability {
     }
 
     //@Description("AVS_10 - Maximum stops of 0, applied to only to 2nd request")
-    @Test(description = "AVS_10 - Maximum stops of 0, applied to only to 2nd request")
+    @Test(description = "AVS_10 - Maximum stops of 1, applied to only to 2nd request")
     public void AVS_10() {
         try {
-            Maximum_stops_of_0_applied_to_only_to_2nd_request.Execute();
+            Maximum_stops_of_1_applied_to_only_to_2nd_request.Execute();
 
         } catch (Exception e) {
             failTest(e);

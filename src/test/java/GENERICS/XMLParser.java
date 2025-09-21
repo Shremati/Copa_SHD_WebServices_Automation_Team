@@ -1,6 +1,7 @@
 package GENERICS;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -227,5 +228,64 @@ public class XMLParser
         return XMLTags.getLength();
     }
 
+    public static void updateChildAttributeUnderParent(String parentTag,int parentTagIndex,String childTag,String Attribute,String New_Value,String fpath) throws ParserConfigurationException, IOException, SAXException, TransformerException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
+
+        NodeList parentXMLTags =  document.getElementsByTagName(parentTag);
+        Node parentXMLTag = parentXMLTags.item(parentTagIndex);
+
+        NodeList childNodes = parentXMLTag.getChildNodes();
+        Node childXMLTag=null;
+        for(int i=0;i<childNodes.getLength();i++)
+        {
+            if(childNodes.item(i).getNodeName().equalsIgnoreCase(childTag))
+            {
+                childXMLTag = childNodes.item(i);
+                break;
+            }
+        }
+        if(childXMLTag!=null)
+            childXMLTag.getAttributes().getNamedItem(Attribute).setNodeValue(New_Value);
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transf = transformerFactory.newTransformer();
+
+        transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transf.setOutputProperty(OutputKeys.INDENT, "yes");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
+        DOMSource source = new DOMSource(document);
+
+        File myFile = new File(".\\src\\test\\java\\GENERICS\\Temp_Request.xml");
+        StreamResult file = new StreamResult(myFile);
+        transf.transform(source, file);
+
+    }
+
+    public static String getChildTagTextForParentAtIndex(String parentTag,int parentTagIndex,String childTag,String fpath) throws ParserConfigurationException, IOException, SAXException, TransformerException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
+
+        NodeList parentXMLTags =  document.getElementsByTagName(parentTag);
+        Node parentXMLTag = parentXMLTags.item(parentTagIndex);
+
+        NodeList childNodes = parentXMLTag.getChildNodes();
+        String text=null;
+        for(int i=0;i<childNodes.getLength();i++)
+        {
+            if(childNodes.item(i).getNodeName().equalsIgnoreCase(childTag))
+            {
+                text = childNodes.item(i).getTextContent();
+                break;
+            }
+        }
+        return text;
+
+    }
 
 }

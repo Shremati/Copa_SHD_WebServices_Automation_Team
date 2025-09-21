@@ -36,14 +36,14 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-//
-        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
 
-        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
-        ExtentLogger.info("Prerequisite 2");
-        Prerequisite2.run();
+//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+//        ExtentLogger.info("Prerequisite 1");
+//        Prerequisite.run();
+//
+//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+//        ExtentLogger.info("Prerequisite 2");
+//        Prerequisite2.run();
 
         UpdatePayload();
 
@@ -109,7 +109,6 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow = sheet.getRow(38);
-        XSSFRow InputRow1 = sheet.getRow(1);
 
         String filepath1;
         filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml";
@@ -118,7 +117,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:ExchangeInfo", "TicketDocumentNbr", InputRow1.getCell(18).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:ExchangeInfo", "TicketDocumentNbr", InputRow.getCell(18).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
 
         wb.close();

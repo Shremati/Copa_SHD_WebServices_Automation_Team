@@ -12,7 +12,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
-//1 Scenario
+//8 Scenario
 @Listeners(TestListener.class)
 public class SeatMapService {
 
@@ -46,7 +46,7 @@ public class SeatMapService {
 
 
     @Test(description = "SMS_03 - Requested flight is in 'open seating' mode, so no map is available.")
-    public void SMS_03() {
+    public void SMS_03() {    // try to take, 138 flt, PTY-MEX, departure date 02 days
 
         try {
             requested_flight_is_in_open_seating_mode_so_no_map_is_available.Execute();
@@ -58,7 +58,7 @@ public class SeatMapService {
     }
 
     @Test(description = "SMS_04 - Requested flight is in 'manual mode', so no seat map is available")
-    public void SMS_04() {
+    public void SMS_04() {  // try to take, 138 flt, PTY-MEX, departure date 02 days and also change the value in the Screenentry column
 
         try {
 

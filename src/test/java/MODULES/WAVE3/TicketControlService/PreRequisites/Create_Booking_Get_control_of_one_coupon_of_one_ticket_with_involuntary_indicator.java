@@ -65,6 +65,9 @@ public class Create_Booking_Get_control_of_one_coupon_of_one_ticket_with_involun
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Expected PNR but not found");
+        ExtentLogger.info("Assertion passed - contains PNR");
+
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - do not have warning");
 

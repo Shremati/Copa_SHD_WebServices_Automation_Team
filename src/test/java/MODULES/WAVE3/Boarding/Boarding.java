@@ -18,7 +18,7 @@ public class Boarding {
     }
 
     @Test(description = "BS_01 - Start Boarding using Boarding option as ‘Sequence’")
-    public void BS_01() {
+    public void BS_01() {    //always the date has to be today's date
         //change flt number or date before run
         try {
             Start_Boarding_using_Boarding_option_as_sequence.Execute();
@@ -86,7 +86,10 @@ public class Boarding {
     @Test(description = "BS_04 - Start_BoardPassenger_function_using_BoardingOption_as_Sequence")
     //Check for data with manual team before executing the Test Case
     //We need an active sequence number,which is present in the Unreconciled window or in the All-passengers list
-    //To have a sequence number, the pax has to be checked-in
+    //To have a sequence number, the pax has to be checked-in (sequence no. is invalid)
+    //Take the same details as BS_01
+
+
     public void BS_04() {
 
         try {

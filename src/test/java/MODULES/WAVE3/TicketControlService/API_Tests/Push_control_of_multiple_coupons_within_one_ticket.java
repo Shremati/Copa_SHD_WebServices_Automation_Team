@@ -4,7 +4,7 @@ package MODULES.WAVE3.TicketControlService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
-import MODULES.WAVE3.TicketControlService.PreRequisites.RedirectControl;
+import MODULES.WAVE3.TicketControlService.PreRequisites.RequestControl;
 import MODULES.WAVE3.TicketControlService.PreRequisites.create_booking_push_control_of_multiple_coupons_within_one_ticket;
 import MODULES.WAVE3.TicketControlService.PreRequisites.issue_ticket_push_control_of_multiple_coupons_within_one_ticket;
 import frameworkconstants.FrameworkConstants;
@@ -16,7 +16,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -46,7 +45,7 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
         Prerequisite2.run();
 
         ExtentLogger.info("Prerequisite 3");
-        RedirectControl Prerequisite3 = new RedirectControl();
+        RequestControl Prerequisite3 = new RequestControl();
         Prerequisite3.run();
 
 
@@ -82,8 +81,8 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("requestControlResponse"),"Do not contains requestControlResponse");
-        ExtentLogger.info("Assertion passed - contains requestControlResponse");
+        Assert.assertTrue(response.getBody().asString().contains("redirectControlResponse"),"Do not contains redirectControlResponse");
+        ExtentLogger.info("Assertion passed - contains redirectControlResponse");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");

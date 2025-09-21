@@ -1,7 +1,6 @@
 package MODULES.WAVE3.TicketControlService.PreRequisites;
 
 import GENERICS.Assertions;
-import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
@@ -13,7 +12,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
-import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -26,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class RedirectControl extends FrameworkConstants {
+public class RequestControl extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
@@ -68,8 +66,8 @@ public class RedirectControl extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Do not contains success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("redirectControlResponse"),"Do not contains redirectControlResponse");
-        ExtentLogger.info("Assertion passed - contains redirectControlResponse");
+        Assert.assertTrue(response.getBody().asString().contains("requestControlResponse"),"Do not contains requestControlResponse");
+        ExtentLogger.info("Assertion passed - contains requestControlResponse");
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
@@ -97,7 +95,7 @@ public class RedirectControl extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(2);
 
         String filepath1;
-        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\TicketControlService\\PreRequisites\\RedirectControl.xml";
+        filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\TicketControlService\\PreRequisites\\RequestControl.xml";
 
         XMLParser.updateAttributeValueatIndex("tic1:TicketDocument","TicketDocumentNbr", InputRow.getCell(20).getStringCellValue(),filepath1,0);
 

@@ -15,6 +15,13 @@
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
+                        <air1:OriginDestinationOption>
+                            <air1:FlightSegment DepartureDateTime="2024-09-29T12:20:00" RPH="2" FlightNumber="360" ResBookDesigCode="Y" NumberInParty="1" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="LAX"/>
+                                <air1:MarketingAirline Code="CM"/>
+                            </air1:FlightSegment>
+                        </air1:OriginDestinationOption>
                     </air1:OriginDestinationOptions>
                 </air:AirItinerary>
                 <air:PriceInfo>
@@ -30,7 +37,7 @@
                                     <air1:Tax TaxCode="AH" Amount="1.25"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>MY FARE CALC LINE END</air1:UnstructuredFareCalc>
-                                <air1:FareBaggageAllowance FlightSegmentRPH="1" UnitOfMeasureQuantity="2" UnitOfMeasure="PC"/>
+                                <air1:FareBaggageAllowance FlightSegmentRPH="2" UnitOfMeasureQuantity="2" UnitOfMeasure="PC"/>
                                 <air1:TourCode>IT6ZZ1TOURUSA</air1:TourCode>
                                 <air1:Remark>A FREEFLOW REMARK</air1:Remark>
                                 <air1:TPA_Extensions>

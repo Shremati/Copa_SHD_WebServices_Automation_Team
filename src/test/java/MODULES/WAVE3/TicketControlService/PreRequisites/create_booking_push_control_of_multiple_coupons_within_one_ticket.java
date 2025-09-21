@@ -67,7 +67,10 @@ public class create_booking_push_control_of_multiple_coupons_within_one_ticket e
         Assert.assertTrue(response.getBody().asString().contains("Success"),"Expected Success but not found");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assertions.AssertWarning(response,false);
+        Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Expected PNR but not found");
+        ExtentLogger.info("Assertion passed - contains PNR");
+
+        Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);

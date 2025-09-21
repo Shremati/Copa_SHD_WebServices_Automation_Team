@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 
+//4 scenarios
 @Listeners(TestListener.class)
 public class ModifySeatMap extends FrameworkConstants {
 
@@ -21,7 +22,7 @@ public class ModifySeatMap extends FrameworkConstants {
         createFolders(getResponseDirectory()+"ModifySeatMap");
     }
 
-    @Test(priority = 1)
+    @Test(description = "MSM_01 - Delete/Block seat", priority = 1)
     public void MSM_01()
     {
         try
@@ -35,12 +36,12 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Test(description = "MSM_02 - Add Seat",priority = 2)
+    @Test(description = "MSM_02 - Add/Unblock Seat",priority = 2)
     public void MSM_02()
     {
         try
         {
-            MSM_02_Add_Seat.Execute(); //The given seat should be available and Ship should be assigned for the given flight
+            MSM_02_Add_Seat.Execute(); // Use the same details(including seat number) as used in MSM_01
 
         }catch(Exception e)
         {
@@ -49,12 +50,12 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Test(description = "MSM_03 - Delete Error",priority = 3)
+    @Test(description = "MSM_03 - Delete/Block Seat Error Scenario",priority = 3)
     public void MSM_03()
     {
         try
         {
-            MSM_03_Delete_Error.Execute(); //The given seat should be available and Ship should be assigned for the given flight
+            MSM_03_Delete_Error.Execute(); //The given seat should be taken and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {
@@ -63,12 +64,12 @@ public class ModifySeatMap extends FrameworkConstants {
         }
     }
 
-    @Test(description = "MSM_04 - Add Error",priority = 4)
+    @Test(description = "MSM_04 - Add/Unblock Seat Error Scenario",priority = 4)
     public void MSM_04()
     {
         try
         {
-            MSM_04_Add_Error.Execute(); //The given seat should be available and Ship should be assigned for the given flight
+            MSM_04_Add_Error.Execute(); //The given seat should be taken and Ship should be assigned for the given flight
 
         }catch(Exception e)
         {

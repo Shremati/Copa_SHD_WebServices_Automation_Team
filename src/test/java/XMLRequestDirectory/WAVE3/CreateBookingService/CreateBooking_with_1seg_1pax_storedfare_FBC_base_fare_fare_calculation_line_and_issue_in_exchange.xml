@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     <soapenv:Header/>
     <soapenv:Body>
         <cre:createBooking>
@@ -9,9 +9,9 @@
                 <air:AirItinerary>
                     <air1:OriginDestinationOptions>
                         <air1:OriginDestinationOption>
-                            <air1:FlightSegment DepartureDateTime="2025-01-16T00:00:00" RPH="1" FlightNumber="495" ResBookDesigCode="Y" NumberInParty="1" Status="11">
-                                <com:DepartureAirport LocationCode="BOG"/>
-                                <com:ArrivalAirport LocationCode="PTY"/>
+                            <air1:FlightSegment DepartureDateTime="2025-05-01T11:48:46" FlightNumber="136" NumberInParty="1" RPH="1" ResBookDesigCode="Y" Status="11">
+                                <com:DepartureAirport LocationCode="PTY"/>
+                                <com:ArrivalAirport LocationCode="MEX"/>
                                 <air1:MarketingAirline Code="CM"/>
                             </air1:FlightSegment>
                         </air1:OriginDestinationOption>
@@ -27,15 +27,15 @@
                             <air1:PassengerFare>
                                 <air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
                                 <air1:Taxes>
-                                    <air1:Tax TaxCode="AG" Amount="130.60"/>
+                                    <air1:Tax Amount="130.60" TaxCode="AG"/>
                                 </air1:Taxes>
                                 <air1:UnstructuredFareCalc>MY FARE CALC LINE END</air1:UnstructuredFareCalc>
                                 <air1:ExchangeInfo TicketDocumentNbr="53600078901234"/>
-                                <!-- for VS -->
+                                <!--for VS-->
                                 <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="93200055500340"/-->
-                                <!-- for MX -->
+                                <!--for MX-->
                                 <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="13213278901236"/-->
-                                <!-- for US -->
+                                <!--for US-->
                                 <!--air1:ExchangeInfo ExchangeTicketDocumentNumber="03703778901232"/-->
                             </air1:PassengerFare>
                             <air1:TravelerRefNumber RPH="1"/>
@@ -48,11 +48,11 @@
                             <com:GivenName>PHILLIP</com:GivenName>
                             <com:Surname>MORRIS</com:Surname>
                         </air1:PersonName>
-                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-0010" PhoneUseType="4"/>
+                        <air1:Telephone AreaCityCode="555" PhoneNumber="555-1212" PhoneUseType="3"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                 </air:TravelerInfo>
-                <air:Ticketing TicketTimeLimit="2025-01-05T00:00:00"/>
+                <air:Ticketing TicketTimeLimit="2025-04-30T11:48:47"/>
             </air:OTA_AirBookRQ>
         </cre:createBooking>
     </soapenv:Body>

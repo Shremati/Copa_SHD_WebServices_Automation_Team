@@ -13,9 +13,8 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class CreateBookingService {
 
-    CreateBookingService()
-    {
-        createFolders(getResponseDirectory()+"CreateBookingService");
+    CreateBookingService() {
+        createFolders(getResponseDirectory() + "CreateBookingService");
     }
 
     @Test(description = "CBS_02 - Create a booking with 1 segment, 1 passenger, stored fare, 1 telephone and ticketing")
@@ -44,7 +43,7 @@ public class CreateBookingService {
     }
 
     @Test(description = "CBS_06 - Create a booking with 4 segments (HA), 2 passengers (1 frequent flyer and 1 infant), 1 email, stored fare, 1 OSI, 1 remark, Advance Seat Assignment and ticketing.")
-    public void CBS_06() {
+    public void CBS_06() {     // All the 4 flights should be UA flights only
 
         try {
             create_booking_four_seg_2_pax_one_remark_asa.Execute();
@@ -256,7 +255,7 @@ public class CreateBookingService {
         }
     }
     @Test(description = "CBS_07 - CreateBooking with 4seg(OA), 2pax (1FF and 1inf), 1email, stored fare, 1OSI, 1remark, SeatAssignment and ticketing")
-    public void CBS_07() {
+    public void CBS_07() {    // All the 4 flights should be UA flights only
 
         try {
 
@@ -376,7 +375,7 @@ public class CreateBookingService {
 
     @Test(description = "CBS_51 - Bundled segment - Invalid information in one segment")
     public void CBS_51() {
-
+                    // one of the flights given should be a wrong flight number(Eg. 9999)
         try {
 
             Bundled_segment_Invalid_information_in_one_segment.Execute();
@@ -570,4 +569,3 @@ public class CreateBookingService {
     }
 
 }
-

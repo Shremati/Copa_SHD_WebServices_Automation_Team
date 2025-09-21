@@ -63,7 +63,7 @@
                             <com:Surname>Gold</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone AreaCityCode="555" PhoneNumber="555-0129" PhoneUseType="3"/>
-                        <air1:CustLoyalty MembershipID="230266192" ProgramID="CM"/>
+                        <air1:CustLoyalty MembershipID="JA 230266192" ProgramID="CM"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">

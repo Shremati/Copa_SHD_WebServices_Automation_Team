@@ -9,8 +9,8 @@
                 <tic1:RedirectedInfo>
                     <tic1:ToAirline />
                 </tic1:RedirectedInfo>
-                <tic1:TicketDocument TicketDocumentNbr="2302182825389">
-                    <tic1:CouponInfo Number="3" InvoluntaryIndCode="I">
+                <tic1:TicketDocument TicketDocumentNbr="2302230002637">
+                    <tic1:CouponInfo Number="2" InvoluntaryIndCode="I">
                     </tic1:CouponInfo>
                 </tic1:TicketDocument>
             </tic1:IATA_TicketAirlineRedirectAirportControlRQ>

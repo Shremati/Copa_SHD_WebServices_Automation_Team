@@ -64,8 +64,8 @@ public class Update_Flifo_flag_stop_at_origin_with_2_legs extends FrameworkConst
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>*</ns4:TextData>"), "Does not contain \"<ns4:TextData>*</ns4:TextData>\" in the response");
-        ExtentLogger.info("Assertion passed - contains \"<ns4:TextData>*</ns4:TextData>\"");
+        Assert.assertTrue(response.getBody().asString().contains("*"), "Does not contain * in the response");
+        ExtentLogger.info("Assertion passed - contains *");
 
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));

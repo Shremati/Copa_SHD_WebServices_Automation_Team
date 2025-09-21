@@ -11,6 +11,7 @@ import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
+//6 Scenarios
 @Listeners(TestListener.class)
 public class TicketingService {
 
@@ -64,7 +65,6 @@ public class TicketingService {
 
         try {
             Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax.Execute();
-
         } catch (Exception e) {
             failTest(e);
             System.out.println("TIS_21 failed due to :" + e);

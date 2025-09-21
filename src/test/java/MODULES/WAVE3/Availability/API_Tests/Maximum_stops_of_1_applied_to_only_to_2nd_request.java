@@ -12,9 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.Document;
 import org.testng.Assert;
-import java.nio.charset.StandardCharsets;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -27,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends FrameworkConstants {
+public class Maximum_stops_of_1_applied_to_only_to_2nd_request extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
@@ -60,7 +58,7 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Maximum_stops_of_0_applied_to_only_to_2nd_request.xml"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "Availability\\Maximum_stops_of_1_applied_to_only_to_2nd_request.xml"));
         writer.write(response.asPrettyString());
         writer.close();
 
@@ -90,7 +88,7 @@ public class Maximum_stops_of_0_applied_to_only_to_2nd_request extends Framework
         XSSFRow InputRow = sheet.getRow(16);
 
         String filepath1;
-        filepath1 = getRequestDirectory() + "Availability\\Maximum_stops_of_0_applied_to_only_to_2nd_request.xml";
+        filepath1 = getRequestDirectory() + "Availability\\Maximum_stops_of_1_applied_to_only_to_2nd_request.xml";
 
 
         XMLParser.SetTagtextatIndex("com:DepartureDateTime", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);

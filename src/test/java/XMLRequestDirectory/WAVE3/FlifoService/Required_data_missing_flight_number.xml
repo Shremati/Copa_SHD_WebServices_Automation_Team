@@ -2,16 +2,16 @@
     <soapenv:Header/>
     <soapenv:Body>
         <flif:getFlifo>
-            <air:OTA_AirFlifoRQ EchoToken="Test_13" TimeStamp="2023-09-05T06:44:07" Version="4.00">
+            <air:OTA_AirFlifoRQ EchoToken="Test_13" TimeStamp="2025-04-24T06:44:07" Version="4.00">
                 <air:POS>
                     <com:Source AirlineVendorID="CM"/>
                 </air:POS>
                 <air:FlightSegment UTC_PreferenceInd="false">
                     <air:Airline Code="CM"/>
                     <air:FlightNumber/>
-                    <air:DepartureDate>2023-09-29</air:DepartureDate>
-                    <air:DepartureAirport LocationCode="LAX"/>
-                    <air:ArrivalAirport LocationCode="PTY"/>
+                    <air:DepartureDate>2025-04-26</air:DepartureDate>
+                    <air:DepartureAirport LocationCode="PTY"/>
+                    <air:ArrivalAirport LocationCode="LAX"/>
                 </air:FlightSegment>
             </air:OTA_AirFlifoRQ>
         </flif:getFlifo>

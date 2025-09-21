@@ -95,7 +95,7 @@ public class Refund_multiple_tickets extends FrameworkConstants
         ExtentLogger.info("Assertion passed - contains \"ModifyResult TicketNumber\"");
 
 
-        Assertions.AssertWarning(response,true);
+        Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
