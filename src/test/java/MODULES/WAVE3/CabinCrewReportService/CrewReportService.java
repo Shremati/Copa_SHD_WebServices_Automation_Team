@@ -19,7 +19,7 @@ public class CrewReportService {
     }
 
     @Test(description = "CR_01 - Crew_report1 - Crew Report Service FR")
-    public void Crew_report1()
+    public void CR_01()
     {
         try
         {
@@ -33,7 +33,7 @@ public class CrewReportService {
     }
 
     @Test(description = "CR_02 - Crew_report2 - Crew Report Service PR")
-    public void Crew_report2()
+    public void CR_02()
     {
         try
         {
