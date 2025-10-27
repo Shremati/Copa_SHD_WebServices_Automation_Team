@@ -3,10 +3,13 @@ package frameworkconstants;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
+
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FrameworkConstants {
 
@@ -176,6 +179,7 @@ public class FrameworkConstants {
     public static String target = ".\\target";
     public static String Reports = System.getProperty("user.dir");
 
+    public static HashMap<String, ArrayList<String>> availableFlights = new HashMap<>();
 
 
     public static String getTestData() {

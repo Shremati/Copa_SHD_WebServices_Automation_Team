@@ -13,7 +13,8 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class CreateBookingService {
 
-    CreateBookingService() {
+    CreateBookingService()
+    {
         createFolders(getResponseDirectory() + "CreateBookingService");
     }
 
