@@ -15,6 +15,7 @@ public class FrameworkConstants {
     public static String SharesCURL    = "http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
     public static String SharesBuild35 = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
     public static String UAT = "http://uat-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
+    public static String VP1URL = "http://sitc-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
 
     public static String getBaseURL() { return SharesCURL;}
 
