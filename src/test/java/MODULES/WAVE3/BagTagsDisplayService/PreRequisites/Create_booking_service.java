@@ -113,6 +113,8 @@ public class Create_booking_service extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
 
+        XMLParser.SetTagtextatIndex("com:GivenName",Utils.getGivenName(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("com:Surname",Utils.getSurName(),getTemp_requestPath(),0);
 
         wb.close();
     }

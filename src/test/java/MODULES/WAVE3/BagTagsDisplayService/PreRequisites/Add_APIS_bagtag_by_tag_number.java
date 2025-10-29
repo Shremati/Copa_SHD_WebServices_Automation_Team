@@ -100,6 +100,8 @@ public class Add_APIS_bagtag_by_tag_number extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(12).getStringCellValue(), getTemp_requestPath(), 1);
 
+        XMLParser.SetTagtextatAllIndexes("com:GivenName",InputRow.getCell(7).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtextatAllIndexes("com:Surname",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
         wb.close();
 
     }

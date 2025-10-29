@@ -22,7 +22,7 @@
                                 <com:Surname>JOHN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
                         <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
@@ -31,7 +31,7 @@
                                 <com:Surname>JOHN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
                         <air1:API_Info Gender="Female" BirthDate="1990-05-12" DocHolderNationality="US" CountryOfResidence="US">
@@ -40,7 +40,7 @@
                                 <com:Surname>JOHN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2028-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
             </air:EDS_AirAPIModifyRQ>

@@ -72,8 +72,8 @@ public class Checkin_and_baggage_bagtag_by_tag_number extends FrameworkConstants
                 "Do not contain SEATS ASSIGNED");
         ExtentLogger.info("Assertion passed - contain SEATS ASSIGNED");
 
-        Assertions.AssertWarning(response, false);
-        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertWarning(response, true);
+        ExtentLogger.info("Assertion passed - Has warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
@@ -102,6 +102,8 @@ public class Checkin_and_baggage_bagtag_by_tag_number extends FrameworkConstants
         XMLParser.updateAttributeValue("com1:DepartureInformation", "DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());
         XMLParser.updateAttributeValue("com1:DepartureInformation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
+        XMLParser.SetTagtextatAllIndexes("com:GivenName",InputRow.getCell(7).getStringCellValue(), getTemp_requestPath());
+        XMLParser.SetTagtextatAllIndexes("com:Surname",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
         wb.close();
 
     }

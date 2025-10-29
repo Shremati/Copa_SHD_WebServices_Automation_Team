@@ -97,8 +97,8 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
                 "Do not contain No BagTags Found");
         ExtentLogger.info("Assertion passed - contain No BagTags Found");
 
-        Assertions.AssertWarning(response, true);
-        ExtentLogger.info("Assertion passed - Do not have warning");
+        Assertions.AssertWarning(response, false);
+        ExtentLogger.info("Assertion passed - Does not contain warning");
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
