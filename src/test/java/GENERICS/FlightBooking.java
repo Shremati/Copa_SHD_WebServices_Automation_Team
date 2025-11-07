@@ -1,5 +1,6 @@
 package GENERICS;
 
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -10,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static frameworkconstants.FrameworkConstants.*;
 
@@ -21,19 +23,23 @@ public class FlightBooking {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet(sheetName);
 
-        double flightNumber = 0;
         ArrayList<String> flights;
         for (int rowNumber = 1; rowNumber < sheet.getPhysicalNumberOfRows(); rowNumber++)
         {
-            if(sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(3) != null &&
-                !sheet.getRow(rowNumber).getCell(3).getStringCellValue().isBlank() &&
-                    sheet.getRow(rowNumber).getCell(4) != null && !sheet.getRow(rowNumber).getCell(4).getStringCellValue().isBlank())
+            boolean isOriginNotBlank = sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(3).getCellType() != CellType.BLANK &&
+                                      sheet.getRow(rowNumber).getCell(3).toString().trim().length() > 0;
+            boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(4).getCellType() != CellType.BLANK &&
+                                             sheet.getRow(rowNumber).getCell(4).toString().trim().length() > 0;
+
+            System.out.println(isOriginNotBlank);
+            System.out.println(isDestinationNotBlank);
+            if(isOriginNotBlank && isDestinationNotBlank)
             {
-                String origin = sheet.getRow(rowNumber).getCell(3).getStringCellValue();
-                String destination = sheet.getRow(rowNumber).getCell(4).getStringCellValue();
+                String origin = sheet.getRow(rowNumber).getCell(3).toString();
+                String destination = sheet.getRow(rowNumber).getCell(4).toString();
                 flights = new ArrayList<>();
-                if(!availableFlights.containsKey(origin + destination)){
-                    availableFlights.put(origin+destination, flights);
+                if(!availableFlights.containsKey(origin + "-" + destination)){
+                    availableFlights.put(origin + "-" + destination, flights);
                 }
             }
         }
@@ -41,6 +47,38 @@ public class FlightBooking {
         wb.close();
         fis.close();
 
-//        HashMap<String, ArrayList<String>>  = new HashMap<>();
+        fis = new FileInputStream(new File(  System.getProperty("user.dir") + "\\src\\test\\java\\TestData\\FlightNumbers.xlsx"));
+        wb = new XSSFWorkbook(fis);
+        sheet = wb.getSheet("Flight Data");
+
+        for (int rowNumber = 1; rowNumber < sheet.getPhysicalNumberOfRows(); rowNumber++)
+        {
+            String market = "";
+            if(sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(0).getCellType() != CellType.BLANK &&
+                sheet.getRow(rowNumber).getCell(0).toString().trim().length() > 0)
+                market = sheet.getRow(rowNumber).getCell(0).toString();
+
+            for(Map.Entry<String, ArrayList<String>> flightData : availableFlights.entrySet())
+            {
+                if(flightData.getKey().equalsIgnoreCase(market))
+                {
+                    for(int cell = 1; cell < sheet.getRow(rowNumber).getLastCellNum(); cell++)
+                    {
+                        System.out.println(sheet.getRow(rowNumber).getCell(cell).toString());
+                        flightData.getValue().add(sheet.getRow(rowNumber).getCell(cell).toString());
+                    }
+                }
+            }
+        }    // outer for loop ending
+
+        for(Map.Entry<String, ArrayList<String>> flightData : availableFlights.entrySet())
+        {
+            System.out.println("Flight data: " + flightData.getKey() + " , " + flightData.getValue());
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        FlightBooking fltBooking = new FlightBooking();
+        fltBooking.bookFlight("CreateBookingService");
     }
 }
