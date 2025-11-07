@@ -35,7 +35,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
                         <air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
@@ -44,7 +44,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
                         <air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
@@ -53,7 +53,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-20"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
                 <air:PassengerFlightInfo FlightRPH="1" PassengerRPH="2">
@@ -65,7 +65,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
                         <air1:API_Info BirthDate="1990-05-13" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
@@ -74,7 +74,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
                         <air1:API_Info BirthDate="1990-05-13" CountryOfResidence="US" DocHolderNationality="US" Gender="Male">
@@ -83,7 +83,7 @@
                                 <com:Surname>IJKLMN</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="987654321" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
+                        <air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2024-11-25"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
             </air:EDS_AirAPIModifyRQ>

@@ -1,6 +1,7 @@
 package MODULES.WAVE3.BagTagsDisplayService.PreRequisites;
 
 import GENERICS.Assertions;
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
@@ -99,6 +100,8 @@ public class Display_APIS_bagtag_display_all extends FrameworkConstants {
         filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS_bagtag_display_all.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID", "ID", InputRow.getCell(9).getStringCellValue(), filepath1);
+        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
 
         wb.close();
 

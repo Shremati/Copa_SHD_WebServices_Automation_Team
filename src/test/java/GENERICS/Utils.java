@@ -1,5 +1,6 @@
 package GENERICS;
 
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import java.nio.charset.StandardCharsets;
 
@@ -144,5 +145,17 @@ public class Utils
     public static void failTest(Exception e)
     {
         Assert.fail("Test Failed --- " + e.getMessage());
+    }
+
+    public static String getGivenName()
+    {
+        Faker faker = new Faker();
+        return faker.name().firstName().toUpperCase();
+    }
+
+    public static String getSurName()
+    {
+        Faker faker = new Faker();
+        return faker.name().lastName().toUpperCase();
     }
 }

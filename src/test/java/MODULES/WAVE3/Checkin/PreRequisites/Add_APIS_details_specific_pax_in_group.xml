@@ -22,7 +22,7 @@
                                 <com:Surname>OCHOA</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="CLIN" DocLevelInd="1">
                         <air1:API_Info Gender="Male" BirthDate="1975-05-12" DocHolderNationality="US" CountryOfResidence="US">
@@ -37,7 +37,7 @@
                                 <com:CountryName Code="US">USA</com:CountryName>
                             </air1:Address>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
             </air:EDS_AirAPIModifyRQ>

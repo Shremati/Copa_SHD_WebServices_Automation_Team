@@ -105,6 +105,9 @@ public class Create_booking_bagtag_by_tag_number extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath());
 
+        XMLParser.SetTagtextatIndex("com:GivenName",Utils.getGivenName(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("com:Surname",Utils.getSurName(),getTemp_requestPath(),0);
+
         wb.close();
     }
 

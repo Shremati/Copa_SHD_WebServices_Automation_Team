@@ -288,4 +288,36 @@ public class XMLParser
 
     }
 
+    public static void SetTagtextatAllIndexes(String Tag,String New_Value,String fpath) throws ParserConfigurationException, IOException, SAXException, TransformerException
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new File(fpath));
+
+        NodeList XMLTags =null;
+        XMLTags = document.getElementsByTagName(Tag);
+
+        for(int i=0;i<XMLTags.getLength();i++)
+        {
+            XMLTags.item(i).setTextContent(New_Value);
+        }
+
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transf = transformerFactory.newTransformer();
+
+        transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transf.setOutputProperty(OutputKeys.INDENT, "yes");
+        transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
+
+
+        DOMSource source = new DOMSource(document);
+
+        File myFile = new File(".\\src\\test\\java\\GENERICS\\Temp_Request.xml");
+        StreamResult file = new StreamResult(myFile);
+        transf.transform(source, file);
+
+    }
+
 }

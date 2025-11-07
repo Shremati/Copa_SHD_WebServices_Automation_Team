@@ -4,6 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import com.github.javafaker.Faker;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -108,6 +110,8 @@ public class Create_booking_bagtag_display_all extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
 
+        XMLParser.SetTagtextatIndex("com:GivenName",Utils.getGivenName(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("com:Surname",Utils.getSurName(),getTemp_requestPath(),0);
         wb.close();
     }
 

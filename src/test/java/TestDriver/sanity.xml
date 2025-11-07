@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Sanity SHD WebServices">
+    <listeners>
+        <listener class-name="listeners.TestListener"></listener>
+    </listeners>
+    <test name="Sanity Tests">
+        <classes>
+
+            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService">
+                <methods>
+                    <include name="BTD_01"/>
+<!--                    <include name="BTD_04"/>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+
