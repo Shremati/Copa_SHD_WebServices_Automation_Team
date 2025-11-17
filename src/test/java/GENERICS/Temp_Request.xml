@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns:air1="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:api="http://www.eds.com/AirlineSOASchema/API/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
     
-
-
 
 
 
@@ -13,28 +11,20 @@
 
 
 
-
-
 <soapenv:Body>
         
 
 
 
 
-
-
-<cre:createBooking>
+<api:modifyAPI>
             
 
 
 
 
-
-
-<air:OTA_AirBookRQ Version="4.000">
+<air:EDS_AirAPIModifyRQ Version="4.000">
                 
-
-
 
 
 
@@ -45,12 +35,8 @@
 
 
 
-
-
 <com:Source AirlineVendorID="CM"/>
                 
-
-
 
 
 
@@ -61,884 +47,236 @@
 
 
 
-
-
-<air:AirItinerary>
+<air:PassengerInfo RPH="1" SurnameBookedNumber="1">
                     
 
 
 
 
-
-
-<air1:OriginDestinationOptions>
+<air1:PassengerName>
                         
 
 
 
 
-
-
-<air1:OriginDestinationOption>
-                            
-
-
-
-
-
-
-<air1:FlightSegment DepartureDateTime="2025-12-02T02:51:07" FlightNumber="837" NumberInParty="2" RPH="1" ResBookDesigCode="Y" Status="11">
-                                
-
-
-
-
-
-
-<com:DepartureAirport LocationCode="BOG"/>
-                                
-
-
-
-
-
-
-<com:ArrivalAirport LocationCode="PTY"/>
-                                
-
-
-
-
-
-
-<air1:MarketingAirline Code="CM"/>
-                            
-
-
-
-
-
-
-</air1:FlightSegment>
+<com:GivenName>ERICH</com:GivenName>
                         
 
 
 
 
-
-
-</air1:OriginDestinationOption>
-                        
-
-
-
-
-
-
-<air1:OriginDestinationOption>
-                            
-
-
-
-
-
-
-<air1:FlightSegment DepartureDateTime="2025-12-03T02:51:07" FlightNumber="478" NumberInParty="2" RPH="2" ResBookDesigCode="Y" Status="11">
-                                
-
-
-
-
-
-
-<com:DepartureAirport LocationCode="PTY"/>
-                                
-
-
-
-
-
-
-<com:ArrivalAirport LocationCode="MCO"/>
-                                
-
-
-
-
-
-
-<air1:MarketingAirline Code="CM"/>
-                            
-
-
-
-
-
-
-</air1:FlightSegment>
-                        
-
-
-
-
-
-
-</air1:OriginDestinationOption>
-                        
-
-
-
-
-
-
-<air1:OriginDestinationOption>
-                            
-
-
-
-
-
-
-<air1:FlightSegment DepartureDateTime="2023-11-22T00:00:00" FlightNumber="435" NumberInParty="2" RPH="3" ResBookDesigCode="Y" Status="11">
-                                
-
-
-
-
-
-
-<com:DepartureAirport LocationCode="MCO"/>
-                                
-
-
-
-
-
-
-<com:ArrivalAirport LocationCode="PTY"/>
-                                
-
-
-
-
-
-
-<air1:MarketingAirline Code="CM"/>
-                            
-
-
-
-
-
-
-</air1:FlightSegment>
-                        
-
-
-
-
-
-
-</air1:OriginDestinationOption>
-                        
-
-
-
-
-
-
-<air1:OriginDestinationOption>
-                            
-
-
-
-
-
-
-<air1:FlightSegment DepartureDateTime="2023-11-22T00:00:00" FlightNumber="472" NumberInParty="2" RPH="4" ResBookDesigCode="Y" Status="11">
-                                
-
-
-
-
-
-
-<com:DepartureAirport LocationCode="PTY"/>
-                                
-
-
-
-
-
-
-<com:ArrivalAirport LocationCode="LAX"/>
-                                
-
-
-
-
-
-
-<air1:MarketingAirline Code="CM"/>
-                            
-
-
-
-
-
-
-</air1:FlightSegment>
-                        
-
-
-
-
-
-
-</air1:OriginDestinationOption>
+<com:Surname>STRACKE</com:Surname>
                     
 
 
 
 
+</air1:PassengerName>
+                    
 
 
-</air1:OriginDestinationOptions>
+
+
+<air1:BookingReferenceID ID="RVS1JN" Type="14"/>
                 
 
 
 
 
-
-
-</air:AirItinerary>
+</air:PassengerInfo>
                 
 
 
 
 
-
-
-<air:PriceInfo>
+<air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
                     
 
 
 
 
-
-
-<air1:PTC_FareBreakdowns>
-                        
-
-
-
-
-
-
-<air1:PTC_FareBreakdown>
-                            
-
-
-
-
-
-
-<air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
-                            
-
-
-
-
-
-
-<air1:FareBasisCodes>
-                                
-
-
-
-
-
-
-<air1:FareBasisCode>XYZ</air1:FareBasisCode>
-                            
-
-
-
-
-
-
-</air1:FareBasisCodes>
-                            
-
-
-
-
-
-
-<air1:PassengerFare>
-                                
-
-
-
-
-
-
-<air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
-                                
-
-
-
-
-
-
-<air1:Taxes>
-                                    
-
-
-
-
-
-
-<air1:Tax Amount="13.60" TaxCode="AG"/>
-                                
-
-
-
-
-
-
-</air1:Taxes>
-                                
-
-
-
-
-
-
-<air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
-                            
-
-
-
-
-
-
-</air1:PassengerFare>
-                            
-
-
-
-
-
-
-<air1:TravelerRefNumber RPH="1"/>
-                        
-
-
-
-
-
-
-</air1:PTC_FareBreakdown>
-                        
-
-
-
-
-
-
-<air1:PTC_FareBreakdown>
-                            
-
-
-
-
-
-
-<air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
-                            
-
-
-
-
-
-
-<air1:FareBasisCodes>
-                                
-
-
-
-
-
-
-<air1:FareBasisCode>XYZ</air1:FareBasisCode>
-                            
-
-
-
-
-
-
-</air1:FareBasisCodes>
-                            
-
-
-
-
-
-
-<air1:PassengerFare>
-                                
-
-
-
-
-
-
-<air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
-                                
-
-
-
-
-
-
-<air1:Taxes>
-                                    
-
-
-
-
-
-
-<air1:Tax Amount="13.60" TaxCode="AG"/>
-                                
-
-
-
-
-
-
-</air1:Taxes>
-                                
-
-
-
-
-
-
-<air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
-                            
-
-
-
-
-
-
-</air1:PassengerFare>
-                            
-
-
-
-
-
-
-<air1:TravelerRefNumber RPH="2"/>
-                        
-
-
-
-
-
-
-</air1:PTC_FareBreakdown>
+<air1:BookingInfo ResBookDesigCode="Y"/>
                     
 
 
 
 
+<air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+                        
 
 
-</air1:PTC_FareBreakdowns>
+
+
+<air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Female">
+                            
+
+
+
+
+<com:DocHolderFormattedName>
+                                
+
+
+
+
+<com:GivenName>ERICH</com:GivenName>
+                                
+
+
+
+
+<com:Surname>STRACKE</com:Surname>
+                            
+
+
+
+
+</com:DocHolderFormattedName>
+                        
+
+
+
+
+</air1:API_Info>
+                        
+
+
+
+
+<air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2028-11-20"/>
+                    
+
+
+
+
+</air1:AgencyRequirements>
+                    
+
+
+
+
+<air1:AgencyRequirements AgencyName="BRIN" DocLevelInd="1">
+                        
+
+
+
+
+<air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Female">
+                            
+
+
+
+
+<com:DocHolderFormattedName>
+                                
+
+
+
+
+<com:GivenName>ERICH</com:GivenName>
+                                
+
+
+
+
+<com:Surname>STRACKE</com:Surname>
+                            
+
+
+
+
+</com:DocHolderFormattedName>
+                        
+
+
+
+
+</air1:API_Info>
+                        
+
+
+
+
+<air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2028-11-20"/>
+                    
+
+
+
+
+</air1:AgencyRequirements>
+                    
+
+
+
+
+<air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+                        
+
+
+
+
+<air1:API_Info BirthDate="1990-05-12" CountryOfResidence="US" DocHolderNationality="US" Gender="Female">
+                            
+
+
+
+
+<com:DocHolderFormattedName>
+                                
+
+
+
+
+<com:GivenName>ERICH</com:GivenName>
+                                
+
+
+
+
+<com:Surname>STRACKE</com:Surname>
+                            
+
+
+
+
+</com:DocHolderFormattedName>
+                        
+
+
+
+
+</air1:API_Info>
+                        
+
+
+
+
+<air1:API_Info DocID="A23445455" DocIssueCountry="US" DocType="2" ExpireDate="2028-11-20"/>
+                    
+
+
+
+
+</air1:AgencyRequirements>
                 
 
 
 
 
-
-
-</air:PriceInfo>
-                
-
-
-
-
-
-
-<air:TravelerInfo>
-                    
-
-
-
-
-
-
-<air1:AirTraveler PassengerTypeCode="ADT">
-                        
-
-
-
-
-
-
-<air1:PersonName>
-                            
-
-
-
-
-
-
-<com:GivenName>HUSBAND</com:GivenName>
-                            
-
-
-
-
-
-
-<com:Surname>SMITH</com:Surname>
-                        
-
-
-
-
-
-
-</air1:PersonName>
-                        
-
-
-
-
-
-
-<air1:Telephone AreaCityCode="555" PhoneNumber="555-0129" PhoneUseType="3"/>
-                        
-
-
-
-
-
-
-<air1:TravelerRefNumber RPH="1"/>
-                    
-
-
-
-
-
-
-</air1:AirTraveler>
-                    
-
-
-
-
-
-
-<air1:AirTraveler PassengerTypeCode="ADT">
-                        
-
-
-
-
-
-
-<air1:PersonName>
-                            
-
-
-
-
-
-
-<com:GivenName>WIFE</com:GivenName>
-                            
-
-
-
-
-
-
-<com:Surname>SMITH</com:Surname>
-                        
-
-
-
-
-
-
-</air1:PersonName>
-                        
-
-
-
-
-
-
-<air1:Telephone AreaCityCode="555" PhoneNumber="555-0128" PhoneUseType="3"/>
-                        
-
-
-
-
-
-
-<air1:TravelerRefNumber RPH="2"/>
-                    
-
-
-
-
-
-
-</air1:AirTraveler>
-                    
-
-
-
-
-
-
-<air1:SpecialReqDetails>
-                        
-
-
-
-
-
-
-<air1:SpecialServiceRequests>
-                            
-
-
-
-
-
-
-<air1:SpecialServiceRequest FlightRefNumberRPHList="1" SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1">
-                                
-
-
-
-
-
-
-<air1:Airline Code="CM"/>
-                                
-
-
-
-
-
-
-<air1:Text>Need WCHR pax 1</air1:Text>
-                            
-
-
-
-
-
-
-</air1:SpecialServiceRequest>
-                            
-
-
-
-
-
-
-<air1:SpecialServiceRequest FlightRefNumberRPHList="1" SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="2">
-                                
-
-
-
-
-
-
-<air1:Airline Code="CM"/>
-                                
-
-
-
-
-
-
-<air1:Text>Need WCHR pax 2</air1:Text>
-                            
-
-
-
-
-
-
-</air1:SpecialServiceRequest>
-                        
-
-
-
-
-
-
-</air1:SpecialServiceRequests>
-                        
-
-
-
-
-
-
-<air1:OtherServiceInformations>
-                            
-
-
-
-
-
-
-<air1:OtherServiceInformation>
-                                
-
-
-
-
-
-
-<air1:Airline Code="CM"/>
-                                
-
-
-
-
-
-
-<air1:Text>birthday cake</air1:Text>
-                            
-
-
-
-
-
-
-</air1:OtherServiceInformation>
-                            
-
-
-
-
-
-
-<air1:OtherServiceInformation>
-                                
-
-
-
-
-
-
-<air1:Airline Code="CM"/>
-                                
-
-
-
-
-
-
-<air1:Text>and gifts</air1:Text>
-                            
-
-
-
-
-
-
-</air1:OtherServiceInformation>
-                        
-
-
-
-
-
-
-</air1:OtherServiceInformations>
-                        
-
-
-
-
-
-
-<air1:Remarks>
-                            
-
-
-
-
-
-
-<air1:Remark>have a nice party</air1:Remark>
-                        
-
-
-
-
-
-
-</air1:Remarks>
-                    
-
-
-
-
-
-
-</air1:SpecialReqDetails>
-                
-
-
-
-
-
-
-</air:TravelerInfo>
-                
-
-
-
-
-
-
-<air:Ticketing TicketTimeLimit="2023-08-20T00:00:00"/>
+</air:PassengerFlightInfo>
             
 
 
 
 
-
-
-</air:OTA_AirBookRQ>
+</air:EDS_AirAPIModifyRQ>
         
 
 
 
 
-
-
-</cre:createBooking>
+</api:modifyAPI>
     
-
-
 
 
 

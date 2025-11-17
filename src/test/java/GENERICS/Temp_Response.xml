@@ -1,0 +1,87 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ns5:modifyAPIResponse xmlns:ns9="http://www.eds.com/AirlineSOASchema/AirportListRS" xmlns:ns8="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns7="http://www.eds.com/AirlineSOASchema/AirAPIReadRQ" xmlns:ns6="http://www.eds.com/AirlineSOASchema/AirAPIDisplayRS" xmlns:ns5="http://www.eds.com/AirlineSOASchema/API/" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns3="http://www.eds.com/AirlineSOASchema/AirCommonTypes" xmlns:ns2="http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns6:EDS_AirAPIDisplayRS TimeStamp="2025-11-17T10:40:36" Version="4.000" SequenceNmbr="1">
+        <ns6:Success/>
+        <ns6:Warnings>
+          <Warning Type="14" ShortText="RESPONSEPAXLVL:RVS1JN" RecordID="1">1:APIS DATA NOT FOUND</Warning>
+        </ns6:Warnings>
+        <ns6:PassengerInfo SurnameBookedNumber="1" RPH="1">
+          <ns3:PassengerName>
+            <GivenName>ERICH</GivenName>
+            <SurnamePrefix>1</SurnamePrefix>
+            <Surname>STRACKE</Surname>
+          </ns3:PassengerName>
+          <ns3:BookingReferenceID Type="14" ID="RVS1JN"/>
+        </ns6:PassengerInfo>
+        <ns6:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
+          <ns3:BookingInfo ResBookDesigCode="Y"/>
+          <ns3:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList="0 1 3 4 6 7 9 10 11 12"/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="USA" ICAODocHolderNationality="USA" TrustedDataInd="false" DocHolderNationality="US" Gender="Female" BirthDate="1990-05-12">
+              <DocHolderFormattedName>
+                <GivenName>ERICH</GivenName>
+                <Surname>STRACKE</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="USA" DocID="A23445455" DocType="2" DocIssueCountry="US" ExpireDate="2028-11-20"/>
+          </ns3:AgencyRequirements>
+          <ns3:AgencyRequirements AgencyName="BRIN" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList="0 1 3 4 6 7 9 10 11 12"/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="USA" ICAODocHolderNationality="USA" TrustedDataInd="false" DocHolderNationality="US" Gender="Female" BirthDate="1990-05-12">
+              <DocHolderFormattedName>
+                <GivenName>ERICH</GivenName>
+                <Surname>STRACKE</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="USA" DocID="A23445455" DocType="2" DocIssueCountry="US" ExpireDate="2028-11-20"/>
+          </ns3:AgencyRequirements>
+          <ns3:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
+            <ns3:RequiredDocuments>
+              <ns3:Override OverrideType="7" DocHolderNationalityList="US"/>
+              <ns3:Override OverrideType="14" DocHolderNationalityList="US"/>
+              <ns3:RequiredDocument DocType="14" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="7" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="11" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="22" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="3" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="12" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="2" RequiredItemCodeList="0 1 3 4 6 7 9 10 11 12 51 52 53 54"/>
+              <ns3:RequiredDocument DocType="1" RequiredItemCodeList="0 1 6 7 9 10 11 12 51 52 53 54"/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="USA" ICAODocHolderNationality="USA" TrustedDataInd="false" DocHolderNationality="US" Gender="Female" BirthDate="1990-05-12">
+              <DocHolderFormattedName>
+                <GivenName>ERICH</GivenName>
+                <Surname>STRACKE</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info>
+              <ns3:Address Type="4"/>
+            </ns3:API_Info>
+            <ns3:API_Info ICAODocIssueCountry="USA" DocID="A23445455" DocType="2" DocIssueCountry="US" ExpireDate="2028-11-20"/>
+          </ns3:AgencyRequirements>
+          <ns3:AgencyRequirements AgencyName="USIN" DocLevelInd="2">
+            <ns3:RequiredDocuments>
+              <ns3:Override OverrideType="7" DocHolderNationalityList="US"/>
+              <ns3:Override OverrideType="14" DocHolderNationalityList="US"/>
+              <ns3:RequiredDocument DocType="13" RequiredItemCodeList="1 6 7 9 10 11 12 51 52 53 54"/>
+            </ns3:RequiredDocuments>
+            <ns3:API_Info CountryOfResidence="US" ICAOCountryOfResidence="USA" ICAODocHolderNationality="USA" TrustedDataInd="false" DocHolderNationality="US" Gender="Female" BirthDate="1990-05-12">
+              <DocHolderFormattedName>
+                <GivenName>ERICH</GivenName>
+                <Surname>STRACKE</Surname>
+              </DocHolderFormattedName>
+            </ns3:API_Info>
+            <ns3:API_Info>
+              <ns3:Address Type="4"/>
+            </ns3:API_Info>
+          </ns3:AgencyRequirements>
+        </ns6:PassengerFlightInfo>
+      </ns6:EDS_AirAPIDisplayRS>
+    </ns5:modifyAPIResponse>
+  </soap:Body>
+</soap:Envelope>
