@@ -32,30 +32,48 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+            UpdatePayload(i);
 
 //                       ********** Reading the xml request file **********
 
-        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
-        SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
-        SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
-        ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
+            FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+            SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
+            SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
+            ExtentLogger.info("Base URL : "+getBaseURL()+getCreatebookingservice());
 
-        requestSpecification = given()
-                .baseUri(getBaseURL())
-                .header("Content-Type", "text/xml")
-                .filter(new AllureRestAssured());
-        ExtentLogger.logXMLRequest(SOAPRequest); 
+            requestSpecification = given()
+                    .baseUri(getBaseURL())
+                    .header("Content-Type", "text/xml")
+                    .filter(new AllureRestAssured());
+            ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
-                .body(SOAPRequest)
-                .when()
-                .post(getCreatebookingservice())
-                .then()
-                .statusCode(200)
-                .and()
-                .log().all().extract().response();
-        ExtentLogger.logXMLResponse(response.asPrettyString());
+            response = requestSpecification
+                    .body(SOAPRequest)
+                    .when()
+                    .post(getCreatebookingservice())
+                    .then()
+                    .statusCode(200)
+                    .and()
+                    .log().all().extract().response();
+            ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("BookingReferenceID")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -63,11 +81,11 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
-        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
-
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contain Success");
+
+        Assert.assertFalse(response.getBody().asString().contains("Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE"));
+        ExtentLogger.info("Response contains \"Sell Itinerary Process Failed to Complete Successfully :  (1) FLT NOOP FOR FLT/DATE\"");
 
         Assert.assertTrue(response.getBody().asString().contains("BookingReferenceID"), "Do not contain BookingReferenceID");
         ExtentLogger.info("Assertion passed - contain BookingReferenceID");
@@ -91,7 +109,7 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis = new FileInputStream(new File(getTestData()));
@@ -105,10 +123,11 @@ public class create_booking_1seg_1pax_stored_fare_1telephone_ticketing extends F
         filepath1 = getRequestDirectory() + "CreateBookingService\\create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit",  Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
 
         wb.close();
 

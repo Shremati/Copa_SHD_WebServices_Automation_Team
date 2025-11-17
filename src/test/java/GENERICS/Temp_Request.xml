@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.eds.com/AirlineSOASchema/AirCheckInRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:chec="http://www.eds.com/AirlineSOASchema/CheckIn/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:com1="http://www.eds.com/AirlineSOASchema/AirCommonTypes">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes" xmlns:cre="http://www.eds.com/AirlineSOASchema/CreateBooking/">
     
+
+
 
 
 
@@ -11,20 +13,28 @@
 
 
 
+
+
 <soapenv:Body>
         
 
 
 
 
-<chec:checkIn>
+
+
+<cre:createBooking>
             
 
 
 
 
-<air:EDS_AirCheckInRQ Version="4.000">
+
+
+<air:OTA_AirBookRQ Version="4.000">
                 
+
+
 
 
 
@@ -35,8 +45,12 @@
 
 
 
+
+
 <com:Source AirlineVendorID="CM"/>
                 
+
+
 
 
 
@@ -47,140 +61,884 @@
 
 
 
-<air:MessageFunction Function="CheckIn"/>
-                
 
 
-
-
-<air:FlightInfo RPH="1">
+<air:AirItinerary>
                     
 
 
 
 
-<com1:CarrierInfo Code="CM" FlightNumber="472"/>
-                    
 
 
-
-
-<com1:DepartureInformation DateOfDeparture="2025-10-29T05:47:51" LocationCode="PTY"/>
-                
-
-
-
-
-</air:FlightInfo>
-                
-
-
-
-
-<air:PassengerInfo GivenNameRefNumber="1" RPH="1" SurnameRefNumber="1">
-                    
-
-
-
-
-<com1:PassengerName>
+<air1:OriginDestinationOptions>
                         
 
 
 
 
-<com:GivenName>LATINA</com:GivenName>
+
+
+<air1:OriginDestinationOption>
+                            
+
+
+
+
+
+
+<air1:FlightSegment DepartureDateTime="2025-12-02T02:51:07" FlightNumber="837" NumberInParty="2" RPH="1" ResBookDesigCode="Y" Status="11">
+                                
+
+
+
+
+
+
+<com:DepartureAirport LocationCode="BOG"/>
+                                
+
+
+
+
+
+
+<com:ArrivalAirport LocationCode="PTY"/>
+                                
+
+
+
+
+
+
+<air1:MarketingAirline Code="CM"/>
+                            
+
+
+
+
+
+
+</air1:FlightSegment>
                         
 
 
 
 
-<com:Surname>KOSS</com:Surname>
-                    
 
 
-
-
-</com1:PassengerName>
-                    
-
-
-
-
-<com1:PassengerType Gender="F"/>
-                
-
-
-
-
-</air:PassengerInfo>
-                
-
-
-
-
-<air:PassengerFlightInfo FlightRPH="1" PassengerRPH="1">
-                    
-
-
-
-
-<com1:SeatBoardingInfo SeatNumber="09C"/>
-                
-
-
-
-
-</air:PassengerFlightInfo>
-                
-
-
-
-
-<air:BaggageInfo CheckedBagCountTotal="1" PassengerRPH="1">
-                    
-
-
-
-
-<com1:CheckedBaggageDetails>
+</air1:OriginDestinationOption>
                         
 
 
 
 
-<com1:BagTagDetails BagTagCount="1" CarrierCode="CM" SerialNumber="123456"/>
+
+
+<air1:OriginDestinationOption>
+                            
+
+
+
+
+
+
+<air1:FlightSegment DepartureDateTime="2025-12-03T02:51:07" FlightNumber="478" NumberInParty="2" RPH="2" ResBookDesigCode="Y" Status="11">
+                                
+
+
+
+
+
+
+<com:DepartureAirport LocationCode="PTY"/>
+                                
+
+
+
+
+
+
+<com:ArrivalAirport LocationCode="MCO"/>
+                                
+
+
+
+
+
+
+<air1:MarketingAirline Code="CM"/>
+                            
+
+
+
+
+
+
+</air1:FlightSegment>
+                        
+
+
+
+
+
+
+</air1:OriginDestinationOption>
+                        
+
+
+
+
+
+
+<air1:OriginDestinationOption>
+                            
+
+
+
+
+
+
+<air1:FlightSegment DepartureDateTime="2023-11-22T00:00:00" FlightNumber="435" NumberInParty="2" RPH="3" ResBookDesigCode="Y" Status="11">
+                                
+
+
+
+
+
+
+<com:DepartureAirport LocationCode="MCO"/>
+                                
+
+
+
+
+
+
+<com:ArrivalAirport LocationCode="PTY"/>
+                                
+
+
+
+
+
+
+<air1:MarketingAirline Code="CM"/>
+                            
+
+
+
+
+
+
+</air1:FlightSegment>
+                        
+
+
+
+
+
+
+</air1:OriginDestinationOption>
+                        
+
+
+
+
+
+
+<air1:OriginDestinationOption>
+                            
+
+
+
+
+
+
+<air1:FlightSegment DepartureDateTime="2023-11-22T00:00:00" FlightNumber="472" NumberInParty="2" RPH="4" ResBookDesigCode="Y" Status="11">
+                                
+
+
+
+
+
+
+<com:DepartureAirport LocationCode="PTY"/>
+                                
+
+
+
+
+
+
+<com:ArrivalAirport LocationCode="LAX"/>
+                                
+
+
+
+
+
+
+<air1:MarketingAirline Code="CM"/>
+                            
+
+
+
+
+
+
+</air1:FlightSegment>
+                        
+
+
+
+
+
+
+</air1:OriginDestinationOption>
                     
 
 
 
 
-</com1:CheckedBaggageDetails>
-                    
 
 
-
-
-<com1:CheckedBagWeightTotal UnitOfMeasureQuantity="10"/>
+</air1:OriginDestinationOptions>
                 
 
 
 
 
-</air:BaggageInfo>
+
+
+</air:AirItinerary>
+                
+
+
+
+
+
+
+<air:PriceInfo>
+                    
+
+
+
+
+
+
+<air1:PTC_FareBreakdowns>
+                        
+
+
+
+
+
+
+<air1:PTC_FareBreakdown>
+                            
+
+
+
+
+
+
+<air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            
+
+
+
+
+
+
+<air1:FareBasisCodes>
+                                
+
+
+
+
+
+
+<air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            
+
+
+
+
+
+
+</air1:FareBasisCodes>
+                            
+
+
+
+
+
+
+<air1:PassengerFare>
+                                
+
+
+
+
+
+
+<air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                
+
+
+
+
+
+
+<air1:Taxes>
+                                    
+
+
+
+
+
+
+<air1:Tax Amount="13.60" TaxCode="AG"/>
+                                
+
+
+
+
+
+
+</air1:Taxes>
+                                
+
+
+
+
+
+
+<air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            
+
+
+
+
+
+
+</air1:PassengerFare>
+                            
+
+
+
+
+
+
+<air1:TravelerRefNumber RPH="1"/>
+                        
+
+
+
+
+
+
+</air1:PTC_FareBreakdown>
+                        
+
+
+
+
+
+
+<air1:PTC_FareBreakdown>
+                            
+
+
+
+
+
+
+<air1:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                            
+
+
+
+
+
+
+<air1:FareBasisCodes>
+                                
+
+
+
+
+
+
+<air1:FareBasisCode>XYZ</air1:FareBasisCode>
+                            
+
+
+
+
+
+
+</air1:FareBasisCodes>
+                            
+
+
+
+
+
+
+<air1:PassengerFare>
+                                
+
+
+
+
+
+
+<air1:BaseFare Amount="136.00" CurrencyCode="USD"/>
+                                
+
+
+
+
+
+
+<air1:Taxes>
+                                    
+
+
+
+
+
+
+<air1:Tax Amount="13.60" TaxCode="AG"/>
+                                
+
+
+
+
+
+
+</air1:Taxes>
+                                
+
+
+
+
+
+
+<air1:UnstructuredFareCalc>FARE CALC LINE END</air1:UnstructuredFareCalc>
+                            
+
+
+
+
+
+
+</air1:PassengerFare>
+                            
+
+
+
+
+
+
+<air1:TravelerRefNumber RPH="2"/>
+                        
+
+
+
+
+
+
+</air1:PTC_FareBreakdown>
+                    
+
+
+
+
+
+
+</air1:PTC_FareBreakdowns>
+                
+
+
+
+
+
+
+</air:PriceInfo>
+                
+
+
+
+
+
+
+<air:TravelerInfo>
+                    
+
+
+
+
+
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+
+
+
+
+
+<air1:PersonName>
+                            
+
+
+
+
+
+
+<com:GivenName>HUSBAND</com:GivenName>
+                            
+
+
+
+
+
+
+<com:Surname>SMITH</com:Surname>
+                        
+
+
+
+
+
+
+</air1:PersonName>
+                        
+
+
+
+
+
+
+<air1:Telephone AreaCityCode="555" PhoneNumber="555-0129" PhoneUseType="3"/>
+                        
+
+
+
+
+
+
+<air1:TravelerRefNumber RPH="1"/>
+                    
+
+
+
+
+
+
+</air1:AirTraveler>
+                    
+
+
+
+
+
+
+<air1:AirTraveler PassengerTypeCode="ADT">
+                        
+
+
+
+
+
+
+<air1:PersonName>
+                            
+
+
+
+
+
+
+<com:GivenName>WIFE</com:GivenName>
+                            
+
+
+
+
+
+
+<com:Surname>SMITH</com:Surname>
+                        
+
+
+
+
+
+
+</air1:PersonName>
+                        
+
+
+
+
+
+
+<air1:Telephone AreaCityCode="555" PhoneNumber="555-0128" PhoneUseType="3"/>
+                        
+
+
+
+
+
+
+<air1:TravelerRefNumber RPH="2"/>
+                    
+
+
+
+
+
+
+</air1:AirTraveler>
+                    
+
+
+
+
+
+
+<air1:SpecialReqDetails>
+                        
+
+
+
+
+
+
+<air1:SpecialServiceRequests>
+                            
+
+
+
+
+
+
+<air1:SpecialServiceRequest FlightRefNumberRPHList="1" SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="1">
+                                
+
+
+
+
+
+
+<air1:Airline Code="CM"/>
+                                
+
+
+
+
+
+
+<air1:Text>Need WCHR pax 1</air1:Text>
+                            
+
+
+
+
+
+
+</air1:SpecialServiceRequest>
+                            
+
+
+
+
+
+
+<air1:SpecialServiceRequest FlightRefNumberRPHList="1" SSRCode="WCHR" ServiceQuantity="1" Status="11" TravelerRefNumberRPHList="2">
+                                
+
+
+
+
+
+
+<air1:Airline Code="CM"/>
+                                
+
+
+
+
+
+
+<air1:Text>Need WCHR pax 2</air1:Text>
+                            
+
+
+
+
+
+
+</air1:SpecialServiceRequest>
+                        
+
+
+
+
+
+
+</air1:SpecialServiceRequests>
+                        
+
+
+
+
+
+
+<air1:OtherServiceInformations>
+                            
+
+
+
+
+
+
+<air1:OtherServiceInformation>
+                                
+
+
+
+
+
+
+<air1:Airline Code="CM"/>
+                                
+
+
+
+
+
+
+<air1:Text>birthday cake</air1:Text>
+                            
+
+
+
+
+
+
+</air1:OtherServiceInformation>
+                            
+
+
+
+
+
+
+<air1:OtherServiceInformation>
+                                
+
+
+
+
+
+
+<air1:Airline Code="CM"/>
+                                
+
+
+
+
+
+
+<air1:Text>and gifts</air1:Text>
+                            
+
+
+
+
+
+
+</air1:OtherServiceInformation>
+                        
+
+
+
+
+
+
+</air1:OtherServiceInformations>
+                        
+
+
+
+
+
+
+<air1:Remarks>
+                            
+
+
+
+
+
+
+<air1:Remark>have a nice party</air1:Remark>
+                        
+
+
+
+
+
+
+</air1:Remarks>
+                    
+
+
+
+
+
+
+</air1:SpecialReqDetails>
+                
+
+
+
+
+
+
+</air:TravelerInfo>
+                
+
+
+
+
+
+
+<air:Ticketing TicketTimeLimit="2023-08-20T00:00:00"/>
             
 
 
 
 
-</air:EDS_AirCheckInRQ>
+
+
+</air:OTA_AirBookRQ>
         
 
 
 
 
-</chec:checkIn>
+
+
+</cre:createBooking>
     
+
+
 
 
 

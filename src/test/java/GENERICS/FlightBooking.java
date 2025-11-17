@@ -17,7 +17,7 @@ import static frameworkconstants.FrameworkConstants.*;
 
 public class FlightBooking {
 
-    public void bookFlight(String sheetName) throws IOException
+    public static void bookFlight(String sheetName) throws IOException
     {
         FileInputStream fis = new FileInputStream(new File(getTestData()));
         XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -31,8 +31,6 @@ public class FlightBooking {
             boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(4).getCellType() != CellType.BLANK &&
                                              sheet.getRow(rowNumber).getCell(4).toString().trim().length() > 0;
 
-            System.out.println(isOriginNotBlank);
-            System.out.println(isDestinationNotBlank);
             if(isOriginNotBlank && isDestinationNotBlank)
             {
                 String origin = sheet.getRow(rowNumber).getCell(3).toString();
@@ -64,21 +62,16 @@ public class FlightBooking {
                 {
                     for(int cell = 1; cell < sheet.getRow(rowNumber).getLastCellNum(); cell++)
                     {
-                        System.out.println(sheet.getRow(rowNumber).getCell(cell).toString());
+//                        System.out.println(sheet.getRow(rowNumber).getCell(cell).toString());
                         flightData.getValue().add(sheet.getRow(rowNumber).getCell(cell).toString());
                     }
                 }
             }
         }    // outer for loop ending
 
-        for(Map.Entry<String, ArrayList<String>> flightData : availableFlights.entrySet())
-        {
-            System.out.println("Flight data: " + flightData.getKey() + " , " + flightData.getValue());
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        FlightBooking fltBooking = new FlightBooking();
-        fltBooking.bookFlight("CreateBookingService");
+//        for(Map.Entry<String, ArrayList<String>> flightData : availableFlights.entrySet())
+//        {
+//            System.out.println("Flight data: " + flightData.getKey() + " , " + flightData.getValue());
+//        }
     }
 }
