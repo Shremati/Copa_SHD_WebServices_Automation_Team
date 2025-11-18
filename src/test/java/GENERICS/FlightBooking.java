@@ -24,23 +24,36 @@ public class FlightBooking {
         XSSFSheet sheet = wb.getSheet(sheetName);
 
         ArrayList<String> flights;
-        for (int rowNumber = 1; rowNumber < sheet.getPhysicalNumberOfRows(); rowNumber++)
-        {
-            boolean isOriginNotBlank = sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(3).getCellType() != CellType.BLANK &&
-                                      sheet.getRow(rowNumber).getCell(3).toString().trim().length() > 0;
-            boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(4).getCellType() != CellType.BLANK &&
-                                             sheet.getRow(rowNumber).getCell(4).toString().trim().length() > 0;
 
-            if(isOriginNotBlank && isDestinationNotBlank)
+        for(int cellNo=0;cellNo<sheet.getRow(0).getLastCellNum();cellNo++)
+        {
+            if(sheet.getRow(0).getCell(cellNo).getCellType() != CellType.BLANK &&
+                    sheet.getRow(0).getCell(cellNo).toString().trim().length() > 0 && sheet.getRow(0).getCell(cellNo).getStringCellValue().contains("DepartureAirport"))
             {
-                String origin = sheet.getRow(rowNumber).getCell(3).toString();
-                String destination = sheet.getRow(rowNumber).getCell(4).toString();
-                flights = new ArrayList<>();
-                if(!availableFlights.containsKey(origin + "-" + destination)){
-                    availableFlights.put(origin + "-" + destination, flights);
+                for (int rowNumber = 1; rowNumber < sheet.getPhysicalNumberOfRows(); rowNumber++)
+                {
+
+                    int originCellNo=cellNo;
+                    int destinationCellNo=cellNo+1;
+
+                    boolean isOriginNotBlank = sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(originCellNo).getCellType() != CellType.BLANK &&
+                            sheet.getRow(rowNumber).getCell(originCellNo).toString().trim().length() > 0;
+                    boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(destinationCellNo).getCellType() != CellType.BLANK &&
+                            sheet.getRow(rowNumber).getCell(destinationCellNo).toString().trim().length() > 0;
+
+                    if(isOriginNotBlank && isDestinationNotBlank)
+                    {
+                        String origin = sheet.getRow(rowNumber).getCell(originCellNo).toString();
+                        String destination = sheet.getRow(rowNumber).getCell(destinationCellNo).toString();
+                        flights = new ArrayList<>();
+                        if(!availableFlights.containsKey(origin + "-" + destination)){
+                            availableFlights.put(origin + "-" + destination, flights);
+                        }
+                    }
                 }
             }
         }
+
 
         wb.close();
         fis.close();
@@ -53,7 +66,7 @@ public class FlightBooking {
         {
             String market = "";
             if(sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(0).getCellType() != CellType.BLANK &&
-                sheet.getRow(rowNumber).getCell(0).toString().trim().length() > 0)
+                    sheet.getRow(rowNumber).getCell(0).toString().trim().length() > 0)
                 market = sheet.getRow(rowNumber).getCell(0).toString();
 
             for(Map.Entry<String, ArrayList<String>> flightData : availableFlights.entrySet())

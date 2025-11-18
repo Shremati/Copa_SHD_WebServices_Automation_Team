@@ -112,6 +112,11 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
         Assertions.AssertWarning(response, false);
         ExtentLogger.info("Assertion passed - Do not have warning");
 
+        Assert.assertFalse(response.getBody().asString().contains("INVLD SEAT NUMBER SPECIFIED"),
+                "Contains INVLD SEAT NUMBER SPECIFIED");
+        ExtentLogger.info("Assertion passed - does not contain INVLD SEAT NUMBER SPECIFIED");
+
+
         Assertions.AssertResponseTime(response, ResponseTime);
 
         excelwriter();
