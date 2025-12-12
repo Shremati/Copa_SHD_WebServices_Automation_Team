@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Copa_API_WebServices" />
+        <module name="Copa_API_WebServices_New" />
         <module name="Copa_SHDWebservices" />
+        <module name="Copa_API_WebServices" />
         <module name="Copa_SHD_WebServices" />
       </profile>
     </annotationProcessing>

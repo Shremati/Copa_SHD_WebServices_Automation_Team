@@ -38,9 +38,21 @@ public class Refund_multiple_tickets extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_refund_multiple_tickets Prerequisite = new create_booking_refund_multiple_tickets();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite");
+
 
         issue_ticket_refund_multiple_tickets Prerequisite2 = new issue_ticket_refund_multiple_tickets();
         Prerequisite2.run();

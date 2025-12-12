@@ -32,10 +32,20 @@ public class Ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets Prerequisite = new create_booking_ticket_1passenger_6flights_booking_with_creditcard_fop_conjunction_tickets();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite 1");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite");
 
         UpdatePayload();
 

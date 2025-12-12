@@ -32,10 +32,18 @@ public class Request_the_control_of_coupon_that_already_has_the_control_by_host 
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 1");
         Create_booking_Request_the_control_of_coupon_that_already_has_the_control_by_host Prerequisite = new Create_booking_Request_the_control_of_coupon_that_already_has_the_control_by_host();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_Request_the_control_of_coupon_that_already_has_the_control_by_host Prerequisite2 = new issue_ticket_Request_the_control_of_coupon_that_already_has_the_control_by_host();

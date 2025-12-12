@@ -35,10 +35,19 @@ public class other_changes extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
         //        PreRequisite for Scenario ------> Create Booking
 
-        create_booking_other_changes Prerequisite = new create_booking_other_changes();
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+        create_booking_other_changes Prerequisite = new create_booking_other_changes();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         UpdatePayload();
 

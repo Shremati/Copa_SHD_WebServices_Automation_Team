@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ModifyTicketingService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ModifyTicketingService.API_Tests.*;
 import MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbound_connection_option;
 import MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request;
@@ -9,6 +10,8 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -16,8 +19,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //5 Scenarios
 @Listeners(TestListener.class)
 public class ModifyTicketingService {
-    ModifyTicketingService() {
+    ModifyTicketingService() throws IOException {
         createFolders(getResponseDirectory() + "ModifyTicketingService");
+        FlightBooking.bookFlight("ModifyTicketingService");
+
     }
 
     @Test(description = "MTS_01 - Void a Ticket")

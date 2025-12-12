@@ -34,7 +34,13 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+        UpdatePayload(i);
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -48,7 +54,7 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response=requestSpecification
+        response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
@@ -57,6 +63,18 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success") ){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -78,7 +96,7 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -92,15 +110,18 @@ public class HA_and_OA_Inventory_requests_with_optional_parameters extends Frame
         filepath1=getRequestDirectory()+"AirInventoryService\\HA_and_OA_Inventory_requests_with_optional_parameters.xml";
 
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
-        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1,0);
+//        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
         XMLParser.SetTagtextatIndex("air1:OriginLocation",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("air1:DestinationLocation",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+//        XMLParser.SetTagtextatIndex("air1:FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:OriginLocation","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:DestinationLocation","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 1);
 
         wb.close();
 

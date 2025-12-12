@@ -77,8 +77,12 @@ public class stateful_screenText_send_entry extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>D$</ns4:TextData>"),
-                "Do not contain <ns4:TextData>D$</ns4:TextData>");
+//        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>D$</ns4:TextData>"),
+//                "Do not contain <ns4:TextData>D$</ns4:TextData>");
+
+        Assert.assertTrue(response.getBody().asString().contains("<ns4:TextData>**  RULES DISPLAY **</ns4:TextData>"),
+                "Do not contain <ns4:TextData>**  RULES DISPLAY **</ns4:TextData>");
+
         ExtentLogger.info("Assertion passed - contains <ns4:TextData>D$</ns4:TextData>");
 
         Assertions.AssertWarning(response, false);

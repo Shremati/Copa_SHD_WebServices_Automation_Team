@@ -1,11 +1,14 @@
 package MODULES.WAVE3.TicketingService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ModifyTicketingService.API_Tests.*;
 import MODULES.WAVE3.TicketingService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,8 +18,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class TicketingService {
 
-    TicketingService() {
+    TicketingService() throws IOException {
         createFolders(getResponseDirectory() + "TicketingService");
+        FlightBooking.bookFlight("TicketingService");
     }
 
     @Test(description = "TIS_01 - Ticket a booking with one flight, one passenger with credit card form of payment")
@@ -69,8 +73,8 @@ public class TicketingService {
             failTest(e);
             System.out.println("TIS_21 failed due to :" + e);
         }
-
     }
+
     @Test(description = "TIS_33 - Issue ticket for a booking with an infant")
     public void TIS_33() {
 

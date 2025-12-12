@@ -39,10 +39,21 @@ public class Display_booking_by_both_record_locator_and_eticket_number extends F
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
+    int i=0;
+    boolean flightFound=false;
 
+//We are searching all the available flights in a do while loop
         create_booking_display_booking_by_both_record_locator_and_eticket_number Prerequisite = new create_booking_display_booking_by_both_record_locator_and_eticket_number();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite");
+
 
         issue_ticket_display_booking_by_both_record_locator_and_eticket_number Prerequisite2 = new issue_ticket_display_booking_by_both_record_locator_and_eticket_number();
         Prerequisite2.run();

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.AuthorizationService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.AuthorizationService.API_Tests.Approval_for_visa_credit_card;
 import MODULES.WAVE3.AuthorizationService.API_Tests.Error_text_for_Visa_credit_card;
 import MODULES.WAVE3.AuthorizationService.API_Tests.Invalid_Request;
@@ -7,6 +8,8 @@ import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -16,7 +19,7 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class AuthorizationService {
 
-    AuthorizationService() {
+    AuthorizationService() throws IOException {
         createFolders(getResponseDirectory() + "AuthorizationService");
     }
 

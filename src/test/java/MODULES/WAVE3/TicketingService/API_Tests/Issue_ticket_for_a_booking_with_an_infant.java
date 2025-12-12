@@ -34,9 +34,20 @@ public class Issue_ticket_for_a_booking_with_an_infant extends FrameworkConstant
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_issue_ticket_for_a_booking_with_an_infant Prerequisite = new create_booking_issue_ticket_for_a_booking_with_an_infant();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite 1");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         UpdatePayload();
 

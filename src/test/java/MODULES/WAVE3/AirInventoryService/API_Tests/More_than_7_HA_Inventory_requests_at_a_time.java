@@ -33,8 +33,12 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        boolean flightFound = false;
+        Response response = null;
+        int j = 0;
 
-        UpdatePayload();
+        do{
+        UpdatePayload(j);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +53,7 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+        response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirinventoryservice())
@@ -58,6 +62,17 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") ){
+                flightFound = true;
+            }
+
+            j++;
+
+            if(j > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -80,7 +95,7 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int j) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -94,17 +109,19 @@ public class More_than_7_HA_Inventory_requests_at_a_time extends FrameworkConsta
 
 
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
+//        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air1:OriginLocation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air1:DestinationLocation", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(j), getTemp_requestPath(), 0);
 
 
         int dindex = 5, findex = 6, oindex = 7, deindex = 8;
         for (int i = 1; i <= 7; i++) {
             XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(dindex).getNumericCellValue()), getTemp_requestPath(), i);
-            XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(findex).getStringCellValue(), getTemp_requestPath(), i);
+//            XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(findex).getStringCellValue(), getTemp_requestPath(), i);
             XMLParser.updateAttributeValueatIndex("air1:OriginLocation", "LocationCode", InputRow.getCell(oindex).getStringCellValue(), getTemp_requestPath(), i);
             XMLParser.updateAttributeValueatIndex("air1:DestinationLocation", "LocationCode", InputRow.getCell(deindex).getStringCellValue(), getTemp_requestPath(), i);
+            XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(j), getTemp_requestPath(), i);
 
             dindex = dindex + 4;
             findex = findex + 4;

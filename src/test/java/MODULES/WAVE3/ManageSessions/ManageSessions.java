@@ -1,11 +1,14 @@
 package MODULES.WAVE3.ManageSessions;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ManageSessions.API_Tests.Create_a_booking_for_a_group;
 import MODULES.WAVE3.ManageSessions.API_Tests.Create_a_booking_for_two_segments;
 import MODULES.WAVE3.ManageSessions.API_Tests.Modify_name;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,8 +18,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class ManageSessions {
 
-    ManageSessions() {
+    ManageSessions() throws IOException {
+
         createFolders(getResponseDirectory() + "ManageSessions");
+        FlightBooking.bookFlight("ManageSessions");
     }
 
     @Test(description = "MS_24 - Modify_name")

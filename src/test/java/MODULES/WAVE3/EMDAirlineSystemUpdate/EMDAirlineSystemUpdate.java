@@ -1,6 +1,7 @@
 package MODULES.WAVE3.EMDAirlineSystemUpdate;
 
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Association_emd_coupon_1_with_etkt_coupon1_pos_info;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Association_multiple_coupons_for_primary_and_conjunctive_etkt;
 import MODULES.WAVE3.EMDAirlineSystemUpdate.API_Tests.Disassociation_emd_coupon_1_with_etkt_coupon_1;
@@ -10,6 +11,8 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -18,8 +21,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class EMDAirlineSystemUpdate {
 
-    EMDAirlineSystemUpdate() {
+    EMDAirlineSystemUpdate() throws IOException {
         createFolders(getResponseDirectory() + "EMDAirlineSystemUpdate");
+        FlightBooking.bookFlight("EMDAirlineSystemUpdate");
     }
 
     @Description("ASU_02 - Association: EMD coupon 1 with ETKT coupon 1 (POS info)")

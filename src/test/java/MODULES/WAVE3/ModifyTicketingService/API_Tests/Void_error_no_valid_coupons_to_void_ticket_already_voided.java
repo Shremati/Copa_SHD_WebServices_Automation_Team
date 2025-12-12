@@ -36,8 +36,18 @@ public class Void_error_no_valid_coupons_to_void_ticket_already_voided extends F
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_void_error_no_valid_coupons_to_void_ticket_already_voided Prerequisite = new create_booking_void_error_no_valid_coupons_to_void_ticket_already_voided();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite");
 
         issue_ticket_void_error_no_valid_coupons_to_void_ticket_already_voided Prerequisite2 = new issue_ticket_void_error_no_valid_coupons_to_void_ticket_already_voided();

@@ -5,34 +5,34 @@
     </listeners>
     <test name="Sanity Tests">
         <classes>
-<!--            <class name="MODULES.WAVE3.AirScheduleService.AirScheduleService">-->
-<!--                <methods>-->
-<!--                    <include name="AS_03"/>-->
-<!--                    <include name="AS_14"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.AirScheduleService.AirScheduleService">
+                <methods>
+                    <include name="AS_03"/>
+                    <include name="AS_14"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.AuthorizationService.AuthorizationService">-->
-<!--                <methods>-->
-<!--                    <include name="AuthS_01"/>-->
-<!--                    <include name="AuthS_03"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.AuthorizationService.AuthorizationService">
+                <methods>
+                    <include name="AuthS_01"/>
+                    <include name="AuthS_03"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.Availability.Availability">-->
-<!--                <methods>-->
-<!--                    <include name="AVS_02"/>-->
-<!--                    <include name="AVS_03"/>-->
-<!--                    <include name="AVS_05"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.Availability.Availability">
+                <methods>
+                    <include name="AVS_02"/>
+                    <include name="AVS_03"/>
+                    <include name="AVS_05"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService">-->
-<!--                <methods>-->
-<!--                    <include name="BTD_01"/>-->
-<!--                    <include name="BTD_04"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService">
+                <methods>
+                    <include name="BTD_01"/>
+                    <include name="BTD_04"/>
+                </methods>
+            </class>
 
             <class name="MODULES.WAVE3.CreateBookingService.CreateBookingService">
                 <methods>
@@ -44,103 +44,103 @@
                 </methods>
             </class>
 
-<!--            <class name="MODULES.WAVE3.ConnectionFlightInfo.ConnectionFlightInfo">-->
-<!--                <methods>-->
-<!--                    <include name="CFI_01"/>-->
-<!--                    <include name="CFI_02"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ConnectionFlightInfo.ConnectionFlightInfo">
+                <methods>
+                    <include name="CFI_01"/>
+                    <include name="CFI_02"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.CabinCrewReportService.CrewReportService">-->
-<!--                <methods>-->
-<!--                    <include name="CR_01"/>-->
-<!--                    <include name="CR_02"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.CabinCrewReportService.CrewReportService">
+                <methods>
+                    <include name="CR_01"/>
+                    <include name="CR_02"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.DisplayLoyaltyAccountService.DisplayLoyaltyAccountService">-->
-<!--                <methods>-->
-<!--                    <include name="DLAS_01"/>-->
-<!--                    <include name="DLAS_02"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.DisplayLoyaltyAccountService.DisplayLoyaltyAccountService">
+                <methods>
+                    <include name="DLAS_01"/>
+                    <include name="DLAS_02"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.EncodeDecodeService.EncodeDecodeService">-->
-<!--                <methods>-->
-<!--                    <include name="EDS_11"/>-->
-<!--                    <include name="EDS_16"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.EncodeDecodeService.EncodeDecodeService">
+                <methods>
+                    <include name="EDS_11"/>
+                    <include name="EDS_16"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.FlightDepartureInfoService.FlightDepartureInfoService">-->
-<!--                <methods>-->
-<!--                    <include name="FDIS_03"/>-->
-<!--                    <include name="FDIS_04"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.FlightDepartureInfoService.FlightDepartureInfoService">
+                <methods>
+                    <include name="FDIS_03"/>
+                    <include name="FDIS_04"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ModifyBookingService.ModifyBookingService">-->
-<!--                <methods>-->
-<!--                    <include name="MBS_07"/>-->
-<!--                    <include name="MBS_08"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ModifyBookingService.ModifyBookingService">
+                <methods>
+                    <include name="MBS_07"/>
+                    <include name="MBS_08"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ModifyInventoryService.ModifyInventoryService">-->
-<!--                <methods>-->
-<!--                    <include name="MIS_24"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ModifyInventoryService.ModifyInventoryService">
+                <methods>
+                    <include name="MIS_24"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ManageSessions.ManageSessions">-->
-<!--                <methods>-->
-<!--                    <include name="MS_24"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ManageSessions.ManageSessions">
+                <methods>
+                    <include name="MS_24"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ModifySeatMap.ModifySeatMap">-->
-<!--                <methods>-->
-<!--                    <include name="MSM_01"/>-->
-<!--                    <include name="MSM_02"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ModifySeatMap.ModifySeatMap">
+                <methods>
+                    <include name="MSM_01"/>
+                    <include name="MSM_02"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.PassengerListService.PassengerListService">-->
-<!--                <methods>-->
-<!--                    <include name="PLS_01"/>-->
-<!--                    <include name="PLS_18"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.PassengerListService.PassengerListService">
+                <methods>
+                    <include name="PLS_01"/>
+                    <include name="PLS_18"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport">-->
-<!--                <methods>-->
-<!--                    <include name="PMR_02"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport">
+                <methods>
+                    <include name="PMR_02"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ReferenceService.ReferenceService">-->
-<!--                <methods>-->
-<!--                    <include name="RS_06"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ReferenceService.ReferenceService">
+                <methods>
+                    <include name="RS_06"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.ScreenTextService.ScreenTextService">-->
-<!--                <methods>-->
-<!--                    <include name="ST_02"/>-->
-<!--                    <include name="ST_04"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.ScreenTextService.ScreenTextService">
+                <methods>
+                    <include name="ST_02"/>
+                    <include name="ST_04"/>
+                </methods>
+            </class>
 
-<!--            <class name="MODULES.WAVE3.TimaticService.TimaticService">-->
-<!--                 <methods>-->
-<!--                    <include name="TT_05_1"/>-->
-<!--                    <include name="TT_05_2"/>-->
-<!--                    <include name="TT_05_3"/>-->
-<!--                    <include name="TT_10"/>-->
-<!--                    <include name="TT_24"/>-->
-<!--                    <include name="TT_28"/>-->
-<!--                 </methods>-->
-<!--            </class>-->
+            <class name="MODULES.WAVE3.TimaticService.TimaticService">
+                 <methods>
+                    <include name="TT_05_1"/>
+                    <include name="TT_05_2"/>
+                    <include name="TT_05_3"/>
+                    <include name="TT_10"/>
+                    <include name="TT_24"/>
+                    <include name="TT_28"/>
+                 </methods>
+            </class>
 
 <!--            <class name="MODULES.WAVE3.FlifoService.FlifoService">-->
 <!--                <methods>-->

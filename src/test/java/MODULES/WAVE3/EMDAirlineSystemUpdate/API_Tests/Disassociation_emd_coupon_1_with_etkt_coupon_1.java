@@ -33,9 +33,20 @@ public class Disassociation_emd_coupon_1_with_etkt_coupon_1 extends FrameworkCon
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
+
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite = new create_booking_disassociation_emd_coupon_1_with_etkt_coupon_1();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1 Prerequisite2 = new issue_ticket_disassociation_emd_coupon_1_with_etkt_coupon_1();

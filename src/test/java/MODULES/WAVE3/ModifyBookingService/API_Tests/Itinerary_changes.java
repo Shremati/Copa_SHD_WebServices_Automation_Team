@@ -31,7 +31,8 @@ public class Itinerary_changes extends FrameworkConstants {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
         create_booking_itinerary_changes Prerequisite = new create_booking_itinerary_changes();
 
         ExtentLogger.info("Prerequisite 1");

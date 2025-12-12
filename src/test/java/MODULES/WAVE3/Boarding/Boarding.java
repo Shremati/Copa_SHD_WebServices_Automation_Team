@@ -1,10 +1,13 @@
 package MODULES.WAVE3.Boarding;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.Boarding.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -13,8 +16,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //8 Scenarios
 @Listeners(TestListener.class)
 public class Boarding {
-    Boarding() {
+    Boarding() throws IOException {
+
         createFolders(getResponseDirectory() + "Boarding");
+        FlightBooking.bookFlight("Boarding");
     }
 
     @Test(description = "BS_01 - Start Boarding using Boarding option as ‘Sequence’")

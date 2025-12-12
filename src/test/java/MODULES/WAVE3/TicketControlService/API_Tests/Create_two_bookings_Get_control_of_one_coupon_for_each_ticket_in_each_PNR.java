@@ -32,10 +32,18 @@ public class Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_ea
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 1");
         Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1 Prerequisite = new Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1 Prerequisite2 = new Issue_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1();
@@ -45,9 +53,15 @@ public class Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_ea
         Display_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1 Prerequisite3 = new Display_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_1();
         Prerequisite3.run();
 
-        ExtentLogger.info("Prerequisite 4");
         Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_2 Prerequisite4 = new Create_two_bookings_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_2();
-        Prerequisite4.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite4.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 4");
 
         ExtentLogger.info("Prerequisite 5");
         Issue_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_2 Prerequisite5 = new Issue_ticket_Get_control_of_one_coupon_for_each_ticket_in_each_PNR_2();

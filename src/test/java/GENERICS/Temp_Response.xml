@@ -1,11 +1,25 @@
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <ns3:issueTicketResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.eds.com/AirlineSOASchema/TicketingRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/Ticketing/" xmlns:ns2="http://www.eds.com/AirlineSOASchema/TicketingRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
-      <ns4:EDS_TicketingRS TimeStamp="2025-11-17T17:11:50" Version="4.000">
-        <ns4:Errors>
-          <Error Type="12" ShortText="10027">System Processing Error: (1) Error on physical connection: ONC/RPC call timed out</Error>
-        </ns4:Errors>
-      </ns4:EDS_TicketingRS>
-    </ns3:issueTicketResponse>
+    <ns3:sendEntryResponse xmlns:ns6="http://www.opentravel.org/OTA/2003/05/AirBookRQ" xmlns:ns5="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:ns4="http://www.opentravel.org/OTA/2003/05/ScreenTextRS" xmlns:ns3="http://www.eds.com/AirlineSOASchema/ScreenText/" xmlns:ns2="http://www.opentravel.org/OTA/2003/05/ScreenTextRQ" xmlns="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      <ns4:OTA_ScreenTextRS TimeStamp="2025-12-11T16:53:21" Version="4.000">
+        <ns4:Success/>
+        <ns4:TextScreens>
+          <ns4:TextScreen>
+            <ns4:TextData>$:LAXPTYCH</ns4:TextData>
+            <ns4:TextData>                                       02066 - TAX NOT INCLUDED</ns4:TextData>
+            <ns4:TextData>|WH/TPM  3009/MPM  3610</ns4:TextData>
+            <ns4:TextData>LN FARE BASIS    OW   USD  RT   B PEN  DATES/DAYS   AP MIN MAX R</ns4:TextData>
+            <ns4:TextData>01 LLA9TY2S              290.00 L NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+            <ns4:TextData>02 ELA9TY2S              318.00 E NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+            <ns4:TextData>03 LAA9TY2S              320.00 L NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+            <ns4:TextData>04 EAA9TY2S              348.00 E NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+            <ns4:TextData>05 WLA8TY2S              398.00 W NRF    -    -   @ 28@ -  365 R</ns4:TextData>
+            <ns4:TextData>06 LLA9TY1N              430.00 L NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+            <ns4:TextData>07 WAA8TY2S              458.00 W NRF    -    -   @ 28@ -  365 R</ns4:TextData>
+            <ns4:TextData>08 ELA9TY1N              458.00 E NRF    -    -   @ 50@ -  365 R</ns4:TextData>
+          </ns4:TextScreen>
+        </ns4:TextScreens>
+      </ns4:OTA_ScreenTextRS>
+    </ns3:sendEntryResponse>
   </soap:Body>
 </soap:Envelope>

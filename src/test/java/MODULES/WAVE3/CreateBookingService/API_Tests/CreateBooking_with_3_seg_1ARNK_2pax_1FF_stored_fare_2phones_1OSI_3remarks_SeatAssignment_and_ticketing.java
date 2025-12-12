@@ -140,7 +140,7 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
         String filepath1;
         filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3remarks_SeatAssignment_and_ticketing.xml";
 
-        // Segment 1
+//         Segment 1
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
 //        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
@@ -149,7 +149,8 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
         XMLParser.updateAttributeValueatIndex("air1:SeatRequest", "SeatNumber", InputRow.getCell(24).getStringCellValue(), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
 
-        // Segment 2
+
+//         Segment 2
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()), getTemp_requestPath(), 2);
 //        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(), 2);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 2);
@@ -158,8 +159,11 @@ public class CreateBooking_with_3_seg_1ARNK_2pax_1FF_stored_fare_2phones_1OSI_3r
         XMLParser.updateAttributeValueatIndex("air1:SeatRequest", "SeatNumber", InputRow.getCell(26).getStringCellValue(), getTemp_requestPath(), 3);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 2);
 
+
         // Segment 3 ARNK
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(9).getNumericCellValue()), getTemp_requestPath(), 1);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(9).getNumericCellValue()), getTemp_requestPath(), 1);
+
 
         //FFNumber
         XMLParser.updateAttributeValue("air1:CustLoyalty", "MembershipID", InputRow.getCell(36).getStringCellValue(), getTemp_requestPath());

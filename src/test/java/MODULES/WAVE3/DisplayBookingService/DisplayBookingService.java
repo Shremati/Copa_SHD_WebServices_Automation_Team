@@ -1,10 +1,13 @@
 package MODULES.WAVE3.DisplayBookingService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.DisplayBookingService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,8 +18,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 public class DisplayBookingService
 {
 
-    DisplayBookingService() {
+    DisplayBookingService() throws IOException {
+
         createFolders(getResponseDirectory() + "DisplayBookingService");
+        FlightBooking.bookFlight("DisplayBookingService");
     }
 
     @Test(description = "DBS_01 - Display a host airline booking")
@@ -32,7 +37,7 @@ public class DisplayBookingService
     }
 
      @Test(description ="DBS_07 - Display booking by both record locator and Eticket number")
-    public void DBS_07() {
+        public void DBS_07() {
 
         try {
             Display_booking_by_both_record_locator_and_eticket_number.Execute();

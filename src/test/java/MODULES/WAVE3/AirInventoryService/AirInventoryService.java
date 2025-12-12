@@ -1,10 +1,13 @@
 package MODULES.WAVE3.AirInventoryService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.AirInventoryService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,8 +18,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 public class AirInventoryService {
 
     String class_name=this.getClass().getName();
-    AirInventoryService() {
+    AirInventoryService() throws IOException {
+
         createFolders(getResponseDirectory() + "AirInventoryService");
+        FlightBooking.bookFlight("AirInventoryService");
     }
 
     @Description("AIS_01 - Host Airline Inventory Request")

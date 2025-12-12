@@ -35,10 +35,21 @@ public class divide_pnr extends FrameworkConstants {
 
         //        PreRequisite for Scenario ------> Create Booking
 
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_divide_pnr Prerequisite = new create_booking_divide_pnr();
 
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         UpdatePayload();
 

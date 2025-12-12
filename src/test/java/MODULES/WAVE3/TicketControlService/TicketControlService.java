@@ -1,10 +1,13 @@
 package MODULES.WAVE3.TicketControlService;
 
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.TicketControlService.API_Tests.*;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -14,9 +17,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class TicketControlService {
 
-    TicketControlService()
-    {
+    TicketControlService() throws IOException {
         createFolders(getResponseDirectory()+"TicketControlService");
+        FlightBooking.bookFlight("TicketControlService");
     }
 
     @Test(description = "TCS_01 - Get control of one coupon of one ticket")

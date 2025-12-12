@@ -6,10 +6,67 @@
     <test name="Sanity Tests">
         <classes>
 
-            <class name="MODULES.WAVE3.BagTagsDisplayService.BagTagDisplayService">
+<!--            <class name="MODULES.WAVE3.AuthorizationService.AuthorizationService">-->
+<!--                <methods>-->
+<!--                    <include name="AuthS_01"/>-->
+<!--                    <include name="AuthS_03"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.CabinCrewReportService.CrewReportService">-->
+<!--                <methods>-->
+<!--                    <include name="CR_01"/>-->
+<!--                    <include name="CR_02"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.ModifyBookingService.ModifyBookingService">-->
+<!--                <methods>-->
+<!--                    <include name="MBS_07"/>-->
+<!--                    <include name="MBS_08"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.ProcessMealReportService.ProcessMealReport">-->
+<!--                <methods>-->
+<!--                    <include name="PMR_02"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.TicketingService.TicketingService">-->
+<!--                <methods>-->
+<!--                    <include name="TIS_03"/>-->
+<!--                    <include name="TIS_33"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.ModifyTicketingService.ModifyTicketingService">-->
+<!--                <methods>-->
+<!--                    <include name="MTS_04"/>-->
+<!--                    <include name="MTS_18"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.TicketControlService.TicketControlService">-->
+<!--                <methods>-->
+<!--                    <include name="TCS_03"/>-->
+<!--                    <include name="TCS_08"/>-->
+<!--                    <include name="TCS_11"/>-->
+<!--                    <include name="TCS_12"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--            <class name="MODULES.WAVE3.EMDAirlineSystemUpdate.EMDAirlineSystemUpdate">-->
+<!--                <methods>-->
+<!--                    <include name="ASU_06"/>-->
+<!--                    <include name="ASU_07"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+            <class name="MODULES.WAVE3.FlightDepartureInfoService.FlightDepartureInfoService">
                 <methods>
-                    <include name="BTD_01"/>
-<!--                    <include name="BTD_04"/>-->
+                    <include name="FDIS_03"/>
+<!--                    <include name="FDIS_04"/>-->
                 </methods>
             </class>
         </classes>

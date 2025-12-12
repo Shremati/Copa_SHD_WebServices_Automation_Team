@@ -34,7 +34,13 @@ public class Get_flight_history_info extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+            UpdatePayload(i);
+
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +55,7 @@ public class Get_flight_history_info extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+             response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDepartureControlDisplay())
@@ -58,6 +64,21 @@ public class Get_flight_history_info extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+//            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("BookingReferenceID")){
+                if(response.getBody().asString().contains("Success") ){
+
+                    flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -84,7 +105,7 @@ public class Get_flight_history_info extends FrameworkConstants {
 
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -99,8 +120,9 @@ public class Get_flight_history_info extends FrameworkConstants {
 
 
         XMLParser.updateAttributeValue("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("dep1:FlightLegInfo", "FlightNumber", availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), getTemp_requestPath());
 
         wb.close();
 

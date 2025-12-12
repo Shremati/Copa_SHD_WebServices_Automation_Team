@@ -36,9 +36,9 @@ public class FlightBooking {
                     int originCellNo=cellNo;
                     int destinationCellNo=cellNo+1;
 
-                    boolean isOriginNotBlank = sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(originCellNo).getCellType() != CellType.BLANK &&
+                    boolean isOriginNotBlank = sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(originCellNo) != null && sheet.getRow(rowNumber).getCell(originCellNo).getCellType() != CellType.BLANK &&
                             sheet.getRow(rowNumber).getCell(originCellNo).toString().trim().length() > 0;
-                    boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(destinationCellNo).getCellType() != CellType.BLANK &&
+                    boolean isDestinationNotBlank =  sheet.getRow(rowNumber) != null && sheet.getRow(rowNumber).getCell(originCellNo) != null && sheet.getRow(rowNumber).getCell(destinationCellNo).getCellType() != CellType.BLANK &&
                             sheet.getRow(rowNumber).getCell(destinationCellNo).toString().trim().length() > 0;
 
                     if(isOriginNotBlank && isDestinationNotBlank)

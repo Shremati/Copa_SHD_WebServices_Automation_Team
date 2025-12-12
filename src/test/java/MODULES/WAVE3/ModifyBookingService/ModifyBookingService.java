@@ -1,10 +1,13 @@
 package MODULES.WAVE3.ModifyBookingService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ModifyBookingService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -14,8 +17,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class ModifyBookingService {
 
-    ModifyBookingService() {
+    ModifyBookingService() throws IOException {
         createFolders(getResponseDirectory() + "ModifyBookingService");
+        FlightBooking.bookFlight("ModifyBookingService");
     }
 
     @Test(description = "MBS_01 - Cancel Booking")

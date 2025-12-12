@@ -36,9 +36,18 @@ public class Association_multiple_coupons_for_primary_and_conjunctive_etkt exten
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
+        int i=0;
+        boolean flightFound=false;
+
         create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite = new create_booking_association_multiple_coupons_for_primary_and_conjunctive_etkt();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt Prerequisite2 = new issue_ticket_association_multiple_coupons_for_primary_and_conjunctive_etkt();

@@ -33,10 +33,20 @@ public class Modify_name extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
+        int i=0;
+        boolean flightFound=false;
+
         Create_Booking Prerequisite1 = new Create_Booking();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);//Creating 3 pax RPH=1,2,3
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 1");
-        Prerequisite1.run();//Creating 3 pax RPH=1,2,3
+//        Prerequisite1.run();//Creating 3 pax RPH=1,2,3
 
         Modify_Booking Prerequisite2 = new Modify_Booking(); //We are changing/modifying the names of above 3 pax
 
