@@ -5,6 +5,8 @@ import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_display_by_eticket_number;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.Issue_ticket_display_booking_by_eticket_number;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -38,14 +40,29 @@ public class Passengers_in_different_booking_in_single_request extends Framework
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        create_booking_service_onepax Prerequisite1 = new create_booking_service_onepax();
-        Prerequisite1.run(); //1st PNR generated in column 7
+//        ExtentLogger.info("Prerequisite 1");
+//        create_booking_service_onepax Prerequisite1 = new create_booking_service_onepax();
+//        Prerequisite1.run(); //1st PNR generated in column 7
+
+//        UpdatePayload();
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         ExtentLogger.info("Prerequisite 2");
         create_booking_service_singlepax Prerequisite2 = new create_booking_service_singlepax();
-        Prerequisite2.run(); //2nd PNR generated in column 14
-
+        Prerequisite2.run();
 
         UpdatePayload();
 

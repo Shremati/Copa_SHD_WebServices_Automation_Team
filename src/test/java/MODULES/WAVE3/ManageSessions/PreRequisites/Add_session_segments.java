@@ -32,10 +32,10 @@ public class Add_session_segments extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -83,13 +83,14 @@ public class Add_session_segments extends FrameworkConstants {
         writer.close();
 
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -105,12 +106,15 @@ public class Add_session_segments extends FrameworkConstants {
         XMLParser.updateAttributeValue("air:OTA_AirBookModifyRQ","TransactionIdentifier",InputRow.getCell(3).getStringCellValue(),filepath1);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
+
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(13).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),1);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(10).getStringCellValue() + "-" + InputRow.getCell(11).getStringCellValue()).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
 
@@ -119,7 +123,7 @@ public class Add_session_segments extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -130,6 +134,8 @@ public class Add_session_segments extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("ManageSessions");
         XSSFRow InputRow=sheet.getRow(3);
 
+        InputRow.getCell(6).setCellValue(availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i));
+        InputRow.getCell(9).setCellValue(availableFlights.get(InputRow.getCell(10).getStringCellValue() + "-" + InputRow.getCell(11).getStringCellValue()).get(i));
         String TransactionIdentifier = XMLParser.GetAttributeValue("ns6:OTA_AirBookRS","TransactionIdentifier",getTemp_responsePath());
 
         InputRow.getCell(3).setCellValue(TransactionIdentifier);

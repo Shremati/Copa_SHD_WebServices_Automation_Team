@@ -4,10 +4,8 @@ package MODULES.WAVE3.ModifyTicketingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_refund_error_cancell_all_segments_prior_refund;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_refund_error_cancell_all_segments_prior_refund;
-import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ticket;
+
+import MODULES.WAVE3.ModifyTicketingService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -38,9 +36,25 @@ public class Refund_error_cancell_all_segments_prior_refund extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        create_booking_refund_error_cancell_all_segments_prior_refund Prerequisite = new create_booking_refund_error_cancell_all_segments_prior_refund();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_refund_error_cancell_all_segments_prior_refund Prerequisite = new create_booking_refund_error_cancell_all_segments_prior_refund();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_refund_error_cancell_all_segments_prior_refund Prerequisite2 = new issue_ticket_refund_error_cancell_all_segments_prior_refund();
         Prerequisite2.run(); //generates ticket number

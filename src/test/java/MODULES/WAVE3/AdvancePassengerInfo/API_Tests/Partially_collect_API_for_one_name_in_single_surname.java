@@ -4,6 +4,7 @@ import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_partially_collect_API_for_one_name_in_single_surname;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Partially_Collect_API;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -34,9 +35,25 @@ public class Partially_collect_API_for_one_name_in_single_surname extends Framew
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_partially_collect_API_for_one_name_in_single_surname Prerequisite1 = new Create_booking_partially_collect_API_for_one_name_in_single_surname();
-        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_partially_collect_API_for_one_name_in_single_surname Prerequisite1 = new Create_booking_partially_collect_API_for_one_name_in_single_surname();
+//        Prerequisite1.run();
+
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_booking_partially_collect_API_for_one_name_in_single_surname Prerequisite = new Create_booking_partially_collect_API_for_one_name_in_single_surname();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         ExtentLogger.info("Prerequisite 2");
         Display_API_Partially_Collect_API Prerequisite2 = new Display_API_Partially_Collect_API();

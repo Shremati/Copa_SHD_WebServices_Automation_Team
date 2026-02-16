@@ -29,9 +29,9 @@ public class Booking_bulk_ticket extends FrameworkConstants
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -70,12 +70,13 @@ public class Booking_bulk_ticket extends FrameworkConstants
         writer.close();
 
 
-         excelwriter();
+         excelwriter(i);
+         return true;
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -89,7 +90,8 @@ public class Booking_bulk_ticket extends FrameworkConstants
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayTicketService\\PreRequisites\\Booking_bulk_ticket.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        //XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath());
 
@@ -100,7 +102,7 @@ public class Booking_bulk_ticket extends FrameworkConstants
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -111,7 +113,7 @@ public class Booking_bulk_ticket extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("DisplayTicketService");
         XSSFRow InputRow=sheet.getRow(5);
 
-
+        InputRow.getCell(5).setCellValue(availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i));
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
         InputRow.getCell(8).setCellValue(PNR);

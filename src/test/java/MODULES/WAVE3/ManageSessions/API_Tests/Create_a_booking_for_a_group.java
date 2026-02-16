@@ -3,6 +3,8 @@ package MODULES.WAVE3.ManageSessions.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import MODULES.WAVE3.ManageSessions.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -38,10 +40,26 @@ public class Create_a_booking_for_a_group extends FrameworkConstants {
         ExtentLogger.info("Prerequisite 1");
         Prerequisite1.run();
 
-        Add_session Prerequisite2 = new Add_session();
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 2");
-        Prerequisite2.run();
+//We are searching all the available flights in a do while loop
+        Add_session Prerequisite2 = new  Add_session();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite2.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite2");
+
+//
+//        Add_session Prerequisite2 = new Add_session();
+//
+//        ExtentLogger.info("Prerequisite 2");
+//        Prerequisite2.run();
 
         Add_session_PAX_data Prerequisite3 = new Add_session_PAX_data();
 

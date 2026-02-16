@@ -38,9 +38,24 @@ public class Create_a_booking_for_two_segments extends FrameworkConstants {
         Get_Token_03 Prerequisite1 = new Get_Token_03();
         Prerequisite1.run();
         ExtentLogger.info("Prerequisite1");
+//
+//        Add_session_segments Prerequisite2 = new Add_session_segments();
+//        Prerequisite2.run();
+//        ExtentLogger.info("Prerequisite2");
 
-        Add_session_segments Prerequisite2 = new Add_session_segments();
-        Prerequisite2.run();
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Add_session_segments Prerequisite2 = new  Add_session_segments();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite2.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite2");
 
         Add_session_pax_data_03 Prerequisite3 = new Add_session_pax_data_03();

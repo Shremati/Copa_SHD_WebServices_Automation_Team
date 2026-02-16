@@ -6,6 +6,7 @@ import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_bulk_ticket;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_bulk_ticket;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_multiple_tickets;
+import MODULES.WAVE3.PassengerListService.PreRequisites.Create_Booking_Request;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -37,9 +38,25 @@ public class Bulk_Ticket extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+//        Booking_bulk_ticket Prerequisite1 = new Booking_bulk_ticket();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Booking_bulk_ticket Prerequisite1 = new Booking_bulk_ticket();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite1");
+
 
         Issue_bulk_ticket Prerequisite2 = new Issue_bulk_ticket();
         Prerequisite2.run();

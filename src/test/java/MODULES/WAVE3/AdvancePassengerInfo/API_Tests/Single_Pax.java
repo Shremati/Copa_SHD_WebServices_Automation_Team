@@ -3,6 +3,7 @@ import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import GENERICS.RESTWrapper;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
+import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_print_an_eticket;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -37,10 +38,24 @@ public class Single_Pax extends FrameworkConstants
     {
 
 
-//        PreRequisite for Scenario ------> Create Booking
-       ExtentLogger.info("Prerequisite 1");
-       create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-       Prerequisite.run();
+////        PreRequisite for Scenario ------> Create Booking
+//       ExtentLogger.info("Prerequisite 1");
+//       create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
+//       Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        create_booking_service_onepax Prerequisite = new  create_booking_service_onepax();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
 
        UpdatePayload();

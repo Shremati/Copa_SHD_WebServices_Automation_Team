@@ -2,6 +2,8 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_NonTicketed_PNR;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_single_ticket;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_booking_single_ticket;
 import frameworkconstants.FrameworkConstants;
@@ -36,9 +38,25 @@ public class Single_ticket extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Create_booking_single_ticket Prerequisite1 = new Create_booking_single_ticket();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        Create_booking_single_ticket Prerequisite1 = new Create_booking_single_ticket();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_booking_single_ticket Prerequisite = new Create_booking_single_ticket();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         Issue_booking_single_ticket Prerequisite2 = new Issue_booking_single_ticket();
         Prerequisite2.run();

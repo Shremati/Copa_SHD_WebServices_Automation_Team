@@ -4,6 +4,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_display_API_specific_flight;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_error_invalid_passenger_name;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -35,9 +36,23 @@ public class Display_API_requirements_only_for_specific_flight extends Framework
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_display_API_specific_flight Prerequisite = new Create_booking_display_API_specific_flight();
-        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_display_API_specific_flight Prerequisite = new Create_booking_display_API_specific_flight();
+//        Prerequisite.run();
+
+        int i=0;
+        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite1");
+
+//We are searching all the available flights in a do while loop
+        Create_booking_display_API_specific_flight Prerequisite = new  Create_booking_display_API_specific_flight();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
 
         UpdatePayload();
 

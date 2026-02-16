@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_pax_types_adt_infant_with_seat_infant_without_seat;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_multiplepax_with_same_surname;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -33,9 +34,24 @@ public class Display_API_pax_types_adt_infant_with_seat_infant_without_seat exte
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_pax_types_adt_infant_with_seat_infant_without_seat Prerequisite = new Create_booking_pax_types_adt_infant_with_seat_infant_without_seat();
-        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_pax_types_adt_infant_with_seat_infant_without_seat Prerequisite = new Create_booking_pax_types_adt_infant_with_seat_infant_without_seat();
+//        Prerequisite.run();
+
+        int i=0;
+        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite1");
+
+//We are searching all the available flights in a do while loop
+        Create_booking_pax_types_adt_infant_with_seat_infant_without_seat Prerequisite = new  Create_booking_pax_types_adt_infant_with_seat_infant_without_seat();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
 
         UpdatePayload();
 

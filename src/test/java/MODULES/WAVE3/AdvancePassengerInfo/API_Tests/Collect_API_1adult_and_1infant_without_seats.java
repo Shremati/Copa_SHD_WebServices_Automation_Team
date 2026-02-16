@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Add_APIS_Collect_API_1adult_and_1infant_without_seats;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_Specific_flight_multiple_pax_names;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_for_1adult_and_1infant_without_seat;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_APIS_Collect_API_1adult_and_1infant_without_seats;
 import frameworkconstants.FrameworkConstants;
@@ -35,9 +36,24 @@ public class Collect_API_1adult_and_1infant_without_seats extends FrameworkConst
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_for_1adult_and_1infant_without_seat Prerequisite1 = new Create_booking_for_1adult_and_1infant_without_seat();
-        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_for_1adult_and_1infant_without_seat Prerequisite1 = new Create_booking_for_1adult_and_1infant_without_seat();
+//        Prerequisite1.run();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_booking_for_1adult_and_1infant_without_seat Prerequisite = new Create_booking_for_1adult_and_1infant_without_seat();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         ExtentLogger.info("Prerequisite 2");
         Display_APIS_Collect_API_1adult_and_1infant_without_seats Prerequisite2 = new Display_APIS_Collect_API_1adult_and_1infant_without_seats();

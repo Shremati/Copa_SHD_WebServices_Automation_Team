@@ -33,9 +33,25 @@ public class Collect_API_for_2pax_in_different_bookings extends FrameworkConstan
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_for_2pax_in_different_bookings_1 Prerequisite1 = new Create_booking_for_2pax_in_different_bookings_1();
-        Prerequisite1.run(); //1st PNR getting stored in column 7
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_for_2pax_in_different_bookings_1 Prerequisite1 = new Create_booking_for_2pax_in_different_bookings_1();
+//        Prerequisite1.run(); //1st PNR getting stored in column 7
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_booking_for_2pax_in_different_bookings_1 Prerequisite = new Create_booking_for_2pax_in_different_bookings_1();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         ExtentLogger.info("Prerequisite 2");
         Display_API_Collect_API_2pax_diff_bookings_1 Prerequisite2 = new Display_API_Collect_API_2pax_diff_bookings_1();

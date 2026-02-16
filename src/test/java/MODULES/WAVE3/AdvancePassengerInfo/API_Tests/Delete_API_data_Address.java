@@ -3,6 +3,7 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_delete_API_data_Address;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_for_1adult_and_1infant_without_seat;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_delete_API_address;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_delete_API_data_Address;
 import frameworkconstants.FrameworkConstants;
@@ -35,9 +36,24 @@ public class Delete_API_data_Address extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_delete_API_data_Address Prerequisite = new Create_booking_delete_API_data_Address();
+//        Prerequisite.run();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_booking_delete_API_data_Address Prerequisite = new Create_booking_delete_API_data_Address();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         ExtentLogger.info("Prerequisite 2");
         Display_API_delete_API_address Prerequisite1 = new Display_API_delete_API_address();

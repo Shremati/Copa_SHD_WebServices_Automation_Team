@@ -36,9 +36,26 @@ public class Void_a_ticket extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+//        create_booking_void_a_ticket Prerequisite = new create_booking_void_a_ticket();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_void_a_ticket Prerequisite = new create_booking_void_a_ticket();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
+
 
         issue_ticket_void_a_ticket Prerequisite2 = new issue_ticket_void_a_ticket();
         Prerequisite2.run(); //generates ticket number

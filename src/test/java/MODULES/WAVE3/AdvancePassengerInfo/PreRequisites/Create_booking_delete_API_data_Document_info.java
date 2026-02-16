@@ -31,10 +31,9 @@ public class Create_booking_delete_API_data_Document_info extends FrameworkConst
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-
-        UpdatePayload();
-
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
+        UpdatePayload(i);
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -82,12 +81,12 @@ public class Create_booking_delete_API_data_Document_info extends FrameworkConst
         writer.close();
 
 
-        excelwriter();
-
+        excelwriter(i);
+        return true;
 
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -101,7 +100,8 @@ public class Create_booking_delete_API_data_Document_info extends FrameworkConst
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Create_booking_delete_API_data_Document_info.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
@@ -110,7 +110,7 @@ public class Create_booking_delete_API_data_Document_info extends FrameworkConst
 
     }
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -121,7 +121,8 @@ public class Create_booking_delete_API_data_Document_info extends FrameworkConst
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(10);
 
-
+//        InputRow.getCell(2).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());

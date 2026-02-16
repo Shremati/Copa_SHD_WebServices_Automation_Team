@@ -39,9 +39,24 @@ public class Print_an_eticket extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+//        create_booking_print_an_eticket Prerequisite = new create_booking_print_an_eticket();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_print_an_eticket Prerequisite = new create_booking_print_an_eticket();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_print_an_eticket Prerequisite2 = new issue_ticket_print_an_eticket();
         Prerequisite2.run();

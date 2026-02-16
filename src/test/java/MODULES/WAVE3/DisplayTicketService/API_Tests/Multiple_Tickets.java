@@ -2,6 +2,8 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_Specific_flight_multiple_pax_names;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_singlepax;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Booking_multiple_tickets;
@@ -39,9 +41,25 @@ public class Multiple_Tickets extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        Booking_multiple_tickets Prerequisite1 = new Booking_multiple_tickets();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Booking_multiple_tickets Prerequisite = new Booking_multiple_tickets();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         Issue_multiple_tickets Prerequisite2 = new Issue_multiple_tickets();
         Prerequisite2.run();
@@ -63,7 +81,7 @@ public class Multiple_Tickets extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         Response response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDisplayticketservices())
@@ -72,6 +90,7 @@ public class Multiple_Tickets extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         //Getting ticketnumber from excelwriter

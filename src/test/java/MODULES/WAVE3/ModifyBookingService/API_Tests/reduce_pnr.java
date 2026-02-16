@@ -3,6 +3,8 @@ package MODULES.WAVE3.ModifyBookingService.API_Tests;
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_cancel_booking;
 import MODULES.WAVE3.ModifyBookingService.PreRequisites.create_booking_reduce_pnr;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -33,10 +35,24 @@ public class reduce_pnr extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
         //        PreRequisite for Scenario ------> Create Booking
-        create_booking_reduce_pnr Prerequisite = new create_booking_reduce_pnr();
+//        create_booking_reduce_pnr Prerequisite = new create_booking_reduce_pnr();
+//
+//        ExtentLogger.info("Prerequisite 1");
+//        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+////We are searching all the available flights in a do while loop
+        create_booking_reduce_pnr Prerequisite = new create_booking_reduce_pnr();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
 //       <!-- Required data: the names to remove from the reservation in TravelerInfo -->
 //         <!-- Indicate the passenger from the lowest to highest RPH -->

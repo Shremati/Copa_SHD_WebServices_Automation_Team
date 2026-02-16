@@ -2,6 +2,8 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_error_invalid_passenger_name;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_error_not_API_flight;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -35,10 +37,23 @@ public class Display_API_error_not_API_flight extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_error_not_API_flight Prerequisite = new Create_booking_error_not_API_flight();
-        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_error_not_API_flight Prerequisite = new Create_booking_error_not_API_flight();
+//        Prerequisite.run();
 
+        int i=0;
+        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite1");
+
+//We are searching all the available flights in a do while loop
+        Create_booking_error_not_API_flight Prerequisite = new  Create_booking_error_not_API_flight();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

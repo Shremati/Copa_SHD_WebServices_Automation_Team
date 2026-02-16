@@ -35,11 +35,27 @@ public class Pax_List_Request_Positive_Non_Revenue extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
+//        Create_Booking_Request Prerequisite = new Create_Booking_Request();
+//
+//        ExtentLogger.info("Prerequisite 1");
+//        Prerequisite.run();
+//
+//        UpdatePayload();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_Request Prerequisite = new Create_Booking_Request();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
 
-        ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+        }while(!flightFound);
 
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

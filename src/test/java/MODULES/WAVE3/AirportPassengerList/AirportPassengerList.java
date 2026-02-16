@@ -18,8 +18,12 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 public class AirportPassengerList {
 
     AirportPassengerList()throws IOException {
+
+
+
             createFolders(getResponseDirectory() + "AirportPassengerList");
             FlightBooking.bookFlight("AirportPassengerList");
+
 
     }
 

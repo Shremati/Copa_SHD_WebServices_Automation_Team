@@ -31,10 +31,9 @@ public class Create_booking_collect_API_for_a_single_pax_alt extends FrameworkCo
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public  void run() throws IOException, ParserConfigurationException, TransformerException, SAXException{
-
-        UpdatePayload();
-
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
+        UpdatePayload(i);
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -82,10 +81,11 @@ public class Create_booking_collect_API_for_a_single_pax_alt extends FrameworkCo
         writer.close();
 
         excelwriter();
-
+        return true;
+//        return response.getBody().asString().contains("Success");
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -99,8 +99,8 @@ public class Create_booking_collect_API_for_a_single_pax_alt extends FrameworkCo
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\AdvancePassengerInfo\\PreRequisites\\Create_booking_collect_API_for_a_single_pax_alt.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-
+//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
@@ -121,17 +121,15 @@ public class Create_booking_collect_API_for_a_single_pax_alt extends FrameworkCo
         XSSFSheet sheet = wb.getSheet("AdvancePassengerInfo");
         XSSFRow InputRow=sheet.getRow(7);
 
-
+        InputRow.getCell(2).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
-
         InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(8).setCellValue(Givenname);
         InputRow.getCell(9).setCellValue(Surname);
-
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

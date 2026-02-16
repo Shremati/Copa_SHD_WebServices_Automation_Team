@@ -4,6 +4,7 @@ import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_multiplepax_with_same_surname;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.create_booking_service_onepax;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -35,9 +36,25 @@ public class Single_surname_multiple_names extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        create_booking_multiplepax_with_same_surname Prerequisite = new create_booking_multiplepax_with_same_surname();
-        Prerequisite.run();  //Booking with 3 pax with same surname
+//        ExtentLogger.info("Prerequisite 1");
+//        create_booking_multiplepax_with_same_surname Prerequisite = new create_booking_multiplepax_with_same_surname();
+//        Prerequisite.run();  //Booking with 3 pax with same surname
+
+        int i=0;
+        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite1");
+
+//We are searching all the available flights in a do while loop
+        create_booking_multiplepax_with_same_surname Prerequisite = new  create_booking_multiplepax_with_same_surname();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
 
         UpdatePayload();

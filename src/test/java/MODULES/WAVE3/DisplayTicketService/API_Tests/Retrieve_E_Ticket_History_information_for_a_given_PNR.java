@@ -3,6 +3,8 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_delete_API_data_Address;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_NonTicketed_PNR;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_display_history_info_for_given_two_tkts;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_NonTicketed_PNR;
@@ -35,9 +37,25 @@ public class Retrieve_E_Ticket_History_information_for_a_given_PNR extends Frame
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Create_NonTicketed_PNR Prerequisite1 = new Create_NonTicketed_PNR();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        Create_NonTicketed_PNR Prerequisite1 = new Create_NonTicketed_PNR();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_NonTicketed_PNR Prerequisite = new Create_NonTicketed_PNR();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         Issue_NonTicketed_PNR Prerequisite2 = new Issue_NonTicketed_PNR();
         Prerequisite2.run();
