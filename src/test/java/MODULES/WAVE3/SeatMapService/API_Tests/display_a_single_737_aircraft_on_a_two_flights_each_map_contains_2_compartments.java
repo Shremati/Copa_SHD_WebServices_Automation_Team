@@ -33,7 +33,13 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +55,7 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+                 response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getSeatmapservice())
@@ -58,6 +64,20 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        //If response does not contain success and PNR then there is no point in going forward for the assertion check
+// hence we are returing false
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("CabinType")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -88,11 +108,10 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
         writer.write("");
         writer.flush();
 
-
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -107,19 +126,18 @@ public class display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_
 
         //Segment 1
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4)).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
        //Segment 2
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8)).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
         wb.close();
 
     }
-
 
 }

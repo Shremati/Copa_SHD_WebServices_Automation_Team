@@ -333,7 +333,8 @@ public class DisplayBookingService
 
             Error_displaying_a_booking_from_a_specific_address_LNIATA.Execute();  //We need a LNIATA where PNR is not created for a given day
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             failTest(e);
             System.out.println("DBS_05 failed due to :" + e);
         }

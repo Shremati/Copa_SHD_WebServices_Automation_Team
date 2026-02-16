@@ -63,12 +63,18 @@
 <!--                </methods>-->
 <!--            </class>-->
 
-            <class name="MODULES.WAVE3.FlightDepartureInfoService.FlightDepartureInfoService">
-                <methods>
-                    <include name="FDIS_03"/>
-<!--                    <include name="FDIS_04"/>-->
-                </methods>
-            </class>
+                        <class name="MODULES.WAVE3.Boarding.Boarding">
+                            <methods>
+
+                                <include name="BS_01"/>
+<!--                                <include name="BS_02"/>-->
+<!--                                <include name="BS_04"/>-->
+<!--            &lt;!&ndash;                    BS_01 is included because BS_14 is dependent on it&ndash;&gt;-->
+<!--            &lt;!&ndash;                    BS_02 is included because BS_13 is dependent on it&ndash;&gt;-->
+<!--                                <include name="BS_13"/>-->
+<!--                                <include name="BS_14"/>-->
+                            </methods>
+                        </class>
         </classes>
     </test>
 </suite>

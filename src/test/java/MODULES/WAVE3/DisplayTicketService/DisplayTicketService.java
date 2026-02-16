@@ -1,11 +1,14 @@
 package MODULES.WAVE3.DisplayTicketService;
 
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.DisplayTicketService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -14,9 +17,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //14 Scenarios
 @Listeners(TestListener.class)
 public class DisplayTicketService {
+    DisplayTicketService() throws IOException {
 
-    DisplayTicketService() {
         createFolders(getResponseDirectory() + "DisplayTicketService");
+        FlightBooking.bookFlight("DisplayTicketService");
     }
 
     @Test(description = "DTS_27 - Search_for_a_non_existent_PNR")

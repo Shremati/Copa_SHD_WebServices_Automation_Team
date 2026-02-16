@@ -33,9 +33,9 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //                       ********** Reading the xml request file **********
 
@@ -85,13 +85,14 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
         writer.close();
 
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
     }
 
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -106,7 +107,8 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
@@ -115,7 +117,7 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -126,7 +128,7 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
         XSSFRow InputRow=sheet.getRow(10);
 
-
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
 

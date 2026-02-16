@@ -6,6 +6,7 @@ import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.BookingRequest;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_with_NRSA;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.create_booking_for_two_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -39,9 +40,28 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        Create_Booking_with_NRSA Prerequisite =new Create_Booking_with_NRSA();
-        Prerequisite.run();
+//        Create_Booking_with_NRSA Prerequisite =new Create_Booking_with_NRSA();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_Booking_with_NRSA Prerequisite = new Create_Booking_with_NRSA();
+
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite");
+
+
 
         UpdatePayload();
 
@@ -116,11 +136,18 @@ public class Find_passengers_with_passcode_SA3R09 extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 //Filter value-->SurnamePrefix
+//        XMLParser.SetTagtext("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
+//
+//        PNR = InputRow.getCell(7).getStringCellValue();
+//
+//        wb.close();
+
+
+
         XMLParser.SetTagtext("air1:FilterValues",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath());
 
         PNR = InputRow.getCell(7).getStringCellValue();
 
         wb.close();
-
     }
 }

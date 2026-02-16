@@ -5,6 +5,7 @@ import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_display_by_eticket_number;
 import MODULES.WAVE3.DisplayBookingService.PreRequisites.Issue_ticket_display_booking_by_eticket_number;
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_booking_by_both_record_locator_and_eticket_number;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -39,8 +40,22 @@ public class Display_booking_by_eticket_number extends FrameworkConstants {
     {
         //        PreRequisite for Scenario ------> Create Booking
 
+//        Create_Booking_display_by_eticket_number Prerequisite = new Create_Booking_display_by_eticket_number();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_display_by_eticket_number Prerequisite = new Create_Booking_display_by_eticket_number();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite");
 
         Issue_ticket_display_booking_by_eticket_number Prerequisite2 = new Issue_ticket_display_booking_by_eticket_number();

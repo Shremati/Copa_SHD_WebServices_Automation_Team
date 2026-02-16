@@ -31,9 +31,9 @@ public class Create_Booking2 extends FrameworkConstants {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -59,6 +59,11 @@ public class Create_Booking2 extends FrameworkConstants {
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        if(!(response.getBody().asString().contains("Success"))){
+            return false;
+
+        }
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -81,13 +86,13 @@ public class Create_Booking2 extends FrameworkConstants {
         writer.close();
 
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
 
     }
 
-
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -100,18 +105,17 @@ public class Create_Booking2 extends FrameworkConstants {
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\SynchronizeTicketService\\PreRequisites\\Create_Booking2.xml";
 
-
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(7).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(1).getStringCellValue()+"-"+InputRow.getCell(2).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),0);
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(8).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(4).getStringCellValue()+"-"+InputRow.getCell(5).getStringCellValue()).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),1);
 
         XMLParser.updateAttributeValueatIndex("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(9).getNumericCellValue()), getTemp_requestPath(), 0);
@@ -119,7 +123,7 @@ public class Create_Booking2 extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -134,6 +138,11 @@ public class Create_Booking2 extends FrameworkConstants {
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(12).setCellValue(PNR);
+
+        String flight1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0);
+        InputRow.getCell(3).setCellValue(flight1);
+        String flight2 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),1);
+        InputRow.getCell(6).setCellValue(flight2);
 
         String ArrivalDate1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0);
         InputRow.getCell(20).setCellValue(ArrivalDate1);

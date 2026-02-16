@@ -41,9 +41,24 @@ public class Flight_data_search_given_name_surname extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        create_booking_flight_data_search_given_name_surname Prerequisite = new create_booking_flight_data_search_given_name_surname();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_flight_data_search_given_name_surname Prerequisite = new create_booking_flight_data_search_given_name_surname();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_flight_data_search_given_name_surname Prerequisite2 = new issue_ticket_flight_data_search_given_name_surname();
         Prerequisite2.run();

@@ -31,8 +31,15 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+//        UpdatePayload(i);
+//
+        Response response = null;
 
+        boolean flightFound = false;
+
+        int i = 0;
+        do{
+            UpdatePayload(i);
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -46,7 +53,7 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+                 response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getFlightdepartureinfoservice())
                 .then()
@@ -54,6 +61,19 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("Status=\"NotOpen\"")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "FlightDepartureInfoService\\Flight_has_two_legs_and_notopen_status.xml"));
@@ -83,7 +103,7 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -96,7 +116,8 @@ public class Flight_has_two_legs_and_notopen_status extends FrameworkConstants {
         filepath1 = getRequestDirectory() + "FlightDepartureInfoService\\Flight_has_two_legs_and_notopen_status.xml";
 
 
-        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+//        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+        XMLParser.SetTagtextatIndex("read:FlightNumber",  availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), filepath1,0);
         XMLParser.updateAttributeValue("read:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("read:DepartureAirport", "CodeContext", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);

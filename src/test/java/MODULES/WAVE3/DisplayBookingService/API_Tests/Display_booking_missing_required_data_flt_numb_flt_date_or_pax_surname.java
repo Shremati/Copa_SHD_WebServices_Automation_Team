@@ -38,10 +38,26 @@ public class Display_booking_missing_required_data_flt_numb_flt_date_or_pax_surn
     {
         //        PreRequisite for Scenario ------> Create Booking
 
-        Create_Booking_FF_pax Prerequisite1 = new Create_Booking_FF_pax();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        Create_Booking_FF_pax Prerequisite1 = new Create_Booking_FF_pax();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+//
+//        UpdatePayload();
 
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_Booking_FF_pax Prerequisite = new Create_Booking_FF_pax();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

@@ -37,8 +37,24 @@ public class Eticketed_passengers_not_checked_in_04 extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        Create_booking_Eticketed_passengers_not_checked_in_04 Prerequisite1 =new Create_booking_Eticketed_passengers_not_checked_in_04();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_booking_Eticketed_passengers_not_checked_in_04 Prerequisite1 =new Create_booking_Eticketed_passengers_not_checked_in_04();
-        Prerequisite1.run();
+
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite1");
 
         issue_ticket_Eticketed_passengers_not_checked_in_04 Prerequisite2 = new issue_ticket_Eticketed_passengers_not_checked_in_04();

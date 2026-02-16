@@ -1,13 +1,16 @@
 package MODULES.WAVE3.ModifyInventoryService;
 
+import MODULES.WAVE3.DisplayTicketService.API_Tests.Conjunctive_ticket_conjunctive;
 import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_contains_single_Authorization_level;
 import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_contains_single_MaxSeatsAllotted;
 import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier;
 import io.qameta.allure.Description;
+import junit.framework.Assert;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+import java.io.IOException;
+import GENERICS.FlightBooking;
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -16,8 +19,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class ModifyInventoryService {
 
-    ModifyInventoryService() {
+    ModifyInventoryService() throws IOException {
+
         createFolders(getResponseDirectory() + "ModifyInventoryService");
+        FlightBooking.bookFlight("ModifyInventoryService");
     }
 
     @Test(description = "MIS_01 - ModifyInventory Request contains single Authorization level")
@@ -50,6 +55,7 @@ public class ModifyInventoryService {
     public void MIS_24() {
 
         try {
+
             ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.Execute();
 
         } catch (Exception e) {
@@ -57,4 +63,6 @@ public class ModifyInventoryService {
             System.out.println("MIS_24 failed due to :" + e);
         }
     }
+
+
 }

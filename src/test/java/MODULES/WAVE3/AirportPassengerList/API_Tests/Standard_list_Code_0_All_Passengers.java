@@ -5,6 +5,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_StandardList_Code_0;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_booking_Eticketed_passengers_not_checked_in_04;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -40,6 +41,20 @@ public class Standard_list_Code_0_All_Passengers extends FrameworkConstants
         Create_Booking_StandardList_Code_0 PreRequisite1 = new Create_Booking_StandardList_Code_0();
         PreRequisite1.run();
         ExtentLogger.info("PreRequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+//        Create_Booking_StandardList_Code_0 PreRequisite1 = new Create_Booking_StandardList_Code_0();
+//
+//        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = PreRequisite1.run(i++);
+//
+//        }while(!flightFound);
 
         UpdatePayload();
 

@@ -1,10 +1,13 @@
 package MODULES.WAVE3.AdvancePassengerInfo;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.AdvancePassengerInfo.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,8 +18,17 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class AdvancePassengerInfo {
 
-    AdvancePassengerInfo() {
+    //AdvancePassengerInfo() {
+//        createFolders(getResponseDirectory() + "AdvancePassengerInfo");
+//    }
+    AdvancePassengerInfo()throws IOException {
+
+
+
         createFolders(getResponseDirectory() + "AdvancePassengerInfo");
+        FlightBooking.bookFlight("AdvancePassengerInfo");
+
+
     }
 
 //    Choose an APIS Flight otherwise it will give "NOT APIS FLIGHT" msg ---> PTY-MEX  CM120 is an APIS FLight but not always , only on some days. So try changing dates

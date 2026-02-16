@@ -1,10 +1,15 @@
 package MODULES.WAVE3.DepartureControlService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.DepartureControlService.API_Tests.*;
+import MODULES.WAVE3.SeatMapService.API_Tests.display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_compartments;
 import io.qameta.allure.Description;
+import junit.framework.Assert;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -13,17 +18,20 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //17 Scenarios
 @Listeners(TestListener.class)
 public class DepartureControlService {
+    DepartureControlService() throws IOException {
 
-    DepartureControlService()
-    {
-        createFolders(getResponseDirectory()+"DepartureControlService");
+        createFolders(getResponseDirectory() + "DepartureControlService");
+        FlightBooking.bookFlight("DepartureControlService");
     }
+
+
 
     @Test(description = "DPS_01 - Assign aircraft")
     public void DPS_01() {
 
         try {
-            assign_aircraft.Execute();
+
+             assign_aircraft.Execute();
 
         } catch (Exception e) {
             failTest(e);

@@ -41,9 +41,24 @@ public class Credit_card_search_partial_cc_number extends FrameworkConstants
     {
         //        PreRequisite for Scenario ------> Create Booking
 
+//        create_booking_credit_card_search_partial_cc_number Prerequisite = new create_booking_credit_card_search_partial_cc_number();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_credit_card_search_partial_cc_number Prerequisite = new create_booking_credit_card_search_partial_cc_number();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_credit_card_search_partial_cc_number Prerequisite2 = new issue_ticket_credit_card_search_partial_cc_number();
         Prerequisite2.run();

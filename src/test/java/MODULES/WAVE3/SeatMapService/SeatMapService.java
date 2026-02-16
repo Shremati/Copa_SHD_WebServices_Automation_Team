@@ -1,12 +1,17 @@
 package MODULES.WAVE3.SeatMapService;
 
+import GENERICS.FlightBooking;
+import MODULES.WAVE3.ModifyInventoryService.API_Tests.ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier;
 import MODULES.WAVE3.ScreenTextService.API_Tests.Error_screentext_not_allowed_entry;
 import MODULES.WAVE3.ScreenTextService.API_Tests.Send_entry;
 import MODULES.WAVE3.SeatMapService.API_Tests.*;
 import io.qameta.allure.Description;
+import junit.framework.Assert;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -15,10 +20,12 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //8 Scenario
 @Listeners(TestListener.class)
 public class SeatMapService {
+    SeatMapService() throws IOException {
 
-    SeatMapService() {
         createFolders(getResponseDirectory() + "SeatMapService");
+        FlightBooking.bookFlight("SeatMapService");
     }
+
 
     @Test(description = "SMS_01 - Display a single 737 aircraft on a one legged flight. Map contains 2 compartments")
     public void SMS_01() {
@@ -36,6 +43,7 @@ public class SeatMapService {
     public void SMS_02() {
 
         try {
+
             display_a_single_737_aircraft_on_a_two_flights_each_map_contains_2_compartments.Execute();
 
         } catch (Exception e) {

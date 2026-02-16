@@ -38,11 +38,27 @@ public class Display_booking_history_for_cm_flight extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        create_booking_display_booking_history_for_cm_flight Prerequisite = new create_booking_display_booking_history_for_cm_flight();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+//
+//
+//        UpdatePayload();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_display_booking_history_for_cm_flight Prerequisite = new create_booking_display_booking_history_for_cm_flight();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
 
+        }while(!flightFound);
 
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

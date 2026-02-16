@@ -33,9 +33,9 @@ public class Create_booking_Display_confirmed_booking extends FrameworkConstants
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //              ********** Reading the xml request file **********
 
@@ -84,13 +84,19 @@ public class Create_booking_Display_confirmed_booking extends FrameworkConstants
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
+        //If the TC has reached this point that means a flight with available seat has been found sucessfully whose index is i
 
-        excelwriter();
+// Hence we are writting this i th flight (locked flight) into the excel using excel writer and returning true from the function so that the do while loop breaks
+
+        excelwriter(i);
+
+        return true;
+
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -105,7 +111,8 @@ public class Create_booking_Display_confirmed_booking extends FrameworkConstants
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
@@ -113,7 +120,7 @@ public class Create_booking_Display_confirmed_booking extends FrameworkConstants
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -124,6 +131,8 @@ public class Create_booking_Display_confirmed_booking extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("DisplayBookingService");
         XSSFRow InputRow=sheet.getRow(27);
 
+        //We are writing the final available flight into the second coloumn of test data excel sheet
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);

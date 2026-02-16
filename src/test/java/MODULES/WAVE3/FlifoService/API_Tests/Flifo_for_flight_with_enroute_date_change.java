@@ -34,7 +34,13 @@ public class Flifo_for_flight_with_enroute_date_change extends FrameworkConstant
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -50,7 +56,7 @@ public class Flifo_for_flight_with_enroute_date_change extends FrameworkConstant
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())
@@ -59,6 +65,19 @@ public class Flifo_for_flight_with_enroute_date_change extends FrameworkConstant
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("FlightInfoDetails")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -92,7 +111,7 @@ public class Flifo_for_flight_with_enroute_date_change extends FrameworkConstant
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -106,7 +125,7 @@ public class Flifo_for_flight_with_enroute_date_change extends FrameworkConstant
         filepath1=getRequestDirectory()+"FlifoService\\Flifo_for_flight_with_enroute_date_change.xml";
 
         XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("air:FlightNumber", availableFlights.get(InputRow.getCell(6).getStringCellValue()+"-"+InputRow.getCell(7).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.SetTagtext("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath());
         XMLParser.updateAttributeValueatIndex("air:DepartureAirport", "LocationCode",InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(),0);
 

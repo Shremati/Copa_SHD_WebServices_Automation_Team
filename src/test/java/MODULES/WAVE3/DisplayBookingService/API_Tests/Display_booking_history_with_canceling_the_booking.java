@@ -36,9 +36,24 @@ public class Display_booking_history_with_canceling_the_booking extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        create_booking_display_booking_history_with_canceling_the_booking Prerequisite = new create_booking_display_booking_history_with_canceling_the_booking();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_display_booking_history_with_canceling_the_booking Prerequisite = new create_booking_display_booking_history_with_canceling_the_booking();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         modify_ticket_display_booking_history_with_canceling_the_booking Prerequisite3 = new modify_ticket_display_booking_history_with_canceling_the_booking();
         Prerequisite3.run();  //ModificationType = "1" so we are cancelling the booking done in previous step

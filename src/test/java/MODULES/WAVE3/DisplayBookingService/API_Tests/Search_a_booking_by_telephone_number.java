@@ -40,9 +40,24 @@ public class Search_a_booking_by_telephone_number extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+//        Create_Booking_1_Search_a_booking_by_telephone_number Prerequisite = new Create_Booking_1_Search_a_booking_by_telephone_number();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_1_Search_a_booking_by_telephone_number Prerequisite = new Create_Booking_1_Search_a_booking_by_telephone_number();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         Create_Booking_2_Search_a_booking_by_telephone_number Prerequisite1 = new Create_Booking_2_Search_a_booking_by_telephone_number();
         Prerequisite1.run();

@@ -1,10 +1,13 @@
 package MODULES.WAVE3.AirportPassengerList;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.AirportPassengerList.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -14,9 +17,12 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class AirportPassengerList {
 
-    AirportPassengerList() {
-        createFolders(getResponseDirectory() + "AirportPassengerList");
+    AirportPassengerList()throws IOException {
+            createFolders(getResponseDirectory() + "AirportPassengerList");
+            FlightBooking.bookFlight("AirportPassengerList");
+
     }
+
 
     @Test(description = "APL_03 - Standard list: Code 2 - Eticketed passengers")
     public void APL_03() {

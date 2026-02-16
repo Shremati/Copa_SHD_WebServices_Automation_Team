@@ -38,9 +38,23 @@ public class Code_5_Interline_eticket_passengers extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        create_booking_for_two_pax_code_5 Prerequisite1 = new create_booking_for_two_pax_code_5();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        create_booking_for_two_pax_code_5 Prerequisite1 = new create_booking_for_two_pax_code_5();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        create_booking_for_two_pax_code_5 Prerequisite = new create_booking_for_two_pax_code_5();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         Issue_Ticket_code_5 Prerequisite2 = new Issue_Ticket_code_5();
         Prerequisite2.run();

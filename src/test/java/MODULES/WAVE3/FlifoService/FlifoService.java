@@ -1,10 +1,14 @@
 package MODULES.WAVE3.FlifoService;
 
+import GENERICS.FlightBooking;
+import MODULES.WAVE3.DisplayTicketService.API_Tests.Conjunctive_ticket_conjunctive;
 import MODULES.WAVE3.FlifoService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -13,10 +17,15 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //25 Scenarios
 @Listeners(TestListener.class)
 public class FlifoService {
+    FlifoService() throws IOException {
 
-    FlifoService() {
         createFolders(getResponseDirectory() + "FlifoService");
+        FlightBooking.bookFlight("FlifoService");
     }
+
+//    FlifoService() {
+//        createFolders(getResponseDirectory() + "FlifoService");
+//    }
 
 
 // ********* NOTE : In the screenText 2S392/08APRSJO-O/721A/809AGUA, SJO is the connecting city and GUA is the origin, to get this run 2+fltnumber in shares(Eg: 2360)
@@ -56,6 +65,8 @@ public class FlifoService {
             System.out.println("FS_15 failed due to :" + e);
         }
     }
+
+
     @Test(description = "FS_21 - Flifo_for_a_flight_with_crossing_date")
     public void FS_21() {  //Give today or future date
 

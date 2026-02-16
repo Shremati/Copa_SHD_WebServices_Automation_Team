@@ -4,6 +4,7 @@ import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Collect_API_for_a_Single_passenger;
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_booking_Display_API_requirements_for_Secure_Flight;
 import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Collect_API_for_a_single_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -35,8 +36,19 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         ExtentLogger.info("Prerequisite 1");
-        Create_Booking_Collect_API_for_a_Single_passenger Prerequisite1 = new Create_Booking_Collect_API_for_a_Single_passenger();
-        Prerequisite1.run();
+//        Create_Booking_Collect_API_for_a_Single_passenger Prerequisite1 = new Create_Booking_Collect_API_for_a_Single_passenger();
+//        Prerequisite1.run();
+        int i=0;
+        boolean flightFound=false;
+
+        Create_Booking_Collect_API_for_a_Single_passenger Prerequisite1 = new  Create_Booking_Collect_API_for_a_Single_passenger();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 2");
         Display_API_Collect_API_for_a_single_pax Prerequisite2 = new Display_API_Collect_API_for_a_single_pax();

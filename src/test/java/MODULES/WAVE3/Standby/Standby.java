@@ -1,11 +1,15 @@
 package MODULES.WAVE3.Standby;
 
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.Standby.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -14,11 +18,20 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class Standby {
 
-    Standby()
-    {
-        createFolders(getResponseDirectory()+"Standby");
-    }
+//    Standby()
+//    {
+//        createFolders(getResponseDirectory()+"Standby");
+//    }
 
+    Standby()throws IOException {
+
+
+
+        createFolders(getResponseDirectory() + "Standby");
+        FlightBooking.bookFlight("Standby");
+
+
+    }
     @Test(description = "STB_01 - Start Standby")
     public void STB_01()
     {

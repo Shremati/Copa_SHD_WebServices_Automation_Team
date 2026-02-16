@@ -41,9 +41,24 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
+//        Create_booking_1_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists Prerequisite = new Create_booking_1_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists();
+//        Prerequisite.run();  //Confirmed Booking
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_booking_1_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists Prerequisite = new Create_booking_1_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists();
-        Prerequisite.run();  //Confirmed Booking
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         Create_booking_2_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists Prerequisite1 = new Create_booking_2_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists();
         Prerequisite1.run();  //Waitlist Booking . Give flight with no availability

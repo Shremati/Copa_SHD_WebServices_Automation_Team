@@ -5,6 +5,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_conjunctive_tkt_conjunctive;
 import MODULES.WAVE3.SynchronizeTicketService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -34,9 +36,23 @@ public class Adjust_Class extends FrameworkConstants {
     static RequestSpecification requestSpecification;
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
    {
-       ExtentLogger.info("Prerequisite 1");
+
+       int i=0;
+       boolean flightFound=false;
+
+       //We are searching all the available flights in a do while loop
        Create_Booking2 Prerequisite1 = new Create_Booking2();
-       Prerequisite1.run();
+       do{
+           if(i > 3){
+               Assert.fail("No flights are having seats");
+           }
+           flightFound = Prerequisite1.run(i++);
+
+       }while(!flightFound);
+
+       ExtentLogger.info("Prerequisite 1");
+//       Create_Booking2 Prerequisite1 = new Create_Booking2();
+//       Prerequisite1.run();
 
        ExtentLogger.info("Prerequisite 2");
        Issue_Booking2 Prerequisite2 = new Issue_Booking2();
@@ -98,8 +114,6 @@ public class Adjust_Class extends FrameworkConstants {
        writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
        writer.write("");
        writer.close();
-
-
 
 
    }

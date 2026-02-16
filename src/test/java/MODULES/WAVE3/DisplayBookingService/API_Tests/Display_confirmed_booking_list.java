@@ -42,9 +42,23 @@ public class Display_confirmed_booking_list extends FrameworkConstants
     {
         //        PreRequisite for Scenario ------> Create Booking
 
+//        create_booking_display_confirmed_booking_list Prerequisite = new create_booking_display_confirmed_booking_list();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_display_confirmed_booking_list Prerequisite = new create_booking_display_confirmed_booking_list();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_display_confirmed_booking_list Prerequisite2 = new issue_ticket_display_confirmed_booking_list();
         Prerequisite2.run();

@@ -31,7 +31,15 @@ public class Multiple_passenger_list_request extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+        //UpdatePayload();
+
+        Response response = null;
+
+        boolean flightFound = false;
+
+        int i = 0;
+        do{
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -46,7 +54,7 @@ public class Multiple_passenger_list_request extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+                response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getPassengerlistservice())
                 .then()
@@ -54,6 +62,19 @@ public class Multiple_passenger_list_request extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+
+            if(response.getBody().asString().contains("Success") || response.getBody().asString().contains("Maximum number of items exceeded")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "PassengerListService\\Multiple_passenger_list_request.xml"));
@@ -77,7 +98,7 @@ public class Multiple_passenger_list_request extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -90,11 +111,13 @@ public class Multiple_passenger_list_request extends FrameworkConstants {
         filepath1 = getRequestDirectory() + "PassengerListService\\Multiple_passenger_list_request.xml";
 
 
-        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+       // XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+        XMLParser.SetTagtextatIndex("read:FlightNumber",  availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), filepath1,0);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
 
-        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath(), 1);
+//        XMLParser.SetTagtextatIndex("read:FlightNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.SetTagtextatIndex("read:FlightNumber",  availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), filepath1,1);
         XMLParser.updateAttributeValueatIndex("read:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 1);
         XMLParser.SetTagtextatIndex("read:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 1);
 

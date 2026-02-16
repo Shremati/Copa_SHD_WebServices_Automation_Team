@@ -34,9 +34,21 @@ public class Display_the_history_information_for_the_given_two_tickets extends F
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
+        int i=0;
+        boolean flightFound=false;
 
+       //We are searching all the available flights in a do while loop
         Create_booking_display_history_info_for_given_two_tkts Prerequisite1 = new Create_booking_display_history_info_for_given_two_tkts();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+//        Prerequisite1.run();
         ExtentLogger.info("Prerequisite1");
 
         Issue_booking_display_history_info_for_given_two_tkts Prerequisite2 = new Issue_booking_display_history_info_for_given_two_tkts();

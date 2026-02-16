@@ -39,9 +39,25 @@ public class Display_cancelled_booking extends FrameworkConstants
     {
         //     PreRequisite for Scenario ----> Create Booking, Display that PNR,Modify that PNR(cancel it),Display the cancelled PNR
 
+//        create_booking_display_cancelled_booking Prerequisite = new create_booking_display_cancelled_booking();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_display_cancelled_booking Prerequisite = new create_booking_display_cancelled_booking();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
+        UpdatePayload();
 
         display_booking_display_cancelled_booking Prerequisite2 = new display_booking_display_cancelled_booking();
         Prerequisite2.run();

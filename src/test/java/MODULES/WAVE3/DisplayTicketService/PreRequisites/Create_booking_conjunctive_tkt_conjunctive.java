@@ -30,9 +30,9 @@ public class Create_booking_conjunctive_tkt_conjunctive extends FrameworkConstan
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -57,6 +57,12 @@ public class Create_booking_conjunctive_tkt_conjunctive extends FrameworkConstan
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        if(!(response.getBody().asString().contains("Success"))){
+            return false;
+
+        }
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -72,12 +78,13 @@ public class Create_booking_conjunctive_tkt_conjunctive extends FrameworkConstan
         writer.write("");
         writer.close();
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -91,27 +98,27 @@ public class Create_booking_conjunctive_tkt_conjunctive extends FrameworkConstan
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\DisplayTicketService\\PreRequisites\\Create_booking_conjunctive_tkt_conjunctive.xml";
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7)).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(14).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(16).getStringCellValue()+ "-"+InputRow.getCell(17).getStringCellValue()).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(17).getStringCellValue(),getTemp_requestPath(),1);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(18).getNumericCellValue()),getTemp_requestPath(),2);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(20).getStringCellValue()+"-"+InputRow.getCell(21).getStringCellValue()).get(i),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(21).getStringCellValue(),getTemp_requestPath(),2);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(22).getNumericCellValue()),getTemp_requestPath(),3);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(23).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(24).getStringCellValue()+"-"+InputRow.getCell(25).getStringCellValue()).get(i),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(25).getStringCellValue(),getTemp_requestPath(),3);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(26).getNumericCellValue()),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(27).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(28).getStringCellValue()+"-"+InputRow.getCell(29).getStringCellValue()).get(i),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(28).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(29).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath());
@@ -121,7 +128,7 @@ public class Create_booking_conjunctive_tkt_conjunctive extends FrameworkConstan
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************

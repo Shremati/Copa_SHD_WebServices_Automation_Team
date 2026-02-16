@@ -39,9 +39,24 @@ public class Display_Booking_multiple_name_entries_in_list_on_same_booking exten
     {
         //        PreRequisite for Scenario ------> Create Booking
 
+//        Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite = new Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite = new Create_Booking_1_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking Prerequisite2 = new Create_Booking_2_Waitlist_Booking_multiple_name_entries_in_list_on_same_booking();
         Prerequisite2.run();

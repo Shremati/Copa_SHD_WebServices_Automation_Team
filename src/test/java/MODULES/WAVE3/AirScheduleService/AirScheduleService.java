@@ -1,10 +1,13 @@
 package MODULES.WAVE3.AirScheduleService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.AirScheduleService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -14,8 +17,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class AirScheduleService {
 
-    AirScheduleService() {
+    AirScheduleService() throws IOException {
+
         createFolders(getResponseDirectory() + "AirScheduleService");
+        FlightBooking.bookFlight("AirScheduleService");
     }
 
     @Test(description = "AS_01 - One request with vendor preferences")

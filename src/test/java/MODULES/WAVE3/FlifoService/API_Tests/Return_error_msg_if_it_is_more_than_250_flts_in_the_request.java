@@ -34,7 +34,11 @@ public class Return_error_msg_if_it_is_more_than_250_flts_in_the_request extends
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+//        boolean flightFound = false;
+//        Response response = null;
+//        int i = 0;
+//
+//        do{
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -60,6 +64,19 @@ public class Return_error_msg_if_it_is_more_than_250_flts_in_the_request extends
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+//            if(response.getBody().asString().contains("Success")){
+//                flightFound = true;
+//            }
+//
+//            i++;
+//
+//            if(i > 4){
+//                Assert.fail("No flights are having seats");
+//            }
+//        }
+//        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -103,13 +120,15 @@ public class Return_error_msg_if_it_is_more_than_250_flts_in_the_request extends
 
         XMLParser.updateAttributeValueatIndex("air:Airline", "Code", InputRow.getCell(2).getStringCellValue(), filepath1,0);
         XMLParser.SetTagtextatIndex("air:FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("air:FlightNumber",  availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i), getTemp_requestPath(),0);
         XMLParser.SetTagtextatIndex("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(),0);
 
-        for(int i=1; i<=250; i++) {
+        for(int j=1; j<=250; j++) {
 
-            XMLParser.updateAttributeValueatIndex("air:Airline", "Code", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(),i);
-            XMLParser.SetTagtextatIndex("air:FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath(),i);
-            XMLParser.SetTagtextatIndex("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(),i);
+            XMLParser.updateAttributeValueatIndex("air:Airline", "Code", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(),j);
+            XMLParser.SetTagtextatIndex("air:FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath(),j);
+//            XMLParser.SetTagtextatIndex("air:FlightNumber",  availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(j), getTemp_requestPath(),0);
+            XMLParser.SetTagtextatIndex("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(),j);
         }
 
         wb.close();

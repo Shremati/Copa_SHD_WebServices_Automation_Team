@@ -31,7 +31,14 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -46,7 +53,7 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+                 response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getModifyinventoryservice())
                 .then()
@@ -54,6 +61,19 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "ModifyInventoryService\\ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.xml"));
@@ -76,7 +96,7 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -89,16 +109,18 @@ public class ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotte
         filepath1 = getRequestDirectory() + "Modifyinventoryservice\\ModifyInventory_Request_with_AuthorizationLevel_and_MaxSeatsAllotted_for_CM_carrier.xml";
 
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
-        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex("air1:BoardPoint", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("air1:BoardPoint", "LocationCode", InputRow.getCell(3).getStringCellValue(), filepath1, 0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-"+ InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(),0);
+        XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()), filepath1, 0);
+
 
         XMLParser.SetTagtextatIndex("air1:ResBookDesigCode", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.SetTagtextatIndex("air1:AuthorizationLevelValue", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 0);
 
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(1).getStringCellValue(), getTemp_requestPath(), 1);
+
         XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()), getTemp_requestPath(), 1);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-"+ InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:BoardPoint", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("air1:OffPoint", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
 

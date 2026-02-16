@@ -62,6 +62,14 @@ public class Create_Booking_StandardList_Code_0 extends FrameworkConstants {
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        //If response does not contain success and PNR then there is no point in going forward for the assertion check
+// hence we are returing false
+//        if(!(response.getBody().asString().contains("Success") )){
+//            return false;
+//        }
+
+
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -86,8 +94,10 @@ public class Create_Booking_StandardList_Code_0 extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-
+        //If the TC has reached this point that means a flight with available seat has been found sucessfully whose index is i
+// Hence we are writting this i th flight (locked flight) into the excel using excel writer and returning true from the function so that the do while loop breaks
         excelwriter();
+//        return true;
 
     }
 
@@ -110,11 +120,13 @@ public class Create_Booking_StandardList_Code_0 extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(11).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),1);
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(13).getStringCellValue() + "-" + InputRow.getCell(14).getStringCellValue()).get(i), getTemp_requestPath());
 
 
         wb.close();
@@ -132,6 +144,8 @@ public class Create_Booking_StandardList_Code_0 extends FrameworkConstants {
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
         XSSFRow InputRow=sheet.getRow(3);
 
+//We are writing the final available flight into the second coloumn of test data excel sheet
+//        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(7).setCellValue(PNR);

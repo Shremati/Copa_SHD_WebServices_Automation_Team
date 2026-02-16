@@ -36,9 +36,25 @@ public class STB_08_Standby_Transfer extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        ExtentLogger.info("Prerequisite 1");
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_standby_transfer Prerequisite1 = new Create_booking_standby_transfer();
+//        Prerequisite1.run();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_booking_standby_transfer Prerequisite1 = new Create_booking_standby_transfer();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
+
 
         ExtentLogger.info("Prerequisite 2");
         Issue_booking_standby_transfer Prerequisite2 = new Issue_booking_standby_transfer();

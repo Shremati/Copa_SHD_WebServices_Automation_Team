@@ -31,9 +31,9 @@ public class Create_booking_Eticketed_passengers_not_checked_in_04 extends Frame
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -59,6 +59,13 @@ public class Create_booking_Eticketed_passengers_not_checked_in_04 extends Frame
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        //If response does not contain success and PNR then there is no point in going forward for the assertion check
+// hence we are returing false
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
+
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -82,13 +89,16 @@ public class Create_booking_Eticketed_passengers_not_checked_in_04 extends Frame
         writer.write("");
         writer.close();
 
-        excelwriter();
+        //If the TC has reached this point that means a flight with available seat has been found sucessfully whose index is i
+// Hence we are writting this i th flight (locked flight) into the excel using excel writer and returning true from the function so that the do while loop breaks
+        excelwriter(i);
+        return true;
 
     }
 
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -103,18 +113,19 @@ public class Create_booking_Eticketed_passengers_not_checked_in_04 extends Frame
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
 
         wb.close();
 
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -124,6 +135,10 @@ public class Create_booking_Eticketed_passengers_not_checked_in_04 extends Frame
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
         XSSFRow InputRow=sheet.getRow(20);
+
+
+//We are writing the final available flight into the second coloumn of test data excel sheet
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());

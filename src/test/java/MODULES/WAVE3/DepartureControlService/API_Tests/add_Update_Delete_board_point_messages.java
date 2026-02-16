@@ -37,13 +37,29 @@ public class add_Update_Delete_board_point_messages extends FrameworkConstants
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Add_BoardPoint_Message_AddUpdateDelete Prerequisite = new Add_BoardPoint_Message_AddUpdateDelete();
-        Prerequisite.run();  //Prerequisite to add Board Point Messages
 
-        Message1= Prerequisite.getMessage(0);  //Fetching those messages which have been added to request
-        Message2= Prerequisite.getMessage(1);
-        Message3= Prerequisite.getMessage(2);
+        //        PreRequisite for Scenario ------> Create Booking
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Add_BoardPoint_Message_AddUpdateDelete Prerequisite1 = new Add_BoardPoint_Message_AddUpdateDelete();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+
+//        ExtentLogger.info("Prerequisite 1");
+//        Add_BoardPoint_Message_AddUpdateDelete Prerequisite = new Add_BoardPoint_Message_AddUpdateDelete();
+//        Prerequisite.run();  //Prerequisite to add Board Point Messages
+
+        Message1= Prerequisite1.getMessage(0);  //Fetching those messages which have been added to request
+        Message2= Prerequisite1.getMessage(1);
+        Message3= Prerequisite1.getMessage(2);
 
         UpdatePayload();
 

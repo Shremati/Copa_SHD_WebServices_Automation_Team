@@ -3,10 +3,8 @@ package MODULES.WAVE3.AdvancePassengerInfo.API_Tests;
 import GENERICS.RESTWrapper;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Create_Booking_Update_and_Delete_API_data;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Update_Delete_api_data_1;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Display_API_Update_Delete_api_data_2;
-import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.Modify_API_for_updating_API_data;
+
+import MODULES.WAVE3.AdvancePassengerInfo.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -38,8 +36,19 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         ExtentLogger.info("Prerequisite 1");
-        Create_Booking_Update_and_Delete_API_data Prerequisite1 = new Create_Booking_Update_and_Delete_API_data();
-        Prerequisite1.run();
+//        Create_Booking_Update_and_Delete_API_data Prerequisite1 = new Create_Booking_Update_and_Delete_API_data();
+//        Prerequisite1.run();
+        int i=0;
+        boolean flightFound=false;
+
+        Create_Booking_Update_and_Delete_API_data Prerequisite1 = new   Create_Booking_Update_and_Delete_API_data();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 2");
         Display_API_Update_Delete_api_data_1 Prerequisite2 = new Display_API_Update_Delete_api_data_1();

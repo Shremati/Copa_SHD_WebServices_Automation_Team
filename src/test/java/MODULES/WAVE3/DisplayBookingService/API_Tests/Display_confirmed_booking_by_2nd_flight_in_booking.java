@@ -40,9 +40,24 @@ public class Display_confirmed_booking_by_2nd_flight_in_booking extends Framewor
     {
         //        Need to create a round trip booking for single passenger
 
+//        create_round_trip_booking_for_one_pax Prerequisite = new create_round_trip_booking_for_one_pax();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_round_trip_booking_for_one_pax Prerequisite = new create_round_trip_booking_for_one_pax();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking Prerequisite2 = new issue_ticket_display_confirmed_booking_by_2nd_flight_in_booking();
         Prerequisite2.run();

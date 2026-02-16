@@ -35,11 +35,27 @@ public class Advance_seat_assignment_on_oa_flight extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+//        create_booking_on_OA_flights_for_2_segments Prerequisite = new create_booking_on_OA_flights_for_2_segments();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
+//
+//
+//        UpdatePayload();
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         create_booking_on_OA_flights_for_2_segments Prerequisite = new create_booking_on_OA_flights_for_2_segments();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
 
+        }while(!flightFound);
 
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

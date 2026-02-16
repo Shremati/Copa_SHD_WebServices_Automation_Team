@@ -35,11 +35,26 @@ public class Display_a_booking_from_a_specific_address_lniata_without_recloc_giv
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given Prerequisite = new Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given();
+//        Prerequisite.run();
+//        UpdatePayload();
+
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given Prerequisite = new Create_Booking_Display_a_booking_from_a_specific_address_lniata_without_recloc_given();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
 
+        }while(!flightFound);
 
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********

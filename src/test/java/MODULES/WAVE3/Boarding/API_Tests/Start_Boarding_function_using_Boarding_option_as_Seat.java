@@ -111,9 +111,13 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 //
 //        Assertions.AssertResponseTime(response,ResponseTime);
 //
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
+        do{
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -129,7 +133,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getBoarding())
@@ -138,6 +142,19 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml"));
@@ -195,7 +212,7 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
         wb.close();
     }
 
-        public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+        public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -207,10 +224,11 @@ public class Start_Boarding_function_using_Boarding_option_as_Seat extends Frame
 
         String filepath1;
         filepath1=getRequestDirectory()+"Boarding\\Start_Boarding_function_using_Boarding_option_as_Seat.xml";
+//        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
+//        XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture",Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
 
-
-        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture",Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),filepath1);
+        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
         wb.close();

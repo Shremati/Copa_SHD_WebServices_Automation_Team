@@ -31,10 +31,10 @@ public class Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type extends Fram
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -59,6 +59,12 @@ public class Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type extends Fram
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        if(!(response.getBody().asString().contains("Success")) && !(response.getBody().asString().contains("AssignAircraft")) ){
+            return false;
+
+        }
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -73,17 +79,19 @@ public class Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type extends Fram
         writer.write(response.asPrettyString());
         writer.close();
 
-
+        excelwriter(i);
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
 
+        return true;
+
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -98,13 +106,50 @@ public class Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type extends Fram
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(6).getStringCellValue()+"-"+InputRow.getCell(7).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:Equipment","AirEquipType",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),0);
 
 
         wb.close();
 
+
+
+
     }
+
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("FlifoService");
+        XSSFRow InputRow=sheet.getRow(14);
+
+
+
+        String flight = XMLParser.GetAttributeValue("dep1:FlightLegInfo","FlightNumber",getTemp_requestPath());
+
+        InputRow.getCell(5).setCellValue(flight);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
+    }
+
+
+
 
 }

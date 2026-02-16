@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -32,9 +33,9 @@ public class Create_booking_display_history_info_for_given_two_tkts extends Fram
     static RequestSpecification requestSpecification;
 
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -59,6 +60,14 @@ public class Create_booking_display_history_info_for_given_two_tkts extends Fram
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+        //If response does not contain success and PNR then there is no point in going forward for the assertion check
+// hence we are returing false
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
+
+        }
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
@@ -75,13 +84,15 @@ public class Create_booking_display_history_info_for_given_two_tkts extends Fram
         writer.write("");
         writer.close();
 
-
-        excelwriter();
+//If the TC has reached this point that means a flight with available seat has been found sucessfully whose index is i
+// Hence we are writting this i th flight (locked flight) into the excel using excel writer and returning true from the function so that the do while loop breaks
+        excelwriter(i);
+        return true;
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis = new FileInputStream(new File(getTestData()));
@@ -94,17 +105,17 @@ public class Create_booking_display_history_info_for_given_two_tkts extends Fram
         filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\DisplayTicketService\\PreRequisites\\Create_booking_display_history_info_for_given_two_tkts.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(2).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(5).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(3).getNumericCellValue()), getTemp_requestPath());
-
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i), getTemp_requestPath());
         wb.close();
 
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 

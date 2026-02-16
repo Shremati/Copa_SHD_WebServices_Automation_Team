@@ -1,5 +1,6 @@
 package MODULES.WAVE3.ConnectionFlightInfo;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.Checkin.API_Tests.Error_Change_seatInvalid;
 import MODULES.WAVE3.Checkin.API_Tests.checkin_one_pax_and_baggage;
 import MODULES.WAVE3.ConnectionFlightInfo.API_Tests.Get_inbound_flight_info;
@@ -9,15 +10,23 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class ConnectionFlightInfo {
 
-    ConnectionFlightInfo()
+//    ConnectionFlightInfo()
+//    {
+//        createFolders(getResponseDirectory()+"ConnectionFlightInfo");
+//    }
+
+    ConnectionFlightInfo() throws IOException
     {
-        createFolders(getResponseDirectory()+"ConnectionFlightInfo");
+        createFolders(getResponseDirectory() + "ConnectionFlightInfo");
+       FlightBooking.bookFlight("ConnectionFlightInfo");
     }
 
     @Test(description = "CFI_01 - Get Inbound Flight Info")

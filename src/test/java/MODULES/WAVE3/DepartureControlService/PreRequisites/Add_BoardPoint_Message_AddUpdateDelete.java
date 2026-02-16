@@ -31,10 +31,10 @@ public class Add_BoardPoint_Message_AddUpdateDelete
 {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public  void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public  boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();  //Adding 3 messages as per request
+        UpdatePayload(i);  //Adding 3 messages as per request
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -59,6 +59,12 @@ public class Add_BoardPoint_Message_AddUpdateDelete
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("MessageInfo"))){
+            return false;
+
+        }
+
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -81,10 +87,13 @@ public class Add_BoardPoint_Message_AddUpdateDelete
         writer.write("");
         writer.close();
 
+        excelwriter(i);
+        return true;
+
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -99,7 +108,7 @@ public class Add_BoardPoint_Message_AddUpdateDelete
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue()+ "-"+InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
 
 
@@ -113,5 +122,36 @@ public class Add_BoardPoint_Message_AddUpdateDelete
         filepath=".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Add_BoardPoint_Message.xml";
         System.out.println("ns4:MessageInfo RPH=\"0"+(RPH+1)+"\"");
         return XMLParser.GetTagTextatIndex("air1:MessageInfo",filepath,RPH);
+    }
+
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("DepartureControlService");
+        XSSFRow InputRow = sheet.getRow(14);
+
+//        String filepath;
+//        filepath =  ".\\src\\test\\java\\MODULES\\WAVE3\\DepartureControlService\\PreRequisites\\Add_BoardPoint_Message.xml";
+
+        String flight = XMLParser.GetAttributeValue("ns6:FlightLegInfo", "FlightNumber", getTemp_responsePath());
+
+        InputRow.getCell(2).setCellValue(flight);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
     }
 }

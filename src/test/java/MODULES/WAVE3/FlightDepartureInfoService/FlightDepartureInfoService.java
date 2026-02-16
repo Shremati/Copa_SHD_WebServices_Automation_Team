@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlightDepartureInfoService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Flight_has_one_leg_and_open_status;
 import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Flight_has_two_legs_and_notopen_status;
 import MODULES.WAVE3.FlightDepartureInfoService.API_Tests.Request_has_an_invalid_flight_number;
@@ -8,6 +9,8 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -15,8 +18,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class FlightDepartureInfoService {
 
-    FlightDepartureInfoService() {
+    FlightDepartureInfoService()throws IOException {
+
         createFolders(getResponseDirectory() + "FlightDepartureInfoService");
+        FlightBooking.bookFlight("FlightDepartureInfoService");
     }
 
     @Test(description = "FDIS_03 - Flight has two legs and NotOpen status")

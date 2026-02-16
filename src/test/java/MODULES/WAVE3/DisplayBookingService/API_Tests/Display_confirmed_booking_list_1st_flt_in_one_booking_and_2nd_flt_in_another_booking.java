@@ -41,10 +41,24 @@ public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_i
 
         //        PreRequisite for Scenario ------> Create Booking
 
-        Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking Prerequisite1 = new Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking Prerequisite1 = new Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
 
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking Prerequisite1 = new Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_booking();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
         Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_booking Prerequisite = new Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_booking();
         Prerequisite.run();
         ExtentLogger.info("Prerequisite2");

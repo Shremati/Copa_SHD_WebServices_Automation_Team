@@ -3,6 +3,7 @@ package MODULES.WAVE3.DisplayTicketService.API_Tests;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_conjunctive_tkt_conjunctive;
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_display_history_info_for_given_two_tkts;
 import MODULES.WAVE3.DisplayTicketService.PreRequisites.Issue_booking_conjunctive_tkt_conjunctive;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -35,9 +36,20 @@ public class Conjunctive_ticket_conjunctive extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
+        //We are searching all the available flights in a do while loop
         Create_booking_conjunctive_tkt_conjunctive Prerequisite1 = new Create_booking_conjunctive_tkt_conjunctive();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Create_booking_conjunctive_tkt_conjunctive Prerequisite1 = new Create_booking_conjunctive_tkt_conjunctive();
+//        Prerequisite1.run();
         ExtentLogger.info("Prerequisite1");
 
         Issue_booking_conjunctive_tkt_conjunctive Prerequisite2 = new Issue_booking_conjunctive_tkt_conjunctive();

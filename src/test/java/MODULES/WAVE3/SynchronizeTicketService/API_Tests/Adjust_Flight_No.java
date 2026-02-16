@@ -38,9 +38,22 @@ import static io.restassured.RestAssured.given;
          static RequestSpecification requestSpecification;
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
-            ExtentLogger.info("Prerequisite 1");
+            int i=0;
+            boolean flightFound=false;
+
+            //We are searching all the available flights in a do while loop
             Create_Booking Prerequisite1 = new Create_Booking();
-            Prerequisite1.run();  //flight needs to contain 2 seats as 2 pax are used
+            do{
+                if(i > 3){
+                    Assert.fail("No flights are having seats");
+                }
+                flightFound = Prerequisite1.run(i++);
+
+            }while(!flightFound);
+
+            ExtentLogger.info("Prerequisite 1");
+//            Create_Booking Prerequisite1 = new Create_Booking();
+//            Prerequisite1.run();  //flight needs to contain 2 seats as 2 pax are used
 
             ExtentLogger.info("Prerequisite 2");
             Issue_Booking Prerequisite2 = new Issue_Booking();

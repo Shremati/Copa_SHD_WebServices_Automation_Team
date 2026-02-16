@@ -38,10 +38,24 @@ public class Display_booking_history_with_adding_deleting_remarks_ssr_osi_and_ph
     {
 //        Only 1 modification is done here under category other
 
-        create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite = new create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+//        create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite = new create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
+//        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite");
 
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite = new create_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
         display_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone Prerequisite2 = new display_booking_display_booking_history_with_adding_deleting_remarks_ssr_osi_and_phone();
         Prerequisite2.run();
         ExtentLogger.info("Prerequisite2");

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.PassengerListService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.PassengerListService.API_Tests.Display_passenger_list_Inbound_connection_option;
 import MODULES.WAVE3.PassengerListService.API_Tests.Multiple_passenger_list_request;
 import MODULES.WAVE3.PassengerListService.API_Tests.Pax_List_Request_Positive_Non_Revenue;
@@ -9,6 +10,8 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -17,10 +20,15 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class PassengerListService {
 
-    PassengerListService() {
-        createFolders(getResponseDirectory() + "PassengerListService");
-    }
+    //PassengerListService() {
+//        createFolders(getResponseDirectory() + "PassengerListService");
+//    }
 
+    PassengerListService() throws IOException
+    {
+        createFolders(getResponseDirectory() + "PassengerListService");
+        FlightBooking.bookFlight("PassengerListService");
+    }
     @Test(description = "PLS_01 - Display the passenger list All option")
     public void PLS_01() {
 

@@ -4,6 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.create_booking_display_booking_by_both_record_locator_and_eticket_number;
 import MODULES.WAVE3.Standby.Prerequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -33,9 +35,23 @@ public class STB_03_Clear_Standby extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
+//        Prerequisite1.run();
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
         Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();

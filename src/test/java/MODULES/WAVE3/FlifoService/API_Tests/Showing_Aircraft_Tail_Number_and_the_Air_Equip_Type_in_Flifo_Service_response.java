@@ -4,6 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.DisplayTicketService.PreRequisites.Create_booking_conjunctive_tkt_conjunctive;
 import MODULES.WAVE3.FlifoService.PreRequisites.Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -35,8 +37,20 @@ public class Showing_Aircraft_Tail_Number_and_the_Air_Equip_Type_in_Flifo_Servic
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
         Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type Prerequisite1 = new Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type Prerequisite1 = new Assign_aircraft_showing_Aircraft_No_and_Air_Equip_Type();
+//        Prerequisite1.run();
         ExtentLogger.info("Prerequisite1");
 
         UpdatePayload();

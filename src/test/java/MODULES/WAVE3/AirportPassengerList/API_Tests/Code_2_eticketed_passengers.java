@@ -4,6 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.DisplayBookingService.PreRequisites.Create_Booking_display_by_eticket_number;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -35,9 +37,25 @@ public class Code_2_eticketed_passengers extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        create_booking_for_two_pax Prerequisite1 =new create_booking_for_two_pax();
-        Prerequisite1.run();
-        ExtentLogger.info("Prerequisite1");
+//        create_booking_for_two_pax Prerequisite1 =new create_booking_for_two_pax();
+//        Prerequisite1.run();
+//        ExtentLogger.info("Prerequisite1");
+
+        int i=0;
+        boolean flightFound=false;
+
+//We are searching all the available flights in a do while loop
+        create_booking_for_two_pax Prerequisite = new create_booking_for_two_pax();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
+
 
         Issue_ticket Prerequisite2 = new Issue_ticket();
         Prerequisite2.run();

@@ -1,5 +1,6 @@
 package MODULES.WAVE3.DepartureControlDisplay;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ConnectionFlightInfo.API_Tests.Get_inbound_flight_info;
 import MODULES.WAVE3.DepartureControlDisplay.API_Tests.Get_flight_history_info;
 import MODULES.WAVE3.DepartureControlDisplay.API_Tests.Get_seated_passenger_count;
@@ -10,6 +11,8 @@ import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
@@ -18,9 +21,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class DepartureControlDisplay {
 
-    DepartureControlDisplay()
-    {
+    DepartureControlDisplay() throws IOException {
         createFolders(getResponseDirectory()+"DepartureControlDisplay");
+        FlightBooking.bookFlight("DepartureControlDisplay");
     }
 
     @Test(description = "DCD_03 - Get Flight History Info")

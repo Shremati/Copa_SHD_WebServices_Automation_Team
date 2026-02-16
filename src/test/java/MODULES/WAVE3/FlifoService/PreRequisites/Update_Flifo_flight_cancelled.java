@@ -1,5 +1,6 @@
 package MODULES.WAVE3.FlifoService.PreRequisites;
 
+import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
@@ -21,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -96,9 +98,11 @@ public class Update_Flifo_flight_cancelled extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(17);
 
 
+
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\FlifoService\\PreRequisites\\Update_Flifo_flight_cancelled.xml";
 
+//        String date = Utils.formatDateToSharesDateFormat(InputRow.getCell(2).getNumericCellValue());
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.SetTagtextatIndex("scr1:ScreenEntry",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),0);
 

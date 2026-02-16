@@ -32,10 +32,10 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -82,14 +82,16 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
         writer.close();
 
 
-        excelwriter();
+//        excelwriter();
+        excelwriter(i);
+        return true;
 
 
     }
 
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -103,7 +105,8 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Standby\\PreRequisites\\Create_Booking_Non_Revenue_Pax.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+        //XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
@@ -113,7 +116,7 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -129,7 +132,7 @@ public class Create_Booking_Non_Revenue_Pax extends FrameworkConstants {
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 
-
+        InputRow.getCell(1).setCellValue(availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i));
         InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(8).setCellValue(Givenname);
         InputRow.getCell(9).setCellValue(Surname);

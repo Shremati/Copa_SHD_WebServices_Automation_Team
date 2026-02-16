@@ -35,7 +35,14 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+//        UpdatePayload();
+        Response response = null;
+
+        boolean flightFound = false;
+
+        int i = 0;
+        do{
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -50,7 +57,7 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+                 response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirscheduleservice())
@@ -59,7 +66,17 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("FlightDetails")){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "AirScheduleService\\Multiple_requests_mixed_host_and_other_airline.xml"));
@@ -87,7 +104,7 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -103,18 +120,20 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
         XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
         XMLParser.updateAttributeValueatIndex("air1:DepartureAirport", "LocationCode", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air1:ArrivalAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
+        //XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",  availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), getTemp_requestPath(),0);
 
         XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(5).getNumericCellValue()), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("air1:DepartureAirport", "LocationCode", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("air1:ArrivalAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 1);
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 1);
+       // XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",  availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i), getTemp_requestPath(),1);
 
         XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(9).getNumericCellValue()), getTemp_requestPath(), 2);
         XMLParser.updateAttributeValueatIndex("air1:DepartureAirport", "LocationCode", InputRow.getCell(10).getStringCellValue(), getTemp_requestPath(), 2);
         XMLParser.updateAttributeValueatIndex("air1:ArrivalAirport", "LocationCode", InputRow.getCell(11).getStringCellValue(), getTemp_requestPath(), 2);
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(12).getStringCellValue(), getTemp_requestPath(), 2);
-
+       // XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(12).getStringCellValue(), getTemp_requestPath(), 2);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber",  availableFlights.get(InputRow.getCell(10).getStringCellValue() + "-" + InputRow.getCell(11).getStringCellValue()).get(i),getTemp_requestPath(),2);
         wb.close();
 
     }
