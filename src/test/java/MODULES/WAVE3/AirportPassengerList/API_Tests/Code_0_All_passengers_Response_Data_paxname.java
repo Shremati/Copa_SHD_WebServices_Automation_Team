@@ -33,8 +33,13 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
-        UpdatePayload();
+        do{
+
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -50,7 +55,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+                 response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
@@ -59,7 +64,17 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if((response.getBody().asString().contains("Success")) && (response.getBody().asString().contains("FlightInfo")) && (response.getBody().asString().contains("SecurityCode=\"N\""))){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Code_0_All_passengers_Response_Data_paxname.xml"));
@@ -85,7 +100,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -100,7 +115,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
         wb.close();

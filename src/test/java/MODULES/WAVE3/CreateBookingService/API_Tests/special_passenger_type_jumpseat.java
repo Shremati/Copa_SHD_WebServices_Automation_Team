@@ -34,7 +34,13 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +55,7 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -58,7 +64,17 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if((response.getBody().asString().contains("Success"))){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\special_passenger_type_jumpseat.xml"));
@@ -91,7 +107,7 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -105,7 +121,7 @@ public class special_passenger_type_jumpseat extends FrameworkConstants
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
 

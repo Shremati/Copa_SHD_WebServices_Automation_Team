@@ -33,10 +33,23 @@ public class Ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
         create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop Prerequisite = new create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+//        create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop Prerequisite = new create_booking_ticket_a_booking_with_one_flight_one_passenger_with_credit_card_fop();
 
         ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+//        Prerequisite.run();
 
         UpdatePayload();
 

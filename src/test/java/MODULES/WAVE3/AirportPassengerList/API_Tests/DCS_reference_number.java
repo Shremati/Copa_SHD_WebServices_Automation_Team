@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_with_NRSA;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Custom_list_Filter_Value_5_Booking;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Issue_Ticket_DSC_Refno;
+import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -39,9 +40,22 @@ public class DCS_reference_number extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Custom_list_Filter_Value_5_Booking Prerequisite =new Custom_list_Filter_Value_5_Booking();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Custom_list_Filter_Value_5_Booking Prerequisite1 = new Custom_list_Filter_Value_5_Booking();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+//        Custom_list_Filter_Value_5_Booking Prerequisite =new Custom_list_Filter_Value_5_Booking();
+//        Prerequisite.run();
+        ExtentLogger.info("Prerequisite1");
 
         Issue_Ticket_DSC_Refno Prerequisite2 = new Issue_Ticket_DSC_Refno();
         Prerequisite2.run();

@@ -1,10 +1,13 @@
 package MODULES.WAVE3.Checkin;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.Checkin.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -17,11 +20,17 @@ public class Checkin
     // <Warning Type="12" Tag="" RecordID="1">Multiple similar names match your request.</Warning>
    //If we want to execute multiple times, same scenario, then, either we can change pax name, or flt details
 
-    Checkin()
-    {
-        createFolders(getResponseDirectory()+"Checkin");
-    }
+//    Checkin()
+//    {
+//        createFolders(getResponseDirectory()+"Checkin");
+//    }
 //
+
+    Checkin() throws IOException {
+
+        createFolders(getResponseDirectory() + "Checkin");
+        FlightBooking.bookFlight("Checkin");
+    }
     @Test(description = "CS_01 - Check-in 1 passenger, 1 Baggage")
     public void CS_01()
     {

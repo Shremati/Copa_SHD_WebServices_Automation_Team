@@ -32,8 +32,13 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
-        UpdatePayload();
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -48,7 +53,7 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification
+         response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getStandby())
@@ -58,6 +63,18 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("ADVANCED  SEATS UNHELD")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml"));
         writer.write(response.asPrettyString());
@@ -82,7 +99,7 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
 
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -96,7 +113,7 @@ public class STB_06_Release_Advance_Seats extends FrameworkConstants {
         filepath1=getRequestDirectory()+"Standby\\STB_06_Release_Advance_Seats.xml";
 
         XMLParser.updateAttributeValue("DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber", availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         wb.close();

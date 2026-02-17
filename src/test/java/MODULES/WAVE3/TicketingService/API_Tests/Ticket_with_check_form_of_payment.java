@@ -32,10 +32,22 @@ public class Ticket_with_check_form_of_payment extends FrameworkConstants {
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        int i=0;
+        boolean flightFound=false;
 
+        //We are searching all the available flights in a do while loop
         Create_booking_Ticket_with_check_form_of_payment Prerequisite = new Create_booking_Ticket_with_check_form_of_payment();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+//        Create_booking_Ticket_with_check_form_of_payment Prerequisite = new Create_booking_Ticket_with_check_form_of_payment();
         ExtentLogger.info("Prerequisite 1");
-        Prerequisite.run();
+//        Prerequisite.run();
 
         UpdatePayload();
 

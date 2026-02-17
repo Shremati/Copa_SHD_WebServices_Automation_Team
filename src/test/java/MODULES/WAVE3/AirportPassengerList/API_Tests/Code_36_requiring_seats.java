@@ -38,8 +38,20 @@ public class Code_36_requiring_seats extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Create_Booking_with_4_PAX_36 Prerequisite =new Create_Booking_with_4_PAX_36();
-        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Create_Booking_with_4_PAX_36 Prerequisite1 = new Create_Booking_with_4_PAX_36();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Create_Booking_with_4_PAX_36 Prerequisite =new Create_Booking_with_4_PAX_36();
+//        Prerequisite.run();
         ExtentLogger.info("Prerequisite");
 
         UpdatePayload();

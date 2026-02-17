@@ -4,6 +4,8 @@ import GENERICS.Assertions;
 import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
+
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.BookingRequest;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_StandardList_code_44;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -36,8 +38,20 @@ public class Standard_list_Code_44_passengers_with_elite_frequent_traveler_numbe
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Create_Booking_StandardList_code_44 PreRequisite1 = new Create_Booking_StandardList_code_44();
-        PreRequisite1.run();
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Create_Booking_StandardList_code_44 Prerequisite1 = new Create_Booking_StandardList_code_44();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Create_Booking_StandardList_code_44 PreRequisite1 = new Create_Booking_StandardList_code_44();
+//        PreRequisite1.run();
         ExtentLogger.info("PreRequisite1");
 
         UpdatePayload();

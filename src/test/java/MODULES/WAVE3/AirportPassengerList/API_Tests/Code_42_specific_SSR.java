@@ -36,8 +36,20 @@ public class Code_42_specific_SSR extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        Create_Booking_Specific_SSR PreRequisite1 = new Create_Booking_Specific_SSR();
-        PreRequisite1.run();
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Create_Booking_Specific_SSR Prerequisite1 = new Create_Booking_Specific_SSR();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Create_Booking_Specific_SSR PreRequisite1 = new Create_Booking_Specific_SSR();
+//        PreRequisite1.run();
         ExtentLogger.info("PreRequisite1");
 
         UpdatePayload();

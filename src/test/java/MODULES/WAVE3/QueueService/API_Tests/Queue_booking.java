@@ -5,6 +5,7 @@ import GENERICS.Assertions;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.QueueService.PreRequisites.Create_Booking_for_queue_booking;
+import MODULES.WAVE3.TicketingService.PreRequisites.create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -33,9 +34,22 @@ public class Queue_booking extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Create_Booking_for_queue_booking Prerequisite1 = new Create_Booking_for_queue_booking();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite 1");
-        Create_Booking_for_queue_booking Prerequisite = new Create_Booking_for_queue_booking();
-        Prerequisite.run();
+//        Create_Booking_for_queue_booking Prerequisite = new Create_Booking_for_queue_booking();
+//        Prerequisite.run();
 
         UpdatePayload();
 

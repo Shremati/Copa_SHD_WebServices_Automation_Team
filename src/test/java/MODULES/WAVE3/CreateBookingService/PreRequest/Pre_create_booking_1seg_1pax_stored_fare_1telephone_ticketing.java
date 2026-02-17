@@ -29,8 +29,8 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        UpdatePayload(i);
 //                       ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -53,7 +53,10 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml"));
@@ -81,12 +84,13 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis = new FileInputStream(new File(getTestData()));
@@ -100,7 +104,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
@@ -109,7 +113,7 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -117,13 +121,15 @@ public class Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing exten
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
-        XSSFRow InputRow = sheet.getRow(39);
+        XSSFRow InputRow = sheet.getRow(38);
 
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
         InputRow.getCell(17).setCellValue(PNR);
+        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment", "FlightNumber", filepath);
+        InputRow.getCell(2).setCellValue(flight);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

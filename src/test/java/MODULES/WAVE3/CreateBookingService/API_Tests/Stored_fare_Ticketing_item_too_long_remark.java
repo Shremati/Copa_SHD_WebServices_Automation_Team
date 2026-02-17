@@ -37,15 +37,33 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
-//        ExtentLogger.info("Prerequisite 1");
-//        Prerequisite.run();
-//
-//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
-//        ExtentLogger.info("Prerequisite 2");
-//        Prerequisite2.run();
+        int i=0;
+        boolean flightFound=false;
 
-        UpdatePayload();
+        //We are searching all the available flights in a do while loop
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite1 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing Prerequisite = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing();
+        ExtentLogger.info("Prerequisite 1");
+//        Prerequisite.run();
+
+        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
+        ExtentLogger.info("Prerequisite 2");
+        Prerequisite2.run();
+
+        flightFound = false;
+        Response response = null;
+        i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -60,7 +78,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -69,7 +87,17 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if((response.getBody().asString().contains("Success"))){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_too_long_remark.xml"));
@@ -100,12 +128,12 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
         writer.write("");
         writer.flush();
 
-        excelwriter();
+        excelwriter(i);
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -120,7 +148,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
@@ -141,7 +169,7 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
 
     }
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -157,6 +185,9 @@ public class Stored_fare_Ticketing_item_too_long_remark extends FrameworkConstan
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
 
         InputRow.getCell(17).setCellValue(PNR);
+
+        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment", "FlightNumber", filepath);
+        InputRow.getCell(2).setCellValue(flight);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

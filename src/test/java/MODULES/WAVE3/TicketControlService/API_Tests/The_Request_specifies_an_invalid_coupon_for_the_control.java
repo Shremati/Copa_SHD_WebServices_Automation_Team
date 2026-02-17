@@ -2,6 +2,7 @@ package MODULES.WAVE3.TicketControlService.API_Tests;
 
 import GENERICS.Assertions;
 import GENERICS.XMLParser;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Create_Booking_with_4_PAX_36;
 import MODULES.WAVE3.TicketControlService.PreRequisites.*;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -32,10 +33,22 @@ public class The_Request_specifies_an_invalid_coupon_for_the_control extends Fra
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite1 = new Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 1");
-        Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite = new Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control();
-        Prerequisite.run();
+//        Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite = new Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control();
+//        Prerequisite.run();
 
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite2 = new issue_ticket_The_Request_specifies_an_invalid_coupon_for_the_control();

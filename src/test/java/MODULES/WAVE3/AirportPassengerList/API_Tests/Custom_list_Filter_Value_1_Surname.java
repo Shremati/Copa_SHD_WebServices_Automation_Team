@@ -5,6 +5,7 @@ import GENERICS.Utils;
 import GENERICS.XMLParser;
 import java.nio.charset.StandardCharsets;
 import MODULES.WAVE3.AirportPassengerList.PreRequisites.BookingRequest;
+import MODULES.WAVE3.AirportPassengerList.PreRequisites.Custom_list_Filter_Value_5_Booking;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -37,8 +38,20 @@ public class Custom_list_Filter_Value_1_Surname extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        BookingRequest Prerequisite =new BookingRequest();
-        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        BookingRequest Prerequisite1 = new BookingRequest();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+//        BookingRequest Prerequisite =new BookingRequest();
+//        Prerequisite.run();
         ExtentLogger.info("Prerequisite");
 
         UpdatePayload();

@@ -35,8 +35,21 @@ public class Issue_bulk_ticket_for_a_pnr_with_two_pax extends FrameworkConstants
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
         create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+//        create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax();
+//        Prerequisite.run();
 
         UpdatePayload();
 

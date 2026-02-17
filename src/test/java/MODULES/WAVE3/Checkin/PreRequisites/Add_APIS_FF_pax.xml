@@ -8,8 +8,8 @@
                 </air:POS>
                 <air:PassengerInfo RPH="1" SurnameBookedNumber="1">
                     <air1:PassengerName>
-                        <com:GivenName>CARLOS</com:GivenName>
-                        <com:Surname>PONSE</com:Surname>
+                        <com:GivenName>Joshua</com:GivenName>
+                        <com:Surname>Gold</com:Surname>
                     </air1:PassengerName>
                     <air1:BookingReferenceID Type="14" ID="BJJWKW"/>
                 </air:PassengerInfo>
@@ -18,17 +18,17 @@
                     <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
                         <air1:API_Info Gender="Male" BirthDate="1975-05-12" DocHolderNationality="US" CountryOfResidence="US">
                             <com:DocHolderFormattedName>
-                                <com:GivenName>CARLOS</com:GivenName>
-                                <com:Surname>PONSE</com:Surname>
+                                <com:GivenName>Joshua</com:GivenName>
+                                <com:Surname>Gold</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2026-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
                         <air1:API_Info Gender="Male" BirthDate="1975-05-12" DocHolderNationality="US" CountryOfResidence="US">
                             <com:DocHolderFormattedName>
-                                <com:GivenName>CARLOS</com:GivenName>
-                                <com:Surname>PONSE</com:Surname>
+                                <com:GivenName>Joshua</com:GivenName>
+                                <com:Surname>Gold</com:Surname>
                             </com:DocHolderFormattedName>
                             <air1:Address Type="4">
                                 <com:AddressLine>SCRANTON STREET</com:AddressLine>
@@ -37,7 +37,7 @@
                                 <com:CountryName Code="US">USA</com:CountryName>
                             </air1:Address>
                         </air1:API_Info>
-                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2025-11-20" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23445455" DocType="2" ExpireDate="2026-11-20" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
             </air:EDS_AirAPIModifyRQ>

@@ -42,8 +42,13 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
 //        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
 //        ExtentLogger.info("Prerequisite 2");
 //        Prerequisite2.run();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
-        UpdatePayload();
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -58,7 +63,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -67,7 +72,17 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("Error Response to Add Original Issued Transaction -  (1) INVALID TICKET NBR-ORIG ISSUE (2) /FLWG DATA NOT ENTERED/PROCESSED:") ){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_issued_info.xml"));
         writer.write(response.asPrettyString());
         writer.close();
@@ -92,13 +107,13 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
         writer.write("");
         writer.flush();
 
-        excelwriter();
+        excelwriter(i);
 
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -113,7 +128,8 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
@@ -134,7 +150,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
 
     }
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -143,7 +159,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_issued_info extends Fra
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CreateBookingService");
         XSSFRow InputRow = sheet.getRow(30);
-
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_issued_info.xml";
 

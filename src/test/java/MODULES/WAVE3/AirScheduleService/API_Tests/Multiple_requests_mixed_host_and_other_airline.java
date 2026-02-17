@@ -73,7 +73,7 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
             i++;
 
             if(i > 4){
-                Assert.fail("No flights are having seats");
+                Assert.fail("No flights are having FlightDetails/Success");
             }
         }
         while(!flightFound);

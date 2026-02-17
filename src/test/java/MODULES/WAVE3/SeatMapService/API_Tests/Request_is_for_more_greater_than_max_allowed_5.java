@@ -34,7 +34,13 @@ public class Request_is_for_more_greater_than_max_allowed_5 extends FrameworkCon
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -50,7 +56,7 @@ public class Request_is_for_more_greater_than_max_allowed_5 extends FrameworkCon
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+         response = requestSpecification.body(SOAPRequest)
                 .body(SOAPRequest)
                 .when()
                 .post(getSeatmapservice())
@@ -59,6 +65,18 @@ public class Request_is_for_more_greater_than_max_allowed_5 extends FrameworkCon
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("CabinType=\"Economy\"") && response.getBody().asString().contains("CabinType=\"Business\"")){
+                flightFound = true;
+            }
+
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -89,7 +107,7 @@ public class Request_is_for_more_greater_than_max_allowed_5 extends FrameworkCon
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -104,37 +122,43 @@ public class Request_is_for_more_greater_than_max_allowed_5 extends FrameworkCon
 
         //Segment 1
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         //Segment 2
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
         //Segment 3
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(9).getNumericCellValue()),getTemp_requestPath(),2);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),2);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(11).getStringCellValue() + "-" + InputRow.getCell(12).getStringCellValue()).get(i),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),2);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),2);
 
         //Segment 4
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(13).getNumericCellValue()),getTemp_requestPath(),3);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),3);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(15).getStringCellValue() + "-" + InputRow.getCell(16).getStringCellValue()).get(i),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),3);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),3);
 
         //Segment 5
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(17).getNumericCellValue()),getTemp_requestPath(),4);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),4);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(19).getStringCellValue() + "-" + InputRow.getCell(20).getStringCellValue()).get(i),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),4);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(20).getStringCellValue(),getTemp_requestPath(),4);
 
         //Segment 6
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(21).getNumericCellValue()),getTemp_requestPath(),5);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(22).getStringCellValue(),getTemp_requestPath(),5);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(22).getStringCellValue(),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber", availableFlights.get(InputRow.getCell(23).getStringCellValue() + "-" + InputRow.getCell(24).getStringCellValue()).get(i),getTemp_requestPath(),5);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(23).getStringCellValue(),getTemp_requestPath(),5);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(24).getStringCellValue(),getTemp_requestPath(),5);
 

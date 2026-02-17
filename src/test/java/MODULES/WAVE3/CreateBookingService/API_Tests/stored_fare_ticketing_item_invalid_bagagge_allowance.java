@@ -33,8 +33,13 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
+        do{
+
+            UpdatePayload(i);
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -48,7 +53,7 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -57,7 +62,17 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("Error Response to Add Baggage Allowance Transaction -  (1) INVALID BAGGAGE ALLOWANCE CODE") ){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\stored_fare_ticketing_item_invalid_bagagge_allowance.xml"));
@@ -92,7 +107,7 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -106,8 +121,9 @@ public class stored_fare_ticketing_item_invalid_bagagge_allowance extends Framew
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:Date", "Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());

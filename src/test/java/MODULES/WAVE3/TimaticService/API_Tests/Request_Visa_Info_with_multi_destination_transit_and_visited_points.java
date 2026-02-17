@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.xml.sax.SAXException;
 import reports.ExtentLogger;
 
@@ -61,6 +62,9 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
         writer.write(response.asPrettyString());
         writer.close();
 
+        Assert.assertTrue(response.getBody().asString().contains("<ns5:Success/>"),"Not contains \"Success\" in response");
+        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
 
@@ -89,12 +93,18 @@ public class Request_Visa_Info_with_multi_destination_transit_and_visited_points
         filepath1=getRequestDirectory()+"TimaticService\\Request_Visa_Info_with_multi_destination_transit_and_visited_points.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),2);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
-        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),2);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
+        XMLParser.updateAttributeValueatIndex("air:Country","Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),3);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),2);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(10).getStringCellValue(),getTemp_requestPath(),4);
+//        XMLParser.SetTagtextatIndex("air:Country Code",InputRow.getCell(11).getStringCellValue(),getTemp_requestPath(),5);
 
         XMLParser.updateAttributeValue("eds:CountryOfResidence","LocationCode",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValueatIndex("eds:TransitLocation","LocationCode",InputRow.getCell(9).getStringCellValue(),getTemp_requestPath(),2);

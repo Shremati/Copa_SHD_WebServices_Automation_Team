@@ -34,7 +34,13 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -50,7 +56,7 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+                response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getAirportpassengerlist())
@@ -59,7 +65,17 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if((response.getBody().asString().contains("Success")) && (response.getBody().asString().contains("FlightInfo")) && (response.getBody().asString().contains("SecurityCode=\"N\""))){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -81,15 +97,18 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
 
         Assertions.AssertResponseTime(response,ResponseTime);
 
+
+
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
 
+
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -105,11 +124,13 @@ public class Custom_list_Filter_Value_0 extends FrameworkConstants
 
 
         XMLParser.updateAttributeValue("air1:FlightInfo","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
 
         wb.close();
 
     }
+
+
 }

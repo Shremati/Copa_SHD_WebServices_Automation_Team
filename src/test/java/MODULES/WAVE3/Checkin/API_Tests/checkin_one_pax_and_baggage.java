@@ -37,10 +37,18 @@ public class checkin_one_pax_and_baggage extends FrameworkConstants
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
         ExtentLogger.info("Prerequisite 1");
         create_booking_service_singlepax Prerequisite = new create_booking_service_singlepax();
-        Prerequisite.run();
+//        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
 
+        }while(!flightFound);
         ExtentLogger.info("Prerequisite 2");
         Issue_booking_one_pax_baggage Prerequisite1 = new Issue_booking_one_pax_baggage();
         Prerequisite1.run();

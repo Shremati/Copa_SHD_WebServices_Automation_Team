@@ -43,7 +43,13 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
 //        ExtentLogger.info("Prerequisite 2");
 //        Prerequisite2.run();
 
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -58,7 +64,7 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -67,7 +73,17 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("BookingReferenceID")&& response.getBody().asString().contains("Invalid Bankers Rate currency code.")){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_bankers_rate_info.xml"));
         writer.write(response.asPrettyString());
         writer.close();
@@ -94,13 +110,13 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
         writer.write("");
         writer.flush();
 
-        excelwriter();
+        excelwriter(i);
 
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -115,7 +131,8 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());
@@ -136,7 +153,7 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
 
     }
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -150,7 +167,7 @@ public class Stored_fare_Ticketing_item_Invalid_bankers_rate_info extends Framew
         filepath = getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_bankers_rate_info.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
-
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         InputRow.getCell(17).setCellValue(PNR);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

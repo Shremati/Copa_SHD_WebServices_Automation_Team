@@ -31,11 +31,11 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i)  throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
 
@@ -59,7 +59,11 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -83,11 +87,12 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
         writer.write("");
         writer.close();
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -101,7 +106,9 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\Checkin\\PreRequisites\\Create_Booking_FF_pax.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
+
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
@@ -110,7 +117,7 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -120,7 +127,7 @@ public class Create_Booking_FF_pax extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("CheckIn");
         XSSFRow InputRow=sheet.getRow(13);
-
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());

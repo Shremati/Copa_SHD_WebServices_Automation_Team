@@ -24,15 +24,16 @@ import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.trustStore;
 
 public class Create_Booking_Push_the_control_of_coupon_that_the_partner_already_has_the_control extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload();
+        UpdatePayload(i);
 
 //                       ********** Reading the xml request file **********
 
@@ -56,6 +57,10 @@ public class Create_Booking_Push_the_control_of_coupon_that_the_partner_already_
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success"))){
+            return false;
+
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -76,13 +81,14 @@ public class Create_Booking_Push_the_control_of_coupon_that_the_partner_already_
         writer.write("");
         writer.close();
 
-        excelwriter();
+        excelwriter(i);
+        return true;
 
     }
 
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -97,12 +103,12 @@ public class Create_Booking_Push_the_control_of_coupon_that_the_partner_already_
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
@@ -110,7 +116,7 @@ public class Create_Booking_Push_the_control_of_coupon_that_the_partner_already_
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************

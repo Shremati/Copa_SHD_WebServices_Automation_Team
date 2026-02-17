@@ -8,6 +8,7 @@ import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.create_booking_associa
 import MODULES.WAVE3.EMDAirlineSystemUpdate.PreRequisites.issue_ticket_association_emd_coupon_1_with_etkt_coupon1_pos_info;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.create_booking_void_a_ticket;
 import MODULES.WAVE3.ModifyTicketingService.PreRequisites.issue_ticket_void_a_ticket;
+import MODULES.WAVE3.TicketControlService.PreRequisites.Create_Booking_Push_the_control_of_coupon_that_the_partner_already_has_the_control;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -37,9 +38,22 @@ public class Association_emd_coupon_1_with_etkt_coupon1_pos_info extends Framewo
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
         //        PreRequisite for Scenario ------> Create Booking
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite1 = new create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite 1");
-        create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite = new create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info();
-        Prerequisite.run();
+//        create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info Prerequisite = new create_booking_association_emd_coupon_1_with_etkt_coupon1_pos_info();
+//        Prerequisite.run();
 
         //        PreRequisite for Scenario ------> Issue Ticket
         ExtentLogger.info("Prerequisite 2");

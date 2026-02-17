@@ -44,8 +44,13 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
 //        Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket Prerequisite2 = new Pre_create_booking_1seg_1pax_stored_fare_1telephone_ticketing_issue_ticket();
 //        ExtentLogger.info("Prerequisite 2");
 //        Prerequisite2.run();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
-        UpdatePayload();
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -60,7 +65,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -69,7 +74,17 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("Error Response to Add original origin/destination city Transaction -  (1) INVALID CITY CODE S) (2) /FLWG DATA NOT ENTERED/PROCESSED:")){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\Stored_fare_Ticketing_item_Invalid_original_origin_destination_city.xml"));
@@ -104,7 +119,7 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -119,7 +134,8 @@ public class Stored_fare_Ticketing_item_Invalid_original_origin_destination_city
 
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air:Ticketing", "TicketTimeLimit", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(19).getNumericCellValue()), getTemp_requestPath());

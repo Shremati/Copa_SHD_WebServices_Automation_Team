@@ -34,11 +34,17 @@ public class STB_01_Start_Standby extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
-        FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
+            FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
         SOAPRequest= IOUtils.toString(fileInputStream, StandardCharsets.UTF_8);
         SOAPRequest = SOAPRequest.substring(SOAPRequest.indexOf('\n') + 1);
         ExtentLogger.info("Base URL : "+getBaseURL()+getStandby());
@@ -49,7 +55,7 @@ public class STB_01_Start_Standby extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification
+         response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getStandby())
@@ -58,6 +64,20 @@ public class STB_01_Start_Standby extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+//If response does not contain success and PNR then there is no point in going forward for the assertion check
+// hence we are returing false
+
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("BookingClassInfo") && response.getBody().asString().contains("PassengerCountInfo")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"Standby\\STB_01_Start_Standby.xml"));
@@ -85,7 +105,7 @@ public class STB_01_Start_Standby extends FrameworkConstants {
 
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -99,7 +119,7 @@ public class STB_01_Start_Standby extends FrameworkConstants {
         filepath1=getRequestDirectory()+"Standby\\STB_01_Start_Standby.xml";
 
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber", availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 
         wb.close();

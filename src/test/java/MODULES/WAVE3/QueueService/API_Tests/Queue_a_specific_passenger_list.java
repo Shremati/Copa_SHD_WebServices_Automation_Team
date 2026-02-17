@@ -33,8 +33,13 @@ public class Queue_a_specific_passenger_list extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
-        UpdatePayload();
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +54,7 @@ public class Queue_a_specific_passenger_list extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification
+         response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getQueueservice())
@@ -59,6 +64,17 @@ public class Queue_a_specific_passenger_list extends FrameworkConstants {
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("QueueInfo")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"QueueService\\Queue_a_specific_passenger_list.xml"));
         writer.write(response.asPrettyString());
@@ -83,7 +99,7 @@ public class Queue_a_specific_passenger_list extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -97,9 +113,17 @@ public class Queue_a_specific_passenger_list extends FrameworkConstants {
         filepath1=getRequestDirectory()+"QueueService\\Queue_a_specific_passenger_list.xml";
 
         XMLParser.updateAttributeValue("com:Source","AirlineVendorID",InputRow.getCell(1).getStringCellValue(),filepath1);
-
+String dest = InputRow.getCell(6).getStringCellValue();
+        String Arr = InputRow.getCell(7).getStringCellValue();
+        String concat = dest+"-"+Arr;
         XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex(
+                "que1:FlightInfo",
+                "FlightNumber",
+                availableFlights.get(concat).get(i),
+                getTemp_requestPath(),
+                0  // first FlightInfo element
+        );//        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValue("que1:QueueInfo","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("que1:QueueInfo","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());

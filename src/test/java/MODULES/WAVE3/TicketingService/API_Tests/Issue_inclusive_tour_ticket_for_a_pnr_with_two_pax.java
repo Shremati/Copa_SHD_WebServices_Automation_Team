@@ -32,8 +32,21 @@ public class Issue_inclusive_tour_ticket_for_a_pnr_with_two_pax extends Framewor
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax();
-        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
+
+        //We are searching all the available flights in a do while loop
+        create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax Prerequisite1 = new create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+//        create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax Prerequisite = new create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax();
+//        Prerequisite.run();
 
         UpdatePayload();
 

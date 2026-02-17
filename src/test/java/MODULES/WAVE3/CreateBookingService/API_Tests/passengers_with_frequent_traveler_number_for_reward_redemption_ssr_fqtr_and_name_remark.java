@@ -32,7 +32,13 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //                       ********** Reading the xml request file **********
 
@@ -47,7 +53,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -56,7 +62,17 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if((response.getBody().asString().contains("Success"))){
+                flightFound = true;
+            }
 
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark.xml"));
@@ -81,7 +97,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);
 
-        excelwriter();
+        excelwriter(i);
 
         IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark postCheck = new IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark();
         postCheck.run();
@@ -89,7 +105,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis = new FileInputStream(new File(getTestData()));
@@ -103,12 +119,12 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         filepath1 = getRequestDirectory() + "CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark.xml";
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()), getTemp_requestPath(), 1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(6).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 1);
 
@@ -119,7 +135,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -134,6 +150,12 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
         InputRow.getCell(17).setCellValue(PNR);
+
+        String flight1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,0);
+        InputRow.getCell(2).setCellValue(flight1);
+
+        String flight2 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,1);
+        InputRow.getCell(6).setCellValue(flight2);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

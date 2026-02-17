@@ -1,10 +1,13 @@
 package MODULES.WAVE3.QueueService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.QueueService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -13,10 +16,14 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //15 Scenarios
 @Listeners(TestListener.class)
 public class QueueService {
-
-    QueueService() {
+    QueueService() throws IOException {
         createFolders(getResponseDirectory() + "QueueService");
+        FlightBooking.bookFlight("QueueService");
     }
+
+//    QueueService() {
+//        createFolders(getResponseDirectory() + "QueueService");
+//    }
 
     @Test(description = "QS_02 - Display queue booking first item only, full data format and do not remove from queue")
     public void QS_02() {
