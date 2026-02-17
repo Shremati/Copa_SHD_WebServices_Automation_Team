@@ -38,8 +38,18 @@ public class Code_34_specific_party extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        int i=0;
+        boolean flightFound=false;
+
         Create_Booking_with_4_PAX Prerequisite =new Create_Booking_with_4_PAX();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
         ExtentLogger.info("Prerequisite");
 
         UpdatePayload();

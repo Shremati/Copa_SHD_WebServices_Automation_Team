@@ -37,11 +37,19 @@ public class Code_12_Passengers_with_advance_seats extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
         create_booking_one_pax_with_advance_seat_assignment Prerequisite =new create_booking_one_pax_with_advance_seat_assignment();
-        Prerequisite.run();
-        ExtentLogger.info("Prerequisite");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);//Creating 3 pax RPH=1,2,3
 
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite");
 
         UpdatePayload();
 

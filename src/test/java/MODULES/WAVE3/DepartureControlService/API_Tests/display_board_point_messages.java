@@ -33,10 +33,25 @@ public class display_board_point_messages extends FrameworkConstants
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        ExtentLogger.info("Prerequisite 1");
-        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
-        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
+//        Prerequisite.run();
+//
+//        UpdatePayload();
+        int i=0;
+        boolean flightFound=false;
 
+//We are searching all the available flights in a do while loop
+        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite1");
         UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -52,7 +67,7 @@ public class display_board_point_messages extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification
+         Response response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDeparturecontrolservice())
@@ -61,6 +76,7 @@ public class display_board_point_messages extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -100,6 +116,7 @@ public class display_board_point_messages extends FrameworkConstants
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        //XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
 
 

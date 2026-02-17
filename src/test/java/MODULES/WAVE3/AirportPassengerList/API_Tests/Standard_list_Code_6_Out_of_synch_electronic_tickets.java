@@ -38,10 +38,19 @@ public class Standard_list_Code_6_Out_of_synch_electronic_tickets extends Framew
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
         CreateBooking_StandardList_Code_6_out_of_sync PreRequisite1 = new CreateBooking_StandardList_Code_6_out_of_sync();
-        PreRequisite1.run();
-        ExtentLogger.info("PreRequisite1");
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = PreRequisite1.run(i++);//Creating 3 pax RPH=1,2,3
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite 1");
 
         Issue_Ticket_Standard_list_Code_6 PreRequisite2 = new Issue_Ticket_Standard_list_Code_6();
         PreRequisite2.run();

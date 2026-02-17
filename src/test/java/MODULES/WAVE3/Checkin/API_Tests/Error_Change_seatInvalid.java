@@ -31,10 +31,11 @@ public class Error_Change_seatInvalid extends FrameworkConstants
 {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
-    {
 
-        UpdatePayload();
+    public static boolean Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    {
+        int i = 0;
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -65,8 +66,12 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"));
-        ExtentLogger.info("Assertion passed - contains \"Success\"");
+//        Assert.assertTrue(response.getBody().asString().contains("Success"));
+//        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
 
         Assert.assertTrue(response.getBody().asString().contains("INVLD SEAT/ROW/SEATING OPTION Z"));
         ExtentLogger.info("Assertion passed - contains \"Success\"");
@@ -80,9 +85,11 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.flush();
+
+        return true;
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -96,7 +103,8 @@ public class Error_Change_seatInvalid extends FrameworkConstants
         filepath1=getRequestDirectory()+"Checkin\\Error_Change_seatInvalid.xml";
 
 
-        XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
+        XMLParser.updateAttributeValue("com1:CarrierInfo", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), filepath1);
+//        XMLParser.updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 

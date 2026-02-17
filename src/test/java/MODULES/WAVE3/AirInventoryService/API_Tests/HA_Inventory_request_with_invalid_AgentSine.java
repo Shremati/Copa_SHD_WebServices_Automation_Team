@@ -31,9 +31,10 @@ public class HA_Inventory_request_with_invalid_AgentSine extends FrameworkConsta
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
+    public static boolean Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+        int i=0;
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -75,10 +76,12 @@ public class HA_Inventory_request_with_invalid_AgentSine extends FrameworkConsta
         writer.write("");
         writer.flush();
 
+        return true;
+
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -90,16 +93,14 @@ public class HA_Inventory_request_with_invalid_AgentSine extends FrameworkConsta
         String filepath1;
         filepath1 = getRequestDirectory() + "AirInventoryService\\HA_Inventory_request_with_invalid_AgentSine.xml";
 
-
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(2).getStringCellValue(), filepath1, 0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), filepath1, 0);
+//        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(2).getStringCellValue(), filepath1, 0);
         XMLParser.SetTagtextatIndex("air1:Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValue("air1:OriginLocation", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DestinationLocation", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
 
-
         wb.close();
 
     }
-
 
 }

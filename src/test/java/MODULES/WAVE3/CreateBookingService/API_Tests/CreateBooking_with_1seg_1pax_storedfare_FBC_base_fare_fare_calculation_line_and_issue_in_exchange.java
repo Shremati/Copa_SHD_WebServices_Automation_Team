@@ -45,7 +45,14 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 //        ExtentLogger.info("Prerequisite 2");
 //        Prerequisite2.run();
 
-        UpdatePayload();
+       // UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -60,7 +67,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -69,6 +76,18 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -96,12 +115,12 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         writer.write("");
         writer.flush();
 
-        excelwriter();
+        excelwriter(i);
 
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -114,7 +133,8 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         filepath1 = getRequestDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml";
 
         XMLParser.updateAttributeValue("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1);
-        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        //XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:ExchangeInfo", "TicketDocumentNbr", InputRow.getCell(18).getStringCellValue(), getTemp_requestPath());
@@ -124,7 +144,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
 
     }
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -137,6 +157,7 @@ public class CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculat
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\CreateBooking_with_1seg_1pax_storedfare_FBC_base_fare_fare_calculation_line_and_issue_in_exchange.xml";
 
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
 
         InputRow.getCell(17).setCellValue(PNR);

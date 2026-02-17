@@ -33,10 +33,11 @@ public class STB_10_Cancel_Immediate_Standby extends FrameworkConstants {
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public static boolean Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
 
-        UpdatePayload();
+        UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -66,8 +67,12 @@ public class STB_10_Cancel_Immediate_Standby extends FrameworkConstants {
         writer.write(response.asPrettyString());
         writer.close();
 
-        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
-        ExtentLogger.info("Assertion passed - contains \"Success\"");
+//        Assert.assertTrue(response.getBody().asString().contains("Success"),"Not contains \"Success\" in response");
+//        ExtentLogger.info("Assertion passed - contains \"Success\"");
+
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
 
         Assertions.AssertWarning(response,false);
         ExtentLogger.info("Assertion passed - Do not contain Warning");
@@ -79,9 +84,11 @@ public class STB_10_Cancel_Immediate_Standby extends FrameworkConstants {
         writer.write("");
         writer.flush();
 
+        return true;
+
     }
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -95,8 +102,9 @@ public class STB_10_Cancel_Immediate_Standby extends FrameworkConstants {
         filepath1=getRequestDirectory()+"Standby\\STB_10_Cancel_Immediate_Standby.xml";
 
         XMLParser.updateAttributeValue("DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()),filepath1);
-        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
+//        XMLParser.updateAttributeValue("CarrierInfo","FlightNumber",InputRow.getCell(1).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("DepartureInformation","LocationCode",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("CarrierInfo", "FlightNumber", availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i), getTemp_requestPath());
 
         wb.close();
 

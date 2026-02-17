@@ -38,13 +38,23 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        ExtentLogger.info("Prerequisite 1");
-        create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
-        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 2");
+        create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);//Creating 3 pax RPH=1,2,3
+
+        }while(!flightFound);
+
+        ExtentLogger.info("Prerequisite 1");
+
         issue_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite2 = new issue_ticket_get_control_of_one_coupon_of_one_ticket();
         Prerequisite2.run();
+        ExtentLogger.info("Prerequisite 2");
 
         UpdatePayload();
 

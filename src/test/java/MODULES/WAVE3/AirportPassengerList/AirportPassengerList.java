@@ -17,14 +17,9 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class AirportPassengerList {
 
-    AirportPassengerList()throws IOException {
-
-
-
-            createFolders(getResponseDirectory() + "AirportPassengerList");
-            FlightBooking.bookFlight("AirportPassengerList");
-
-
+    AirportPassengerList() throws IOException {
+        createFolders(getResponseDirectory()+"AirportPassengerList");
+        FlightBooking.bookFlight("AirportPassengerList");
     }
 
 

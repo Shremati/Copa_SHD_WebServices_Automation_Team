@@ -32,10 +32,18 @@ public class Push_control_of_multiple_coupons_within_one_ticket_when_Partner_alr
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
-        ExtentLogger.info("Prerequisite 1");
         Create_booking_Push_control_of_multiple_coupons_within_one_ticket_when_Partner_already_has_control Prerequisite = new Create_booking_Push_control_of_multiple_coupons_within_one_ticket_when_Partner_already_has_control();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_Push_control_of_multiple_coupons_within_one_ticket_when_Partner_already_has_control Prerequisite2 = new Issue_ticket_Push_control_of_multiple_coupons_within_one_ticket_when_Partner_already_has_control();

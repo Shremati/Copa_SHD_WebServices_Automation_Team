@@ -35,8 +35,13 @@ public class Flifo_for_past_date extends FrameworkConstants {
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        //UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
 
+        do{
+            UpdatePayload(i);
 //    ******** Read the updated request and send it to fetch the response *********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -51,7 +56,7 @@ public class Flifo_for_past_date extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getFlifo())
@@ -60,6 +65,18 @@ public class Flifo_for_past_date extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 
@@ -91,7 +108,7 @@ public class Flifo_for_past_date extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -105,7 +122,8 @@ public class Flifo_for_past_date extends FrameworkConstants {
         filepath1=getRequestDirectory()+"FlifoService\\Flifo_for_past_date.xml";
 
         XMLParser.updateAttributeValue("air:Airline","Code",InputRow.getCell(2).getStringCellValue(),filepath1);
-        XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        //XMLParser.SetTagtext("air:FlightNumber", InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
+        XMLParser.SetTagtext("air:FlightNumber", availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i),getTemp_requestPath());
         XMLParser.SetTagtext("air:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath());
 
 

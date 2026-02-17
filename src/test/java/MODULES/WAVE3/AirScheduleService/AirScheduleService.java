@@ -18,8 +18,7 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 public class AirScheduleService {
 
     AirScheduleService() throws IOException {
-
-        createFolders(getResponseDirectory() + "AirScheduleService");
+        createFolders(getResponseDirectory()+"AirScheduleService");
         FlightBooking.bookFlight("AirScheduleService");
     }
 

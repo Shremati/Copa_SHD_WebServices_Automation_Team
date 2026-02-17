@@ -33,7 +33,13 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload();
+        //UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -49,7 +55,7 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response=requestSpecification
+         response=requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getDeparturecontrolservice())
@@ -59,6 +65,17 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+            if(response.getBody().asString().contains("Required data missing: seat number")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"DepartureControlService\\error_on_block_seat_invalid_seat_number.xml"));
@@ -82,7 +99,7 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -97,7 +114,8 @@ public class error_on_block_seat_invalid_seat_number extends FrameworkConstants
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        //XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
 
 

@@ -31,11 +31,22 @@ public class Missing_Validating_Airline_code_in_RedirectControl_request extends 
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
+        Pre_create_booking_missing_airline_code Prerequisite1 = new Pre_create_booking_missing_airline_code();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite 1");
-        Pre_create_booking_missing_airline_code PreRequest1 = new Pre_create_booking_missing_airline_code();
-        PreRequest1.run();
 
         ExtentLogger.info("Prerequisite 2");
         Issue_Ticket_missing_airline_code PreRequest2 = new Issue_Ticket_missing_airline_code();

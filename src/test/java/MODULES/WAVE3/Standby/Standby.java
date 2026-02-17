@@ -18,20 +18,11 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class Standby {
 
-//    Standby()
-//    {
-//        createFolders(getResponseDirectory()+"Standby");
-//    }
-
-    Standby()throws IOException {
-
-
-
-        createFolders(getResponseDirectory() + "Standby");
+    Standby() throws IOException {
+        createFolders(getResponseDirectory()+"Standby");
         FlightBooking.bookFlight("Standby");
-
-
     }
+
     @Test(description = "STB_01 - Start Standby")
     public void STB_01()
     {

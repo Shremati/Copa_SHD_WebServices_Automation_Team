@@ -32,7 +32,14 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        UpdatePayload();
+        //UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+
+            UpdatePayload(i);
 
 //                       ********** Reading the xml request file **********
 
@@ -47,7 +54,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest); 
 
-        Response response = requestSpecification
+         response = requestSpecification
                 .body(SOAPRequest)
                 .when()
                 .post(getCreatebookingservice())
@@ -56,6 +63,18 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -107,7 +126,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
-        excelwriter();
+        excelwriter(i);
 
 //        IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket postCheck = new IssueTicket_create_booking_2seg_2pax_stored_fare_issue_ticket();
 //        postCheck.run();
@@ -115,7 +134,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis = new FileInputStream(new File(getTestData()));
@@ -129,14 +148,16 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
         filepath1 = getRequestDirectory() + "CreateBookingService\\create_booking_2seg_2pax_stored_fare.xml";
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), filepath1, 0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
+        //XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 0);
 
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath(), 1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 1);
-        XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath(), 1);
-        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()), getTemp_requestPath(), 1);
+        //XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 1);
+        XMLParser.updateAttributeValueatIndex("com:DepartureAirport", "LocationCode", InputRow.getCell(7).getStringCellValue(), getTemp_requestPath(), 1);
+        XMLParser.updateAttributeValueatIndex("com:ArrivalAirport", "LocationCode", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(), 1);
 
         XMLParser.updateAttributeValue("air1:Date", "Date", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()), getTemp_requestPath());
 
@@ -146,7 +167,7 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
     }
 
 
-    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -159,6 +180,8 @@ public class create_booking_2seg_2pax_stored_fare extends FrameworkConstants {
         String filepath;
         filepath = getResponseDirectory() + "CreateBookingService\\create_booking_2seg_2pax_stored_fare.xml";
 
+//        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
+//        InputRow.getCell(6).setCellValue(availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i));
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
         InputRow.getCell(17).setCellValue(PNR);
 

@@ -34,9 +34,17 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
 
         create_booking_for_one_pax_code_25 Prerequisite1 =new create_booking_for_one_pax_code_25();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
         ExtentLogger.info("Prerequisite1");
 
         Issue_Ticket_code_25 Prerequisite2 = new Issue_Ticket_code_25();

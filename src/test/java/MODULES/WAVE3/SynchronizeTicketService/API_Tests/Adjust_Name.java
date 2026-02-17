@@ -34,11 +34,22 @@ public class Adjust_Name extends FrameworkConstants {
    public static String GivenName=null;
    public static String Surname=null;
     static RequestSpecification requestSpecification;
+
    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
    {
-       ExtentLogger.info("Prerequisite 1");
+       int i=0;
+       boolean flightFound=false;
+
        Create_Booking1 Prerequisite1 = new Create_Booking1();
-       Prerequisite1.run();
+       do{
+           if(i > 3){
+               Assert.fail("No flights are having seats");
+           }
+           flightFound = Prerequisite1.run(i++);
+
+       }while(!flightFound);
+
+       ExtentLogger.info("Prerequisite 1");
 
        ExtentLogger.info("Prerequisite 2");
        Issue_Booking1 Prerequisite2 = new Issue_Booking1();

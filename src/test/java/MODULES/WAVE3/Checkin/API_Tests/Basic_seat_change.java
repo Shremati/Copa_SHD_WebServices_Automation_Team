@@ -33,14 +33,23 @@ public class Basic_seat_change extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
+
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
+        int i=0;
+        boolean flightFound=false;
 
 //        PreRequisite for Scenario ------> Create Booking
-        ExtentLogger.info("Prerequisite 1");
         create_booking_service_onepax Prerequisite = new create_booking_service_onepax();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+        ExtentLogger.info("Prerequisite 1");
+
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_for_basic_seat_change Prerequisite1 = new Issue_ticket_for_basic_seat_change();
@@ -125,7 +134,6 @@ public class Basic_seat_change extends FrameworkConstants {
         filepath1=getRequestDirectory()+"Checkin\\Basic_seat_change.xml";
 
 
-
         updateAttributeValue("com1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
@@ -133,6 +141,5 @@ public class Basic_seat_change extends FrameworkConstants {
         wb.close();
 
     }
-
 
 }

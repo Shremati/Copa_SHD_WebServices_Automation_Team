@@ -33,9 +33,18 @@ public class Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator 
         public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
         {
 
-            ExtentLogger.info("Prerequisite 1");
+            int i=0;
+            boolean flightFound=false;
+
             Create_Booking_Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator Prerequisite = new Create_Booking_Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator();
-            Prerequisite.run();
+            do{
+                if(i > 3){
+                    Assert.fail("No flights are having seats");
+                }
+                flightFound = Prerequisite.run(i++);
+
+            }while(!flightFound);
+            ExtentLogger.info("Prerequisite 1");
 
             ExtentLogger.info("Prerequisite 2");
             issue_ticket_Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator Prerequisite2 = new issue_ticket_Get_control_of_one_coupon_of_one_ticket_with_involuntary_indicator();

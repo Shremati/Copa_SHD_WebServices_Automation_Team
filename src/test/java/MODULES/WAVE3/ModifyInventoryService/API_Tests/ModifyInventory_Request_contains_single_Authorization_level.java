@@ -31,7 +31,13 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
     static RequestSpecification requestSpecification;
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
-        UpdatePayload();
+        //UpdatePayload();
+        boolean flightFound = false;
+        Response response = null;
+        int i = 0;
+
+        do{
+            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -46,7 +52,7 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
                 .filter(new AllureRestAssured());
         ExtentLogger.logXMLRequest(SOAPRequest);
 
-        Response response = requestSpecification.body(SOAPRequest)
+         response = requestSpecification.body(SOAPRequest)
                 .when()
                 .post(getModifyinventoryservice())
                 .then()
@@ -54,6 +60,18 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+            if(response.getBody().asString().contains("Success")){
+                flightFound = true;
+            }
+
+            i++;
+
+            if(i > 4){
+                Assert.fail("No flights are having seats");
+            }
+        }
+        while(!flightFound);
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory() + "ModifyInventoryService\\ModifyInventory_Request_contains_single_Authorization_level.xml"));
@@ -76,7 +94,7 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
     }
 
 
-    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Reading Testdata from Excel ************
 
@@ -89,7 +107,8 @@ public class ModifyInventory_Request_contains_single_Authorization_level extends
         filepath1 = getRequestDirectory() + "Modifyinventoryservice\\ModifyInventory_Request_contains_single_Authorization_level.xml";
 
 
-        XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+        //XMLParser.SetTagtextatIndex("air1:FlightNumber", InputRow.getCell(1).getStringCellValue(), filepath1, 0);
+        XMLParser.SetTagtextatIndex("air1:FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i), filepath1, 0);
         XMLParser.SetTagtextatIndex("air1:DepartureDate", Utils.getDate_YYYYMMdd(InputRow.getCell(2).getNumericCellValue()), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValue("air1:BoardPoint", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 

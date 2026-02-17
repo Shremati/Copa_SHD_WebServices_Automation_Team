@@ -17,43 +17,45 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 
 //3 scenarios
 @Listeners(TestListener.class)
-public class SynchronizeTicketService {
+public class SynchronizeTicketService
+{
     SynchronizeTicketService() throws IOException {
-
-        createFolders(getResponseDirectory() + "SynchronizeTicketService");
+        createFolders(getResponseDirectory()+"SynchronizeTicketService");
         FlightBooking.bookFlight("SynchronizeTicketService");
     }
 
+    @Test(description = "STS_07 - Adjust flight number and flight Date")
+    public void STS_07()
+    {
 
-@Test(description = "STS_07 - Adjust flight number and flight Date")
-public void STS_07() {
+        try
+        {
+            Adjust_Flight_No.Execute();
 
-    try {
-        Adjust_Flight_No.Execute();
+        }catch(Exception e)
+        {
+            failTest(e);
+            System.out.println("STS_07 failed due to :"+e);
+        }
 
-    } catch (Exception e) {
-        failTest(e);
-        System.out.println("STS_07 failed due to :" + e);
+
+
     }
+    @Test(description = "STS_01 - Adjust Customer Name")
+    public void STS_01()
+    {
 
+        try
+        {
+            Adjust_Name.Execute();
 
+        }catch(Exception e)
+        {
+            failTest(e);
+            System.out.println("STS_01 failed due to :"+e);
+        }
 
     }
-//    @Test(description = "STS_01 - Adjust Customer Name")
-//    public void STS_01()
-//    {
-//
-//        try
-//        {
-//            Adjust_Name.Execute();
-//
-//        }catch(Exception e)
-//        {
-//            failTest(e);
-//            System.out.println("STS_01 failed due to :"+e);
-//        }
-//
-//    }
     @Test(description = "STS_03 - Adjust Class of service")
     public void STS_03()
     {

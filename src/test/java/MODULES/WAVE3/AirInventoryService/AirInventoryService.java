@@ -18,8 +18,8 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 public class AirInventoryService {
 
     String class_name=this.getClass().getName();
-    AirInventoryService() throws IOException {
 
+    AirInventoryService() throws IOException {
         createFolders(getResponseDirectory() + "AirInventoryService");
         FlightBooking.bookFlight("AirInventoryService");
     }

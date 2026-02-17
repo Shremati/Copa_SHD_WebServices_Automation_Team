@@ -36,10 +36,19 @@ public class Get_control_of_one_coupon_for_each_ticket_within_the_same_PNR exten
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
+        create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 1");
-        create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
-        Prerequisite.run();
 
         ExtentLogger.info("Prerequisite 2");
         issue_ticket_get_control_of_one_coupon_of_one_ticket Prerequisite2 = new issue_ticket_get_control_of_one_coupon_of_one_ticket();

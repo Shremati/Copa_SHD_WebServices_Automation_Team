@@ -38,8 +38,18 @@ public class Code_33_Specific_passengers extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+
+        int i=0;
+        boolean flightFound=false;
+
         Create_Booking_33 Prerequisite =new Create_Booking_33();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
         ExtentLogger.info("Prerequisite");
 
         UpdatePayload();

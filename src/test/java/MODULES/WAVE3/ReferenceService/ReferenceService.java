@@ -1,10 +1,13 @@
 package MODULES.WAVE3.ReferenceService;
 
+import GENERICS.FlightBooking;
 import MODULES.WAVE3.ReferenceService.API_Tests.*;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
@@ -13,8 +16,10 @@ import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 //8 scenarios
 @Listeners(TestListener.class)
 public class ReferenceService {
-    ReferenceService() {
+
+    ReferenceService() throws IOException {
         createFolders(getResponseDirectory() + "ReferenceService");
+        FlightBooking.bookFlight("ReferenceService");
     }
 
     @Test(description = "RS_01 - Display Category list")

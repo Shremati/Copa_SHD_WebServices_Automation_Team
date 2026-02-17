@@ -61,19 +61,19 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>Joshua</com:GivenName>
-                            <com:Surname>Gold</com:Surname>
+                            <com:GivenName>Rishi</com:GivenName>
+                            <com:Surname>Embross</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="3" AreaCityCode="555" PhoneNumber="555-1212"/>
-                                          <air1:CustLoyalty ProgramID="CM" MembershipID="JA 230266192"/>
+                                          <air1:CustLoyalty ProgramID="CM" MembershipID="230001102"/>
                         <air1:TravelerRefNumber RPH="1"/>
                     </air1:AirTraveler>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>Pablo</com:GivenName>
-                            <com:Surname>Aduriz</com:Surname>
+                            <com:GivenName>Virginia</com:GivenName>
+                            <com:Surname>Copa</com:Surname>
                         </air1:PersonName>
-                                          <air1:CustLoyalty ProgramID="CM" MembershipID="JA 230411228"/>
+                                          <air1:CustLoyalty ProgramID="CM" MembershipID="230001032"/>
                         <air1:Telephone PhoneUseType="0" AreaCityCode="000" Remark="willyone.makeitone@test.com " LocationCode="WEB"/>
                         <air1:Email>andry.shiller@myemail.com</air1:Email>
                         <air1:TravelerRefNumber RPH="2"/>

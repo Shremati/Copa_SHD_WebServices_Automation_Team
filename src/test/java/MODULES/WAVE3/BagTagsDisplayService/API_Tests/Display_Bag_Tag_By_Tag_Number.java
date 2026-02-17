@@ -36,9 +36,22 @@ public class Display_Bag_Tag_By_Tag_Number extends FrameworkConstants {
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException {
 
-        ExtentLogger.info("Prerequisite 1");
-        Create_booking_bagtag_by_tag_number Prerequisite = new Create_booking_bagtag_by_tag_number();
-        Prerequisite.run();
+//        ExtentLogger.info("Prerequisite 1");
+//        Create_booking_bagtag_by_tag_number Prerequisite = new Create_booking_bagtag_by_tag_number();
+//        Prerequisite.run();
+        int i=0;
+        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite1");
+
+//We are searching all the available flights in a do while loop
+        Create_booking_bagtag_by_tag_number Prerequisite = new  Create_booking_bagtag_by_tag_number();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_bagtag_by_tag_number Prerequisite1 = new Issue_ticket_bagtag_by_tag_number();

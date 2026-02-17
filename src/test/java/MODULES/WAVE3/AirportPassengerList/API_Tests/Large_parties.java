@@ -38,8 +38,17 @@ public class Large_parties extends FrameworkConstants
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
+
         Create_Booking_with_Large_Parties Prerequisite =new Create_Booking_with_Large_Parties();
-        Prerequisite.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
         ExtentLogger.info("Prerequisite");
 
         UpdatePayload();
@@ -70,9 +79,13 @@ public class Large_parties extends FrameworkConstants
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Large_parties.xml"));
+//        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Large_parties.xml"));
 //        writer.write(response.asPrettyString());
 //        writer.close();
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(getResponseDirectory()+"AirportPassengerList\\Large_parties.xml"));
+        writer.write(response.asPrettyString());
+        writer.close();
 
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Does not contain \"Success\" in the response");
         ExtentLogger.info("Assertion passed - contains \"Success\"");

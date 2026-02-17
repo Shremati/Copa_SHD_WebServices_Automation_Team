@@ -1,21 +1,27 @@
 package MODULES.WAVE3.BagTagsDisplayService;
 
-import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_All;
-import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_OA;
-import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_by_Tag_Number_OA;
-import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Display_Bag_Tag_By_Tag_Number;
+import GENERICS.FlightBooking;
+import MODULES.WAVE3.BagTagsDisplayService.API_Tests.*;
+//import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_All;
+//import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_OA;
+//import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Bag_Tag_Display_by_Tag_Number_OA;
+//import MODULES.WAVE3.BagTagsDisplayService.API_Tests.Display_Bag_Tag_By_Tag_Number;
 import io.qameta.allure.Description;
 import listeners.TestListener;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 import static GENERICS.Utils.createFolders;
 import static GENERICS.Utils.failTest;
 import static frameworkconstants.FrameworkConstants.getResponseDirectory;
 @Listeners(TestListener.class)
 public class BagTagDisplayService {
 
-    BagTagDisplayService() {
+    BagTagDisplayService() throws IOException {
         createFolders(getResponseDirectory() + "BagTagDisplayService");
+        FlightBooking.bookFlight("BagTags");
     }
 
     //@Description("BTD_01 - Bag Tag Display All")
