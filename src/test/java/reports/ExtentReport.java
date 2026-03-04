@@ -3,6 +3,7 @@ package reports;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import frameworkconstants.FrameworkConstants;
 import listeners.TestListener;
 
 import java.io.IOException;
@@ -19,10 +20,11 @@ public final class ExtentReport {
 
 
     public static void initReports() throws IOException {
-        String reportName=ExtentLogger.getReportName();;
+        String reportName=ExtentLogger.getReportName();
         String folderName = "COPA_" + (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+        FrameworkConstants.reportLocation=folderName;
         String reportLocation = System.getProperty("user.dir") + "\\" + folderName+"\\"
-                + reportName+"_"+new SimpleDateFormat("HHmmss").format(new Date())+".html";
+                + reportName+".html";
       //  String reportLocation = System.getProperty("user.dir") + "\\" + folderName+"\\"+ reportName+".html";
         extent  = new ExtentReports();
 

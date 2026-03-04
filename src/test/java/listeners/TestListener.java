@@ -1,12 +1,16 @@
 package listeners;
 
+import frameworkconstants.FrameworkConstants;
 import org.testng.*;
+import reports.ExcelUtil;
 import reports.ExtentLogger;
 import reports.ExtentReport;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 
 import static frameworkconstants.FrameworkConstants.getBaseURL;
+import static frameworkconstants.FrameworkConstants.testResults;
 
 public class TestListener implements ITestListener, ISuiteListener, IClassListener, IInvokedMethodListener {
 
@@ -29,30 +33,82 @@ public class TestListener implements ITestListener, ISuiteListener, IClassListen
     public void onAfterClass(org.testng.ITestClass testClass) {
         ExtentReport.tearDownReports(); }
 
-    public void onStart(org.testng.ISuite suite) {
+    @Override
+    public void onStart(ISuite suite) {
+        testResults.clear();
+
+        testResults.add(new String[]{
+                "Module Name",
+                "Test Name",
+                "Status",
+                "Description"
+        });
     }
 
-    public void onFinish(org.testng.ISuite suite) {
-    }
     @Override
-    public void onTestStart(org.testng.ITestResult result) {
-        int n=50;
+    public void onFinish(ISuite suite) {
+
+        try {
+            String filePath = FrameworkConstants.reportLocation + "/TestResults.xlsx";
+            ExcelUtil.writeTestResults(filePath, testResults);
+            System.out.println("Excel report generated successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onTestStart(ITestResult result) {
 
         testName = result.getName();
         testDescription = result.getMethod().getDescription();
-        if(testDescription!="")
-            testName = testDescription.substring(0, Math.min(testDescription.length(), n));
 
         ExtentReport.createTest(testName.toUpperCase());
     }
 
-    public void onTestSuccess(org.testng.ITestResult result) {
+
+    @Override
+    public void onTestSuccess(ITestResult result) {
+
+        String moduleName = result.getTestClass().getRealClass().getSimpleName();
+
+        testResults.add(new String[]{
+                moduleName,
+                result.getName(),
+                "PASS",
+                result.getMethod().getDescription()
+        });
+
         ExtentLogger.pass(result.getName());
-         }
+    }
 
-    public void onTestFailure(org.testng.ITestResult result) {
-        ExtentLogger.fail(String.valueOf(result.getThrowable())); }
+    @Override
+    public void onTestFailure(ITestResult result) {
 
+        String moduleName = result.getTestClass().getRealClass().getSimpleName();
+
+        testResults.add(new String[]{
+                moduleName,
+                result.getName(),
+                "FAIL",
+                String.valueOf(result.getThrowable())
+        });
+
+        ExtentLogger.fail(String.valueOf(result.getThrowable()));
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+
+        String moduleName = result.getTestClass().getRealClass().getSimpleName();
+
+        testResults.add(new String[]{
+                moduleName,
+                result.getName(),
+                "SKIPPED",
+                result.getMethod().getDescription()
+        });
+    }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
         if (method.isTestMethod()) {
@@ -68,5 +124,5 @@ public class TestListener implements ITestListener, ISuiteListener, IClassListen
     {
         return testName;
     }
-
 }
+

@@ -10,9 +10,12 @@ import java.nio.charset.StandardCharsets;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class FrameworkConstants {
 
+    public static List<String[]> testResults = new ArrayList<>();
+    public static String reportLocation=null;
     public static String BaseURL_Tulsa = "http://shdsitm.airservices.svcs.entsvcs.net:18119";      //TULSA SIT
     public static String BaseURL_Azure = "http://sit-shd-ws-lbi.dxctravel.svcs.entsvcs.com:8080";  //AZURE SIT
     public static String SharesCURL    = "http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117";
