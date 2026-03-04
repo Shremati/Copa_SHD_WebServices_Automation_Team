@@ -1,0 +1,60 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Sanity SHD WebServices">
+    <listeners>
+        <listener class-name="listeners.TestListener"></listener>
+    </listeners>
+    <test name="Sanity Tests">
+        <classes>
+
+            <class name="MODULES.WAVE3.Availability.Availability">
+                <methods>
+                    <include name="AVS_02"/>
+                    <include name="AVS_03"/>
+                    <include name="AVS_05"/>
+                </methods>
+            </class>
+
+            <class name="MODULES.WAVE3.CreateBookingService.CreateBookingService">
+                <methods>
+                    <include name="CBS_04"/>
+                    <include name="CBS_10"/>
+                    <include name="CBS_23"/>
+                    <include name="CBS_55"/>
+                    <include name="CBS_59"/>
+                </methods>
+            </class>
+
+            <class name="MODULES.WAVE3.DisplayBookingService.DisplayBookingService">
+                <methods>
+                    <include name="DBS_01"/>
+                    <include name="DBS_02"/>
+                    <include name="DBS_06"/>
+                    <include name="DBS_07"/>
+                </methods>
+            </class>
+
+            <class name="MODULES.WAVE3.TicketingService.TicketingService">
+                <methods>
+                    <include name="TIS_03"/>
+                    <include name="TIS_33"/>
+                </methods>
+            </class>
+
+            <class name="MODULES.WAVE3.DisplayTicketService.DisplayTicketService">
+                <methods>
+                    <include name="DTS_02"/>
+                    <include name="DTS_13"/>
+                </methods>
+            </class>
+
+            <class name="MODULES.WAVE3.SeatMapService.SeatMapService">
+                <methods>
+                    <include name="SMS_02"/>
+                    <include name="SMS_07"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
+
