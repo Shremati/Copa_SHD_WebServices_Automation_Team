@@ -41,8 +41,6 @@ public class create_booking_service_onepax extends FrameworkConstants
 
     public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-
-
         UpdatePayload(i);
 
 //               ********** Reading the xml request file **********
@@ -68,7 +66,11 @@ public class create_booking_service_onepax extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -93,12 +95,10 @@ public class create_booking_service_onepax extends FrameworkConstants
         writer.close();
 
 
-//         excelwriter();
-        excelwriter(i);
+         excelwriter(i);
+
+
         return true;
-
-
-
     }
 
 
@@ -117,7 +117,7 @@ public class create_booking_service_onepax extends FrameworkConstants
 
         XMLParser.updateAttributeValue("air1:FlightSegment","DepartureDateTime",Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
 //        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
@@ -139,9 +139,10 @@ public class create_booking_service_onepax extends FrameworkConstants
         XSSFRow InputRow=sheet.getRow(1);
 
 
-        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
+//        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
+        InputRow.getCell(2).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","FlightNumber",getTemp_responsePath(),0));
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
 

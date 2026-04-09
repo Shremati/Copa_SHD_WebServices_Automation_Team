@@ -56,7 +56,11 @@ public class Create_booking_collect_API_for_a_single_pax_alt extends FrameworkCo
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));

@@ -69,7 +69,11 @@ public class create_booking_multiplepax_with_same_surname extends FrameworkConst
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
