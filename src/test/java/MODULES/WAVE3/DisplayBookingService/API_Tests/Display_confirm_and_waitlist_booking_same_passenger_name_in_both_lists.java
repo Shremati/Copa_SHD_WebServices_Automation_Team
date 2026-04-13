@@ -61,7 +61,16 @@ public class Display_confirm_and_waitlist_booking_same_passenger_name_in_both_li
         ExtentLogger.info("Prerequisite1");
 
         Create_booking_2_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists Prerequisite1 = new Create_booking_2_Display_confirm_and_waitlist_booking_same_passenger_name_in_both_lists();
-        Prerequisite1.run();  //Waitlist Booking . Give flight with no availability
+
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+
         ExtentLogger.info("Prerequisite1");
 
         UpdatePayload();

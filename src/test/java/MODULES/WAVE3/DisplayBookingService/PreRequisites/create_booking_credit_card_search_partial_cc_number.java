@@ -60,6 +60,9 @@ public class create_booking_credit_card_search_partial_cc_number extends Framewo
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 

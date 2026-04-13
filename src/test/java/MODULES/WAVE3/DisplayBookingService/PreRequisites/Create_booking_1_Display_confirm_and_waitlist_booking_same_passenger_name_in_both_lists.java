@@ -60,6 +60,10 @@ public class Create_booking_1_Display_confirm_and_waitlist_booking_same_passenge
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 

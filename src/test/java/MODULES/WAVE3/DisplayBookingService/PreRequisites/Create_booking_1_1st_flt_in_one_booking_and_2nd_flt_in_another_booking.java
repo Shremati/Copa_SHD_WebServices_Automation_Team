@@ -61,6 +61,11 @@ public class Create_booking_1_1st_flt_in_one_booking_and_2nd_flt_in_another_book
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
 
+        if(!(response.getBody().asString().contains("Success")  &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
+        }
+
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
 

@@ -57,10 +57,19 @@ public class Display_confirmed_and_waitlist_booking_list_multiple_name_entries_i
 
         }while(!flightFound);
 
-        ExtentLogger.info("Prerequisite1");
+        ExtentLogger.info("Prerequisite");
 
         Create_booking_2_Display_confirmed_and_waitlist_booking_list_multiple_name_entries_in_list_on_same_booking Prerequisite1 = new Create_booking_2_Display_confirmed_and_waitlist_booking_list_multiple_name_entries_in_list_on_same_booking();
-        Prerequisite1.run();  //Waitlist Booking . Give flight with no availability
+//        Prerequisite1.run();  //Waitlist Booking . Give flight with no availability
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
+
         ExtentLogger.info("Prerequisite1");
 
         UpdatePayload();

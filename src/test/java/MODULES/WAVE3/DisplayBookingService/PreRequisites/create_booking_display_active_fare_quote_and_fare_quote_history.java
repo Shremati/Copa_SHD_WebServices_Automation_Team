@@ -60,6 +60,9 @@ public class create_booking_display_active_fare_quote_and_fare_quote_history ext
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 

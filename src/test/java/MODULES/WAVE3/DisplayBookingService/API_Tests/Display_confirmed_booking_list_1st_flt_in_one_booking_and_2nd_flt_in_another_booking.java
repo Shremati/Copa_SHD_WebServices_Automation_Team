@@ -60,7 +60,16 @@ public class Display_confirmed_booking_list_1st_flt_in_one_booking_and_2nd_flt_i
 
         ExtentLogger.info("Prerequisite1");
         Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_booking Prerequisite = new Create_booking_2_1st_flt_in_one_booking_and_2nd_flt_in_another_booking();
-        Prerequisite.run();
+
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite.run(i++);
+
+        }while(!flightFound);
+
+//        Prerequisite.run();
         ExtentLogger.info("Prerequisite2");
 
 

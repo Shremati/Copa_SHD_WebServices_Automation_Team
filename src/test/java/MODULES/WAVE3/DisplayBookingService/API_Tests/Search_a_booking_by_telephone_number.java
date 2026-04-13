@@ -57,10 +57,17 @@ public class Search_a_booking_by_telephone_number extends FrameworkConstants {
 
         }while(!flightFound);
 
-        ExtentLogger.info("Prerequisite1");
+        ExtentLogger.info("Prerequisite");
 
         Create_Booking_2_Search_a_booking_by_telephone_number Prerequisite1 = new Create_Booking_2_Search_a_booking_by_telephone_number();
-        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite1");
 
         UpdatePayload();

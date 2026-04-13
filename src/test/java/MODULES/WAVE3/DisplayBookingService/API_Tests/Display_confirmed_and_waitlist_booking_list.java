@@ -63,7 +63,15 @@ public class Display_confirmed_and_waitlist_booking_list extends FrameworkConsta
         ExtentLogger.info("Prerequisite1");
 
         create_booking2_display_confirmed_and_waitlist_booking_list Prerequisite2 = new create_booking2_display_confirmed_and_waitlist_booking_list();
-        Prerequisite2.run();//Waitlist Booking
+//        Prerequisite2.run();//Waitlist Booking
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite2.run(i++);
+
+        }while(!flightFound);
+
         ExtentLogger.info("Prerequisite2");
 
         UpdatePayload();
