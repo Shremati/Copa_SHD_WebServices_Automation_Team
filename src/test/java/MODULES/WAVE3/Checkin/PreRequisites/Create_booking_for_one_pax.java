@@ -57,7 +57,11 @@ public class Create_booking_for_one_pax extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") &&
+                response.getBody().asString().contains("BookingReferenceID"))){
+            return false;
 
+        }
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());

@@ -34,9 +34,18 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        int i=0;
+        boolean flightFound=false;
         ExtentLogger.info("Prerequisite 1");
         Create_Booking_Non_Revenue_Pax Prerequisite1 = new Create_Booking_Non_Revenue_Pax();
-        Prerequisite1.run();
+//        Prerequisite1.run();
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_non_revenue_pax Prerequisite2 = new Issue_ticket_non_revenue_pax();
@@ -123,3 +132,4 @@ public class check_in_non_revenue_pax extends FrameworkConstants {
 
     }
 }
+

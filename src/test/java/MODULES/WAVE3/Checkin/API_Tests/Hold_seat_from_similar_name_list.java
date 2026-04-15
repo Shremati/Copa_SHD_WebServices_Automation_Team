@@ -36,9 +36,19 @@ public class Hold_seat_from_similar_name_list extends FrameworkConstants
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
+        //        PreRequisite for Scenario ------> Create Booking
+        int i=0;
+        boolean flightFound=false;
         ExtentLogger.info("Prerequisite 1");
         Create_booking_hold_seat_from_similar_name_list Prerequisite1 = new Create_booking_hold_seat_from_similar_name_list();
-        Prerequisite1.run();
+
+        do{
+            if(i > 3){
+                Assert.fail("No flights are having seats");
+            }
+            flightFound = Prerequisite1.run(i++);
+
+        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket Prerequisite2 = new Issue_ticket();
