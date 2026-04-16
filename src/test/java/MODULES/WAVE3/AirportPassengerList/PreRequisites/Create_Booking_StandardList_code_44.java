@@ -128,10 +128,7 @@ public class Create_Booking_StandardList_code_44 extends FrameworkConstants {
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
         InputRow.getCell(7).setCellValue(PNR);
-
-        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment","FlightNumber",getTemp_responsePath());
-
-        InputRow.getCell(2).setCellValue(flight);
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

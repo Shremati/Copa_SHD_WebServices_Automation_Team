@@ -134,10 +134,9 @@ public class Custom_list_Filter_Value_5_Booking extends FrameworkConstants
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
-        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment","FlightNumber",getTemp_responsePath());
         InputRow.getCell(7).setCellValue(PNR);
 
-        InputRow.getCell(2).setCellValue(flight);
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

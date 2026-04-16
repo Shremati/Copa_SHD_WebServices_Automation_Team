@@ -99,6 +99,7 @@ public class add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare exten
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
+        excelwriter(i);
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -125,6 +126,34 @@ public class add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare exten
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport", "LocationCode", InputRow.getCell(4).getStringCellValue(), getTemp_requestPath());
 
+
+        wb.close();
+
+    }
+
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("CreateBookingService");
+        XSSFRow InputRow = sheet.getRow(16);
+
+        String filepath;
+        filepath = getResponseDirectory() + "CreateBookingService\\add_the_form_of_payment_remark_and_the_fop_in_the_stored_fare.xml";
+
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
+
+        InputRow.getCell(17).setCellValue(PNR);
+
+        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment", "FlightNumber", filepath);
+        InputRow.getCell(2).setCellValue(flight);
+
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
 
         wb.close();
 

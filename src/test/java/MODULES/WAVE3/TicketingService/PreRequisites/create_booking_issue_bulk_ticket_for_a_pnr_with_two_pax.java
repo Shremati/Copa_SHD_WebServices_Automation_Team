@@ -122,7 +122,7 @@ public class create_booking_issue_bulk_ticket_for_a_pnr_with_two_pax extends Fra
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
-
+        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValue("ns3:FlightSegment", "FlightNumber", getTemp_responsePath()));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

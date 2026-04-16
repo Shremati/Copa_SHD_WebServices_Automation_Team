@@ -124,7 +124,7 @@ public class create_booking_issue_inclusive_tour_ticket_for_a_pnr_with_two_pax e
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", getTemp_responsePath());
         InputRow.getCell(10).setCellValue(PNR);
-
+        InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValue("ns3:FlightSegment", "FlightNumber", getTemp_responsePath()));
         InputRow.getCell(13).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "ArrivalDateTime", getTemp_responsePath(), 0));
 
 

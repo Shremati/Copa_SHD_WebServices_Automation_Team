@@ -127,6 +127,9 @@ public class Create_Booking_for_queue_booking extends FrameworkConstants {
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(9).setCellValue(PNR);
 
+        InputRow.getCell(8).setCellValue(availableFlights.get(InputRow.getCell(6).getStringCellValue()+"-"+InputRow.getCell(7).getStringCellValue()).get(i));
+
+
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
         out.close();

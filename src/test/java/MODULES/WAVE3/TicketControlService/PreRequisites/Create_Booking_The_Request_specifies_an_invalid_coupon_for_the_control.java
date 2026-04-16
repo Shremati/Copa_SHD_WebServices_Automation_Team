@@ -131,6 +131,9 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
         InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0));
         InputRow.getCell(17).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),1));
 
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i));
+        InputRow.getCell(6).setCellValue(availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i));
+
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
         out.close();

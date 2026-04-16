@@ -137,4 +137,34 @@ public class Multiple_requests_mixed_host_and_other_airline extends FrameworkCon
         wb.close();
 
     }
+
+    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    {
+
+        //        ********** Writing TestData into Excel ************
+
+        File xlsxFile = new File(getTestData());
+        FileInputStream inputStream = new FileInputStream(xlsxFile);
+        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = wb.getSheet("AirportPassengerList");
+        XSSFRow InputRow=sheet.getRow(8);
+
+        InputRow.getCell(4).setCellValue(availableFlights.get(InputRow.getCell(2).getStringCellValue() + "-" + InputRow.getCell(3).getStringCellValue()).get(i));
+
+        InputRow.getCell(8).setCellValue(availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i));
+
+        InputRow.getCell(12).setCellValue(availableFlights.get(InputRow.getCell(10).getStringCellValue() + "-" + InputRow.getCell(11).getStringCellValue()).get(i));
+        FileOutputStream out = new FileOutputStream(new File(getTestData()));
+        wb.write(out);
+        out.close();
+
+        wb.close();
+
+//          ********* Clearing Temp_Response.xml *********
+
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(getTemp_responsePath()));
+        writer.write("");
+        writer.close();
+
+    }
 }

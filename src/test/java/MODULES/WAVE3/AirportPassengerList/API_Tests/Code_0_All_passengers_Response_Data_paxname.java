@@ -64,7 +64,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
-            if((response.getBody().asString().contains("Success")) && (response.getBody().asString().contains("FlightInfo")) && (response.getBody().asString().contains("SecurityCode=\"N\""))){
+            if((response.getBody().asString().contains("Success")) && (response.getBody().asString().contains("FlightInfo"))){
                 flightFound = true;
             }
 
@@ -91,6 +91,7 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
         ExtentLogger.info("Assertion passed - do not have warning");
 
         Assertions.AssertResponseTime(response,ResponseTime);
+
 
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
@@ -121,4 +122,5 @@ public class Code_0_All_passengers_Response_Data_paxname extends FrameworkConsta
         wb.close();
 
     }
+
 }

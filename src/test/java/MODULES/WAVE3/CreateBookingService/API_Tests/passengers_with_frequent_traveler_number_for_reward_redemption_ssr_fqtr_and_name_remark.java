@@ -97,7 +97,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         ExtentLogger.info("Assertion passed - Do not have warning");
         Assertions.AssertResponseTime(response, ResponseTime);
 
-        excelwriter(i);
+        excelwriter();
 
         IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark postCheck = new IssueTicket_passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark();
         postCheck.run();
@@ -135,7 +135,7 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
     }
 
 
-    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException {
 
         //        ********** Writing TestData into Excel ************
 
@@ -149,14 +149,13 @@ public class passengers_with_frequent_traveler_number_for_reward_redemption_ssr_
         filepath = getResponseDirectory() + "CreateBookingService\\passengers_with_frequent_traveler_number_for_reward_redemption_ssr_fqtr_and_name_remark.xml";
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID", "ID", filepath);
+
         InputRow.getCell(17).setCellValue(PNR);
 
-        String flight1 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,0);
-        InputRow.getCell(2).setCellValue(flight1);
+        String flight = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,0);
+        InputRow.getCell(2).setCellValue(flight);
 
-        String flight2 = XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,1);
-        InputRow.getCell(6).setCellValue(flight2);
-
+        InputRow.getCell(6).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment", "FlightNumber", filepath,1));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

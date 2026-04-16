@@ -94,6 +94,7 @@ public class Host_airline_2_leg_flight extends FrameworkConstants {
 
         Assertions.AssertResponseTime(response, ResponseTime);
 
+
 //                ********* Clearing Temp_Request.xml *********
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
@@ -121,4 +122,5 @@ public class Host_airline_2_leg_flight extends FrameworkConstants {
         wb.close();
 
     }
+
 }

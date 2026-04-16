@@ -132,8 +132,7 @@ public class BookingRequest extends FrameworkConstants
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         InputRow.getCell(7).setCellValue(PNR);
-        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment","FlightNumber",getTemp_responsePath());
-        InputRow.getCell(2).setCellValue(flight);
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
         InputRow.getCell(10).setCellValue(XMLParser.GetTagText("Surname",getTemp_responsePath()));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

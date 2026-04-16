@@ -131,6 +131,7 @@ public class create_booking_ticket_a_booking_with_one_flight_one_passenger_with_
         InputRow.getCell(14).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport", "LocationCode", getTemp_responsePath(), 0));
         InputRow.getCell(15).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport", "LocationCode", getTemp_responsePath(), 0));
 
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

@@ -128,6 +128,7 @@ public class Create_booking_Ticket_with_check_form_of_payment extends FrameworkC
         InputRow.getCell(14).setCellValue(XMLParser.GetAttributeValueatIndex("DepartureAirport", "LocationCode", getTemp_responsePath(), 0));
         InputRow.getCell(15).setCellValue(XMLParser.GetAttributeValueatIndex("ArrivalAirport", "LocationCode", getTemp_responsePath(), 0));
 
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

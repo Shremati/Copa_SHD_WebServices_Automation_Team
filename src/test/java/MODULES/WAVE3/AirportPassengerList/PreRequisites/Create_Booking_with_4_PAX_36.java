@@ -60,6 +60,7 @@ public class Create_Booking_with_4_PAX_36 extends FrameworkConstants
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
         if(!(response.getBody().asString().contains("Success"))){
             return false;
 
@@ -139,9 +140,8 @@ public class Create_Booking_with_4_PAX_36 extends FrameworkConstants
         InputRow.getCell(7).setCellValue(PNR);
         InputRow.getCell(8).setCellValue(Timestamp);
 
-        String flight = XMLParser.GetAttributeValue("ns3:FlightSegment","FlightNumber",getTemp_responsePath());
 
-        InputRow.getCell(2).setCellValue(flight);
+        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);
