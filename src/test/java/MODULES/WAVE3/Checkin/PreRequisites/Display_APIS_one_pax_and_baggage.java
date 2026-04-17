@@ -101,6 +101,17 @@ public class Display_APIS_one_pax_and_baggage extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),filepath1);
 
+        String givenName = InputRow.getCell(8).getStringCellValue();
+        String surname = InputRow.getCell(9).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
         wb.close();
 
     }

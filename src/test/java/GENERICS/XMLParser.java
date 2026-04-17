@@ -14,7 +14,12 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class XMLParser
@@ -75,7 +80,58 @@ public class XMLParser
         transf.transform(source, file);
 
     }
+    public static void updateTagValue(String tagName, String newValue, String fpath) {
+        try {
+            File xmlFile = new File(fpath);
+            if (!xmlFile.exists() || xmlFile.length() == 0) {
+                throw new IOException("Temp_Request.xml is empty or missing: " + fpath);
+            }
 
+            // Parse the XML safely
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            Document document;
+            try (FileInputStream fis = new FileInputStream(xmlFile)) {
+                document = builder.parse(fis);
+            }
+
+            // XPath search for tag
+            XPath xPath = XPathFactory.newInstance().newXPath();
+            NodeList nodes = (NodeList) xPath.evaluate(
+                    "//*[local-name()='" + tagName + "']",
+                    document,
+                    XPathConstants.NODESET
+            );
+
+            if (nodes.getLength() == 0) {
+                System.out.println("Warning: " + tagName + " node not found in " + fpath);
+            } else {
+                for (int i = 0; i < nodes.getLength(); i++) {
+                    nodes.item(i).setTextContent(newValue);
+                }
+                System.out.println(tagName + " updated successfully to: " + newValue);
+            }
+
+            // Write changes back to the same temp file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transf = transformerFactory.newTransformer();
+            transf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transf.setOutputProperty(OutputKeys.INDENT, "yes");
+            transf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
+
+            try (FileOutputStream fos = new FileOutputStream(xmlFile)) {
+                DOMSource source = new DOMSource(document);
+                StreamResult result = new StreamResult(fos);
+                transf.transform(source, result);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error updating " + tagName + ": " + e.getMessage());
+        }
+    }
     public static void SetTagtextatIndex(String Tag,String New_Value,String fpath,int Index) throws ParserConfigurationException, IOException, SAXException, TransformerException
     {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

@@ -19,11 +19,11 @@
                     <com1:PassengerType Gender="F"/>
                 </air:PassengerInfo>
                 <air:PassengerFlightInfo PassengerRPH="1" FlightRPH="1">
-                    <com1:SeatBoardingInfo SeatNumber="12C"/>
+                    <com1:SeatBoardingInfo SeatNumber="11C"/>
                 </air:PassengerFlightInfo>
                 <air:BaggageInfo PassengerRPH="1" CheckedBagCountTotal="1">
                     <com1:CheckedBaggageDetails>
-                        <com1:BagTagDetails SerialNumber="123456" BagTagCount="1" CarrierCode="CM"/>
+                        <com1:BagTagDetails SerialNumber="673426" BagTagCount="1" CarrierCode="CM"/>
                     </com1:CheckedBaggageDetails>
                     <com1:CheckedBagWeightTotal UnitOfMeasureQuantity="10"/>
                 </air:BaggageInfo>

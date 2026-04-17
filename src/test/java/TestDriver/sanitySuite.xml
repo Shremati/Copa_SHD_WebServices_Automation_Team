@@ -189,14 +189,15 @@
 <!--                </methods>-->
 <!--            </class>-->
 
-<!--            <class name="MODULES.WAVE3.AirportPassengerList.AirportPassengerList">-->
-<!--                <methods>-->
-<!--                    <include name="APL_03"/>-->
+            <class name="MODULES.WAVE3.AirportPassengerList.AirportPassengerList">
+                <methods>
+                    <include name="APL_03"/>
 <!--                    <include name="APL_06"/>-->
+<!--                    <include name="APL_07"/>-->
 <!--                    <include name="APL_19"/>-->
 <!--                    <include name="APL_54"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+                </methods>
+            </class>
 
 <!--            <class name="MODULES.WAVE3.ModifyTicketingService.ModifyTicketingService">-->
 <!--                <methods>-->
@@ -282,7 +283,7 @@
 
 <!--            <class name="MODULES.WAVE3.Checkin.Checkin">-->
 <!--                <methods>-->
-<!--                    <include name="CS_12"/>-->
+<!--                    <include name="CS_01"/>-->
 <!--                    <include name="CS_26"/>-->
 <!--                    <include name="CS_36"/>-->
 <!--                    <include name="CS_39"/>-->
