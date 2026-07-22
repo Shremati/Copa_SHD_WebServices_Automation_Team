@@ -98,6 +98,18 @@ public class Modify_APIS_Basic_seat_change extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(18).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName", InputRow.getCell(19).getStringCellValue(),getTemp_requestPath(),1);
 
+        String givenName = InputRow.getCell(8).getStringCellValue();
+        String surname = InputRow.getCell(9).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
+
         wb.close();
 
     }

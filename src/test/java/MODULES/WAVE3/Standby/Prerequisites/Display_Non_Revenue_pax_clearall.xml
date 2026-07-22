@@ -16,7 +16,7 @@
                         <com:Surname>SHANE</com:Surname>
                     </air1:PassengerName>
 
-                    <air1:BookingReferenceID Type="14" ID="BJJWKW"/>
+                    <air1:BookingReferenceID ID="BJJWKW" Type="14"/>
                 </air:PassengerInfo>
             </air:EDS_AirAPIReadRQ>
         </api:displayAPI>

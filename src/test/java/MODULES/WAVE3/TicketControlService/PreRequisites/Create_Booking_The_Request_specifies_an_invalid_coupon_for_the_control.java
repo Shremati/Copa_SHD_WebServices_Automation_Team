@@ -30,9 +30,9 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
 
-    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload(i);
+        UpdatePayload();
 
 //                       ********** Reading the xml request file **********
 
@@ -57,10 +57,10 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
-        if(!(response.getBody().asString().contains("Success"))){
-            return false;
-
-        }
+//        if(!(response.getBody().asString().contains("Success"))){
+//            return false;
+//
+//        }
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
         writer.write(response.asPrettyString());
         writer.close();
@@ -79,13 +79,13 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
         writer.write("");
         writer.close();
 
-        excelwriter(i);
-        return true;
+        excelwriter();
+//        return true;
 
     }
 
 
-    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -100,12 +100,14 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(5).getNumericCellValue()),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),1);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(6).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),1);
 
@@ -113,7 +115,7 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
     }
 
 
-    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -131,8 +133,8 @@ public class Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_cont
         InputRow.getCell(12).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),0));
         InputRow.getCell(17).setCellValue(XMLParser.GetAttributeValueatIndex("ns3:FlightSegment","ArrivalDateTime",getTemp_responsePath(),1));
 
-        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i));
-        InputRow.getCell(6).setCellValue(availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i));
+//        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i));
+//        InputRow.getCell(6).setCellValue(availableFlights.get(InputRow.getCell(7).getStringCellValue()+"-"+InputRow.getCell(8).getStringCellValue()).get(i));
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

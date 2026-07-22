@@ -42,13 +42,14 @@ public class Get_control_of_one_coupon_of_one_ticket extends FrameworkConstants
         boolean flightFound=false;
 
         create_booking_get_control_of_one_coupon_of_one_ticket Prerequisite = new create_booking_get_control_of_one_coupon_of_one_ticket();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite.run(i++);//Creating 3 pax RPH=1,2,3
-
-        }while(!flightFound);
+        Prerequisite.run();
+        //        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite.run();//Creating 3 pax RPH=1,2,3
+//
+//        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 1");
 

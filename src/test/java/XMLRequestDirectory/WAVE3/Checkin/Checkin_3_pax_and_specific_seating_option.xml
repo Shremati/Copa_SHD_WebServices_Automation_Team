@@ -13,22 +13,22 @@
                 </air:FlightInfo>
                 <air:PassengerInfo RPH="1" GivenNameRefNumber="1" SurnameRefNumber="1">
                     <com1:PassengerName>
-                        <com:GivenName>HELLO</com:GivenName>
-                        <com:Surname>JOKER</com:Surname>
+                        <com:GivenName>HELLOS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </com1:PassengerName>
                     <com1:PassengerType Gender="F"/>
                 </air:PassengerInfo>
                 <air:PassengerInfo RPH="2" GivenNameRefNumber="2" SurnameRefNumber="1">
                     <com1:PassengerName>
-                        <com:GivenName>MISTER</com:GivenName>
-                        <com:Surname>JOKER</com:Surname>
+                        <com:GivenName>MISTERS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </com1:PassengerName>
                     <com1:PassengerType Gender="M"/>
                 </air:PassengerInfo>
                 <air:PassengerInfo RPH="3" GivenNameRefNumber="3" SurnameRefNumber="1">
                     <com1:PassengerName>
-                        <com:GivenName>BEEM</com:GivenName>
-                        <com:Surname>JOKER</com:Surname>
+                        <com:GivenName>BEEMS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </com1:PassengerName>
                     <com1:PassengerType Gender="M"/>
                 </air:PassengerInfo>

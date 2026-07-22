@@ -1,8 +1,7 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
-import GENERICS.Assertions;
-import GENERICS.Utils;
-import GENERICS.XMLParser;
+import GENERICS.*;
+
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -23,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -129,6 +129,7 @@ public class Create_booking_service_3pax extends FrameworkConstants {
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
         String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
         String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+//
 
 
         InputRow.getCell(7).setCellValue(PNR);

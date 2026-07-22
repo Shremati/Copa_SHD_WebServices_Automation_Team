@@ -105,6 +105,8 @@ public class Display_APIS_Checkin_3_Pax extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:BookingReferenceID","ID",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),2);
 
+
+
         wb.close();
 
     }

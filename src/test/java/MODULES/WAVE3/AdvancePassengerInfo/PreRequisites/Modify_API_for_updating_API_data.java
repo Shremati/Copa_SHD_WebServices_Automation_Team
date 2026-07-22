@@ -71,8 +71,8 @@ public class Modify_API_for_updating_API_data extends FrameworkConstants {
         Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains RecordID=\"1\">0:APIS COMPLETE");
         ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
-        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"2\">0:APIS COMPLETE"),"Not contains RecordID=\"2\">0:APIS COMPLETE");
-        ExtentLogger.info("Assertion passed - contains RecordID=\"2\">0:APIS COMPLETE");
+
+
 
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

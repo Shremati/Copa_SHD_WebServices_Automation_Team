@@ -1,9 +1,9 @@
 package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
-import GENERICS.Assertions;
-import GENERICS.Utils;
-import GENERICS.XMLParser;
+import GENERICS.*;
+
 import java.nio.charset.StandardCharsets;
+
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -111,6 +112,29 @@ public class create_booking_for_one_pax_code_25 extends FrameworkConstants {
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
 
+        try {
+            // Update all persons
+            List<String[]> generatedNames = XMLFakerUtil.updateAllNames(getTemp_requestPath());
+
+            System.out.println("===== Generated Names =====");
+            for (int k = 0; k < generatedNames.size(); k++) {
+                System.out.println("Generated Person " + (k + 1) + ": "
+                        + generatedNames.get(k)[0] + " " + generatedNames.get(k)[1]);
+            }
+
+            // Read all persons from XML
+            List<String[]> xmlNames = XMLReaderUtil.getAllNames(getTemp_requestPath());
+
+            System.out.println("===== Names Read From XML =====");
+            for (int j = 0; j < xmlNames.size(); j++) {
+                System.out.println("XML Person " + (j + 1) + ": "
+                        + xmlNames.get(j)[0] + " " + xmlNames.get(j)[1]);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         wb.close();
 
     }
@@ -132,6 +156,14 @@ public class create_booking_for_one_pax_code_25 extends FrameworkConstants {
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
         InputRow.getCell(7).setCellValue(PNR);
+
+        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
+        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+
+
+
+        InputRow.getCell(17).setCellValue(Givenname);
+        InputRow.getCell(18).setCellValue(Surname);
 
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));

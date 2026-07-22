@@ -1,8 +1,7 @@
 package MODULES.WAVE3.Checkin.PreRequisites;
 
-import GENERICS.Assertions;
-import GENERICS.Utils;
-import GENERICS.XMLParser;
+import GENERICS.*;
+
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -23,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -113,13 +113,35 @@ public class Create_bokking_thru_checkin extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 
-        //Segment 2
+//        //Segment 2
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow2.getCell(1).getNumericCellValue()),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow2.getCell(2).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow2.getCell(5).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow2.getCell(3).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow2.getCell(4).getStringCellValue(),getTemp_requestPath(),1);
 
+        try {
+            // Update all persons
+            List<String[]> generatedNames = XMLFakerUtil.updateAllNames(getTemp_requestPath());
+
+            System.out.println("===== Generated Names =====");
+            for (int k = 0; k < generatedNames.size(); k++) {
+                System.out.println("Generated Person " + (k + 1) + ": "
+                        + generatedNames.get(k)[0] + " " + generatedNames.get(k)[1]);
+            }
+
+            // Read all persons from XML
+            List<String[]> xmlNames = XMLReaderUtil.getAllNames(getTemp_requestPath());
+
+            System.out.println("===== Names Read From XML =====");
+            for (int j = 0; j < xmlNames.size(); j++) {
+                System.out.println("XML Person " + (j + 1) + ": "
+                        + xmlNames.get(j)[0] + " " + xmlNames.get(j)[1]);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         wb.close();
 
     }
@@ -137,14 +159,22 @@ public class Create_bokking_thru_checkin extends FrameworkConstants {
         XSSFRow InputRow=sheet.getRow(11);
 
 
+
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
-        String Givenname = XMLParser.GetTagTextatIndex("GivenName",getTemp_responsePath(),0);
-        String Surname = XMLParser.GetTagTextatIndex("Surname",getTemp_responsePath(),0);
+//        String Givenname = XMLParser.GetTagTextatIndex("GivenName",getTemp_responsePath(),0);
+//        String Surname = XMLParser.GetTagTextatIndex("Surname",getTemp_responsePath(),0);
 
 
         InputRow.getCell(7).setCellValue(PNR);
+//        InputRow.getCell(8).setCellValue(Givenname);
+//        InputRow.getCell(9).setCellValue(Surname);
+
+        String Givenname = XMLParser.GetTagText("GivenName",getTemp_responsePath());
+        String Surname = XMLParser.GetTagText("Surname",getTemp_responsePath());
+
         InputRow.getCell(8).setCellValue(Givenname);
         InputRow.getCell(9).setCellValue(Surname);
+
 
 
 

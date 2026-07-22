@@ -119,7 +119,17 @@ public class Collect_API_for_a_Single_passenger extends FrameworkConstants {
 
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements", "AgencyName", InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(), 1);
+        String givenName = InputRow.getCell(8).getStringCellValue();
+        String surname = InputRow.getCell(9).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
 
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
 
         wb.close();
 

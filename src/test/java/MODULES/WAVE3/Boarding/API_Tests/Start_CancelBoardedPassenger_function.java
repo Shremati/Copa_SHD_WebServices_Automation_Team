@@ -117,7 +117,7 @@ public class Start_CancelBoardedPassenger_function extends FrameworkConstants
         XMLParser.updateAttributeValue("air1:CarrierInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),filepath1);
         XMLParser.updateAttributeValue("air1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMdd(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
         XMLParser.updateAttributeValue("air1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
-        XMLParser.updateAttributeValue("air1:SeatBoardingInfo","SeatNumber",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+        XMLParser.updateAttributeValue("air1:SeatBoardingInfo","SeatNumber",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
 
         wb.close();
 

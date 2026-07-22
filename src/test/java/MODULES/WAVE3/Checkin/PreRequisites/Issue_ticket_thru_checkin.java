@@ -101,6 +101,7 @@ public class Issue_ticket_thru_checkin extends FrameworkConstants {
 
         XMLParser.updateAttributeValue("tic1:EDS_TicketingRQ","TimeStamp", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1);
         XMLParser.SetTagtextatIndex("tic1:RecordLocator",InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+
         wb.close();
 
     }

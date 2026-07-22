@@ -32,17 +32,18 @@ public class Push_control_of_multiple_ticket_coupons_for_multiple_PNR extends Fr
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        int i=0;
-        boolean flightFound=false;
+//        int i=0;
+//        boolean flightFound=false;
 
         Create_booking_Push_control_of_multiple_ticket_coupons_for_multiple_PNR1 Prerequisite = new Create_booking_Push_control_of_multiple_ticket_coupons_for_multiple_PNR1();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite.run(i++);
-
-        }while(!flightFound);
+        Prerequisite.run();
+        //        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite.run(i++);
+//
+//        }while(!flightFound);
         ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");
@@ -54,13 +55,14 @@ public class Push_control_of_multiple_ticket_coupons_for_multiple_PNR extends Fr
         Prerequisite3.run();
 
         Create_booking_Push_control_of_multiple_ticket_coupons_for_multiple_PNR2 Prerequisite4 = new Create_booking_Push_control_of_multiple_ticket_coupons_for_multiple_PNR2();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite4.run(i++);
-
-        }while(!flightFound);
+        Prerequisite4.run();
+        //        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite4.run(i++);
+//
+//        }while(!flightFound);
         ExtentLogger.info("Prerequisite 4");
 
         ExtentLogger.info("Prerequisite 5");

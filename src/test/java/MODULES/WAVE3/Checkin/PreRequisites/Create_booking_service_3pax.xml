@@ -44,8 +44,8 @@
                 <air:TravelerInfo>
                     <air1:AirTraveler PassengerTypeCode="ADT">
                         <air1:PersonName>
-                            <com:GivenName>HELLO/MISTER/BEEM</com:GivenName>
-                            <com:Surname>3ABCD</com:Surname>
+                            <com:GivenName>HELLOS/MISTERS/BEEMS</com:GivenName>
+                            <com:Surname>3GROUP</com:Surname>
                         </air1:PersonName>
                         <air1:Telephone PhoneUseType="4" AreaCityCode="555" PhoneNumber="555-1014"/>
                         <air1:TravelerRefNumber RPH="1"/>

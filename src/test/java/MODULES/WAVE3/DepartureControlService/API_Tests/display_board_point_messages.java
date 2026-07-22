@@ -33,26 +33,26 @@ public class display_board_point_messages extends FrameworkConstants
     static RequestSpecification requestSpecification;
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-//        ExtentLogger.info("Prerequisite 1");
-//        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
-//        Prerequisite.run();
-//
-//        UpdatePayload();
-        int i=0;
-        boolean flightFound=false;
+        ExtentLogger.info("Prerequisite 1");
+        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
+        Prerequisite.run();
+
+        UpdatePayload();
+//        int i=0;
+//        boolean flightFound=false;
 
 //We are searching all the available flights in a do while loop
-        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite.run(i++);
+//        Add_BoardPoint_Message Prerequisite = new Add_BoardPoint_Message();
+//        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite.run(i++);
+//
+//        }while(!flightFound);
 
-        }while(!flightFound);
-
-        ExtentLogger.info("Prerequisite1");
-        UpdatePayload();
+//        ExtentLogger.info("Prerequisite1");
+//        UpdatePayload();
 
 //    ******** Read the updated request and send it to fetch the response *********
 

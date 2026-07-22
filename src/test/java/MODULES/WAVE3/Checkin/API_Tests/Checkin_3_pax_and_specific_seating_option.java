@@ -122,6 +122,8 @@ public class Checkin_3_pax_and_specific_seating_option extends FrameworkConstant
             updateAttributeValue("com1:DepartureInformation","DateOfDeparture", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),getTemp_requestPath());
             updateAttributeValue("com1:DepartureInformation","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
 
+
+
             wb.close();
 
         }

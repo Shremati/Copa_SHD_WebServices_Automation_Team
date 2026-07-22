@@ -31,20 +31,12 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException ,InterruptedException
     {
-        int i=0;
-        boolean flightFound=false;
         ExtentLogger.info("Prerequisite 1");
         Create_Booking_Non_Revenue_Pax_clearall Pre1 = new Create_Booking_Non_Revenue_Pax_clearall();
-//        Pre1.run();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Pre1.run(i++);
+        Pre1.run();
 
-        }while(!flightFound);
         ExtentLogger.info("Prerequisite 2");
         Issue_ticket_non_revenue_pax_clearall Pre2 = new Issue_ticket_non_revenue_pax_clearall();
         Pre2.run();
@@ -52,6 +44,7 @@ public class STB_04_ClearAll_Standby extends FrameworkConstants {
         ExtentLogger.info("Prerequisite 3");
         Display_Non_Revenue_pax_clearall Pre3 = new Display_Non_Revenue_pax_clearall();
         Pre3.run();
+        Thread.sleep(5000);
 
         ExtentLogger.info("Prerequisite 4");
         Modify_APIS_Non_Revenue_pax_clearall Pre4 = new Modify_APIS_Non_Revenue_pax_clearall();

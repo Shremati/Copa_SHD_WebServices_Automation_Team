@@ -104,6 +104,17 @@ public class Display_API_Collect_API_for_a_single_pax extends FrameworkConstants
         XMLParser.SetTagtext("com:GivenName", InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
         XMLParser.SetTagtext("com:Surname", InputRow.getCell(9).getStringCellValue(), getTemp_requestPath());
 
+        String givenName = InputRow.getCell(8).getStringCellValue();
+        String surname = InputRow.getCell(9).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
         wb.close();
 
     }

@@ -123,6 +123,17 @@ public class Bag_Tag_Display_OA extends FrameworkConstants {
         XMLParser.updateAttributeValue("bag1:FlightLegInfo", "FlightNumber", InputRow.getCell(2).getStringCellValue(), getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport", "LocationCode", InputRow.getCell(3).getStringCellValue(), getTemp_requestPath());
 
+        String givenName = InputRow.getCell(7).getStringCellValue();
+        String surname = InputRow.getCell(8).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
 
         wb.close();
     }

@@ -8,22 +8,22 @@
                 </air:POS>
                 <air:PassengerInfo RPH="1" SurnameRefNumber="1" ResBookDesigCode="Y">
                     <air1:PassengerName>
-                        <com:GivenName>HELLO</com:GivenName>
-                        <com:Surname>ABCD</com:Surname>
+                        <com:GivenName>HELLOS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </air1:PassengerName>
                     <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
                 </air:PassengerInfo>
                 <air:PassengerInfo RPH="2" SurnameRefNumber="1" ResBookDesigCode="Y">
                     <air1:PassengerName>
-                        <com:GivenName>MISTER</com:GivenName>
-                        <com:Surname>ABCD</com:Surname>
+                        <com:GivenName>MISTERS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </air1:PassengerName>
                     <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
                 </air:PassengerInfo>
                 <air:PassengerInfo RPH="3" SurnameRefNumber="1" ResBookDesigCode="Y">
                     <air1:PassengerName>
-                        <com:GivenName>BEEM</com:GivenName>
-                        <com:Surname>ABCD</com:Surname>
+                        <com:GivenName>BEEMS</com:GivenName>
+                        <com:Surname>GROUP</com:Surname>
                     </air1:PassengerName>
                     <air1:BookingReferenceID Type="14" ID="BHZRHA"/>
                 </air:PassengerInfo>

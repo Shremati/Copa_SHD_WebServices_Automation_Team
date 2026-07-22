@@ -101,6 +101,18 @@ public class Modify_API_delete_API_data_Address extends FrameworkConstants {
         XMLParser.updateAttributeValueatIndex("air1:AgencyRequirements","AgencyName",InputRow.getCell(16).getStringCellValue(),getTemp_requestPath(),1);
 
 
+        String givenName = InputRow.getCell(8).getStringCellValue();
+        String surname = InputRow.getCell(9).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
+
         wb.close();
 
     }

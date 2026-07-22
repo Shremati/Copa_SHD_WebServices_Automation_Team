@@ -99,8 +99,20 @@ public class Display_APIS_display_bagtag_number_OA extends FrameworkConstants {
         filepath1 = ".\\src\\test\\java\\MODULES\\WAVE3\\BagTagsDisplayService\\PreRequisites\\Display_APIS_display_bagtag_number_OA.xml";
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID", "ID", InputRow.getCell(9).getStringCellValue(), filepath1);
-        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
+
+        String givenName = InputRow.getCell(7).getStringCellValue();
+        String surname = InputRow.getCell(8).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
 
         wb.close();
 
@@ -120,9 +132,14 @@ public class Display_APIS_display_bagtag_number_OA extends FrameworkConstants {
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 0);
         String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 1);
+        String AgencyName2 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 2);
+//        String AgencyName3 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements", "AgencyName", getTemp_responsePath(), 3);
+
 
         InputRow.getCell(11).setCellValue(AgencyName);
         InputRow.getCell(12).setCellValue(AgencyName1);
+        InputRow.getCell(19).setCellValue(AgencyName2);
+//        InputRow.getCell(20).setCellValue(AgencyName3);
 
         FileOutputStream out = new FileOutputStream(new File(getTestData()));
         wb.write(out);

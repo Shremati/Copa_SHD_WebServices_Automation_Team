@@ -1,8 +1,7 @@
 package MODULES.WAVE3.AdvancePassengerInfo.PreRequisites;
 
-import GENERICS.Assertions;
-import GENERICS.Utils;
-import GENERICS.XMLParser;
+import GENERICS.*;
+
 import java.nio.charset.StandardCharsets;
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
@@ -23,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -110,6 +110,29 @@ public class Create_booking_delete_API_data_Address extends FrameworkConstants {
         XMLParser.updateAttributeValue("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath());
+
+        try {
+            // Update all persons
+            List<String[]> generatedNames = XMLFakerUtil.updateAllNames(getTemp_requestPath());
+
+            System.out.println("===== Generated Names =====");
+            for (int k = 0; k < generatedNames.size(); k++) {
+                System.out.println("Generated Person " + (k + 1) + ": "
+                        + generatedNames.get(k)[0] + " " + generatedNames.get(k)[1]);
+            }
+
+            // Read all persons from XML
+            List<String[]> xmlNames = XMLReaderUtil.getAllNames(getTemp_requestPath());
+
+            System.out.println("===== Names Read From XML =====");
+            for (int j = 0; j < xmlNames.size(); j++) {
+                System.out.println("XML Person " + (j + 1) + ": "
+                        + xmlNames.get(j)[0] + " " + xmlNames.get(j)[1]);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         wb.close();
 

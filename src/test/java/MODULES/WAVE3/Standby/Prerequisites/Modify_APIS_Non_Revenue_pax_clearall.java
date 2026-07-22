@@ -34,6 +34,16 @@ public class Modify_APIS_Non_Revenue_pax_clearall extends FrameworkConstants {
     {
         UpdatePayload();
 
+        File tempFile = new File(getTemp_requestPath());
+
+        ExtentLogger.info("Temp Request Path: " + tempFile.getAbsolutePath());
+        ExtentLogger.info("Temp Request Exists: " + tempFile.exists());
+        ExtentLogger.info("Temp Request Size: " + tempFile.length() + " bytes");
+
+        if (!tempFile.exists() || tempFile.length() == 0) {
+            throw new RuntimeException("Temp_Request.xml is empty or missing before API call");
+        }
+
 //               ********** Reading the xml request file **********
 
         FileInputStream fileInputStream = new FileInputStream(getTemp_requestPath());
@@ -57,6 +67,8 @@ public class Modify_APIS_Non_Revenue_pax_clearall extends FrameworkConstants {
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+
+
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
         BufferedWriter writer = new BufferedWriter(new FileWriter(getTemp_responsePath()));
@@ -85,6 +97,8 @@ public class Modify_APIS_Non_Revenue_pax_clearall extends FrameworkConstants {
 
 //        ********** Reading Testdata from Excel ************
         FileInputStream fis=new FileInputStream(new File(getTestData()));
+
+
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Standby");
 

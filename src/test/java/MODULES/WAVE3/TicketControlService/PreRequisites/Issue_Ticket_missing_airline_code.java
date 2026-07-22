@@ -86,7 +86,7 @@ public class Issue_Ticket_missing_airline_code extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("TicketControlService");
 
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow=sheet.getRow(4);
 
         String filepath1;
         filepath1=".\\src\\test\\java\\MODULES\\WAVE3\\TicketControlService\\PreRequisites\\Issue_Ticket_missing_airline_code.xml";
@@ -107,7 +107,7 @@ public class Issue_Ticket_missing_airline_code extends FrameworkConstants {
         FileInputStream inputStream = new FileInputStream(xlsxFile);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("TicketControlService");
-        XSSFRow InputRow=sheet.getRow(5);
+        XSSFRow InputRow=sheet.getRow(4);
 
         String TicketNumber1 = XMLParser.GetTagTextatIndex("ns4:FormAndSerialNumber",getTemp_responsePath(),0);
         InputRow.getCell(20).setCellValue(TicketNumber1);

@@ -101,9 +101,21 @@ public class Display_APIS extends FrameworkConstants {
 
 
         XMLParser.updateAttributeValue("air1:BookingReferenceID", "ID", InputRow.getCell(9).getStringCellValue(), filepath1);
-        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("com:GivenName", InputRow.getCell(7).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.SetTagtextatIndex("com:Surname",InputRow.getCell(8).getStringCellValue(),getTemp_requestPath(),0);
 
+
+        String givenName = InputRow.getCell(7).getStringCellValue();
+        String surname = InputRow.getCell(8).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
         wb.close();
 
     }

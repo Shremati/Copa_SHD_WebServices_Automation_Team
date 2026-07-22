@@ -35,17 +35,18 @@ public class Push_control_of_multiple_coupons_within_one_ticket extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        int i=0;
-        boolean flightFound=false;
+//        int i=0;
+//        boolean flightFound=false;
 
         create_booking_push_control_of_multiple_coupons_within_one_ticket Prerequisite = new create_booking_push_control_of_multiple_coupons_within_one_ticket();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite.run(i++);
-
-        }while(!flightFound);
+        Prerequisite.run();
+        //        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite.run(i++);
+//
+//        }while(!flightFound);
         ExtentLogger.info("Prerequisite 1");
 
         ExtentLogger.info("Prerequisite 2");

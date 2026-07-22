@@ -58,8 +58,8 @@ public class Modify_API_for_deleting_API_data extends FrameworkConstants {
         Modify_API_for_updating_API_data Prerequisite3 = new Modify_API_for_updating_API_data();
         Prerequisite3.run(); //APIS COMPLETE
 
-        ExtentLogger.info("Prerequisite 4");
-        Prerequisite2.run();//For update response, 'APIS Complete' message should available in display response.
+//        ExtentLogger.info("Prerequisite 4");
+//        Prerequisite2.run();//For update response, 'APIS Complete' message should available in display response.
 
         UpdatePayload(); //ModifyAPI request for deleting API
 

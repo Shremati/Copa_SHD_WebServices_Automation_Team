@@ -130,6 +130,20 @@ public class Code_25_Pax_with_held_seats extends FrameworkConstants
 
         PNR = InputRow.getCell(7).getStringCellValue();
 
+
+        String givenName = InputRow.getCell(17).getStringCellValue();
+        String surname = InputRow.getCell(18).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
+
+
         wb.close();
 
     }

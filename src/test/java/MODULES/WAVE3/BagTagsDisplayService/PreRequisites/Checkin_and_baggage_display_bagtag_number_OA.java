@@ -105,6 +105,19 @@ public class Checkin_and_baggage_display_bagtag_number_OA extends FrameworkConst
 
         XMLParser.SetTagtextatAllIndexes("com:GivenName",InputRow.getCell(7).getStringCellValue(), getTemp_requestPath());
         XMLParser.SetTagtextatAllIndexes("com:Surname",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath());
+
+        String givenName = InputRow.getCell(7).getStringCellValue();
+        String surname = InputRow.getCell(8).getStringCellValue();
+        String tempPath = getTemp_requestPath();
+// Small delay avoids file lock collision
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("GivenName", givenName, tempPath);
+
+        try { Thread.sleep(100); } catch (InterruptedException e) {}
+
+        XMLParser.updateTagValue("Surname", surname, tempPath);
+
         wb.close();
 
     }

@@ -22,7 +22,7 @@
                                 <com:Surname>SHANE</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2012-11-25" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23456789" DocType="2" ExpireDate="2030-11-25" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="PAOU" DocLevelInd="1">
                         <air1:API_Info Gender="Male" BirthDate="1975-05-12" DocHolderNationality="US" CountryOfResidence="US">
@@ -31,7 +31,7 @@
                                 <com:Surname>SHANE</com:Surname>
                             </com:DocHolderFormattedName>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2012-11-25" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23456789" DocType="2" ExpireDate="2030-11-25" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                     <air1:AgencyRequirements AgencyName="USIN" DocLevelInd="1">
                         <air1:API_Info Gender="Male" BirthDate="1975-05-12" DocHolderNationality="US" CountryOfResidence="US">
@@ -46,7 +46,7 @@
                                 <com:CountryName Code="US">USA</com:CountryName>
                             </air1:Address>
                         </air1:API_Info>
-                        <air1:API_Info DocID="123456789" DocType="2" ExpireDate="2012-11-25" DocIssueCountry="US"/>
+                        <air1:API_Info DocID="A23456789" DocType="2" ExpireDate="2030-11-25" DocIssueCountry="US"/>
                     </air1:AgencyRequirements>
                 </air:PassengerFlightInfo>
             </air:EDS_AirAPIModifyRQ>

@@ -32,10 +32,10 @@ public class Add_BoardPoint_Message
 
     public static String SOAPRequest;
     static RequestSpecification requestSpecification;
-    public  boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
 
-        UpdatePayload(i);  //Adding 3 messages as per request
+        UpdatePayload();  //Adding 3 messages as per request
 
 
 //    ******** Read the updated request and send it to fetch the response *********
@@ -83,11 +83,11 @@ public class Add_BoardPoint_Message
         writer.write("");
         writer.close();
 
-        return true;
+//        return true;
     }
 
 
-    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -102,8 +102,8 @@ public class Add_BoardPoint_Message
 
 
         XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        //XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 0);
+        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("dep1:FlightLegInfo","FlightNumber",availableFlights.get(InputRow.getCell(7).getStringCellValue() + "-" + InputRow.getCell(8).getStringCellValue()).get(i), getTemp_requestPath(), 0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
 
 

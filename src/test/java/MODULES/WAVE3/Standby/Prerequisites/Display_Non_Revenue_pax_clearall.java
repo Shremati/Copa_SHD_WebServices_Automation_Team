@@ -53,6 +53,8 @@ public class Display_Non_Revenue_pax_clearall extends FrameworkConstants {
                 .statusCode(200)
                 .and()
                 .log().all().extract().response();
+
+
         ExtentLogger.logXMLResponse(response.asPrettyString());
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -105,7 +107,10 @@ public class Display_Non_Revenue_pax_clearall extends FrameworkConstants {
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheet("Standby");
         XSSFRow InputRow=sheet.getRow(4);
+        String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
+
+        InputRow.getCell(7).setCellValue(PNR);
 
         String AgencyName = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),0);
         String AgencyName1 = XMLParser.GetAttributeValueatIndex("ns3:AgencyRequirements","AgencyName",getTemp_responsePath(),1);

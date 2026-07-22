@@ -33,13 +33,14 @@ public class other_airline_seat_map_request_with_Business_Cabin extends Framewor
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        boolean flightFound = false;
+        UpdatePayload();
+//        boolean flightFound = false;
         Response response = null;
-        int i = 0;
-
-        do{
-
-            UpdatePayload(i);
+//        int i = 0;
+//
+//        do{
+//
+//            UpdatePayload(i);
 
 //    ******** Read the updated request and send it to fetch the response *********
 
@@ -68,17 +69,17 @@ public class other_airline_seat_map_request_with_Business_Cabin extends Framewor
         //If response does not contain success and PNR then there is no point in going forward for the assertion check
 // hence we are returing false
 
-            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("CabinType")){
-                flightFound = true;
-            }
-
-            i++;
-
-            if(i > 4){
-                Assert.fail("No flights are having seats");
-            }
-        }
-        while(!flightFound);
+//            if(response.getBody().asString().contains("Success") && response.getBody().asString().contains("CabinType")){
+//                flightFound = true;
+//            }
+//
+//            i++;
+//
+//            if(i > 4){
+//                Assert.fail("No flights are having seats");
+//            }
+//        }
+//        while(!flightFound);
 
         ExtentLogger.info("Response Time: " + response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -106,7 +107,7 @@ public class other_airline_seat_map_request_with_Business_Cabin extends Framewor
     }
 
 
-    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Reading Testdata from Excel ************
@@ -121,7 +122,8 @@ public class other_airline_seat_map_request_with_Business_Cabin extends Framewor
 
         //Segment 1
         XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
+//        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",availableFlights.get(InputRow.getCell(3).getStringCellValue()+"-"+InputRow.getCell(4).getStringCellValue()).get(i),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air:FlightSegmentInfo","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
 

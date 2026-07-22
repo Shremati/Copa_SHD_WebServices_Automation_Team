@@ -117,14 +117,14 @@ String dest = InputRow.getCell(6).getStringCellValue();
         String Arr = InputRow.getCell(7).getStringCellValue();
         String concat = dest+"-"+Arr;
         XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(4).getNumericCellValue()), getTemp_requestPath(), 0);
-        XMLParser.updateAttributeValueatIndex(
-                "que1:FlightInfo",
-                "FlightNumber",
-                availableFlights.get(concat).get(i),
-                getTemp_requestPath(),
-                0  // first FlightInfo element
-        );//        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),0);
-
+//        XMLParser.updateAttributeValueatIndex(
+//                "que1:FlightInfo",
+//                "FlightNumber",
+//                availableFlights.get(concat).get(i),
+//                getTemp_requestPath(),
+//                0  // first FlightInfo element
+//        );//        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber",InputRow.getCell(8).getStringCellValue(), getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("que1:FlightInfo", "FlightNumber",  availableFlights.get(InputRow.getCell(6).getStringCellValue() + "-" + InputRow.getCell(7).getStringCellValue()).get(i), filepath1,0);
         XMLParser.updateAttributeValue("que1:QueueInfo","PseudoCityCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath());
         XMLParser.updateAttributeValue("que1:QueueInfo","QueueNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath());
 

@@ -33,18 +33,19 @@ public class The_Request_specifies_an_invalid_coupon_for_the_control extends Fra
 
     public static void Execute() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        int i=0;
-        boolean flightFound=false;
+//        int i=0;
+//        boolean flightFound=false;
 
         //We are searching all the available flights in a do while loop
         Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite1 = new Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control();
-        do{
-            if(i > 3){
-                Assert.fail("No flights are having seats");
-            }
-            flightFound = Prerequisite1.run(i++);
-
-        }while(!flightFound);
+        Prerequisite1.run();
+        //        do{
+//            if(i > 3){
+//                Assert.fail("No flights are having seats");
+//            }
+//            flightFound = Prerequisite1.run(i++);
+//
+//        }while(!flightFound);
 
         ExtentLogger.info("Prerequisite 1");
 //        Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control Prerequisite = new Create_Booking_The_Request_specifies_an_invalid_coupon_for_the_control();

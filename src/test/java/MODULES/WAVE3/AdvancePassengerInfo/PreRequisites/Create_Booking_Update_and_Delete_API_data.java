@@ -57,6 +57,9 @@ public class Create_Booking_Update_and_Delete_API_data extends FrameworkConstant
                 .and()
                 .log().all().extract().response();
         ExtentLogger.logXMLResponse(response.asPrettyString());
+        if(!(response.getBody().asString().contains("Success") )){
+            return false;
+        }
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 

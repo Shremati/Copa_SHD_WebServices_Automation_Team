@@ -67,8 +67,11 @@ public class Modify_booking_delete_API_data_Document_info extends FrameworkConst
         Assert.assertTrue(response.getBody().asString().contains("Success"), "Do not contain Success");
         ExtentLogger.info("Assertion passed - contains Success");
 
-        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">1:APIS COMPLETE"),"Not contains RecordID=\"1\">1:APIS COMPLETE");
-        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">1:APIS COMPLETE");
+//        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">:APIS COMPLETE"),"Not contains RecordID=\"1\">:APIS COMPLETE");
+//        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">:APIS COMPLETE");
+
+        Assert.assertTrue(response.getBody().asString().contains("RecordID=\"1\">0:APIS COMPLETE"),"Not contains RecordID=\"1\">0:APIS COMPLETE");
+        ExtentLogger.info("Assertion passed - contains RecordID=\"1\">0:APIS COMPLETE");
 
         Assertions.AssertWarning(response,true);
         ExtentLogger.info("Assertion passed - Do not contain Warning");

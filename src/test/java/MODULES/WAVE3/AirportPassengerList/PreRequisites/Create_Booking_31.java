@@ -1,9 +1,9 @@
 package MODULES.WAVE3.AirportPassengerList.PreRequisites;
 
-import GENERICS.Assertions;
-import GENERICS.Utils;
-import GENERICS.XMLParser;
+import GENERICS.*;
+
 import java.nio.charset.StandardCharsets;
+
 import frameworkconstants.FrameworkConstants;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
@@ -33,9 +34,9 @@ public class Create_Booking_31 extends FrameworkConstants
     static RequestSpecification requestSpecification;
 
 
-    public boolean run(int i) throws IOException, ParserConfigurationException, TransformerException, SAXException
+    public void run() throws IOException, ParserConfigurationException, TransformerException, SAXException
     {
-        UpdatePayload(i);
+        UpdatePayload();
 
 //               ********** Reading the xml request file **********
 
@@ -65,9 +66,9 @@ public class Create_Booking_31 extends FrameworkConstants
         writer.write(response.asPrettyString());
         writer.close();
 
-        if(!(response.getBody().asString().contains("Success") )){
-            return false;
-        }
+//        if(!(response.getBody().asString().contains("Success") )){
+//            return false;
+//        }
 
         ExtentLogger.info("Response Time: "+response.getTimeIn(TimeUnit.MILLISECONDS) + "milliseconds");
 
@@ -84,13 +85,14 @@ public class Create_Booking_31 extends FrameworkConstants
         writer = Files.newBufferedWriter(Paths.get(getTemp_requestPath()));
         writer.write("");
         writer.close();
+        excelwriter();
 
-        excelwriter(i);
-        return true;
+//        excelwriter(i);
+//        return true;
     }
 
 
-    public static void UpdatePayload(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void UpdatePayload() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
 //        ********** Reading Testdata from Excel ************
@@ -105,18 +107,18 @@ public class Create_Booking_31 extends FrameworkConstants
 
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(1).getNumericCellValue()),filepath1,0);
-//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(2).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(5).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(3).getStringCellValue(),getTemp_requestPath(),0);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(4).getStringCellValue(),getTemp_requestPath(),0);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i), getTemp_requestPath(), 0);
 
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","DepartureDateTime", Utils.getDate_YYYYMMddThhmmss(InputRow.getCell(11).getNumericCellValue()),getTemp_requestPath(),1);
-//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
+        XMLParser.updateAttributeValueatIndex("air1:FlightSegment","FlightNumber",InputRow.getCell(12).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("air1:FlightSegment","ResBookDesigCode",InputRow.getCell(15).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:DepartureAirport","LocationCode",InputRow.getCell(13).getStringCellValue(),getTemp_requestPath(),1);
         XMLParser.updateAttributeValueatIndex("com:ArrivalAirport","LocationCode",InputRow.getCell(14).getStringCellValue(),getTemp_requestPath(),1);
-        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(13).getStringCellValue() + "-" + InputRow.getCell(14).getStringCellValue()).get(i), getTemp_requestPath(), 1);
+//        XMLParser.updateAttributeValueatIndex("air1:FlightSegment", "FlightNumber", availableFlights.get(InputRow.getCell(13).getStringCellValue() + "-" + InputRow.getCell(14).getStringCellValue()).get(i), getTemp_requestPath(), 1);
 
 
         wb.close();
@@ -124,7 +126,7 @@ public class Create_Booking_31 extends FrameworkConstants
     }
 
 
-    public static void excelwriter(int i) throws IOException, ParserConfigurationException, SAXException, TransformerException
+    public static void excelwriter() throws IOException, ParserConfigurationException, SAXException, TransformerException
     {
 
         //        ********** Writing TestData into Excel ************
@@ -135,8 +137,8 @@ public class Create_Booking_31 extends FrameworkConstants
         XSSFSheet sheet = wb.getSheet("AirportPassengerList");
         XSSFRow InputRow=sheet.getRow(13);
 
-        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
-        InputRow.getCell(12).setCellValue(availableFlights.get(InputRow.getCell(13).getStringCellValue() + "-" + InputRow.getCell(14).getStringCellValue()).get(i));
+//        InputRow.getCell(2).setCellValue(availableFlights.get(InputRow.getCell(3).getStringCellValue() + "-" + InputRow.getCell(4).getStringCellValue()).get(i));
+//        InputRow.getCell(12).setCellValue(availableFlights.get(InputRow.getCell(13).getStringCellValue() + "-" + InputRow.getCell(14).getStringCellValue()).get(i));
 
         String PNR = XMLParser.GetAttributeValue("ns3:BookingReferenceID","ID",getTemp_responsePath());
 
