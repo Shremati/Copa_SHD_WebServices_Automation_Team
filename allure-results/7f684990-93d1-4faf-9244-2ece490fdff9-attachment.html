@@ -1,0 +1,168 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-04-04T19:45:19&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:Warnings&gt;
+          &lt;Warning Type=&quot;10&quot; Tag=&quot;POS&quot; RecordID=&quot;1&quot;&gt;Invalid ISO country code for Bankers Rate.&lt;/Warning&gt;
+        &lt;/ns6:Warnings&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-04-04T19:44:00Z&quot; LastModified=&quot;2026-04-04T19:44:25Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;2&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Tue&quot; FlightNumber=&quot;701&quot; DepartureDateTime=&quot;2026-04-07T11:49:00&quot; ArrivalDateTime=&quot;2026-04-07T20:50:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;GRU&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT ARRIVES TERMINAL-3&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-AD7565 EK4755 G36901&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;/PASSENGER CHECK IN /CM TERMINAL 2&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;K&quot; NumberInParty=&quot;2&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Wed&quot; FlightNumber=&quot;702&quot; DepartureDateTime=&quot;2026-04-08T03:15:00&quot; ArrivalDateTime=&quot;2026-04-08T08:01:00&quot; RPH=&quot;2&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;GRU&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT DEPARTS TERMINAL-3&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-AD7566 EK4760 G36902&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PTC_FareBreakdowns&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidBefore=&quot;2027-01-24&quot; NotValidAfter=&quot;2027-01-31&quot;&gt;BAAAOY2F&lt;/ns3:FareBasisCode&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;2&quot; NotValidBefore=&quot;2027-01-31&quot; NotValidAfter=&quot;2027-02-04&quot;&gt;KAAAOY2N&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;1575.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;FZ&quot; Amount=&quot;40.00&quot;/&gt;
+                    &lt;ns3:Tax TaxCode=&quot;XT&quot; Amount=&quot;84.15&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;1699.15&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns3:UnstructuredFareCalc&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasureQuantity=&quot;3&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;2&quot; UnitOfMeasureQuantity=&quot;1&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                  &lt;ns3:TourCode&gt;IT6ZZ1TOURUSA&lt;/ns3:TourCode&gt;
+                  &lt;ns3:TPA_Extensions&gt;
+                    &lt;ns3:SalesLocation SalesIndicator=&quot;false&quot; TicketingIndicator=&quot;false&quot;/&gt;
+                  &lt;/ns3:TPA_Extensions&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+                &lt;ns3:Endorsements&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT ONE&lt;/ns3:Endorsement&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT TWO&lt;/ns3:Endorsement&gt;
+                &lt;/ns3:Endorsements&gt;
+                &lt;ns3:FareInfo&gt;
+                  &lt;ns3:DepartureAirport/&gt;
+                  &lt;ns3:ArrivalAirport/&gt;
+                  &lt;ns3:FareInfo&gt;
+                    &lt;ns3:Date Date=&quot;2026-04-07&quot; Type=&quot;LastTicketing&quot;/&gt;
+                  &lt;/ns3:FareInfo&gt;
+                  &lt;ns3:PassengerFare/&gt;
+                &lt;/ns3:FareInfo&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidBefore=&quot;2027-01-24&quot; NotValidAfter=&quot;2027-01-31&quot;&gt;BAAAOY2F&lt;/ns3:FareBasisCode&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;2&quot; NotValidBefore=&quot;2027-01-31&quot; NotValidAfter=&quot;2027-02-04&quot;&gt;KAAAOY2N&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;1575.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;FZ&quot; Amount=&quot;40.00&quot;/&gt;
+                    &lt;ns3:Tax TaxCode=&quot;XT&quot; Amount=&quot;84.15&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;1699.15&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns3:UnstructuredFareCalc&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasureQuantity=&quot;3&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;2&quot; UnitOfMeasureQuantity=&quot;1&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                  &lt;ns3:TourCode&gt;IT6ZZ1TOURUSA&lt;/ns3:TourCode&gt;
+                  &lt;ns3:TPA_Extensions&gt;
+                    &lt;ns3:SalesLocation SalesIndicator=&quot;false&quot; TicketingIndicator=&quot;false&quot;/&gt;
+                  &lt;/ns3:TPA_Extensions&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+                &lt;ns3:Endorsements&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT ONE&lt;/ns3:Endorsement&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT TWO&lt;/ns3:Endorsement&gt;
+                &lt;/ns3:Endorsements&gt;
+                &lt;ns3:FareInfo&gt;
+                  &lt;ns3:DepartureAirport/&gt;
+                  &lt;ns3:ArrivalAirport/&gt;
+                  &lt;ns3:FareInfo&gt;
+                    &lt;ns3:Date Date=&quot;2026-04-07&quot; Type=&quot;LastTicketing&quot;/&gt;
+                  &lt;/ns3:FareInfo&gt;
+                  &lt;ns3:PassengerFare/&gt;
+                &lt;/ns3:FareInfo&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+            &lt;/ns3:PTC_FareBreakdowns&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-04-04T19:44:00&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;FOXX&lt;/GivenName&gt;
+                &lt;Surname&gt;MULDER&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;4&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-0010&quot;/&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;4&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-0011&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;DANA&lt;/GivenName&gt;
+                &lt;Surname&gt;SCULLY&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:Remarks&gt;
+                &lt;ns3:Remark&gt;NICE FAMILY&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;01 REMARKS ADDED BY PTY SU RO 04APR 1944Z D1330C&lt;/ns3:Remark&gt;
+              &lt;/ns3:Remarks&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Fulfillment&gt;
+            &lt;ns3:PaymentDetails&gt;
+              &lt;ns3:PaymentDetail Remark=&quot;FQ&quot;&gt;
+                &lt;BankAcct BankAcctNumber=&quot;7811&quot;/&gt;
+                &lt;PaymentAmount ApprovalCode=&quot;A9876&quot;/&gt;
+              &lt;/ns3:PaymentDetail&gt;
+            &lt;/ns3:PaymentDetails&gt;
+          &lt;/ns3:Fulfillment&gt;
+          &lt;ns3:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;QAE1IX&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 6591</div>
+        <div>Date: Sat, 04 Apr 2026 19:45:20 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

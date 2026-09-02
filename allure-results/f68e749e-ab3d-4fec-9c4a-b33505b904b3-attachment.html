@@ -1,0 +1,53 @@
+<div>POST to http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/DisplayBookingService/displayBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:dis=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:read=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:veh=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;dis:displayBooking&gt;
+      &lt;read:OTA_ReadRQ Version=&quot;4.000&quot;&gt;
+        &lt;read:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/read:POS&gt;
+        &lt;read:ReadRequests&gt;
+          &lt;read:AirReadRequest&gt;
+            &lt;read:TicketNumber TicketDocumentNbr=&quot;2303084454659&quot;/&gt;
+          &lt;/read:AirReadRequest&gt;
+        &lt;/read:ReadRequests&gt;
+      &lt;/read:OTA_ReadRQ&gt;
+    &lt;/dis:displayBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/DisplayBookingService/displayBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:dis=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:read=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:veh=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;dis:displayBooking&gt;
+      &lt;read:OTA_ReadRQ Version=&quot;4.000&quot;&gt;
+        &lt;read:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/read:POS&gt;
+        &lt;read:ReadRequests&gt;
+          &lt;read:AirReadRequest&gt;
+            &lt;read:TicketNumber TicketDocumentNbr=&quot;2303084454659&quot;/&gt;
+          &lt;/read:AirReadRequest&gt;
+        &lt;/read:ReadRequests&gt;
+      &lt;/read:OTA_ReadRQ&gt;
+    &lt;/dis:displayBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

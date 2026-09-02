@@ -1,0 +1,187 @@
+<div>POST to http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/AdvancePassengerInfoService/API</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ&quot; xmlns:air1=&quot;http://www.eds.com/AirlineSOASchema/AirCommonTypes&quot; xmlns:air2=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:api=&quot;http://www.eds.com/AirlineSOASchema/API/&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;api:modifyAPI&gt;
+      &lt;air:EDS_AirAPIModifyRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:PassengerInfo InfantIndicator=&quot;true&quot; RPH=&quot;1&quot; SurnameBookedNumber=&quot;1&quot;&gt;
+          &lt;air1:PassengerName&gt;
+            &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+            &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+          &lt;/air1:PassengerName&gt;
+          &lt;air1:BookingReferenceID ID=&quot;RLTSJ4&quot; Type=&quot;14&quot;/&gt;
+        &lt;/air:PassengerInfo&gt;
+        &lt;air:PassengerInfo PassengerRPH=&quot;1&quot; RPH=&quot;2&quot; SurnameBookedNumber=&quot;1&quot; SurnameRefNumber=&quot;1&quot;&gt;
+          &lt;air1:PassengerName&gt;
+            &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+            &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+          &lt;/air1:PassengerName&gt;
+          &lt;air1:BookingReferenceID ID=&quot;RLTSJ4&quot; Type=&quot;14&quot;/&gt;
+        &lt;/air:PassengerInfo&gt;
+        &lt;air:PassengerFlightInfo FlightRPH=&quot;1&quot; PassengerRPH=&quot;1&quot;&gt;
+          &lt;air1:BookingInfo ResBookDesigCode=&quot;Y&quot;/&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PAOU&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;1972-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;123456789&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PEIN&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;1972-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info&gt;
+              &lt;air1:Address Type=&quot;4&quot;&gt;
+                &lt;com:AddressLine&gt;FBI STREET&lt;/com:AddressLine&gt;
+                &lt;com:CityName&gt;WASHINGTON&lt;/com:CityName&gt;
+                &lt;com:PostalCode&gt;112233&lt;/com:PostalCode&gt;
+                &lt;com:CountryName Code=&quot;US&quot;&gt;USA&lt;/com:CountryName&gt;
+              &lt;/air1:Address&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;123456789&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+        &lt;/air:PassengerFlightInfo&gt;
+        &lt;air:PassengerFlightInfo FlightRPH=&quot;1&quot; PassengerRPH=&quot;2&quot;&gt;
+          &lt;air1:BookingInfo ResBookDesigCode=&quot;Y&quot;/&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PAOU&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;2007-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;111222333&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PEIN&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;2007-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info&gt;
+              &lt;air1:Address Type=&quot;4&quot;&gt;
+                &lt;com:AddressLine&gt;FBI STREET&lt;/com:AddressLine&gt;
+                &lt;com:CityName&gt;WASHINGTON&lt;/com:CityName&gt;
+                &lt;com:PostalCode&gt;112233&lt;/com:PostalCode&gt;
+                &lt;com:CountryName Code=&quot;US&quot;&gt;USA&lt;/com:CountryName&gt;
+              &lt;/air1:Address&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;111222333&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+        &lt;/air:PassengerFlightInfo&gt;
+      &lt;/air:EDS_AirAPIModifyRQ&gt;
+    &lt;/api:modifyAPI&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/AdvancePassengerInfoService/API&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.eds.com/AirlineSOASchema/AirAPIModifyRQ&quot; xmlns:air1=&quot;http://www.eds.com/AirlineSOASchema/AirCommonTypes&quot; xmlns:air2=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:api=&quot;http://www.eds.com/AirlineSOASchema/API/&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;api:modifyAPI&gt;
+      &lt;air:EDS_AirAPIModifyRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:PassengerInfo InfantIndicator=&quot;true&quot; RPH=&quot;1&quot; SurnameBookedNumber=&quot;1&quot;&gt;
+          &lt;air1:PassengerName&gt;
+            &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+            &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+          &lt;/air1:PassengerName&gt;
+          &lt;air1:BookingReferenceID ID=&quot;RLTSJ4&quot; Type=&quot;14&quot;/&gt;
+        &lt;/air:PassengerInfo&gt;
+        &lt;air:PassengerInfo PassengerRPH=&quot;1&quot; RPH=&quot;2&quot; SurnameBookedNumber=&quot;1&quot; SurnameRefNumber=&quot;1&quot;&gt;
+          &lt;air1:PassengerName&gt;
+            &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+            &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+          &lt;/air1:PassengerName&gt;
+          &lt;air1:BookingReferenceID ID=&quot;RLTSJ4&quot; Type=&quot;14&quot;/&gt;
+        &lt;/air:PassengerInfo&gt;
+        &lt;air:PassengerFlightInfo FlightRPH=&quot;1&quot; PassengerRPH=&quot;1&quot;&gt;
+          &lt;air1:BookingInfo ResBookDesigCode=&quot;Y&quot;/&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PAOU&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;1972-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;123456789&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PEIN&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;1972-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;DANA&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info&gt;
+              &lt;air1:Address Type=&quot;4&quot;&gt;
+                &lt;com:AddressLine&gt;FBI STREET&lt;/com:AddressLine&gt;
+                &lt;com:CityName&gt;WASHINGTON&lt;/com:CityName&gt;
+                &lt;com:PostalCode&gt;112233&lt;/com:PostalCode&gt;
+                &lt;com:CountryName Code=&quot;US&quot;&gt;USA&lt;/com:CountryName&gt;
+              &lt;/air1:Address&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;123456789&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+        &lt;/air:PassengerFlightInfo&gt;
+        &lt;air:PassengerFlightInfo FlightRPH=&quot;1&quot; PassengerRPH=&quot;2&quot;&gt;
+          &lt;air1:BookingInfo ResBookDesigCode=&quot;Y&quot;/&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PAOU&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;2007-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;111222333&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+          &lt;air1:AgencyRequirements AgencyName=&quot;PEIN&quot; DocLevelInd=&quot;1&quot;&gt;
+            &lt;air1:API_Info BirthDate=&quot;2007-10-10&quot; CountryOfResidence=&quot;US&quot; DocHolderNationality=&quot;US&quot; Gender=&quot;Female&quot;&gt;
+              &lt;com:DocHolderFormattedName&gt;
+                &lt;com:GivenName&gt;WILLIAM&lt;/com:GivenName&gt;
+                &lt;com:Surname&gt;SCULLY&lt;/com:Surname&gt;
+              &lt;/com:DocHolderFormattedName&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info&gt;
+              &lt;air1:Address Type=&quot;4&quot;&gt;
+                &lt;com:AddressLine&gt;FBI STREET&lt;/com:AddressLine&gt;
+                &lt;com:CityName&gt;WASHINGTON&lt;/com:CityName&gt;
+                &lt;com:PostalCode&gt;112233&lt;/com:PostalCode&gt;
+                &lt;com:CountryName Code=&quot;US&quot;&gt;USA&lt;/com:CountryName&gt;
+              &lt;/air1:Address&gt;
+            &lt;/air1:API_Info&gt;
+            &lt;air1:API_Info DocID=&quot;111222333&quot; DocIssueCountry=&quot;US&quot; DocType=&quot;2&quot; ExpireDate=&quot;2026-12-12&quot;/&gt;
+          &lt;/air1:AgencyRequirements&gt;
+        &lt;/air:PassengerFlightInfo&gt;
+      &lt;/air:EDS_AirAPIModifyRQ&gt;
+    &lt;/api:modifyAPI&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

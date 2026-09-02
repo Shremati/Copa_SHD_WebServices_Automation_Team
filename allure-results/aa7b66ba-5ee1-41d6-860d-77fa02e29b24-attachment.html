@@ -1,0 +1,136 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-03-23T11:28:12&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-03-23T11:28:00Z&quot; LastModified=&quot;2026-03-23T11:28:11Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;2&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Tue&quot; FlightNumber=&quot;361&quot; DepartureDateTime=&quot;2026-03-24T16:27:00&quot; ArrivalDateTime=&quot;2026-03-24T19:50:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;GUA&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-AF4506 KL8847&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PTC_FareBreakdowns&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot;&gt;XYZ&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;136.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;13.60&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;149.60&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns3:UnstructuredFareCalc&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot;&gt;XYZ&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;136.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;13.60&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;149.60&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns3:UnstructuredFareCalc&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;3&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;2&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;INF&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot;&gt;XYZ&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;34.90&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;7.20&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;42.10&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;MY FARE CALC LINE FOR INF END                                   &lt;/ns3:UnstructuredFareCalc&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+            &lt;/ns3:PTC_FareBreakdowns&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-03-23T11:28:00&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;HUSBAND&lt;/GivenName&gt;
+                &lt;Surname&gt;SMITH&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;3&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-0129&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+              &lt;ns3:Comment&gt;INFLAPBABY/01JAN22&lt;/ns3:Comment&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler BirthDate=&quot;2022-01-01&quot; PassengerTypeCode=&quot;INF&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;LAPBABY&lt;/GivenName&gt;
+                &lt;Surname&gt;SMITH&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+              &lt;ns3:Comment&gt;INFLAPBABY/01JAN22&lt;/ns3:Comment&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;WIFE&lt;/GivenName&gt;
+                &lt;Surname&gt;SMITH&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;3&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:SpecialServiceRequests&gt;
+                &lt;ns3:SpecialServiceRequest TravelerRefNumberRPHList=&quot;1&quot; FlightRefNumberRPHList=&quot;1&quot; SSRCode=&quot;INFT&quot; ServiceQuantity=&quot;1&quot; Status=&quot;11&quot;&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;GUAPTY0361Y24MAR-1SMITH/HUSBAND.SMITH/LAPBABY.01JAN22&lt;/ns3:Text&gt;
+                &lt;/ns3:SpecialServiceRequest&gt;
+              &lt;/ns3:SpecialServiceRequests&gt;
+              &lt;ns3:OtherServiceInformations&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;YY&quot;/&gt;
+                  &lt;ns3:Text&gt;1INF 1SMITH/LAPBABY 01JAN22&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+              &lt;/ns3:OtherServiceInformations&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketTimeLimit=&quot;2026-03-23T04:58:00&quot; TicketingStatus=&quot;1&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;SWGYVL&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 4975</div>
+        <div>Date: Mon, 23 Mar 2026 11:28:13 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

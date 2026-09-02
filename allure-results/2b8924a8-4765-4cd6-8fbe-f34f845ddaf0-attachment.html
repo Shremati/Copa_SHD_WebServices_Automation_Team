@@ -1,0 +1,87 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-04-02T07:02:24&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-04-02T07:02:00Z&quot; LastModified=&quot;2026-04-02T07:02:34Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Thu&quot; FlightNumber=&quot;361&quot; DepartureDateTime=&quot;2026-04-02T16:37:00&quot; ArrivalDateTime=&quot;2026-04-02T19:55:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;GUA&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-AF4514 IB7755 KL8847&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PTC_FareBreakdowns&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidBefore=&quot;2027-01-24&quot; NotValidAfter=&quot;2027-01-24&quot;&gt;X&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;114.60&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;12.50&quot;/&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AT&quot; Amount=&quot;7.30&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;134.40&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns3:UnstructuredFareCalc&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasureQuantity=&quot;1&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+                &lt;ns3:Endorsements&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT ONE&lt;/ns3:Endorsement&gt;
+                &lt;/ns3:Endorsements&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+            &lt;/ns3:PTC_FareBreakdowns&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-04-02T07:02:00&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;JOHN&lt;/GivenName&gt;
+                &lt;Surname&gt;SMITH&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;4&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1414&quot; Remark=&quot;PHONE REMARK&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:Remarks&gt;
+                &lt;ns3:Remark&gt;FOR CONFIRMED BOOKING TESTING&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;01 REMARKS ADDED BY PTY SU RO 02APR 0702Z D13901&lt;/ns3:Remark&gt;
+              &lt;/ns3:Remarks&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;RXT1IQ&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 3157</div>
+        <div>Date: Thu, 02 Apr 2026 07:02:24 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

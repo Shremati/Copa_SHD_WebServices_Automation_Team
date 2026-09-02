@@ -1,0 +1,100 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-04-04T19:44:47&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:Warnings&gt;
+          &lt;Warning Type=&quot;10&quot; Tag=&quot;PTC_FareBreakdown&quot; RecordID=&quot;1&quot;&gt;Invalid Bankers Rate currency code.&lt;/Warning&gt;
+        &lt;/ns6:Warnings&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-04-04T19:44:00Z&quot; LastModified=&quot;2026-04-04T19:44:59Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Mon&quot; FlightNumber=&quot;246&quot; DepartureDateTime=&quot;2026-04-06T06:24:00&quot; ArrivalDateTime=&quot;2026-04-06T08:30:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;MIA&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;SECURE FLIGHT&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT DEPARTS TERMINAL-J&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PTC_FareBreakdowns&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidBefore=&quot;2026-04-06&quot; NotValidAfter=&quot;2026-04-06&quot;&gt;X&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;136.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;13.60&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;149.60&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;MY FARE CALC LINE END                                           &lt;/ns3:UnstructuredFareCalc&gt;
+                  &lt;ns3:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasureQuantity=&quot;1&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                  &lt;ns3:TourCode&gt;IT6ZZ1TOURUSA&lt;/ns3:TourCode&gt;
+                  &lt;ns3:OriginalIssueInfo TicketDocumentNbr=&quot;2303084459674&quot; IssuingAgentID=&quot;12345678&quot; DateOfIssue=&quot;2026-04-05&quot; LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:ExchangeInfo&gt;
+                    &lt;ns3:OriginalOriginDestination OriginCityCode=&quot;MIA&quot; DestinationCityCode=&quot;PTY&quot;/&gt;
+                  &lt;/ns3:ExchangeInfo&gt;
+                  &lt;ns3:TPA_Extensions&gt;
+                    &lt;ns3:SalesLocation SalesIndicator=&quot;true&quot; TicketingIndicator=&quot;true&quot;/&gt;
+                  &lt;/ns3:TPA_Extensions&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+                &lt;ns3:Endorsements&gt;
+                  &lt;ns3:Endorsement&gt;ENDORSEMENT ONE&lt;/ns3:Endorsement&gt;
+                &lt;/ns3:Endorsements&gt;
+                &lt;ns3:FareInfo&gt;
+                  &lt;ns3:DepartureAirport/&gt;
+                  &lt;ns3:ArrivalAirport/&gt;
+                  &lt;ns3:FareInfo&gt;
+                    &lt;ns3:Date Date=&quot;2026-04-05&quot; Type=&quot;LastTicketing&quot;/&gt;
+                  &lt;/ns3:FareInfo&gt;
+                  &lt;ns3:PassengerFare/&gt;
+                &lt;/ns3:FareInfo&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+            &lt;/ns3:PTC_FareBreakdowns&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-04-04T19:44:00&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;PHILLIP&lt;/GivenName&gt;
+                &lt;Surname&gt;MORRIS&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;3&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1212&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketTimeLimit=&quot;2026-04-05T01:14:00&quot; TicketingStatus=&quot;1&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;QAE1NI&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 3714</div>
+        <div>Date: Sat, 04 Apr 2026 19:44:47 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

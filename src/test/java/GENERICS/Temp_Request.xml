@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:air="http://www.opentravel.org/OTA/2003/05/AirAvailRQ" xmlns:air1="http://www.opentravel.org/OTA/2003/05/AirCommonTypes" xmlns:air2="http://www.opentravel.org/OTA/2003/05/AirPreferences" xmlns:ava="http://www.eds.com/AirlineSOASchema/Availability/" xmlns:com="http://www.opentravel.org/OTA/2003/05/CommonTypes">
+      
+  
+
+
+<soapenv:Header/>
+      
+  
+
+
+<soapenv:Body>
+            
+    
+
+
+<ava:getAvailability>
+                  
+      
+
+
+<air:OTA_AirAvailRQ EchoToken="Test_04" MaxResponses="2" Version="4.0">
+                        
+        
+
+
+<air:POS>
+                              
+          
+
+
+<com:Source AirlineVendorID="CM"/>
+                          
+        
+
+
+</air:POS>
+                        
+        
+
+
+<air:OriginDestinationInformation RPH="1">
+                              
+          
+
+
+<com:DepartureDateTime>2026-08-06</com:DepartureDateTime>
+                              
+          
+
+
+<com:OriginLocation LocationCode="BOG"/>
+                              
+          
+
+
+<com:DestinationLocation LocationCode="LAX"/>
+                              
+          
+
+
+<com:ConnectionLocations>
+                                    
+            
+
+
+<com:ConnectionLocation ConnectType="Interline" LocationCode="PTY" MinChangeTime="30"/>
+                                
+          
+
+
+</com:ConnectionLocations>
+                          
+        
+
+
+</air:OriginDestinationInformation>
+                    
+      
+
+
+</air:OTA_AirAvailRQ>
+              
+    
+
+
+</ava:getAvailability>
+        
+  
+
+
+</soapenv:Body>
+  
+
+
+
+</soapenv:Envelope>

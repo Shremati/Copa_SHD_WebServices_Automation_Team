@@ -12,6 +12,44 @@
 <!--                </methods>-->
 <!--            </class>-->
 
+            <class name="MODULES.WAVE3.Availability.Availability">
+                <methods>
+                    <include name="AVS_04"/>
+                </methods>
+            </class>
+
+<!--            <class name="MODULES.WAVE3.Availability.Availability">-->
+<!--                <methods>-->
+<!--                    <include name="AVS_01"/>-->
+<!--                    <include name="AVS_02"/>-->
+<!--                    <include name="AVS_03"/>-->
+<!--                    <include name="AVS_05"/>-->
+<!--                    <include name="AVS_06"/>-->
+<!--                    <include name="AVS_07"/>-->
+<!--                    <include name="AVS_08"/>-->
+<!--                    <include name="AVS_09"/>-->
+<!--                    <include name="AVS_10"/>-->
+<!--                    <include name="AVS_11"/>-->
+<!--                    <include name="AVS_12"/>-->
+<!--                    <include name="AVS_13"/>-->
+<!--                    <include name="AVS_14"/>-->
+<!--                    <include name="AVS_15"/>-->
+<!--                    <include name="AVS_16"/>-->
+<!--                    <include name="AVS_17"/>-->
+<!--                    <include name="AVS_18"/>-->
+<!--                    <include name="AVS_19"/>-->
+<!--                    <include name="AVS_20"/>-->
+<!--                    <include name="AVS_21"/>-->
+<!--                    <include name="AVS_22"/>-->
+<!--                    <include name="AVS_23"/>-->
+<!--                    <include name="AVS_24"/>-->
+<!--                    <include name="AVS_25"/>-->
+<!--                    <include name="AVS_26"/>-->
+<!--                    <include name="AVS_27"/>-->
+<!--                    <include name="AVS_28"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
 <!--            <class name="MODULES.WAVE3.AuthorizationService.AuthorizationService">-->
 <!--                <methods>-->
 <!--                    <include name="AuthS_01"/>-->
@@ -189,15 +227,15 @@
 <!--                </methods>-->
 <!--            </class>-->
 
-            <class name="MODULES.WAVE3.AirportPassengerList.AirportPassengerList">
-                <methods>
-                    <include name="APL_03"/>
+<!--            <class name="MODULES.WAVE3.AirportPassengerList.AirportPassengerList">-->
+<!--                <methods>-->
+<!--                    <include name="APL_03"/>-->
 <!--                    <include name="APL_06"/>-->
 <!--                    <include name="APL_07"/>-->
 <!--                    <include name="APL_19"/>-->
 <!--                    <include name="APL_54"/>-->
-                </methods>
-            </class>
+<!--                </methods>-->
+<!--            </class>-->
 
 <!--            <class name="MODULES.WAVE3.ModifyTicketingService.ModifyTicketingService">-->
 <!--                <methods>-->

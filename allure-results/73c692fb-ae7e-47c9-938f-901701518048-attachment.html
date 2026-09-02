@@ -1,0 +1,99 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-04-02T06:43:07&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-04-02T06:42:00Z&quot; LastModified=&quot;2026-04-02T06:42:54Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;3&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Thu&quot; FlightNumber=&quot;361&quot; DepartureDateTime=&quot;2026-04-02T16:37:00&quot; ArrivalDateTime=&quot;2026-04-02T19:55:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;GUA&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-AF4514 IB7755 KL8847&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;KYLE&lt;/GivenName&gt;
+                &lt;Surname&gt;BROFLOVSKY&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;3&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1212&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;ERIC&lt;/GivenName&gt;
+                &lt;Surname&gt;CARTMAN&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;STAN&lt;/GivenName&gt;
+                &lt;Surname&gt;MARSH&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;3&quot; SurnameRefNumber=&quot;3&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:SpecialServiceRequests&gt;
+                &lt;ns3:SpecialServiceRequest TravelerRefNumberRPHList=&quot;3&quot; FlightRefNumberRPHList=&quot;1&quot; SSRCode=&quot;PETC&quot; ServiceQuantity=&quot;1&quot; Status=&quot;11&quot;&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;GUAPTY0361Y02APR-1MARSH/STAN.GATO&lt;/ns3:Text&gt;
+                &lt;/ns3:SpecialServiceRequest&gt;
+              &lt;/ns3:SpecialServiceRequests&gt;
+              &lt;ns3:OtherServiceInformations&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;INFORMACION DE OTROS SERVICIOS&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;OTRO SERVICIO&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+              &lt;/ns3:OtherServiceInformations&gt;
+              &lt;ns3:Remarks&gt;
+                &lt;ns3:Remark&gt;SOUTH PARK&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;REMARK ONE&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;REMARK TWO&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;REMARK THREE&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;FOR MODIFY TRAVELER INFO TEST&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;05 REMARKS ADDED BY PTY SU RO 02APR 0642Z D13134&lt;/ns3:Remark&gt;
+              &lt;/ns3:Remarks&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;RXPBCX&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 3349</div>
+        <div>Date: Thu, 02 Apr 2026 06:43:08 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

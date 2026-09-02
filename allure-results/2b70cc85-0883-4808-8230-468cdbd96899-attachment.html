@@ -1,0 +1,149 @@
+<div>POST to http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-03-18T02:52:53&quot; FlightNumber=&quot;120&quot; NumberInParty=&quot;1&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;MEX&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode NotValidAfter=&quot;2026-03-18T02:52:53&quot; NotValidBefore=&quot;2026-03-18T02:52:53&quot;&gt;YAAAOY1F&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;1279.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;1.25&quot; TaxCode=&quot;AH&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:UnstructuredFareCalc&gt;MY FARE CALC LINE END&lt;/air1:UnstructuredFareCalc&gt;
+                &lt;air1:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasure=&quot;PC&quot; UnitOfMeasureQuantity=&quot;2&quot;/&gt;
+                &lt;air1:TourCode&gt;IT6ZZ1TOURUSA&lt;/air1:TourCode&gt;
+                &lt;air1:Remark&gt;A FREEFLOW REMARK&lt;/air1:Remark&gt;
+                &lt;air1:TPA_Extensions&gt;
+                  &lt;air1:SalesLocation SalesIndicator=&quot;true&quot; TicketingIndicator=&quot;true&quot;/&gt;
+                &lt;/air1:TPA_Extensions&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;PHILLIP&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;MORRIS&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;123456789&quot; PhoneUseType=&quot;4&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Fulfillment&gt;
+          &lt;air1:PaymentDetails&gt;
+            &lt;air1:PaymentDetail Remark=&quot;FQ&quot;&gt;
+              &lt;com:Cash CashIndicator=&quot;true&quot;/&gt;
+            &lt;/air1:PaymentDetail&gt;
+          &lt;/air1:PaymentDetails&gt;
+        &lt;/air:Fulfillment&gt;
+        &lt;air:Ticketing TicketTimeLimit=&quot;2026-03-17T02:52:53&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-03-18T02:52:53&quot; FlightNumber=&quot;120&quot; NumberInParty=&quot;1&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;MEX&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode NotValidAfter=&quot;2026-03-18T02:52:53&quot; NotValidBefore=&quot;2026-03-18T02:52:53&quot;&gt;YAAAOY1F&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;1279.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;1.25&quot; TaxCode=&quot;AH&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:UnstructuredFareCalc&gt;MY FARE CALC LINE END&lt;/air1:UnstructuredFareCalc&gt;
+                &lt;air1:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasure=&quot;PC&quot; UnitOfMeasureQuantity=&quot;2&quot;/&gt;
+                &lt;air1:TourCode&gt;IT6ZZ1TOURUSA&lt;/air1:TourCode&gt;
+                &lt;air1:Remark&gt;A FREEFLOW REMARK&lt;/air1:Remark&gt;
+                &lt;air1:TPA_Extensions&gt;
+                  &lt;air1:SalesLocation SalesIndicator=&quot;true&quot; TicketingIndicator=&quot;true&quot;/&gt;
+                &lt;/air1:TPA_Extensions&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;PHILLIP&lt;/com:GivenName&gt;
+              &lt;com:Surname&gt;MORRIS&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;123456789&quot; PhoneUseType=&quot;4&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Fulfillment&gt;
+          &lt;air1:PaymentDetails&gt;
+            &lt;air1:PaymentDetail Remark=&quot;FQ&quot;&gt;
+              &lt;com:Cash CashIndicator=&quot;true&quot;/&gt;
+            &lt;/air1:PaymentDetail&gt;
+          &lt;/air1:PaymentDetails&gt;
+        &lt;/air:Fulfillment&gt;
+        &lt;air:Ticketing TicketTimeLimit=&quot;2026-03-17T02:52:53&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

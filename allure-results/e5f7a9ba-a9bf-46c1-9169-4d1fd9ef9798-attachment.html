@@ -1,0 +1,155 @@
+<div>POST to http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-04-06T01:19:02&quot; FlightNumber=&quot;243&quot; NumberInParty=&quot;2&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;34&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;2&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidAfter=&quot;2023-01-26&quot; NotValidBefore=&quot;2023-01-22&quot;&gt;X&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;0.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;1.25&quot; TaxCode=&quot;AH&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:TotalFare Amount=&quot;527.95&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:UnstructuredFareCalc&gt;FARE CALC LINE END&lt;/air1:UnstructuredFareCalc&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;NRS&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;BANU&lt;/com:GivenName&gt;
+              &lt;com:SurnamePrefix&gt;S09Y17&lt;/com:SurnamePrefix&gt;
+              &lt;com:Surname&gt;SONU&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1212&quot; PhoneUseType=&quot;3&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;NRS&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;MANU&lt;/com:GivenName&gt;
+              &lt;com:SurnamePrefix&gt;S09Y12&lt;/com:SurnamePrefix&gt;
+              &lt;com:Surname&gt;ANU&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:Remarks&gt;
+              &lt;air1:Remark&gt;NON REVENUE SPACE AVAILABLE STAFF TRAVEL&lt;/air1:Remark&gt;
+            &lt;/air1:Remarks&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-04-06T01:19:02&quot; FlightNumber=&quot;243&quot; NumberInParty=&quot;2&quot; RPH=&quot;1&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;34&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:PriceInfo&gt;
+          &lt;air1:PTC_FareBreakdowns&gt;
+            &lt;air1:PTC_FareBreakdown&gt;
+              &lt;air1:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;2&quot;/&gt;
+              &lt;air1:FareBasisCodes&gt;
+                &lt;air1:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidAfter=&quot;2023-01-26&quot; NotValidBefore=&quot;2023-01-22&quot;&gt;X&lt;/air1:FareBasisCode&gt;
+              &lt;/air1:FareBasisCodes&gt;
+              &lt;air1:PassengerFare&gt;
+                &lt;air1:BaseFare Amount=&quot;0.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:Taxes&gt;
+                  &lt;air1:Tax Amount=&quot;1.25&quot; TaxCode=&quot;AH&quot;/&gt;
+                &lt;/air1:Taxes&gt;
+                &lt;air1:TotalFare Amount=&quot;527.95&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                &lt;air1:UnstructuredFareCalc&gt;FARE CALC LINE END&lt;/air1:UnstructuredFareCalc&gt;
+              &lt;/air1:PassengerFare&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+              &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+            &lt;/air1:PTC_FareBreakdown&gt;
+          &lt;/air1:PTC_FareBreakdowns&gt;
+        &lt;/air:PriceInfo&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;NRS&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;BANU&lt;/com:GivenName&gt;
+              &lt;com:SurnamePrefix&gt;S09Y17&lt;/com:SurnamePrefix&gt;
+              &lt;com:Surname&gt;SONU&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1212&quot; PhoneUseType=&quot;3&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;NRS&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:GivenName&gt;MANU&lt;/com:GivenName&gt;
+              &lt;com:SurnamePrefix&gt;S09Y12&lt;/com:SurnamePrefix&gt;
+              &lt;com:Surname&gt;ANU&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;2&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:Remarks&gt;
+              &lt;air1:Remark&gt;NON REVENUE SPACE AVAILABLE STAFF TRAVEL&lt;/air1:Remark&gt;
+            &lt;/air1:Remarks&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

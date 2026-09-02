@@ -1,0 +1,82 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns8:displayBookingResponse xmlns:ns22=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns:ns21=&quot;http://www.opentravel.org/OTA/2003/05/PkgCommonTypes&quot; xmlns:ns20=&quot;http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes&quot; xmlns:ns19=&quot;http://www.opentravel.org/OTA/2003/05/HotelPreferences&quot; xmlns:ns18=&quot;http://www.opentravel.org/OTA/2003/05/AirPreferences&quot; xmlns:ns17=&quot;http://www.opentravel.org/OTA/2003/05/CommonPrefs&quot; xmlns:ns16=&quot;http://www.opentravel.org/OTA/2003/05/Profile&quot; xmlns:ns15=&quot;http://www.opentravel.org/OTA/2003/05/HotelCommonTypes&quot; xmlns:ns14=&quot;http://www.opentravel.org/OTA/2003/05/HotelReservation&quot; xmlns:ns13=&quot;http://www.opentravel.org/OTA/2003/05/ResRetrieveRS&quot; xmlns:ns12=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns11=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns10=&quot;http://www.eds.com/AirlineSOASchema/AirBookHistoryRS&quot; xmlns:ns9=&quot;http://www.eds.com/AirlineSOASchema/HistoryRS&quot; xmlns:ns8=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:ns7=&quot;http://www.opentravel.org/OTA/2003/05/RailCommonTypes&quot; xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot; xmlns:ns4=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns12:OTA_AirBookRS TimeStamp=&quot;2026-04-02T06:38:08&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns12:Success/&gt;
+        &lt;ns12:AirReservation CreateDateTime=&quot;2026-04-02T06:38:00Z&quot; LastModified=&quot;2026-04-02T06:38:14Z&quot;&gt;
+          &lt;ns4:AirItinerary&gt;
+            &lt;ns4:OriginDestinationOptions&gt;
+              &lt;ns4:OriginDestinationOption&gt;
+                &lt;ns4:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Fri&quot; FlightNumber=&quot;383&quot; DepartureDateTime=&quot;2026-04-03T01:23:00&quot; ArrivalDateTime=&quot;2026-04-03T10:27:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;ns2:DepartureAirport LocationCode=&quot;SFO&quot;/&gt;
+                  &lt;ns2:ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns4:MarketingAirline Code=&quot;CM&quot;/&gt;
+                &lt;/ns4:FlightSegment&gt;
+              &lt;/ns4:OriginDestinationOption&gt;
+              &lt;ns4:OriginDestinationOption&gt;
+                &lt;ns4:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Sat&quot; FlightNumber=&quot;415&quot; DepartureDateTime=&quot;2026-04-04T11:50:00&quot; ArrivalDateTime=&quot;2026-04-04T13:29:00&quot; RPH=&quot;2&quot;&gt;
+                  &lt;ns2:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns2:ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                  &lt;ns4:MarketingAirline Code=&quot;CM&quot;/&gt;
+                &lt;/ns4:FlightSegment&gt;
+              &lt;/ns4:OriginDestinationOption&gt;
+            &lt;/ns4:OriginDestinationOptions&gt;
+          &lt;/ns4:AirItinerary&gt;
+          &lt;ns4:PriceInfo&gt;
+            &lt;ns4:PTC_FareBreakdowns&gt;
+              &lt;ns4:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns4:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns4:FareBasisCodes&gt;
+                  &lt;ns4:FareBasisCode FlightSegmentRPH=&quot;1&quot;&gt;YAAAOZ1F&lt;/ns4:FareBasisCode&gt;
+                  &lt;ns4:FareBasisCode FlightSegmentRPH=&quot;2&quot;&gt;YAAAOZ1F&lt;/ns4:FareBasisCode&gt;
+                &lt;/ns4:FareBasisCodes&gt;
+                &lt;ns4:PassengerFare&gt;
+                  &lt;ns4:BaseFare Amount=&quot;1770.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns4:Taxes&gt;
+                    &lt;ns4:Tax TaxCode=&quot;AH&quot; Amount=&quot;1.25&quot;/&gt;
+                  &lt;/ns4:Taxes&gt;
+                  &lt;ns4:TotalFare Amount=&quot;1771.25&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns4:UnstructuredFareCalc&gt;SALUDOS                                                         &lt;/ns4:UnstructuredFareCalc&gt;
+                &lt;/ns4:PassengerFare&gt;
+                &lt;ns4:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+              &lt;/ns4:PTC_FareBreakdown&gt;
+            &lt;/ns4:PTC_FareBreakdowns&gt;
+            &lt;ns4:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-04-02T06:38:00&quot;&gt;
+              &lt;ns4:NegotiatedFareCode&gt;230011&lt;/ns4:NegotiatedFareCode&gt;
+            &lt;/ns4:PriceRequestInformation&gt;
+          &lt;/ns4:PriceInfo&gt;
+          &lt;ns4:TravelerInfo&gt;
+            &lt;ns4:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns4:PersonName&gt;
+                &lt;ns2:GivenName&gt;PAX&lt;/ns2:GivenName&gt;
+                &lt;ns2:Surname&gt;LOUIS&lt;/ns2:Surname&gt;
+              &lt;/ns4:PersonName&gt;
+              &lt;ns4:Telephone LocationCode=&quot;BOG&quot; PhoneUseType=&quot;3&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1414&quot;/&gt;
+              &lt;ns4:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns4:AirTraveler&gt;
+          &lt;/ns4:TravelerInfo&gt;
+          &lt;ns4:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns4:BookingReferenceID Type=&quot;14&quot; ID=&quot;RXN1MQ&quot;/&gt;
+        &lt;/ns12:AirReservation&gt;
+      &lt;/ns12:OTA_AirBookRS&gt;
+    &lt;/ns8:displayBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 4086</div>
+        <div>Date: Thu, 02 Apr 2026 06:38:09 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

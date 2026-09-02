@@ -1,0 +1,97 @@
+<div>POST to http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-04-03T03:02:44&quot; FlightNumber=&quot;332&quot; NumberInParty=&quot;8&quot; RPH=&quot;2&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;GRP&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:Surname&gt;TEST&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:PassengerTypeQuantity Quantity=&quot;8&quot;/&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1010&quot; PhoneUseType=&quot;4&quot; Remark=&quot;MY RMK&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:Remarks&gt;
+              &lt;air1:Remark&gt;SOCCER TEAM&lt;/air1:Remark&gt;
+            &lt;/air1:Remarks&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Ticketing TicketTimeLimit=&quot;2026-04-02T03:02:44&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: text/xml; charset=ISO-8859-1</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://mo-shd-ws-lbi.dxctravel.svcs.entsvcs.com:18117/AirlineSOA/CreateBookingService/createBooking&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: text/xml; charset=ISO-8859-1&#39; -d &#39;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:air=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:air1=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:com=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot; xmlns:cre=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot;&gt;
+  &lt;soapenv:Header/&gt;
+  &lt;soapenv:Body&gt;
+    &lt;cre:createBooking&gt;
+      &lt;air:OTA_AirBookRQ Version=&quot;4.000&quot;&gt;
+        &lt;air:POS&gt;
+          &lt;com:Source AirlineVendorID=&quot;CM&quot;/&gt;
+        &lt;/air:POS&gt;
+        &lt;air:AirItinerary&gt;
+          &lt;air1:OriginDestinationOptions&gt;
+            &lt;air1:OriginDestinationOption&gt;
+              &lt;air1:FlightSegment DepartureDateTime=&quot;2026-04-03T03:02:44&quot; FlightNumber=&quot;332&quot; NumberInParty=&quot;8&quot; RPH=&quot;2&quot; ResBookDesigCode=&quot;Y&quot; Status=&quot;11&quot;&gt;
+                &lt;com:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                &lt;com:ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                &lt;air1:MarketingAirline Code=&quot;CM&quot;/&gt;
+              &lt;/air1:FlightSegment&gt;
+            &lt;/air1:OriginDestinationOption&gt;
+          &lt;/air1:OriginDestinationOptions&gt;
+        &lt;/air:AirItinerary&gt;
+        &lt;air:TravelerInfo&gt;
+          &lt;air1:AirTraveler PassengerTypeCode=&quot;GRP&quot;&gt;
+            &lt;air1:PersonName&gt;
+              &lt;com:Surname&gt;TEST&lt;/com:Surname&gt;
+            &lt;/air1:PersonName&gt;
+            &lt;air1:PassengerTypeQuantity Quantity=&quot;8&quot;/&gt;
+            &lt;air1:Telephone AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1010&quot; PhoneUseType=&quot;4&quot; Remark=&quot;MY RMK&quot;/&gt;
+            &lt;air1:TravelerRefNumber RPH=&quot;1&quot;/&gt;
+          &lt;/air1:AirTraveler&gt;
+          &lt;air1:SpecialReqDetails&gt;
+            &lt;air1:Remarks&gt;
+              &lt;air1:Remark&gt;SOCCER TEAM&lt;/air1:Remark&gt;
+            &lt;/air1:Remarks&gt;
+          &lt;/air1:SpecialReqDetails&gt;
+        &lt;/air:TravelerInfo&gt;
+        &lt;air:Ticketing TicketTimeLimit=&quot;2026-04-02T03:02:44&quot;/&gt;
+      &lt;/air:OTA_AirBookRQ&gt;
+    &lt;/cre:createBooking&gt;
+  &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;&#39;
+</div>

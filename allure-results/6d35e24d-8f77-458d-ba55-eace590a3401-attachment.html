@@ -1,0 +1,105 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns8:displayBookingResponse xmlns:ns22=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns:ns21=&quot;http://www.opentravel.org/OTA/2003/05/PkgCommonTypes&quot; xmlns:ns20=&quot;http://www.opentravel.org/OTA/2003/05/CruiseCommonTypes&quot; xmlns:ns19=&quot;http://www.opentravel.org/OTA/2003/05/HotelPreferences&quot; xmlns:ns18=&quot;http://www.opentravel.org/OTA/2003/05/AirPreferences&quot; xmlns:ns17=&quot;http://www.opentravel.org/OTA/2003/05/CommonPrefs&quot; xmlns:ns16=&quot;http://www.opentravel.org/OTA/2003/05/Profile&quot; xmlns:ns15=&quot;http://www.opentravel.org/OTA/2003/05/HotelCommonTypes&quot; xmlns:ns14=&quot;http://www.opentravel.org/OTA/2003/05/HotelReservation&quot; xmlns:ns13=&quot;http://www.opentravel.org/OTA/2003/05/ResRetrieveRS&quot; xmlns:ns12=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns11=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns10=&quot;http://www.eds.com/AirlineSOASchema/AirBookHistoryRS&quot; xmlns:ns9=&quot;http://www.eds.com/AirlineSOASchema/HistoryRS&quot; xmlns:ns8=&quot;http://www.eds.com/AirlineSOASchema/DisplayBooking/&quot; xmlns:ns7=&quot;http://www.opentravel.org/OTA/2003/05/RailCommonTypes&quot; xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/VehicleCommonTypes&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/VehRetResRQ&quot; xmlns:ns4=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/ReadRQ&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns12:OTA_AirBookRS TimeStamp=&quot;2026-03-17T07:07:36&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns12:Success/&gt;
+        &lt;ns12:AirReservation CreateDateTime=&quot;2026-03-17T07:07:00Z&quot; LastModified=&quot;2026-03-17T07:07:29Z&quot;&gt;
+          &lt;ns4:AirItinerary&gt;
+            &lt;ns4:OriginDestinationOptions&gt;
+              &lt;ns4:OriginDestinationOption&gt;
+                &lt;ns4:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Tue&quot; FlightNumber=&quot;380&quot; DepartureDateTime=&quot;2026-03-17T07:31:00&quot; ArrivalDateTime=&quot;2026-03-17T08:55:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;ns2:DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns2:ArrivalAirport LocationCode=&quot;GUA&quot;/&gt;
+                  &lt;ns4:MarketingAirline Code=&quot;CM&quot;/&gt;
+                &lt;/ns4:FlightSegment&gt;
+              &lt;/ns4:OriginDestinationOption&gt;
+              &lt;ns4:OriginDestinationOption&gt;
+                &lt;ns4:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Wed&quot; FlightNumber=&quot;1903&quot; DepartureDateTime=&quot;2026-03-18T13:43:00&quot; ArrivalDateTime=&quot;2026-03-18T17:47:00&quot; RPH=&quot;2&quot;&gt;
+                  &lt;ns2:DepartureAirport LocationCode=&quot;GUA&quot;/&gt;
+                  &lt;ns2:ArrivalAirport LocationCode=&quot;IAH&quot;/&gt;
+                  &lt;ns4:MarketingAirline Code=&quot;UA&quot;/&gt;
+                &lt;/ns4:FlightSegment&gt;
+              &lt;/ns4:OriginDestinationOption&gt;
+            &lt;/ns4:OriginDestinationOptions&gt;
+          &lt;/ns4:AirItinerary&gt;
+          &lt;ns4:PriceInfo&gt;
+            &lt;ns4:PTC_FareBreakdowns&gt;
+              &lt;ns4:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns4:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns4:FareBasisCodes&gt;
+                  &lt;ns4:FareBasisCode FlightSegmentRPH=&quot;1&quot;&gt;XYZ&lt;/ns4:FareBasisCode&gt;
+                  &lt;ns4:FareBasisCode FlightSegmentRPH=&quot;2&quot;&gt;XYZ&lt;/ns4:FareBasisCode&gt;
+                &lt;/ns4:FareBasisCodes&gt;
+                &lt;ns4:PassengerFare&gt;
+                  &lt;ns4:BaseFare Amount=&quot;115.60&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns4:Taxes&gt;
+                    &lt;ns4:Tax TaxCode=&quot;AG&quot; Amount=&quot;17.30&quot;/&gt;
+                    &lt;ns4:Tax TaxCode=&quot;AV&quot; Amount=&quot;9.80&quot;/&gt;
+                  &lt;/ns4:Taxes&gt;
+                  &lt;ns4:TotalFare Amount=&quot;142.70&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns4:UnstructuredFareCalc&gt;FARE CALC LINE END                                              &lt;/ns4:UnstructuredFareCalc&gt;
+                  &lt;ns4:FareBaggageAllowance FlightSegmentRPH=&quot;1&quot; UnitOfMeasureQuantity=&quot;2&quot; UnitOfMeasure=&quot;PC&quot;/&gt;
+                &lt;/ns4:PassengerFare&gt;
+                &lt;ns4:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+                &lt;ns4:Endorsements&gt;
+                  &lt;ns4:Endorsement&gt;ENDORSEMENT ONE&lt;/ns4:Endorsement&gt;
+                &lt;/ns4:Endorsements&gt;
+              &lt;/ns4:PTC_FareBreakdown&gt;
+            &lt;/ns4:PTC_FareBreakdowns&gt;
+            &lt;ns4:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-03-17T07:07:00&quot;&gt;
+              &lt;ns4:NegotiatedFareCode&gt;230011&lt;/ns4:NegotiatedFareCode&gt;
+            &lt;/ns4:PriceRequestInformation&gt;
+          &lt;/ns4:PriceInfo&gt;
+          &lt;ns4:TravelerInfo&gt;
+            &lt;ns4:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns4:PersonName&gt;
+                &lt;ns2:GivenName&gt;JOHN&lt;/ns2:GivenName&gt;
+                &lt;ns2:Surname&gt;DOE&lt;/ns2:Surname&gt;
+              &lt;/ns4:PersonName&gt;
+              &lt;ns4:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;4&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1414&quot; Remark=&quot;PHONE REMARK&quot;/&gt;
+              &lt;ns4:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns4:AirTraveler&gt;
+            &lt;ns4:SpecialReqDetails&gt;
+              &lt;ns4:SpecialServiceRequests&gt;
+                &lt;ns4:SpecialServiceRequest TravelerRefNumberRPHList=&quot;1&quot; SSRCode=&quot;WCHR&quot; ServiceQuantity=&quot;1&quot; Status=&quot;11&quot;&gt;
+                  &lt;ns4:Airline Code=&quot;YY&quot;/&gt;
+                  &lt;ns4:Text&gt;PTYGUA0380Y17MAR-1DOE/JOHN.NEED WCHR FOR PAX 1&lt;/ns4:Text&gt;
+                &lt;/ns4:SpecialServiceRequest&gt;
+              &lt;/ns4:SpecialServiceRequests&gt;
+              &lt;ns4:OtherServiceInformations&gt;
+                &lt;ns4:OtherServiceInformation&gt;
+                  &lt;ns4:Airline Code=&quot;Z2&quot;/&gt;
+                  &lt;ns4:Text&gt;MY OSI&lt;/ns4:Text&gt;
+                &lt;/ns4:OtherServiceInformation&gt;
+              &lt;/ns4:OtherServiceInformations&gt;
+              &lt;ns4:Remarks&gt;
+                &lt;ns4:Remark&gt;FOR DISPLAY OA BOOKING TESTING&lt;/ns4:Remark&gt;
+                &lt;ns4:Remark&gt;01 REMARKS ADDED BY PTY SU RO 17MAR 0707Z D1394D&lt;/ns4:Remark&gt;
+              &lt;/ns4:Remarks&gt;
+            &lt;/ns4:SpecialReqDetails&gt;
+          &lt;/ns4:TravelerInfo&gt;
+          &lt;ns4:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns4:BookingReferenceID Type=&quot;14&quot; ID=&quot;STHBVU&quot;/&gt;
+        &lt;/ns12:AirReservation&gt;
+      &lt;/ns12:OTA_AirBookRS&gt;
+    &lt;/ns8:displayBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 4992</div>
+        <div>Date: Tue, 17 Mar 2026 07:07:37 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

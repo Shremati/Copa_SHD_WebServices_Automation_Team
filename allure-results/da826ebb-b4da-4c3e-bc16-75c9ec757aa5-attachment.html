@@ -1,0 +1,102 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-06-05T07:26:07&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-06-05T07:26:00Z&quot; LastModified=&quot;2026-06-05T07:26:02Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;3&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Fri&quot; FlightNumber=&quot;306&quot; DepartureDateTime=&quot;2026-06-05T02:30:00&quot; ArrivalDateTime=&quot;2026-06-05T10:52:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;LAX&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;SECURE FLIGHT&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT DEPARTS TERMINAL-B&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;PIOUS&lt;/GivenName&gt;
+                &lt;Surname&gt;AUGUSTUS&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;4&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1010&quot; Remark=&quot;MY RMK&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;ROBERTO&lt;/GivenName&gt;
+                &lt;Surname&gt;BIANCHI&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;2&quot; SurnameRefNumber=&quot;2&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;ALEX&lt;/GivenName&gt;
+                &lt;Surname&gt;ROIVAS&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;3&quot; SurnameRefNumber=&quot;3&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:SpecialServiceRequests&gt;
+                &lt;ns3:SpecialServiceRequest TravelerRefNumberRPHList=&quot;2&quot; FlightRefNumberRPHList=&quot;1&quot; SSRCode=&quot;WCHR&quot; ServiceQuantity=&quot;1&quot; Status=&quot;11&quot;&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;LAXPTY0306Y05JUN-1BIANCHI/ROBERTO.SILLA&lt;/ns3:Text&gt;
+                &lt;/ns3:SpecialServiceRequest&gt;
+              &lt;/ns3:SpecialServiceRequests&gt;
+              &lt;ns3:OtherServiceInformations&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;DELETE THIS ITEM&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;OTHER SERVICE INFORMATION&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+                &lt;ns3:OtherServiceInformation&gt;
+                  &lt;ns3:Airline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Text&gt;WE GONNA DELETE THIS ITEM TOO&lt;/ns3:Text&gt;
+                &lt;/ns3:OtherServiceInformation&gt;
+              &lt;/ns3:OtherServiceInformations&gt;
+              &lt;ns3:Remarks&gt;
+                &lt;ns3:Remark&gt;REMARK ONE&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;REMARK TWO&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;FOR OTHER CHANGES TEST&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;03 REMARKS ADDED BY PTY SU RO 05JUN 0726Z D13319&lt;/ns3:Remark&gt;
+              &lt;/ns3:Remarks&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;SQZLPS&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 3475</div>
+        <div>Date: Fri, 05 Jun 2026 07:26:07 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+

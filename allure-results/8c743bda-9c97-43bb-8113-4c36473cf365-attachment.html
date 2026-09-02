@@ -1,0 +1,100 @@
+<div>Status code 200 </div>
+
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    &lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+  &lt;soap:Body&gt;
+    &lt;ns4:createBookingResponse xmlns:ns6=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRS&quot; xmlns:ns5=&quot;http://www.opentravel.org/OTA/2003/05/AirBookRQ&quot; xmlns:ns4=&quot;http://www.eds.com/AirlineSOASchema/CreateBooking/&quot; xmlns:ns3=&quot;http://www.opentravel.org/OTA/2003/05/AirCommonTypes&quot; xmlns:ns2=&quot;http://www.opentravel.org/OTA/2003/05/AirBookModifyRQ&quot; xmlns=&quot;http://www.opentravel.org/OTA/2003/05/CommonTypes&quot;&gt;
+      &lt;ns6:OTA_AirBookRS TimeStamp=&quot;2026-04-01T18:16:00&quot; Version=&quot;4.000&quot;&gt;
+        &lt;ns6:Success/&gt;
+        &lt;ns6:AirReservation CreateDateTime=&quot;2026-04-01T18:15:00Z&quot; LastModified=&quot;2026-04-01T18:15:33Z&quot;&gt;
+          &lt;ns3:AirItinerary&gt;
+            &lt;ns3:OriginDestinationOptions&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Thu&quot; FlightNumber=&quot;383&quot; DepartureDateTime=&quot;2026-04-02T01:23:00&quot; ArrivalDateTime=&quot;2026-04-02T10:27:00&quot; RPH=&quot;1&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;SFO&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:MarriageGrp&gt;Y&lt;/ns3:MarriageGrp&gt;
+                  &lt;ns3:Comment&gt;DUPLICATE LEG-BR3181 UA7132&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;SECURE FLIGHT&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT DEPARTS TERMINAL-I&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+              &lt;ns3:OriginDestinationOption&gt;
+                &lt;ns3:FlightSegment ResBookDesigCode=&quot;Y&quot; NumberInParty=&quot;1&quot; Status=&quot;26&quot; E_TicketEligibility=&quot;Eligible&quot; DepartureDay=&quot;Thu&quot; FlightNumber=&quot;413&quot; DepartureDateTime=&quot;2026-04-02T15:29:00&quot; ArrivalDateTime=&quot;2026-04-02T17:07:00&quot; RPH=&quot;2&quot;&gt;
+                  &lt;DepartureAirport LocationCode=&quot;PTY&quot;/&gt;
+                  &lt;ArrivalAirport LocationCode=&quot;BOG&quot;/&gt;
+                  &lt;ns3:MarketingAirline Code=&quot;CM&quot;/&gt;
+                  &lt;ns3:Comment&gt;/PASSENGER CHECK IN /CM TERMINAL 2&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ADV PAX FLT ARRIVES TERMINAL-1&lt;/ns3:Comment&gt;
+                  &lt;ns3:Comment&gt;ETKT ELIGIBLE&lt;/ns3:Comment&gt;
+                &lt;/ns3:FlightSegment&gt;
+              &lt;/ns3:OriginDestinationOption&gt;
+            &lt;/ns3:OriginDestinationOptions&gt;
+          &lt;/ns3:AirItinerary&gt;
+          &lt;ns3:PriceInfo&gt;
+            &lt;ns3:PTC_FareBreakdowns&gt;
+              &lt;ns3:PTC_FareBreakdown FareQuoteRefNumber=&quot;1&quot;&gt;
+                &lt;ns3:PassengerTypeQuantity Code=&quot;ADT&quot; Quantity=&quot;1&quot;/&gt;
+                &lt;ns3:FareBasisCodes&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;1&quot; NotValidBefore=&quot;2027-02-22&quot; NotValidAfter=&quot;2027-02-24&quot;&gt;XY&lt;/ns3:FareBasisCode&gt;
+                  &lt;ns3:FareBasisCode FlightSegmentRPH=&quot;2&quot; NotValidBefore=&quot;2027-02-24&quot; NotValidAfter=&quot;2027-02-26&quot;&gt;YZ&lt;/ns3:FareBasisCode&gt;
+                &lt;/ns3:FareBasisCodes&gt;
+                &lt;ns3:PassengerFare&gt;
+                  &lt;ns3:BaseFare Amount=&quot;110.00&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:Taxes&gt;
+                    &lt;ns3:Tax TaxCode=&quot;AG&quot; Amount=&quot;12.00&quot;/&gt;
+                    &lt;ns3:Tax TaxCode=&quot;CD&quot; Amount=&quot;8.50&quot;/&gt;
+                  &lt;/ns3:Taxes&gt;
+                  &lt;ns3:TotalFare Amount=&quot;130.50&quot; CurrencyCode=&quot;USD&quot;/&gt;
+                  &lt;ns3:UnstructuredFareCalc&gt;FARE CALC ADT1END                                               &lt;/ns3:UnstructuredFareCalc&gt;
+                &lt;/ns3:PassengerFare&gt;
+                &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+                &lt;ns3:Endorsements&gt;
+                  &lt;ns3:Endorsement&gt;ENDOSO UNO&lt;/ns3:Endorsement&gt;
+                &lt;/ns3:Endorsements&gt;
+              &lt;/ns3:PTC_FareBreakdown&gt;
+            &lt;/ns3:PTC_FareBreakdowns&gt;
+            &lt;ns3:PriceRequestInformation PricingSource=&quot;Private&quot; SaleCountry=&quot;PTY&quot; QuotedDateTime=&quot;2026-04-01T18:15:00&quot;&gt;
+              &lt;ns3:NegotiatedFareCode&gt;230011&lt;/ns3:NegotiatedFareCode&gt;
+            &lt;/ns3:PriceRequestInformation&gt;
+          &lt;/ns3:PriceInfo&gt;
+          &lt;ns3:TravelerInfo&gt;
+            &lt;ns3:AirTraveler PassengerTypeCode=&quot;ADT&quot;&gt;
+              &lt;ns3:PersonName&gt;
+                &lt;GivenName&gt;BOOKING&lt;/GivenName&gt;
+                &lt;Surname&gt;CANCEL&lt;/Surname&gt;
+              &lt;/ns3:PersonName&gt;
+              &lt;ns3:Telephone LocationCode=&quot;PTY&quot; PhoneUseType=&quot;3&quot; AreaCityCode=&quot;555&quot; PhoneNumber=&quot;555-1212&quot;/&gt;
+              &lt;ns3:TravelerRefNumber RPH=&quot;1&quot; SurnameRefNumber=&quot;1&quot;/&gt;
+            &lt;/ns3:AirTraveler&gt;
+            &lt;ns3:SpecialReqDetails&gt;
+              &lt;ns3:Remarks&gt;
+                &lt;ns3:Remark&gt;FOR CANCEL BOOKING TEST&lt;/ns3:Remark&gt;
+                &lt;ns3:Remark&gt;01 REMARKS ADDED BY PTY SU RO 01APR 1815Z D1303B&lt;/ns3:Remark&gt;
+              &lt;/ns3:Remarks&gt;
+            &lt;/ns3:SpecialReqDetails&gt;
+          &lt;/ns3:TravelerInfo&gt;
+          &lt;ns3:Ticketing TicketingStatus=&quot;3&quot;/&gt;
+          &lt;ns3:BookingReferenceID Type=&quot;14&quot; ID=&quot;RU0BQX&quot;/&gt;
+        &lt;/ns6:AirReservation&gt;
+      &lt;/ns6:OTA_AirBookRS&gt;
+    &lt;/ns4:createBookingResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Connection: keep-alive</div>
+        <div>Content-Length: 3870</div>
+        <div>Date: Wed, 01 Apr 2026 18:16:02 GMT</div>
+        <div>Content-Type: text/xml;charset=ISO-8859-1</div>
+</div>
+
+
